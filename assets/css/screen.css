@@ -71,6 +71,10 @@ a {
     text-decoration: none;
 }
 
+a:hover {
+    opacity: 0.8;
+}
+
 .gh-button {
     display: inline-flex;
     gap: 0.4em;
@@ -104,6 +108,10 @@ a {
     background-color: transparent;
     border: 0;
     outline: none;
+}
+
+.gh-icon-button:hover svg {
+    opacity: 0.8;
 }
 
 .gh-icon-button svg {
@@ -221,10 +229,6 @@ a {
 .gh-search {
     margin-right: -6px;
     margin-left: -6px;
-}
-
-.gh-search:hover {
-    opacity: 0.9;
 }
 
 .gh-navigation-brand .gh-search {
