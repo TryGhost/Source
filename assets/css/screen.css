@@ -71,6 +71,46 @@ a {
     text-decoration: none;
 }
 
+.gh-button {
+    display: inline-flex;
+    gap: 0.4em;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75em 1.15em;
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--color-white);
+    letter-spacing: inherit;
+    cursor: pointer;
+    background-color: var(--ghost-accent-color);
+    border: 0;
+    border-radius: 100px;
+}
+
+.gh-button:hover {
+    opacity: 0.95;
+}
+
+.gh-icon-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    color: var(--color-darker-gray);
+    cursor: pointer;
+    background-color: transparent;
+    border: 0;
+    outline: none;
+}
+
+.gh-icon-button svg {
+    width: 20px;
+    height: 20px;
+}
+
 /* 4. Layout */
 
 .gh-viewport {
@@ -188,7 +228,7 @@ a {
 }
 
 .gh-navigation-brand .gh-search {
-    margin-right: 8px;
+    margin-right: 2px;
 }
 
 @media (max-width: 767px) {
@@ -373,50 +413,34 @@ Search                         LOGO                    Login Subscribe
 /* 5.3. Burger icon */
 
 .gh-burger {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
     display: none;
-    width: 30px;
-    height: 30px;
-    padding: 0;
-    margin-right: -3px;
-    appearance: none;
-    cursor: pointer;
-    background-color: transparent;
-    border: 0;
+    margin-right: -7px;
 }
 
-.gh-burger::before,
-.gh-burger::after {
-    position: absolute;
-    left: 3px;
+.gh-burger svg {
     width: 24px;
-    height: 1px;
-    content: "";
-    background-color: var(--color-darker-gray);
-    transition: all 0.2s cubic-bezier(0.04, 0.04, 0.12, 0.96) 0.1008s;
+    height: 24px;
 }
 
-.gh-burger::before {
-    top: 11px;
+.gh-burger svg:last-child {
+    display: none;
 }
 
-.gh-burger::after {
-    bottom: 11px;
+.is-navigation-open .gh-burger svg:first-child {
+    display: none;
 }
 
-.is-navigation-open .gh-burger::before {
-    top: 15px;
-    transform: rotate(45deg);
-}
-
-.is-navigation-open .gh-burger::after {
-    bottom: 14px;
-    transform: rotate(-45deg);
+.is-navigation-open .gh-burger svg:last-child {
+    display: block;
 }
 
 @media (max-width: 767px) {
     .gh-burger {
-        display: block;
+        display: flex;
     }
 }
 
@@ -552,46 +576,4 @@ Search                         LOGO                    Login Subscribe
     .is-navigation-open#gh-main {
         opacity: 0;
     }
-}
-
-/* Buttons */
-
-.gh-button {
-    display: inline-flex;
-    gap: 0.4em;
-    align-items: center;
-    justify-content: center;
-    padding: 0.75em 1.15em;
-    font-size: 1.6rem;
-    font-weight: 700;
-    line-height: 1;
-    color: var(--color-white);
-    letter-spacing: inherit;
-    cursor: pointer;
-    background-color: var(--ghost-accent-color);
-    border: 0;
-    border-radius: 100px;
-}
-
-.gh-button:hover {
-    opacity: 0.95;
-}
-
-.gh-icon-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 32px;
-    height: 32px;
-    padding: 0;
-    color: var(--color-darker-gray);
-    cursor: pointer;
-    background-color: transparent;
-    border: 0;
-    outline: none;
-}
-
-.gh-icon-button svg {
-    width: 20px;
-    height: 20px;
 }
