@@ -1,46 +1,61 @@
-<section class="gh-header is-{{#match headerStyle "Magazine"}}magazine{{else match headerStyle "Highlight"}}highlight{{else}}classic{{/match}} gh-outer">
-    <div class="gh-header-inner gh-inner">
+{{#match headerStyle "!=" "Off"}}
+    <section class="gh-header is-{{#match headerStyle "Magazine"}}magazine{{else match headerStyle "Highlight"}}highlight{{else}}classic{{/match}}{{#if @custom.use_publication_cover_as_background}} has-image{{/if}} gh-outer">
+        
+        {{!-- Background image --}}
+        {{#if @custom.use_publication_cover_as_background}}
+            {{#match headerStyle "!=" "Magazine"}}
+            {{#match headerStyle "!=" "Highlight"}}
+                {{#if @site.cover_image}}
+                    <img class="gh-header-image" src="{{@site.cover_image}}" alt="{{@site.title}}">
+                {{/if}}
+            {{/match}}
+            {{/match}}
+        {{/if}}
 
-        {{!-- Magazine layout --}}
-        {{#match headerStyle "Magazine"}}
-            {{#foreach posts limit="7"}}
-                {{#match @number 2}}
-                    <div class="gh-header-left">
-                {{/match}}
-                {{#match @number 5}}
-                    <div class="gh-header-right">
-                {{/match}}
-                {{> "loop"}}
-                {{#match @number 4}}
-                    </div>
-                {{/match}}
-                {{#match @number 7}}
-                    </div>
-                {{/match}}
-            {{/foreach}}
-        {{/match}}
+        <div class="gh-header-inner gh-inner">
 
-        {{!-- Highlight layout --}}
-        {{#match headerStyle "Highlight"}}
-            {{#foreach posts limit="4"}}
-                {{> "loop"}}
-            {{/foreach}}
-        {{/match}}
+            {{!-- Magazine layout --}}
+            {{#match headerStyle "Magazine"}}
+                {{#foreach posts limit="7"}}
+                    {{#match @number 2}}
+                        <div class="gh-header-left">
+                    {{/match}}
+                    {{#match @number 5}}
+                        <div class="gh-header-right">
+                    {{/match}}
+                    {{> "loop"}}
+                    {{#match @number 4}}
+                        </div>
+                    {{/match}}
+                    {{#match @number 7}}
+                        </div>
+                    {{/match}}
+                {{/foreach}}
+            {{/match}}
 
-        {{!-- Landing layout --}}
-        {{#match headerStyle "Landing"}}
-            <h1>Founded by Australian journalist Claire Lehmann, Quillette publishes high quality long reads on diverse topics, daily.</h1>
-            <form>
-                <input type="email">
-                <button type="submit">Subscribe</button>
-            </form>
-        {{/match}}
+            {{!-- Highlight layout --}}
+            {{#match headerStyle "Highlight"}}
+                {{#foreach posts limit="4"}}
+                    {{> "loop"}}
+                {{/foreach}}
+            {{/match}}
 
-        {{!-- Search layout --}}
-        {{#match headerStyle "Search"}}
-            <h1>Founded by Australian journalist Claire Lehmann, Quillette publishes high quality long reads on diverse topics, daily.</h1>
-            <div>Search</div>
-        {{/match}}
+            {{!-- Landing layout --}}
+            {{#match headerStyle "Landing"}}
+                <h1>Founded by Australian journalist Claire Lehmann, Quillette publishes high quality long reads on diverse topics, daily.</h1>
+                <form>
+                    <input type="email" placeholder="jamie@example.com">
+                    <button class="gh-button" type="submit">Subscribe</button>
+                </form>
+            {{/match}}
 
-    </div>
-</section>
+            {{!-- Search layout --}}
+            {{#match headerStyle "Search"}}
+                <h1>Founded by Australian journalist Claire Lehmann, Quillette publishes high quality long reads on diverse topics, daily.</h1>
+                <button data-ghost-search>{{> "icons/search"}}Search</button>
+            {{/match}}
+
+        </div>
+
+    </section>
+{{/match}}

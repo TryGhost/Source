@@ -108,9 +108,15 @@
                     "Magazine",
                     "Highlight",
                     "Landing",
-                    "Search"
+                    "Search",
+                    "Off"
                 ],
                 "default": "Magazine",
+                "group": "homepage"
+            },
+            "use_publication_cover_as_background": {
+                "type": "boolean",
+                "default": false,
                 "group": "homepage"
             },
             "show_featured": {

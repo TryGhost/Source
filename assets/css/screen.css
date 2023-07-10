@@ -134,7 +134,6 @@ a:hover {
 }
 
 .gh-outer {
-    position: relative;
     padding: 0 max(4vmin, 20px);
 }
 
@@ -620,6 +619,22 @@ Search                         LOGO                    Login Subscribe
 
 /* 6. Header */
 
+.gh-header {
+    position: relative;
+}
+
+.gh-header-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.gh-header-inner {
+    position: relative;
+}
+
 /* 6.1. Magazine layout */
 
 .gh-header.is-magazine .gh-header-inner {
@@ -667,7 +682,31 @@ Search                         LOGO                    Login Subscribe
     display: none;
 }
 
+/* 6.3. Classic layout */
+
+.gh-header.is-classic {
+    display: flex;
+    min-height: 480px;
+}
+
+.gh-header.is-classic .gh-header-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    margin: auto;
+    max-width: 720px;
+}
+
+.gh-header.is-classic.has-image .gh-header-inner {
+    color: #fff;
+}
+
 /* 7. Featured posts */
+
+.gh-featured {
+    margin-top: 64px;
+}
 
 .gh-featured-feed {
     display: grid;
@@ -691,6 +730,10 @@ Search                         LOGO                    Login Subscribe
 }
 
 /* 8. Container */
+
+.gh-container {
+    margin-top: 64px;
+}
 
 .gh-container-inner {
     display: grid;
@@ -729,6 +772,7 @@ Search                         LOGO                    Login Subscribe
 
 .gh-container.is-list .gh-card-link {
     display: flex;
+    align-items: flex-start;
     gap: 24px;
 }
 
@@ -750,13 +794,30 @@ Search                         LOGO                    Login Subscribe
     display: none;
 }
 
-/* 10. Footer */
+/* 10. Sidebar */
+
+.gh-about {
+    position: sticky;
+    top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 48px 24px;
+    background-color: var(--color-lighter-gray);
+}
+
+.gh-about-icon {
+    width: 80px;
+    height: 80px;
+}
+
+/* 11. Footer */
 
 .gh-footer {
     margin-top: 80px;
 }
 
-/* 10.1. Footer bar */
+/* 11.1. Footer bar */
 
 .gh-footer-bar {
     display: grid;
@@ -775,7 +836,7 @@ Search                         LOGO                    Login Subscribe
     text-align: right;
 }
 
-/* 10.2. Footer signup */
+/* 11.2. Footer signup */
 
 .gh-footer-signup {
     display: flex;
