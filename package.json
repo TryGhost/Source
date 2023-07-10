@@ -119,6 +119,21 @@
                 "default": "List",
                 "group": "homepage"
             },
+            "hide_images": {
+                "type": "boolean",
+                "default": false,
+                "group": "homepage"
+            },
+            "show_author": {
+                "type": "boolean",
+                "default": true,
+                "group": "homepage"
+            },
+            "show_post_date": {
+                "type": "boolean",
+                "default": true,
+                "group": "homepage"
+            },
             "show_sidebar": {
                 "type": "boolean",
                 "default": true,

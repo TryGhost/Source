@@ -15,8 +15,16 @@
             </figure>
         {{/if}}
         <div class="gh-card-wrapper">
-            <h2 class="gh-card-title">{{title}}</h2>
+            <h3 class="gh-card-title">{{title}}</h3>
             <p class="gh-card-excerpt">{{excerpt}}</p>
+            <footer class="gh-card-meta">
+                {{#if @custom.show_author}}
+                    <span class="gh-card-author">By {{#foreach authors}}{{#if @first}}{{name}}{{else}}, {{name}}{{/if}}{{/foreach}}</span>
+                {{/if}}
+                {{#if @custom.show_post_date}}
+                    <time class="gh-card-date" datetime="{{date format="YYYY-MM-DD"}}">{{date}}</time>
+                {{/if}}
+            </footer>
         </div>
     </a>
 </article>

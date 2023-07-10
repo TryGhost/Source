@@ -607,6 +607,17 @@ Search                         LOGO                    Login Subscribe
     flex-grow: 1;
 }
 
+.gh-card-meta {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+}
+
+.gh-card-author + .gh-card-date::before {
+    content: "—";
+    margin-right: 4px;
+}
+
 /* 6. Header */
 
 /* 6.1. Magazine layout */
@@ -667,6 +678,7 @@ Search                         LOGO                    Login Subscribe
 .gh-featured-feed .gh-card-link {
     display: flex;
     flex-direction: row-reverse;
+    align-items: flex-start;
 }
 
 .gh-featured-feed .gh-card-image {
@@ -717,6 +729,7 @@ Search                         LOGO                    Login Subscribe
 
 .gh-container.is-list .gh-card-link {
     display: flex;
+    gap: 24px;
 }
 
 .gh-container.is-list .gh-card-image {
@@ -729,4 +742,10 @@ Search                         LOGO                    Login Subscribe
 .gh-container.is-grid .gh-feed {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+}
+
+/* 9.3. No image */
+
+.gh-container.is-list.no-image .gh-card-image {
+    display: none;
 }

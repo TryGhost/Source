@@ -1,5 +1,5 @@
 {{#if showFeatured}}
-    {{#get "posts" filter="featured:true" limit="4" as |featured|}}
+    {{#get "posts" filter="featured:true" include="authors" limit="4" as |featured|}}
         {{#if featured}}
             <section class="gh-featured gh-outer">
                 <div class="gh-featured-inner gh-inner">
