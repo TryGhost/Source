@@ -1,0 +1,46 @@
+<section class="gh-header is-{{#match headerStyle "Magazine"}}magazine{{else match headerStyle "Highlight"}}highlight{{else}}classic{{/match}} gh-outer">
+    <div class="gh-header-inner gh-inner">
+
+        {{!-- Magazine layout --}}
+        {{#match headerStyle "Magazine"}}
+            {{#foreach posts limit="7"}}
+                {{#match @number 2}}
+                    <div class="gh-header-left">
+                {{/match}}
+                {{#match @number 5}}
+                    <div class="gh-header-right">
+                {{/match}}
+                {{> "loop"}}
+                {{#match @number 4}}
+                    </div>
+                {{/match}}
+                {{#match @number 7}}
+                    </div>
+                {{/match}}
+            {{/foreach}}
+        {{/match}}
+
+        {{!-- Highlight layout --}}
+        {{#match headerStyle "Highlight"}}
+            {{#foreach posts limit="4"}}
+                {{> "loop"}}
+            {{/foreach}}
+        {{/match}}
+
+        {{!-- Landing layout --}}
+        {{#match headerStyle "Landing"}}
+            <h1>Founded by Australian journalist Claire Lehmann, Quillette publishes high quality long reads on diverse topics, daily.</h1>
+            <form>
+                <input type="email">
+                <button type="submit">Subscribe</button>
+            </form>
+        {{/match}}
+
+        {{!-- Search layout --}}
+        {{#match headerStyle "Search"}}
+            <h1>Founded by Australian journalist Claire Lehmann, Quillette publishes high quality long reads on diverse topics, daily.</h1>
+            <div>Search</div>
+        {{/match}}
+
+    </div>
+</section>

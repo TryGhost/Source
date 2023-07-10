@@ -93,6 +93,17 @@
                     "Stacked"
                 ],
                 "default": "Logo in the middle"
+            },
+            "header_style": {
+                "type": "select",
+                "options": [
+                    "Magazine",
+                    "Highlight",
+                    "Landing",
+                    "Search"
+                ],
+                "default": "Magazine",
+                "group": "homepage"
             }
         }
     },

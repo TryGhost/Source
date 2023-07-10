@@ -581,3 +581,71 @@ Search                         LOGO                    Login Subscribe
         opacity: 0;
     }
 }
+
+/* Card */
+
+.gh-card-image {
+    position: relative;
+    aspect-ratio: 16 / 9;
+}
+
+.gh-card-image img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 6. Header */
+
+.gh-header {
+    --gap: 40px;
+}
+
+/* 6.1. Magazine layout */
+
+.gh-header.is-magazine .gh-header-inner {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: var(--gap);
+}
+
+.gh-header.is-magazine .gh-header-inner > div {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+    grid-row: 1;
+}
+
+.gh-header.is-magazine .gh-header-left {
+    grid-column: 1;
+}
+
+.gh-header.is-magazine .gh-header-inner > .gh-card {
+    grid-column: 2;
+}
+
+.gh-header.is-magazine .gh-header-right {
+    grid-column: 3;
+}
+
+.gh-header.is-magazine .gh-header-inner > div .gh-card-excerpt {
+    display: none;
+}
+
+/* 6.2. Highlight layout */
+
+.gh-header.is-highlight .gh-header-inner {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: var(--gap);
+}
+
+.gh-header.is-highlight .gh-card:first-child {
+    grid-row: span 3;
+}
+
+.gh-header.is-highlight .gh-card:not(:first-child) .gh-card-excerpt {
+    display: none;
+}
