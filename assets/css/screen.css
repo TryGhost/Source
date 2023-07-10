@@ -139,7 +139,7 @@ a:hover {
 
 .gh-inner {
     margin: 0 auto;
-    max-width: 1200px;
+    max-width: 1280px;
     width: 100%;
 }
 
@@ -584,6 +584,10 @@ Search                         LOGO                    Login Subscribe
 
 /* Card */
 
+.gh-card-link:hover {
+    opacity: 1;
+}
+
 .gh-card-image {
     position: relative;
     aspect-ratio: 16 / 9;
@@ -648,4 +652,35 @@ Search                         LOGO                    Login Subscribe
 
 .gh-header.is-highlight .gh-card:not(:first-child) .gh-card-excerpt {
     display: none;
+}
+
+/* 7. Container */
+
+.gh-container:not(.has-sidebar) .gh-container-inner {
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+}
+
+.gh-container:not(.has-sidebar) .gh-container-inner .gh-main {
+    grid-column: 3 / span 12;
+}
+
+/* 8. Post list */
+
+/* 8.1. List style */
+
+.gh-container.is-list .gh-card-link {
+    display: flex;
+}
+
+.gh-container.is-list .gh-card-image {
+    flex-shrink: 0;
+    width: 240px;
+}
+
+/* 8.2. Grid style */
+
+.gh-container.is-grid .gh-feed {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
 }

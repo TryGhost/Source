@@ -104,6 +104,15 @@
                 ],
                 "default": "Magazine",
                 "group": "homepage"
+            },
+            "post_list_style": {
+                "type": "select",
+                "options": [
+                    "List",
+                    "Grid"
+                ],
+                "default": "List",
+                "group": "homepage"
             }
         }
     },

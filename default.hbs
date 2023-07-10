@@ -23,7 +23,8 @@
 <div class="gh-viewport">
     
     {{> "components/navigation" navigationLayout=@custom.navigation_layout}}
-    {{> "components/header" headerStyle="Search"}}
+    {{> "components/header" headerStyle=@custom.header_style}}
+    {{> "components/post-list" postListStyle=@custom.post_list_style}}
     
     {{{body}}}
 
