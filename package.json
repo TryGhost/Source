@@ -105,6 +105,11 @@
                 "default": "Magazine",
                 "group": "homepage"
             },
+            "show_featured": {
+                "type": "boolean",
+                "default": true,
+                "group": "homepage"
+            },
             "post_list_style": {
                 "type": "select",
                 "options": [

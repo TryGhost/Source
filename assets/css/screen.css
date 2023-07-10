@@ -591,6 +591,7 @@ Search                         LOGO                    Login Subscribe
 
 .gh-card-image {
     position: relative;
+    flex-shrink: 0;
     aspect-ratio: 16 / 9;
 }
 
@@ -602,13 +603,17 @@ Search                         LOGO                    Login Subscribe
     object-fit: cover;
 }
 
+.gh-card-wrapper {
+    flex-grow: 1;
+}
+
 /* 6. Header */
 
 /* 6.1. Magazine layout */
 
 .gh-header.is-magazine .gh-header-inner {
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-columns: repeat(16, 1fr);
     gap: var(--grid-gap);
 }
 
@@ -620,15 +625,15 @@ Search                         LOGO                    Login Subscribe
 }
 
 .gh-header.is-magazine .gh-header-left {
-    grid-column: 1;
+    grid-column: 1 / span 4;
 }
 
 .gh-header.is-magazine .gh-header-inner > .gh-card {
-    grid-column: 2;
+    grid-column: 5 / span 8;
 }
 
 .gh-header.is-magazine .gh-header-right {
-    grid-column: 3;
+    grid-column: 13 / -1;
 }
 
 .gh-header.is-magazine .gh-header-inner > div .gh-card-excerpt {
@@ -651,7 +656,29 @@ Search                         LOGO                    Login Subscribe
     display: none;
 }
 
-/* 7. Container */
+/* 7. Featured posts */
+
+.gh-featured-feed {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--grid-gap);
+}
+
+.gh-featured-feed .gh-card-link {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.gh-featured-feed .gh-card-image {
+    width: 80px;
+    aspect-ratio: 1;
+}
+
+.gh-featured-feed .gh-card-excerpt {
+    display: none;
+}
+
+/* 8. Container */
 
 .gh-container-inner {
     display: grid;
@@ -659,7 +686,7 @@ Search                         LOGO                    Login Subscribe
     gap: var(--grid-gap);
 }
 
-/* 7.1. With sidebar */
+/* 8.1. With sidebar */
 
 .gh-container.has-sidebar .gh-main {
     grid-column: 1 / span 12;
@@ -669,19 +696,19 @@ Search                         LOGO                    Login Subscribe
     grid-column: 13 / -1;
 }
 
-/* 7.2. Without sidebar */
+/* 8.2. Without sidebar */
 
 .gh-container:not(.has-sidebar) .gh-main {
     grid-column: 3 / span 12;
 }
 
-/* 8. Post list */
+/* 9. Post list */
 
 .gh-container .gh-feed {
     gap: var(--grid-gap);
 }
 
-/* 8.1. List style */
+/* 9.1. List style */
 
 .gh-container.is-list .gh-feed {
     display: flex;
@@ -697,7 +724,7 @@ Search                         LOGO                    Login Subscribe
     width: 240px;
 }
 
-/* 8.2. Grid style */
+/* 9.2. Grid style */
 
 .gh-container.is-grid .gh-feed {
     display: grid;
