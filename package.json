@@ -94,6 +94,14 @@
                 ],
                 "default": "Logo in the middle"
             },
+            "footer_signup_header": {
+                "type": "text",
+                "default": "Stay in the loop"
+            },
+            "footer_signup_subhead": {
+                "type": "text",
+                "default": "New content delivered to your inbox."
+            },
             "header_style": {
                 "type": "select",
                 "options": [
