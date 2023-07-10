@@ -749,3 +749,24 @@ Search                         LOGO                    Login Subscribe
 .gh-container.is-list.no-image .gh-card-image {
     display: none;
 }
+
+/* 10. Footer */
+
+.gh-footer {
+    padding-block: 48px;
+}
+
+.gh-footer-inner {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+}
+
+.gh-footer-menu .nav {
+    display: flex;
+    gap: 24px;
+    list-style-type: none;
+}
+
+.gh-footer-copyright {
+    text-align: right;
+}
