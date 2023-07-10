@@ -106,6 +106,16 @@
                 ],
                 "default": "Background color"
             },
+            "title_font": {
+                "type": "select",
+                "options": ["Modern sans-serif", "Elegant serif", "Clean slab"],
+                "default": "Modern sans-serif"
+            },
+            "body_font": {
+                "type": "select",
+                "options": ["Modern sans-serif", "Elegant serif"],
+                "default": "Modern sans-serif"
+            },
             "footer_signup_header": {
                 "type": "text",
                 "default": "Stay in the loop"

@@ -15,9 +15,9 @@
             </figure>
         {{/if}}
         <div class="gh-card-wrapper">
-            <h3 class="gh-card-title">{{title}}</h3>
-            <p class="gh-card-excerpt">{{excerpt}}</p>
-            <footer class="gh-card-meta">
+            <h3 class="gh-card-title" data-title>{{title}}</h3>
+            <p class="gh-card-excerpt" data-body>{{excerpt}}</p>
+            <footer class="gh-card-meta" data-body>
                 {{#if @custom.show_author}}
                     <span class="gh-card-author">By {{#foreach authors}}{{#if @first}}{{name}}{{else}}, {{name}}{{/if}}{{/foreach}}</span>
                 {{/if}}
