@@ -1,5 +1,6 @@
-<section class="gh-container is-{{#match @custom.post_list_style "List"}}list{{else}}grid{{/match}} gh-outer">
+<section class="gh-container is-{{#match @custom.post_list_style "List"}}list{{else}}grid{{/match}}{{#if @custom.show_sidebar}} has-sidebar{{/if}} gh-outer">
     <div class="gh-container-inner gh-inner">
+
         <main class="gh-main">
             <h2 class="gh-feed-title">Latest</h2>
             <div class="gh-feed">
@@ -8,5 +9,25 @@
                 {{/foreach}}
             </div>
         </main>
+
+        {{#if @custom.show_sidebar}}
+            <aside class="gh-sidebar">
+                <section class="gh-about">
+                    {{#if @site.icon}}
+                        <img class="gh-about-icon" src="{{@site.icon}}" alt="{{@site.title}}">
+                    {{/if}}
+                    <h3 class="gh-about-title">{{@site.title}}</h3>
+                    {{#if @site.description}}
+                        <p class="gh-about-description">{{@site.description}}</p>
+                    {{/if}}
+                    {{#if @site.members_enabled}}
+                        {{#unless @member}}
+                            <button>Subscribe</button>
+                        {{/unless}}
+                    {{/if}}
+                </section>
+            </aside>
+        {{/if}}
+
     </div>
 </section>

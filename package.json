@@ -113,6 +113,11 @@
                 ],
                 "default": "List",
                 "group": "homepage"
+            },
+            "show_sidebar": {
+                "type": "boolean",
+                "default": true,
+                "group": "homepage"
             }
         }
     },

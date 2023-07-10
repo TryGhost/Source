@@ -14,7 +14,8 @@
     --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     --font-serif: Georgia, Times, serif;
     --font-mono: Menlo, Courier, monospace;
-    --gap: clamp(24px, 1.7032rem + 1.9355vw, 48px);
+    --container-gap: clamp(24px, 1.7032rem + 1.9355vw, 48px);
+    --grid-gap: 40px;
 }
 
 /* 2. Resets */
@@ -562,7 +563,7 @@ Search                         LOGO                    Login Subscribe
         flex-direction: column;
         gap: 12px;
         align-items: center;
-        padding: var(--gap) 0 calc(var(--gap) + 8px);
+        padding: var(--container-gap) 0 calc(var(--container-gap) + 8px);
         background-color: var(--color-white);
     }
 
@@ -603,22 +604,18 @@ Search                         LOGO                    Login Subscribe
 
 /* 6. Header */
 
-.gh-header {
-    --gap: 40px;
-}
-
 /* 6.1. Magazine layout */
 
 .gh-header.is-magazine .gh-header-inner {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
-    gap: var(--gap);
+    gap: var(--grid-gap);
 }
 
 .gh-header.is-magazine .gh-header-inner > div {
     display: flex;
     flex-direction: column;
-    gap: var(--gap);
+    gap: var(--grid-gap);
     grid-row: 1;
 }
 
@@ -643,7 +640,7 @@ Search                         LOGO                    Login Subscribe
 .gh-header.is-highlight .gh-header-inner {
     display: grid;
     grid-template-columns: 3fr 1fr;
-    gap: var(--gap);
+    gap: var(--grid-gap);
 }
 
 .gh-header.is-highlight .gh-card:first-child {
@@ -656,18 +653,40 @@ Search                         LOGO                    Login Subscribe
 
 /* 7. Container */
 
-.gh-container:not(.has-sidebar) .gh-container-inner {
+.gh-container-inner {
     display: grid;
     grid-template-columns: repeat(16, 1fr);
+    gap: var(--grid-gap);
 }
 
-.gh-container:not(.has-sidebar) .gh-container-inner .gh-main {
+/* 7.1. With sidebar */
+
+.gh-container.has-sidebar .gh-main {
+    grid-column: 1 / span 12;
+}
+
+.gh-container.has-sidebar .gh-sidebar {
+    grid-column: 13 / -1;
+}
+
+/* 7.2. Without sidebar */
+
+.gh-container:not(.has-sidebar) .gh-main {
     grid-column: 3 / span 12;
 }
 
 /* 8. Post list */
 
+.gh-container .gh-feed {
+    gap: var(--grid-gap);
+}
+
 /* 8.1. List style */
+
+.gh-container.is-list .gh-feed {
+    display: flex;
+    flex-direction: column;
+}
 
 .gh-container.is-list .gh-card-link {
     display: flex;
