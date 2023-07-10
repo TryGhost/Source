@@ -94,6 +94,18 @@
                 ],
                 "default": "Logo in the middle"
             },
+            "page_background_color": {
+                "type": "color",
+                "default": "#ffffff"
+            },
+            "header_and_footer_color": {
+                "type": "select",
+                "options": [
+                    "Background color",
+                    "Accent color"
+                ],
+                "default": "Background color"
+            },
             "footer_signup_header": {
                 "type": "text",
                 "default": "Stay in the loop"

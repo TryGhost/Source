@@ -93,10 +93,10 @@
     if (!burger) return;
 
     burger.addEventListener('click', function () {
-        if (!navigation.classList.contains('is-navigation-open')) {
-            navigation.classList.add('is-navigation-open');
+        if (!navigation.classList.contains('is-open')) {
+            navigation.classList.add('is-open');
         } else {
-            navigation.classList.remove('is-navigation-open');
+            navigation.classList.remove('is-open');
         }
     });
 })();
