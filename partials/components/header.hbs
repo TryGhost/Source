@@ -42,17 +42,20 @@
 
             {{!-- Landing layout --}}
             {{#match headerStyle "Landing"}}
-                <h1 data-title>Founded by Australian journalist Claire Lehmann, Quillette publishes high quality long reads on diverse topics, daily.</h1>
-                <form>
-                    <input type="email" placeholder="jamie@example.com">
+                <h1 class="gh-header-title" data-title>Founded by Australian journalist Claire Lehmann, Quillette publishes high quality long reads on diverse topics, daily.</h1>
+                <form class="gh-header-form">
+                    <input class="gh-header-input" type="email" placeholder="jamie@example.com">
                     <button class="gh-button" type="submit">Subscribe</button>
                 </form>
             {{/match}}
 
             {{!-- Search layout --}}
             {{#match headerStyle "Search"}}
-                <h1 data-title>Founded by Australian journalist Claire Lehmann, Quillette publishes high quality long reads on diverse topics, daily.</h1>
-                <button data-ghost-search>{{> "icons/search"}}Search</button>
+                <h1 class="gh-header-title" data-title>Founded by Australian journalist Claire Lehmann, Quillette publishes high quality long reads on diverse topics, daily.</h1>
+                <form class="gh-header-form">
+                    {{> "icons/search"}}
+                    <button class="gh-header-input" data-ghost-search>Search posts, tags and authors</button>
+                </form>
             {{/match}}
 
         </div>

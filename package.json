@@ -54,7 +54,6 @@
         "gulp-zip": "5.1.0",
         "inquirer": "8.2.4",
         "postcss": "8.2.13",
-        "postcss-color-mod-function": "3.0.3",
         "postcss-easy-import": "4.0.0",
         "pump": "3.0.0"
     },
@@ -108,12 +107,19 @@
             },
             "title_font": {
                 "type": "select",
-                "options": ["Modern sans-serif", "Elegant serif", "Clean slab"],
+                "options": [
+                    "Modern sans-serif",
+                    "Elegant serif",
+                    "Clean slab"
+                ],
                 "default": "Modern sans-serif"
             },
             "body_font": {
                 "type": "select",
-                "options": ["Modern sans-serif", "Elegant serif"],
+                "options": [
+                    "Modern sans-serif",
+                    "Elegant serif"
+                ],
                 "default": "Modern sans-serif"
             },
             "footer_signup_header": {
