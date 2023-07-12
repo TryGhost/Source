@@ -179,6 +179,8 @@ a:hover {
 
 .gh-navigation {
     height: 100px;
+    font-size: 1.5rem;
+    font-weight: 500;
     color: var(--color-darker-gray);
 }
 
@@ -208,12 +210,6 @@ a:hover {
 
 .gh-navigation-logo img {
     max-height: 40px;
-}
-
-.gh-navigation-menu,
-.gh-navigation-members a[data-portal="signin"] {
-    font-size: 1.6rem;
-    font-weight: 500;
 }
 
 .gh-navigation-menu {
@@ -1166,6 +1162,7 @@ Search                         LOGO                    Login Subscribe
 
 .gh-footer {
     margin-top: 80px;
+    font-size: 1.5rem;
     color: var(--color-darker-gray);
 }
 
@@ -1190,13 +1187,28 @@ Search                         LOGO                    Login Subscribe
 .gh-footer-bar {
     display: grid;
     grid-template-columns: 1fr auto 1fr;
-    padding-block: 40px;
+    align-items: center;
+    padding-block: 32px;
     border-block: 1px solid var(--color-border);
+}
+
+.gh-footer-bar a {
+    font-weight: 600;
+}
+
+.gh-footer-logo {
+    position: relative;
+    font-size: 2.6rem;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    white-space: nowrap;
 }
 
 .gh-footer-menu .nav {
     display: flex;
     gap: 24px;
+    margin: 0;
+    padding: 0;
     list-style-type: none;
 }
 
