@@ -93,7 +93,7 @@ a:hover {
     justify-content: center;
     padding: 0.75em 1.15em;
     font-size: 1.6rem;
-    font-weight: 700;
+    font-weight: 600;
     line-height: 1;
     color: var(--color-white);
     letter-spacing: inherit;
@@ -640,7 +640,7 @@ Search                         LOGO                    Login Subscribe
 .gh-card-link {
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 16px;
 }
 
 .gh-card-link:hover {
@@ -680,9 +680,14 @@ Search                         LOGO                    Login Subscribe
 }
 
 .gh-card-excerpt {
-    margin-top: 12px;
+    display: -webkit-box;
+    overflow-y: hidden;
+    margin-top: 8px;
     max-width: 720px;
+    font-size: 1.5rem;
     line-height: 1.45;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
 }
 
 .gh-card-meta {
@@ -764,6 +769,11 @@ Search                         LOGO                    Login Subscribe
     font-size: clamp(2rem, 2.73vw + 0.91rem, 4.4rem);
     line-height: 1.05;
     letter-spacing: -0.022em;
+}
+
+.gh-header.is-magazine .gh-header-inner > .gh-card .gh-card-excerpt {
+    margin-top: 10px;
+    font-size: 1.7rem;
 }
 
 .gh-header.is-magazine .gh-header-inner > .gh-card .gh-card-meta:not(:empty) {
@@ -867,7 +877,7 @@ Search                         LOGO                    Login Subscribe
 
 .gh-header.is-classic {
     display: flex;
-    min-height: 480px;
+    min-height: calc(100vh - 100px - 240px);
 }
 
 .gh-header.is-classic .gh-header-inner {
@@ -885,7 +895,7 @@ Search                         LOGO                    Login Subscribe
 }
 
 .gh-header.is-classic .gh-header-title {
-    font-size: clamp(4rem, 2.27vw + 3.09rem, 6rem);
+    font-size: clamp(3.2rem, 3.18vw + 1.93rem, 6rem);
     line-height: 1.1;
     letter-spacing: -0.022em;
 }
@@ -942,6 +952,16 @@ Search                         LOGO                    Login Subscribe
     margin-top: 64px;
 }
 
+.gh-featured-title {
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--color-border);
+}
+
 .gh-featured-feed {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -959,8 +979,33 @@ Search                         LOGO                    Login Subscribe
     aspect-ratio: 1;
 }
 
+.gh-featured-feed .gh-card-title {
+    font-size: 1.8rem;
+    letter-spacing: -0.011em;
+}
+
 .gh-featured-feed .gh-card-excerpt {
     display: none;
+}
+
+.gh-featured-feed .gh-card-meta:not(:empty) {
+    flex-direction: column;
+    gap: 0;
+    margin-top: 6px;
+}
+
+.gh-featured-feed .gh-card-date::before {
+    display: none;
+}
+
+.gh-featured-feed .gh-card + .gh-card::before {
+    position: absolute;
+    top: 0;
+    left: calc(var(--grid-gap) / -2);
+    content: "";
+    width: 1px;
+    height: 100%;
+    background-color: var(--color-border);
 }
 
 /* 8. Container */
@@ -972,17 +1017,28 @@ Search                         LOGO                    Login Subscribe
 .gh-container-inner {
     display: grid;
     grid-template-columns: repeat(16, 1fr);
-    gap: var(--grid-gap);
+    column-gap: var(--grid-gap);
 }
 
 /* 8.1. With sidebar */
 
 .gh-container.has-sidebar .gh-main {
     grid-column: 1 / span 12;
+    position: relative;
 }
 
 .gh-container.has-sidebar .gh-sidebar {
     grid-column: 13 / -1;
+}
+
+.gh-container.has-sidebar .gh-main::after {
+    position: absolute;
+    top: 0;
+    right: calc(var(--grid-gap) / -2);
+    content: "";
+    width: 1px;
+    height: 100%;
+    background-color: var(--color-border);
 }
 
 /* 8.2. Without sidebar */
@@ -992,6 +1048,17 @@ Search                         LOGO                    Login Subscribe
 }
 
 /* 9. Post list */
+
+.gh-container-title {
+    grid-column: 1 / -1;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--color-border);
+}
 
 .gh-container .gh-feed {
     gap: var(--grid-gap);
@@ -1005,7 +1072,7 @@ Search                         LOGO                    Login Subscribe
 }
 
 .gh-container.is-list .gh-card-link {
-    display: flex;
+    flex-direction: row;
     align-items: flex-start;
     gap: 24px;
 }
@@ -1015,11 +1082,46 @@ Search                         LOGO                    Login Subscribe
     width: 240px;
 }
 
+.gh-container.is-list .gh-card-wrapper {
+    max-width: 600px;
+}
+
+.gh-container.is-list .gh-card + .gh-card::before {
+    position: absolute;
+    top: calc(var(--grid-gap) / -2);
+    left: 0;
+    content: "";
+    width: 100%;
+    height: 1px;
+    background-color: var(--color-border);
+}
+
 /* 9.2. Grid style */
 
 .gh-container.is-grid .gh-feed {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    overflow: hidden;
+}
+
+.gh-container.is-grid .gh-card::before {
+    position: absolute;
+    top: calc(var(--grid-gap) / -2);
+    right: calc(var(--grid-gap) / -2);
+    left: calc(var(--grid-gap) / -2);
+    content: "";
+    height: 1px;
+    background-color: var(--color-border);
+}
+
+.gh-container.is-grid .gh-card::after {
+    position: absolute;
+    top: 0;
+    left: calc(var(--grid-gap) / -2);
+    content: "";
+    width: 1px;
+    height: 100%;
+    background-color: var(--color-border);
 }
 
 /* 9.3. No image */
@@ -1031,18 +1133,33 @@ Search                         LOGO                    Login Subscribe
 /* 10. Sidebar */
 
 .gh-about {
-    position: sticky;
-    top: 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 48px 24px;
+    text-align: center;
     background-color: var(--color-lighter-gray);
 }
 
 .gh-about-icon {
+    margin-bottom: 24px;
     width: 80px;
     height: 80px;
+}
+
+.gh-about-title {
+    font-size: 2.4rem;
+    letter-spacing: -0.019em;
+}
+
+.gh-about-description {
+    margin-top: 12px;
+    font-size: 1.4rem;
+    line-height: 1.4;
+}
+
+.gh-about .gh-button {
+    margin-top: 24px;
 }
 
 /* 11. Footer */
