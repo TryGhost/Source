@@ -1224,3 +1224,20 @@ Search                         LOGO                    Login Subscribe
     align-items: center;
     padding-block: 100px;
 }
+
+.gh-footer-signup-header {
+    font-size: clamp(3.2rem, 3.18vw + 1.93rem, 6rem);
+    letter-spacing: -0.022em;
+}
+
+.gh-footer-signup-subhead {
+    font-size: clamp(1.6rem, 1.14vw + 1.15rem, 2.6rem);
+    letter-spacing: -0.02em;
+    color: var(--color-secondary-text);
+}
+
+.gh-footer-signup .gh-button {
+    margin-top: 24px;
+    padding: 16px 40px;
+    font-size: 1.9rem;
+}
