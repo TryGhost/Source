@@ -46,13 +46,11 @@
 <div class="gh-viewport">
     
     {{> "components/navigation" navigationLayout=@custom.navigation_layout}}
-    {{> "components/header" headerStyle=@custom.header_style}}
-    {{> "components/featured" showFeatured=@custom.show_featured}}
-    {{> "components/post-list" postListStyle=@custom.post_list_style}}
+
+    {{{body}}}
+    
     {{> "components/footer"}}
     
-    {{{body}}}
-
 </div>
 
 {{!-- Scripts - handle responsive videos, infinite scroll, and navigation dropdowns --}}
