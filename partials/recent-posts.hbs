@@ -1,0 +1,12 @@
+<section class="gh-container is-{{#match @custom.post_list_style "List"}}list{{else}}grid{{/match}}{{#if @custom.hide_images}} no-image{{/if}} gh-canvas">
+    <div class="gh-container-inner">
+        <h2 class="gh-container-title">Read more</h2>
+        <div class="gh-feed">
+            {{#get "posts" include="authors" filter="id:-{{post.id}}" limit="2" as |next|}}
+                {{#foreach next}}
+                    {{> "loop"}}
+                {{/foreach}}
+            {{/get}}
+        </div>
+    </div>
+</section>

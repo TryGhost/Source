@@ -186,6 +186,10 @@ a:hover {
     width: 100%;
 }
 
+.gh-main {
+    flex-grow: 1;
+}
+
 .gh-canvas,
 .kg-width-full.kg-content-wide {
     --main: min(var(--content-width, 720px), 100% - var(--container-gap) * 2);
@@ -1094,6 +1098,7 @@ Search                         LOGO                    Login Subscribe
 /* 8. Container */
 
 .gh-container {
+    flex-grow: 1;
     margin-top: 64px;
 }
 
@@ -1640,6 +1645,25 @@ figcaption a {
     margin-top: 48px;
 }
 
+/* 12. Recent posts */
+
+.post-template .gh-container {
+    padding-top: 64px;
+    background-color: var(--color-lighter-gray);
+}
+
+.post-template .gh-container-inner {
+    display: block;
+}
+
+.post-template .gh-container.is-list .gh-card-image {
+    width: 220px;
+}
+
+.post-template .gh-container.is-list .gh-card-excerpt {
+    -webkit-line-clamp: 2;
+}
+
 /* 11. Footer */
 
 .gh-footer {
@@ -1664,7 +1688,15 @@ figcaption a {
     color: #15171a;
 }
 
-/* 11.2. Footer bar */
+/* 11.2. Recent posts on top */
+
+.post-template .gh-container + .gh-footer {
+    margin-top: 0;
+    padding-top: 120px;
+    background-color: var(--color-lighter-gray);
+}
+
+/* 11.3. Footer bar */
 
 .gh-footer-bar {
     display: grid;
@@ -1698,7 +1730,7 @@ figcaption a {
     text-align: right;
 }
 
-/* 11.3. Footer signup */
+/* 11.4. Footer signup */
 
 .gh-footer-signup {
     display: flex;
@@ -1709,6 +1741,7 @@ figcaption a {
 
 .gh-footer-signup-header {
     font-size: clamp(3.2rem, 2.5vw + 2.2rem, 5.4rem);
+    font-weight: 750;
     letter-spacing: -0.03em;
 }
 
