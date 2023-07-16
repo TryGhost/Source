@@ -17,9 +17,9 @@
                     {{#if @site.icon}}
                         <img class="gh-about-icon" src="{{@site.icon}}" alt="{{@site.title}}">
                     {{/if}}
-                    <h3 class="gh-about-title">{{@site.title}}</h3>
+                    <h3 class="gh-about-title is-title">{{@site.title}}</h3>
                     {{#if @site.description}}
-                        <p class="gh-about-description">{{@site.description}}</p>
+                        <p class="gh-about-description is-body">{{@site.description}}</p>
                     {{/if}}
                     {{#if @site.members_enabled}}
                         {{#unless @member}}

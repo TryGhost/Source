@@ -1,3 +1,82 @@
+/* Table of contents
+/* ------------------------------------------------------------
+
+This is a development CSS file which is built to a minified
+production stylesheet in assets/built/screen.css
+
+1. Variables
+2. Fonts
+3. Resets
+4. Globals
+5. Layout
+6. Navigation
+  6.1. Navigation styles
+  6.2. Navigation layouts
+  6.3. Dropdown menu
+  6.4. Mobile menu
+7. Card
+8. Header
+  8.1. Magazine layout
+  8.2. Highlight layout
+  8.3. Classic layout
+9. Featured posts
+10. Container
+  10.1. With sidebar
+  10.2. Without sidebar
+11. Post list
+  11.1. List style
+  11.2. Grid style
+  11.3. No image list
+12. Sidebar
+13. Article
+14. Content
+15. Cards
+16. Comments
+17. Recent posts
+18. Archive
+19. Design settings
+X. Footer
+  X.1. Footer styles
+  X.2. With recent posts
+  X.3. Footer bar
+  X.4. Footer signup
+
+*/
+
+/* 1. Variables
+/* ---------------------------------------------------------- */
+
+:root {
+    --color-white: #fff;
+    --color-lighter-gray: #f6f6f6;
+    --color-light-gray: #e6e6e6;
+    --color-mid-gray: #ccc;
+    --color-dark-gray: #444;
+    --color-darker-gray: #15171a;
+    --color-black: #000;
+    --color-primary-text: var(--color-darker-gray);
+    --color-secondary-text: rgba(0, 0, 0, 0.4);
+    --color-border: rgba(0, 0, 0, 0.08);
+    --font-sans: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    --font-serif: "EB Garamond", Georgia, Times, serif;
+    --font-slab: "Roboto Slab", Georgia, Times, serif;
+    --font-mono: Menlo, Courier, monospace;
+    --container-width: 1280px;
+    --container-gap: clamp(24px, 1.7032rem + 1.9355vw, 48px);
+    --grid-gap: 40px;
+}
+
+:root.has-light-text,
+:is(.gh-navigation, .gh-footer).has-accent-color {
+    --color-lighter-gray: rgba(0, 0, 0, 0.15);
+    --color-darker-gray: #fff;
+    --color-secondary-text: rgba(255, 255, 255, 0.64);
+    --color-border: rgba(255, 255, 255, 0.15);
+}
+
+/* 2. Fonts
+/* ---------------------------------------------------------- */
+
 @font-face {
     font-family: "Inter";
     font-style: normal;
@@ -34,36 +113,8 @@
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-/* 1. Variables */
-
-:root {
-    --color-white: #fff;
-    --color-lighter-gray: #f6f6f6;
-    --color-light-gray: #e6e6e6;
-    --color-mid-gray: #ccc;
-    --color-dark-gray: #444;
-    --color-darker-gray: #15171a;
-    --color-black: #000;
-    --color-primary-text: var(--color-darker-gray);
-    --color-secondary-text: rgba(0, 0, 0, 0.4);
-    --color-border: rgba(0, 0, 0, 0.08);
-    --font-sans: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-    --font-serif: "EB Garamond", Georgia, Times, serif;
-    --font-slab: "Roboto Slab", Georgia, Times, serif;
-    --font-mono: Menlo, Courier, monospace;
-    --container-width: 1280px;
-    --container-gap: clamp(24px, 1.7032rem + 1.9355vw, 48px);
-    --grid-gap: 40px;
-}
-
-:root.has-light-text {
-    --color-lighter-gray: rgba(0, 0, 0, 0.1);
-    --color-darker-gray: #fff;
-    --color-secondary-text: rgba(255, 255, 255, 0.64);
-    --color-border: rgba(255, 255, 255, 0.2);
-}
-
-/* 2. Resets */
+/* 3. Resets
+/* ---------------------------------------------------------- */
 
 *, *::before, *::after {
     box-sizing: border-box;
@@ -105,7 +156,8 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1.2;
 }
 
-/* 3. Globals */
+/* 4. Globals
+/* ---------------------------------------------------------- */
 
 body {
     font-family: var(--font-sans);
@@ -131,9 +183,9 @@ a:hover {
     padding: 0.8em 1.4em;
     font-size: 1.6rem;
     font-weight: 600;
+    letter-spacing: -0.004em;
     line-height: 1;
     color: var(--color-white);
-    letter-spacing: inherit;
     cursor: pointer;
     background-color: var(--ghost-accent-color);
     border: 0;
@@ -167,7 +219,8 @@ a:hover {
     height: 20px;
 }
 
-/* 4. Layout */
+/* 5. Layout
+/* ---------------------------------------------------------- */
 
 .gh-viewport {
     position: relative;
@@ -192,8 +245,8 @@ a:hover {
 
 .gh-canvas,
 .kg-width-full.kg-content-wide {
-    --main: min(var(--content-width, 720px), 100% - var(--container-gap) * 2);
-    --wide: minmax(0, calc((var(--container-width, 1200px) - var(--content-width, 720px)) / 2));
+    --main: min(var(--content-width, 680px), 100% - var(--container-gap) * 2);
+    --wide: minmax(0, calc((var(--container-width, 1200px) - var(--content-width, 680px)) / 2));
     --full: minmax(var(--container-gap), 1fr);
 
     display: grid;
@@ -218,34 +271,13 @@ a:hover {
     grid-column: full;
 }
 
-/* Typography */
-
-.has-sans-title [data-title] {
-    font-family: var(--font-sans);
-}
-
-.has-serif-title [data-title] {
-    font-family: var(--font-serif);
-}
-
-.has-slab-title [data-title] {
-    font-family: var(--font-slab);
-}
-
-.has-sans-body [data-body] {
-    font-family: var(--font-sans);
-}
-
-.has-serif-body [data-body] {
-    font-family: Georgia;
-}
-
-/* 5. Navigation */
+/* 6. Navigation
+/* ---------------------------------------------------------- */
 
 .gh-navigation {
     height: 100px;
     font-size: 1.5rem;
-    font-weight: 500;
+    font-weight: 550;
     color: var(--color-darker-gray);
 }
 
@@ -268,7 +300,7 @@ a:hover {
 .gh-navigation-logo {
     position: relative;
     font-size: 2.6rem;
-    font-weight: 700;
+    font-weight: 750;
     letter-spacing: -0.015em;
     white-space: nowrap;
 }
@@ -355,11 +387,10 @@ a:hover {
     }
 }
 
-/* 5.1. Accent color */
+/* 6.1. Navigation styles */
 
 .gh-navigation.has-accent-color {
     background-color: var(--ghost-accent-color);
-    color: #fff;
 }
 
 .gh-navigation.has-accent-color .gh-button {
@@ -367,7 +398,7 @@ a:hover {
     color: #15171a;
 }
 
-/* 5.1. Navigation variants */
+/* 6.2. Navigation layouts */
 
 /*
 ======================================================================
@@ -484,7 +515,7 @@ Search                         LOGO                    Login Subscribe
     }
 }
 
-/* 5.2. Dropdown menu */
+/* 6.3. Dropdown menu */
 
 .gh-dropdown {
     position: absolute;
@@ -534,7 +565,7 @@ Search                         LOGO                    Login Subscribe
     padding: 8px 0;
 }
 
-/* 5.3. Burger icon */
+/* 6.4. Mobile menu */
 
 .gh-burger {
     display: flex;
@@ -566,11 +597,7 @@ Search                         LOGO                    Login Subscribe
     .gh-burger {
         display: flex;
     }
-}
 
-/* 5.4. Mobile menu */
-
-@media (max-width: 767px) {
     #gh-navigation {
         height: 64px;
     }
@@ -702,7 +729,8 @@ Search                         LOGO                    Login Subscribe
     }
 }
 
-/* Card */
+/* 7. Card
+/* ---------------------------------------------------------- */
 
 .gh-card {
     position: relative;
@@ -747,6 +775,7 @@ Search                         LOGO                    Login Subscribe
 
 .gh-card-title {
     font-size: 2rem;
+    font-weight: 725;
     letter-spacing: -0.017em;
 }
 
@@ -757,11 +786,11 @@ Search                         LOGO                    Login Subscribe
 .gh-card-excerpt {
     display: -webkit-box;
     overflow-y: hidden;
-    margin-top: 8px;
+    margin-top: 6px;
     max-width: 720px;
-    font-size: 1.5rem;
-    line-height: 1.45;
-    -webkit-line-clamp: 3;
+    font-size: 1.6rem;
+    line-height: 1.35;
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
 }
 
@@ -770,14 +799,14 @@ Search                         LOGO                    Login Subscribe
     gap: 4px;
     flex-wrap: wrap;
     font-size: 1.3rem;
-    font-weight: 500;
-    line-height: 1.5;
+    font-weight: 550;
+    line-height: 1.05;
     letter-spacing: -0.0025em;
     color: var(--color-secondary-text);
 }
 
 .gh-card-meta:not(:empty) {
-    margin-top: 9px;
+    margin-top: 8px;
 }
 
 .gh-card-author + .gh-card-date::before {
@@ -785,7 +814,8 @@ Search                         LOGO                    Login Subscribe
     margin-right: 4px;
 }
 
-/* 6. Header */
+/* 8. Header
+/* ---------------------------------------------------------- */
 
 .gh-header {
     position: relative;
@@ -804,7 +834,7 @@ Search                         LOGO                    Login Subscribe
     position: relative;
 }
 
-/* 6.1. Magazine layout */
+/* 8.1. Magazine layout */
 
 .gh-header.is-magazine .gh-header-inner {
     display: grid;
@@ -836,6 +866,10 @@ Search                         LOGO                    Login Subscribe
     gap: 20px;
 }
 
+.gh-header.is-magazine .gh-header-inner > .gh-card .gh-card-image {
+    aspect-ratio: 1.618033;
+}
+
 .gh-header.is-magazine .gh-header-inner > .gh-card .gh-card-tag {
     display: block;
     margin-bottom: 8px;
@@ -843,7 +877,8 @@ Search                         LOGO                    Login Subscribe
 
 .gh-header.is-magazine .gh-header-inner > .gh-card .gh-card-title {
     font-size: clamp(2rem, 2.73vw + 0.91rem, 4.4rem);
-    line-height: 1.05;
+    font-weight: 750;
+    line-height: 1;
     letter-spacing: -0.022em;
 }
 
@@ -853,7 +888,7 @@ Search                         LOGO                    Login Subscribe
 }
 
 .gh-header.is-magazine .gh-header-inner > .gh-card .gh-card-meta:not(:empty) {
-    margin-top: 10px;
+    margin-top: 14px;
 }
 
 .gh-header.is-magazine :is(.gh-header-left, .gh-header-right) .gh-card:last-child .gh-card-image {
@@ -890,7 +925,7 @@ Search                         LOGO                    Login Subscribe
     background-color: var(--color-border);
 }
 
-/* 6.2. Highlight layout */
+/* 8.2. Highlight layout */
 
 .gh-header.is-highlight .gh-header-inner {
     display: grid;
@@ -914,6 +949,7 @@ Search                         LOGO                    Login Subscribe
 .gh-header.is-highlight .gh-card:first-child .gh-card-title {
     max-width: 840px;
     font-size: clamp(3.2rem, 3.18vw + 1.93rem, 6rem);
+    font-weight: 750;
     line-height: 0.95;
     letter-spacing: -0.03em;
 }
@@ -951,7 +987,7 @@ Search                         LOGO                    Login Subscribe
     background-color: var(--color-border);
 }
 
-/* 6.3. Classic layout */
+/* 8.3. Classic layout */
 
 .gh-header.is-classic {
     display: flex;
@@ -974,6 +1010,7 @@ Search                         LOGO                    Login Subscribe
 
 .gh-header.is-classic .gh-header-title {
     font-size: clamp(3.2rem, 3.18vw + 1.93rem, 6rem);
+    font-weight: 750;
     line-height: 1.1;
     letter-spacing: -0.022em;
 }
@@ -987,7 +1024,8 @@ Search                         LOGO                    Login Subscribe
     width: 100%;
     height: 64px;
     font-size: 1.8rem;
-    letter-spacing: -0.01em;
+    font-weight: 450;
+    letter-spacing: -0.008em;
     border-radius: 40px;
     background-color: var(--color-lighter-gray);
     transition: background-color 0.2s ease;
@@ -1033,7 +1071,8 @@ Search                         LOGO                    Login Subscribe
     color: var(--color-secondary-text);
 }
 
-/* 7. Featured posts */
+/* 9. Featured posts
+/* ---------------------------------------------------------- */
 
 .gh-featured {
     margin-top: 64px;
@@ -1075,16 +1114,6 @@ Search                         LOGO                    Login Subscribe
     display: none;
 }
 
-.gh-featured-feed .gh-card-meta:not(:empty) {
-    flex-direction: column;
-    gap: 0;
-    margin-top: 6px;
-}
-
-.gh-featured-feed .gh-card-date::before {
-    display: none;
-}
-
 .gh-featured-feed .gh-card + .gh-card::before {
     position: absolute;
     top: 0;
@@ -1095,7 +1124,8 @@ Search                         LOGO                    Login Subscribe
     background-color: var(--color-border);
 }
 
-/* 8. Container */
+/* 10. Container
+/* ---------------------------------------------------------- */
 
 .gh-container {
     flex-grow: 1;
@@ -1108,7 +1138,7 @@ Search                         LOGO                    Login Subscribe
     column-gap: var(--grid-gap);
 }
 
-/* 8.1. With sidebar */
+/* 10.1. With sidebar */
 
 .gh-container.has-sidebar .gh-main {
     grid-column: 1 / span 12;
@@ -1129,13 +1159,14 @@ Search                         LOGO                    Login Subscribe
     background-color: var(--color-border);
 }
 
-/* 8.2. Without sidebar */
+/* 10.2. Without sidebar */
 
 .gh-container:not(.has-sidebar) .gh-main {
     grid-column: 3 / span 12;
 }
 
-/* 9. Post list */
+/* 11. Post list
+/* ---------------------------------------------------------- */
 
 .gh-container-title {
     grid-column: 1 / -1;
@@ -1152,7 +1183,11 @@ Search                         LOGO                    Login Subscribe
     gap: var(--grid-gap);
 }
 
-/* 9.1. List style */
+.gh-container .gh-card-meta:not(:empty) {
+    margin-top: 14px;
+}
+
+/* 11.1. List style */
 
 .gh-container.is-list .gh-feed {
     display: flex;
@@ -1167,7 +1202,7 @@ Search                         LOGO                    Login Subscribe
 
 .gh-container.is-list .gh-card-image {
     flex-shrink: 0;
-    width: 240px;
+    width: 220px;
     aspect-ratio: 1.618033;
 }
 
@@ -1175,7 +1210,7 @@ Search                         LOGO                    Login Subscribe
     max-width: 600px;
 }
 
-.gh-container.is-list .gh-card + .gh-card::before {
+.gh-container.is-list .gh-card::before {
     position: absolute;
     top: calc(var(--grid-gap) / -2);
     left: 0;
@@ -1185,12 +1220,20 @@ Search                         LOGO                    Login Subscribe
     background-color: var(--color-border);
 }
 
-/* 9.2. Grid style */
+.home-template .gh-container.is-list .gh-card:first-child:before {
+    display: none;
+}
+
+/* 11.2. Grid style */
 
 .gh-container.is-grid .gh-feed {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     overflow: hidden;
+}
+
+.gh-container.is-grid .gh-card-excerpt {
+    -webkit-line-clamp: 3;
 }
 
 .gh-container.is-grid .gh-card::before {
@@ -1213,13 +1256,14 @@ Search                         LOGO                    Login Subscribe
     background-color: var(--color-border);
 }
 
-/* 9.3. No image */
+/* 11.3. No image list */
 
 .gh-container.is-list.no-image .gh-card-image {
     display: none;
 }
 
-/* 10. Sidebar */
+/* 12. Sidebar
+/* ---------------------------------------------------------- */
 
 .gh-about {
     display: flex;
@@ -1238,12 +1282,13 @@ Search                         LOGO                    Login Subscribe
 
 .gh-about-title {
     font-size: 2.4rem;
+    font-weight: 750;
     letter-spacing: -0.019em;
 }
 
 .gh-about-description {
     margin-top: 12px;
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     line-height: 1.4;
 }
 
@@ -1251,7 +1296,8 @@ Search                         LOGO                    Login Subscribe
     margin-top: 24px;
 }
 
-/* 10. Article */
+/* 13. Article
+/* ---------------------------------------------------------- */
 
 .gh-article {
     --container-width: 1120px;
@@ -1273,17 +1319,18 @@ Search                         LOGO                    Login Subscribe
 }
 
 .gh-article-title {
-    font-size: calc(clamp(3.2rem, 1.59vw + 2.56rem, 4.6rem));
+    font-size: clamp(3.2rem, 1.59vw + 2.56rem, 4.6rem);
     font-weight: 750;
-    line-height: 1.1;
+    line-height: 1.05;
     letter-spacing: -0.022em;
 }
 
 .gh-article-excerpt {
     margin-top: 16px;
+    max-width: 720px;
     font-size: 2rem;
-    line-height: 1.45;
-    letter-spacing: -0.017em;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
 }
 
 .gh-article-image {
@@ -1295,7 +1342,8 @@ Search                         LOGO                    Login Subscribe
     width: 100%;
 }
 
-/* 11. Content */
+/* 14. Content
+/* ---------------------------------------------------------- */
 
 /* Content refers to styling all page and post content that is
 created within the Ghost editor. The main content handles
@@ -1308,51 +1356,44 @@ headings, text, images and lists. We deal with cards lower down. */
 
 /* Default vertical spacing */
 .gh-content > * + * {
-    margin-top: calc(1.6em * var(--content-spacing-multiplier, 1));
+    margin-top: calc(28px * var(--content-spacing-multiplier, 1));
     margin-bottom: 0;
-}
-
-/* [id] represents all headings h1-h6, reset all margins */
-.gh-content > [id] {
-    margin: 0;
-}
-
-.gh-content > .kg-card + [id] {
-    margin-top: calc(2em * var(--content-spacing-multiplier, 1)) !important;
 }
 
 .gh-content > *:first-child {
     margin-top: 0 !important;
 }
 
-/* Add back a top margin to all headings, unless a heading
-is the very first element in the post content */
+/* Add back a top margin to all headings,
+unless a heading is the very first element in the post content */
 .gh-content > [id]:not(:first-child) {
-    margin-top: calc(1.6em * var(--content-spacing-multiplier, 1));
+    margin-top: calc(48px * var(--content-spacing-multiplier, 1));
 }
 
 /* Add a small margin between a heading and anything after it */
 .gh-content > [id] + * {
-    margin-top: calc(1em * var(--content-spacing-multiplier, 1));
+    margin-top: calc(16px * var(--content-spacing-multiplier, 1));
 }
 
-/* A larger margin before/after HRs and blockquotes */
+/* A larger margin before/after dividers, blockquotes and embeds */
 .gh-content > :is(hr, blockquote, iframe) {
     position: relative;
-    margin-top: calc(2.8em * var(--content-spacing-multiplier, 1)) !important;
+    margin-top: calc(48px * var(--content-spacing-multiplier, 1)) !important;
 }
 
 .gh-content > :is(hr, blockquote, iframe) + * {
-    margin-top: calc(2.8em * var(--content-spacing-multiplier, 1)) !important;
+    margin-top: calc(48px * var(--content-spacing-multiplier, 1)) !important;
 }
 
 /* Now the content typography styles */
 .gh-content h2 {
-    font-size: calc(1.8em * var(--font-multiplier, 1));
+    font-size: calc(1.6em * var(--font-multiplier, 1));
+    letter-spacing: -0.02em;
 }
 
 .gh-content h3 {
     font-size: calc(1.2em * var(--font-multiplier, 1));
+    letter-spacing: -0.017em;
 }
 
 .gh-content a {
@@ -1378,11 +1419,11 @@ is the very first element in the post content */
 }
 
 .gh-content :is(ul, ol) {
-    padding-left: 2.8rem;
+    padding-left: 28px;
 }
 
 .gh-content :is(li + li, li :is(ul, ol)) {
-    margin-top: 0.8rem;
+    margin-top: 8px;
 }
 
 .gh-content ol ol li {
@@ -1396,7 +1437,7 @@ is the very first element in the post content */
 .gh-content hr {
     width: 100%;
     height: 1px;
-    background-color: var(--color-light-gray);
+    background-color: var(--color-border);
     border: 0;
 }
 
@@ -1447,37 +1488,35 @@ is the very first element in the post content */
     border: 1px solid var(--color-light-gray);
 }
 
-/* 11. Cards */
+/* 15. Cards
+/* ---------------------------------------------------------- */
 
-/* Add extra margin before/after any cards,
-except for when immediately preceeded by a heading */
+/* Add extra margin before/after any cards, except for when immediately preceeded by a heading */
 
 .gh-content :not(.kg-card):not(table):not([id]) + :is(.kg-card, table) {
-    margin-top: calc(2.8em * var(--content-spacing-multiplier, 1));
+    margin-top: calc(48px * var(--content-spacing-multiplier, 1));
 }
 
 .gh-content :is(.kg-card, table) + :not(.kg-card):not(table):not([id]) {
-    margin-top: calc(2.8em * var(--content-spacing-multiplier, 1));
+    margin-top: calc(48px * var(--content-spacing-multiplier, 1));
 }
 
 .gh-content :not(.kg-card):not([id]) + .kg-card.kg-width-full {
-    margin-top: calc(4em * var(--content-spacing-multiplier, 1));
+    margin-top: calc(68px * var(--content-spacing-multiplier, 1));
 }
 
 .gh-content .kg-card.kg-width-full + :not(.kg-card):not([id]) {
-    margin-top: calc(4em * var(--content-spacing-multiplier, 1));
+    margin-top: calc(68px * var(--content-spacing-multiplier, 1));
 }
 
-/* Image
-/* ---------------------------------------------------------- */
+/* Image */
 
 .kg-image {
     margin-right: auto;
     margin-left: auto;
 }
 
-/* Embed
-/* ---------------------------------------------------------- */
+/* Embed */
 
 .kg-embed-card {
     display: flex;
@@ -1486,8 +1525,7 @@ except for when immediately preceeded by a heading */
     width: 100%;
 }
 
-/* Gallery
-/* ---------------------------------------------------------- */
+/* Gallery */
 
 .kg-image[width][height],
 .kg-gallery-image {
@@ -1499,8 +1537,7 @@ except for when immediately preceeded by a heading */
     opacity: 1 !important;
 }
 
-/* Toggle
-/* ---------------------------------------------------------- */
+/* Toggle */
 
 .kg-card.kg-toggle-card .kg-toggle-heading-text {
     font-size: 2rem;
@@ -1511,8 +1548,7 @@ except for when immediately preceeded by a heading */
     font-family: var(--font-serif);
 }
 
-/* Callout
-/* ---------------------------------------------------------- */
+/* Callout */
 
 .kg-callout-card.kg-card {
     border-radius: 0.25em;
@@ -1522,8 +1558,7 @@ except for when immediately preceeded by a heading */
     text-decoration: underline;
 }
 
-/* Blockquote
-/* ---------------------------------------------------------- */
+/* Blockquote */
 
 blockquote:not([class]) {
     padding-left: 2rem;
@@ -1536,15 +1571,13 @@ blockquote.kg-blockquote-alt {
     color: var(--color-secondary-text);
 }
 
-/* Button
-/* ---------------------------------------------------------- */
+/* Button */
 
 .kg-card.kg-button-card .kg-btn {
     font-size: 1em;
 }
 
-/* Header
-/* ---------------------------------------------------------- */
+/* Header */
 
 .has-serif-title .kg-card.kg-header-card h2.kg-header-card-header {
     font-family: var(--font-serif);
@@ -1554,8 +1587,7 @@ blockquote.kg-blockquote-alt {
     font-family: var(--font-serif);
 }
 
-/* Bookmark
-/* ---------------------------------------------------------- */
+/* Bookmark */
 
 .kg-bookmark-card .kg-bookmark-container {
     border-radius: 0.25em !important;
@@ -1583,8 +1615,7 @@ blockquote.kg-blockquote-alt {
     border-radius: 0 0.2em 0.2em 0;
 }
 
-/* Product
-/* ---------------------------------------------------------- */
+/* Product */
 
 .kg-product-card.kg-card .kg-product-card-image {
     margin-bottom: 12px;
@@ -1601,8 +1632,7 @@ blockquote.kg-blockquote-alt {
     font-family: var(--font-serif);
 }
 
-/* File
-/* ---------------------------------------------------------- */
+/* File */
 
 .kg-file-card.kg-card .kg-file-card-container {
     padding: 0.6em;
@@ -1621,8 +1651,7 @@ blockquote.kg-blockquote-alt {
     margin-left: 6px;
 }
 
-/* Caption
-/* ---------------------------------------------------------- */
+/* Caption */
 
 figcaption {
     margin-top: 12px;
@@ -1639,13 +1668,15 @@ figcaption a {
     text-decoration: underline;
 }
 
-/* 11. Comments */
+/* 16. Comments
+/* ---------------------------------------------------------- */
 
 .gh-comments {
     margin-top: 48px;
 }
 
-/* 12. Recent posts */
+/* 17. Recent posts
+/* ---------------------------------------------------------- */
 
 .post-template .gh-container {
     padding-top: 64px;
@@ -1654,17 +1685,159 @@ figcaption a {
 
 .post-template .gh-container-inner {
     display: block;
+    max-width: 950px;
 }
 
-.post-template .gh-container.is-list .gh-card-image {
-    width: 220px;
+.post-template .gh-container.is-list .gh-card:first-child:before {
+    display: none;
 }
 
-.post-template .gh-container.is-list .gh-card-excerpt {
-    -webkit-line-clamp: 2;
+/* 18. Archive
+/* ---------------------------------------------------------- */
+
+.gh-archive {
+    margin-top: 64px;
+    max-width: 950px;
 }
 
-/* 11. Footer */
+.gh-archive .gh-article-excerpt {
+    margin-top: 10px;
+}
+
+.author-template .gh-archive {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.author-template .gh-article-image {
+    margin-top: 0;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+}
+
+.gh-author-meta {
+    display: flex;
+    gap: 10px;
+    margin-top: 14px;
+    font-size: 1.5rem;
+    font-weight: 550;
+    color: var(--color-secondary-text);
+}
+
+.gh-author-meta a {
+    color: inherit;
+}
+
+.gh-author-social {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.gh-author-social svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* 19. Design settings
+/* ---------------------------------------------------------- */
+
+/* 19.1. Typography */
+
+.has-sans-title .is-title {
+    font-family: var(--font-sans);
+}
+
+.has-serif-title .is-title {
+    font-family: var(--font-serif);
+}
+
+.has-slab-title .is-title {
+    font-family: var(--font-slab);
+}
+
+.has-sans-body .is-body {
+    font-family: var(--font-sans);
+}
+
+.has-serif-body .is-body {
+    font-family: Georgia;
+}
+
+.has-serif-title :is(.gh-navigation-logo, .gh-footer-logo) {
+    font-size: 2.8rem;
+    font-weight: 600;
+}
+
+.has-serif-title .gh-header.is-classic .gh-header-title {
+    font-weight: 550;
+    letter-spacing: -0.015em;
+}
+
+.has-serif-title .gh-card-title {
+    font-size: 2.3rem;
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.006em;
+}
+
+.has-serif-title .gh-featured-feed .gh-card-title {
+    font-size: 2.1rem;
+}
+
+.has-serif-title .gh-about-title {
+    font-size: 2.6rem;
+    font-weight: 600;
+    letter-spacing: -0.009em;
+}
+
+.has-serif-title .gh-footer-signup-header {
+    font-weight: 550;
+    letter-spacing: -0.019em;
+}
+
+.has-serif-title .gh-article-title {
+    font-weight: 600;
+    letter-spacing: -0.019em;
+}
+
+.has-serif-body {
+    --content-font-size: 1.8rem;
+}
+
+.has-serif-body .gh-card-excerpt {
+    font-size: 1.7rem;
+    line-height: 1.4;
+    letter-spacing: 0;
+}
+
+.has-serif-body .gh-header.is-magazine .gh-header-inner > .gh-card .gh-card-excerpt,
+.has-serif-body .gh-header.is-highlight .gh-card:first-child .gh-card-excerpt {
+    font-size: 1.8rem;
+}
+
+.has-serif-body .gh-about-description {
+    font-size: 1.6rem;
+}
+
+.has-serif-body .gh-article-excerpt {
+    letter-spacing: 0;
+}
+
+.has-serif-body .gh-footer-signup-subhead {
+    letter-spacing: 0;
+}
+
+/* 19.2. Colors */
+
+.has-light-text .gh-header.is-classic .gh-header-form:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* X. Footer
+/* ---------------------------------------------------------- */
 
 .gh-footer {
     margin-top: 80px;
@@ -1676,11 +1849,14 @@ figcaption a {
     color: inherit;
 }
 
-/* 11.1 Accent color */
+/* X.1 Footer styles */
 
 .gh-footer.has-accent-color {
     background-color: var(--ghost-accent-color);
-    color: #fff;
+}
+
+.gh-footer.has-accent-color .gh-footer-bar {
+    border-top: 0;
 }
 
 .gh-footer.has-accent-color .gh-button {
@@ -1688,32 +1864,32 @@ figcaption a {
     color: #15171a;
 }
 
-/* 11.2. Recent posts on top */
+/* X.2. With recent posts */
 
 .post-template .gh-container + .gh-footer {
     margin-top: 0;
     padding-top: 120px;
+}
+
+.post-template .gh-container + .gh-footer:not(.has-accent-color) {
     background-color: var(--color-lighter-gray);
 }
 
-/* 11.3. Footer bar */
+/* X.3. Footer bar */
 
 .gh-footer-bar {
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
     padding-block: 24px;
+    font-weight: 550;
     border-block: 1px solid var(--color-border);
-}
-
-.gh-footer-bar a {
-    font-weight: 500;
 }
 
 .gh-footer-logo {
     position: relative;
     font-size: 2.6rem;
-    font-weight: 700;
+    font-weight: 750;
     letter-spacing: -0.015em;
     white-space: nowrap;
 }
@@ -1730,7 +1906,11 @@ figcaption a {
     text-align: right;
 }
 
-/* 11.4. Footer signup */
+.gh-footer-copyright a {
+    text-decoration: underline;
+}
+
+/* X.4. Footer signup */
 
 .gh-footer-signup {
     display: flex;
@@ -1748,12 +1928,14 @@ figcaption a {
 .gh-footer-signup-subhead {
     margin-top: 4px;
     font-size: clamp(1.6rem, 0.68vw + 1.33rem, 2.2rem);
+    font-weight: 450;
     letter-spacing: -0.018em;
     opacity: 0.6;
 }
 
 .gh-footer-signup .gh-button {
     margin-top: 24px;
-    padding: 16px 40px;
+    padding: 16px 32px;
     font-size: 1.9rem;
+    letter-spacing: -0.01em;
 }
