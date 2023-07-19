@@ -192,6 +192,14 @@ a:hover {
     border-radius: 100px;
 }
 
+.has-slab-title .gh-button {
+    border-radius: 8px;
+}
+
+.has-serif-title .gh-button {
+    border-radius: 0;
+}
+
 .gh-button:hover {
     opacity: 0.95;
 }
