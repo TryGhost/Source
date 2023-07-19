@@ -87,11 +87,11 @@
             "navigation_layout": {
                 "type": "select",
                 "options": [
+                    "Stacked",
                     "Logo in the middle",
-                    "Logo on the left",
-                    "Stacked"
+                    "Logo on the left"
                 ],
-                "default": "Logo in the middle"
+                "default": "Stacked"
             },
             "page_background_color": {
                 "type": "color",
