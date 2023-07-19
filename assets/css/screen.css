@@ -28,7 +28,10 @@ production stylesheet in assets/built/screen.css
   11.2. Grid style
   11.3. No image list
 12. Sidebar
-13. Article
+13. Post/page
+  13.1. Article
+  13.2. Page template
+  13.3. Page without header
 14. Content
 15. Cards
 16. Comments
@@ -1317,7 +1320,7 @@ Search                         LOGO                    Login Subscribe
 }
 
 .gh-article-header {
-    margin: 48px 0;
+    margin: 40px 0;
 }
 
 .gh-article-tag {
@@ -1408,14 +1411,24 @@ Search                         LOGO                    Login Subscribe
 
 .gh-article-image {
     grid-column: wide;
-    margin-top: 48px;
+    margin-top: 40px;
 }
 
 .gh-article-image img {
     width: 100%;
 }
 
-/* 13.2. Page without header */
+/* 13.2. Page template */
+
+.page-template .gh-article-header {
+    margin-block: 72px 24px;
+}
+
+.page-template .gh-article-excerpt {
+    margin-bottom: 12px;
+}
+
+/* 13.3. Page without header */
 
 .page-template .gh-content:only-child > *:first-child:not(.kg-width-full) {
     margin-top: 48px;
@@ -1785,6 +1798,10 @@ figcaption a {
 
 .gh-archive .gh-article-excerpt {
     margin-top: 10px;
+}
+
+.tag-template .gh-article-title + .gh-article-image {
+    margin-top: 32px;
 }
 
 .author-template .gh-archive {
