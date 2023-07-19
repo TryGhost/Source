@@ -1278,6 +1278,7 @@ Search                         LOGO                    Login Subscribe
     margin-bottom: 24px;
     width: 80px;
     height: 80px;
+    border-radius: 50%;
 }
 
 .gh-about-title {
@@ -1296,8 +1297,10 @@ Search                         LOGO                    Login Subscribe
     margin-top: 24px;
 }
 
-/* 13. Article
+/* 13. Post/page
 /* ---------------------------------------------------------- */
+
+/* 13.1. Article */
 
 .gh-article {
     --container-width: 1120px;
@@ -1333,6 +1336,68 @@ Search                         LOGO                    Login Subscribe
     letter-spacing: -0.01em;
 }
 
+.gh-article-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    margin-left: 6px;
+}
+
+.gh-article-author-image {
+    display: flex;
+    margin-right: 8px;
+}
+
+.gh-article-author-image a {
+    position: relative;
+    margin: 0 -8px;
+    width: 56px;
+    height: 56px;
+    overflow: hidden;
+    background-color: var(--color-light-gray);
+    border-radius: 50%;
+    border: 3px solid var(--background-color);
+}
+
+.gh-article-author-image a:first-child {
+    z-index: 10;
+}
+
+.gh-article-author-image a:nth-child(2) {
+    z-index: 9;
+}
+
+.gh-article-author-image a:nth-child(3) {
+    z-index: 8;
+}
+
+.gh-article-author-image :is(img, svg) {
+    position: absolute;
+    inset: 0;
+    object-fit: cover;
+}
+
+.gh-article-meta-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.gh-article-author-name {
+    font-size: 1.7rem;
+    font-weight: 650;
+    letter-spacing: -0.013em;
+}
+
+.gh-article-meta-content {
+    font-size: 1.4rem;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.006em;
+    color: var(--color-secondary-text);
+}
+
 .gh-article-image {
     grid-column: wide;
     margin-top: 48px;
@@ -1340,6 +1405,20 @@ Search                         LOGO                    Login Subscribe
 
 .gh-article-image img {
     width: 100%;
+}
+
+/* 13.2. Page without header */
+
+.page-template .gh-content:only-child > *:first-child:not(.kg-width-full) {
+    margin-top: 48px;
+}
+
+.page-template .gh-content > *:last-child:not(.kg-width-full) {
+    margin-bottom: 64px;
+}
+
+.page-template .gh-footer {
+    margin-top: 0;
 }
 
 /* 14. Content
@@ -1358,10 +1437,6 @@ headings, text, images and lists. We deal with cards lower down. */
 .gh-content > * + * {
     margin-top: calc(28px * var(--content-spacing-multiplier, 1));
     margin-bottom: 0;
-}
-
-.gh-content > *:first-child {
-    margin-top: 0 !important;
 }
 
 /* Add back a top margin to all headings,
@@ -1679,7 +1754,7 @@ figcaption a {
 /* ---------------------------------------------------------- */
 
 .post-template .gh-container {
-    padding-top: 64px;
+    padding-block: 64px 80px;
     background-color: var(--color-lighter-gray);
 }
 
@@ -1840,7 +1915,7 @@ figcaption a {
 /* ---------------------------------------------------------- */
 
 .gh-footer {
-    margin-top: 80px;
+    margin-top: 64px;
     font-size: 1.5rem;
     color: var(--color-darker-gray);
 }
@@ -1868,7 +1943,6 @@ figcaption a {
 
 .post-template .gh-container + .gh-footer {
     margin-top: 0;
-    padding-top: 120px;
 }
 
 .post-template .gh-container + .gh-footer:not(.has-accent-color) {
