@@ -35,9 +35,20 @@
 
             {{!-- Highlight layout --}}
             {{#match headerStyle "Highlight"}}
-                {{#foreach posts limit="4"}}
-                    {{> "loop"}}
-                {{/foreach}}
+                {{#if @custom.show_featured}}
+                    <div class="gh-header-left">
+                        {{#foreach posts limit="4"}}
+                            {{> "loop"}}
+                        {{/foreach}}
+                    </div>
+                    <div class="gh-header-right">
+                        {{> "components/featured" showFeatured=@custom.show_featured limit=6}}
+                    </div>
+                {{else}}
+                    {{#foreach posts limit="4"}}
+                        {{> "loop"}}
+                    {{/foreach}}
+                {{/if}}
             {{/match}}
 
             {{!-- Landing layout --}}

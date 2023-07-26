@@ -195,14 +195,6 @@ a:hover {
     border-radius: 100px;
 }
 
-.has-slab-title .gh-button {
-    border-radius: 8px;
-}
-
-.has-serif-title .gh-button {
-    border-radius: 0;
-}
-
 .gh-button:hover {
     opacity: 0.95;
 }
@@ -830,7 +822,7 @@ Search                         LOGO                    Login Subscribe
 
 .gh-header {
     position: relative;
-    margin-top: 20px;
+    margin-top: 40px;
 }
 
 .gh-header-image {
@@ -940,11 +932,12 @@ Search                         LOGO                    Login Subscribe
 
 .gh-header.is-highlight .gh-header-inner {
     display: grid;
-    grid-template-columns: 3fr 1fr;
+    grid-template-columns: repeat(16, 1fr);
     gap: var(--grid-gap);
 }
 
 .gh-header.is-highlight .gh-card:first-child {
+    grid-column: span 8;
     grid-row: span 3;
 }
 
@@ -957,7 +950,7 @@ Search                         LOGO                    Login Subscribe
     margin-bottom: 10px;
 }
 
-.gh-header.is-highlight .gh-card:first-child .gh-card-title {
+.gh-header.is-highlight :is(.gh-header-inner, .gh-header-left) > .gh-card:first-child .gh-card-title {
     max-width: 840px;
     font-size: clamp(3.2rem, 3.18vw + 1.93rem, 6rem);
     font-weight: 750;
@@ -965,12 +958,12 @@ Search                         LOGO                    Login Subscribe
     letter-spacing: -0.03em;
 }
 
-.gh-header.is-highlight .gh-card:first-child .gh-card-excerpt {
+.gh-header.is-highlight :is(.gh-header-inner, .gh-header-left) > .gh-card:first-child .gh-card-excerpt {
     margin-top: 10px;
     font-size: 1.7rem;
 }
 
-.gh-header.is-highlight .gh-card:first-child .gh-card-meta:not(:empty) {
+.gh-header.is-highlight :is(.gh-header-inner, .gh-header-left) > .gh-card:first-child .gh-card-meta:not(:empty) {
     margin-top: 14px;
 }
 
@@ -978,7 +971,47 @@ Search                         LOGO                    Login Subscribe
     display: none;
 }
 
-.gh-header.is-highlight .gh-card:first-child::after {
+.gh-header.is-highlight .gh-header-left {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--grid-gap);
+    grid-column: span 12;
+}
+
+.gh-header.is-highlight .gh-header-left .gh-card:not(:first-child) {
+    grid-column: 9 / -1;
+}
+
+.gh-header.is-highlight .gh-header-left .gh-card:first-child .gh-card-title {
+    font-size: clamp(2.4rem, 2.73vw + 1.31rem, 4.8rem);
+    line-height: 1;
+    letter-spacing: -0.022em;
+}
+
+.gh-header.is-highlight .gh-header-left .gh-card:first-child .gh-card-image {
+    aspect-ratio: 16 / 10;
+}
+
+.gh-header.is-highlight .gh-header-left .gh-card:nth-child(4) .gh-card-image {
+    display: none;
+}
+
+.gh-header.is-highlight .gh-header-right {
+    grid-column: 13 / -1;
+}
+
+.gh-header.is-highlight .gh-featured {
+    margin-top: 0;
+    padding: 0;
+}
+
+.gh-header.is-highlight .gh-featured-feed {
+    display: flex;
+    flex-direction: column;
+}
+
+.gh-header.is-highlight :is(.gh-card:first-child, .gh-header-left)::after {
     position: absolute;
     top: 0;
     right: calc(var(--grid-gap) / -2);
@@ -988,7 +1021,7 @@ Search                         LOGO                    Login Subscribe
     background-color: var(--color-border);
 }
 
-.gh-header.is-highlight .gh-card:not(:first-child) + .gh-card::before {
+.gh-header.is-highlight .gh-card + .gh-card::before {
     position: absolute;
     top: calc(var(--grid-gap) / -2);
     left: 0;
@@ -997,6 +1030,15 @@ Search                         LOGO                    Login Subscribe
     height: 1px;
     background-color: var(--color-border);
 }
+
+.gh-header.is-highlight :is(.gh-header-inner, .gh-header-left) > .gh-card:nth-child(2)::before,
+.gh-header.is-highlight .gh-featured .gh-card::after {
+    display: none;
+}
+
+/* .gh-header.is-highlight .gh-featured-feed .gh-card::before {
+    dis
+} */
 
 /* 8.3. Classic layout */
 
@@ -1117,7 +1159,8 @@ Search                         LOGO                    Login Subscribe
 }
 
 .gh-featured-feed .gh-card-title {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
+    font-weight: 700;
     letter-spacing: -0.011em;
 }
 
@@ -1930,10 +1973,105 @@ figcaption a {
     letter-spacing: 0;
 }
 
+.has-slab-title :is(.gh-button, .gh-header-form) {
+    border-radius: 8px;
+}
+
+.has-serif-title :is(.gh-button, .gh-header-form) {
+    border-radius: 0;
+}
+
 /* 19.2. Colors */
 
 .has-light-text .gh-header.is-classic .gh-header-form:hover {
     background-color: rgba(0, 0, 0, 0.2);
+}
+
+.gh-cta {
+    margin-top: 64px;
+}
+
+.gh-cta-inner {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 34px;
+    padding-top: 40px;
+    border-top: 1px solid var(--color-border);
+}
+
+.gh-cta-inner > * {
+    flex: 1;
+}
+
+.gh-cta-content {
+    padding: 8px 0 8px 24px;
+    border-left: 8px solid var(--ghost-accent-color);
+}
+
+.gh-cta-title {
+    max-width: 720px;
+    font-size: 3.8rem;
+    font-weight: 750;
+    line-height: 1.1;
+    letter-spacing: -0.017em;
+}
+
+.gh-cta-description {
+    margin-top: 8px;
+    font-size: 2rem;
+    font-weight: 450;
+    line-height: 1.4;
+    letter-spacing: -.015em;
+    color: var(--color-secondary-text);
+}
+
+.gh-cta .gh-header-form {
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    max-width: 640px;
+    width: 100%;
+    height: 64px;
+    font-size: 1.8rem;
+    font-weight: 450;
+    letter-spacing: -0.008em;
+    border-radius: 40px;
+    background-color: var(--color-lighter-gray);
+    transition: background-color 0.2s ease;
+}
+
+.gh-cta .gh-header-form:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.gh-cta .gh-header-input {
+    position: absolute;
+    inset: 0;
+    padding-inline: 28px;
+    width: 100%;
+    height: 100%;
+    font-size: inherit;
+    letter-spacing: inherit;
+    border: 0;
+    background-color: transparent;
+}
+
+.gh-cta button.gh-header-input {
+    padding-inline-start: 56px;
+    text-align: left;
+    color: var(--color-secondary-text);
+    cursor: pointer;
+}
+
+.gh-cta .gh-button {
+    position: absolute;
+    right: 6px;
+    padding-inline: 32px;
+    height: 52px;
+    font-size: inherit;
+    font-weight: 600;
 }
 
 /* X. Footer
@@ -2015,7 +2153,7 @@ figcaption a {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-block: 100px;
+    padding-block: 80px 100px;
 }
 
 .gh-footer-signup-header {

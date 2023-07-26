@@ -133,13 +133,13 @@
             "header_style": {
                 "type": "select",
                 "options": [
-                    "Magazine",
                     "Highlight",
+                    "Magazine",
                     "Landing",
                     "Search",
                     "Off"
                 ],
-                "default": "Magazine",
+                "default": "Highlight",
                 "group": "homepage"
             },
             "use_publication_cover_as_background": {

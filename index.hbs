@@ -2,5 +2,11 @@
 {{!-- The tag above means: insert everything in this file into the body of the default.hbs template --}}
 
 {{> "components/header" headerStyle=@custom.header_style}}
-{{> "components/featured" showFeatured=@custom.show_featured}}
+
+{{#match @custom.header_style "!=" "Highlight"}}
+    {{> "components/featured" showFeatured=@custom.show_featured limit=4}}
+{{/match}}
+
+{{> "components/cta"}}
+
 {{> "components/post-list" postListStyle=@custom.post_list_style}}
