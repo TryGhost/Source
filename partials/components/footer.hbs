@@ -19,7 +19,13 @@
 
         <section class="gh-footer-signup">
             {{#if @custom.footer_signup_header}}
-                <h2 class="gh-footer-signup-header is-title">{{@custom.footer_signup_header}}</h2>
+                <h2 class="gh-footer-signup-header is-title">
+                    {{#if @custom.footer_signup_header}}
+                        {{@custom.footer_signup_header}}
+                    {{else}}
+                        Subscribe to {{@site.title}}
+                    {{/if}}
+                </h2>
             {{/if}}
             {{#if @custom.footer_signup_subhead}}
                 <p class="gh-footer-signup-subhead is-body">{{@custom.footer_signup_subhead}}</p>
