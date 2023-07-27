@@ -1273,10 +1273,10 @@ Search                         LOGO                    Login Subscribe
 }
 
 .gh-container.is-list .gh-card-excerpt {
-    font-size: 1.6rem;
+    margin-top: 6px;
 }
 
-.gh-container.is-list .gh-card::before {
+.gh-container.is-list .gh-card + .gh-card::before {
     position: absolute;
     top: calc(var(--grid-gap) / -2);
     left: 0;
@@ -1350,7 +1350,7 @@ Search                         LOGO                    Login Subscribe
 
 .gh-about-title {
     font-size: 2.4rem;
-    font-weight: 750;
+    font-weight: 800;
     letter-spacing: -0.019em;
 }
 
@@ -1848,21 +1848,40 @@ figcaption a {
 /* ---------------------------------------------------------- */
 
 .gh-archive {
-    margin-top: 64px;
-    max-width: 950px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: var(--grid-gap);
+    margin-block: 80px 24px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.gh-archive.has-image {
+    margin-top: 24px;
+}
+
+.gh-archive.has-image .gh-article-title {
+    font-size: 5.6rem;
 }
 
 .gh-archive .gh-article-excerpt {
-    margin-top: 10px;
+    margin-top: 12px;
 }
 
-.tag-template .gh-article-title + .gh-article-image {
-    margin-top: 32px;
+.gh-archive .gh-article-image {
+    grid-column: auto;
+    margin-top: 0;
+}
+
+:is(.tag-template, .author-template) .gh-container {
+    margin-top: 0;
 }
 
 .author-template .gh-archive {
     display: flex;
-    justify-content: space-between;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
     gap: 24px;
 }
 
@@ -1871,6 +1890,10 @@ figcaption a {
     width: 160px;
     height: 160px;
     border-radius: 50%;
+}
+
+.author-template .gh-article-title {
+    font-size: 3.6rem;
 }
 
 .gh-author-meta {
@@ -1890,11 +1913,12 @@ figcaption a {
     display: flex;
     gap: 10px;
     align-items: center;
+    padding-left: 3px;
 }
 
 .gh-author-social svg {
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 20px;
 }
 
 /* 19. Design settings

@@ -1,0 +1,38 @@
+{{!< default}}
+{{!-- The tag above means: insert everything in this file into the body of the default.hbs template --}}
+
+<main class="gh-main gh-outer">
+    <div class="gh-archive gh-inner">
+
+        {{#tag}}
+            <section class="gh-archive-content">
+                <div class="gh-archive-inner">
+                    {{#if feature_image}}
+                        <img class="gh-archive-image" src="{{img_url feature_image size="s"}}" alt="{{name}}">
+                    {{/if}}
+                    <h1 class="gh-archive-title is-title">{{name}}</h1>
+                    <p class="gh-archive-description">
+                        {{#if description}}
+                            {{description}}
+                        {{else}}
+                            {{plural ../pagination.total empty="0 posts" singular="% post" plural="% posts"}}
+                        {{/if}}
+                    </p>
+                </div>
+            </section>
+        {{/tag}}
+        
+        <section class="gh-container is-{{#match @custom.post_list_style "List"}}list{{else}}grid{{/match}}{{#if @custom.hide_images}} no-image{{/if}}">
+            <div class="gh-container-inner">
+                <main class="gh-main">
+                    <div class="gh-feed">
+                        {{#foreach posts}}
+                            {{> "loop"}}
+                        {{/foreach}}
+                    </div>
+                </main>
+            </div>
+        </section>
+
+    </div>
+</main>
