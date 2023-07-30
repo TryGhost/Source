@@ -4,7 +4,7 @@
         <div class="gh-feed">
             {{#get "posts" include="authors" filter="id:-{{post.id}}" limit="3" as |next|}}
                 {{#foreach next}}
-                    {{> "loop"}}
+                    {{> "post-card"}}
                 {{/foreach}}
             {{/get}}
         </div>

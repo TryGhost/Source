@@ -23,7 +23,7 @@
                     {{#match @number 5}}
                         <div class="gh-header-right">
                     {{/match}}
-                    {{> "loop"}}
+                    {{> "post-card"}}
                     {{#match @number 4}}
                         </div>
                     {{/match}}
@@ -38,7 +38,7 @@
                 {{#if @custom.show_featured}}
                     <div class="gh-header-left">
                         {{#foreach posts limit="4"}}
-                            {{> "loop"}}
+                            {{> "post-card"}}
                         {{/foreach}}
                     </div>
                     <div class="gh-header-right">
@@ -46,7 +46,7 @@
                     </div>
                 {{else}}
                     {{#foreach posts limit="4"}}
-                        {{> "loop"}}
+                        {{> "post-card"}}
                     {{/foreach}}
                 {{/if}}
             {{/match}}
