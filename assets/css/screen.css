@@ -51,15 +51,15 @@ X. Footer
 
 :root {
     --color-white: #fff;
-    --color-lighter-gray: rgba(0,0,0,0.05);
+    --color-lighter-gray: rgb(0 0 0 / 0.05);
     --color-light-gray: #e6e6e6;
     --color-mid-gray: #ccc;
     --color-dark-gray: #444;
     --color-darker-gray: #15171a;
     --color-black: #000;
     --color-primary-text: var(--color-darker-gray);
-    --color-secondary-text: rgba(0,0,0,0.4);
-    --color-border: rgba(0, 0, 0, 0.08);
+    --color-secondary-text: rgb(0 0 0 / 0.4);
+    --color-border: rgb(0 0 0 / 0.08);
     --font-sans: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     --font-serif: "EB Garamond", Georgia, Times, serif;
     --font-slab: "Roboto Slab", Georgia, Times, serif;
@@ -71,10 +71,10 @@ X. Footer
 
 :root.has-light-text,
 :is(.gh-navigation, .gh-footer).has-accent-color {
-    --color-lighter-gray: rgba(0,0,0,0.15);
+    --color-lighter-gray: rgb(0 0 0 / 0.15);
     --color-darker-gray: #fff;
-    --color-secondary-text: rgba(255,255,255,0.64);
-    --color-border: rgba(255,255,255,0.15);
+    --color-secondary-text: rgb(255 255 255 / 0.64);
+    --color-border: rgb(255 255 255 / 0.15);
 }
 
 /* 2. Fonts
@@ -532,7 +532,7 @@ Search                         LOGO                    Login Subscribe
     visibility: hidden;
     background-color: #fff;
     border-radius: 5px;
-    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.04), 0 7px 20px -5px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 0 1px rgb(0 0 0 / 0.04), 0 7px 20px -5px rgb(0 0 0 / 0.15);
     opacity: 0;
     transition: opacity 0.3s, transform 0.2s;
     transform: translate3d(0, 6px, 0);
@@ -1085,7 +1085,7 @@ Search                         LOGO                    Login Subscribe
 }
 
 .gh-header.is-classic .gh-header-form:hover {
-    background-color: rgba(0, 0, 0, 0.05);
+    background-color: rgb(0 0 0 / 0.05);
 }
 
 .gh-header.is-classic .gh-header-input {
@@ -1605,20 +1605,20 @@ unless a heading is the very first element in the post content */
     border-spacing: 0;
     border-collapse: collapse;
     -webkit-overflow-scrolling: touch;
-    background: radial-gradient(ellipse at left, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 75%) 0 center, radial-gradient(ellipse at right, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 75%) 100% center;
+    background: radial-gradient(ellipse at left, rgb(0 0 0 / 0.2) 0%, rgb(0 0 0 / 0) 75%) 0 center, radial-gradient(ellipse at right, rgb(0 0 0 / 0.2) 0%, rgb(0 0 0 / 0) 75%) 100% center;
     background-repeat: no-repeat;
     background-attachment: scroll, scroll;
     background-size: 10px 100%, 10px 100%;
 }
 
 .gh-content table:not(.gist table) td:first-child {
-    background-image: linear-gradient(to right, rgba(255,255,255, 1) 50%, rgba(255,255,255, 0) 100%);
+    background-image: linear-gradient(to right, rgb(255 255 255 / 1) 50%, rgb(255 255 255 / 0) 100%);
     background-repeat: no-repeat;
     background-size: 20px 100%;
 }
 
 .gh-content table:not(.gist table) td:last-child {
-    background-image: linear-gradient(to left, rgba(255,255,255, 1) 50%, rgba(255,255,255, 0) 100%);
+    background-image: linear-gradient(to left, rgb(255 255 255 / 1) 50%, rgb(255 255 255 / 0) 100%);
     background-repeat: no-repeat;
     background-position: 100% 0;
     background-size: 20px 100%;
@@ -2021,7 +2021,7 @@ figcaption a {
 /* 19.2. Colors */
 
 .has-light-text .gh-header.is-classic .gh-header-form:hover {
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgb(0 0 0 / 0.2);
 }
 
 .gh-cta {
@@ -2071,7 +2071,7 @@ figcaption a {
 }
 
 .gh-cta .gh-header-form:hover {
-    background-color: rgba(0, 0, 0, 0.05);
+    background-color: rgb(0 0 0 / 0.05);
 }
 
 .gh-cta .gh-header-input {
