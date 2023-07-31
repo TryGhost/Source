@@ -87,11 +87,11 @@
             "navigation_layout": {
                 "type": "select",
                 "options": [
-                    "Stacked",
+                    "Logo on the left",
                     "Logo in the middle",
-                    "Logo on the left"
+                    "Stacked"
                 ],
-                "default": "Stacked"
+                "default": "Logo on the left"
             },
             "page_background_color": {
                 "type": "color",
@@ -155,10 +155,10 @@
             "post_list_style": {
                 "type": "select",
                 "options": [
-                    "List",
-                    "Grid"
+                    "Grid",
+                    "List"
                 ],
-                "default": "List",
+                "default": "Grid",
                 "group": "homepage"
             },
             "hide_images": {
