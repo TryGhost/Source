@@ -249,8 +249,8 @@ a:hover {
 
 .gh-canvas,
 .kg-width-full.kg-content-wide {
-    --main: min(var(--content-width, 680px), 100% - var(--container-gap) * 2);
-    --wide: minmax(0, calc((var(--container-width, 1200px) - var(--content-width, 680px)) / 2));
+    --main: min(var(--content-width, 720px), 100% - var(--container-gap) * 2);
+    --wide: minmax(0, calc((var(--container-width, 1200px) - var(--content-width, 720px)) / 2));
     --full: minmax(var(--container-gap), 1fr);
 
     display: grid;
@@ -937,41 +937,6 @@ Search                         LOGO                    Login Subscribe
     gap: var(--grid-gap);
 }
 
-.gh-header.is-highlight .gh-card:first-child {
-    grid-column: span 8;
-    grid-row: span 3;
-}
-
-.gh-header.is-highlight .gh-card:first-child .gh-card-link {
-    gap: 28px;
-}
-
-.gh-header.is-highlight .gh-card:first-child .gh-card-tag {
-    display: block;
-    margin-bottom: 12px;
-}
-
-.gh-header.is-highlight :is(.gh-header-inner, .gh-header-left) > .gh-card:first-child .gh-card-title {
-    max-width: 840px;
-    font-size: clamp(3.2rem, 3.18vw + 1.93rem, 6rem);
-    font-weight: 750;
-    line-height: 0.95;
-    letter-spacing: -0.03em;
-}
-
-.gh-header.is-highlight :is(.gh-header-inner, .gh-header-left) > .gh-card:first-child .gh-card-excerpt {
-    margin-top: 20px;
-    font-size: 1.8rem;
-}
-
-.gh-header.is-highlight :is(.gh-header-inner, .gh-header-left) > .gh-card:first-child .gh-card-meta:not(:empty) {
-    margin-top: 14px;
-}
-
-.gh-header.is-highlight .gh-card:not(:first-child) .gh-card-excerpt {
-    display: none;
-}
-
 .gh-header.is-highlight .gh-header-left {
     position: relative;
     display: grid;
@@ -980,8 +945,22 @@ Search                         LOGO                    Login Subscribe
     grid-column: span 12;
 }
 
-.gh-header.is-highlight .gh-header-left .gh-card:not(:first-child) {
-    grid-column: 9 / -1;
+.gh-header.is-highlight .gh-header-left > .gh-card:first-child {
+    grid-column: span 8;
+    grid-row: span 3;
+}
+
+.gh-header.is-highlight .gh-header-left > .gh-card:first-child .gh-card-link {
+    gap: 28px;
+}
+
+.gh-header.is-highlight .gh-header-left .gh-card:first-child .gh-card-image {
+    aspect-ratio: 16 / 10;
+}
+
+.gh-header.is-highlight .gh-header-left > .gh-card:first-child .gh-card-tag {
+    display: block;
+    margin-bottom: 12px;
 }
 
 .gh-header.is-highlight .gh-header-left .gh-card:first-child .gh-card-title {
@@ -990,11 +969,24 @@ Search                         LOGO                    Login Subscribe
     letter-spacing: -0.022em;
 }
 
-.gh-header.is-highlight .gh-header-left .gh-card:first-child .gh-card-image {
-    aspect-ratio: 16 / 10;
+.gh-header.is-highlight .gh-header-left > .gh-card:first-child .gh-card-excerpt {
+    margin-top: 20px;
+    font-size: 1.8rem;
+}
+
+.gh-header.is-highlight .gh-header-left > .gh-card:first-child .gh-card-meta:not(:empty) {
+    margin-top: 14px;
+}
+
+.gh-header.is-highlight .gh-header-left .gh-card:not(:first-child) {
+    grid-column: 9 / -1;
 }
 
 .gh-header.is-highlight .gh-header-left .gh-card:nth-child(4) .gh-card-image {
+    display: none;
+}
+
+.gh-header.is-highlight .gh-card:not(:first-child) .gh-card-excerpt {
     display: none;
 }
 
@@ -1012,7 +1004,7 @@ Search                         LOGO                    Login Subscribe
     flex-direction: column;
 }
 
-.gh-header.is-highlight :is(.gh-card:first-child, .gh-header-left)::after {
+.gh-header.is-highlight .gh-header-left::after {
     position: absolute;
     top: 0;
     right: calc(var(--grid-gap) / -2);
@@ -1032,14 +1024,10 @@ Search                         LOGO                    Login Subscribe
     background-color: var(--color-border);
 }
 
-.gh-header.is-highlight :is(.gh-header-inner, .gh-header-left) > .gh-card:nth-child(2)::before,
-.gh-header.is-highlight .gh-featured .gh-card::after {
+.gh-header.is-highlight .gh-header-left > .gh-card:nth-child(2)::before,
+.gh-header.is-highlight .gh-featured-feed .gh-card::after {
     display: none;
 }
-
-/* .gh-header.is-highlight .gh-featured-feed .gh-card::before {
-    dis
-} */
 
 /* 8.3. Classic layout */
 
@@ -1290,6 +1278,23 @@ Search                         LOGO                    Login Subscribe
     margin-top: 100px;
 }
 
+.gh-more {
+    display: none;
+    grid-column: 1 / -1;
+    margin-top: 48px;
+    font-size: 1.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.gh-container.has-sidebar .gh-more {
+    grid-column: span 12;
+}
+
+.home-template .gh-more {
+    display: block;
+}
+
 /* 11.1. With sidebar */
 
 .gh-container.has-sidebar .gh-main {
@@ -1488,9 +1493,9 @@ Search                         LOGO                    Login Subscribe
 .gh-article-excerpt {
     margin-top: 16px;
     max-width: 720px;
-    font-size: 2rem;
+    font-size: 2.2rem;
     line-height: 1.35;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.018em;
 }
 
 .gh-article-meta {
@@ -1567,11 +1572,7 @@ Search                         LOGO                    Login Subscribe
 /* 14.2. Page template */
 
 .page-template .gh-article-header {
-    margin-block: 72px 24px;
-}
-
-.page-template .gh-article-excerpt {
-    margin-bottom: 12px;
+    margin-block: 72px 32px;
 }
 
 /* 14.3. Page without header */
@@ -1596,7 +1597,7 @@ created within the Ghost editor. The main content handles
 headings, text, images and lists. We deal with cards lower down. */
 
 .gh-content {
-    font-size: calc(var(--content-font-size, 1.7rem) * var(--font-multiplier, 1));
+    font-size: calc(var(--content-font-size, 1.8rem) * var(--font-multiplier, 1));
     letter-spacing: var(--content-letter-spacing, 0);
 }
 
