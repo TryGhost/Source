@@ -19,30 +19,31 @@ production stylesheet in assets/built/screen.css
   8.1. Magazine layout
   8.2. Highlight layout
   8.3. Classic layout
-9. Featured posts
-10. Container
-  10.1. With sidebar
-  10.2. Without sidebar
-11. Post list
-  11.1. List style
-  11.2. Grid style
-  11.3. No image list
-12. Sidebar
-13. Post/page
-  13.1. Article
-  13.2. Page template
-  13.3. Page without header
-14. Content
-15. Cards
-16. Comments
-17. Recent posts
-18. Archive
-19. Design settings
-X. Footer
-  X.1. Footer styles
-  X.2. With recent posts
-  X.3. Footer bar
-  X.4. Footer signup
+9. CTA
+10. Featured posts
+11. Container
+  11.1. With sidebar
+  11.2. Without sidebar
+12. Post list
+  12.1. List style
+  12.2. Grid style
+  12.3. No image list
+13. Sidebar
+14. Post/page
+  14.1. Article
+  14.2. Page template
+  14.3. Page without header
+15. Content
+16. Cards
+17. Comments
+18. Recent posts
+19. Archive
+20. Design settings
+21. Footer
+  21.1. Footer styles
+  21.2. With recent posts
+  21.3. Footer bar
+  21.4. Footer signup
 
 */
 
@@ -1124,7 +1125,88 @@ Search                         LOGO                    Login Subscribe
     color: var(--color-secondary-text);
 }
 
-/* 9. Featured posts
+/* 9. CTA
+/* ---------------------------------------------------------- */
+
+.gh-cta {
+    margin-top: calc(var(--grid-gap) / 2);
+}
+
+.gh-cta-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    padding-top: 80px;
+    border-top: 1px solid var(--color-border);
+}
+
+.gh-cta-title {
+    max-width: 720px;
+    font-size: 4.4rem;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.026em;
+}
+
+.gh-cta-description {
+    margin-top: 8px;
+    font-size: 2rem;
+    font-weight: 450;
+    line-height: 1.4;
+    letter-spacing: -.017em;
+    color: var(--color-secondary-text);
+}
+
+.gh-cta .gh-header-form {
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    max-width: 520px;
+    width: 100%;
+    height: 64px;
+    font-size: 1.8rem;
+    font-weight: 450;
+    letter-spacing: -0.008em;
+    border-radius: 40px;
+    background-color: var(--color-lighter-gray);
+    transition: background-color 0.2s ease;
+}
+
+.gh-cta .gh-header-form:hover {
+    background-color: rgb(0 0 0 / 0.05);
+}
+
+.gh-cta .gh-header-input {
+    position: absolute;
+    inset: 0;
+    padding-inline: 26px;
+    width: 100%;
+    height: 100%;
+    font-size: inherit;
+    letter-spacing: inherit;
+    border: 0;
+    background-color: transparent;
+}
+
+.gh-cta button.gh-header-input {
+    padding-inline-start: 56px;
+    text-align: left;
+    color: var(--color-secondary-text);
+    cursor: pointer;
+}
+
+.gh-cta .gh-button {
+    position: absolute;
+    right: 6px;
+    padding-inline: 32px;
+    height: 52px;
+    font-size: inherit;
+    font-weight: 600;
+}
+
+/* 10. Featured posts
 /* ---------------------------------------------------------- */
 
 .gh-featured {
@@ -1186,7 +1268,7 @@ Search                         LOGO                    Login Subscribe
     background-color: var(--color-border);
 }
 
-/* 10. Container
+/* 11. Container
 /* ---------------------------------------------------------- */
 
 .gh-container {
@@ -1200,7 +1282,7 @@ Search                         LOGO                    Login Subscribe
     column-gap: var(--grid-gap);
 }
 
-/* 10.1. With sidebar */
+/* 11.1. With sidebar */
 
 .gh-container.has-sidebar .gh-main {
     grid-column: 1 / span 12;
@@ -1221,13 +1303,13 @@ Search                         LOGO                    Login Subscribe
     background-color: var(--color-border);
 }
 
-/* 10.2. Without sidebar */
+/* 11.2. Without sidebar */
 
 .gh-container:not(.has-sidebar) .gh-main {
     grid-column: 3 / span 12;
 }
 
-/* 11. Post list
+/* 12. Post list
 /* ---------------------------------------------------------- */
 
 .gh-container-title {
@@ -1249,7 +1331,7 @@ Search                         LOGO                    Login Subscribe
     margin-top: 16px;
 }
 
-/* 11.1. List style */
+/* 12.1. List style */
 
 .gh-container.is-list .gh-feed {
     display: flex;
@@ -1290,7 +1372,7 @@ Search                         LOGO                    Login Subscribe
     display: none;
 }
 
-/* 11.2. Grid style */
+/* 12.2. Grid style */
 
 .gh-container.is-grid .gh-feed {
     display: grid;
@@ -1323,13 +1405,13 @@ Search                         LOGO                    Login Subscribe
     background-color: var(--color-border);
 }
 
-/* 11.3. No image list */
+/* 12.3. No image list */
 
 .gh-container.is-list.no-image .gh-card-image {
     display: none;
 }
 
-/* 12. Sidebar
+/* 13. Sidebar
 /* ---------------------------------------------------------- */
 
 .gh-about {
@@ -1364,10 +1446,10 @@ Search                         LOGO                    Login Subscribe
     margin-top: 24px;
 }
 
-/* 13. Post/page
+/* 14. Post/page
 /* ---------------------------------------------------------- */
 
-/* 13.1. Article */
+/* 14.1. Article */
 
 .gh-article {
     --container-width: 1120px;
@@ -1474,7 +1556,7 @@ Search                         LOGO                    Login Subscribe
     width: 100%;
 }
 
-/* 13.2. Page template */
+/* 14.2. Page template */
 
 .page-template .gh-article-header {
     margin-block: 72px 24px;
@@ -1484,7 +1566,7 @@ Search                         LOGO                    Login Subscribe
     margin-bottom: 12px;
 }
 
-/* 13.3. Page without header */
+/* 14.3. Page without header */
 
 .page-template .gh-content:only-child > *:first-child:not(.kg-width-full) {
     margin-top: 48px;
@@ -1498,7 +1580,7 @@ Search                         LOGO                    Login Subscribe
     margin-top: 0;
 }
 
-/* 14. Content
+/* 15. Content
 /* ---------------------------------------------------------- */
 
 /* Content refers to styling all page and post content that is
@@ -1640,7 +1722,7 @@ unless a heading is the very first element in the post content */
     border: 1px solid var(--color-light-gray);
 }
 
-/* 15. Cards
+/* 16. Cards
 /* ---------------------------------------------------------- */
 
 /* Add extra margin before/after any cards, except for when immediately preceeded by a heading */
@@ -1820,14 +1902,14 @@ figcaption a {
     text-decoration: underline;
 }
 
-/* 16. Comments
+/* 17. Comments
 /* ---------------------------------------------------------- */
 
 .gh-comments {
     margin-top: 48px;
 }
 
-/* 17. Recent posts
+/* 18. Recent posts
 /* ---------------------------------------------------------- */
 
 .post-template .gh-container {
@@ -1844,7 +1926,7 @@ figcaption a {
     display: none;
 }
 
-/* 18. Archive
+/* 19. Archive
 /* ---------------------------------------------------------- */
 
 .gh-archive {
@@ -1921,10 +2003,10 @@ figcaption a {
     height: 20px;
 }
 
-/* 19. Design settings
+/* 20. Design settings
 /* ---------------------------------------------------------- */
 
-/* 19.1. Typography */
+/* 20.1. Typography */
 
 .has-sans-title .is-title {
     font-family: var(--font-sans);
@@ -2018,91 +2100,13 @@ figcaption a {
     border-radius: 0;
 }
 
-/* 19.2. Colors */
+/* 20.2. Colors */
 
 .has-light-text .gh-header.is-classic .gh-header-form:hover {
     background-color: rgb(0 0 0 / 0.2);
 }
 
-.gh-cta {
-    margin-top: calc(var(--grid-gap) / 2);
-}
-
-.gh-cta-inner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 24px;
-    padding-top: 80px;
-    border-top: 1px solid var(--color-border);
-}
-
-.gh-cta-title {
-    max-width: 720px;
-    font-size: 4.4rem;
-    font-weight: 800;
-    line-height: 1.1;
-    letter-spacing: -0.026em;
-}
-
-.gh-cta-description {
-    margin-top: 8px;
-    font-size: 2rem;
-    font-weight: 450;
-    line-height: 1.4;
-    letter-spacing: -.017em;
-    color: var(--color-secondary-text);
-}
-
-.gh-cta .gh-header-form {
-    display: flex;
-    align-items: center;
-    position: relative;
-    overflow: hidden;
-    max-width: 520px;
-    width: 100%;
-    height: 64px;
-    font-size: 1.8rem;
-    font-weight: 450;
-    letter-spacing: -0.008em;
-    border-radius: 40px;
-    background-color: var(--color-lighter-gray);
-    transition: background-color 0.2s ease;
-}
-
-.gh-cta .gh-header-form:hover {
-    background-color: rgb(0 0 0 / 0.05);
-}
-
-.gh-cta .gh-header-input {
-    position: absolute;
-    inset: 0;
-    padding-inline: 26px;
-    width: 100%;
-    height: 100%;
-    font-size: inherit;
-    letter-spacing: inherit;
-    border: 0;
-    background-color: transparent;
-}
-
-.gh-cta button.gh-header-input {
-    padding-inline-start: 56px;
-    text-align: left;
-    color: var(--color-secondary-text);
-    cursor: pointer;
-}
-
-.gh-cta .gh-button {
-    position: absolute;
-    right: 6px;
-    padding-inline: 32px;
-    height: 52px;
-    font-size: inherit;
-    font-weight: 600;
-}
-
-/* X. Footer
+/* 21. Footer
 /* ---------------------------------------------------------- */
 
 .gh-footer {
@@ -2115,7 +2119,7 @@ figcaption a {
     color: inherit;
 }
 
-/* X.1 Footer styles */
+/* 21.1 Footer styles */
 
 .gh-footer.has-accent-color {
     background-color: var(--ghost-accent-color);
@@ -2130,7 +2134,7 @@ figcaption a {
     color: #15171a;
 }
 
-/* X.2. With recent posts */
+/* 21.2. With recent posts */
 
 .post-template .gh-container + .gh-footer {
     margin-top: 0;
@@ -2140,7 +2144,7 @@ figcaption a {
     background-color: var(--color-lighter-gray);
 }
 
-/* X.3. Footer bar */
+/* 21.3. Footer bar */
 
 .gh-footer-bar {
     display: grid;
@@ -2175,7 +2179,7 @@ figcaption a {
     text-decoration: underline;
 }
 
-/* X.4. Footer signup */
+/* 21.4. Footer signup */
 
 .gh-footer-signup {
     display: flex;
