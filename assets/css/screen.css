@@ -1304,9 +1304,9 @@ Search                         LOGO                    Login Subscribe
     display: none;
     grid-column: 1 / -1;
     margin-top: 48px;
-    font-size: 1.7rem;
-    font-weight: 700;
-    text-transform: uppercase;
+    font-size: 2.4rem;
+    font-weight: 750;
+    letter-spacing: -0.019em;
 }
 
 .gh-container.has-sidebar .gh-more {
