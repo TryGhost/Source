@@ -139,7 +139,7 @@
                     "Search",
                     "Off"
                 ],
-                "default": "Highlight",
+                "default": "Landing",
                 "group": "homepage"
             },
             "use_publication_cover_as_background": {
@@ -158,7 +158,7 @@
                     "Grid",
                     "List"
                 ],
-                "default": "Grid",
+                "default": "List",
                 "group": "homepage"
             },
             "hide_images": {
@@ -178,7 +178,7 @@
             },
             "show_sidebar": {
                 "type": "boolean",
-                "default": true,
+                "default": false,
                 "group": "homepage"
             }
         }
