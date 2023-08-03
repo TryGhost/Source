@@ -91,7 +91,7 @@
                     "Logo in the middle",
                     "Stacked"
                 ],
-                "default": "Logo on the left"
+                "default": "Logo in the middle"
             },
             "page_background_color": {
                 "type": "color",
@@ -103,7 +103,7 @@
                     "Background color",
                     "Accent color"
                 ],
-                "default": "Background color"
+                "default": "Accent color"
             },
             "title_font": {
                 "type": "select",
@@ -124,7 +124,7 @@
             },
             "footer_signup_header": {
                 "type": "text",
-                "default": "Stay in the loop"
+                "default": ""
             },
             "footer_signup_subhead": {
                 "type": "text",
