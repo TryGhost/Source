@@ -7,6 +7,12 @@
     {{> "components/featured" showFeatured=@custom.show_featured limit=4}}
 {{/match}}
 
-{{> "components/cta"}}
+{{#match @custom.header_style "!=" "Landing"}}
+{{#match @custom.header_style "!=" "Search"}}
+{{#match @custom.header_style "!=" "Off"}}
+    {{> "components/cta"}}
+{{/match}}
+{{/match}}
+{{/match}}
 
 {{> "components/post-list" postListStyle=@custom.post_list_style}}

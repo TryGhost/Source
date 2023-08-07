@@ -63,6 +63,7 @@ production stylesheet in assets/built/screen.css
     --color-border: rgb(0 0 0 / 0.08);
     --font-sans: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     --font-serif: "EB Garamond", Georgia, Times, serif;
+    --font-serif-alt: Georgia, Times, serif;
     --font-slab: "Roboto Slab", Georgia, Times, serif;
     --font-mono: Menlo, Courier, monospace;
     --container-width: 1320px;
@@ -303,8 +304,7 @@ a:hover {
 
 .gh-navigation-logo {
     position: relative;
-    font-size: 2.6rem;
-    font-weight: 750;
+    font-size: calc(2.6rem * var(--factor, 1));
     letter-spacing: -0.015em;
     white-space: nowrap;
 }
@@ -778,8 +778,7 @@ Search                         LOGO                    Login Subscribe
 }
 
 .gh-card-title {
-    font-size: 2.1rem;
-    font-weight: 800;
+    font-size: calc(2.1rem * var(--factor, 1));
     letter-spacing: -0.014em;
 }
 
@@ -1025,7 +1024,8 @@ Search                         LOGO                    Login Subscribe
 
 .gh-header.is-classic {
     display: flex;
-    min-height: calc(100vh - 100px - 240px);
+    margin-top: 0;
+    padding-block: 160px;
 }
 
 .gh-header.is-classic .gh-header-inner {
@@ -1039,8 +1039,7 @@ Search                         LOGO                    Login Subscribe
 }
 
 .gh-header.is-classic .gh-header-title {
-    font-size: clamp(3.2rem, 3.18vw + 1.93rem, 6rem);
-    font-weight: 750;
+    font-size: calc(clamp(3.2rem, 3.18vw + 1.93rem, 6rem) * var(--factor, 1));
     line-height: 1.1;
     letter-spacing: -0.022em;
 }
@@ -1212,10 +1211,6 @@ Search                         LOGO                    Login Subscribe
     font-weight: 600;
 }
 
-.gh-header.is-classic ~ .gh-cta {
-    display: none;
-}
-
 /* 10. Featured posts
 /* ---------------------------------------------------------- */
 
@@ -1300,11 +1295,15 @@ Search                         LOGO                    Login Subscribe
     margin-top: 100px;
 }
 
+.gh-header.is-classic:not(.has-image) ~ .gh-container {
+    margin-top: 0;
+}
+
 .gh-more {
     display: none;
     grid-column: 1 / -1;
     margin-top: 48px;
-    font-size: 2.4rem;
+    font-size: calc(2.4rem * var(--factor, 1));
     font-weight: 750;
     letter-spacing: -0.019em;
 }
@@ -1340,7 +1339,7 @@ Search                         LOGO                    Login Subscribe
 
 /* 11.2. Without sidebar */
 
-.gh-container:not(.has-sidebar) .gh-main {
+.gh-container:not(.has-sidebar) :is(.gh-container-title, .gh-main, .gh-more) {
     grid-column: 3 / span 12;
 }
 
@@ -1356,6 +1355,10 @@ Search                         LOGO                    Login Subscribe
     letter-spacing: 0.01em;
     text-transform: uppercase;
     border-bottom: 1px solid var(--color-border);
+}
+
+.gh-container-title:has(+ .gh-main:not(:has(.gh-card))) {
+    display: none;
 }
 
 .gh-container .gh-feed {
@@ -1466,8 +1469,7 @@ Search                         LOGO                    Login Subscribe
 }
 
 .gh-about-title {
-    font-size: 2.4rem;
-    font-weight: 800;
+    font-size: calc(2.4rem * var(--factor, 1));
     letter-spacing: -0.019em;
 }
 
@@ -1493,7 +1495,7 @@ Search                         LOGO                    Login Subscribe
 }
 
 .gh-article-header {
-    margin: 40px 0;
+    margin: 72px 0 40px;
 }
 
 .gh-article-tag {
@@ -1506,8 +1508,7 @@ Search                         LOGO                    Login Subscribe
 }
 
 .gh-article-title {
-    font-size: clamp(3.2rem, 1.59vw + 2.56rem, 4.6rem);
-    font-weight: 750;
+    font-size: calc(clamp(3.2rem, 1.59vw + 2.56rem, 4.6rem) * var(--factor, 1));
     line-height: 1.05;
     letter-spacing: -0.022em;
 }
@@ -1813,6 +1814,10 @@ unless a heading is the very first element in the post content */
     font-family: var(--font-serif);
 }
 
+.has-slab-title .kg-toggle-card .kg-toggle-heading-text {
+    font-family: var(--font-slab);
+}
+
 /* Callout */
 
 .kg-callout-card.kg-card {
@@ -1848,6 +1853,10 @@ blockquote.kg-blockquote-alt {
     font-family: var(--font-serif);
 }
 
+.has-slab-title .kg-card.kg-header-card h2.kg-header-card-header {
+    font-family: var(--font-slab);
+}
+
 .has-serif-body .kg-header-card h3.kg-header-card-subheader {
     font-family: var(--font-serif);
 }
@@ -1856,6 +1865,10 @@ blockquote.kg-blockquote-alt {
 
 .kg-bookmark-card .kg-bookmark-container {
     border-radius: 0.25em !important;
+}
+
+.kg-bookmark-card .kg-bookmark-container:hover {
+    opacity: 1;
 }
 
 .kg-bookmark-card .kg-bookmark-content {
@@ -1891,10 +1904,16 @@ blockquote.kg-blockquote-alt {
     margin-top: 12px;
 }
 
-.is-font-serif .kg-product-card.kg-card .kg-product-card-title,
-.is-font-serif .kg-product-card.kg-card .kg-product-card-description :is(p, ul, ol),
-.is-font-serif .kg-product-card.kg-card .kg-product-card-button {
+.has-serif-title .kg-product-card.kg-card .kg-product-card-title {
     font-family: var(--font-serif);
+}
+
+.has-slab-title .kg-product-card.kg-card .kg-product-card-title {
+    font-family: var(--font-slab);
+}
+
+.has-serif-body .kg-product-card-description :is(p, ul, ol) {
+    font-family: var(--font-serif-alt);
 }
 
 /* File */
@@ -1920,7 +1939,7 @@ blockquote.kg-blockquote-alt {
 
 figcaption {
     margin-top: 12px;
-    font-size: calc(1.4rem * var(--font-multiplier, 1));
+    font-size: 1.4rem;
     text-align: center;
 }
 
@@ -2039,16 +2058,27 @@ figcaption a {
 
 /* 20.1. Typography */
 
+.has-serif-title {
+    --factor: 1.15;
+}
+
+.has-slab-title {
+    --factor: 1.1;
+}
+
 .has-sans-title .is-title {
     font-family: var(--font-sans);
+    font-weight: 800;
 }
 
 .has-serif-title .is-title {
     font-family: var(--font-serif);
+    font-weight: 600;
 }
 
 .has-slab-title .is-title {
     font-family: var(--font-slab);
+    font-weight: 650;
 }
 
 .has-sans-body .is-body {
@@ -2056,12 +2086,7 @@ figcaption a {
 }
 
 .has-serif-body .is-body {
-    font-family: Georgia;
-}
-
-.has-serif-title :is(.gh-navigation-logo, .gh-footer-logo) {
-    font-size: 2.8rem;
-    font-weight: 600;
+    font-family: var(--font-serif-alt);
 }
 
 .has-serif-title .gh-header.is-classic .gh-header-title {
@@ -2069,30 +2094,24 @@ figcaption a {
     letter-spacing: -0.015em;
 }
 
+.has-serif-title .gh-header.is-classic .gh-header-form {
+    border-radius: 0;
+}
+
 .has-serif-title .gh-card-title {
-    font-size: 2.3rem;
-    font-weight: 600;
     line-height: 1.1;
     letter-spacing: -0.006em;
 }
 
-.has-serif-title .gh-featured-feed .gh-card-title {
-    font-size: 2.1rem;
-}
-
 .has-serif-title .gh-about-title {
-    font-size: 2.6rem;
-    font-weight: 600;
     letter-spacing: -0.009em;
 }
 
 .has-serif-title .gh-footer-signup-header {
-    font-weight: 550;
     letter-spacing: -0.019em;
 }
 
 .has-serif-title .gh-article-title {
-    font-weight: 600;
     letter-spacing: -0.019em;
 }
 
@@ -2123,12 +2142,12 @@ figcaption a {
     letter-spacing: 0;
 }
 
-.has-slab-title :is(.gh-button, .gh-header-form) {
-    border-radius: 8px;
+.has-serif-title :is(.gh-button, .gh-header.is-classic .gh-header-form) {
+    border-radius: 0;
 }
 
-.has-serif-title :is(.gh-button, .gh-header-form) {
-    border-radius: 0;
+.has-slab-title :is(.gh-button, .gh-header.is-classic .gh-header-form) {
+    border-radius: 8px;
 }
 
 /* 20.2. Colors */
@@ -2141,7 +2160,7 @@ figcaption a {
 /* ---------------------------------------------------------- */
 
 .gh-footer {
-    margin-top: 120px;
+    margin-top: 160px;
     font-size: 1.6rem;
     color: var(--color-darker-gray);
 }
@@ -2188,10 +2207,13 @@ figcaption a {
 
 .gh-footer-logo {
     position: relative;
-    font-size: 2.6rem;
-    font-weight: 750;
+    font-size: calc(2.6rem * var(--factor, 1));
     letter-spacing: -0.015em;
     white-space: nowrap;
+}
+
+.gh-footer-logo img {
+    max-height: 40px;
 }
 
 .gh-footer-menu .nav {
@@ -2220,7 +2242,7 @@ figcaption a {
 }
 
 .gh-footer-signup-header {
-    font-size: clamp(3.2rem, 2.5vw + 2.2rem, 5.4rem);
+    font-size: calc(clamp(3.2rem, 2.5vw + 2.2rem, 5.4rem) * var(--factor, 1));
     font-weight: 750;
     letter-spacing: -0.03em;
 }

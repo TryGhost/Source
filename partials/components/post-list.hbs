@@ -40,9 +40,11 @@
             </aside>
         {{/if}}
 
-        <div class="gh-more is-title">
-            <a href="/page/2">See all →</a>
-        </div>
+        {{#match pagination.pages ">" 1}}
+            <div class="gh-more is-title">
+                <a href="/page/2">See all →</a>
+            </div>
+        {{/match}}
 
     </div>
 </section>
