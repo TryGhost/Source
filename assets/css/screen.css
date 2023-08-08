@@ -1143,6 +1143,9 @@ Search                         LOGO                    Login Subscribe
     align-items: center;
     gap: 24px;
     padding-top: 100px;
+}
+
+.gh-header + .gh-cta .gh-cta-inner {
     border-top: 1px solid var(--color-border);
 }
 

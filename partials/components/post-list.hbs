@@ -6,13 +6,25 @@
         <main class="gh-main">
             <div class="gh-feed">
                 {{#match @custom.header_style "Highlight"}}
-                    {{#foreach posts from="11" limit="9"}}
-                        {{> "post-card"}}
-                    {{/foreach}}
+                    {{#match posts.length ">=" 10}}
+                        {{#foreach posts from="11" limit="9"}}
+                            {{> "post-card"}}
+                        {{/foreach}}
+                    {{else}}
+                        {{#foreach posts limit="9"}}
+                            {{> "post-card"}}
+                        {{/foreach}}
+                    {{/match}}
                 {{else match @custom.header_style "Magazine"}}
-                    {{#foreach posts from="8" limit="9"}}
-                        {{> "post-card"}}
-                    {{/foreach}}
+                    {{#match posts.length ">=" 7}}
+                        {{#foreach posts from="8" limit="9"}}
+                            {{> "post-card"}}
+                        {{/foreach}}
+                    {{else}}
+                        {{#foreach posts limit="9"}}
+                            {{> "post-card"}}
+                        {{/foreach}}
+                    {{/match}}
                 {{else}}
                     {{#foreach posts limit="9"}}
                         {{> "post-card"}}

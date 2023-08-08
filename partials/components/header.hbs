@@ -1,77 +1,15 @@
 {{#match headerStyle "!=" "Off"}}
-    <section class="gh-header is-{{#match headerStyle "Magazine"}}magazine{{else match headerStyle "Highlight"}}highlight{{else}}classic{{/match}}{{#if @custom.use_publication_cover_as_background}}{{#if @site.cover_image}} has-image{{/if}}{{/if}} gh-outer">
-        
-        {{!-- Background image --}}
-        {{#if @custom.use_publication_cover_as_background}}
-            {{#match headerStyle "!=" "Magazine"}}
-            {{#match headerStyle "!=" "Highlight"}}
-                {{#if @site.cover_image}}
-                    <img class="gh-header-image" src="{{@site.cover_image}}" alt="{{@site.title}}">
-                {{/if}}
-            {{/match}}
-            {{/match}}
-        {{/if}}
 
-        <div class="gh-header-inner gh-inner">
+    {{#match headerStyle "Highlight"}}
+        {{#match posts.length ">=" 10}}
+            {{> "components/header-content"}}
+        {{/match}}
+    {{else match headerStyle "Magazine"}}
+        {{#match posts.length ">=" 7}}
+            {{> "components/header-content"}}
+        {{/match}}
+    {{else}}
+        {{> "components/header-content"}}
+    {{/match}}
 
-            {{!-- Highlight layout --}}
-            {{#match headerStyle "Highlight"}}
-                <div class="gh-header-left">
-                    {{#foreach posts limit="4"}}
-                        {{> "post-card"}}
-                    {{/foreach}}
-                </div>
-                <div class="gh-header-right">
-                    {{#if @custom.show_featured}}
-                        {{> "components/featured" showFeatured=@custom.show_featured limit=6}}
-                    {{else}}
-                        <div class="gh-featured-feed">
-                            {{#foreach posts from="5" limit="6"}}
-                                {{> "post-card"}}
-                            {{/foreach}}
-                        </div>
-                    {{/if}}
-                </div>
-            {{/match}}
-
-            {{!-- Magazine layout --}}
-            {{#match headerStyle "Magazine"}}
-                {{#foreach posts limit="7"}}
-                    {{#match @number 2}}
-                        <div class="gh-header-left">
-                    {{/match}}
-                    {{#match @number 5}}
-                        <div class="gh-header-right">
-                    {{/match}}
-                    {{> "post-card"}}
-                    {{#match @number 4}}
-                        </div>
-                    {{/match}}
-                    {{#match @number 7}}
-                        </div>
-                    {{/match}}
-                {{/foreach}}
-            {{/match}}
-
-            {{!-- Landing layout --}}
-            {{#match headerStyle "Landing"}}
-                <h1 class="gh-header-title is-title">{{@site.description}}</h1>
-                <form class="gh-header-form">
-                    <input class="gh-header-input" type="email" placeholder="jamie@example.com">
-                    <button class="gh-button" type="submit">Subscribe</button>
-                </form>
-            {{/match}}
-
-            {{!-- Search layout --}}
-            {{#match headerStyle "Search"}}
-                <h1 class="gh-header-title is-title">{{@site.description}}</h1>
-                <form class="gh-header-form">
-                    {{> "icons/search"}}
-                    <button class="gh-header-input" data-ghost-search>Search posts, tags and authors</button>
-                </form>
-            {{/match}}
-
-        </div>
-
-    </section>
 {{/match}}
