@@ -2145,11 +2145,11 @@ figcaption a {
     letter-spacing: 0;
 }
 
-.has-serif-title :is(.gh-button, .gh-header.is-classic .gh-header-form) {
+.has-serif-title :is(.gh-button, :is(.gh-header.is-classic, .gh-cta) .gh-header-form) {
     border-radius: 0;
 }
 
-.has-slab-title :is(.gh-button, .gh-header.is-classic .gh-header-form) {
+.has-slab-title :is(.gh-button, :is(.gh-header.is-classic, .gh-cta) .gh-header-form) {
     border-radius: 8px;
 }
 
