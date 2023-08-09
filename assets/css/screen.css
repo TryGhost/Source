@@ -1238,6 +1238,11 @@ Search                         LOGO                    Login Subscribe
     gap: var(--grid-gap);
 }
 
+.gh-featured-feed .gh-card {
+    container-type: inline-size;
+    container-name: featured-card;
+}
+
 .gh-featured-feed .gh-card-link {
     display: flex;
     flex-direction: row-reverse;
@@ -1249,14 +1254,16 @@ Search                         LOGO                    Login Subscribe
     aspect-ratio: 1;
 }
 
+@container featured-card (width < 240px) {
+    .gh-featured-feed .gh-card-image {
+        display: none;
+    }
+}
+
 .gh-featured-feed .gh-card-title {
-    display: -webkit-box;
-    overflow-y: hidden;
     font-size: 1.7rem;
     font-weight: 725;
     letter-spacing: -0.011em;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
 }
 
 .gh-featured-feed .gh-card-excerpt {
