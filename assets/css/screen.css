@@ -827,6 +827,7 @@ Search                         LOGO                    Login Subscribe
 
 .gh-header-inner {
     position: relative;
+    overflow: hidden;
 }
 
 /* 8.1. Magazine layout */
@@ -1007,7 +1008,7 @@ Search                         LOGO                    Login Subscribe
     background-color: var(--color-border);
 }
 
-.gh-header.is-highlight .gh-card + .gh-card::before {
+.gh-header.is-highlight .gh-card::before {
     position: absolute;
     top: calc(var(--grid-gap) / -2);
     left: 0;
@@ -1015,6 +1016,74 @@ Search                         LOGO                    Login Subscribe
     width: 100%;
     height: 1px;
     background-color: var(--color-border);
+}
+
+@media (max-width: 1024px) {
+    .gh-header.is-highlight .gh-header-inner {
+        grid-template-columns: repeat(9, 1fr);
+    }
+
+    .gh-header.is-highlight .gh-header-left {
+        grid-column: span 6;
+    }
+
+    .gh-header.is-highlight .gh-header-middle {
+        grid-column: 7 / -1;
+    }
+
+    .gh-header.is-highlight .gh-header-right {
+        grid-column: 1 / -1;
+    }
+
+    .gh-header.is-highlight .gh-featured-feed {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .gh-header.is-highlight .gh-featured-feed .gh-card:before {
+        width: calc(100% + var(--grid-gap));
+    }
+
+    .gh-header.is-highlight .gh-featured-feed .gh-card::after {
+        position: absolute;
+        top: 0;
+        left: calc(var(--grid-gap) / -2);
+        content: "";
+        width: 1px;
+        height: 100%;
+        background-color: var(--color-border);
+    }
+}
+
+@media (max-width: 768px) {
+    .gh-header.is-highlight .gh-featured-feed {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .gh-header.is-highlight .gh-header-middle .gh-card:nth-child(2) .gh-card-image {
+        display: none;
+    }
+}
+
+@media (max-width: 640px) {
+    .gh-header.is-highlight .gh-header-inner {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .gh-header.is-highlight .gh-header-middle .gh-card .gh-card-image {
+        display: block !important;
+    }
+
+    .gh-header.is-highlight .gh-featured-feed {
+        display: flex;
+        gap: calc(var(--grid-gap) / 2);
+    }
+
+    .gh-header.is-highlight .gh-featured-feed .gh-card::before {
+        display: none;
+    }
 }
 
 /* 8.3. Classic layout */
@@ -1274,7 +1343,7 @@ Search                         LOGO                    Login Subscribe
     margin-top: 10px;
 }
 
-.gh-featured-feed .gh-card + .gh-card::before {
+.gh-featured-feed .gh-card::before {
     position: absolute;
     top: 0;
     left: calc(var(--grid-gap) / -2);
