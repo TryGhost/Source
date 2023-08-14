@@ -1,4 +1,4 @@
-<section class="gh-container is-{{#match @custom.post_list_style "List"}}list{{else}}grid{{/match}}{{#if @custom.show_sidebar}} has-sidebar{{/if}}{{#if @custom.hide_images}} no-image{{/if}} gh-outer">
+<section class="gh-container is-{{#match @custom.post_feed_style "List"}}list{{else}}grid{{/match}}{{#if @custom.show_sidebar}} has-sidebar{{/if}}{{#unless @custom.show_images_in_feed}} no-image{{/unless}} gh-outer">
     <div class="gh-container-inner gh-inner">
         
         <h2 class="gh-container-title">Latest</h2>
@@ -45,7 +45,13 @@
                     {{/if}}
                     {{#if @site.members_enabled}}
                         {{#unless @member}}
-                            <button class="gh-button">Subscribe</button>
+                            <button class="gh-button" data-portal="signup">Subscribe</button>
+                        {{else}}
+                            {{#if @site.paid_members_enabled}}
+                                {{#unless @member.paid}}
+                                    <button class="gh-button" data-portal="upgrade">Subscribe</button>
+                                {{/unless}}
+                            {{/if}}
                         {{/unless}}
                     {{/if}}
                 </section>

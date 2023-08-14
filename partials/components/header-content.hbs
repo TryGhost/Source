@@ -26,8 +26,8 @@
                 {{/foreach}}
             </div>
             <div class="gh-header-right">
-                {{#if @custom.show_featured}}
-                    {{> "components/featured" showFeatured=@custom.show_featured limit=6}}
+                {{#if @custom.highlight_featured_posts}}
+                    {{> "components/featured" showFeatured=@custom.highlight_featured_posts limit=6}}
                 {{else}}
                     <div class="gh-featured-feed">
                         {{#foreach posts from="5" limit="6"}}
@@ -60,18 +60,15 @@
         {{!-- Landing layout --}}
         {{#match headerStyle "Landing"}}
             <h1 class="gh-header-title is-title">{{@site.description}}</h1>
-            <form class="gh-header-form">
-                <input class="gh-header-input" type="email" placeholder="jamie@example.com">
-                <button class="gh-button" type="submit">Subscribe</button>
-            </form>
+            {{> "email-subscription"}}
         {{/match}}
 
         {{!-- Search layout --}}
         {{#match headerStyle "Search"}}
             <h1 class="gh-header-title is-title">{{@site.description}}</h1>
-            <form class="gh-header-form">
+            <form class="gh-form">
                 {{> "icons/search"}}
-                <button class="gh-header-input" data-ghost-search>Search posts, tags and authors</button>
+                <button class="gh-form-input" data-ghost-search>Search posts, tags and authors</button>
             </form>
         {{/match}}
 

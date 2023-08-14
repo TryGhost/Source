@@ -1,17 +1,21 @@
-<section class="gh-cta gh-outer">
-    <div class="gh-cta-inner gh-inner">
-        <div class="gh-cta-content">
-            <h2 class="gh-cta-title is-title">
-                {{#if @custom.footer_signup_header}}
-                    {{@custom.footer_signup_header}}
-                {{else}}
-                    Subscribe to {{@site.title}}
-                {{/if}}
-            </h2>
-        </div>
-        <form class="gh-header-form">
-            <input class="gh-header-input" type="email" placeholder="jamie@example.com">
-            <button class="gh-button" type="submit">Subscribe</button>
-        </form>
-    </div>
-</section>
+{{#if @site.members_enabled}}
+    {{#unless @member}}
+        {{#match @custom.header_style "!=" "Landing"}}
+        {{#match @custom.header_style "!=" "Search"}}
+        {{#match @custom.header_style "!=" "Off"}}
+            <section class="gh-cta gh-outer">
+                <div class="gh-cta-inner gh-inner">
+                    <div class="gh-cta-content">
+                        <h2 class="gh-cta-title is-title">{{@site.title}}</h2>
+                        {{#if @site.description}}
+                            <p class="gh-cta-description is-body">{{@site.description}}</p>
+                        {{/if}}
+                    </div>
+                    {{> "email-subscription"}}
+                </div>
+            </section>
+        {{/match}}
+        {{/match}}
+        {{/match}}
+    {{/unless}}
+{{/if}}

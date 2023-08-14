@@ -87,21 +87,21 @@
             "navigation_layout": {
                 "type": "select",
                 "options": [
-                    "Logo on the left",
                     "Logo in the middle",
+                    "Logo on the left",
                     "Stacked"
                 ],
                 "default": "Logo in the middle"
             },
-            "page_background_color": {
+            "site_background_color": {
                 "type": "color",
                 "default": "#ffffff"
             },
             "header_and_footer_color": {
                 "type": "select",
                 "options": [
-                    "Background color",
-                    "Accent color"
+                    "Accent color",
+                    "Background color"
                 ],
                 "default": "Accent color"
             },
@@ -122,20 +122,12 @@
                 ],
                 "default": "Modern sans-serif"
             },
-            "footer_signup_header": {
-                "type": "text",
-                "default": ""
-            },
-            "footer_signup_subhead": {
-                "type": "text",
-                "default": "New content delivered to your inbox."
-            },
             "header_style": {
                 "type": "select",
                 "options": [
+                    "Landing",
                     "Highlight",
                     "Magazine",
-                    "Landing",
                     "Search",
                     "Off"
                 ],
@@ -147,23 +139,23 @@
                 "default": false,
                 "group": "homepage"
             },
-            "show_featured": {
+            "highlight_featured_posts": {
                 "type": "boolean",
                 "default": true,
                 "group": "homepage"
             },
-            "post_list_style": {
+            "post_feed_style": {
                 "type": "select",
                 "options": [
-                    "Grid",
-                    "List"
+                    "List",
+                    "Grid"
                 ],
                 "default": "List",
                 "group": "homepage"
             },
-            "hide_images": {
+            "show_images_in_feed": {
                 "type": "boolean",
-                "default": false,
+                "default": true,
                 "group": "homepage"
             },
             "show_author": {

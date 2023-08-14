@@ -1,4 +1,4 @@
-<article class="gh-card {{post_class}}">
+<article class="gh-card {{post_class}}{{#unless @custom.show_images_in_feed}} no-image{{/unless}}">
     <a class="gh-card-link" href="{{url}}">
         {{#if feature_image}}
             <figure class="gh-card-image">

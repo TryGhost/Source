@@ -9,7 +9,15 @@
             {{> "components/header-content"}}
         {{/match}}
     {{else}}
-        {{> "components/header-content"}}
+        {{#match headerStyle "Landing"}}
+            {{#if @site.members_enabled}}
+                {{#unless @member}}
+                    {{> "components/header-content"}}
+                {{/unless}}
+            {{/if}}
+        {{else}}
+            {{> "components/header-content"}}
+        {{/match}}
     {{/match}}
 
 {{/match}}

@@ -1,8 +1,8 @@
-<section class="gh-container is-{{#match @custom.post_list_style "List"}}list{{else}}grid{{/match}}{{#if @custom.hide_images}} no-image{{/if}} gh-outer">
+<section class="gh-container is-{{#match @custom.post_feed_style "List"}}grid{{else}}grid{{/match}}{{#unless @custom.show_images_in_feed}} no-image{{/unless}} gh-outer">
     <div class="gh-container-inner gh-inner">
         <h2 class="gh-container-title">Read more</h2>
         <div class="gh-feed">
-            {{#get "posts" include="authors" filter="id:-{{post.id}}" limit="3" as |next|}}
+            {{#get "posts" include="authors" filter="id:-{{post.id}}" limit="4" as |next|}}
                 {{#foreach next}}
                     {{> "post-card"}}
                 {{/foreach}}
