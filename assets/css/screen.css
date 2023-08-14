@@ -338,6 +338,7 @@ button.gh-form-input {
     height: 100px;
     font-size: 1.6rem;
     font-weight: 550;
+    background-color: var(--background-color);
     color: var(--color-darker-gray);
 }
 
@@ -471,6 +472,10 @@ LOGO   Home About Collection Author Portal             Login Subscribe
 }
 
 @media (min-width: 992px) {
+    .gh-navigation.is-left-logo .gh-navigation-logo:not(:has(img)) {
+        top: -2px;
+    }
+
     .gh-navigation.is-left-logo .gh-navigation-menu {
         margin-right: 100px;
         margin-left: 16px;
@@ -771,7 +776,6 @@ Search                         LOGO                    Login Subscribe
         gap: 12px;
         align-items: center;
         padding: var(--container-gap) 0 calc(var(--container-gap) + 8px);
-        background-color: var(--color-white);
     }
 
     .is-open#gh-navigation :is(.gh-button, a[data-portal="signin"]) {
@@ -1131,7 +1135,7 @@ Search                         LOGO                    Login Subscribe
     display: none;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1199px) {
     .gh-header.is-highlight .gh-header-inner {
         grid-template-columns: repeat(9, 1fr);
     }
@@ -1168,34 +1172,25 @@ Search                         LOGO                    Login Subscribe
     }
 }
 
-@media (max-width: 768px) {
-    .gh-header.is-highlight .gh-featured-feed {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-    }
-
+@media (max-width: 991px) {
     .gh-header.is-highlight .gh-header-middle .gh-card:nth-child(2) .gh-card-image {
         display: none;
     }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 767px) {
     .gh-header.is-highlight .gh-header-inner {
         display: flex;
         flex-direction: column;
     }
 
-    .gh-header.is-highlight .gh-header-middle .gh-card .gh-card-image {
-        display: block !important;
-    }
-
     .gh-header.is-highlight .gh-featured-feed {
         display: flex;
-        gap: calc(var(--grid-gap) / 2);
+        /* gap: var(--grid-gap); */
     }
 
-    .gh-header.is-highlight .gh-featured-feed .gh-card::before {
-        display: none;
+    .gh-header.is-highlight .gh-card-image {
+        display: block !important;
     }
 }
 
@@ -1401,6 +1396,23 @@ Search                         LOGO                    Login Subscribe
     background-color: var(--color-border);
 }
 
+@media (max-width: 1199px) {
+    .gh-viewport > .gh-featured .gh-featured-feed {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .gh-viewport > .gh-featured .gh-featured-feed .gh-card:nth-child(4) {
+        display: none;
+    }
+}
+
+@media (max-width: 767px) {
+    .gh-viewport > .gh-featured .gh-featured-feed {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
 /* 11. Container
 /* ---------------------------------------------------------- */
 
@@ -1483,6 +1495,12 @@ Search                         LOGO                    Login Subscribe
 
     .gh-container.has-sidebar .gh-sidebar {
         display: none;
+    }
+}
+
+@media (max-width: 767px) {
+    .gh-container-inner {
+        display: block;
     }
 }
 
@@ -1600,6 +1618,19 @@ Search                         LOGO                    Login Subscribe
     width: 1px;
     height: 100%;
     background-color: var(--color-border);
+}
+
+@media (max-width: 767px) {
+    .gh-container.is-grid .gh-feed {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .gh-container.is-grid .gh-feed {
+        display: flex;
+        flex-direction: column;
+    }
 }
 
 /* 12.3. No image list */
@@ -2136,6 +2167,10 @@ figcaption a {
     grid-template-columns: repeat(4, 1fr);
 }
 
+.post-template .gh-container .gh-container-title {
+    display: block;
+}
+
 /* 19. Archive
 /* ---------------------------------------------------------- */
 
@@ -2211,6 +2246,18 @@ figcaption a {
 .gh-author-social svg {
     width: 20px;
     height: 20px;
+}
+
+@media (max-width: 767px) {
+    .gh-archive {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .author-template .gh-archive {
+        flex-direction: column-reverse;
+        align-items: flex-start;
+    }
 }
 
 /* 20. Design settings
