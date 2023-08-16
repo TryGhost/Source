@@ -59,8 +59,9 @@ production stylesheet in assets/built/screen.css
     --color-darker-gray: #15171a;
     --color-black: #000;
     --color-primary-text: var(--color-darker-gray);
-    --color-secondary-text: rgb(0 0 0 / 0.4);
+    --color-secondary-text: rgb(0 0 0 / 0.5);
     --color-border: rgb(0 0 0 / 0.08);
+    --color-dark-border: rgb(0 0 0 / 0.5);
     --font-sans: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     --font-serif: "EB Garamond", Georgia, Times, serif;
     --font-serif-alt: Georgia, Times, serif;
@@ -68,7 +69,7 @@ production stylesheet in assets/built/screen.css
     --font-mono: Menlo, Courier, monospace;
     --container-width: 1320px;
     --container-gap: clamp(24px, 1.7032rem + 1.9355vw, 48px);
-    --grid-gap: 48px;
+    --grid-gap: 42px;
 }
 
 :root.has-light-text,
@@ -77,6 +78,7 @@ production stylesheet in assets/built/screen.css
     --color-darker-gray: #fff;
     --color-secondary-text: rgb(255 255 255 / 0.64);
     --color-border: rgb(255 255 255 / 0.15);
+    --color-dark-border: rgb(255 255 255 / 0.5);
 }
 
 /* 2. Fonts
@@ -186,7 +188,7 @@ a:hover {
     align-items: center;
     justify-content: center;
     padding: 0.8em 1.4em;
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     font-weight: 600;
     letter-spacing: -0.004em;
     line-height: 1;
@@ -231,8 +233,8 @@ a:hover {
     overflow: hidden;
     max-width: 640px;
     width: 100%;
-    height: 64px;
-    font-size: 1.8rem;
+    height: 56px;
+    font-size: 1.7rem;
     font-weight: 450;
     letter-spacing: -0.008em;
     border-radius: 40px;
@@ -275,7 +277,7 @@ button.gh-form-input {
     position: absolute;
     right: 6px;
     padding-inline: 32px;
-    height: 52px;
+    height: 44px;
     font-size: inherit;
     font-weight: 600;
 }
@@ -349,7 +351,7 @@ button.gh-form-input {
 
 .gh-navigation {
     height: 100px;
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     font-weight: 550;
     background-color: var(--background-color);
     color: var(--color-darker-gray);
@@ -588,7 +590,7 @@ Search                         LOGO                    Login Subscribe
         gap: 10px;
         width: auto;
     }
-    
+
     .gh-navigation.is-stacked .gh-navigation-actions .gh-search span {
         display: inline;
     }
@@ -719,7 +721,7 @@ Search                         LOGO                    Login Subscribe
     }
 
     #gh-navigation .nav a {
-        font-size: 2.6rem;
+        font-size: 1.75rem;
         font-weight: 600;
         text-transform: none;
     }
@@ -740,12 +742,12 @@ Search                         LOGO                    Login Subscribe
 
     #gh-navigation .gh-button {
         width: 100%;
-        font-size: 1.8rem;
+        font-size: 1.75rem;
         text-transform: none;
     }
 
     #gh-navigation a[data-portal="signin"] {
-        font-size: 2rem;
+        font-size: 1.75rem;
     }
 
     #gh-main {
@@ -788,7 +790,7 @@ Search                         LOGO                    Login Subscribe
         flex-direction: column;
         gap: 12px;
         align-items: center;
-        padding: var(--container-gap) 0 calc(var(--container-gap) + 8px);
+        padding: var(--container-gap) 0;
     }
 
     .is-open#gh-navigation :is(.gh-button, a[data-portal="signin"]) {
@@ -855,6 +857,7 @@ Search                         LOGO                    Login Subscribe
     font-size: calc(1.9rem * var(--factor, 1));
     font-weight: 725;
     letter-spacing: -0.014em;
+    line-height: 1.3;
 }
 
 .gh-card-link:hover .gh-card-title {
@@ -866,7 +869,7 @@ Search                         LOGO                    Login Subscribe
     overflow-y: hidden;
     margin-top: 8px;
     max-width: 720px;
-    font-size: 1.5rem;
+    font-size: 1.45rem;
     line-height: 1.4;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -876,8 +879,8 @@ Search                         LOGO                    Login Subscribe
     display: flex;
     gap: 4px;
     flex-wrap: wrap;
-    font-size: 1.3rem;
-    font-weight: 550;
+    font-size: 1.25rem;
+    font-weight: 500;
     line-height: 1.05;
     letter-spacing: -0.004em;
     color: var(--color-secondary-text);
@@ -947,15 +950,17 @@ Search                         LOGO                    Login Subscribe
 }
 
 .gh-header.is-magazine .gh-header-inner > .gh-card .gh-card-title {
-    font-size: clamp(3.2rem, 1.82vw + 2.47rem, 4.8rem);
-    font-weight: 750;
-    line-height: 1;
+    font-size: clamp(3.2rem, 1.36vw + 2.65rem, 4.4rem);
+    font-weight: 700;
+    line-height: 1.1;
     letter-spacing: -0.022em;
 }
 
 .gh-header.is-magazine .gh-header-inner > .gh-card .gh-card-excerpt {
     margin-top: clamp(12px, 0.45vw + 10.18px, 16px);
     font-size: 1.8rem;
+    letter-spacing: -0.02em;
+    max-width: 90%;
 }
 
 .gh-header.is-magazine .gh-header-inner > .gh-card .gh-card-meta:not(:empty) {
@@ -1000,7 +1005,7 @@ Search                         LOGO                    Login Subscribe
     .gh-header.is-magazine .gh-header-inner {
         grid-template-columns: repeat(12, 1fr);
     }
-    
+
     .gh-header.is-magazine .gh-header-inner > .gh-card {
         grid-column: 1 / span 8;
     }
@@ -1079,8 +1084,8 @@ Search                         LOGO                    Login Subscribe
 
 .gh-header.is-highlight .gh-header-left .gh-card .gh-card-title {
     font-size: clamp(3.2rem, 1.82vw + 2.47rem, 4.8rem);
-    font-weight: 750;
-    line-height: 1;
+    font-weight: 700;
+    line-height: 1.1;
     letter-spacing: -0.022em;
 }
 
@@ -1121,6 +1126,10 @@ Search                         LOGO                    Login Subscribe
 .gh-header.is-highlight .gh-featured-feed {
     display: flex;
     flex-direction: column;
+}
+
+.gh-header.is-highlight .gh-featured-feed .gh-card-title {
+    font-size: clamp(1.4rem, 0.23vw + 1.31rem, 1.6rem);
 }
 
 .gh-header.is-highlight .gh-header-left::after,
@@ -1225,12 +1234,12 @@ Search                         LOGO                    Login Subscribe
     align-items: center;
     gap: 48px;
     margin: auto;
-    max-width: 960px;
+    max-width: 1080px;
     text-align: center;
 }
 
 .gh-header.is-classic .gh-header-title {
-    font-size: calc(clamp(3.2rem, 3.18vw + 1.93rem, 6rem) * var(--factor, 1));
+    font-size: calc(clamp(3.2rem, 2.27vw + 2.29rem, 5.2rem) * var(--factor, 1));
     line-height: 1.1;
     letter-spacing: -0.028em;
 }
@@ -1269,7 +1278,7 @@ Search                         LOGO                    Login Subscribe
 /* ---------------------------------------------------------- */
 
 .gh-cta {
-    margin-top: 120px;
+    margin-top: 4vw;
 }
 
 .gh-cta-inner {
@@ -1299,16 +1308,17 @@ Search                         LOGO                    Login Subscribe
 }
 
 .gh-cta-title {
-    font-size: 3.6rem;
-    font-weight: 750;
+    font-size: 4.6rem;
+    font-weight: 700;
     line-height: 1.1;
     letter-spacing: -0.021em;
 }
 
 .gh-cta-description {
-    margin-top: 10px;
+    margin-top: 16px;
     font-size: 1.8rem;
     line-height: 1.4;
+    letter-spacing: -0.015em;
 }
 
 .gh-cta .gh-form {
@@ -1338,10 +1348,10 @@ Search                         LOGO                    Login Subscribe
     margin-bottom: 20px;
     padding-bottom: 12px;
     font-size: 1.2rem;
-    font-weight: 500;
-    letter-spacing: 0.01em;
+    font-weight: 600;
+    letter-spacing: 0.025em;
     text-transform: uppercase;
-    border-bottom: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-dark-border);
 }
 
 .gh-featured-feed {
@@ -1446,7 +1456,7 @@ Search                         LOGO                    Login Subscribe
 }
 
 :is(.gh-featured, .gh-cta) + .gh-container {
-    margin-top: 100px;
+    margin-top: 4vw;
 }
 
 .gh-header.is-classic:not(.has-image) + .gh-container {
@@ -1682,20 +1692,20 @@ Search                         LOGO                    Login Subscribe
 
 .gh-about-icon {
     margin-bottom: 24px;
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
 }
 
 .gh-about-title {
     font-size: calc(2.4rem * var(--factor, 1));
-    font-weight: 750;
+    font-weight: 700;
     letter-spacing: -0.019em;
 }
 
 .gh-about-description {
     margin-top: 12px;
-    font-size: 1.5rem;
+    font-size: 1.45rem;
     line-height: 1.4;
 }
 
@@ -1729,15 +1739,15 @@ Search                         LOGO                    Login Subscribe
 
 .gh-article-title {
     font-size: calc(clamp(3.4rem, 1.36vw + 2.85rem, 4.6rem) * var(--factor, 1));
-    line-height: 1.05;
+    line-height: 1.1;
     letter-spacing: -0.022em;
 }
 
 .gh-article-excerpt {
     margin-top: clamp(12px, 0.45vw + 10.18px, 16px);
     max-width: 720px;
-    font-size: clamp(2rem, 0.23vw + 1.91rem, 2.2rem);
-    line-height: 1.35;
+    font-size: clamp(1.5rem, 0.45vw + 1.32rem, 1.9rem);
+    line-height: 1.4;
     letter-spacing: -0.018em;
 }
 
@@ -1790,13 +1800,13 @@ Search                         LOGO                    Login Subscribe
 }
 
 .gh-article-author-name {
-    font-size: 1.7rem;
+    font-size: 1.6rem;
     font-weight: 650;
     letter-spacing: -0.013em;
 }
 
 .gh-article-meta-content {
-    font-size: 1.4rem;
+    font-size: 1.35rem;
     font-weight: 500;
     line-height: 1.2;
     letter-spacing: -0.006em;
@@ -1840,8 +1850,8 @@ created within the Ghost editor. The main content handles
 headings, text, images and lists. We deal with cards lower down. */
 
 .gh-content {
-    font-size: calc(var(--content-font-size, 1.8rem) * var(--font-multiplier, 1));
-    letter-spacing: -0.014em;
+    font-size: calc(var(--content-font-size, 1.7rem) * var(--font-multiplier, 1));
+    letter-spacing: -0.01em;
 }
 
 /* Default vertical spacing */
@@ -1853,12 +1863,12 @@ headings, text, images and lists. We deal with cards lower down. */
 /* Add back a top margin to all headings,
 unless a heading is the very first element in the post content */
 .gh-content > [id]:not(:first-child) {
-    margin-top: calc(48px * var(--content-spacing-factor, 1));
+    margin-top: calc(56px * var(--content-spacing-factor, 1));
 }
 
 /* Add a small margin between a heading and anything after it */
 .gh-content > [id] + * {
-    margin-top: calc(16px * var(--content-spacing-factor, 1));
+    margin-top: calc(12px * var(--content-spacing-factor, 1));
 }
 
 /* A larger margin before/after dividers, blockquotes and embeds */
@@ -1878,7 +1888,7 @@ unless a heading is the very first element in the post content */
 }
 
 .gh-content h3 {
-    font-size: calc(1.2em * var(--font-multiplier, 1));
+    font-size: calc(1.3em * var(--font-multiplier, 1));
     letter-spacing: -0.017em;
 }
 
@@ -2298,7 +2308,7 @@ figcaption a {
 
 .has-serif-title .is-title {
     font-family: var(--font-serif);
-    font-weight: 600;
+    font-weight: 550;
 }
 
 .has-slab-title .is-title {
@@ -2319,13 +2329,41 @@ figcaption a {
     letter-spacing: -0.015em;
 }
 
+.has-slab-title .gh-header.is-classic .gh-header-title {
+    font-size: calc(clamp(3.2rem, 2.27vw + 2.29rem, 5.2rem) * var(--factor, 1));
+    letter-spacing: -0.01em;
+}
+
 .has-serif-title .gh-form {
     border-radius: 0;
 }
 
 .has-serif-title .gh-card-title {
-    line-height: 1.1;
+    line-height: 1.15;
     letter-spacing: -0.006em;
+    font-size: calc(2.0rem*var(--factor, 1))
+}
+
+.has-serif-title .gh-featured-feed .gh-card-title {
+    font-size: calc(1.6rem*var(--factor, 1))
+}
+
+.has-slab-title .gh-featured-feed .gh-card-title {
+    font-size: calc(1.5rem*var(--factor, 1));
+    letter-spacing: 0;
+}
+
+.has-serif-title .gh-header.is-highlight .gh-featured-feed .gh-card-title {
+    font-size: clamp(1.6rem, 0.23vw + 1.51rem, 1.8rem);
+}
+
+.has-slab-title .gh-card-title {
+    font-size: calc(1.8rem*var(--factor, 1));
+}
+
+.has-slab-title .gh-header.gh-header.is-highlight .gh-card-title,
+.has-slab-title .gh-header.gh-header.gh-header.is-magazine .gh-card-title {
+    line-height: 1.15;
 }
 
 .has-serif-title .gh-about-title {
@@ -2345,14 +2383,20 @@ figcaption a {
 }
 
 .has-serif-body .gh-card-excerpt {
-    font-size: 1.7rem;
+    font-size: 1.65rem;
     line-height: 1.4;
-    letter-spacing: 0;
+    letter-spacing: 0.0005em;
 }
 
 .has-serif-body .gh-header.is-magazine .gh-header-inner > .gh-card .gh-card-excerpt,
 .has-serif-body .gh-header.is-highlight .gh-card:first-child .gh-card-excerpt {
     font-size: 1.8rem;
+    letter-spacing: -0.001em;
+}
+
+.has-serif-title .gh-header.is-magazine .gh-header-inner>.gh-card .gh-card-title {
+    font-weight: 550;
+    font-size: clamp(3.2rem,1.82vw + 2.47rem,4.9rem)
 }
 
 .has-serif-body .gh-about-description {
@@ -2371,9 +2415,18 @@ figcaption a {
     border-radius: 0;
 }
 
-.has-slab-title :is(.gh-button, .gh-form) {
+.has-slab-title :is(.gh-button) {
+    border-radius: 6px;
+}
+
+.has-slab-title :is(.gh-form) {
     border-radius: 8px;
 }
+
+.has-serif-title .gh-cta-title {
+    font-size: 4.8rem;
+}
+
 
 /* 20.2. Colors */
 
@@ -2385,8 +2438,8 @@ figcaption a {
 /* ---------------------------------------------------------- */
 
 .gh-footer {
-    margin-top: 120px;
-    font-size: 1.6rem;
+    margin-top: 6vw;
+    font-size: 1.5rem;
     color: var(--color-darker-gray);
 }
 
@@ -2465,18 +2518,18 @@ figcaption a {
 
 .gh-footer-signup-header {
     font-size: calc(clamp(3.2rem, 1.82vw + 2.47rem, 4.8rem) * var(--factor, 1));
-    font-weight: 750;
+    font-weight: 700;
     letter-spacing: -0.03em;
 }
 
 .gh-footer-signup-subhead {
     margin-top: 12px;
     max-width: 640px;
-    font-size: clamp(1.6rem, 0.68vw + 1.33rem, 2.2rem);
+    font-size: clamp(1.6rem, 0.45vw + 1.42rem, 2rem);
     font-weight: 450;
     line-height: 1.4;
-    letter-spacing: -0.018em;
-    opacity: 0.6;
+    letter-spacing: -0.014em;
+    opacity: 0.75;
 }
 
 .gh-footer-signup .gh-form {
