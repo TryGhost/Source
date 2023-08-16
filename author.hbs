@@ -36,37 +36,6 @@
         </section>
     {{/author}}
     
-    <section class="gh-container is-{{#match @custom.post_feed_style "List"}}list{{else}}grid{{/match}}{{#if @custom.show_sidebar}} has-sidebar{{/if}}{{#unless @custom.show_images_in_feed}} no-image{{/unless}}">
-        <div class="gh-container-inner gh-inner">
-            
-            <main class="gh-main">
-                <div class="gh-feed">
-                    {{#foreach posts}}
-                        {{> "post-card"}}
-                    {{/foreach}}
-                </div>
-            </main>
-
-            {{#if @custom.show_sidebar}}
-                <aside class="gh-sidebar">
-                    <section class="gh-about">
-                        {{#if @site.icon}}
-                            <img class="gh-about-icon" src="{{@site.icon}}" alt="{{@site.title}}">
-                        {{/if}}
-                        <h3 class="gh-about-title is-title">{{@site.title}}</h3>
-                        {{#if @site.description}}
-                            <p class="gh-about-description is-body">{{@site.description}}</p>
-                        {{/if}}
-                        {{#if @site.members_enabled}}
-                            {{#unless @member}}
-                                <button class="gh-button">Subscribe</button>
-                            {{/unless}}
-                        {{/if}}
-                    </section>
-                </aside>
-            {{/if}}
-
-        </div>
-    </section>
+    {{> "components/post-list" feed="archive" postFeedStyle=@custom.post_feed_style showTitle=false showSidebar=@custom.show_sidebar}}
 
 </main>

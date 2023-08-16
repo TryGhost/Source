@@ -1,39 +1,82 @@
-<section class="gh-container is-{{#match @custom.post_feed_style "List"}}list{{else}}grid{{/match}}{{#if @custom.show_sidebar}} has-sidebar{{/if}}{{#unless @custom.show_images_in_feed}} no-image{{/unless}} gh-outer">
+{{!--
+    Parameters:
+    * feed (index, home, archive, recent)
+    * postFeedStyle (list, grid)
+    * showTitle (true, false)
+    * showSidebar (true, false)
+--}}
+
+<section class="gh-container is-{{#match postFeedStyle "List"}}list{{else}}grid{{/match}}{{#if showSidebar}} has-sidebar{{/if}}{{#unless @custom.show_images_in_feed}} no-image{{/unless}} gh-outer">
     <div class="gh-container-inner gh-inner">
         
-        <h2 class="gh-container-title">Latest</h2>
+        {{#if showTitle}}
+            <h2 class="gh-container-title">
+                {{#unless title}}Latest{{else}}{{title}}{{/unless}}
+            </h2>
+        {{/if}}
 
         <main class="gh-main">
             <div class="gh-feed">
-                {{#match @custom.header_style "Highlight"}}
-                    {{#match posts.length ">=" 10}}
-                        {{#foreach posts from="11" limit="9"}}
-                            {{> "post-card"}}
-                        {{/foreach}}
+
+                {{#match feed "home"}}
+                    {{#match @custom.header_style "Highlight"}}
+                        {{#match posts.length ">=" 10}}
+                            {{#foreach posts from="11" limit="9"}}
+                                {{> "post-card"}}
+                            {{/foreach}}
+                        {{else}}
+                            {{#foreach posts limit="9"}}
+                                {{> "post-card"}}
+                            {{/foreach}}
+                        {{/match}}
+                    {{else match @custom.header_style "Magazine"}}
+                        {{#match posts.length ">=" 7}}
+                            {{#foreach posts from="8" limit="9"}}
+                                {{> "post-card"}}
+                            {{/foreach}}
+                        {{else}}
+                            {{#foreach posts limit="9"}}
+                                {{> "post-card"}}
+                            {{/foreach}}
+                        {{/match}}
                     {{else}}
                         {{#foreach posts limit="9"}}
                             {{> "post-card"}}
                         {{/foreach}}
                     {{/match}}
-                {{else match @custom.header_style "Magazine"}}
-                    {{#match posts.length ">=" 7}}
-                        {{#foreach posts from="8" limit="9"}}
-                            {{> "post-card"}}
-                        {{/foreach}}
-                    {{else}}
-                        {{#foreach posts limit="9"}}
-                            {{> "post-card"}}
-                        {{/foreach}}
+                {{/match}}
+
+                {{#match feed "index"}}
+                    {{#match pagination.page 2}}
+                        {{#get "posts" include="authors" limit=@config.posts_per_page as |recent|}}
+                            {{#foreach recent}}
+                                {{> "post-card"}}
+                            {{/foreach}}
+                        {{/get}}
                     {{/match}}
-                {{else}}
-                    {{#foreach posts limit="9"}}
+                    {{#foreach posts}}
                         {{> "post-card"}}
                     {{/foreach}}
                 {{/match}}
+
+                {{#match feed "archive"}}
+                    {{#foreach posts}}
+                        {{> "post-card"}}
+                    {{/foreach}}
+                {{/match}}
+
+                {{#match feed "recent"}}
+                    {{#get "posts" include="authors" filter="id:-{{post.id}}" limit="4" as |next|}}
+                        {{#foreach next}}
+                            {{> "post-card"}}
+                        {{/foreach}}
+                    {{/get}}
+                {{/match}}
+
             </div>
         </main>
 
-        {{#if @custom.show_sidebar}}
+        {{#if showSidebar}}
             <aside class="gh-sidebar">
                 <section class="gh-about">
                     {{#if @site.icon}}

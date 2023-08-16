@@ -7,8 +7,6 @@
     {{> "components/featured" showFeatured=@custom.highlight_featured_posts limit=4}}
 {{/match}}
 
-
 {{> "components/cta"}}
 
-
-{{> "components/post-list" postListStyle=@custom.post_feed_style}}
+{{> "components/post-list" feed="home" postFeedStyle=@custom.post_feed_style showTitle=true showSidebar=@custom.show_sidebar}}

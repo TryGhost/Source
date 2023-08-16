@@ -294,6 +294,10 @@ button.gh-form-input {
     padding: 0 max(4vmin, 20px);
 }
 
+.gh-outer .gh-outer {
+    padding: 0;
+}
+
 .gh-inner {
     margin: 0 auto;
     max-width: var(--container-width);
