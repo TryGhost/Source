@@ -21,9 +21,15 @@
                 {{#match feed "home"}}
                     {{#match @custom.header_style "Highlight"}}
                         {{#match posts.length ">=" 10}}
-                            {{#foreach posts from="11" limit="9"}}
-                                {{> "post-card"}}
-                            {{/foreach}}
+                            {{#if @custom.highlight_featured_posts}}
+                                {{#foreach posts from="5" limit="9"}}
+                                    {{> "post-card"}}
+                                {{/foreach}}
+                            {{else}}
+                                {{#foreach posts from="11" limit="9"}}
+                                    {{> "post-card"}}
+                                {{/foreach}}
+                            {{/if}}
                         {{else}}
                             {{#foreach posts limit="9"}}
                                 {{> "post-card"}}
