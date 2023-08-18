@@ -375,7 +375,7 @@ button.gh-form-input {
 
 .gh-navigation-logo {
     position: relative;
-    font-size: calc(2.6rem * var(--factor, 1));
+    font-size: calc(2.4rem * var(--factor, 1));
     font-weight: 725;
     letter-spacing: -0.015em;
     white-space: nowrap;
@@ -950,7 +950,7 @@ Search                         LOGO                    Login Subscribe
 }
 
 .gh-header.is-magazine .gh-header-inner > .gh-card .gh-card-title {
-    font-size: clamp(3.2rem, 1.36vw + 2.65rem, 4.4rem);
+    font-size: clamp(2.8rem, 1.36vw + 2.25rem, 4rem);
     font-weight: 700;
     line-height: 1.1;
     letter-spacing: -0.022em;
@@ -1083,7 +1083,7 @@ Search                         LOGO                    Login Subscribe
 }
 
 .gh-header.is-highlight .gh-header-left .gh-card .gh-card-title {
-    font-size: clamp(3.2rem, 1.82vw + 2.47rem, 4.8rem);
+    font-size: clamp(2.8rem, 1.36vw + 2.25rem, 4rem);
     font-weight: 700;
     line-height: 1.1;
     letter-spacing: -0.022em;
@@ -1234,12 +1234,12 @@ Search                         LOGO                    Login Subscribe
     align-items: center;
     gap: 48px;
     margin: auto;
-    max-width: 1080px;
+    max-width: 1020px;
     text-align: center;
 }
 
 .gh-header.is-classic .gh-header-title {
-    font-size: calc(clamp(3.2rem, 2.27vw + 2.29rem, 5.2rem) * var(--factor, 1));
+    font-size: calc(clamp(3rem, 1.82vw + 2.27rem, 4.6rem) * var(--factor, 1));
     line-height: 1.1;
     letter-spacing: -0.028em;
 }
@@ -1308,7 +1308,7 @@ Search                         LOGO                    Login Subscribe
 }
 
 .gh-cta-title {
-    font-size: 4.6rem;
+    font-size: clamp(2.8rem,1.36vw + 2.25rem,4rem);
     font-weight: 700;
     line-height: 1.1;
     letter-spacing: -0.021em;
@@ -2330,7 +2330,6 @@ figcaption a {
 }
 
 .has-slab-title .gh-header.is-classic .gh-header-title {
-    font-size: calc(clamp(3.2rem, 2.27vw + 2.29rem, 5.2rem) * var(--factor, 1));
     letter-spacing: -0.01em;
 }
 
@@ -2477,7 +2476,7 @@ figcaption a {
 
 .gh-footer-logo {
     position: relative;
-    font-size: calc(2.6rem * var(--factor, 1));
+    font-size: calc(2.4rem * var(--factor, 1));
     font-weight: 725;
     letter-spacing: -0.015em;
     white-space: nowrap;
@@ -2517,7 +2516,7 @@ figcaption a {
 }
 
 .gh-footer-signup-header {
-    font-size: calc(clamp(3.2rem, 1.82vw + 2.47rem, 4.8rem) * var(--factor, 1));
+    font-size: calc(clamp(2.8rem,1.36vw + 2.25rem,4rem) * var(--factor, 1));
     font-weight: 700;
     letter-spacing: -0.03em;
 }
@@ -2525,7 +2524,7 @@ figcaption a {
 .gh-footer-signup-subhead {
     margin-top: 12px;
     max-width: 640px;
-    font-size: clamp(1.6rem, 0.45vw + 1.42rem, 2rem);
+    font-size: 1.8rem;
     font-weight: 450;
     line-height: 1.4;
     letter-spacing: -0.014em;
