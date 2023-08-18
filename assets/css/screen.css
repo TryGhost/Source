@@ -2393,7 +2393,8 @@ figcaption a {
     letter-spacing: -0.001em;
 }
 
-.has-serif-title .gh-header.is-magazine .gh-header-inner>.gh-card .gh-card-title {
+.has-serif-title .gh-header.is-magazine .gh-header-inner>.gh-card .gh-card-title,
+.has-serif-title .gh-header.is-highlight .gh-header-left .gh-card-title {
     font-weight: 550;
     font-size: clamp(3.2rem,1.82vw + 2.47rem,4.9rem)
 }
