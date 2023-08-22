@@ -159,7 +159,7 @@
                 "type": "boolean",
                 "default": true,
                 "group": "homepage",
-                "visibility": "post_feed_style:'List'"
+                "visibility": "post_feed_style:List"
             },
             "show_author": {
                 "type": "boolean",
