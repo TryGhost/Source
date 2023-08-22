@@ -4,14 +4,16 @@
 <main class="gh-main gh-outer">
 
     {{#tag}}
-        <section class="gh-archive{{#if feature_image}} has-image{{/if}} gh-inner">
-            <header class="gh-archive-wrapper">
-                <h1 class="gh-article-title is-title">{{name}}</h1>
-                {{#if description}}
-                    <p class="gh-article-excerpt">{{description}}</p>
-                {{/if}}
-            </header>
-            {{> "feature-image"}}
+        <section class="gh-archive{{#if feature_image}} has-image{{/if}}{{#if @custom.show_sidebar}} has-sidebar{{/if}} gh-inner">
+            <div class="gh-archive-inner">
+                <header class="gh-archive-wrapper">
+                    <h1 class="gh-article-title is-title">{{name}}</h1>
+                    {{#if description}}
+                        <p class="gh-article-excerpt">{{description}}</p>
+                    {{/if}}
+                </header>
+                {{> "feature-image"}}
+            </div>
         </section>
     {{/tag}}
 
