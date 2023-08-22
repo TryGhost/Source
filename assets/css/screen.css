@@ -1513,11 +1513,7 @@ Search                         LOGO                    Login Subscribe
 
 @media (max-width: 1199px) {
     .gh-container-inner {
-        grid-template-columns: repeat(12, 1fr);
-    }
-
-    .gh-container.has-sidebar .gh-main {
-        grid-column: 1 / -1;
+        display: block;
     }
 
     .gh-container.has-sidebar .gh-sidebar {
@@ -1621,6 +1617,7 @@ Search                         LOGO                    Login Subscribe
 @media (max-width: 767px) {
     .gh-container.is-list .gh-card-link {
         flex-direction: column;
+        align-items: flex-start;
     }
 
     .gh-container.is-list .gh-card-image {
