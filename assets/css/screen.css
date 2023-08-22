@@ -1461,7 +1461,6 @@ Search                         LOGO                    Login Subscribe
     display: grid;
     grid-template-columns: repeat(16, 1fr);
     column-gap: var(--grid-gap);
-    overflow: hidden;
 }
 
 :is(.gh-featured, .gh-cta) + .gh-container {
@@ -1527,6 +1526,7 @@ Search                         LOGO                    Login Subscribe
 @media (max-width: 1199px) {
     .gh-container-inner {
         display: block;
+        overflow: hidden;
     }
 
     .gh-container.has-sidebar .gh-sidebar {
@@ -1690,6 +1690,8 @@ Search                         LOGO                    Login Subscribe
 /* ---------------------------------------------------------- */
 
 .gh-about {
+    position: sticky;
+    top: calc(var(--grid-gap) / 2);
     display: flex;
     flex-direction: column;
     justify-content: center;
