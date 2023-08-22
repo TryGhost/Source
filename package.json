@@ -137,12 +137,14 @@
             "use_publication_cover_as_background": {
                 "type": "boolean",
                 "default": false,
-                "group": "homepage"
+                "group": "homepage",
+                "visibility": "header_style:[Landing, Search]"
             },
             "highlight_featured_posts": {
                 "type": "boolean",
                 "default": true,
-                "group": "homepage"
+                "group": "homepage",
+                "visibility": "header_style:[Highlight, Magazine]"
             },
             "post_feed_style": {
                 "type": "select",
@@ -156,7 +158,8 @@
             "show_images_in_feed": {
                 "type": "boolean",
                 "default": true,
-                "group": "homepage"
+                "group": "homepage",
+                "visibility": "post_feed_style:'List'"
             },
             "show_author": {
                 "type": "boolean",
