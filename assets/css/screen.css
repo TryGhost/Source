@@ -260,6 +260,7 @@ a:hover {
     letter-spacing: inherit;
     border: 0;
     background-color: transparent;
+    outline: none;
 }
 
 .gh-footer.has-accent-color .gh-form-input::placeholder {
@@ -442,6 +443,10 @@ button.gh-form-input {
 }
 
 @media (max-width: 767px) {
+    .gh-navigation-logo {
+        white-space: normal;
+    }
+
     .gh-navigation-members {
         flex-direction: column-reverse;
         gap: 16px;
@@ -486,11 +491,13 @@ LOGO   Home About Collection Author Portal             Login Subscribe
     grid-template-columns: auto 1fr auto;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 768px) {
     .gh-navigation.is-left-logo .gh-navigation-logo:not(:has(img)) {
         top: -2px;
     }
+}
 
+@media (min-width: 992px) {
     .gh-navigation.is-left-logo .gh-navigation-menu {
         margin-right: 100px;
         margin-left: 16px;
@@ -638,7 +645,9 @@ Search                         LOGO                    Login Subscribe
 
 .gh-dropdown li a {
     display: block;
-    padding: 6px 20px;
+    padding: 7px 20px;
+    line-height: 1.5;
+    white-space: normal;
     color: #15171a !important;
 }
 
@@ -1461,6 +1470,10 @@ Search                         LOGO                    Login Subscribe
 
 .gh-header.is-classic:not(.has-image) + .gh-container {
     margin-top: 0;
+}
+
+.gh-navigation + .gh-container .gh-container-title {
+    display: none;
 }
 
 .gh-more {
