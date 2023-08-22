@@ -1889,12 +1889,12 @@ unless a heading is the very first element in the post content */
 
 /* Now the content typography styles */
 .gh-content h2 {
-    font-size: calc(1.6em * var(--font-multiplier, 1));
+    font-size: calc(1.6em * var(--factor, 1));
     letter-spacing: -0.02em;
 }
 
 .gh-content h3 {
-    font-size: calc(1.3em * var(--font-multiplier, 1));
+    font-size: calc(1.3em * var(--factor, 1));
     letter-spacing: -0.017em;
 }
 
@@ -1908,15 +1908,15 @@ unless a heading is the very first element in the post content */
     font-size: 0.95em;
 }
 
-.is-font-serif .gh-content > blockquote,
-.is-font-serif .gh-content > ol,
-.is-font-serif .gh-content > ul,
-.is-font-serif .gh-content > dl,
-.is-font-serif .gh-content > p,
-.is-font-serif .gh-content .kg-callout-text,
-.is-font-serif .gh-content .kg-toggle-content > ol,
-.is-font-serif .gh-content .kg-toggle-content > ul,
-.is-font-serif .gh-content .kg-toggle-content > p {
+.has-serif-body .gh-content > blockquote,
+.has-serif-body .gh-content > ol,
+.has-serif-body .gh-content > ul,
+.has-serif-body .gh-content > dl,
+.has-serif-body .gh-content > p,
+.has-serif-body .gh-content .kg-callout-text,
+.has-serif-body .gh-content .kg-toggle-content > ol,
+.has-serif-body .gh-content .kg-toggle-content > ul,
+.has-serif-body .gh-content .kg-toggle-content > p {
     font-family: var(--font-serif);
 }
 
@@ -2329,16 +2329,16 @@ figcaption a {
     --factor: 1.1;
 }
 
-.has-sans-title .is-title {
+.has-sans-title :is(.is-title, .gh-content :is(h2, h3)) {
     font-family: var(--font-sans);
 }
 
-.has-serif-title .is-title {
+.has-serif-title :is(.is-title, .gh-content :is(h2, h3)) {
     font-family: var(--font-serif);
     font-weight: 550;
 }
 
-.has-slab-title .is-title {
+.has-slab-title :is(.is-title, .gh-content :is(h2, h3)) {
     font-family: var(--font-slab);
     font-weight: 650;
 }
