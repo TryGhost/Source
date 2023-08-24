@@ -166,12 +166,12 @@
                 "default": true,
                 "group": "homepage"
             },
-            "show_post_date": {
+            "show_publish_date": {
                 "type": "boolean",
                 "default": true,
                 "group": "homepage"
             },
-            "show_sidebar": {
+            "show_site_in_sidebar": {
                 "type": "boolean",
                 "default": false,
                 "group": "homepage"
