@@ -1527,6 +1527,17 @@ Search                         LOGO                    Login Subscribe
     display: block;
 }
 
+.gh-more a {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.gh-more svg {
+    width: 24px;
+    height: 24px;
+}
+
 /* 11.1. With sidebar */
 
 .gh-container.has-sidebar .gh-main {
