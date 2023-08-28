@@ -122,6 +122,14 @@
                 ],
                 "default": "Modern sans-serif"
             },
+            "signup_heading": {
+                "type": "text",
+                "description": "Shows site title when empty"
+            },
+            "signup_subheading": {
+                "type": "text",
+                "description": "Shows site description when empty"
+            },
             "header_style": {
                 "type": "select",
                 "options": [

@@ -20,10 +20,12 @@
         {{#if @site.members_enabled}}
             {{#unless @member}}
                 <section class="gh-footer-signup">
-                    <h2 class="gh-footer-signup-header is-title">{{@site.title}}</h2>
-                    {{#if @site.description}}
-                        <p class="gh-footer-signup-subhead is-body">{{@site.description}}</p>
-                    {{/if}}
+                    <h2 class="gh-footer-signup-header is-title">
+                        {{#if @custom.signup_heading}}{{@custom.signup_heading}}{{else}}{{@site.title}}{{/if}}
+                    </h2>
+                    <p class="gh-footer-signup-subhead is-body">
+                        {{#if @custom.signup_subheading}}{{@custom.signup_subheading}}{{else}}{{@site.description}}{{/if}}
+                    </p>
                     {{> "email-subscription"}}
                 </section>
             {{/unless}}
