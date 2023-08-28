@@ -242,6 +242,10 @@ a:hover {
     transition: background-color 0.2s ease;
 }
 
+.gh-form.success {
+    pointer-events: none;
+}
+
 .gh-form.error {
     box-shadow: 0 0 0 1px red;
 }
@@ -265,10 +269,15 @@ a:hover {
     border: 0;
     background-color: transparent;
     outline: none;
+    transition: 0.3s ease-in-out;
 }
 
 :is(.has-serif-title, .has-slab-title) .gh-form-input {
     padding-inline: 20px;
+}
+
+.gh-form.gh-form.success .gh-form-input {
+    opacity: 0.5;
 }
 
 .gh-footer.has-accent-color .gh-form-input {
