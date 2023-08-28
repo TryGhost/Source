@@ -242,8 +242,12 @@ a:hover {
     transition: background-color 0.2s ease;
 }
 
+.gh-form.error {
+    box-shadow: 0 0 0 1px red;
+}
+
 .gh-form:hover {
-    background-color: rgb(0 0 0 / 0.05);
+    background-color: rgb(0 0 0 / 0.065);
 }
 
 .gh-footer.has-accent-color .gh-form:hover {
@@ -253,7 +257,7 @@ a:hover {
 .gh-form-input {
     position: absolute;
     inset: 0;
-    padding-inline: 28px;
+    padding-inline: 26px;
     width: 100%;
     height: 100%;
     font-size: inherit;
@@ -261,6 +265,14 @@ a:hover {
     border: 0;
     background-color: transparent;
     outline: none;
+}
+
+:is(.has-serif-title, .has-slab-title) .gh-form-input {
+    padding-inline: 20px;
+}
+
+.gh-footer.has-accent-color .gh-form-input {
+    color: #fff;
 }
 
 .gh-footer.has-accent-color .gh-form-input::placeholder {
@@ -280,15 +292,32 @@ button.gh-form-input {
     padding-inline: 32px;
     height: 44px;
     font-size: inherit;
-    font-weight: 600;
 }
 
-.gh-form svg {
+.gh-form > svg {
     position: relative;
     left: 22px;
     width: 24px;
     height: 24px;
     color: var(--color-secondary-text);
+}
+
+.gh-form .gh-button svg {
+    display: none;
+    position: absolute;
+    margin-top: 1px;
+}
+
+.gh-form:is(.loading, .success) .gh-button span {
+    visibility: hidden;
+}
+
+.gh-form.loading .gh-button svg:first-of-type {
+    display: block;
+}
+
+.gh-form.success .gh-button svg:last-of-type {
+    display: block;
 }
 
 /* 5. Layout
@@ -1341,14 +1370,14 @@ Search                         LOGO                    Login Subscribe
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 28px;
-    padding: 80px 64px;
+    gap: 36px;
+    padding: 80px 64px 72px;
     text-align: center;
     background-color: var(--color-lighter-gray);
 }
 
 .gh-cta-content {
-    max-width: 560px;
+    max-width: 640px;
 }
 
 .gh-cta-title {
@@ -1359,7 +1388,7 @@ Search                         LOGO                    Login Subscribe
 }
 
 .gh-cta-description {
-    margin-top: 16px;
+    margin-top: 12px;
     font-size: 1.8rem;
     line-height: 1.4;
     letter-spacing: -0.015em;
