@@ -74,7 +74,7 @@ production stylesheet in assets/built/screen.css
 
 :root.has-light-text,
 :is(.gh-navigation, .gh-footer).has-accent-color {
-    --color-lighter-gray: rgb(0 0 0 / 0.1);
+    --color-lighter-gray: rgb(255 255 255 / 0.1);
     --color-darker-gray: #fff;
     --color-secondary-text: rgb(255 255 255 / 0.64);
     --color-border: rgb(255 255 255 / 0.15);
@@ -254,8 +254,9 @@ a:hover {
     background-color: rgb(0 0 0 / 0.065);
 }
 
+.has-light-text .gh-form:hover,
 .gh-footer.has-accent-color .gh-form:hover {
-    background-color: rgb(0 0 0 / 0.15);
+    background-color: rgb(255 255 255 / 0.15);
 }
 
 .gh-form-input {
@@ -280,10 +281,12 @@ a:hover {
     opacity: 0.5;
 }
 
+.has-light-text .gh-form-input,
 .gh-footer.has-accent-color .gh-form-input {
     color: #fff;
 }
 
+.has-light-text .gh-form-input::placeholder,
 .gh-footer.has-accent-color .gh-form-input::placeholder {
     color: rgb(255 255 255 / 0.55);
 }
@@ -2404,8 +2407,6 @@ figcaption a {
 /* 20. Design settings
 /* ---------------------------------------------------------- */
 
-/* 20.1. Typography */
-
 .has-serif-title {
     --factor: 1.15;
 }
@@ -2537,13 +2538,6 @@ figcaption a {
 
 .has-serif-title .gh-cta-title {
     font-size: 4.8rem;
-}
-
-
-/* 20.2. Colors */
-
-.has-light-text .gh-form:hover {
-    background-color: rgb(0 0 0 / 0.2);
 }
 
 /* 21. Footer
