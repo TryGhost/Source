@@ -1552,9 +1552,9 @@ Search                         LOGO                    Login Subscribe
     display: none;
     grid-column: 1 / -1;
     margin-top: 48px;
-    font-size: calc(2.4rem * var(--factor, 1));
+    font-size: calc(1.9rem * var(--factor, 1));
     font-weight: 725;
-    letter-spacing: -0.019em;
+    letter-spacing: -0.014em;
 }
 
 .gh-container.has-sidebar .gh-more {
@@ -1572,8 +1572,13 @@ Search                         LOGO                    Login Subscribe
 }
 
 .gh-more svg {
-    width: 24px;
-    height: 24px;
+    margin-top: -1px;
+    width: 18px;
+    height: 18px;
+}
+
+.has-serif-title .gh-more svg {
+    margin-top: 0;
 }
 
 /* 11.1. With sidebar */
@@ -1936,7 +1941,7 @@ created within the Ghost editor. The main content handles
 headings, text, images and lists. We deal with cards lower down. */
 
 .gh-content {
-    font-size: calc(var(--content-font-size, 1.7rem) * var(--factor, 1));
+    font-size: var(--content-font-size, 1.7rem);
     letter-spacing: -0.01em;
 }
 
@@ -1997,7 +2002,7 @@ unless a heading is the very first element in the post content */
 .has-serif-body .gh-content .kg-toggle-content > ol,
 .has-serif-body .gh-content .kg-toggle-content > ul,
 .has-serif-body .gh-content .kg-toggle-content > p {
-    font-family: var(--font-serif);
+    font-family: var(--font-serif-alt);
 }
 
 .gh-content :is(ul, ol) {
@@ -2485,7 +2490,7 @@ figcaption a {
 }
 
 .has-serif-body {
-    --content-font-size: 1.8rem;
+    --content-font-size: 1.9rem;
 }
 
 .has-serif-body .gh-card-excerpt {
