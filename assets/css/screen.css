@@ -1547,7 +1547,8 @@ Search                         LOGO                    Login Subscribe
     margin-top: 0;
 }
 
-.gh-navigation + .gh-container .gh-container-title {
+.gh-navigation + .gh-container .gh-container-title,
+:is(.paged, .tag-template, .author-template) .gh-container:not(.has-sidebar) .gh-container-title {
     display: none;
 }
 
@@ -1607,8 +1608,12 @@ Search                         LOGO                    Login Subscribe
 
 /* 11.2. Without sidebar */
 
-.gh-container:not(.has-sidebar) :is(.gh-container-title, .gh-main, .gh-more) {
+.gh-container.is-list:not(.has-sidebar) :is(.gh-container-title, .gh-main, .gh-more) {
     grid-column: 3 / span 12;
+}
+
+.gh-container.is-grid:not(.has-sidebar) .gh-main {
+    grid-column: 1 / -1;
 }
 
 @media (max-width: 1199px) {
@@ -1724,7 +1729,7 @@ Search                         LOGO                    Login Subscribe
 
 .gh-container.is-grid .gh-feed {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     row-gap: calc(var(--grid-gap) * 1.5);
     overflow: hidden;
 }
