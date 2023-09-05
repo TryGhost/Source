@@ -231,7 +231,7 @@ a:hover {
     align-items: center;
     position: relative;
     overflow: hidden;
-    max-width: 640px;
+    max-width: 560px;
     width: 100%;
     height: 56px;
     font-size: 1.7rem;
@@ -350,6 +350,28 @@ button.gh-form-input {
 
 .gh-form.success .gh-button svg:last-of-type {
     display: block;
+}
+
+@media (max-width: 576px) {
+    .gh-form {
+        font-size: 1.6rem;
+    }
+    
+    .gh-form .gh-button {
+        padding-inline: 12px;
+    }
+
+    .gh-form .gh-button span span {
+        display: none;
+    }
+
+    .gh-form .gh-button span svg {
+        display: inline;
+        position: static;
+        margin-top: 2px;
+        width: 20px;
+        height: 20px;
+    }
 }
 
 /* 5. Layout
@@ -1403,7 +1425,7 @@ Search                         LOGO                    Login Subscribe
     flex-direction: column;
     align-items: center;
     gap: 36px;
-    padding: 80px 64px 72px;
+    padding: clamp(48px, 3.64vw + 33.45px, 80px) clamp(40px, 2.73vw + 29.09px, 64px) clamp(40px, 3.64vw + 25.45px, 72px);
     text-align: center;
     background-color: var(--color-lighter-gray);
 }
@@ -1424,10 +1446,6 @@ Search                         LOGO                    Login Subscribe
     font-size: 1.8rem;
     line-height: 1.4;
     letter-spacing: -0.015em;
-}
-
-.gh-cta .gh-form {
-    max-width: 560px;
 }
 
 /* 10. Featured posts
@@ -2665,15 +2683,7 @@ figcaption a {
 
 .gh-footer-signup .gh-form {
     margin-top: 40px;
-    max-width: 560px;
 }
-
-/* .gh-footer-signup .gh-button {
-    margin-top: 32px;
-    padding: 16px 32px;
-    font-size: 1.9rem;
-    letter-spacing: -0.01em;
-} */
 
 @media (max-width: 991px) {
     .gh-footer-bar {
