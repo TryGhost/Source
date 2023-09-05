@@ -288,8 +288,19 @@ a:hover {
 }
 
 .has-light-text .gh-form-input::placeholder,
+.has-light-text button.gh-form-input,
 .gh-footer.has-accent-color .gh-form-input::placeholder {
     color: rgb(255 255 255 / 0.55);
+}
+
+.gh-header.is-classic.has-image .gh-form-input {
+    color: #15171a;
+}
+
+.gh-header.is-classic.has-image .gh-form-input::placeholder,
+.gh-header.is-classic.has-image button.gh-form-input,
+.gh-header.is-classic.has-image .gh-form > svg {
+    color: rgb(0 0 0 / 0.5);
 }
 
 button.gh-form-input {
@@ -314,8 +325,8 @@ button.gh-form-input {
 .gh-form > svg {
     position: relative;
     left: 22px;
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
     color: var(--color-secondary-text);
 }
 
