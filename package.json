@@ -145,12 +145,14 @@
             "use_publication_cover_as_background": {
                 "type": "boolean",
                 "default": false,
+                "description": "Cover image will be used as a background when the header style is Landing or Search",
                 "group": "homepage",
                 "visibility": "header_style:[Landing, Search]"
             },
             "highlight_featured_posts": {
                 "type": "boolean",
                 "default": true,
+                "description": "Featured posts will be displayed when the header style is Highlight or Magazine",
                 "group": "homepage",
                 "visibility": "header_style:[Highlight, Magazine]"
             },
@@ -166,22 +168,26 @@
             "show_images_in_feed": {
                 "type": "boolean",
                 "default": true,
+                "description": "Toggles thumbnails of the post cards when the post feed style is List",
                 "group": "homepage",
                 "visibility": "post_feed_style:List"
             },
             "show_author": {
                 "type": "boolean",
                 "default": true,
+                "description": "Toggles author name in the post cards",
                 "group": "homepage"
             },
             "show_publish_date": {
                 "type": "boolean",
                 "default": true,
+                "description": "Toggles published date in the post cards",
                 "group": "homepage"
             },
             "show_site_in_sidebar": {
                 "type": "boolean",
                 "default": false,
+                "description": "Sidebar will be displayed on the homepage, tag, and author templates",
                 "group": "homepage"
             }
         }
