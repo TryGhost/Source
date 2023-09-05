@@ -267,6 +267,7 @@ a:hover {
     height: 100%;
     font-size: inherit;
     letter-spacing: inherit;
+    line-height: 1.1;
     border: 0;
     background-color: transparent;
     outline: none;
@@ -298,6 +299,10 @@ button.gh-form-input {
     cursor: pointer;
 }
 
+:is(.has-serif-title,.has-slab-title) button.gh-form-input {
+    padding-inline-start: 50px;
+}
+
 .gh-form .gh-button {
     position: absolute;
     right: 6px;
@@ -312,6 +317,10 @@ button.gh-form-input {
     width: 24px;
     height: 24px;
     color: var(--color-secondary-text);
+}
+
+:is(.has-serif-title,.has-slab-title) .gh-form > svg {
+    left: 16px;
 }
 
 .gh-form .gh-button svg {
