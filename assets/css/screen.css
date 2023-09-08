@@ -274,6 +274,11 @@ a:hover {
     transition: 0.3s ease-in-out;
 }
 
+.gh-form-input::placeholder,
+button.gh-form-input {
+    color: rgb(0 0 0 / 0.3);
+}
+
 :is(.has-serif-title, .has-slab-title) .gh-form-input {
     padding-inline: 20px;
 }
@@ -521,10 +526,6 @@ button.gh-form-input {
     margin-left: -2px;
 }
 
-.gh-search span {
-    display: none;
-}
-
 @media (max-width: 767px) {
     .gh-navigation-logo {
         white-space: normal;
@@ -685,10 +686,6 @@ Search                         LOGO                    Login Subscribe
         display: flex;
         gap: 10px;
         width: auto;
-    }
-
-    .gh-navigation.is-stacked .gh-navigation-actions .gh-search span {
-        display: inline;
     }
 }
 
@@ -1425,7 +1422,7 @@ Search                         LOGO                    Login Subscribe
     flex-direction: column;
     align-items: center;
     gap: 36px;
-    padding: clamp(48px, 3.64vw + 33.45px, 80px) clamp(40px, 2.73vw + 29.09px, 64px) clamp(40px, 3.64vw + 25.45px, 72px);
+    padding: clamp(48px, 3.64vw + 33.45px, 80px) clamp(40px, 2.73vw + 29.09px, 64px);
     text-align: center;
     background-color: var(--color-lighter-gray);
 }
@@ -1647,7 +1644,7 @@ Search                         LOGO                    Login Subscribe
 /* 11.2. Without sidebar */
 
 .gh-container.is-list:not(.has-sidebar) :is(.gh-container-title, .gh-main, .gh-more) {
-    grid-column: 3 / span 12;
+    grid-column: 4 / span 11;
 }
 
 .gh-container.is-grid:not(.has-sidebar) .gh-main {

@@ -124,11 +124,11 @@
             },
             "signup_heading": {
                 "type": "text",
-                "description": "Shows site title when empty"
+                "description": "Used in your footer across your theme, defaults to site title when empty"
             },
             "signup_subheading": {
                 "type": "text",
-                "description": "Shows site description when empty"
+                "description": "Defaults to site description when empty"
             },
             "header_style": {
                 "type": "select",
@@ -145,14 +145,12 @@
             "use_publication_cover_as_background": {
                 "type": "boolean",
                 "default": false,
-                "description": "Cover image will be used as a background when the header style is Landing or Search",
                 "group": "homepage",
                 "visibility": "header_style:[Landing, Search]"
             },
             "highlight_featured_posts": {
                 "type": "boolean",
                 "default": true,
-                "description": "Featured posts will be displayed when the header style is Highlight or Magazine",
                 "group": "homepage",
                 "visibility": "header_style:[Highlight, Magazine]"
             },
@@ -175,19 +173,19 @@
             "show_author": {
                 "type": "boolean",
                 "default": true,
-                "description": "Toggles author name in the post cards",
+                "description": "Show the author below each post",
                 "group": "homepage"
             },
             "show_publish_date": {
                 "type": "boolean",
                 "default": true,
-                "description": "Toggles published date in the post cards",
+                "description": "Show the date published below each post",
                 "group": "homepage"
             },
             "show_site_in_sidebar": {
                 "type": "boolean",
                 "default": false,
-                "description": "Sidebar will be displayed on the homepage, tag, and author templates",
+                "description": "Include your site info on the side of the post feed",
                 "group": "homepage"
             }
         }

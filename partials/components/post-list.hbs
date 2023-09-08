@@ -22,31 +22,31 @@
                     {{#match @custom.header_style "Highlight"}}
                         {{#match posts.length ">=" 10}}
                             {{#if @custom.highlight_featured_posts}}
-                                {{#foreach posts from="5" limit="8"}}
+                                {{#foreach posts from="5" limit="12"}}
                                     {{> "post-card"}}
                                 {{/foreach}}
                             {{else}}
-                                {{#foreach posts from="11" limit="8"}}
+                                {{#foreach posts from="11" limit="12"}}
                                     {{> "post-card"}}
                                 {{/foreach}}
                             {{/if}}
                         {{else}}
-                            {{#foreach posts limit="8"}}
+                            {{#foreach posts limit="12"}}
                                 {{> "post-card"}}
                             {{/foreach}}
                         {{/match}}
                     {{else match @custom.header_style "Magazine"}}
                         {{#match posts.length ">=" 7}}
-                            {{#foreach posts from="8" limit="8"}}
+                            {{#foreach posts from="8" limit="12"}}
                                 {{> "post-card"}}
                             {{/foreach}}
                         {{else}}
-                            {{#foreach posts limit="8"}}
+                            {{#foreach posts limit="12"}}
                                 {{> "post-card"}}
                             {{/foreach}}
                         {{/match}}
                     {{else}}
-                        {{#foreach posts limit="8"}}
+                        {{#foreach posts limit="12"}}
                             {{> "post-card"}}
                         {{/foreach}}
                     {{/match}}
