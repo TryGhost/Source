@@ -150,7 +150,7 @@
             },
             "highlight_featured_posts": {
                 "type": "boolean",
-                "default": true,
+                "default": false,
                 "group": "homepage",
                 "visibility": "header_style:[Highlight, Magazine]"
             },

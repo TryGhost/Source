@@ -22,33 +22,45 @@
                     {{#match @custom.header_style "Highlight"}}
                         {{#match posts.length ">=" 10}}
                             {{#if @custom.highlight_featured_posts}}
-                                {{#foreach posts from="5" limit="12"}}
-                                    {{> "post-card"}}
-                                {{/foreach}}
+                                {{#get "posts" limit="16"}}
+                                    {{#foreach posts from="5" limit="12"}}
+                                        {{> "post-card"}}
+                                    {{/foreach}}
+                                {{/get}}
                             {{else}}
-                                {{#foreach posts from="11" limit="12"}}
-                                    {{> "post-card"}}
-                                {{/foreach}}
+                                {{#get "posts" limit="22"}}
+                                    {{#foreach posts from="11" limit="12"}}
+                                        {{> "post-card"}}
+                                    {{/foreach}}
+                                {{/get}}
                             {{/if}}
                         {{else}}
-                            {{#foreach posts limit="12"}}
-                                {{> "post-card"}}
-                            {{/foreach}}
+                            {{#get "posts" limit="12"}}
+                                {{#foreach posts}}
+                                    {{> "post-card"}}
+                                {{/foreach}}
+                            {{/get}}
                         {{/match}}
                     {{else match @custom.header_style "Magazine"}}
                         {{#match posts.length ">=" 7}}
-                            {{#foreach posts from="8" limit="12"}}
-                                {{> "post-card"}}
-                            {{/foreach}}
+                            {{#get "posts" limit="19"}}
+                                {{#foreach posts from="8" limit="12"}}
+                                    {{> "post-card"}}
+                                {{/foreach}}
+                            {{/get}}
                         {{else}}
-                            {{#foreach posts limit="12"}}
-                                {{> "post-card"}}
-                            {{/foreach}}
+                            {{#get "posts" limit="12"}}
+                                {{#foreach posts}}
+                                    {{> "post-card"}}
+                                {{/foreach}}
+                            {{/get}}
                         {{/match}}
                     {{else}}
-                        {{#foreach posts limit="12"}}
-                            {{> "post-card"}}
-                        {{/foreach}}
+                        {{#get "posts" limit="12"}}
+                            {{#foreach posts}}
+                                {{> "post-card"}}
+                            {{/foreach}}
+                        {{/get}}
                     {{/match}}
                 {{/match}}
 
