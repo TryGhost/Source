@@ -1647,6 +1647,10 @@ Search                         LOGO                    Login Subscribe
     grid-column: 3 / span 12;
 }
 
+.gh-container.is-list.no-image:not(.has-sidebar) :is(.gh-container-title, .gh-main, .gh-more) {
+    grid-column: 4 / span 10;
+}
+
 .gh-container.is-grid:not(.has-sidebar) .gh-main {
     grid-column: 1 / -1;
 }
@@ -1719,7 +1723,7 @@ Search                         LOGO                    Login Subscribe
     }
 }
 
-.gh-container.is-list .gh-card-wrapper {
+.gh-container.is-list .gh-card:not(.no-image) .gh-card-wrapper {
     max-width: 600px;
 }
 
