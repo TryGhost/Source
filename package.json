@@ -139,6 +139,7 @@
                     "Search",
                     "Off"
                 ],
+                "description": "Requires at least 10 posts for Highlight, and 7 posts for Magazine style",
                 "default": "Landing",
                 "group": "homepage"
             },
