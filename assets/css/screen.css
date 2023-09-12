@@ -1412,7 +1412,12 @@ Search                         LOGO                    Login Subscribe
 /* ---------------------------------------------------------- */
 
 .gh-cta {
+    display: none;
     margin-top: max(4vw, 40px);
+}
+
+.gh-header + .gh-cta {
+    display: block;
 }
 
 .gh-cta-inner {

@@ -22,20 +22,20 @@
                     {{#match @custom.header_style "Highlight"}}
                         {{#match posts.length ">=" 10}}
                             {{#if @custom.highlight_featured_posts}}
-                                {{#get "posts" limit="16"}}
+                                {{#get "posts" include="authors" limit="16"}}
                                     {{#foreach posts from="5" limit="12"}}
                                         {{> "post-card"}}
                                     {{/foreach}}
                                 {{/get}}
                             {{else}}
-                                {{#get "posts" limit="22"}}
+                                {{#get "posts" include="authors" limit="22"}}
                                     {{#foreach posts from="11" limit="12"}}
                                         {{> "post-card"}}
                                     {{/foreach}}
                                 {{/get}}
                             {{/if}}
                         {{else}}
-                            {{#get "posts" limit="12"}}
+                            {{#get "posts" include="authors" limit="12"}}
                                 {{#foreach posts}}
                                     {{> "post-card"}}
                                 {{/foreach}}
@@ -43,20 +43,20 @@
                         {{/match}}
                     {{else match @custom.header_style "Magazine"}}
                         {{#match posts.length ">=" 7}}
-                            {{#get "posts" limit="19"}}
+                            {{#get "posts" include="authors" limit="19"}}
                                 {{#foreach posts from="8" limit="12"}}
                                     {{> "post-card"}}
                                 {{/foreach}}
                             {{/get}}
                         {{else}}
-                            {{#get "posts" limit="12"}}
+                            {{#get "posts" include="authors" limit="12"}}
                                 {{#foreach posts}}
                                     {{> "post-card"}}
                                 {{/foreach}}
                             {{/get}}
                         {{/match}}
                     {{else}}
-                        {{#get "posts" limit="12"}}
+                        {{#get "posts" include="authors" limit="12"}}
                             {{#foreach posts}}
                                 {{> "post-card"}}
                             {{/foreach}}
