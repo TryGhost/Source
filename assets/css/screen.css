@@ -1649,7 +1649,7 @@ Search                         LOGO                    Login Subscribe
 
 /* 11.2. Without sidebar */
 
-.gh-container.is-list:not(.has-sidebar) :is(.gh-container-title, .gh-main, .gh-more) {
+.gh-container:not(.has-sidebar) :is(.gh-container-title, .gh-main, .gh-more) {
     grid-column: 3 / span 12;
 }
 
@@ -1657,7 +1657,7 @@ Search                         LOGO                    Login Subscribe
     grid-column: 4 / span 10;
 }
 
-.gh-container.is-grid:not(.has-sidebar) .gh-main {
+.gh-header:is(.is-highlight, .is-magazine) ~ .gh-container.is-grid:not(.has-sidebar) :is(.gh-container-title, .gh-main, .gh-more) {
     grid-column: 1 / -1;
 }
 
@@ -1774,7 +1774,7 @@ Search                         LOGO                    Login Subscribe
 
 .gh-container.is-grid .gh-feed {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(248px, 1fr));
     row-gap: calc(var(--grid-gap) * 1.5);
     overflow: hidden;
 }
