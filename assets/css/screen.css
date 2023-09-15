@@ -1417,7 +1417,7 @@ Search                         LOGO                    Login Subscribe
     margin-top: max(4vw, 40px);
 }
 
-.gh-header + .gh-cta {
+.gh-header:is(.is-highlight, .is-magazine) + .gh-cta {
     display: block;
 }
 
@@ -1975,11 +1975,11 @@ Search                         LOGO                    Login Subscribe
 /* 14.3. Page without header */
 
 .page-template .gh-content:only-child > *:first-child:not(.kg-width-full) {
-    margin-top: 48px;
+    margin-top: 64px;
 }
 
 .page-template .gh-content > *:last-child:not(.kg-width-full) {
-    margin-bottom: 64px;
+    margin-bottom: 6vw;
 }
 
 .page-template .gh-footer {

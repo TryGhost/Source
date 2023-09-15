@@ -3,6 +3,7 @@
         {{#match @custom.header_style "!=" "Landing"}}
         {{#match @custom.header_style "!=" "Search"}}
         {{#match @custom.header_style "!=" "Off"}}
+        {{#match posts.length ">=" 7}}
             <section class="gh-cta gh-outer">
                 <div class="gh-cta-inner gh-inner">
                     <div class="gh-cta-content">
@@ -16,6 +17,7 @@
                     {{> "email-subscription"}}
                 </div>
             </section>
+        {{/match}}
         {{/match}}
         {{/match}}
         {{/match}}

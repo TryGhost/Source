@@ -18,9 +18,10 @@
         <main class="gh-main">
             <div class="gh-feed">
 
+                {{!-- Homepage --}}
                 {{#match feed "home"}}
                     {{#match @custom.header_style "Highlight"}}
-                        {{#match posts.length ">=" 10}}
+                        {{#match posts.length ">=" 7}}
                             {{#if @custom.highlight_featured_posts}}
                                 {{#get "posts" include="authors" limit="16"}}
                                     {{#foreach posts from="5" limit="12"}}
@@ -64,6 +65,7 @@
                     {{/match}}
                 {{/match}}
 
+                {{!-- All posts --}}
                 {{#match feed "index"}}
                     {{#match pagination.page 2}}
                         {{#get "posts" include="authors" limit=@config.posts_per_page as |recent|}}
@@ -77,12 +79,14 @@
                     {{/foreach}}
                 {{/match}}
 
+                {{!-- Tag and author pages --}}
                 {{#match feed "archive"}}
                     {{#foreach posts}}
                         {{> "post-card"}}
                     {{/foreach}}
                 {{/match}}
 
+                {{!-- Recent posts --}}
                 {{#match feed "recent"}}
                     {{#get "posts" include="authors" filter="id:-{{post.id}}" limit="4" as |next|}}
                         {{#foreach next}}

@@ -139,7 +139,7 @@
                     "Search",
                     "Off"
                 ],
-                "description": "Requires at least 10 posts for Highlight, and 7 posts for Magazine style",
+                "description": "Highlight & Magazine styles will default to Landing until 7 posts have been published",
                 "default": "Landing",
                 "group": "homepage"
             },
