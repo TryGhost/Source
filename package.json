@@ -100,17 +100,17 @@
             "header_and_footer_color": {
                 "type": "select",
                 "options": [
-                    "Accent color",
-                    "Background color"
+                    "Background color",
+                    "Accent color"
                 ],
-                "default": "Accent color"
+                "default": "Background color"
             },
             "title_font": {
                 "type": "select",
                 "options": [
                     "Modern sans-serif",
                     "Elegant serif",
-                    "Clean slab"
+                    "Consistent mono"
                 ],
                 "default": "Modern sans-serif"
             },
@@ -139,17 +139,18 @@
                     "Search",
                     "Off"
                 ],
-                "description": "Highlight & Magazine styles will default to Landing until 7 posts have been published",
+                "description": "Landing is recommended for all sites, Highlight & Magazine are ideal for those with more content",
                 "default": "Landing",
                 "group": "homepage"
             },
             "use_publication_cover_as_background": {
                 "type": "boolean",
                 "default": false,
+                "description": "A cover image can be uploaded in Brand settings",
                 "group": "homepage",
                 "visibility": "header_style:[Landing, Search]"
             },
-            "highlight_featured_posts": {
+            "show_featured_posts": {
                 "type": "boolean",
                 "default": false,
                 "group": "homepage",
@@ -167,26 +168,22 @@
             "show_images_in_feed": {
                 "type": "boolean",
                 "default": true,
-                "description": "Toggles thumbnails of the post cards when the post feed style is List",
                 "group": "homepage",
                 "visibility": "post_feed_style:List"
             },
             "show_author": {
                 "type": "boolean",
                 "default": true,
-                "description": "Show the author below each post",
                 "group": "homepage"
             },
             "show_publish_date": {
                 "type": "boolean",
                 "default": true,
-                "description": "Show the date published below each post",
                 "group": "homepage"
             },
-            "show_site_in_sidebar": {
+            "show_publication_info_sidebar": {
                 "type": "boolean",
                 "default": false,
-                "description": "Include your site info on the side of the post feed",
                 "group": "homepage"
             }
         }
