@@ -25,7 +25,7 @@
                             {{#match posts.length ">=" 4}}
                                 {{#get "posts" include="authors" limit="16"}}
                                     {{#foreach posts from="5" limit="12"}}
-                                        {{> "post-card"}}
+                                        {{> "post-card" lazyLoad=true}}
                                     {{/foreach}}
                                 {{/get}}
                             {{/match}}
@@ -33,7 +33,7 @@
                             {{#match posts.length ">=" 10}}
                                 {{#get "posts" include="authors" limit="22"}}
                                     {{#foreach posts from="11" limit="12"}}
-                                        {{> "post-card"}}
+                                        {{> "post-card" lazyLoad=true}}
                                     {{/foreach}}
                                 {{/get}}
                             {{/match}}
@@ -42,14 +42,14 @@
                         {{#match posts.length ">=" 7}}
                             {{#get "posts" include="authors" limit="19"}}
                                 {{#foreach posts from="8" limit="12"}}
-                                    {{> "post-card"}}
+                                    {{> "post-card" lazyLoad=true}}
                                 {{/foreach}}
                             {{/get}}
                         {{/match}}
                     {{else}}
                         {{#get "posts" include="authors" limit="12"}}
                             {{#foreach posts}}
-                                {{> "post-card"}}
+                                {{> "post-card" lazyLoad=true}}
                             {{/foreach}}
                         {{/get}}
                     {{/match}}
@@ -65,14 +65,14 @@
                         {{/get}}
                     {{/match}}
                     {{#foreach posts}}
-                        {{> "post-card"}}
+                        {{> "post-card" lazyLoad=true}}
                     {{/foreach}}
                 {{/match}}
 
                 {{!-- Tag and author pages --}}
                 {{#match feed "archive"}}
                     {{#foreach posts}}
-                        {{> "post-card"}}
+                        {{> "post-card" lazyLoad=true}}
                     {{/foreach}}
                 {{/match}}
 
@@ -80,7 +80,7 @@
                 {{#match feed "recent"}}
                     {{#get "posts" include="authors" filter="id:-{{post.id}}" limit="4" as |next|}}
                         {{#foreach next}}
-                            {{> "post-card"}}
+                            {{> "post-card" lazyLoad=true}}
                         {{/foreach}}
                     {{/get}}
                 {{/match}}
@@ -92,7 +92,7 @@
             <aside class="gh-sidebar">
                 <section class="gh-about">
                     {{#if @site.icon}}
-                        <img class="gh-about-icon" src="{{@site.icon}}" alt="{{@site.title}}">
+                        <img class="gh-about-icon" src="{{@site.icon}}" alt="{{@site.title}}" loading="lazy">
                     {{/if}}
                     <h3 class="gh-about-title is-title">{{@site.title}}</h3>
                     {{#if @site.description}}

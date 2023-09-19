@@ -63,22 +63,22 @@
     "config": {
         "posts_per_page": 16,
         "image_sizes": {
-            "xxs": {
-                "width": 30
-            },
             "xs": {
-                "width": 100
+                "width": 160
             },
             "s": {
-                "width": 300
+                "width": 320
             },
             "m": {
                 "width": 600
             },
             "l": {
-                "width": 1000
+                "width": 960
             },
             "xl": {
+                "width": 1200
+            },
+            "xxl": {
                 "width": 2000
             }
         },
