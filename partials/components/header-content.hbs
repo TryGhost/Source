@@ -1,7 +1,7 @@
-<section class="gh-header is-{{#match headerStyle "Magazine"}}magazine{{else match headerStyle "Highlight"}}highlight{{else}}classic{{/match}}{{#if @custom.use_publication_cover_as_background}}{{#if @site.cover_image}} has-image{{/if}}{{/if}} gh-outer">
+<section class="gh-header is-{{#match headerStyle "Magazine"}}magazine{{else match headerStyle "Highlight"}}highlight{{else}}classic{{/match}}{{#if @custom.background_image}}{{#if @site.cover_image}} has-image{{/if}}{{/if}} gh-outer">
         
     {{!-- Background image --}}
-    {{#if @custom.use_publication_cover_as_background}}
+    {{#if @custom.background_image}}
         {{#match headerStyle "!=" "Magazine"}}
         {{#match headerStyle "!=" "Highlight"}}
             {{#if @site.cover_image}}

@@ -139,14 +139,14 @@
                     "Search",
                     "Off"
                 ],
-                "description": "Landing is recommended for all sites, Highlight & Magazine are ideal for those with more content",
+                "description": "Landing is recommended for all sites, Highlight & Magazine for those with more content",
                 "default": "Landing",
                 "group": "homepage"
             },
-            "use_publication_cover_as_background": {
+            "background_image": {
                 "type": "boolean",
                 "default": false,
-                "description": "A cover image can be uploaded in Brand settings",
+                "description": "Use the publication cover set on the Brand tab as your background",
                 "group": "homepage",
                 "visibility": "header_style:[Landing, Search]"
             },
