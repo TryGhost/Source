@@ -145,7 +145,7 @@
             },
             "background_image": {
                 "type": "boolean",
-                "default": false,
+                "default": true,
                 "description": "Use the publication cover set on the Brand tab as your background",
                 "group": "homepage",
                 "visibility": "header_style:[Landing, Search]"
