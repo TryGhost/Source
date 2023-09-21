@@ -76,15 +76,6 @@
                     {{/foreach}}
                 {{/match}}
 
-                {{!-- Recent posts --}}
-                {{#match feed "recent"}}
-                    {{#get "posts" include="authors" filter="id:-{{post.id}}" limit="4" as |next|}}
-                        {{#foreach next}}
-                            {{> "post-card" lazyLoad=true}}
-                        {{/foreach}}
-                    {{/get}}
-                {{/match}}
-
             </div>
         </main>
 
