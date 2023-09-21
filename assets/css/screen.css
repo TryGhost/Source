@@ -2534,11 +2534,7 @@ figcaption a {
 
 .has-mono-title .gh-card-title {
     font-size: calc(1.8rem*var(--factor, 1));
-}
-
-.has-mono-title .gh-header.gh-header.is-highlight .gh-card-title,
-.has-mono-title .gh-header.gh-header.gh-header.is-magazine .gh-card-title {
-    line-height: 1.15;
+    line-height: 1.2;
 }
 
 .has-serif-title .gh-about-title {
