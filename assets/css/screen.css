@@ -2024,8 +2024,8 @@ unless a heading is the very first element in the post content */
     margin-top: calc(56px * var(--content-spacing-factor, 1));
 }
 
-/* Add a small margin between a heading and anything after it */
-.gh-content > [id] + * {
+/* Add a small margin between a heading and paragraph after it */
+.gh-content > [id] + p {
     margin-top: calc(12px * var(--content-spacing-factor, 1));
 }
 
