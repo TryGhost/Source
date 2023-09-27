@@ -143,6 +143,12 @@
                 "default": "Landing",
                 "group": "homepage"
             },
+            "header_text": {
+                "type": "text",
+                "group": "homepage",
+                "description": "Defaults to site description when empty",
+                "visibility": "header_style:[Landing, Search]"
+            },
             "background_image": {
                 "type": "boolean",
                 "default": true,
