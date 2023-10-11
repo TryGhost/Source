@@ -1830,15 +1830,18 @@ Search                         LOGO                    Login Subscribe
 /* 13. Sidebar
 /* ---------------------------------------------------------- */
 
-.gh-about {
+.gh-sidebar-inner {
     position: sticky;
     top: calc(var(--grid-gap) / 2);
+}
+
+.gh-about {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 48px 24px;
-    min-height: 400px;
+    min-height: 380px;
     text-align: center;
     background-color: var(--color-lighter-gray);
 }
@@ -1864,6 +1867,57 @@ Search                         LOGO                    Login Subscribe
 
 .gh-about .gh-button {
     margin-top: 32px;
+}
+
+.gh-recommendations {
+    margin-top: 48px;
+}
+
+.gh-recommendations .recommendations {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.gh-recommendations .recommendation a {
+    display: grid;
+    grid-template-columns: 28px auto;
+    gap: 3px 12px;
+}
+
+.gh-recommendations .recommendation a:hover {
+    opacity: 1;
+}
+
+.gh-recommendations .recommendation-favicon {
+    grid-row: span 2;
+    width: 100%;
+    border-radius: 4px;
+}
+
+.gh-recommendations .recommendation-title {
+    margin-top: -2px;
+    font-size: 1.5rem;
+    font-weight: 650;
+    letter-spacing: -0.009em;
+}
+
+.gh-recommendations .recommendation a:hover .recommendation-title {
+    opacity: 0.8;
+}
+
+.gh-recommendations .recommendation-reason {
+    display: -webkit-box;
+    overflow-y: hidden;
+    grid-column: 2;
+    font-size: 1.4rem;
+    line-height: 1.4;
+    color: var(--color-secondary-text);
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
 
 /* 14. Post/page
