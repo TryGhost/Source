@@ -102,11 +102,13 @@
                             {{/unless}}
                         {{/if}}
                     </section>
-                    <section class="gh-recommendations">
-                        <h4 class="gh-container-title">Recommendations</h4>
-                        {{recommendations}}
-                        <button data-portal="recommendations">See all {{> "icons/arrow"}}</button>
-                    </section>
+                    {{#if @site.recommendations_enabled}}
+                        <section class="gh-recommendations">
+                            <h4 class="gh-container-title">Recommendations</h4>
+                            {{recommendations}}
+                            <button data-portal="recommendations">See all {{> "icons/arrow"}}</button>
+                        </section>
+                    {{/if}}
                 </div>
             </aside>
         {{/if}}

@@ -1950,6 +1950,7 @@ Search                         LOGO                    Login Subscribe
 }
 
 .gh-recommendations button svg {
+    margin-top: -1px;
     width: 12px;
 }
 
