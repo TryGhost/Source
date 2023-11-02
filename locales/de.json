@@ -1,7 +1,7 @@
 {
   "Read more": "Lies mehr",
   "Featured": "Hervorgehoben",
-  "Powered by <a href='https://ghost.org/' target='_blank' rel='noopener'>Ghost</a>": "Läuft mit <a href='https://ghost.org/' target='_blank' rel='noopener'>Ghost</a>",
+  "Powered by {ghostlink}": "Läuft mit {ghostlink}",
   "Search posts, tags and authors": "Suche nach Beiträgen, Tags und Autoren",
   "Subscribe": "Abonnieren",
   "Sign in": "Anmelden",
