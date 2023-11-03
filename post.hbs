@@ -35,7 +35,7 @@
                     <div class="gh-article-meta-content">
                         <time class="gh-article-meta-date" datetime="{{date format="YYYY-MM-DD"}}">{{date}}</time>
                         {{#if reading_time}}
-                            <span class="gh-article-meta-length"><span class="bull">—</span> {{reading_time}}</span>
+                            <span class="gh-article-meta-length"><span class="bull">—</span> {{reading_time minute=(t "1 min read") minutes=(t "% min read")}}</span>
                         {{/if}}
                     </div>
                 </div>
