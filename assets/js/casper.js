@@ -40,7 +40,7 @@
 
 /* Infinite scroll pagination */
 (function () {
-    if (document.body.classList.contains('paged')) {
+    if (!document.body.classList.contains('home-template') && !document.body.classList.contains('post-template')) {
         pagination();
     }
 })();

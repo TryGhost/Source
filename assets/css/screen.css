@@ -1830,15 +1830,29 @@ Search                         LOGO                    Login Subscribe
 /* 13. Sidebar
 /* ---------------------------------------------------------- */
 
-.gh-about {
+.gh-sidebar-inner {
     position: sticky;
     top: calc(var(--grid-gap) / 2);
+}
+
+.gh-sidebar-title {
+    grid-column: 1 / -1;
+    margin-bottom: calc(var(--grid-gap) / 2);
+    padding-bottom: 12px;
+    font-size: 1.2rem;
+    font-weight: 550;
+    letter-spacing: 0.025em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.gh-about {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 48px 24px;
-    min-height: 400px;
+    min-height: 380px;
     text-align: center;
     background-color: var(--color-lighter-gray);
 }
@@ -1864,6 +1878,95 @@ Search                         LOGO                    Login Subscribe
 
 .gh-about .gh-button {
     margin-top: 32px;
+}
+
+.gh-recommendations {
+    margin-top: 48px;
+}
+
+.gh-recommendations .recommendations {
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.gh-recommendations .recommendation:first-child {
+    margin-top: 4px;
+}
+
+.gh-recommendations .recommendation a {
+    display: grid;
+    grid-template-columns: 24px auto;
+    gap: 4px 12px;
+}
+
+.gh-recommendations .recommendation a:hover {
+    opacity: 1;
+}
+
+.gh-recommendations .recommendation-favicon {
+    grid-row: span 2;
+    width: 100%;
+    border-radius: 4px;
+}
+
+.gh-recommendations .recommendation-title {
+    margin-top: -2px;
+    font-size: 1.5rem;
+    font-weight: 650;
+    letter-spacing: -0.009em;
+}
+
+.gh-recommendations .recommendation a:hover .recommendation-title {
+    opacity: 0.8;
+}
+
+.gh-recommendations .recommendation-url {
+    order: 1;
+    overflow: hidden;
+    font-size: 1.4rem;
+    line-height: 1.25;
+    color: var(--color-secondary-text);
+    text-overflow: ellipsis;
+}
+
+.gh-recommendations .recommendation-description {
+    display: -webkit-box;
+    display: none;
+    overflow-y: hidden;
+    grid-column: 2;
+    font-size: 1.4rem;
+    line-height: 1.4;
+    color: var(--color-secondary-text);
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.gh-recommendations button {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    margin-top: 24px;
+    padding: 0;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: 550;
+    letter-spacing: 0.025em;
+    text-transform: uppercase;
+    background-color: transparent;
+    border: 0;
+}
+
+.gh-recommendations button svg {
+    margin-top: -1px;
+    width: 12px;
+}
+
+.gh-recommendations button:hover {
+    opacity: 0.8;
 }
 
 /* 14. Post/page
