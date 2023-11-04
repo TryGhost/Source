@@ -2225,7 +2225,6 @@ unless a heading is the very first element in the post content */
     border-radius: 5px;
 }
 
-
 .gh-content table:not(.gist table) {
     display: inline-block;
     width: auto;
