@@ -62,6 +62,8 @@ production stylesheet in assets/built/screen.css
     --color-secondary-text: rgb(0 0 0 / 0.5);
     --color-border: rgb(0 0 0 / 0.08);
     --color-dark-border: rgb(0 0 0 / 0.5);
+    --color-pre-background: rgb(244,245,246);
+    --color-pre-border-background: rgb(235 238 240);
     --font-sans: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     --font-serif: "EB Garamond", Georgia, Times, serif;
     --font-serif-alt: Georgia, Times, serif;
@@ -2197,6 +2199,32 @@ unless a heading is the very first element in the post content */
     background-color: var(--color-border);
     border: 0;
 }
+
+.gh-content p > code {
+    border-width: 1px;
+    border-style: solid;
+    border-color: var(--color-pre-border-background);
+    background-color: var(--color-pre-background);
+    white-space: pre-wrap;
+    font-size: 0.8em;
+    line-height: 1em;
+    padding: 2px 5px;
+    border-radius: 5px;
+}
+
+.gh-content pre {
+    border-width: 1px;
+    border-style: solid;
+    border-color: var(--color-pre-border-background);
+    background-color: var(--color-pre-background);
+    vertical-align: middle;
+    white-space: pre-wrap;
+    font-size: 0.8em;
+    line-height: 1em;
+    padding: 15px 20px;
+    border-radius: 5px;
+}
+
 
 .gh-content table:not(.gist table) {
     display: inline-block;
