@@ -56,6 +56,13 @@ function dropdown() {
         toggle.appendChild(wrapper);
         nav.appendChild(toggle);
 
+        const toggleRect = toggle.getBoundingClientRect();
+        const documentCenter = window.innerWidth / 2;
+
+        if (toggleRect.left < documentCenter) {
+            wrapper.classList.add('is-left');
+        }
+
         head.classList.add('is-dropdown-loaded');
 
         window.addEventListener('click', function (e) {

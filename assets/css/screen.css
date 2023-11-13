@@ -717,9 +717,9 @@ Search                         LOGO                    Login Subscribe
     transform: translate3d(0, 6px, 0);
 }
 
-.is-middle-logo .gh-dropdown {
+.gh-dropdown.is-left {
     right: auto;
-    left: -24px;
+    left: -16px;
 }
 
 .is-dropdown-mega .gh-dropdown {
