@@ -9,9 +9,10 @@
 
         <header class="gh-article-header gh-canvas">
 
-            {{#if primary_tag}}
+            {{tags separator=" | " prefix="Tags:" autolink="true"}}
+            {{!-- {{#if primary_tag}}
                 <a class="gh-article-tag" href="{{primary_tag.url}}">{{primary_tag.name}}</a>
-            {{/if}}
+            {{/if}} --}}
             <h1 class="gh-article-title is-title">{{title}}</h1>
             {{#if custom_excerpt}}
                 <p class="gh-article-excerpt is-body">{{custom_excerpt}}</p>
@@ -60,13 +61,13 @@
 
 {{/post}}
 
-{{#get "posts" include="authors" filter="id:-{{post.id}}" limit="4" as |next|}}
-    {{#if next}}
+{{#get "posts" include="authors,tags" filter="primary_tag:hash-{{primary_tag.slug}}" limit="3" as |related|}}
+    {{#if related}}
         <section class="gh-container is-grid gh-outer">
             <div class="gh-container-inner gh-inner">
-                <h2 class="gh-container-title">Leer más</h2>
+                <h2 class="gh-container-title">Artículos relacionados</h2>
                 <div class="gh-feed">
-                    {{#foreach next}}
+                    {{#foreach related}}
                         {{> "post-card" lazyLoad=true}}
                     {{/foreach}}
                 </div>
@@ -74,3 +75,19 @@
         </section>
     {{/if}}
 {{/get}}
+
+{{!-- 
+{{#get "posts" include="authors" filter="id:-{{post.id}}" limit="4" as |next|}}
+{{#if next}}
+<section class="gh-container is-grid gh-outer">
+    <div class="gh-container-inner gh-inner">
+        <h2 class="gh-container-title">Leer más</h2>
+        <div class="gh-feed">
+            {{#foreach next}}
+            {{> "post-card" lazyLoad=true}}
+            {{/foreach}}
+        </div>
+    </div>
+</section>
+{{/if}}
+{{/get}} --}}

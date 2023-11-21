@@ -31,7 +31,7 @@ const handleError = (done) => {
     return function (err) {
         if (err) {
             // beeper();
-            console.log(err);
+console.log(err);
         }
         return done(err);
     };
