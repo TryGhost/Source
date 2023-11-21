@@ -32,7 +32,7 @@
                 <div class="gh-article-meta-wrapper">
                     <h4 class="gh-article-author-name">{{authors}}</h4>
                     <div class="gh-article-meta-content">
-                        <time class="gh-article-meta-date" datetime="{{date format="YYYY-MM-DD"}}">{{date}}</time>
+                        <time class="gh-article-meta-date" datetime="{{date format="DD-MM-YYYY"}}">{{date}}</time>
                         {{#if reading_time}}
                             <span class="gh-article-meta-length"><span class="bull">—</span> {{reading_time}}</span>
                         {{/if}}
@@ -64,7 +64,7 @@
     {{#if next}}
         <section class="gh-container is-grid gh-outer">
             <div class="gh-container-inner gh-inner">
-                <h2 class="gh-container-title">Read more</h2>
+                <h2 class="gh-container-title">Leer más</h2>
                 <div class="gh-feed">
                     {{#foreach next}}
                         {{> "post-card" lazyLoad=true}}
