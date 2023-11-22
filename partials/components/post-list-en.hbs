@@ -8,7 +8,7 @@
 
 <section class="gh-container is-{{#match postFeedStyle "List"}}list{{else}}grid{{/match}}{{#if showSidebar}} has-sidebar{{/if}}{{#unless @custom.show_images_in_feed}} no-image{{/unless}} gh-outer">
     <div class="gh-container-inner gh-inner">
-        🇨🇱
+        🇬🇧
         {{#if showTitle}}
             <h2 class="gh-container-title">
                 {{#unless title}}Recientes{{else}}{{title}}{{/unless}}
@@ -56,9 +56,9 @@
                 {{/match}}
 
                 {{!-- All posts --}}
-                {{#match feed "index-es"}}
+                {{#match feed "index-en"}}
                     {{#match pagination.page 2}}
-                        {{#get "posts" include="tags" filter="primary_tag:hash-es" limit=@config.posts_per_page as |recent|}}
+                        {{#get "posts" include="tags" filter="primary_tag:hash-en" limit=@config.posts_per_page as |recent|}}
                             {{#foreach recent}}
                                 {{> "post-card"}}
                             {{/foreach}}
@@ -71,7 +71,7 @@
 
                 {{!-- Tag and author pages --}}
                 {{#match feed "archive"}}
-                    {{#foreach posts filter="primary_tag:hash-es"}}
+                    {{#foreach posts filter="primary_tag:hash-en"}}
                         {{> "post-card" lazyLoad=true}}
                     {{/foreach}}
                 {{/match}}
