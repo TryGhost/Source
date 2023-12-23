@@ -47,7 +47,7 @@
                             {{/get}}
                         {{/match}}
                     {{else}}
-                        {{#get "posts" include="authors" limit="12"}}
+                        {{#get "posts" include="authors" limit=@config.posts_per_page}}
                             {{#foreach posts}}
                                 {{> "post-card" lazyLoad=true}}
                             {{/foreach}}
