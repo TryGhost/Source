@@ -1556,6 +1556,7 @@ Search                         LOGO                    Login Subscribe
 }
 
 .gh-cta-content-left {
+  max-width: 200px;
   max-height: 200px;
 }
 
@@ -1563,8 +1564,13 @@ Search                         LOGO                    Login Subscribe
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   flex-grow: 1;
-  padding: 0 20px;
+  padding: 0 30px;
+}
+
+.gh-cta-content-right .limit-width {
+  max-width: 400px;
 }
 
 .gh-cta-content-right p {
