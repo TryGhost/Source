@@ -1519,7 +1519,7 @@ Search                         LOGO                    Login Subscribe
   flex-direction: column;
   align-items: center;
   gap: 36px;
-  padding: clamp(48px, 3.64vw + 33.45px, 80px) clamp(40px, 2.73vw + 29.09px, 64px);
+  padding: clamp(20px, 3.64vw + 33.45px, 36px) clamp(40px, 2.73vw + 29.09px, 64px);
   text-align: center;
   background-color: var(--color-lighter-gray);
 }
@@ -1547,7 +1547,7 @@ Search                         LOGO                    Login Subscribe
 }
 
 .gh-cta-content-left {
-  max-width: 300px;
+  max-width: 250px;
 }
 
 .gh-cta-content-right {
@@ -1560,6 +1560,10 @@ Search                         LOGO                    Login Subscribe
 
 .gh-cta-content-right p {
   margin-bottom: 20px;
+}
+
+.gh-cta-content-right .gh-button {
+  flex-grow: 0;
 }
 
 /* 10. Featured posts
