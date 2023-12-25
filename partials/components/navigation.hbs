@@ -2,13 +2,12 @@
     <div class="gh-navigation-inner gh-inner">
 
         <div class="gh-navigation-brand">
-            <a class="gh-navigation-logo is-title" href="{{@site.url}}">
-                {{#if @site.logo}}
-                    <img src="{{@site.logo}}" alt="{{@site.title}}">
-                {{else}}
-                    {{@site.title}}
-                {{/if}}
-            </a>
+            <div class="logo-group">
+                <a class="gh-navigation-logo is-title" href="{{@site.url}}">
+                    [citation needed]
+                </a>
+                <div class="subhead">a newsletter by Molly White</div>
+            </div>
             {{> "search-toggle"}}
             <button class="gh-burger gh-icon-button">
                 {{> "icons/burger"}}

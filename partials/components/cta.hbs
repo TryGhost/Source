@@ -4,17 +4,19 @@
         {{#match @custom.header_style "!=" "Search"}}
         {{#match @custom.header_style "!=" "Off"}}
         {{#match posts.length ">=" 7}}
-            <section class="gh-cta gh-outer">
-                <div class="gh-cta-inner gh-inner">
+            <section class="gh-cta">
+                <div class="gh-cta-inner">
                     <div class="gh-cta-content">
-                        <h2 class="gh-cta-title is-title">
-                            {{#if @custom.signup_heading}}{{@custom.signup_heading}}{{else}}{{@site.title}}{{/if}}
-                        </h2>
-                        <p class="gh-cta-description is-body">
-                            {{#if @custom.signup_subheading}}{{@custom.signup_subheading}}{{else}}{{@site.description}}{{/if}}
-                        </p>
+                        <div class="gh-cta-content-left">
+                            <img src="{{@site.icon}}" alt="{{@site.title}}">
+                        </div>
+                        <div class="gh-cta-content-right">
+                            <p><i>Citation Needed</i> features critical coverage of the cryptocurrency industry
+                            and of issues in the broader technology world.</p>
+                            <p>It is independently published by Molly White, and entirely supported by readers like you.</p>
+                            {{> "email-subscription"}}
+                        </div>
                     </div>
-                    {{> "email-subscription"}}
                 </div>
             </section>
         {{/match}}
