@@ -60,7 +60,8 @@ production stylesheet in assets/built/screen.css
   --color-black: #000;
   --color-primary-text: var(--color-darker-gray);
   --color-secondary-text: rgb(0 0 0 / 0.5);
-  --color-border: rgba(255, 255, 255, 0.8);
+  --color-border-on-dark: rgba(255, 255, 255, 0.8);
+  --color-border: rgb(0 0 0 / 0.08);
   --color-dark-border: rgb(0 0 0 / 0.5);
   --font-brand: var(--font-sans);
   --font-display: "Barlow Condensed", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
@@ -755,7 +756,7 @@ Search                         LOGO                    Login Subscribe
     width: 100%;
     height: 1px;
     content: "";
-    background-color: var(--color-border);
+    background-color: var(--color-border-on-dark);
   }
 
   .gh-navigation.is-stacked .gh-navigation-menu::after {
@@ -1613,7 +1614,6 @@ Search                         LOGO                    Login Subscribe
 .gh-featured-feed {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: var(--grid-gap);
 }
 
 .gh-featured-feed .gh-card {
@@ -1779,17 +1779,15 @@ Search                         LOGO                    Login Subscribe
 
 /* 11.2. Without sidebar */
 
-.gh-container:not(.has-sidebar) :is(.gh-container-title, .gh-main, .gh-more) {
+.gh-container:not(.has-sidebar) :is(.gh-main, .gh-more) {
   grid-column: 3 / span 12;
 }
 
-.gh-container.is-list.no-image:not(.has-sidebar) :is(.gh-container-title, .gh-main, .gh-more) {
+.gh-container.is-list.no-image:not(.has-sidebar) :is(.gh-main, .gh-more) {
   grid-column: 4 / span 10;
 }
 
-.gh-header:is(.is-highlight, .is-magazine)
-  ~ .gh-container.is-grid:not(.has-sidebar)
-  :is(.gh-container-title, .gh-main, .gh-more) {
+.gh-header:is(.is-highlight, .is-magazine) ~ .gh-container.is-grid:not(.has-sidebar) :is(.gh-main, .gh-more) {
   grid-column: 1 / -1;
 }
 
@@ -1809,13 +1807,10 @@ Search                         LOGO                    Login Subscribe
 
 .gh-container-title {
   grid-column: 1 / -1;
-  margin-bottom: calc(var(--grid-gap) / 2);
-  padding-bottom: 12px;
   font-size: 1.2rem;
   font-weight: 550;
   letter-spacing: 0.025em;
   text-transform: uppercase;
-  border-bottom: 1px solid var(--color-border);
 }
 
 .gh-container:not(:has(.gh-card)) .gh-container-title {
@@ -1823,7 +1818,7 @@ Search                         LOGO                    Login Subscribe
 }
 
 .gh-container .gh-feed {
-  gap: var(--grid-gap);
+  column-gap: var(--grid-gap);
 }
 
 .gh-container .gh-card-meta:not(:empty) {
@@ -1907,23 +1902,47 @@ Search                         LOGO                    Login Subscribe
 .gh-container.is-grid .gh-feed {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(248px, 1fr));
-  row-gap: calc(var(--grid-gap) * 1.5);
-  overflow: hidden;
+  grid-template-rows: 28px repeat(4, 1fr);
 }
 
-.gh-container.is-grid .gh-card::before {
+.gh-feed-header {
+  position: relative;
+  top: -15px;
+}
+
+.gh-feed-main-section,
+.gh-feed-featured-section {
+  display: grid;
+  position: relative;
+  grid-template-columns: subgrid;
+  grid-template-rows: subgrid;
+  grid-row: 2 / -1;
+  row-gap: var(--grid-gap);
+}
+
+.gh-feed-main-section,
+.gh-feed-header.latest {
+  grid-column: 1 / 4;
+}
+
+.gh-feed-featured-section,
+.gh-feed-header.featured {
+  grid-column: 4 / 5;
+}
+
+.gh-feed-header::before {
   position: absolute;
-  top: calc(var(--grid-gap) / -2);
-  right: calc(var(--grid-gap) / -2);
+  top: 24px;
   left: calc(var(--grid-gap) / -2);
+  right: calc(var(--grid-gap) / -2);
   content: "";
   height: 1px;
   background-color: var(--color-border);
 }
 
-.gh-container.is-grid .gh-card::after {
+.gh-feed-featured-section::before {
   position: absolute;
-  top: 0;
+  top: -19px;
   left: calc(var(--grid-gap) / -2);
   content: "";
   width: 1px;
