@@ -22,7 +22,7 @@
                     </h2>
                     <section class="gh-feed-main-section">
                         {{#match posts.length ">=" 4}}
-                            {{#get "posts" filter="featured:false" include="authors" limit="16"}}
+                            {{#get "posts" filter="featured:false" include="authors" limit="17"}}
                                 {{#foreach posts from="2" limit="12"}}
                                     {{> "post-card" lazyLoad=true}}
                                 {{/foreach}}
@@ -30,7 +30,7 @@
                         {{/match}}
                     </section>
                     <section class="gh-feed-featured-section">
-                        {{> "components/featured" showFeatured=@custom.show_featured_posts limit=6}}
+                        {{> "components/featured" showFeatured=@custom.show_featured_posts limit=4}}
                     </section>
                 {{/match}}
 

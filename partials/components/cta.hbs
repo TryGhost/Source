@@ -1,31 +1,35 @@
 {{#if @site.members_enabled}}
-    {{#unless @member}}
-        {{#match @custom.header_style "!=" "Landing"}}
-        {{#match @custom.header_style "!=" "Search"}}
-        {{#match @custom.header_style "!=" "Off"}}
-        {{#match posts.length ">=" 7}}
-            <section class="gh-cta">
-                <div class="gh-cta-inner">
-                    <div class="gh-cta-content">
-                        <div class="gh-cta-content-left">
-                            <img src="{{asset 'images/illustration-transparent.png'}}" alt="Cartoon illustration of Molly White sitting crosslegged with a laptop.">
-                        </div>
-                        <div class="gh-cta-content-right">
-                            <div class="limit-width">
-                                <p><i>Citation Needed</i> features critical coverage of the cryptocurrency industry
-                                and of issues in the broader technology world.</p>
-                                <p>It is independently published by Molly White,<br/>and entirely supported by readers like you.</p>
+    {{#match @custom.header_style "!=" "Landing"}}
+    {{#match @custom.header_style "!=" "Search"}}
+    {{#match @custom.header_style "!=" "Off"}}
+    {{#match posts.length ">=" 7}}
+        <section class="gh-cta">
+            <div class="gh-cta-inner">
+                <div class="gh-cta-content">
+                    <div class="gh-cta-content-left">
+                        <img src="{{asset 'images/illustration-transparent.png'}}" alt="Cartoon illustration of Molly White sitting crosslegged with a laptop.">
+                    </div>
+                    <div class="gh-cta-content-right">
+                        <div class="limit-width">
+                            <p><i>Citation Needed</i> features critical coverage of the cryptocurrency industry
+                            and of issues in the broader technology world.</p>
+                            <p>It is independently published by Molly White,<br/>and entirely supported by readers like you.</p>
+                            {{#if @member}}
+                                <p>
+                                    <i>Thank you.</i>
+                                </p>
+                            {{else}}
                                 <div>
                                     <a class="gh-button on-dark" href="#/portal/signup" data-portal="signup">Subscribe</a>
                                 </div>
-                            </div>
+                            {{/if}}
                         </div>
                     </div>
                 </div>
-            </section>
-        {{/match}}
-        {{/match}}
-        {{/match}}
-        {{/match}}
-    {{/unless}}
+            </div>
+        </section>
+    {{/match}}
+    {{/match}}
+    {{/match}}
+    {{/match}}
 {{/if}}
