@@ -71,7 +71,7 @@ production stylesheet in assets/built/screen.css
     "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   --font-serif: SourceSerif, Georgia, Times, serif;
   --font-serif-alt: Georgia, Times, serif;
-  --font-mono: "JetBrains Mono", Menlo, Consolas, Monaco, "Liberation Mono", "Lucida Console", monospace;
+  --font-mono: Menlo, Consolas, Monaco, "Liberation Mono", "Lucida Console", monospace;
   --container-width: 1320px;
   --container-gap: clamp(24px, 1.7032rem + 1.9355vw, 48px);
   --grid-gap: 42px;
@@ -1570,11 +1570,13 @@ Search                         LOGO                    Login Subscribe
   padding: 0 30px;
 }
 
-.gh-cta-content-right .limit-width {
+.gh-cta-content-right .limit-width,
+.gh-footer-about.limit-width {
   max-width: 400px;
 }
 
-.gh-cta-content-right p {
+.gh-cta-content-right p,
+.gh-footer-about p {
   margin-bottom: 20px;
 }
 
@@ -1779,15 +1781,17 @@ Search                         LOGO                    Login Subscribe
 
 /* 11.2. Without sidebar */
 
-.gh-container:not(.has-sidebar) :is(.gh-main, .gh-more) {
+.gh-container:not(.has-sidebar) :is(.gh-container-title, .gh-main, .gh-more) {
   grid-column: 3 / span 12;
 }
 
-.gh-container.is-list.no-image:not(.has-sidebar) :is(.gh-main, .gh-more) {
+.gh-container.is-list.no-image:not(.has-sidebar) :is(.gh-container-title, .gh-main, .gh-more) {
   grid-column: 4 / span 10;
 }
 
-.gh-header:is(.is-highlight, .is-magazine) ~ .gh-container.is-grid:not(.has-sidebar) :is(.gh-main, .gh-more) {
+.gh-header:is(.is-highlight, .is-magazine)
+  ~ .gh-container.is-grid:not(.has-sidebar)
+  :is(.gh-container-title, .gh-main, .gh-more) {
   grid-column: 1 / -1;
 }
 
@@ -1818,7 +1822,7 @@ Search                         LOGO                    Login Subscribe
 }
 
 .gh-container .gh-feed {
-  column-gap: var(--grid-gap);
+  gap: var(--grid-gap);
 }
 
 .gh-container .gh-card-meta:not(:empty) {
@@ -1902,47 +1906,24 @@ Search                         LOGO                    Login Subscribe
 .gh-container.is-grid .gh-feed {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(248px, 1fr));
+  row-gap: calc(var(--grid-gap) * 1.5);
   grid-template-rows: 28px repeat(4, 1fr);
+  overflow: hidden;
 }
 
-.gh-feed-header {
-  position: relative;
-  top: -15px;
-}
-
-.gh-feed-main-section,
-.gh-feed-featured-section {
-  display: grid;
-  position: relative;
-  grid-template-columns: subgrid;
-  grid-template-rows: subgrid;
-  grid-row: 2 / -1;
-  row-gap: var(--grid-gap);
-}
-
-.gh-feed-main-section,
-.gh-feed-header.latest {
-  grid-column: 1 / 4;
-}
-
-.gh-feed-featured-section,
-.gh-feed-header.featured {
-  grid-column: 4 / 5;
-}
-
-.gh-feed-header::before {
+.gh-container.is-grid .gh-card::before {
   position: absolute;
-  top: 24px;
-  left: calc(var(--grid-gap) / -2);
+  top: calc(var(--grid-gap) / -2);
   right: calc(var(--grid-gap) / -2);
+  left: calc(var(--grid-gap) / -2);
   content: "";
   height: 1px;
   background-color: var(--color-border);
 }
 
-.gh-feed-featured-section::before {
+.gh-container.is-grid .gh-card::after {
   position: absolute;
-  top: -19px;
+  top: 0;
   left: calc(var(--grid-gap) / -2);
   content: "";
   width: 1px;
@@ -2881,13 +2862,12 @@ figcaption a {
 /* 21.2. Footer bar */
 
 .gh-footer-bar {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
-  column-gap: 32px;
-  margin-bottom: 100px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  gap: 8px 28px;
   padding-block: 28px;
-  font-weight: 550;
   border-block: 1px solid var(--color-border);
 }
 
@@ -2903,8 +2883,15 @@ figcaption a {
   max-height: 40px;
 }
 
-.gh-footer-menu .nav {
+.gh-footer-menu-wrapper {
   display: flex;
+  gap: 8px 28px;
+}
+
+.gh-footer-menu .nav {
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   gap: 8px 28px;
   flex-wrap: wrap;
@@ -2914,12 +2901,10 @@ figcaption a {
 }
 
 .gh-footer-copyright {
-  text-align: right;
+  display: flex;
+  align-items: flex-end;
   white-space: nowrap;
-}
-
-.gh-footer-copyright a {
-  text-decoration: underline;
+  margin: 20px 0 40px 0;
 }
 
 /* 21.3. Footer signup */
