@@ -58,6 +58,7 @@ production stylesheet in assets/built/screen.css
   --color-dark-gray: #444;
   --color-darker-gray: #15171a;
   --color-black: #000;
+  --color-error: #f02525;
   --color-primary-text: var(--color-darker-gray);
   --color-secondary-text: rgb(0 0 0 / 0.5);
   --color-border-on-dark: rgba(255, 255, 255, 0.8);
@@ -271,6 +272,15 @@ a:hover {
 
 .gh-button:hover {
   opacity: 0.95;
+}
+
+.gh-button:disabled {
+  background-color: var(--color-mid-gray);
+  cursor: default;
+}
+
+.gh-button:disabled:hover {
+  opacity: 1;
 }
 
 .gh-icon-button {
@@ -1584,6 +1594,20 @@ Search                         LOGO                    Login Subscribe
   flex-grow: 0;
 }
 
+@media (max-width: 767px) {
+  .gh-cta-content-left {
+    position: absolute;
+    right: 0;
+    max-width: 400px;
+    max-height: unset;
+    width: 100%;
+    opacity: 0.2;
+  }
+
+  .gh-cta-content-right {
+    z-index: 1;
+  }
+}
 /* 10. Featured posts
 /* ---------------------------------------------------------- */
 
@@ -1616,6 +1640,7 @@ Search                         LOGO                    Login Subscribe
 .gh-featured-feed {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  gap: var(--grid-gap);
 }
 
 .gh-featured-feed .gh-card {
@@ -1907,7 +1932,6 @@ Search                         LOGO                    Login Subscribe
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(248px, 1fr));
   row-gap: calc(var(--grid-gap) * 1.5);
-  grid-template-rows: 28px repeat(4, 1fr);
   overflow: hidden;
 }
 
@@ -2907,6 +2931,16 @@ figcaption a {
   margin: 20px 0 40px 0;
 }
 
+@media (max-width: 576px) {
+  .gh-footer-bar {
+    flex-direction: column;
+  }
+
+  .gh-footer-menu-wrapper {
+    margin-top: 20px;
+  }
+}
+
 /* 21.3. Footer signup */
 
 .gh-footer-signup {
@@ -2935,14 +2969,6 @@ figcaption a {
 
 .gh-footer-signup .gh-form {
   margin-top: 40px;
-}
-
-@media (max-width: 991px) {
-  .gh-footer-bar {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
 }
 
 /* 22. Lightbox
@@ -3442,4 +3468,176 @@ figcaption a {
 
 .pswp--minimal--dark .pswp__top-bar {
   background: none;
+}
+
+/* 23. Signup
+/* ---------------------------------------------------------- */
+.gh-signup-page {
+  padding: 2vmin 6vmin;
+  padding-bottom: 4vw;
+}
+
+.gh-signup-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 32px;
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.gh-signup-logo {
+  position: relative;
+  display: block;
+  background-position: 50%;
+  background-size: cover;
+  border-radius: 2px;
+  width: 60px;
+  height: 60px;
+  margin: 12px 0 10px;
+}
+
+.gh-signup-form {
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.gh-signup-label-wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.gh-signup-label-wrapper-inline {
+  display: inline;
+}
+
+.gh-signup-label {
+  color: var(--color-darker-gray);
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 2px;
+  letter-spacing: 0px;
+}
+
+.gh-signup-input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: block;
+  box-sizing: border-box;
+  font-size: 1.5rem;
+  color: inherit;
+  background: transparent;
+  outline: none;
+  border: 1px solid var(--color-light-gray);
+  width: 100%;
+  height: 44px;
+  padding: 0 12px;
+  margin-bottom: 18px;
+  letter-spacing: 0.2px;
+  transition: var(--border-color) 0.25s ease-in-out;
+}
+
+.gh-signup-custom-amount {
+  display: inline-block;
+  height: unset;
+  width: 4.5em;
+  font-weight: bold;
+  padding-right: 0;
+  margin-bottom: 0;
+}
+
+.gh-signup-currency-input {
+  font-size: 1.5rem;
+}
+
+.gh-signup-plans {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(248px, 1fr));
+  gap: var(--grid-gap);
+  margin: 0 auto;
+  padding: 0;
+  width: 100%;
+  margin-top: var(--grid-gap);
+}
+
+.gh-plan-card {
+  padding: 10px;
+  border: 1px solid var(--color-border);
+  flex: 1;
+  max-width: 420px;
+  min-width: 240px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: stretch;
+  background: var(--color-white);
+  padding: 32px;
+  border-radius: 7px;
+  min-height: 200px;
+}
+
+.gh-plan-card h3 {
+  color: var(--ghost-accent-color);
+  margin-bottom: 5px;
+  text-transform: capitalize;
+}
+
+.gh-signup-amount-interval {
+  margin-bottom: 10px;
+}
+
+.gh-signup-amount {
+  font-weight: bold;
+}
+
+.gh-signup-interval {
+  color: var(--color-dark-gray);
+}
+
+.gh-pwyw {
+  font-size: 0.8em;
+}
+
+.gh-pwyw button {
+  background-color: transparent;
+  border: none;
+  margin: 0;
+  padding: 0;
+  text-align: inherit;
+  font: inherit;
+  border-radius: 0;
+  appearance: none;
+  color: var(--ghost-accent-color);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.gh-signup-perks {
+  font-size: 0.9em;
+}
+
+.gh-signup-button-wrapper {
+  flex: 1;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.gh-signup-choose {
+  margin-top: var(--grid-gap);
+}
+
+.hidden {
+  display: none;
+}
+
+.gh-signup-error {
+  color: var(--color-error);
+  font-size: 1.3rem;
+  font-weight: bold;
 }

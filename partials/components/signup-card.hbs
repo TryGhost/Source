@@ -1,0 +1,43 @@
+<div class="gh-card gh-plan-card {{plan}}">
+  <h3>{{plan}}</h3>
+  <div class="gh-signup-amount-interval">
+  {{#match plan "!=" "none"}}
+    {{#match plan "monthly"}}
+      <div class="gh-signup-default">
+        <span class="gh-signup-amount">$10</span><span class="gh-signup-interval">/month</span>
+        <div class="gh-pwyw">or <button id="pwyw-monthly">pay what you want</button></div>
+      </div>
+      {{> "components/custom-subscription-input" plan="monthly" interval="month" defaultValue="10" minValue="1"}} 
+    {{/match}}
+    {{#match plan "annual"}}
+      <div class="gh-signup-default">
+        <span class="gh-signup-amount">$100</span><span class="gh-signup-interval">/year</span>
+        <div class="gh-pwyw">or <button id="pwyw-annual">pay what you want</button></div>
+      </div>
+      {{> "components/custom-subscription-input" plan="annual" interval="year" defaultValue="100" minValue="1"}} 
+    {{/match}}
+    {{#match plan "founding"}}
+      <div class="gh-signup-default">
+        <span class="gh-signup-amount">$200</span><span class="gh-signup-interval">/year</span>
+        <div class="gh-pwyw">or <button id="pwyw-founding">pay what you want</button></div>
+      </div>
+      {{> "components/custom-subscription-input" plan="founding" interval="year" defaultValue="200" minValue="100"}} 
+    {{/match}}
+  {{else}}
+    <span class="gh-signup-interval">Free</span>
+  {{/match}}
+  </div>
+  <ul class="gh-signup-perks">
+    <li>Receive all posts</li>
+    {{#match plan "!=" "none"}}
+    <li>Leave comments</li>
+    {{/match}}
+    {{#match plan "founding"}}
+    <li>Get that warm fuzzy feeling that comes from so generously supporting my work</li>
+    <li>Put that employer-sponsored education budget to good use</li>
+    {{/match}}
+  </ul>
+  <div class="gh-signup-button-wrapper">
+    <button class="gh-signup-choose gh-button">Choose</button>
+  </div>
+</div>

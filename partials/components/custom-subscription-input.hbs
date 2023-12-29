@@ -1,0 +1,11 @@
+<div class="gh-signup-label-wrapper-inline hidden">
+  <select class="gh-signup-currency-input" name="currency" id="currency-${{plan}}">
+    <option value="USD" selected>US$</option>
+  </select>
+  <input class="gh-signup-input gh-signup-custom-amount" id="signup-{{plan}}-custom-amount"
+    name="signup-{{plan}}-custom-amount" type="number" value="{{defaultValue}}" 
+      aria-label="Custom {{plan}} subscription amount in US dollars" min="{{minValue}}"
+        data-plan="{{plan}}" required/>
+  <span class="gh-signup-interval">/{{interval}}</span>
+  <div class="gh-signup-error"></div>
+</div>

@@ -1,0 +1,37 @@
+{{!< scaffold}}
+{{!-- The tag above means: insert everything in this file into the body of the default.hbs template --}}
+
+<main class="gh-main">
+  <div class="gh-signup-page">
+    <header class="gh-signup-header">
+      <img class="gh-signup-logo" src="{{@site.icon}}" alt="{{@site.title}}" loading="lazy" />
+      <h1>Subscribe to <i>{{@site.title}}</i></h1>
+    </header>
+    <section class="gh-signup-section">
+      <form data-members-form class="gh-signup-form">
+        <section class="gh-signup-group">
+          <div class="gh-signup-label-wrapper">
+            <label for="signup-name" class="gh-signup-label">Name</label>
+          </div>
+          <input data-members-name id="signup-name" class="gh-signup-input" type="text" name="name" placeholder=""
+            autocomplete="off" autocorrect="off" autocapitalize="" aria-label="Name" value="">
+        </section>
+        <section class="gh-signup-group">
+          <div class="gh-signup-label-wrapper">
+            <label for="signup-email" class="gh-signup-label">Email</label>
+          </div>
+          <input data-members-email id="signup-email" class="gh-signup-input" type="email" name="email"
+            placeholder="email@example.com" autocomplete="off" autocorrect="off" autocapitalize="off" aria-label="Email"
+            value="">
+        </section>
+        <p data-members-error><!-- error message will appear here --></p>
+      </form>
+    </section>
+    <section class="gh-signup-plans gh-inner">
+      {{> "components/signup-card" plan="monthly"}}
+      {{> "components/signup-card" plan="annual"}}
+      {{> "components/signup-card" plan="founding"}}
+      {{> "components/signup-card" plan="none"}}
+    </section>
+  </div>
+</main>
