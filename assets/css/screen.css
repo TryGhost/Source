@@ -3675,12 +3675,13 @@ button.button-reset {
   font-weight: bold;
 }
 
-.gh-signup-signin {
+.gh-signup-alternatives {
   margin-top: 10px;
   text-align: center;
+  font-size: 0.9em;
 }
 
-.gh-signup-signin-link {
+.gh-signup-alternatives a {
   color: var(--ghost-accent-color);
   font-weight: bold;
 }

@@ -4,8 +4,8 @@
 <main class="gh-main">
   <div class="gh-signup-page">
     <header class="gh-signup-header">
-      <img class="gh-signup-logo" src="{{@site.icon}}" alt="{{@site.title}}" loading="lazy" />
-      <h1>Subscribe to <i>{{@site.title}}</i></h1>
+      <a href="/"><img class="gh-signup-logo" src="{{@site.icon}}" alt="{{@site.title}}" loading="lazy" /></a>
+      <h1 class="is-title">Subscribe to {{@site.title}}</h1>
     </header>
     <form data-members-form class="gh-signup-form">
       <section class="gh-signup-info-section">
@@ -54,6 +54,9 @@
         {{> "components/signup-card" plan="none"}}
       </section>
     </form>
-  <p class="gh-signup-signin">Already a member? <a class="gh-signup-signin-link" href="#/portal/signin" data-portal="signin">Sign in</a>.</p>
+  <section class="gh-signup-alternatives">
+    <p>Not seeing an option that works for you? <a href="/pay-what-you-want">Learn more</a>.</p>
+    <p>Already a member? <a href="#/portal/signin" data-portal="signin">Sign in</a>.</p>
+  </section>
   </div>
 </main>

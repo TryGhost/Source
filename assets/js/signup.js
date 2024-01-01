@@ -81,6 +81,7 @@ function toggleNewslettersAccordion(e) {
 }
 
 function revealPwywControls(e) {
+  e.preventDefault();
   const plan = e.target.id.split("-")[1];
   const card = document.querySelector(`.gh-plan-card.${plan}`);
   card.querySelector(".gh-signup-label-wrapper-inline").classList.remove("hidden");
@@ -91,6 +92,7 @@ function revealPwywControls(e) {
 }
 
 function onSelectChange(e) {
+  e.preventDefault();
   const planId = e.target.value;
   const interval = e.target.getAttribute("data-interval");
   const stripeInterval = interval === "annual" ? "yearly" : interval;
