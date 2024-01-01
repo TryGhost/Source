@@ -1,0 +1,45 @@
+{{!< default}}
+
+<main class="gh-main">
+    <article class="gh-article {{post_class}}">
+            <header class="gh-article-header gh-canvas">
+                <h1 class="gh-article-title is-title">Welcome aboard!</h1>
+            </header>
+
+        <section class="gh-content gh-canvas is-body">
+          {{#if @member.paid}}
+            <p>
+                Seriously, your support means so much to me. While there is no shortage of deep-pocketed crypto firms and venture capitalists subsidizing crypto-friendly and tech-hyping publications and lobbyists, for some <i>truly baffling</i> reason they’re not so keen on those of us with a more skeptical outlook. It is support from people like you who enable me to continue doing my research and writing.
+            </p>
+          {{/if}}
+
+          <p>
+            You will start receiving posts right in your email inbox.{{#if @member.paid}} I would <b>strongly</b> recommend you add the newsletter's email address (newsletter@citationneeded.news) to your email contacts, which will help prevent posts from being flagged as spam. If emails do land in your spam folder, mark them as "Not spam" to rectify that problem.{{else}} You can also visit the website to read the full backlog, as well as read new posts as they are published. If you like the audio voiceovers, learn how to <a href="/podcast">receive them in your podcast app</a> of choice. And if you're an RSS lover like me, there’s <a href="/rss">a feed</a>. Your options are endless!{{/if}}
+          </p>
+
+          {{#if @member.paid}}
+            <p>You can also visit the website to read the full backlog, as well as read new posts as they are published. If you like the audio voiceovers, learn how to <a href="/podcast">receive them in your podcast app</a> of choice. And if you're an RSS lover like me, there’s <a href="/rss">a feed</a>. Your options are endless!</p>
+          {{else}}
+            <p>
+                If you like what you see, consider <a href="/signup">signing up for a pay-what-you-want subscription</a>. While there is no shortage of deep-pocketed crypto firms and venture capitalists subsidizing crypto-friendly and tech-hyping publications and lobbyists, for some <i>truly baffling</i> reason they're not so keen on those of us with a more skeptical outlook. It is support from people like you who enable me to continue doing my research and writing.
+            </p>
+            <p>
+                All content is free for all readers. However, as a completely independent writer, paid subscribers enable me to keep doing this work. Also, you'll get to join the lively comment section!
+            </p>
+            <p>
+                I would <b>strongly</b> recommend you add the newsletter's email address (newsletter@citationneeded.news) to your email contacts, which will help prevent posts from being flagged as spam. If emails do land in your spam folder, mark them as "Not spam" to rectify that problem.
+            </p>
+          {{/if}}
+
+          {{#if @member.paid}}
+            <p>
+                Because you’re a paid subscriber, you now have access to the lively comment section. Please remember to be excellent to each other. I read every comment, and will try to reply if you have questions or if my input might be useful!
+            </p>
+          {{/if}}
+
+          <p>If I can ask one more favor of you: please share this newsletter far and wide. I am hoping to provide a high-quality, accessible resource to all: no-coiners and crypto lovers alike, as well as those who are still learning and forming an opinion. Sharing this will help me achieve that goal.</p>
+
+          <p>Yours,<br/>Molly White</p>
+        </section>
+    </article>
+</main>

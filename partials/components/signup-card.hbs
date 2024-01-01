@@ -5,21 +5,20 @@
     {{#match plan "monthly"}}
       <div class="gh-signup-default">
         <span class="gh-signup-amount">$10</span><span class="gh-signup-interval">/month</span>
-        <div class="gh-pwyw">or <button id="pwyw-monthly">pay what you want</button></div>
+        <div class="gh-pwyw">or <button id="pwyw-monthly" class="button-reset">pay what you want</button></div>
       </div>
       {{> "components/custom-subscription-input" plan="monthly" interval="month" defaultValue="10" minValue="1"}} 
     {{/match}}
     {{#match plan "annual"}}
       <div class="gh-signup-default">
         <span class="gh-signup-amount">$100</span><span class="gh-signup-interval">/year</span>
-        <div class="gh-pwyw">or <button id="pwyw-annual">pay what you want</button></div>
+        <div class="gh-pwyw">or <button id="pwyw-annual" class="button-reset">pay what you want</button></div>
       </div>
       {{> "components/custom-subscription-input" plan="annual" interval="year" defaultValue="100" minValue="1"}} 
     {{/match}}
     {{#match plan "founding"}}
       <div class="gh-signup-default">
-        <span class="gh-signup-amount">$200</span><span class="gh-signup-interval">/year</span>
-        <div class="gh-pwyw">or <button id="pwyw-founding">pay what you want</button></div>
+        <span class="gh-signup-amount">$250</span><span class="gh-signup-interval">/year</span>
       </div>
       {{> "components/custom-subscription-input" plan="founding" interval="year" defaultValue="200" minValue="100"}} 
     {{/match}}
@@ -38,6 +37,17 @@
     {{/match}}
   </ul>
   <div class="gh-signup-button-wrapper">
-    <button class="gh-signup-choose gh-button">Choose</button>
+    {{#match plan "monthly"}}
+      <a class="gh-signup-choose gh-button disabled" id="choose-monthly" href="javascript:" data-portal="signup/658cc24f9458ad1f4271e4c0/monthly">Choose</a>
+    {{/match}}
+    {{#match plan "annual"}}
+      <a class="gh-signup-choose gh-button disabled" id="choose-annual" href="javascript:" data-portal="signup/658cc24f9458ad1f4271e4c0/yearly">Choose</a>
+    {{/match}}
+    {{#match plan "founding"}}
+      <a class="gh-signup-choose gh-button disabled" href="javascript:" data-portal="signup/658cc2929458ad1f4271e4c5/yearly">Choose</a>
+    {{/match}}
+    {{#match plan "none"}}
+      <button class="gh-signup-choose gh-button disabled" type="submit" disabled>Choose</button>
+    {{/match}}
   </div>
 </div>

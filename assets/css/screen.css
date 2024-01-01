@@ -274,12 +274,14 @@ a:hover {
   opacity: 0.95;
 }
 
-.gh-button:disabled {
+.gh-button:disabled,
+.gh-button.disabled {
   background-color: var(--color-mid-gray);
   cursor: default;
 }
 
-.gh-button:disabled:hover {
+.gh-button:disabled:hover,
+.gh-button.disabled:hover {
   opacity: 1;
 }
 
@@ -2217,11 +2219,13 @@ Search                         LOGO                    Login Subscribe
 }
 
 .gh-article-image {
+  display: none;
   grid-column: wide;
   margin-top: 40px;
 }
 
 .gh-article-image img {
+  display: none;
   width: 100%;
 }
 
@@ -3497,7 +3501,7 @@ figcaption a {
   margin: 12px 0 10px;
 }
 
-.gh-signup-form {
+.gh-signup-info-section {
   width: 100%;
   max-width: 420px;
   margin: 0 auto;
@@ -3540,17 +3544,43 @@ figcaption a {
   transition: var(--border-color) 0.25s ease-in-out;
 }
 
-.gh-signup-custom-amount {
-  display: inline-block;
-  height: unset;
-  width: 4.5em;
-  font-weight: bold;
-  padding-right: 0;
-  margin-bottom: 0;
+.gh-signup-newsletter-card {
+  border-radius: 7px;
+  border: 1px solid var(--color-border);
+  padding: 10px;
+  margin-bottom: 10px;
 }
 
-.gh-signup-currency-input {
-  font-size: 1.5rem;
+.gh-signup-newsletter-card label {
+  font-weight: bold;
+}
+
+.gh-signup-newsletter-card label input {
+  margin-right: 5px;
+}
+
+.gh-signup-newsletter-description {
+  font-size: 0.85em;
+  padding-left: 20px;
+  color: var(--color-dark-gray);
+}
+
+.gh-newsletter-subscriptions button {
+  display: flex;
+  align-items: center;
+}
+
+.gh-newsletter-subscriptions button svg {
+  width: 0.75em;
+  height: 0.75em;
+  margin-top: -0.25em;
+  margin-left: 0.25em;
+}
+
+.gh-newsletter-subscription-list {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.3s ease-out;
 }
 
 .gh-signup-plans {
@@ -3602,7 +3632,7 @@ figcaption a {
   font-size: 0.8em;
 }
 
-.gh-pwyw button {
+button.button-reset {
   background-color: transparent;
   border: none;
   margin: 0;
@@ -3611,6 +3641,9 @@ figcaption a {
   font: inherit;
   border-radius: 0;
   appearance: none;
+}
+
+.gh-pwyw button {
   color: var(--ghost-accent-color);
   text-decoration: underline;
   cursor: pointer;
@@ -3639,5 +3672,15 @@ figcaption a {
 .gh-signup-error {
   color: var(--color-error);
   font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.gh-signup-signin {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.gh-signup-signin-link {
+  color: var(--ghost-accent-color);
   font-weight: bold;
 }

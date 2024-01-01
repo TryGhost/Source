@@ -7,8 +7,8 @@
       <img class="gh-signup-logo" src="{{@site.icon}}" alt="{{@site.title}}" loading="lazy" />
       <h1>Subscribe to <i>{{@site.title}}</i></h1>
     </header>
-    <section class="gh-signup-section">
-      <form data-members-form class="gh-signup-form">
+    <form data-members-form class="gh-signup-form">
+      <section class="gh-signup-info-section">
         <section class="gh-signup-group">
           <div class="gh-signup-label-wrapper">
             <label for="signup-name" class="gh-signup-label">Name</label>
@@ -24,14 +24,36 @@
             placeholder="email@example.com" autocomplete="off" autocorrect="off" autocapitalize="off" aria-label="Email"
             value="">
         </section>
-        <p data-members-error><!-- error message will appear here --></p>
-      </form>
-    </section>
-    <section class="gh-signup-plans gh-inner">
-      {{> "components/signup-card" plan="monthly"}}
-      {{> "components/signup-card" plan="annual"}}
-      {{> "components/signup-card" plan="founding"}}
-      {{> "components/signup-card" plan="none"}}
-    </section>
+        <section class="gh-newsletter-subscriptions accordion">
+          <div class="gh-signup-label-wrapper">
+            <button class="button-reset" id="newsletter-accordion-button" aria-controls="#newsletter-list" aria-expanded="false">
+              <label for="signup-name" class="gh-signup-label">Subscriptions</label>
+              {{> "icons/chevron-down"}}
+            </button>
+          </div>
+          <div class="gh-newsletter-subscription-list" id="newsletter-list" aria-controlledby="#newsletter-accordion-button" aria-hidden="true">
+            {{#get "newsletters"}}
+              {{#foreach newsletters}}
+              <div class="gh-signup-newsletter-card">
+                <label>
+                  <input type="checkbox" value="{{name}}" checked data-members-newsletter />
+                  {{name}}
+                </label>
+                <div class="gh-signup-newsletter-description">{{description}}</div>
+              </div>
+              {{/foreach}}
+            {{/get}}
+          </div>
+        </section>
+        <p class="gh-signup-error" data-members-error><!-- error message will appear here --></p>
+      </section>
+        <section class="gh-signup-plans gh-inner">
+        {{> "components/signup-card" plan="monthly"}}
+        {{> "components/signup-card" plan="annual"}}
+        {{> "components/signup-card" plan="founding"}}
+        {{> "components/signup-card" plan="none"}}
+      </section>
+    </form>
+  <p class="gh-signup-signin">Already a member? <a class="gh-signup-signin-link" href="#/portal/signin" data-portal="signin">Sign in</a>.</p>
   </div>
 </main>
