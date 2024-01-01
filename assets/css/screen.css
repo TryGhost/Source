@@ -3681,7 +3681,18 @@ button.button-reset {
   font-size: 0.9em;
 }
 
-.gh-signup-alternatives a {
+.gh-signup-alternatives a,
+.gh-subscribe-or-tip a {
   color: var(--ghost-accent-color);
   font-weight: bold;
+}
+
+.gh-subscribe-or-tip {
+  margin-top: 48px;
+}
+
+.gh-subscribe-or-tip .gh-main {
+  padding: 20px;
+  font-size: 2rem;
+  border: 1px solid var(--color-border);
 }

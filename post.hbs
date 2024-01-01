@@ -50,6 +50,21 @@
 
     </article>
 
+    <div class="gh-canvas gh-subscribe-or-tip">
+        <div class="gh-main">
+        Loved this post? 
+            {{#if @member}}
+                {{#if member.paid}}
+                <a href="https://donate.stripe.com/14k8AseTNaqLaZy7ss">Leave a tip</a>.
+                {{else}}
+                    Consider <a href="/signup">signing up for a pay-what-you-want subscription</a> to support Molly White's work, which is entirely funded by readers like you.
+                {{/if}}
+            {{else}}
+                Consider <a href="/signup">signing up for a pay-what-you-want subscription</a> to support Molly White's work, which is entirely funded by readers like you.
+            {{/if}}
+        </div>
+    </div>
+
     {{#if comments}}
         <div class="gh-comments gh-canvas">
             {{comments}}
