@@ -2143,6 +2143,11 @@ unless a heading is the very first element in the post content */
 }
 
 /* Now the content typography styles */
+.gh-content h1 {
+    font-size: calc(2.2em * var(--factor, 1));
+    letter-spacing: -0.02em;
+}
+
 .gh-content h2 {
     font-size: calc(1.6em * var(--factor, 1));
     letter-spacing: -0.02em;
