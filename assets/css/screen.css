@@ -515,6 +515,7 @@ button.gh-form-input {
     gap: 24px;
     align-items: center;
     justify-content: flex-end;
+    background-color: var(--background-color);
 }
 
 .gh-navigation-members {
