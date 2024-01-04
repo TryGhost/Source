@@ -15,9 +15,15 @@
                             and of issues in the broader technology world.</p>
                             <p>It is independently published by Molly White, and entirely supported by readers like you.</p>
                             {{#if @member}}
-                                <p>
-                                    <i>Thank you.</i>
-                                </p>
+                                {{#if @member.paid}}
+                                    <p>
+                                        <i>Thank you.</i>
+                                    </p>
+                                {{else}}
+                                    <div>
+                                        <a class="gh-button on-dark" href="/signup">Subscribe</a>
+                                    </div>
+                                {{/if}}
                             {{else}}
                                 <div>
                                     <a class="gh-button on-dark" href="/signup">Subscribe</a>

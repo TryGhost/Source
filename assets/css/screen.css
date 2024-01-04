@@ -44,6 +44,7 @@ production stylesheet in assets/built/screen.css
   21.2. Footer bar
   21.3. Footer signup
 22. Lightbox
+23. Signup
 
 */
 
@@ -70,9 +71,7 @@ production stylesheet in assets/built/screen.css
   --font-serif: SourceSerif, Georgia, Times, serif;
   --font-sans: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
     "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-  --font-serif: SourceSerif, Georgia, Times, serif;
-  --font-serif-alt: Georgia, Times, serif;
-  --font-mono: Menlo, Consolas, Monaco, "Liberation Mono", "Lucida Console", monospace;
+  --font-mono: "Source Code Pro", Menlo, Consolas, Monaco, "Liberation Mono", "Lucida Console", monospace;
   --container-width: 1320px;
   --container-gap: clamp(24px, 1.7032rem + 1.9355vw, 48px);
   --grid-gap: 42px;
@@ -167,6 +166,16 @@ production stylesheet in assets/built/screen.css
     U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
+@font-face {
+  font-family: "Source Code Pro";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/SourceCodePro.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 /* 3. Resets
 /* ---------------------------------------------------------- */
 
@@ -247,6 +256,14 @@ a {
 
 a:hover {
   opacity: 0.8;
+}
+
+code,
+pre,
+tt,
+kbd,
+samp {
+  font-family: var(--font-mono);
 }
 
 .gh-button {
@@ -1937,26 +1954,6 @@ Search                         LOGO                    Login Subscribe
   overflow: hidden;
 }
 
-.gh-container.is-grid .gh-card::before {
-  position: absolute;
-  top: calc(var(--grid-gap) / -2);
-  right: calc(var(--grid-gap) / -2);
-  left: calc(var(--grid-gap) / -2);
-  content: "";
-  height: 1px;
-  background-color: var(--color-border);
-}
-
-.gh-container.is-grid .gh-card::after {
-  position: absolute;
-  top: 0;
-  left: calc(var(--grid-gap) / -2);
-  content: "";
-  width: 1px;
-  height: 100%;
-  background-color: var(--color-border);
-}
-
 @media (max-width: 767px) {
   .gh-container.is-grid .gh-feed {
     grid-template-columns: repeat(2, 1fr);
@@ -2249,6 +2246,18 @@ Search                         LOGO                    Login Subscribe
   margin-top: 0;
 }
 
+.gh-subscribe-or-tip {
+  margin-top: 48px;
+}
+
+.gh-subscribe-or-tip .gh-main {
+  padding: 20px;
+  font-size: 2rem;
+  border: 1px solid var(--color-border);
+  text-align: center;
+  font-style: italic;
+}
+
 /* 15. Content
 /* ---------------------------------------------------------- */
 
@@ -2275,7 +2284,7 @@ headings, text, images and lists. We deal with cards lower down. */
 /* Add back a top margin to all headings,
 unless a heading is the very first element in the post content */
 .gh-content > [id]:not(:first-child) {
-  margin-top: calc(56px * var(--content-spacing-factor, 1));
+  margin-top: calc(32px * var(--content-spacing-factor, 1));
 }
 
 /* Add a small margin between a heading and paragraph after it */
@@ -2343,10 +2352,13 @@ unless a heading is the very first element in the post content */
 }
 
 .gh-content hr {
-  width: 100%;
-  height: 1px;
-  background-color: var(--color-border);
   border: 0;
+  width: 100%;
+  height: 10px;
+  background-image: url(/content/images/fancy-divider.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .gh-content table:not(.gist table) {
@@ -2397,6 +2409,12 @@ unless a heading is the very first element in the post content */
   border: 1px solid var(--color-light-gray);
 }
 
+.gh-group-with-header-body {
+  border-left: 4px solid var(--ghost-accent-color);
+  margin-top: 8px;
+  padding-left: 20px;
+}
+
 /* 16. Cards
 /* ---------------------------------------------------------- */
 
@@ -2423,6 +2441,10 @@ unless a heading is the very first element in the post content */
 .kg-image {
   margin-right: auto;
   margin-left: auto;
+}
+
+.kg-image img {
+  max-height: 600px;
 }
 
 /* Embed */
@@ -2556,7 +2578,7 @@ blockquote.kg-blockquote-alt {
 }
 
 .has-serif-body .kg-product-card-description :is(p, ul, ol) {
-  font-family: var(--font-serif-alt);
+  font-family: var(--font-serif);
 }
 
 /* File */
@@ -2753,7 +2775,7 @@ figcaption a {
 }
 
 .has-serif-body .is-body {
-  font-family: var(--font-serif-alt);
+  font-family: var(--font-serif);
 }
 
 .has-serif-title .gh-header.is-classic .gh-header-title {
@@ -3687,12 +3709,28 @@ button.button-reset {
   font-weight: bold;
 }
 
-.gh-subscribe-or-tip {
-  margin-top: 48px;
+/* 24. Footnotes and references 
+/* ---------------------------------------------------------- */
+.footnotes,
+.references {
+  padding-top: 20px;
+  border-top: 1px solid var(--color-border);
 }
 
-.gh-subscribe-or-tip .gh-main {
-  padding: 20px;
-  font-size: 2rem;
-  border: 1px solid var(--color-border);
+.footnotes h4,
+.references h4 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: calc(1.3em * var(--factor, 1));
+  letter-spacing: -0.017em;
+  margin-bottom: 10px;
+}
+
+.footnotes ol,
+.references ol {
+  font-size: 0.8em;
+}
+
+.footnotes ol {
+  list-style: lower-alpha;
 }
