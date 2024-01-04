@@ -1,3 +1,14 @@
+const SUCCESS_DIALOG_HTML = `
+<div class="gh-signup-popup-illustration">
+  <img class="illustration-envelope" src="/content/images/envelope.png" />
+</div> 
+<p>
+  You're on the list! Check your email for a confirmation link.
+</p>
+<div>
+  <a href="/">Go back home</a>, or check out <a href="/#/portal/recommendations">some other publications</a> I think you might enjoy.
+</div>`;
+
 function restArguments(func, startIndex) {
   // https://underscorejs.org/docs/modules/restArguments.html
   startIndex = startIndex == null ? func.length - 1 : +startIndex;
@@ -66,6 +77,28 @@ https: function debounce(func, wait, immediate) {
   return debounced;
 }
 
+// https://www.seanmcp.com/articles/listen-for-class-change-in-javascript/
+function onClassChange(node, callback) {
+  let lastClassString = node.classList.toString();
+
+  const mutationObserver = new MutationObserver((mutationList) => {
+    for (const item of mutationList) {
+      if (item.attributeName === "class") {
+        const classString = node.classList.toString();
+        if (classString !== lastClassString) {
+          callback(mutationObserver);
+          lastClassString = classString;
+          break;
+        }
+      }
+    }
+  });
+
+  mutationObserver.observe(node, { attributes: true });
+
+  return mutationObserver;
+}
+
 function toggleNewslettersAccordion(e) {
   e.preventDefault();
   const newslettersList = document.querySelector(".gh-newsletter-subscription-list");
@@ -100,6 +133,33 @@ function onSelectChange(e) {
   chooseButton.setAttribute("data-portal", `signup/${planId}/${stripeInterval}`);
 }
 
+function onChooseClick(e) {
+  if (e.target.classList.contains("disabled")) {
+    e.preventDefault();
+  } else {
+    e.target.querySelector(".gh-signup-loader").classList.remove("hidden");
+  }
+}
+
+function onFormClassChanged() {
+  const form = document.querySelector("form.gh-signup-form");
+  const messageContainer = document.querySelector("dialog.gh-signup-popup .gh-signup-popup-message");
+  if (form.classList.contains("success")) {
+    messageContainer.innerHTML = SUCCESS_DIALOG_HTML;
+    document.querySelector("dialog.gh-signup-popup").showModal();
+  } else if (form.classList.contains("error")) {
+    messageContainer.innerHTML = `<p>Something went wrong:</p>`;
+    document.querySelector("dialog.gh-signup-popup").showModal();
+  }
+}
+
+function closePopup() {
+  const dialog = document.querySelector("dialog.gh-signup-popup");
+  const messageContainer = document.querySelector("dialog.gh-signup-popup .gh-signup-popup-message");
+  messageContainer.innerHTML = "";
+  dialog.close();
+}
+
 function validate() {
   const buttons = document.querySelectorAll(".gh-button");
   const name = document.getElementById("signup-name").value;
@@ -122,13 +182,23 @@ function validate() {
 function signup() {
   const newsletterSubscriptionButton = document.getElementById("newsletter-accordion-button");
   const pwywRevealButtons = document.querySelectorAll(".gh-pwyw button");
+  const form = document.querySelector("form.gh-signup-form");
+  const chooseButtons = document.querySelectorAll(".gh-signup-choose");
   const validateFields = [document.getElementById("signup-name"), document.getElementById("signup-email")];
+  const dialogCloseButton = document.querySelector("button.gh-signup-popup-close");
 
   newsletterSubscriptionButton.addEventListener("click", toggleNewslettersAccordion);
   for (const button of pwywRevealButtons) {
     button.addEventListener("click", revealPwywControls);
   }
+  for (const chooseButton of chooseButtons) {
+    chooseButton.addEventListener("click", onChooseClick);
+  }
   for (const field of validateFields) {
     field.addEventListener("keyup", debounce(validate, 100));
   }
+
+  // Form state
+  onClassChange(form, onFormClassChanged);
+  dialogCloseButton.addEventListener("click", closePopup);
 }

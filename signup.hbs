@@ -4,10 +4,10 @@
 <main class="gh-main">
   <div class="gh-signup-page">
     <header class="gh-signup-header">
-      <a href="/"><img class="gh-signup-logo" src="{{@site.icon}}" alt="{{@site.title}}" loading="lazy" /></a>
+      <a href="/"><img class="gh-signup-logo" src="/content/images/illustration-transparent.png" alt="{{@site.title}}" loading="lazy" /></a>
       <h1 class="is-title">Subscribe to {{@site.title}}</h1>
     </header>
-    <form data-members-form class="gh-signup-form">
+    <form data-members-form data-members-autoredirect="false" class="gh-signup-form">
       <section class="gh-signup-info-section">
         <section class="gh-signup-group">
           <div class="gh-signup-label-wrapper">
@@ -45,7 +45,6 @@
             {{/get}}
           </div>
         </section>
-        <p class="gh-signup-error" data-members-error><!-- error message will appear here --></p>
       </section>
         <section class="gh-signup-plans gh-inner">
         {{> "components/signup-card" plan="monthly"}}
@@ -53,6 +52,11 @@
         {{> "components/signup-card" plan="founding"}}
         {{> "components/signup-card" plan="none"}}
       </section>
+      <dialog class="gh-signup-popup">
+        <button class="gh-signup-popup-close button-reset" type="reset">{{> "icons/close"}}</button>
+        <div class="gh-signup-popup-message"></div>
+        <p class="gh-signup-error" data-members-error><!-- error message will appear here --></p>
+      </div>
     </form>
   <section class="gh-signup-alternatives">
     <p>Not seeing an option that works for you? <a href="/pay-what-you-want">Learn more</a>.</p>

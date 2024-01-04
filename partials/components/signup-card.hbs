@@ -38,16 +38,16 @@
   </ul>
   <div class="gh-signup-button-wrapper">
     {{#match plan "monthly"}}
-      <a class="gh-signup-choose gh-button disabled" id="choose-monthly" href="javascript:" data-portal="signup/658cc24f9458ad1f4271e4c0/monthly">Choose</a>
+      <a class="gh-signup-choose gh-button disabled" id="choose-monthly" href="javascript:" data-portal="signup/658cc24f9458ad1f4271e4c0/monthly">Choose <div class="gh-signup-loader hidden">{{> "icons/loader"}}</div></a>
     {{/match}}
     {{#match plan "annual"}}
-      <a class="gh-signup-choose gh-button disabled" id="choose-annual" href="javascript:" data-portal="signup/658cc24f9458ad1f4271e4c0/yearly">Choose</a>
+      <a class="gh-signup-choose gh-button disabled" id="choose-annual" href="javascript:" data-portal="signup/658cc24f9458ad1f4271e4c0/yearly">Choose <div class="gh-signup-loader hidden">{{> "icons/loader"}}</div></a>
     {{/match}}
     {{#match plan "founding"}}
-      <a class="gh-signup-choose gh-button disabled" href="javascript:" data-portal="signup/658cc2929458ad1f4271e4c5/yearly">Choose</a>
+      <a class="gh-signup-choose gh-button disabled" href="javascript:" data-portal="signup/658cc2929458ad1f4271e4c5/yearly">Choose <div class="gh-signup-loader hidden">{{> "icons/loader"}}</div></a>
     {{/match}}
     {{#match plan "none"}}
-      <button class="gh-signup-choose gh-button disabled" type="submit" disabled>Choose</button>
+      <button class="gh-signup-choose gh-button disabled" type="submit" disabled>Choose <div class="gh-signup-loader hidden">{{> "icons/loader"}}</div></button>
     {{/match}}
   </div>
 </div>

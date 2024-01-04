@@ -2443,7 +2443,8 @@ unless a heading is the very first element in the post content */
   margin-left: auto;
 }
 
-.kg-image img {
+.kg-image img,
+.kg-image-card img {
   max-height: 600px;
 }
 
@@ -3518,14 +3519,14 @@ figcaption a {
   background-position: 50%;
   background-size: cover;
   border-radius: 2px;
-  width: 60px;
-  height: 60px;
+  max-width: 60px;
   margin: 12px 0 10px;
 }
 
 .gh-signup-info-section {
   width: 100%;
   max-width: 420px;
+  height: auto;
   margin: 0 auto;
 }
 
@@ -3563,7 +3564,7 @@ figcaption a {
   padding: 0 12px;
   margin-bottom: 18px;
   letter-spacing: 0.2px;
-  transition: var(--border-color) 0.25s ease-in-out;
+  transition: var(--color-border) 0.25s ease-in-out;
 }
 
 .gh-signup-newsletter-card {
@@ -3684,17 +3685,23 @@ button.button-reset {
 }
 
 .gh-signup-choose {
+  height: 39px;
+}
+
+.gh-signup-choose {
   margin-top: var(--grid-gap);
+}
+
+.gh-signup-form .gh-signup-loader {
+  display: none;
+}
+
+.gh-signup-form.loading .gh-signup-loader:not(.hidden) {
+  display: block;
 }
 
 .hidden {
   display: none;
-}
-
-.gh-signup-error {
-  color: var(--color-error);
-  font-size: 1.3rem;
-  font-weight: bold;
 }
 
 .gh-signup-alternatives {
@@ -3706,6 +3713,111 @@ button.button-reset {
 .gh-signup-alternatives a,
 .gh-subscribe-or-tip a {
   color: var(--ghost-accent-color);
+  font-weight: bold;
+}
+
+.gh-signup-popup {
+  background: var(--background-color);
+  border-radius: 7px;
+  box-shadow: 2px 2px 5px var(--color-mid-gray);
+  max-width: 600px;
+  width: 90%;
+  min-height: 100px;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%);
+  padding: 40px;
+  border: 1px solid var(--color-border);
+  font-size: var(--content-font-size);
+  text-align: center;
+}
+
+.gh-signup-popup a {
+  color: var(--ghost-accent-color);
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.gh-signup-popup-illustration {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 28px;
+}
+
+.gh-signup-popup-illustration img {
+  max-width: 100px;
+  -webkit-animation-name: wobble;
+  animation-name: wobble;
+  -webkit-animation-duration: 20s;
+  animation-duration: 20s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@-webkit-keyframes wobble {
+  0% {
+    -webkit-transform: translateX(0%);
+  }
+  15% {
+    -webkit-transform: translateX(-25%) rotate(-5deg);
+  }
+  30% {
+    -webkit-transform: translateX(20%) rotate(3deg);
+  }
+  45% {
+    -webkit-transform: translateX(-15%) rotate(-3deg);
+  }
+  60% {
+    -webkit-transform: translateX(10%) rotate(2deg);
+  }
+  75% {
+    -webkit-transform: translateX(-5%) rotate(-1deg);
+  }
+  100% {
+    -webkit-transform: translateX(0%);
+  }
+}
+
+@keyframes wobble {
+  0% {
+    transform: translateX(0%);
+  }
+  15% {
+    transform: translateX(-25%) rotate(-5deg);
+  }
+  30% {
+    transform: translateX(20%) rotate(3deg);
+  }
+  45% {
+    transform: translateX(-15%) rotate(-3deg);
+  }
+  60% {
+    transform: translateX(10%) rotate(2deg);
+  }
+  75% {
+    transform: translateX(-5%) rotate(-1deg);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.gh-signup-popup-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.gh-signup-popup-close:hover {
+  cursor: pointer;
+}
+
+.gh-signup-popup p:not(:empty) {
+  margin-bottom: 28px;
+}
+
+.gh-signup-error {
+  color: var(--color-error);
   font-weight: bold;
 }
 
