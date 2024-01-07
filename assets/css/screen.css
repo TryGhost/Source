@@ -2765,6 +2765,7 @@ figcaption a {
 .gh-footer-copyright {
     text-align: right;
     white-space: nowrap;
+    visibility: hidden;
 }
 
 .gh-footer-copyright a {
