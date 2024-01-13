@@ -287,7 +287,12 @@ samp {
   border: 1px solid #ddd;
 }
 
+code {
+  white-space: nowrap;
+}
+
 pre {
+  white-space: break-spaces;
   padding: 5px 10px;
 }
 
