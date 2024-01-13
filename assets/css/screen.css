@@ -251,6 +251,10 @@ h6 {
   line-height: 1.2;
 }
 
+sup {
+  line-height: 0;
+}
+
 /* 4. Globals
 /* ---------------------------------------------------------- */
 
@@ -276,6 +280,15 @@ tt,
 kbd,
 samp {
   font-family: var(--font-mono);
+  background-color: #eee;
+  padding: 0 3px;
+  margin: 0 2px;
+  border-radius: 2px;
+  border: 1px solid #ddd;
+}
+
+pre {
+  padding: 5px 10px;
 }
 
 .gh-button {
@@ -2629,6 +2642,18 @@ figcaption {
 figcaption a {
   color: var(--ghost-accent-color);
   text-decoration: underline;
+}
+
+/* Description lists */
+.gh-content dl dt {
+  font-weight: bold;
+}
+
+.gh-content dl dt:not(:first-child) {
+  margin-top: calc(28px * var(--content-spacing-factor, 1));
+}
+.gh-content dl dd {
+  padding-left: 20px;
 }
 
 /* 17. Comments
