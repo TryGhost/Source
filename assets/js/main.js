@@ -7,8 +7,10 @@
     burger.addEventListener('click', function () {
         if (!navigation.classList.contains('is-open')) {
             navigation.classList.add('is-open');
+            document.documentElement.style.overflowY = 'hidden';
         } else {
             navigation.classList.remove('is-open');
+            document.documentElement.style.overflowY = null;
         }
     });
 })();
@@ -43,4 +45,16 @@
     if (!document.body.classList.contains('home-template') && !document.body.classList.contains('post-template')) {
         pagination();
     }
+})();
+
+/* Responsive HTML table */
+(function () {
+    const tables = document.querySelectorAll('.gh-content > table:not(.gist table)');
+    const wrapper = document.createElement('div');
+    wrapper.className = 'gh-table';
+
+    tables.forEach(function (table) {
+        table.parentNode.insertBefore(wrapper, table);
+        wrapper.appendChild(table);
+    });
 })();
