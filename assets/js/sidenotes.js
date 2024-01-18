@@ -104,20 +104,14 @@ function sidenotes() {
     anchor.addEventListener("click", onAnchorClick);
   }
   document.addEventListener("click", (evt) => {
-    if (evt.target.nodeName === "A") {
-      return;
+    if (evt.target.nodeName !== "A") {
+      dehilightNotes();
     }
-    dehilightNotes();
   });
 
   const mediaQuery = window.matchMedia("(min-width: 1349px)");
-  if (!mediaQuery.matches) {
-    return;
+  if (mediaQuery.matches) {
+    insertSidenotes();
+    positionSidenotes();
   }
-
-  // Insert sidenotes
-  insertSidenotes();
-
-  // Position sidenotes
-  positionSidenotes();
 }
