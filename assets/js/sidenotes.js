@@ -11,6 +11,7 @@ function insertSidenotes() {
   for (const child of articleContent.children) {
     const anchors = child.querySelectorAll(".footnote-anchor, .reference-anchor");
     if (anchors.length) {
+      // Extra wrapper helps with initial positioning
       const sidenoteContainer = document.createElement("div");
       sidenoteContainer.setAttribute("class", "gh-notes-wrapper");
       for (anchor of anchors) {
@@ -18,7 +19,9 @@ function insertSidenotes() {
         const contentId = id.replace("anchor-", "");
         const content = document.getElementById(contentId);
         const sidenoteWrapper = document.createElement("aside");
+        sidenoteWrapper.setAttribute("id", id.replace("anchor-", "sidenote-"));
         sidenoteWrapper.setAttribute("class", "gh-note");
+        sidenoteWrapper.setAttribute("role", "note");
         sidenoteWrapper.setAttribute("data-anchor-id", id);
 
         // Remove "jump back to text" link, since it'll be right next to the anchor
@@ -52,7 +55,7 @@ function positionSidenotes() {
       const prevSideNote = sidenotes[i - 1];
       prevSidenoteEnd = prevSideNote.getBoundingClientRect().bottom;
       if (anchorPosition < prevSidenoteEnd) {
-        newPosition = prevSidenoteEnd + 10; // 10px bottom margin from prev note
+        newPosition = prevSidenoteEnd + 20; // 20px bottom margin from prev note
       }
     }
 
@@ -75,8 +78,37 @@ function onResize() {
   }
 }
 
+function onAnchorClick(evt) {
+  const mediaQuery = window.matchMedia("(min-width: 1199px)");
+  if (mediaQuery.matches) {
+    evt.preventDefault();
+    evt.stopPropagation();
+    dehilightNotes();
+    evt.target.classList.add("active-sidenote");
+    const sidenote = document.getElementById(evt.target.parentNode.id.replace("anchor-", "sidenote-"));
+    sidenote.classList.add("active-sidenote");
+  }
+}
+
+function dehilightNotes(evt) {
+  const highlighted = document.querySelectorAll(".active-sidenote");
+  for (let highlight of highlighted) {
+    highlight.classList.remove("active-sidenote");
+  }
+}
+
 function sidenotes() {
   window.addEventListener("resize", debounce(onResize, 100));
+  const anchors = document.querySelectorAll(".footnote-anchor, .reference-anchor");
+  for (const anchor of anchors) {
+    anchor.addEventListener("click", onAnchorClick);
+  }
+  document.addEventListener("click", (evt) => {
+    if (evt.target.nodeName === "A") {
+      return;
+    }
+    dehilightNotes();
+  });
 
   const mediaQuery = window.matchMedia("(min-width: 1199px)");
   if (!mediaQuery.matches) {

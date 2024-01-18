@@ -2353,7 +2353,6 @@ unless a heading is the very first element in the post content */
 }
 
 .gh-content a {
-  color: var(--ghost-accent-color);
   text-decoration: underline;
 }
 
@@ -3899,11 +3898,23 @@ button.button-reset {
   list-style: lower-alpha;
 }
 
-.gh-image-credit {
-  font-size: 0.8em;
-  font-style: italic;
+/* Anchors */
+.footnote-anchor a,
+.reference-anchor a {
+  padding: 0 3px;
 }
 
+.footnote-anchor a::before,
+.reference-anchor a::before {
+  content: "[";
+}
+
+.footnote-anchor a::after,
+.reference-anchor a::after {
+  content: "]";
+}
+
+/* Sidenotes */
 .gh-notes-wrapper {
   position: relative;
   grid-column: main-end / wide-end;
@@ -3913,13 +3924,28 @@ button.button-reset {
 .gh-note {
   position: absolute;
   top: 0;
-  left: 0;
-  padding-left: calc(var(--grid-gap) * 1.5);
+  left: calc(var(--grid-gap) * 1.5);
+  padding: 5px 10px;
+  border: 1px solid transparent;
 }
 
 .gh-note .note-identifier {
   position: absolute;
   text-align: right;
   width: 28px;
-  left: calc(var(--grid-gap) * 1.5 - 34px);
+  left: -34px;
+}
+
+a.active-sidenote {
+  background-color: var(--color-light-gray);
+}
+
+aside.active-sidenote {
+  background-color: var(--color-lighter-gray);
+  border: 1px dashed var(--color-dark-border);
+}
+
+.gh-image-credit {
+  font-size: 0.8em;
+  font-style: italic;
 }
