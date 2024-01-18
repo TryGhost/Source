@@ -65,7 +65,7 @@ function positionSidenotes() {
 
 function onResize() {
   const sidenotesInDom = Boolean(document.querySelector("div.gh-notes-wrapper"));
-  const mediaQuery = window.matchMedia("(min-width: 1199px)");
+  const mediaQuery = window.matchMedia("(min-width: 1349px)");
   if (mediaQuery.matches) {
     if (!sidenotesInDom) {
       insertSidenotes();
@@ -79,7 +79,7 @@ function onResize() {
 }
 
 function onAnchorClick(evt) {
-  const mediaQuery = window.matchMedia("(min-width: 1199px)");
+  const mediaQuery = window.matchMedia("(min-width: 1349px)");
   if (mediaQuery.matches) {
     evt.preventDefault();
     evt.stopPropagation();
@@ -110,7 +110,7 @@ function sidenotes() {
     dehilightNotes();
   });
 
-  const mediaQuery = window.matchMedia("(min-width: 1199px)");
+  const mediaQuery = window.matchMedia("(min-width: 1349px)");
   if (!mediaQuery.matches) {
     return;
   }

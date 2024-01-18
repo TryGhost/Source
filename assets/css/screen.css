@@ -1662,6 +1662,11 @@ Search                         LOGO                    Login Subscribe
     z-index: 1;
   }
 }
+
+.kg-signup-card.kg-style-accent {
+  color: var(--color-white);
+}
+
 /* 10. Featured posts
 /* ---------------------------------------------------------- */
 
@@ -3902,16 +3907,6 @@ button.button-reset {
 .footnote-anchor a,
 .reference-anchor a {
   padding: 0 3px;
-}
-
-.footnote-anchor a::before,
-.reference-anchor a::before {
-  content: "[";
-}
-
-.footnote-anchor a::after,
-.reference-anchor a::after {
-  content: "]";
 }
 
 /* Sidenotes */
