@@ -50,3 +50,8 @@
     signup();
   }
 })();
+
+/* Sidenotes */
+(function () {
+  sidenotes();
+})();

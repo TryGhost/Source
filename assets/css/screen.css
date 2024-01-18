@@ -285,15 +285,19 @@ samp {
   margin: 0 2px;
   border-radius: 2px;
   border: 1px solid #ddd;
-}
-
-code {
-  white-space: nowrap;
+  white-space: break-spaces;
 }
 
 pre {
-  white-space: break-spaces;
   padding: 5px 10px;
+}
+
+pre code {
+  background-color: unset;
+  border: unset;
+  border-radius: unset;
+  padding: unset;
+  margin: unset;
 }
 
 .gh-button {
@@ -538,7 +542,7 @@ button.gh-form-input {
 .gh-canvas,
 .kg-width-full.kg-content-wide {
   --main: min(var(--content-width, 720px), 100% - var(--container-gap) * 2);
-  --wide: minmax(0, calc((var(--container-width, 1200px) - var(--content-width, 720px)) / 2));
+  --wide: minmax(0px, calc((var(--container-width, 1200px) - var(--content-width, 720px)) / 2));
   --full: minmax(var(--container-gap), 1fr);
 
   display: grid;
@@ -552,6 +556,7 @@ button.gh-form-input {
 
 .gh-canvas > * {
   grid-column: main;
+  position: relative;
 }
 
 .kg-width-wide,
@@ -2151,7 +2156,7 @@ Search                         LOGO                    Login Subscribe
 /* 14.1. Article */
 
 .gh-article {
-  --container-width: 1120px;
+  --container-width: 1500px;
 
   word-break: break-word;
 }
@@ -2319,6 +2324,10 @@ unless a heading is the very first element in the post content */
 
 /* Add a small margin between a heading and paragraph after it */
 .gh-content > [id] + p {
+  margin-top: calc(12px * var(--content-spacing-factor, 1));
+}
+
+.gh-content > [id] + p + div.gh-notes-wrapper {
   margin-top: calc(12px * var(--content-spacing-factor, 1));
 }
 
@@ -3893,4 +3902,24 @@ button.button-reset {
 .gh-image-credit {
   font-size: 0.8em;
   font-style: italic;
+}
+
+.gh-notes-wrapper {
+  position: relative;
+  grid-column: main-end / wide-end;
+  font-size: 0.7em;
+}
+
+.gh-note {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-left: calc(var(--grid-gap) * 1.5);
+}
+
+.gh-note .note-identifier {
+  position: absolute;
+  text-align: right;
+  width: 28px;
+  left: calc(var(--grid-gap) * 1.5 - 34px);
 }
