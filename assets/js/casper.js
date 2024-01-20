@@ -53,5 +53,7 @@
 
 /* Sidenotes */
 (function () {
-  sidenotes();
+  if (!document.body.classList.contains("post-template")) {
+    sidenotes();
+  }
 })();
