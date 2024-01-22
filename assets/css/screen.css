@@ -2242,6 +2242,27 @@ unless a heading is the very first element in the post content */
     padding-right: 0;
 }
 
+.gh-content pre {
+    overflow: auto;
+    padding: 16px;
+    font-size: 1.5rem;
+    line-height: 1.5em;
+    background: var(--color-lighter-gray);
+    border-radius: 6px;
+    font-family: var(--font-mono);
+}
+
+.gh-content :not(pre) > code {
+    vertical-align: baseline;
+    padding: 0.15em 0.4em;
+    font-weight: 400;
+    font-size: 0.95em;
+    line-height: 1em;
+    background: var(--color-lighter-gray);
+    border-radius: 0.25em;
+    font-family: var(--font-mono);
+}
+
 /* 16. Cards
 /* ---------------------------------------------------------- */
 
