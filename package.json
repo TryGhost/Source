@@ -1,8 +1,8 @@
 {
-    "name": "source",
-    "description": "A default theme for the Ghost publishing platform",
-    "demo": "https://source.ghost.io",
-    "version": "1.1.2",
+    "name": "guaraci-news",
+    "description": "A theme for the Guaraci News site",
+    "demo": "https://guaracinews.com.br",
+    "version": "1.0.0",
     "engines": {
         "ghost": ">=5.0.0"
     },
