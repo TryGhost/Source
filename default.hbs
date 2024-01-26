@@ -16,11 +16,12 @@
 
     {{!-- Tocbot library for adding table of contents --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.12.3/tocbot.css">
-    <link rel="stylesheet" type="text/css" href="{{asset "css/dfi_style.css"}}">
 
     {{!-- littlefoot library for adding footnotes --}}
-    <link rel="stylesheet" href="https://unpkg.com/littlefoot/dist/littlefoot.css"
-/>
+    <link rel="stylesheet" href="https://unpkg.com/littlefoot/dist/littlefoot.css">
+
+    {{!-- DFI CSS --}}
+    <link rel="stylesheet" type="text/css" href="{{asset "css/dfi_style.css"}}">
 
     {{!-- Custom background color --}}
     <style>
@@ -88,7 +89,15 @@
 <script src="https://unpkg.com/littlefoot/dist/littlefoot.js" type="application/javascript"
 ></script>
 <script type="application/javascript">
-    littlefoot.littlefoot() // Pass any littlefoot settings here.
+    //DFI styling for footnotes
+    littlefoot.littlefoot({
+        activateOnHover: true,
+        dismissOnUnhover: true,
+        hoverDelay: 0,
+        buttonTemplate: '<sup class="lf-sup"><a class="lf-anchor" href="#<% reference %>" aria-label="Footnote <% number %>" id="<% reference %>">[<% number %>]</a></sup>',
+        contentTemplate: '<aside class="lf-aside littlefoot__popover" id="fncontent:<% id %>"><div class="littlefoot__wrapper"><div class="lf-content littlefoot__content"><% content %></div></div><div class="littlefoot__tooltip"></div></aside>'
+    });
+
 </script>
 
 {{!-- Ghost outputs required functional scripts with this tag, it should always be the last thing before the closing body tag --}}
