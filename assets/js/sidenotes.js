@@ -9,6 +9,10 @@ function getAnchorParentContainer(anchor) {
 function insertSidenotes() {
   const articleContent = document.querySelector("article .gh-content");
   for (const child of articleContent.children) {
+    if (child.classList.contains("gh-notes-wrapper")) {
+      // Don't add sidenotes for refs used within sidenotes
+      continue;
+    }
     const anchors = child.querySelectorAll(".footnote-anchor, .reference-anchor");
     if (anchors.length) {
       // Extra wrapper helps with initial positioning
@@ -26,9 +30,10 @@ function insertSidenotes() {
 
         // Remove "jump back to text" link, since it'll be right next to the anchor
         sidenoteWrapper.innerHTML = content.innerHTML;
-        const lastChild = sidenoteWrapper.querySelector("a:last-child");
-        if (lastChild && lastChild.textContent === "↩") {
-          lastChild.remove();
+        const links = sidenoteWrapper.querySelectorAll("a");
+        const lastLink = links[links.length - 1];
+        if (lastLink && lastLink.textContent === "↩") {
+          lastLink.remove();
         }
 
         // Add sidenote to DOM

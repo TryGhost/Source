@@ -61,7 +61,7 @@ production stylesheet in assets/built/screen.css
   --color-black: #000;
   --color-error: #f02525;
   --color-primary-text: var(--color-darker-gray);
-  --color-secondary-text: rgb(0 0 0 / 0.5);
+  --color-secondary-text: #707070;
   --color-border-on-dark: rgba(255, 255, 255, 0.8);
   --color-border: rgb(0 0 0 / 0.08);
   --color-dark-border: rgb(0 0 0 / 0.5);
@@ -2546,9 +2546,34 @@ blockquote:not([class]) {
 }
 
 blockquote.kg-blockquote-alt {
-  font-style: normal;
+  font-size: 1.2em;
   font-weight: 400;
   color: var(--color-secondary-text);
+}
+
+blockquote.kg-blockquote-alt::before {
+  content: "\201C";
+  font-size: 3em;
+  font-family: "Times New Roman";
+  font-weight: 700;
+  color: var(--color-light-gray);
+  position: absolute;
+  left: 0.5em;
+  z-index: -1;
+}
+
+blockquote.kg-blockquote-alt cite {
+  display: block;
+  font-size: 1.4rem;
+  font-style: normal;
+  color: var(--color-primary-text);
+  position: absolute;
+  right: 2.5em;
+}
+
+blockquote.kg-blockquote-alt cite::before {
+  content: "\2014\00A0";
+  color: var(--color-primary-text);
 }
 
 /* Button */
