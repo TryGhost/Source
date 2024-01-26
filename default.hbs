@@ -18,13 +18,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.12.3/tocbot.css">
     <link rel="stylesheet" type="text/css" href="{{asset "css/dfi_style.css"}}">
 
+    {{!-- littlefoot library for adding footnotes --}}
+    <link rel="stylesheet" href="https://unpkg.com/littlefoot/dist/littlefoot.css"
+/>
+
     {{!-- Custom background color --}}
     <style>
         :root {
             --background-color: {{@custom.site_background_color}}
         }
 
-        
     </style>
 
     <script>
@@ -79,6 +82,13 @@
         // Ensure correct positioning
         hasInnerContainers: true,
     });
+</script>
+
+{{!-- littlefoot library for footnotes --}}
+<script src="https://unpkg.com/littlefoot/dist/littlefoot.js" type="application/javascript"
+></script>
+<script type="application/javascript">
+    littlefoot.littlefoot() // Pass any littlefoot settings here.
 </script>
 
 {{!-- Ghost outputs required functional scripts with this tag, it should always be the last thing before the closing body tag --}}
