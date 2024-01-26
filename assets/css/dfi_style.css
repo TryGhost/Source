@@ -3,6 +3,10 @@
   position: relative;
 }
 
+.gh-content a {
+  text-decoration: none;
+}
+
 .gh-toc > .toc-list {
   position: relative;
 }
@@ -10,6 +14,12 @@
 .toc-list {
   overflow: hidden;
   list-style: none;
+}
+
+.gh-toc li {
+  color: #848484;
+  font-style: normal;
+  line-height: 22px;
 }
 
 @media (min-width: 1300px) {
@@ -29,6 +39,6 @@
 
 .gh-toc .is-active-link::before {
   background-color: var(
-    --ghost-accent-color
+    --dfi-accent-color
   ); /* Defines TOC accent color based on Accent color set in Ghost Admin */
 }

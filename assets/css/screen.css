@@ -86,7 +86,7 @@ production stylesheet in assets/built/screen.css
 /* DFI Colors */
 :root {
   --header-color: #fbebdb;
-  --dfi-tag-color: #de5757;
+  --dfi-accent-color: #de5757;
 }
 
 /* 2. Fonts
@@ -2049,7 +2049,7 @@ Search                         LOGO                    Login Subscribe
   font-weight: 500;
   letter-spacing: 0.01em;
   text-transform: uppercase;
-  color: var(--dfi-tag-color);
+  color: var(--dfi-accent-color);
 }
 
 .gh-article-title {
