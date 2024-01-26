@@ -18,7 +18,8 @@
             {{/if}}
 
             <div class="gh-article-meta">
-                <div class="gh-article-author-image">
+                {{!-- Removed author image --}}
+                {{!-- <div class="gh-article-author-image">
                     {{#foreach authors}}
                         {{#if profile_image}}
                             <a href="{{url}}">
@@ -28,14 +29,18 @@
                             <a href="{{url}}">{{> "icons/avatar"}}</a>
                         {{/if}}
                     {{/foreach}}
-                </div>
+                </div> --}}
                 <div class="gh-article-meta-wrapper">
-                    <h4 class="gh-article-author-name">{{authors}}</h4>
+                    <h4 class="gh-article-author-name">By {{authors}}</h4>
                     <div class="gh-article-meta-content">
-                        <time class="gh-article-meta-date" datetime="{{date format="YYYY-MM-DD"}}">{{date}}</time>
-                        {{#if reading_time}}
+                        {{!-- <time class="gh-article-meta-date" datetime="{{date format="YYYY-MM-DD"}}">{{date}}</time> --}}
+                        {{!-- Changed diaply of time --}}
+                        <p>Published at {{date published_at format="MMM D, YYYY"}} / Updated at {{date updated_at format="MMM D, YYYY"}}</p>
+
+                        {{!-- Removed reading time display --}}
+                        {{!-- {{#if reading_time}}
                             <span class="gh-article-meta-length"><span class="bull">—</span> {{reading_time}}</span>
-                        {{/if}}
+                        {{/if}} --}}
                     </div>
                 </div>
             </div>
