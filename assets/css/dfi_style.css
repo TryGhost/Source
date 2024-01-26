@@ -3,42 +3,121 @@
   position: relative;
 }
 
-.gh-content a {
+.gh-content a,
+.gh-toc .is-active-link::before {
   text-decoration: none;
 }
 
 .gh-toc > .toc-list {
   position: relative;
-}
-
-.toc-list {
   overflow: hidden;
   list-style: none;
-}
-
-.gh-toc li {
-  color: #848484;
-  font-style: normal;
-  line-height: 22px;
-}
-
-@media (min-width: 1300px) {
-  .gh-sidebar {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    margin-top: 4vmin;
-    grid-column: wide-start / main-start; /* Place the TOC to the left of the content */
-  }
-
-  .gh-toc {
-    position: sticky; /* On larger screens, TOC will stay in the same spot on the page */
-    top: 4vmin;
-  }
 }
 
 .gh-toc .is-active-link::before {
   background-color: var(
     --dfi-accent-color
   ); /* Defines TOC accent color based on Accent color set in Ghost Admin */
+}
+
+.menu-button,
+.close-button {
+  display: none;
+}
+
+.gh-toc li {
+  color: #848484;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px; /* 146.667% */
+}
+
+.toc-list {
+  font-size: 1.1em;
+}
+
+.close-button {
+  position: absolute;
+  z-index: 1003;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  font-size: 24px; /* Make the "X" larger */
+  margin-right: 10px;
+}
+
+.gh-sidebar.active .close-button {
+  display: block; /* Display when sidebar is active */
+}
+
+/* Media Queries */
+@media (min-width: 1300px) {
+  .gh-sidebar {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin-top: 4vmin;
+    margin-right: 20px;
+    font-size: 0.8em;
+    grid-column: wide-start / main-start; /* Place the TOC to the left of the content */
+    color: gray;
+  }
+
+  .gh-toc {
+    position: sticky; /* On larger screens, TOC will stay in the same spot on the page */
+    top: 4vmin;
+    text-align: left;
+  }
+
+  .gh-article {
+    --container-width: 1300px;
+  }
+}
+
+@media (max-width: 1299px) {
+  .gh-sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 100%;
+    overflow-y: auto;
+    transition: 0.2s;
+    z-index: 1002;
+    background-color: rgb(207, 207, 207);
+    padding: 20px;
+    display: none;
+    margin-right: 20px;
+    font-size: 0.8em;
+    margin-top: 0px;
+  }
+
+  .gh-sidebar.active {
+    width: 250px;
+    box-shadow: 10px 0 5px -5px #eee;
+    display: block;
+    width: 326px;
+    background: white;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+  }
+
+  .menu-button {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    display: block;
+    z-index: 1001; /* High z-index to make sure it's above other elements */
+    width: 131.54px;
+    height: 45px;
+    background: #de5757;
+    border-radius: 10px;
+    border-color: white;
+    box-shadow: 0;
+    color: var(--White, #fff);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 27px; /* 168.75% */
+  }
 }

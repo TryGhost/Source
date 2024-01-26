@@ -49,8 +49,16 @@
 
         </header>
 
+        {{!-- DFI: menu button to show toc on mobile --}}
+        <button id="menu-button" class="menu-button">&#9776; Menu</button>
+
         <section class="gh-content gh-canvas is-body">
-                    <aside class="gh-sidebar"><div class="gh-toc"></div></aside> {{! The TOC will be inserted here }}
+            {{!-- button to close toc menu on mobile --}}
+            <div class="close-button">×</div> 
+            
+            <aside class="gh-sidebar">
+                <div class="gh-toc"></div>
+            </aside> {{! The TOC will be inserted here }}
             {{content}}
         </section>
 
