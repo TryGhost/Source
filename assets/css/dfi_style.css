@@ -38,16 +38,18 @@
 
 .close-button {
   position: absolute;
-  z-index: 1003;
+  z-index: 1005;
   top: 0;
   right: 0;
   cursor: pointer;
   font-size: 24px; /* Make the "X" larger */
   margin-right: 10px;
+  color: black;
+  display: none; /*Intially hidden*/
 }
 
-.gh-sidebar.active .close-button {
-  display: block; /* Display when sidebar is active */
+.close-button.visible {
+  display: block; /* Display when visible class is added */
 }
 
 /* Media Queries */

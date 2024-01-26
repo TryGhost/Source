@@ -9,9 +9,8 @@ document.addEventListener("DOMContentLoaded", function () {
     sidebar.style.width = "0px";
     sidebar.style.display = "none";
     sidebar.classList.remove("active");
-    if (closeButton) {
-      closeButton.style.display = "none";
-    }
+    closeButton.classList.remove("visible");
+    toggleSidebar;
   }
 
   // Function to handle sidebar toggling
@@ -26,18 +25,14 @@ document.addEventListener("DOMContentLoaded", function () {
       sidebar.style.width = "250px";
       sidebar.style.display = "block";
       sidebar.classList.add("active");
+      closeButton.classList.add("visible");
 
-      if (closeButton) {
-        closeButton.style.display = "block";
-      }
       const tocList = sidebar.querySelector(".gh-toc");
     } else {
       sidebar.style.width = "0px";
       sidebar.style.display = "none";
       sidebar.classList.remove("active");
-      if (closeButton) {
-        closeButton.style.display = "none";
-      }
+      closeButton.classList.remove("visible");
     }
     console.log(sidebar.outerHTML);
   }
@@ -57,20 +52,38 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Event listener for window resizing
+  //   window.addEventListener("resize", function () {
+  //     if (window.innerWidth >= 1300) {
+  //       sidebar.style.width = "";
+  //       sidebar.style.height = "";
+  //       sidebar.classList.remove("active");
+  //     } else {
+  //       // Optionally, you could add some code to handle the mobile view when resizing to a smaller window.
+  //       // For example, reset the sidebar if you want:
+  //       sidebar.style.width = "0px";
+  //       sidebar.style.height = "0px";
+  //       sidebar.classList.remove("active");
+  //       if (closeButton) {
+  //         closeButton.style.display = "none";
+  //       }
+  //     }
+  //   });
   window.addEventListener("resize", function () {
+    // Reset inline styles
+    sidebar.style.width = "";
+    sidebar.style.display = "";
+    closeButton.style.display = "";
+
     if (window.innerWidth >= 1300) {
-      sidebar.style.width = "";
-      sidebar.style.height = "";
+      // For large screens, manage the state of the sidebar as needed
       sidebar.classList.remove("active");
+      // Add any additional logic if the sidebar should be shown or hidden by default on large screens
     } else {
-      // Optionally, you could add some code to handle the mobile view when resizing to a smaller window.
-      // For example, reset the sidebar if you want:
-      sidebar.style.width = "0px";
-      sidebar.style.height = "0px";
+      // For small screens, ensure the sidebar is in its default state (usually hidden)
       sidebar.classList.remove("active");
-      if (closeButton) {
-        closeButton.style.display = "none";
-      }
+      sidebar.style.width = "0px";
+      sidebar.style.display = "none";
+      //   closeButton.style.display = "none";
     }
   });
 });
