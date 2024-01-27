@@ -150,3 +150,78 @@
   font-weight: 500;
   line-height: 1.3em;
 }
+
+/* DFI Homepage Grid Styles */
+
+.dfi-home-grid {
+  width: 700px;
+  margin: 0 auto;
+}
+
+.dfi-post-collection {
+  margin-top: 30px;
+}
+
+.dfi-overview-article-content {
+  flex: 1;
+}
+
+.dfi-overview-article-image {
+  flex: 1;
+}
+
+.gh-container-title {
+  display: block;
+  color: #de5757;
+  font-size: 14px;
+}
+
+.gh-feed {
+  width: 100%;
+  margin-bottom: 20px;
+  display: flex;
+}
+
+.dfi-secondary-article {
+  height: 100px;
+  flex: 1;
+}
+
+/* Responsive images */
+.dfi-overview-article-image img {
+  width: 100%;
+  height: auto;
+  display: block; /* ensures that the image is a block-level element and takes the full width */
+}
+
+figure.dfi-overview-article-image {
+  margin-right: 20px;
+}
+
+.dfi-secondary-article-image {
+  flex: 1;
+  padding-right: 20px;
+  height: 100px;
+  background-size: cover;
+}
+
+.dfi-secondary-article-content {
+  flex: 3;
+  padding-left: 20px;
+}
+
+/* Ensure text content is aligned correctly */
+.dfi-overview-article-content {
+  padding-right: 20px; /* Adjust as necessary */
+  flex: 1;
+}
+
+.dfi-overiew-article {
+  flex: 1; /* takes 2/3 of the space */
+  display: flex; /* new line: make left-article a flex container */
+  flex-direction: row; /* new line: lay out children in a row */
+}
+
+.posts-collection {
+  margin-bottom: 50px;
+}

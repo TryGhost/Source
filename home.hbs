@@ -9,4 +9,20 @@
 
 {{> "components/cta"}}
 
-{{> "components/post-list" feed="home" postFeedStyle=@custom.post_feed_style showTitle=true showSidebar=@custom.show_publication_info_sidebar}}
+{{!-- DFI: not using default post list for rendering   --}}
+{{!-- {{> "components/post-list" feed="home" postFeedStyle=@custom.post_feed_style showTitle=true showSidebar=@custom.show_publication_info_sidebar}} --}}
+
+
+<main class="gh-main dfi-home-grid">
+    
+    {{!-- DFI: call "home-tag-grid" component to render grid for each tag --}}
+    <div class="dfi-post-collection">
+        {{> "components/home-tag-grid" tag="population"}}
+    </div>
+
+    <div class="dfi-post-collection">
+        {{> "components/home-tag-grid" tag="health"}}
+    </div>
+
+
+</main>
