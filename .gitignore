@@ -26,6 +26,6 @@ dist/
 config.json
 changelog.md
 changelog.md.bk
-yarn.lock
+# yarn.lock
 package-lock.json
 .vscode/settings.json
