@@ -85,7 +85,7 @@ production stylesheet in assets/built/screen.css
 
 /* DFI Colors */
 :root {
-  --header-color: #fbebdb;
+  --dfi-header-color: #fbebdb;
   --dfi-accent-color: #de5757;
 }
 
@@ -1415,10 +1415,12 @@ Search                         LOGO                    Login Subscribe
 
 /* 8.3. Classic layout */
 
+/* DFI header color added */
 .gh-header.is-classic {
   display: flex;
   margin-top: 0;
   padding-block: 160px;
+  background-color: var(--dfi-header-color);
 }
 
 .gh-header.is-classic .gh-header-inner {
@@ -2038,7 +2040,7 @@ Search                         LOGO                    Login Subscribe
 /* DFI edit */
 .gh-article-header {
   margin: clamp(40px, 3.64vw + 25.45px, 72px) 0 40px;
-  background: var(--header-color);
+  background: var(--dfi-header-color);
   margin-top: 0px;
   padding: 40px 0;
 }
