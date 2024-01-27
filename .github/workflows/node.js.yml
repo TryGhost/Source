@@ -1,0 +1,56 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
+
+name: Node.js CI
+
+on:
+  # push:
+  #   branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: true
+      matrix:
+        # node-version: [14.x, 16.x, 18.x]
+        node-version: [18.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    - run: |
+          yarn install &&
+          npm install -g gulp 
+    - run: yarn dev & sleep 5 && pkill -f "yarn dev" || true
+    - run: yarn test
+
+    # Push changes to the repo on success only using 
+    - name: Update pull request with changed files if previous steps were successful
+      if: success() && github.event_name == 'pull_request' 
+      uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        commit_message: "chore: Update pull request with changed files"
+        commit_options: '--no-verify'
+        repository: ${{ github.repository }}
+        branch: ${{ github.head_ref }}
+        token: ${{ github.token }}
+        commit_user_name: ${{ github.actor }}
+        commit_user_email: ${{ github.actor }}@users.noreply.github.com
+
+        
