@@ -16,7 +16,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // Function to handle sidebar toggling
   function toggleSidebar() {
     const closeButton = sidebar.querySelector(".close-button");
-    console.log(sidebar.outerHTML);
     if (
       sidebar.style.width === "0px" ||
       sidebar.style.width === "" ||
@@ -34,11 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
       sidebar.classList.remove("active");
       closeButton.classList.remove("visible");
     }
-    console.log(sidebar.outerHTML);
   }
-
-  console.log(menuButton);
-  console.log(closeButton);
 
   //Event listener to toggle the sidebar
   menuButton.addEventListener("click", toggleSidebar);
