@@ -1,0 +1,18 @@
+<div class="gh-container gh-outer">
+  <div class="gh-container-inner gh-inner">
+    <main class="gh-main">
+      <h2 class="gh-container-title" style="display: block;">{{tag}}</h2> 
+    </main>
+  </div>
+</div>
+
+{{#get "posts" limit="1" filter="primary_tag:{{tag}}+tag:overview"}}
+  {{> "overview-card" lazyLoad=true}}
+{{/get}}
+
+
+<div class="gh-feed">
+  {{#get "posts" limit="1" filter="primary_tag:{{tag}}+featured:true"}}
+    {{> "components/post-list" feed="archive" postFeedStyle="List" showTitle=false showSidebar=false}} 
+  {{/get}}
+</div>

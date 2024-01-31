@@ -18,7 +18,8 @@
             {{/if}}
 
             <div class="gh-article-meta">
-                <div class="gh-article-author-image">
+                {{!-- Removed author image --}}
+                {{!-- <div class="gh-article-author-image">
                     {{#foreach authors}}
                         {{#if profile_image}}
                             <a href="{{url}}">
@@ -28,14 +29,18 @@
                             <a href="{{url}}">{{> "icons/avatar"}}</a>
                         {{/if}}
                     {{/foreach}}
-                </div>
+                </div> --}}
                 <div class="gh-article-meta-wrapper">
-                    <h4 class="gh-article-author-name">{{authors}}</h4>
+                    <h4 class="gh-article-author-name">By {{authors}}</h4>
                     <div class="gh-article-meta-content">
-                        <time class="gh-article-meta-date" datetime="{{date format="YYYY-MM-DD"}}">{{date}}</time>
-                        {{#if reading_time}}
+                        {{!-- <time class="gh-article-meta-date" datetime="{{date format="YYYY-MM-DD"}}">{{date}}</time> --}}
+                        {{!-- Changed diaply of time --}}
+                        <p>Published at {{date published_at format="MMM D, YYYY"}} / Updated at {{date updated_at format="MMM D, YYYY"}}</p>
+
+                        {{!-- Removed reading time display --}}
+                        {{!-- {{#if reading_time}}
                             <span class="gh-article-meta-length"><span class="bull">—</span> {{reading_time}}</span>
-                        {{/if}}
+                        {{/if}} --}}
                     </div>
                 </div>
             </div>
@@ -44,7 +49,17 @@
 
         </header>
 
+        {{!-- DFI: menu button to show toc on mobile --}}
+        <button id="menu-button" class="menu-button">&#9776; Menu</button>
+
         <section class="gh-content gh-canvas is-body">
+            {{!-- button to close toc menu on mobile --}}
+            
+            
+            <aside class="gh-sidebar">
+                <div class="close-button">×</div> 
+                <div class="gh-toc"></div>
+            </aside> {{! The TOC will be inserted here }}
             {{content}}
         </section>
 
