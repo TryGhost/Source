@@ -1,38 +1,21 @@
-<h2 class="gh-container-title">{{tag}}</h2>
-
-<div class="gh-feed">
-  {{#get "posts" limit="1" filter="primary_tag:{{tag}}+tag:overview"}}
-    {{#foreach posts}}
-      <div class="dfi-overiew-article">
-        <div class="dfi-overview-article-content">
-          <h2><a href="{{slug}}">{{title}}</a></h2>
-          <p>{{excerpt}}</p>
-        </div>
-        <figure class="dfi-overview-article-image">
-          <img src="{{feature_image}}" alt="{{title}}" style="height:200px;" />
-        </figure>
-
+<div class="gh-container is-list gh-outer">
+  <div class="gh-container-inner gh-inner">
+    {{!-- DFI: added inline class because "display:none" was coming up through above classes / can use class also --}}
+    <h2 class="gh-container-title" style="display: block;">{{tag}}</h2> 
+    <main class="gh-main">
+      <div class="gh-feed" style="">
+        {{#get "posts" limit="1" filter="primary_tag:{{tag}}+tag:overview"}}
+          {{#foreach posts}}
+            {{> "overview-card" lazyLoad=true}}
+          {{/foreach}}
+        {{/get}}
       </div>
-    {{/foreach}}
-  {{/get}}
+    </main>
+  </div>
 </div>
 
 <div class="gh-feed">
   {{#get "posts" limit="1" filter="primary_tag:{{tag}}+featured:true"}}
-    {{#foreach posts}}
-      <div class="dfi-secondary-article">
-        <figure
-          class="dfi-secondary-article-image"
-          style="background-image:url({{feature_image}});"
-          alt="{{title}}"
-        ></figure>
-      </div>
-
-      <div class="dfi-secondary-article-content">
-        <h3><a href="{{slug}}">{{title}}</a></h3>
-        <p>{{excerpt}}</p>
-      </div>
-    {{/foreach}}
+    {{> "components/post-list" feed="archive" postFeedStyle="List" showTitle=false showSidebar=false}} 
   {{/get}}
-
 </div>
