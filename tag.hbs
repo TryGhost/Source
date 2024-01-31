@@ -15,6 +15,11 @@
                 {{> "feature-image"}}
             </div>
         </section>
+    
+        {{#get "posts" limit="1" filter="primary_tag:{{name}}+tag:overview"}}
+            {{> "overview-card" lazyLoad=true}}
+        {{/get}}
+
     {{/tag}}
 
     {{> "components/post-list" feed="archive" postFeedStyle=@custom.post_feed_style showTitle=false showSidebar=@custom.show_publication_info_sidebar}}
