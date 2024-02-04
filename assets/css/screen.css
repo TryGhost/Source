@@ -45,6 +45,8 @@ production stylesheet in assets/built/screen.css
   21.3. Footer signup
 22. Lightbox
 23. Signup
+24. Footnotes and references
+25. Settings
 
 */
 
@@ -3994,4 +3996,26 @@ aside.active-sidenote {
 .gh-image-credit {
   font-size: 0.8em;
   font-style: italic;
+}
+
+/* 25. Settings 
+/* ---------------------------------------------------------- */
+.settings-wrapper {
+  position: relative;
+}
+
+.gh-settings-panel {
+  position: absolute;
+  top: 40px;
+  left: -168px;
+  border-width: 1px;
+  width: 200px;
+}
+
+.settings-group {
+  margin-top: 10px;
+}
+
+.settings-group-indent {
+  margin-left: 10px;
 }

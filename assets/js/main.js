@@ -71,3 +71,8 @@
     sidenotes();
   }
 })();
+
+/* Settings */
+(function () {
+  settings();
+})();
