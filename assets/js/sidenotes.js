@@ -53,7 +53,6 @@ function positionSidenotes() {
     const anchor = document.querySelector(
       `.gh-content > *:not(.gh-notes-wrapper, .footnotes, .references) #${anchorId}`
     );
-    // # TODO: Edge case where note only exists in another note
     const anchorParent = getAnchorParentContainer(anchor);
 
     const anchorPosition = anchor.getBoundingClientRect().top;
@@ -65,7 +64,7 @@ function positionSidenotes() {
       const prevSideNote = sidenotes[i - 1];
       const prevSidenoteEnd = prevSideNote.getBoundingClientRect().bottom;
       if (anchorPosition < prevSidenoteEnd) {
-        newPosition = prevSidenoteEnd + 20; // 20px bottom margin from prev note
+        newPosition = prevSidenoteEnd;
       }
     }
 
@@ -123,5 +122,6 @@ function sidenotes() {
   if (mediaQuery.matches) {
     insertSidenotes();
     positionSidenotes();
+    setTimeout(() => positionSidenotes(), 200); // Janky, but this will help with issue where sidenotes don't repaint during for loop
   }
 }
