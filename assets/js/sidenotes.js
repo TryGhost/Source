@@ -141,17 +141,19 @@ function getSidenotesSettings() {
 }
 
 function sidenotes({ showFootnotes = true, showReferences = false } = {}) {
-  if (showFootnotes || showReferences) {
-    window.addEventListener("resize", debounce(onResize, 100));
-    const anchors = document.querySelectorAll(".footnote-anchor, .reference-anchor");
-    for (const anchor of anchors) {
-      anchor.addEventListener("click", onAnchorClick);
-    }
-    document.addEventListener("click", (evt) => {
-      if (evt.target.nodeName !== "A") {
-        dehilightNotes();
+  if (document.body.classList.contains("post-template")) {
+    if (showFootnotes || showReferences) {
+      window.addEventListener("resize", debounce(onResize, 100));
+      const anchors = document.querySelectorAll(".footnote-anchor, .reference-anchor");
+      for (const anchor of anchors) {
+        anchor.addEventListener("click", onAnchorClick);
       }
-    });
-    insertAndPositionSidenotes({ showFootnotes, showReferences });
+      document.addEventListener("click", (evt) => {
+        if (evt.target.nodeName !== "A") {
+          dehilightNotes();
+        }
+      });
+      insertAndPositionSidenotes({ showFootnotes, showReferences });
+    }
   }
 }

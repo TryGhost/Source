@@ -1,3 +1,5 @@
+/* LOCALSTORAGE HELPERS
+ ----------------------------------------------------------*/
 function getLocalStorage(key, returnValueIfNotSet = null) {
   let value;
   try {
@@ -35,22 +37,23 @@ function getSettings() {
   };
 }
 
-function onSystemThemeChange() {
-  const settingsTheme = getLocalStorage("theme", "automatic");
-  if (settingsTheme === "automatic") {
-    // Get OS theme
-    if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      theme = "dark";
-    } else {
-      theme = "light";
+/* DARK MODE 
+ ----------------------------------------------------------*/
+function setTweetsTheme(theme) {
+  const tweets = document.querySelectorAll("[data-tweet-id]");
+  let changeFlag = false;
+  tweets.forEach(function (tweet) {
+    var src = tweet.getAttribute("src");
+    const match = src.match(/theme=(\w+)/);
+    if (match && match[1] !== theme) {
+      tweet.setAttribute("src", src.replace(/theme=\w+/, `theme=${theme}`));
+      changeFlag = true;
     }
-  }
-  document.body.classList.remove("dark-theme", "light-theme");
-  document.body.classList.add(`${theme}-theme`);
+  });
+  return changeFlag;
 }
 
 function setTheme(settingsTheme) {
-  // Set theme
   let theme;
   if (settingsTheme === "automatic") {
     // Get OS theme
@@ -62,46 +65,31 @@ function setTheme(settingsTheme) {
     window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", onSystemThemeChange);
   } else {
     // Hardcoded theme, no need to listen for system theme change
-    theme = settings.theme;
+    theme = settingsTheme;
     window.matchMedia("(prefers-color-scheme: dark)").removeEventListener("change", onSystemThemeChange);
   }
-  document.body.classList.remove("dark-theme", "light-theme");
-  document.body.classList.add(`${theme}-theme`);
+  document.documentElement.setAttribute("data-theme", theme);
 }
 
-function setInitialSettings() {
-  const settings = getSettings();
-  for (const key of Object.keys(settings)) {
-    if (typeof settings[key] === "boolean") {
-      document.getElementById(key).checked = settings[key];
+/* EVENT HANDLERS 
+ ----------------------------------------------------------*/
+function onSystemThemeChange() {
+  const settingsTheme = getLocalStorage("theme", "automatic");
+  if (settingsTheme === "automatic") {
+    // Get OS theme
+    if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      theme = "dark";
     } else {
-      document.getElementById(settings[key]).checked = true;
+      theme = "light";
     }
   }
-
-  // Initialize sidenotes if need be
-  if (!settings.sidenotes) {
-    document.getElementById("sidenotesFootnotes").disabled = true;
-    document.getElementById("sidenotesReferences").disabled = true;
-  } else {
-    sidenotes({ showFootnotes: settings.sidenotesFootnotes, showReferences: settings.sidenotesReferences });
-  }
-
-  // Initialize theme
-  setTheme(settings.theme);
-}
-
-function onSettingsIconClick() {
-  const panel = document.getElementById("site-settings-panel");
-  if (panel.open) {
-    panel.close();
-  } else {
-    panel.show();
-  }
+  document.documentElement.setAttribute("data-theme", theme);
 }
 
 function onThemeChange({ target: { id } }) {
   setTheme(id);
+  setLocalStorage("theme", id);
+  setTweetsTheme(id);
 }
 
 function onCheckboxChange({ target: { id, checked } }) {
@@ -153,12 +141,64 @@ function onCheckboxChange({ target: { id, checked } }) {
   setLocalStorage(id, checked);
 }
 
-function settings() {
-  document.getElementById("site-settings-button").addEventListener("click", onSettingsIconClick);
-  document.getElementById("theme").addEventListener("change", onThemeChange);
-  const checkboxes = ["sidenotes", "sidenotesFootnotes", "sidenotesReferences"];
-  for (const checkbox of checkboxes) {
-    document.getElementById(checkbox).addEventListener("change", onCheckboxChange);
+function onSettingsIconClick() {
+  const panel = document.getElementById("site-settings-panel");
+  if (panel.open) {
+    panel.close();
+  } else {
+    panel.show();
   }
-  setInitialSettings();
+}
+
+/* SETUP
+ ----------------------------------------------------------*/
+function setInitialTweetsTheme(theme) {
+  let counter = 0;
+  const interval = setInterval(function () {
+    const result = setTweetsTheme(theme);
+    if (result || counter > 10) {
+      clearInterval(interval);
+    }
+    counter += 1;
+  }, 500);
+}
+
+function setInitialSettings(hasSettingsMenu) {
+  const settings = getSettings();
+  if (hasSettingsMenu) {
+    for (const key of Object.keys(settings)) {
+      if (typeof settings[key] === "boolean") {
+        document.getElementById(key).checked = settings[key];
+      } else {
+        document.getElementById(settings[key]).checked = true;
+      }
+    }
+  }
+
+  // Initialize sidenotes if need be
+  if (!settings.sidenotes) {
+    if (hasSettingsMenu) {
+      document.getElementById("sidenotesFootnotes").disabled = true;
+      document.getElementById("sidenotesReferences").disabled = true;
+    }
+  } else {
+    sidenotes({ showFootnotes: settings.sidenotesFootnotes, showReferences: settings.sidenotesReferences });
+  }
+
+  // Initialize theme
+  setTheme(settings.theme);
+  setInitialTweetsTheme(settings.theme);
+}
+
+function settings() {
+  const settingsButton = document.getElementById("site-settings-button");
+  if (settingsButton) {
+    settingsButton.addEventListener("click", onSettingsIconClick);
+    document.getElementById("theme")?.addEventListener("change", onThemeChange);
+    const checkboxes = ["sidenotes", "sidenotesFootnotes", "sidenotesReferences"];
+    for (const checkbox of checkboxes) {
+      document.getElementById(checkbox)?.addEventListener("change", onCheckboxChange);
+    }
+  }
+  setInitialSettings((hasSettingsMenu = !!settingsButton));
 }
