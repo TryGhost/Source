@@ -49,16 +49,21 @@ function positionSidenotes() {
   const sidenotes = document.querySelectorAll("aside.gh-note");
   for (let i = 0; i < sidenotes.length; i++) {
     const sidenote = sidenotes[i];
-    const anchor = document.getElementById(sidenote.getAttribute("data-anchor-id"));
-    const anchorPosition = anchor.getBoundingClientRect().top;
+    const anchorId = sidenote.getAttribute("data-anchor-id");
+    const anchor = document.querySelector(
+      `.gh-content > *:not(.gh-notes-wrapper, .footnotes, .references) #${anchorId}`
+    );
+    // # TODO: Edge case where note only exists in another note
     const anchorParent = getAnchorParentContainer(anchor);
+
+    const anchorPosition = anchor.getBoundingClientRect().top;
     const anchorParentPosition = anchorParent.getBoundingClientRect().top;
 
     // Bump down sidenote if it would overlap with the previous one
     let newPosition = anchorPosition;
     if (i > 0) {
       const prevSideNote = sidenotes[i - 1];
-      prevSidenoteEnd = prevSideNote.getBoundingClientRect().bottom;
+      const prevSidenoteEnd = prevSideNote.getBoundingClientRect().bottom;
       if (anchorPosition < prevSidenoteEnd) {
         newPosition = prevSidenoteEnd + 20; // 20px bottom margin from prev note
       }
