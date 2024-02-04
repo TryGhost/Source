@@ -65,14 +65,8 @@
   }
 })();
 
-/* Sidenotes */
-(function () {
-  if (document.body.classList.contains("post-template")) {
-    sidenotes();
-  }
-})();
-
 /* Settings */
+/* Settings also handles sidenotes functionality! */
 (function () {
   settings();
 })();

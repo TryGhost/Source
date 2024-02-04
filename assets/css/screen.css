@@ -3969,6 +3969,10 @@ button.button-reset {
   font-size: 0.7em;
 }
 
+.hide-sidenotes .gh-notes-wrapper {
+  display: none;
+}
+
 .gh-note {
   position: absolute;
   top: 0;
