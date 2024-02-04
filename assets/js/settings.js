@@ -199,6 +199,9 @@ function settings() {
     for (const checkbox of checkboxes) {
       document.getElementById(checkbox)?.addEventListener("change", onCheckboxChange);
     }
+    document.getElementById("site-settings-close")?.addEventListener("click", function () {
+      document.getElementById("site-settings-panel").close();
+    });
   }
   setInitialSettings((hasSettingsMenu = !!settingsButton));
 }

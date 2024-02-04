@@ -95,7 +95,7 @@ function signup() {
   const form = document.querySelector("form.gh-signup-form");
   const chooseButtons = document.querySelectorAll(".gh-signup-choose");
   const validateFields = [document.getElementById("signup-name"), document.getElementById("signup-email")];
-  const dialogCloseButton = document.querySelector("button.gh-signup-popup-close");
+  const dialogCloseButton = document.querySelector(".gh-signup-popup button.gh-close");
 
   newsletterSubscriptionButton.addEventListener("click", toggleNewslettersAccordion);
   for (const button of pwywRevealButtons) {

@@ -415,6 +415,10 @@ pre code {
   height: 20px;
 }
 
+.gh-icon-button:focus-visible {
+  outline: -webkit-focus-ring-color auto 1px;
+}
+
 .gh-form {
   display: flex;
   align-items: center;
@@ -3974,14 +3978,14 @@ button.button-reset {
   }
 }
 
-.gh-signup-popup-close {
+.gh-close {
   position: absolute;
   top: 10px;
   right: 10px;
   color: var(--color-primary-text);
 }
 
-.gh-signup-popup-close:hover {
+.gh-close:hover {
   cursor: pointer;
 }
 
@@ -4074,11 +4078,32 @@ aside.active-sidenote {
 }
 
 .gh-settings-panel {
+  color: var(--color-primary-text);
+  background-color: var(--popup-background-color);
+  border: 1px solid var(--color-border);
   position: absolute;
   top: 40px;
   left: -168px;
-  border-width: 1px;
   width: 200px;
+  z-index: 1;
+}
+
+.gh-settings-panel::before {
+  content: " ";
+  position: absolute;
+  top: -6px;
+  right: 10px;
+  height: 10px;
+  width: 10px;
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+  background-color: var(--popup-background-color);
+  border-right: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.gh-settings-panel .gh-close {
+  width: 15px;
 }
 
 .settings-group {
