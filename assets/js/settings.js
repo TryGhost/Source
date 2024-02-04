@@ -35,6 +35,40 @@ function getSettings() {
   };
 }
 
+function onSystemThemeChange() {
+  const settingsTheme = getLocalStorage("theme", "automatic");
+  if (settingsTheme === "automatic") {
+    // Get OS theme
+    if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      theme = "dark";
+    } else {
+      theme = "light";
+    }
+  }
+  document.body.classList.remove("dark-theme", "light-theme");
+  document.body.classList.add(`${theme}-theme`);
+}
+
+function setTheme(settingsTheme) {
+  // Set theme
+  let theme;
+  if (settingsTheme === "automatic") {
+    // Get OS theme
+    if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      theme = "dark";
+    } else {
+      theme = "light";
+    }
+    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", onSystemThemeChange);
+  } else {
+    // Hardcoded theme, no need to listen for system theme change
+    theme = settings.theme;
+    window.matchMedia("(prefers-color-scheme: dark)").removeEventListener("change", onSystemThemeChange);
+  }
+  document.body.classList.remove("dark-theme", "light-theme");
+  document.body.classList.add(`${theme}-theme`);
+}
+
 function setInitialSettings() {
   const settings = getSettings();
   for (const key of Object.keys(settings)) {
@@ -44,12 +78,17 @@ function setInitialSettings() {
       document.getElementById(settings[key]).checked = true;
     }
   }
+
+  // Initialize sidenotes if need be
   if (!settings.sidenotes) {
     document.getElementById("sidenotesFootnotes").disabled = true;
     document.getElementById("sidenotesReferences").disabled = true;
   } else {
     sidenotes({ showFootnotes: settings.sidenotesFootnotes, showReferences: settings.sidenotesReferences });
   }
+
+  // Initialize theme
+  setTheme(settings.theme);
 }
 
 function onSettingsIconClick() {
@@ -62,7 +101,7 @@ function onSettingsIconClick() {
 }
 
 function onThemeChange({ target: { id } }) {
-  setLocalStorage("theme", id);
+  setTheme(id);
 }
 
 function onCheckboxChange({ target: { id, checked } }) {

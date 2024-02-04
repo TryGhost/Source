@@ -4020,6 +4020,10 @@ aside.active-sidenote {
   margin-top: 10px;
 }
 
+.settings-group label h4 {
+  display: inline;
+}
+
 .settings-group-indent {
   margin-left: 10px;
 }
