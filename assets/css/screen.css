@@ -2328,10 +2328,7 @@ unless a heading is the very first element in the post content */
 }
 
 /* Add a small margin between a heading and paragraph after it */
-.gh-content > [id] + p {
-  margin-top: calc(12px * var(--content-spacing-factor, 1));
-}
-
+.gh-content > [id] + p,
 .gh-content > [id] + p + div.gh-notes-wrapper {
   margin-top: calc(12px * var(--content-spacing-factor, 1));
 }
@@ -2346,6 +2343,11 @@ unless a heading is the very first element in the post content */
   margin-top: calc(48px * var(--content-spacing-factor, 1)) !important;
 }
 
+/* Smaller margin between adjacent headers */
+.gh-content > :is(h2, h3, h4) + :is(h2, h3, h4) {
+  margin-top: calc(8px * var(--content-spacing-factor, 1)) !important;
+}
+
 /* Now the content typography styles */
 .gh-content h1 {
   font-size: calc(2.2em * var(--factor, 1));
@@ -2353,11 +2355,16 @@ unless a heading is the very first element in the post content */
 }
 
 .gh-content h2 {
-  font-size: calc(1.6em * var(--factor, 1));
+  font-size: calc(2em * var(--factor, 1));
   letter-spacing: -0.02em;
 }
 
 .gh-content h3 {
+  font-size: calc(1.6em * var(--factor, 1));
+  letter-spacing: -0.017em;
+}
+
+.gh-content h4 {
   font-size: calc(1.3em * var(--factor, 1));
   letter-spacing: -0.017em;
 }
@@ -2407,11 +2414,6 @@ unless a heading is the very first element in the post content */
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-}
-
-.gh-content .gh-table {
-  overflow-x: scroll;
-  -webkit-overflow-scrolling: touch;
 }
 
 .gh-content .gh-table table {
@@ -2479,19 +2481,23 @@ unless a heading is the very first element in the post content */
 
 /* Add extra margin before/after any cards, except for when immediately preceeded by a heading */
 
-.gh-content :not(.kg-card):not(table):not([id]) + :is(.kg-card, table) {
+.gh-content :not(.kg-card):not(table):not([id]) + :is(.kg-card, table),
+.gh-content :not(.kg-card):not(table):not([id]) + :is(.kg-card, table) + .gh-notes-wrapper {
   margin-top: calc(48px * var(--content-spacing-factor, 1));
 }
 
-.gh-content :is(.kg-card, table) + :not(.kg-card):not(table):not([id]) {
+.gh-content :is(.kg-card, table) + :not(.kg-card):not(table):not([id]):not(figcaption),
+.gh-content :is(.kg-card, table) + :not(.kg-card):not(table):not([id]):not(figcaption) + .gh-notes-wrapper {
   margin-top: calc(48px * var(--content-spacing-factor, 1));
 }
 
-.gh-content :not(.kg-card):not([id]) + .kg-card.kg-width-full {
+.gh-content :not(.kg-card):not([id]) + .kg-card.kg-width-full,
+.gh-content :not(.kg-card):not([id]) + .kg-card.kg-width-full + .gh-notes-wrapper {
   margin-top: calc(68px * var(--content-spacing-factor, 1));
 }
 
-.gh-content .kg-card.kg-width-full + :not(.kg-card):not([id]) {
+.gh-content .kg-card.kg-width-full + :not(.kg-card):not([id]),
+.gh-content .kg-card.kg-width-full + :not(.kg-card):not([id]) + .gh-notes-wrapper {
   margin-top: calc(68px * var(--content-spacing-factor, 1));
 }
 
@@ -2563,8 +2569,8 @@ blockquote:not([class]) {
 }
 
 blockquote p:not(:first-child),
-blockquote ul,
-blockquote ol {
+blockquote ul:not(:first-child),
+blockquote ol:not(:first-child) {
   margin-top: calc(12px * var(--content-spacing-factor, 1));
 }
 
@@ -2592,11 +2598,7 @@ blockquote.kg-blockquote-alt cite {
   color: var(--color-primary-text);
   position: absolute;
   right: 2.5em;
-}
-
-blockquote.kg-blockquote-alt cite::before {
-  content: "\2014\00A0";
-  color: var(--color-primary-text);
+  bottom: -2em;
 }
 
 /* Button */
@@ -2861,17 +2863,17 @@ figcaption a {
   --factor: 1.1;
 }
 
-.has-sans-title :is(.is-title, .gh-content :is(h2, h3)) {
+.has-sans-title :is(.is-title, .gh-content :is(h2, h3, h4)) {
   font-family: var(--font-display);
   font-weight: 500;
 }
 
-.has-serif-title :is(.is-title, .gh-content :is(h2, h3)) {
+.has-serif-title :is(.is-title, .gh-content :is(h2, h3, h4)) {
   font-family: var(--font-serif);
   font-weight: 550;
 }
 
-.has-mono-title :is(.is-title, .gh-content :is(h2, h3)) {
+.has-mono-title :is(.is-title, .gh-content :is(h2, h3, h4)) {
   font-family: var(--font-mono);
 }
 
@@ -3955,6 +3957,7 @@ button.button-reset {
 .footnote-anchor a,
 .reference-anchor a {
   padding: 0 3px;
+  text-transform: none !important;
 }
 
 /* Sidenotes */
