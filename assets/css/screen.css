@@ -4146,25 +4146,34 @@ aside.active-sidenote {
   width: 15px;
 }
 
-.settings-group {
-  margin-top: 10px;
+.gh-settings-panel h3 {
+  margin-bottom: 0.3em;
 }
 
-.settings-group label h4 {
-  display: inline;
+.settings-group:not(:last-child) {
+  margin-bottom: 1.5em;
 }
 
-.settings-group-indent {
-  margin-left: 10px;
+.settings-group input[type="checkbox"] {
+  accent-color: var(--color-accent-text);
+  block-size: 1.3em;
+  inline-size: 1.3em;
+  margin-right: 0.5em;
+}
+
+.settings-group .checkbox-group {
+  display: flex;
+  align-items: center;
 }
 
 .toggle {
+  display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  border-radius: 34px;
-  height: 40px;
+  border-radius: 30px;
+  height: 32px;
   position: relative;
-  border: 2px solid var(--color-white);
+  border: 2px solid var(--color-accent-text);
   vertical-align: middle;
 }
 
@@ -4172,40 +4181,40 @@ aside.active-sidenote {
   display: inline-block;
   position: relative;
   margin: 0;
-  padding: 5px 8px;
+  padding: 4px 6px;
   z-index: 1;
   cursor: pointer;
 }
 
 .toggle label svg {
-  color: var(--color-white);
+  position: relative;
+  color: var(--color-accent-text);
   z-index: 1;
-  width: 25px;
+  top: 1px;
+  width: 18px;
   transition: color 0.3s ease-in-out;
 }
 
-label[for="light"] {
-  right: 2px;
-}
-
-label[for="automatic"] {
-  top: 0.5px;
+label[for="light"] svg {
+  right: 1px;
 }
 
 .toggle input {
   position: absolute;
   height: 100%;
-  width: 40px;
+  width: 30px;
   opacity: 0;
-  cursor: pointer;
-  z-index: 1;
+}
+
+.toggle input:focus-visible + label {
+  outline: -webkit-focus-ring-color auto 1px;
 }
 
 .toggle span {
-  height: 30px;
-  width: 30px;
+  height: 22px;
+  width: 22px;
   border-radius: 50%;
-  background: var(--color-white);
+  background: var(--color-accent-text);
   display: block;
   position: absolute;
   left: 4px;
@@ -4214,25 +4223,50 @@ label[for="automatic"] {
   transition: all 0.3s ease-in-out;
 }
 
-.toggle input#light:checked ~ span {
-  left: 4px;
+.toggle input[value="light"]:checked ~ span {
+  left: 3px;
 }
 
-.toggle input#automatic:checked ~ span {
-  left: 50px;
+.toggle input[value="automatic"]:checked ~ span {
+  left: 34px;
 }
 
-.toggle input#dark:checked ~ span {
-  left: 95px;
+.toggle input[value="dark"]:checked ~ span {
+  left: 64px;
 }
 
 .toggle input:checked + label svg {
+  /* Handles the perceived larger size with light on dark */
+  width: 16px;
+  margin-left: 1px;
+  margin-top: 1px;
+  color: var(--color-white);
+}
+
+#site-settings-panel .toggle-wrapper {
+  display: inline-flex;
+  align-items: center;
+}
+
+#mobile-site-settings-panel .toggle {
+  border-color: var(--color-white);
+}
+
+#mobile-site-settings-panel .toggle label svg {
+  color: var(--color-white);
+}
+
+#mobile-site-settings-panel .toggle span {
+  background: var(--color-white);
+}
+
+#mobile-site-settings-panel .toggle input:checked + label svg {
   color: var(--ghost-accent-color);
 }
 
 @media (max-width: 767px) {
   #mobile-site-settings-panel {
-    display: flex;
+    display: block;
   }
 
   #site-settings-button {

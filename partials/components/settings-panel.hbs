@@ -1,34 +1,16 @@
 <dialog id="site-settings-panel" class="gh-settings-panel" role="menu" aria-hidden="true" aria-labelledby="site-settings-button">
-  <h3>Settings</h3>
   <div class="settings-group">
-    <form name="theme" id="theme">
-      <h4>Theme</h4>
-      <div class="radio-group settings-group-indent">
-        <input type="radio" id="automatic" name="theme" />
-        <label for="automatic">Automatic</label>
-      </div>
-      <div class="radio-group settings-group-indent">
-        <input type="radio" id="light" name="theme" />
-        <label for="light">Light</label>
-      </div>
-      <div class="radio-group settings-group-indent">
-        <input type="radio" id="dark" name="theme" />
-        <label for="dark">Dark</label>
-      </div>
-    </form>
-  </div>
-  <div class="settings-group">
-    <input type="checkbox" id="sidenotes" name="sidenotes" />
-    <label for="sidenotes">
-      <h4>Sidenotes</h4>
-    </label>
-    <div class="settings-group-indent">
+    <h3>Sidenotes</h3>
+    <div class="checkbox-group">
       <input type="checkbox" id="sidenotesFootnotes" name="sidenotes" />
       <label for="sidenotesFootnotes">Show footnotes</label>
     </div>
-    <div class="settings-group-indent">
+    <div class="checkbox-group">
       <input type="checkbox" id="sidenotesReferences" name="sidenotes" />
       <label for="sidenotesReferences">Show references</label>
     </div>
+  </div>
+  <div class="toggle-wrapper settings-group">
+    {{> "components/theme-toggle"}} 
   </div>
 </dialog>

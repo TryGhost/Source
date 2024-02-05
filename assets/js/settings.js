@@ -31,7 +31,6 @@ function setLocalStorage(key, value) {
 function getSettings() {
   return {
     theme: getLocalStorage("theme", "automatic"),
-    sidenotes: getLocalStorage("sidenotes", true),
     sidenotesFootnotes: getLocalStorage("sidenotesFootnotes", true),
     sidenotesReferences: getLocalStorage("sidenotesReferences", false),
   };
@@ -68,9 +67,11 @@ function setTheme(settingsTheme) {
     theme = settingsTheme;
     window.matchMedia("(prefers-color-scheme: dark)").removeEventListener("change", onSystemThemeChange);
   }
-  const items = document.querySelectorAll(`input[value=${settingsTheme}]`);
-  for (const item of items) {
-    item.checked = true;
+
+  const radioButtons = document.querySelectorAll('form[name="theme"] input');
+  for (const button of radioButtons) {
+    button.checked = button.value === settingsTheme;
+    button.setAttribute("aria-checked", button.value === settingsTheme);
   }
   document.documentElement.setAttribute("data-theme", theme);
 }
@@ -90,56 +91,32 @@ function onSystemThemeChange() {
   document.documentElement.setAttribute("data-theme", theme);
 }
 
-function onThemeChange({ target: { id } }) {
-  setTheme(id);
-  setLocalStorage("theme", id);
-  setTweetsTheme(id);
+function onThemeChange({ target: { value } }) {
+  setTheme(value);
+  setLocalStorage("theme", value);
+  setTweetsTheme(value);
 }
 
 function onCheckboxChange({ target: { id, checked } }) {
   const settings = getSettings();
-  if (id === "sidenotes") {
-    if (!settings.sidenotesFootnotes && !settings.sidenotesReferences) {
-      // Doesn't make sense to enable sidenotes with neither footnotes nor references, so reset to default
-      setLocalStorage("sidenotesFootnotes", true);
-      settings.sidenotesFootnotes = true;
-      document.getElementById("sidenotesFootnotes").checked = true;
-    }
-    document.getElementById("sidenotesFootnotes").disabled = !checked;
-    document.getElementById("sidenotesReferences").disabled = !checked;
-    if (checked) {
-      const sidenotesInDom = Boolean(document.querySelector("div.gh-notes-wrapper"));
-      if (sidenotesInDom) {
-        // If the sidenotes are already in the DOM, just show them
-        showSidenotes();
-      } else {
-        // Sidenotes haven't been initialized yet
-        sidenotes({
-          showFootnotes: settings.sidenotesFootnotes,
-          showReferences: settings.sidenotesReferences,
-        });
-      }
-    } else {
-      hideSidenotes();
-    }
+  let showFootnotes, showReferences;
+  if (id === "sidenotesFootnotes") {
+    showFootnotes = checked;
+    showReferences = settings.sidenotesReferences;
   } else {
-    let showFootnotes, showReferences;
-    if (id === "sidenotesFootnotes") {
-      showFootnotes = checked;
-      showReferences = settings.sidenotesReferences;
-    } else {
-      showFootnotes = settings.sidenotesFootnotes;
-      showReferences = checked;
-    }
-    if (!showFootnotes && !showReferences) {
-      // Also disable sidenotes, since there's nothing left
-      setLocalStorage("sidenotes", false);
-      document.getElementById("sidenotes").checked = false;
-      document.getElementById("sidenotesFootnotes").disabled = true;
-      document.getElementById("sidenotesReferences").disabled = true;
-      hideSidenotes();
+    showFootnotes = settings.sidenotesFootnotes;
+    showReferences = checked;
+  }
+  if (!showFootnotes && !showReferences) {
+    hideSidenotes();
+  } else {
+    const sidenotesInDom = Boolean(document.querySelector("div.gh-notes-wrapper"));
+    if (!sidenotesInDom) {
+      // Initialization required
+      sidenotes();
     } else {
       redoSidenotes({ showFootnotes, showReferences });
+      showSidenotes();
     }
   }
   setLocalStorage(id, checked);
@@ -156,6 +133,18 @@ function onSettingsIconClick() {
     panel.show();
     settingsButton.setAttribute("aria-expanded", "true");
     panel.setAttribute("aria-hidden", "false");
+  }
+}
+
+function onPageClick(evt) {
+  const settingsButton = document.getElementById("site-settings-button");
+  const panel = document.getElementById("site-settings-panel");
+  if (
+    !evt.target.matches("#site-settings-panel, #site-settings-panel *, #site-settings-button, #site-settings-button *")
+  ) {
+    panel.close();
+    settingsButton.setAttribute("aria-expanded", "false");
+    panel.setAttribute("aria-hidden", "true");
   }
 }
 
@@ -183,21 +172,17 @@ function setInitialSettings(hasSettingsMenu) {
           item.checked = settings[key];
         }
       } else {
-        const items = document.querySelectorAll(`input[value=${settings[key]}]`);
-        for (const item of items) {
-          item.checked = true;
+        const radioButtons = document.querySelectorAll(`form[name="${key}"] input`);
+        for (const button of radioButtons) {
+          button.checked = button.value === settings[key];
+          button.setAttribute("aria-checked", button.value === settings[key]);
         }
       }
     }
   }
 
   // Initialize sidenotes if need be
-  if (!settings.sidenotes) {
-    if (hasSettingsMenu) {
-      document.getElementById("sidenotesFootnotes").disabled = true;
-      document.getElementById("sidenotesReferences").disabled = true;
-    }
-  } else {
+  if (settings.sidenotesFootnotes || settings.sidenotesReferences) {
     sidenotes({ showFootnotes: settings.sidenotesFootnotes, showReferences: settings.sidenotesReferences });
   }
 
@@ -208,25 +193,20 @@ function setInitialSettings(hasSettingsMenu) {
 
 function settings() {
   const settingsButton = document.getElementById("site-settings-button");
-  const panel = document.getElementById("site-settings-panel");
+
+  // Theme settings setup
+  document.querySelectorAll("form[name='theme']")?.forEach((form) => form.addEventListener("change", onThemeChange));
+
+  // Sidenotes settings setup
   if (settingsButton) {
     settingsButton.addEventListener("click", onSettingsIconClick);
-    document.getElementById("theme")?.addEventListener("change", onThemeChange);
-    const checkboxes = ["sidenotes", "sidenotesFootnotes", "sidenotesReferences"];
+    const checkboxes = ["sidenotesFootnotes", "sidenotesReferences"];
     for (const checkbox of checkboxes) {
       document.getElementById(checkbox)?.addEventListener("change", onCheckboxChange);
     }
-    document.addEventListener("click", (evt) => {
-      if (
-        !evt.target.matches(
-          "#site-settings-panel, #site-settings-panel *, #site-settings-button, #site-settings-button *"
-        )
-      ) {
-        panel.close();
-        settingsButton.setAttribute("aria-expanded", "false");
-        panel.setAttribute("aria-hidden", "true");
-      }
-    });
+    document.addEventListener("click", onPageClick);
   }
+
+  // Initialize settings
   setInitialSettings((hasSettingsMenu = !!settingsButton));
 }
