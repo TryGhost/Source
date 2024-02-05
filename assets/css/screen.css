@@ -2700,6 +2700,14 @@ blockquote.kg-blockquote-alt cite {
   bottom: -2em;
 }
 
+@media (max-width: 767px) {
+  blockquote.kg-blockquote-alt {
+    font-size: 1em;
+    padding-left: 1.25em;
+    padding-right: 1.25em;
+  }
+}
+
 /* Button */
 
 .kg-card.kg-button-card .kg-btn {
