@@ -6,14 +6,15 @@ function getAnchorParentContainer(anchor) {
   return el;
 }
 
-function insertSidenotes() {
+function insertSidenotes({ showFootnotes, showReferences }) {
   const articleContent = document.querySelector("article .gh-content");
   for (const child of articleContent.children) {
     if (child.classList.contains("gh-notes-wrapper")) {
       // Don't add sidenotes for refs used within sidenotes
       continue;
     }
-    const anchors = child.querySelectorAll(".footnote-anchor, .reference-anchor");
+    const toSelect = [showFootnotes && ".footnote-anchor", showReferences && ".reference-anchor"].filter(Boolean);
+    const anchors = child.querySelectorAll(toSelect.join(","));
     if (anchors.length) {
       // Extra wrapper helps with initial positioning
       const sidenoteContainer = document.createElement("div");
@@ -72,17 +73,43 @@ function positionSidenotes() {
   }
 }
 
+function showSidenotes() {
+  document.querySelector(".gh-article").classList.remove("hide-sidenotes");
+}
+
+function hideSidenotes() {
+  document.querySelector(".gh-article").classList.add("hide-sidenotes");
+}
+
+function removeSidenotes() {
+  document.querySelectorAll("div.gh-notes-wrapper").forEach((e) => e.remove());
+}
+
+function insertAndPositionSidenotes({ showFootnotes, showReferences }) {
+  const mediaQuery = window.matchMedia("(min-width: 1349px)");
+  if (mediaQuery.matches) {
+    insertSidenotes({ showFootnotes, showReferences });
+    positionSidenotes();
+    setTimeout(() => positionSidenotes(), 200); // Janky, but this will help with issue where sidenotes don't repaint during for loop
+  }
+}
+
+function redoSidenotes({ showFootnotes, showReferences }) {
+  removeSidenotes();
+  insertAndPositionSidenotes({ showFootnotes, showReferences });
+}
+
 function onResize() {
   const sidenotesInDom = Boolean(document.querySelector("div.gh-notes-wrapper"));
   const mediaQuery = window.matchMedia("(min-width: 1349px)");
   if (mediaQuery.matches) {
     if (!sidenotesInDom) {
-      insertSidenotes();
+      insertSidenotes(getSidenotesSettings());
     }
     positionSidenotes();
   } else {
     if (sidenotesInDom) {
-      document.querySelectorAll("div.gh-notes-wrapper").forEach((e) => e.remove());
+      hideSidenotes();
     }
   }
 }
@@ -106,22 +133,27 @@ function dehilightNotes(evt) {
   }
 }
 
-function sidenotes() {
-  window.addEventListener("resize", debounce(onResize, 100));
-  const anchors = document.querySelectorAll(".footnote-anchor, .reference-anchor");
-  for (const anchor of anchors) {
-    anchor.addEventListener("click", onAnchorClick);
-  }
-  document.addEventListener("click", (evt) => {
-    if (evt.target.nodeName !== "A") {
-      dehilightNotes();
-    }
-  });
+function getSidenotesSettings() {
+  return {
+    showFootnotes: getLocalStorage("sidenotesFootnotes", true),
+    showReferences: getLocalStorage("sidenotesReferences", false),
+  };
+}
 
-  const mediaQuery = window.matchMedia("(min-width: 1349px)");
-  if (mediaQuery.matches) {
-    insertSidenotes();
-    positionSidenotes();
-    setTimeout(() => positionSidenotes(), 200); // Janky, but this will help with issue where sidenotes don't repaint during for loop
+function sidenotes({ showFootnotes = true, showReferences = false } = {}) {
+  if (document.body.classList.contains("post-template")) {
+    if (showFootnotes || showReferences) {
+      window.addEventListener("resize", debounce(onResize, 100));
+      const anchors = document.querySelectorAll(".footnote-anchor, .reference-anchor");
+      for (const anchor of anchors) {
+        anchor.addEventListener("click", onAnchorClick);
+      }
+      document.addEventListener("click", (evt) => {
+        if (evt.target.nodeName !== "A") {
+          dehilightNotes();
+        }
+      });
+      insertAndPositionSidenotes({ showFootnotes, showReferences });
+    }
   }
 }

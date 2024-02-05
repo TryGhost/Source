@@ -45,6 +45,9 @@ production stylesheet in assets/built/screen.css
   21.3. Footer signup
 22. Lightbox
 23. Signup
+24. Footnotes and references
+25. Settings
+26. Dark mode overrides
 
 */
 
@@ -52,19 +55,50 @@ production stylesheet in assets/built/screen.css
 /* ---------------------------------------------------------- */
 
 :root {
+  /* Colors */
   --color-white: #fff;
   --color-lighter-gray: rgb(0 0 0 / 0.05);
   --color-light-gray: #e6e6e6;
   --color-mid-gray: #ccc;
+  --color-mid-dark-gray: #666;
   --color-dark-gray: #444;
   --color-darker-gray: #15171a;
   --color-black: #000;
-  --color-error: #f02525;
+
+  /* Background */
+  --background-color: var(--color-white);
+  --code-background-color: var(--color-lighter-gray);
+  --card-background-color: var(--color-white);
+  --input-background-color: var(--color-white);
+  --popup-background-color: var(--color-white);
+  --popup-hover-background-color: var(--color-lighter-gray);
+  --signup-input-color: var(--color-white);
+  --sidenote-highlight-background: var(--color-lighter-gray);
+  --sidenote-anchor-highlight-background: var(--color-light-gray);
+
+  /* Text */
   --color-primary-text: var(--color-darker-gray);
   --color-secondary-text: #707070;
+  --color-accent-text: var(--ghost-accent-color);
+  --color-blockquote-decorative-quote: var(--color-light-gray);
+  --color-error: #f02525;
+
+  /* Buttons */
+  --color-button: var(--ghost-accent-color);
+  --color-button-text-on-dark: var(--color-accent-text);
+  --color-button-on-dark: var(--color-white);
+  --color-button-disabled: var(--color-mid-gray);
+  --color-button-disabled-text: var(--color-white);
+
+  /* Borders */
   --color-border-on-dark: rgba(255, 255, 255, 0.8);
   --color-border: rgb(0 0 0 / 0.08);
   --color-dark-border: rgb(0 0 0 / 0.5);
+  --color-header-box-shadow: rgba(0, 0, 0, 0.2);
+  --color-box-shadow: var(--color-mid-gray);
+  --code-border-color: var(--color-mid-gray);
+
+  /* Fonts */
   --font-brand: var(--font-sans);
   --font-display: "Barlow Condensed", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
     "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
@@ -72,18 +106,41 @@ production stylesheet in assets/built/screen.css
   --font-sans: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
     "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   --font-mono: "Source Code Pro", Menlo, Consolas, Monaco, "Liberation Mono", "Lucida Console", monospace;
+
+  /* Sizing */
   --container-width: 1320px;
   --container-gap: clamp(24px, 1.7032rem + 1.9355vw, 48px);
   --grid-gap: 42px;
 }
 
-:root.has-light-text,
-:is(.gh-navigation, .gh-footer).has-accent-color {
-  --color-lighter-gray: rgb(255 255 255 / 0.1);
-  --color-darker-gray: #fff;
-  --color-secondary-text: rgb(255 255 255 / 0.64);
+html[data-theme="dark"] {
+  --background-color: #121212;
+  --code-background-color: var(--color-dark-gray);
+  --card-background-color: rgba(255, 255, 255, 0.05);
+  --popup-background-color: #272727;
+  --popup-hover-background-color: var(--color-dark-gray);
+  --input-background-color: var(--color-dark-gray);
+  --sidenote-anchor-highlight-background: var(--color-mid-dark-gray);
+  --sidenote-highlight-background: var(--card-background-color);
+  --ghost-accent-color: #032763;
+
+  --color-primary-text: var(--color-light-gray);
+  --color-secondary-text: #bbb;
+  --color-accent-text: #86a0ca;
+  --color-blockquote-decorative-quote: var(--color-dark-gray);
+
+  --color-button: var(--color-accent-text);
+  --color-button-text-on-dark: var(--color-white);
+  --color-button-on-dark: #0645ad;
+  --color-button-disabled: var(--color-dark-gray);
+  --color-button-disabled-text: var(--color-mid-dark-gray);
+
+  --color-border-on-dark: rgba(255, 255, 255, 0.2);
   --color-border: rgb(255 255 255 / 0.15);
   --color-dark-border: rgb(255 255 255 / 0.5);
+  --color-header-box-shadow: rgba(255, 255, 255, 0.08);
+  --color-box-shadow: var(--color-darker-gray);
+  --code-border-color: var(--color-mid-dark-gray);
 }
 
 /* 2. Fonts
@@ -266,7 +323,7 @@ body {
 }
 
 a {
-  color: var(--color-darker-gray);
+  color: var(--color-primary-text);
   text-decoration: none;
 }
 
@@ -280,11 +337,11 @@ tt,
 kbd,
 samp {
   font-family: var(--font-mono);
-  background-color: #eee;
+  background-color: var(--code-background-color);
   padding: 0 3px;
   margin: 0 2px;
   border-radius: 2px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--code-border-color);
   white-space: break-spaces;
 }
 
@@ -312,13 +369,13 @@ pre code {
   line-height: 1;
   color: var(--color-white);
   cursor: pointer;
-  background-color: var(--ghost-accent-color);
+  background-color: var(--color-button);
   border: 0;
 }
 
 .gh-button.on-dark {
-  background-color: var(--color-white);
-  color: var(--ghost-accent-color);
+  background-color: var(--color-button-on-dark);
+  color: var(--color-button-text-on-dark);
 }
 
 .gh-button:hover {
@@ -327,7 +384,8 @@ pre code {
 
 .gh-button:disabled,
 .gh-button.disabled {
-  background-color: var(--color-mid-gray);
+  color: var(--color-button-disabled-text);
+  background-color: var(--color-button-disabled);
   cursor: default;
 }
 
@@ -359,6 +417,10 @@ pre code {
   height: 20px;
 }
 
+.gh-icon-button:focus-visible {
+  outline: -webkit-focus-ring-color auto 1px;
+}
+
 .gh-form {
   display: flex;
   align-items: center;
@@ -370,7 +432,7 @@ pre code {
   font-size: 1.7rem;
   font-weight: 450;
   letter-spacing: -0.008em;
-  background-color: var(--color-lighter-gray);
+  background-color: var(--code-background-color);
   transition: background-color 0.2s ease;
 }
 
@@ -576,7 +638,7 @@ button.gh-form-input {
   font-size: 1.5rem;
   background-color: var(--ghost-accent-color);
   color: var(--color-white);
-  box-shadow: 2px 2px 5px var(--color-mid-gray);
+  box-shadow: 2px 2px 5px var(--color-header-box-shadow);
 }
 
 .gh-navigation :is(.gh-navigation-logo, a:not(.gh-button), .gh-icon-button) {
@@ -661,6 +723,7 @@ button.gh-form-input {
 }
 
 .gh-navigation-members {
+  color: var(--color-light-gray);
   display: flex;
   gap: 20px;
   align-items: center;
@@ -793,6 +856,12 @@ Search                         LOGO                    Login Subscribe
   }
 }
 
+@media (max-width: 991px) {
+  .gh-navigation {
+    border-bottom: 1px solid var(--color-border-on-dark);
+  }
+}
+
 @media (min-width: 992px) {
   .gh-navigation.is-stacked .gh-navigation-inner {
     padding: 0;
@@ -824,7 +893,7 @@ Search                         LOGO                    Login Subscribe
   }
 
   .gh-navigation.is-stacked .gh-navigation-menu::after {
-    top: 160px;
+    top: 159px;
   }
 
   .gh-navigation.is-stacked .gh-navigation-actions {
@@ -845,24 +914,41 @@ Search                         LOGO                    Login Subscribe
 .gh-dropdown {
   position: absolute;
   top: 100%;
-  right: -16px;
+  right: 0;
   z-index: 90;
   width: 200px;
   padding: 12px 0;
-  margin-top: 24px;
+  margin-top: 7px;
   text-align: left;
   visibility: hidden;
-  background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 0 0 0 1px rgb(0 0 0 / 0.04), 0 7px 20px -5px rgb(0 0 0 / 0.15);
-  opacity: 0;
-  transition: opacity 0.3s, transform 0.2s;
-  transform: translate3d(0, 6px, 0);
+  color: var(--color-primary-text);
+  background-color: var(--popup-background-color);
+  border: 1px solid var(--color-border);
+  box-shadow: 2px 2px 5px var(--color-header-box-shadow);
+}
+
+.gh-dropdown:before {
+  content: " ";
+  position: absolute;
+  top: -6px;
+  right: 10px;
+  height: 10px;
+  width: 10px;
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+  background-color: var(--popup-background-color);
+  border-right: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .gh-dropdown.is-left {
   right: auto;
-  left: -16px;
+  left: 0;
+}
+
+.gh-dropdown.is-left:before {
+  right: auto;
+  left: 10px;
 }
 
 .is-dropdown-mega .gh-dropdown {
@@ -885,7 +971,10 @@ Search                         LOGO                    Login Subscribe
   padding: 7px 20px;
   line-height: 1.5;
   white-space: normal;
-  color: #15171a !important;
+}
+
+.gh-dropdown li:hover {
+  background-color: var(--popup-hover-background-color);
 }
 
 .is-dropdown-mega .gh-dropdown li a {
@@ -982,7 +1071,7 @@ Search                         LOGO                    Login Subscribe
     text-align: center;
   }
 
-  #gh-navigation :is(.gh-button, a[data-portal="signin"]) {
+  #gh-navigation :is(.gh-button, a[data-portal="signin"], #mobile-site-settings-panel) {
     opacity: 0;
     transform: translateY(8px);
   }
@@ -1040,7 +1129,7 @@ Search                         LOGO                    Login Subscribe
     padding: var(--container-gap) 0;
   }
 
-  .is-open#gh-navigation :is(.gh-button, a[data-portal="signin"]) {
+  .is-open#gh-navigation :is(a.gh-button, a[data-portal="signin"], #mobile-site-settings-panel) {
     opacity: 1;
     transition: transform 0.4s, opacity 0.4s;
     transition-delay: 0.2s;
@@ -1048,7 +1137,11 @@ Search                         LOGO                    Login Subscribe
   }
 
   .is-open#gh-navigation a[data-portal="signin"] {
-    transition-delay: 0.4s;
+    transition-delay: 0.4s !important;
+  }
+
+  .is-open#gh-navigation #mobile-site-settings-panel {
+    transition-delay: 0.6s;
   }
 
   .is-open#gh-main {
@@ -1663,8 +1756,9 @@ Search                         LOGO                    Login Subscribe
   }
 }
 
-.kg-signup-card.kg-style-accent {
-  color: var(--color-white);
+.kg-signup-card .kg-signup-card-fields,
+.kg-signup-card .kg-signup-card-input {
+  background: var(--signup-input-color);
 }
 
 /* 10. Featured posts
@@ -2176,7 +2270,7 @@ Search                         LOGO                    Login Subscribe
   font-weight: 500;
   letter-spacing: 0.01em;
   text-transform: uppercase;
-  color: var(--ghost-accent-color);
+  color: var(--color-accent-text);
 }
 
 .gh-article-title {
@@ -2429,7 +2523,6 @@ unless a heading is the very first element in the post content */
 .gh-content .gh-table table th {
   font-size: 1.2rem;
   font-weight: 700;
-  color: var(--color-darkgrey);
   text-align: left;
   text-transform: uppercase;
   letter-spacing: 0.2px;
@@ -2454,24 +2547,24 @@ unless a heading is the very first element in the post content */
   padding: 16px;
   font-size: 1.5rem;
   line-height: 1.5em;
-  background: var(--color-lighter-gray);
+  background: var(--code-background-color);
   border-radius: 6px;
   font-family: var(--font-mono);
 }
 
 .gh-content :not(pre) > code {
   vertical-align: baseline;
-  padding: 0.15em 0.4em;
+  padding: 0.08em 0.1em;
   font-weight: 400;
   font-size: 0.95em;
   line-height: 1em;
-  background: var(--color-lighter-gray);
+  background: var(--code-background-color);
   border-radius: 0.25em;
   font-family: var(--font-mono);
 }
 
 .gh-group-with-header-body {
-  border-left: 4px solid var(--ghost-accent-color);
+  border-left: 4px solid var(--color-accent-text);
   margin-top: 8px;
   padding-left: 20px;
 }
@@ -2585,7 +2678,7 @@ blockquote.kg-blockquote-alt::before {
   font-size: 3em;
   font-family: "Times New Roman";
   font-weight: 700;
-  color: var(--color-light-gray);
+  color: var(--color-blockquote-decorative-quote);
   position: absolute;
   left: 0.5em;
   z-index: -1;
@@ -2605,6 +2698,7 @@ blockquote.kg-blockquote-alt cite {
 
 .kg-card.kg-button-card .kg-btn {
   font-size: 1em;
+  border-radius: 0 !important;
 }
 
 /* Header */
@@ -2708,7 +2802,7 @@ figcaption {
 }
 
 figcaption a {
-  color: var(--ghost-accent-color);
+  color: var(--color-primary-text);
   text-decoration: underline;
 }
 
@@ -2994,7 +3088,7 @@ figcaption a {
 .gh-footer {
   margin-top: 12vw;
   font-size: 1.5rem;
-  color: var(--color-darker-gray);
+  color: var(--color-white);
 }
 
 .gh-footer a:not(.gh-button) {
@@ -3012,8 +3106,8 @@ figcaption a {
 }
 
 .gh-footer.has-accent-color .gh-button {
-  background-color: #fff;
-  color: #15171a;
+  background-color: var(--color-button-on-dark);
+  color: var(--color-button-text-on-dark);
 }
 
 /* 21.2. Footer bar */
@@ -3025,7 +3119,7 @@ figcaption a {
   justify-content: space-between;
   gap: 8px 28px;
   padding-block: 28px;
-  border-block: 1px solid var(--color-border);
+  border-block: 1px solid var(--color-border-on-dark);
 }
 
 .gh-footer-logo {
@@ -3647,7 +3741,7 @@ figcaption a {
 }
 
 .gh-signup-label {
-  color: var(--color-darker-gray);
+  color: var(--color-primary-text);
   font-size: 1.3rem;
   font-weight: 600;
   margin-bottom: 2px;
@@ -3664,7 +3758,8 @@ figcaption a {
   color: inherit;
   background: transparent;
   outline: none;
-  border: 1px solid var(--color-light-gray);
+  border: 1px solid var(--color-dark-border);
+  background-color: var(--card-background-color);
   width: 100%;
   height: 44px;
   padding: 0 12px;
@@ -3676,6 +3771,7 @@ figcaption a {
 .gh-signup-newsletter-card {
   border-radius: 7px;
   border: 1px solid var(--color-border);
+  background-color: var(--card-background-color);
   padding: 10px;
   margin-bottom: 10px;
 }
@@ -3691,7 +3787,7 @@ figcaption a {
 .gh-signup-newsletter-description {
   font-size: 0.85em;
   padding-left: 20px;
-  color: var(--color-dark-gray);
+  color: var(--color-secondary-text);
 }
 
 .gh-newsletter-subscriptions button {
@@ -3700,6 +3796,7 @@ figcaption a {
 }
 
 .gh-newsletter-subscriptions button svg {
+  color: var(--color-primary-text);
   width: 0.75em;
   height: 0.75em;
   margin-top: -0.25em;
@@ -3733,14 +3830,14 @@ figcaption a {
   flex-direction: column;
   align-items: flex-start;
   justify-content: stretch;
-  background: var(--color-white);
+  background: var(--card-background-color);
   padding: 32px;
   border-radius: 7px;
   min-height: 200px;
 }
 
 .gh-plan-card h3 {
-  color: var(--ghost-accent-color);
+  color: var(--color-accent-text);
   margin-bottom: 5px;
   text-transform: capitalize;
 }
@@ -3754,7 +3851,7 @@ figcaption a {
 }
 
 .gh-signup-interval {
-  color: var(--color-dark-gray);
+  color: var(--color-secondary-text);
 }
 
 .gh-pwyw {
@@ -3773,9 +3870,14 @@ button.button-reset {
 }
 
 .gh-pwyw button {
-  color: var(--ghost-accent-color);
+  color: var(--color-accent-text);
   text-decoration: underline;
   cursor: pointer;
+}
+
+.gh-signup-select {
+  color: var(--color-primary-text);
+  background-color: var(--input-background-color);
 }
 
 .gh-signup-perks {
@@ -3818,14 +3920,15 @@ button.button-reset {
 
 .gh-signup-alternatives a,
 .gh-subscribe-or-tip a {
-  color: var(--ghost-accent-color);
+  color: var(--color-accent-text);
   font-weight: bold;
 }
 
 .gh-signup-popup {
-  background: var(--background-color);
+  background: var(--popup-background-color);
+  color: var(--color-primary-text);
   border-radius: 7px;
-  box-shadow: 2px 2px 5px var(--color-mid-gray);
+  box-shadow: 2px 2px 5px var(--color-box-shadow);
   max-width: 600px;
   width: 90%;
   min-height: 100px;
@@ -3839,7 +3942,7 @@ button.button-reset {
 }
 
 .gh-signup-popup a {
-  color: var(--ghost-accent-color);
+  color: var(--color-accent-text);
   font-weight: bold;
   text-decoration: underline;
 }
@@ -3908,13 +4011,14 @@ button.button-reset {
   }
 }
 
-.gh-signup-popup-close {
+.gh-close {
   position: absolute;
   top: 10px;
   right: 10px;
+  color: var(--color-primary-text);
 }
 
-.gh-signup-popup-close:hover {
+.gh-close:hover {
   cursor: pointer;
 }
 
@@ -3967,6 +4071,10 @@ button.button-reset {
   font-size: 0.7em;
 }
 
+.hide-sidenotes .gh-notes-wrapper {
+  display: none;
+}
+
 .gh-note {
   position: absolute;
   top: 0;
@@ -3983,15 +4091,197 @@ button.button-reset {
 }
 
 a.active-sidenote {
-  background-color: var(--color-light-gray);
+  background-color: var(--sidenote-anchor-highlight-background);
 }
 
 aside.active-sidenote {
-  background-color: var(--color-lighter-gray);
+  background-color: var(--sidenote-highlight-background);
   border: 1px dashed var(--color-dark-border);
 }
 
 .gh-image-credit {
   font-size: 0.8em;
   font-style: italic;
+}
+
+/* 25. Settings 
+/* ---------------------------------------------------------- */
+.settings-wrapper {
+  position: relative;
+}
+
+#mobile-site-settings-panel {
+  display: none;
+}
+
+.gh-settings-panel {
+  color: var(--color-primary-text);
+  background-color: var(--popup-background-color);
+  border: 1px solid var(--color-border);
+  box-shadow: 2px 2px 5px var(--color-header-box-shadow);
+  position: absolute;
+  top: 40px;
+  left: -168px;
+  width: 200px;
+  padding: 20px;
+  line-height: 1.8em;
+  z-index: 1;
+}
+
+.gh-settings-panel::before {
+  content: " ";
+  position: absolute;
+  top: -6px;
+  right: 10px;
+  height: 10px;
+  width: 10px;
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+  background-color: var(--popup-background-color);
+  border-right: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.gh-settings-panel .gh-close {
+  width: 15px;
+}
+
+.gh-settings-panel h3 {
+  margin-bottom: 0.3em;
+}
+
+.settings-group:not(:last-child) {
+  margin-bottom: 1.5em;
+}
+
+.settings-group input[type="checkbox"] {
+  accent-color: var(--color-accent-text);
+  block-size: 1.3em;
+  inline-size: 1.3em;
+  margin-right: 0.5em;
+}
+
+.settings-group .checkbox-group {
+  display: flex;
+  align-items: center;
+}
+
+.toggle {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  border-radius: 30px;
+  height: 32px;
+  position: relative;
+  border: 2px solid var(--color-accent-text);
+  vertical-align: middle;
+}
+
+.toggle label {
+  display: inline-block;
+  position: relative;
+  margin: 0;
+  padding: 4px 6px;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.toggle label svg {
+  position: relative;
+  color: var(--color-accent-text);
+  z-index: 1;
+  top: 1px;
+  width: 18px;
+  transition: color 0.3s ease-in-out;
+}
+
+label[for="light"] svg {
+  right: 1px;
+}
+
+.toggle input {
+  position: absolute;
+  height: 100%;
+  width: 30px;
+  opacity: 0;
+}
+
+.toggle input:focus-visible + label {
+  outline: -webkit-focus-ring-color auto 1px;
+}
+
+.toggle span {
+  height: 22px;
+  width: 22px;
+  border-radius: 50%;
+  background: var(--color-accent-text);
+  display: block;
+  position: absolute;
+  left: 4px;
+  top: 3px;
+  z-index: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.toggle input[value="light"]:checked ~ span {
+  left: 3px;
+}
+
+.toggle input[value="automatic"]:checked ~ span {
+  left: 34px;
+}
+
+.toggle input[value="dark"]:checked ~ span {
+  left: 64px;
+}
+
+.toggle input:checked + label svg {
+  /* Handles the perceived larger size with light on dark */
+  width: 16px;
+  margin-left: 1px;
+  margin-top: 1px;
+  color: var(--color-white);
+}
+
+#site-settings-panel .toggle-wrapper {
+  display: inline-flex;
+  align-items: center;
+}
+
+#mobile-site-settings-panel .toggle {
+  border-color: var(--color-white);
+}
+
+#mobile-site-settings-panel .toggle label svg {
+  color: var(--color-white);
+}
+
+#mobile-site-settings-panel .toggle span {
+  background: var(--color-white);
+}
+
+#mobile-site-settings-panel .toggle input:checked + label svg {
+  color: var(--ghost-accent-color);
+}
+
+@media (max-width: 767px) {
+  #mobile-site-settings-panel {
+    display: block;
+  }
+
+  #site-settings-button {
+    display: none;
+  }
+}
+
+/* 26. Dark mode overrides 
+/* ---------------------------------------------------------- */
+.kg-audio-card {
+  background-color: var(--card-background-color);
+}
+
+.kg-audio-player svg,
+.kg-audio-player button,
+.kg-audio-player input[type="range" i] {
+  color: var(--color-primary-text);
 }

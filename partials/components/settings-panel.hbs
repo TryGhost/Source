@@ -1,0 +1,16 @@
+<dialog id="site-settings-panel" class="gh-settings-panel" role="menu" aria-hidden="true" aria-labelledby="site-settings-button">
+  <div class="settings-group">
+    <h3>Sidenotes</h3>
+    <div class="checkbox-group">
+      <input type="checkbox" id="sidenotesFootnotes" name="sidenotes" />
+      <label for="sidenotesFootnotes">Show footnotes</label>
+    </div>
+    <div class="checkbox-group">
+      <input type="checkbox" id="sidenotesReferences" name="sidenotes" />
+      <label for="sidenotesReferences">Show references</label>
+    </div>
+  </div>
+  <div class="toggle-wrapper settings-group">
+    {{> "components/theme-toggle"}} 
+  </div>
+</dialog>
