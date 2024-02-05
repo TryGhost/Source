@@ -4285,3 +4285,7 @@ label[for="light"] svg {
 .kg-audio-player input[type="range" i] {
   color: var(--color-primary-text);
 }
+
+html[data-theme="dark"] .gh-content hr {
+  background-image: url(/content/images/fancy-divider-dark-mode.png);
+}
