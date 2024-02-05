@@ -68,6 +68,10 @@ function setTheme(settingsTheme) {
     theme = settingsTheme;
     window.matchMedia("(prefers-color-scheme: dark)").removeEventListener("change", onSystemThemeChange);
   }
+  const items = document.querySelectorAll(`input[value=${settingsTheme}]`);
+  for (const item of items) {
+    item.checked = true;
+  }
   document.documentElement.setAttribute("data-theme", theme);
 }
 
@@ -143,10 +147,15 @@ function onCheckboxChange({ target: { id, checked } }) {
 
 function onSettingsIconClick() {
   const panel = document.getElementById("site-settings-panel");
+  const settingsButton = document.getElementById("site-settings-button");
   if (panel.open) {
     panel.close();
+    settingsButton.setAttribute("aria-expanded", "false");
+    panel.setAttribute("aria-hidden", "true");
   } else {
     panel.show();
+    settingsButton.setAttribute("aria-expanded", "true");
+    panel.setAttribute("aria-hidden", "false");
   }
 }
 
@@ -165,12 +174,19 @@ function setInitialTweetsTheme(theme) {
 
 function setInitialSettings(hasSettingsMenu) {
   const settings = getSettings();
-  if (hasSettingsMenu) {
+  const mobilePanel = document.getElementById("mobile-site-settings-panel");
+  if (hasSettingsMenu || !!mobilePanel) {
     for (const key of Object.keys(settings)) {
       if (typeof settings[key] === "boolean") {
-        document.getElementById(key).checked = settings[key];
+        const item = document.getElementById(key);
+        if (item) {
+          item.checked = settings[key];
+        }
       } else {
-        document.getElementById(settings[key]).checked = true;
+        const items = document.querySelectorAll(`input[value=${settings[key]}]`);
+        for (const item of items) {
+          item.checked = true;
+        }
       }
     }
   }
@@ -192,6 +208,7 @@ function setInitialSettings(hasSettingsMenu) {
 
 function settings() {
   const settingsButton = document.getElementById("site-settings-button");
+  const panel = document.getElementById("site-settings-panel");
   if (settingsButton) {
     settingsButton.addEventListener("click", onSettingsIconClick);
     document.getElementById("theme")?.addEventListener("change", onThemeChange);
@@ -199,8 +216,16 @@ function settings() {
     for (const checkbox of checkboxes) {
       document.getElementById(checkbox)?.addEventListener("change", onCheckboxChange);
     }
-    document.getElementById("site-settings-close")?.addEventListener("click", function () {
-      document.getElementById("site-settings-panel").close();
+    document.addEventListener("click", (evt) => {
+      if (
+        !evt.target.matches(
+          "#site-settings-panel, #site-settings-panel *, #site-settings-button, #site-settings-button *"
+        )
+      ) {
+        panel.close();
+        settingsButton.setAttribute("aria-expanded", "false");
+        panel.setAttribute("aria-hidden", "true");
+      }
     });
   }
   setInitialSettings((hasSettingsMenu = !!settingsButton));

@@ -71,6 +71,7 @@ production stylesheet in assets/built/screen.css
   --card-background-color: var(--color-white);
   --input-background-color: var(--color-white);
   --popup-background-color: var(--color-white);
+  --popup-hover-background-color: var(--color-lighter-gray);
   --signup-input-color: var(--color-white);
   --sidenote-highlight-background: var(--color-lighter-gray);
   --sidenote-anchor-highlight-background: var(--color-light-gray);
@@ -93,7 +94,7 @@ production stylesheet in assets/built/screen.css
   --color-border-on-dark: rgba(255, 255, 255, 0.8);
   --color-border: rgb(0 0 0 / 0.08);
   --color-dark-border: rgb(0 0 0 / 0.5);
-  --color-header-box-shadow: var(--color-mid-gray);
+  --color-header-box-shadow: rgba(0, 0, 0, 0.2);
   --color-box-shadow: var(--color-mid-gray);
   --code-border-color: var(--color-mid-gray);
 
@@ -117,6 +118,7 @@ html[data-theme="dark"] {
   --code-background-color: var(--color-dark-gray);
   --card-background-color: rgba(255, 255, 255, 0.05);
   --popup-background-color: #272727;
+  --popup-hover-background-color: var(--color-dark-gray);
   --input-background-color: var(--color-dark-gray);
   --sidenote-anchor-highlight-background: var(--color-mid-dark-gray);
   --sidenote-highlight-background: var(--card-background-color);
@@ -136,7 +138,7 @@ html[data-theme="dark"] {
   --color-border-on-dark: rgba(255, 255, 255, 0.2);
   --color-border: rgb(255 255 255 / 0.15);
   --color-dark-border: rgb(255 255 255 / 0.5);
-  --color-header-box-shadow: var(--ghost-accent-color);
+  --color-header-box-shadow: rgba(255, 255, 255, 0.08);
   --color-box-shadow: var(--color-darker-gray);
   --code-border-color: var(--color-mid-dark-gray);
 }
@@ -721,6 +723,7 @@ button.gh-form-input {
 }
 
 .gh-navigation-members {
+  color: var(--color-light-gray);
   display: flex;
   gap: 20px;
   align-items: center;
@@ -853,6 +856,12 @@ Search                         LOGO                    Login Subscribe
   }
 }
 
+@media (max-width: 991px) {
+  .gh-navigation {
+    border-bottom: 1px solid var(--color-border-on-dark);
+  }
+}
+
 @media (min-width: 992px) {
   .gh-navigation.is-stacked .gh-navigation-inner {
     padding: 0;
@@ -884,7 +893,7 @@ Search                         LOGO                    Login Subscribe
   }
 
   .gh-navigation.is-stacked .gh-navigation-menu::after {
-    top: 160px;
+    top: 159px;
   }
 
   .gh-navigation.is-stacked .gh-navigation-actions {
@@ -905,24 +914,41 @@ Search                         LOGO                    Login Subscribe
 .gh-dropdown {
   position: absolute;
   top: 100%;
-  right: -16px;
+  right: 0;
   z-index: 90;
   width: 200px;
   padding: 12px 0;
-  margin-top: 24px;
+  margin-top: 7px;
   text-align: left;
   visibility: hidden;
-  background-color: var(--background-color);
-  border-radius: 5px;
-  box-shadow: 0 0 0 1px rgb(0 0 0 / 0.04), 0 7px 20px -5px rgb(0 0 0 / 0.15);
-  opacity: 0;
-  transition: opacity 0.3s, transform 0.2s;
-  transform: translate3d(0, 6px, 0);
+  color: var(--color-primary-text);
+  background-color: var(--popup-background-color);
+  border: 1px solid var(--color-border);
+  box-shadow: 2px 2px 5px var(--color-header-box-shadow);
+}
+
+.gh-dropdown:before {
+  content: " ";
+  position: absolute;
+  top: -6px;
+  right: 10px;
+  height: 10px;
+  width: 10px;
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+  background-color: var(--popup-background-color);
+  border-right: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .gh-dropdown.is-left {
   right: auto;
-  left: -16px;
+  left: 0;
+}
+
+.gh-dropdown.is-left:before {
+  right: auto;
+  left: 10px;
 }
 
 .is-dropdown-mega .gh-dropdown {
@@ -945,7 +971,10 @@ Search                         LOGO                    Login Subscribe
   padding: 7px 20px;
   line-height: 1.5;
   white-space: normal;
-  color: #15171a !important;
+}
+
+.gh-dropdown li:hover {
+  background-color: var(--popup-hover-background-color);
 }
 
 .is-dropdown-mega .gh-dropdown li a {
@@ -1042,7 +1071,7 @@ Search                         LOGO                    Login Subscribe
     text-align: center;
   }
 
-  #gh-navigation :is(.gh-button, a[data-portal="signin"]) {
+  #gh-navigation :is(.gh-button, a[data-portal="signin"], #mobile-site-settings-panel) {
     opacity: 0;
     transform: translateY(8px);
   }
@@ -1100,7 +1129,7 @@ Search                         LOGO                    Login Subscribe
     padding: var(--container-gap) 0;
   }
 
-  .is-open#gh-navigation :is(.gh-button, a[data-portal="signin"]) {
+  .is-open#gh-navigation :is(a.gh-button, a[data-portal="signin"], #mobile-site-settings-panel) {
     opacity: 1;
     transition: transform 0.4s, opacity 0.4s;
     transition-delay: 0.2s;
@@ -1108,7 +1137,11 @@ Search                         LOGO                    Login Subscribe
   }
 
   .is-open#gh-navigation a[data-portal="signin"] {
-    transition-delay: 0.4s;
+    transition-delay: 0.4s !important;
+  }
+
+  .is-open#gh-navigation #mobile-site-settings-panel {
+    transition-delay: 0.6s;
   }
 
   .is-open#gh-main {
@@ -4077,14 +4110,21 @@ aside.active-sidenote {
   position: relative;
 }
 
+#mobile-site-settings-panel {
+  display: none;
+}
+
 .gh-settings-panel {
   color: var(--color-primary-text);
   background-color: var(--popup-background-color);
   border: 1px solid var(--color-border);
+  box-shadow: 2px 2px 5px var(--color-header-box-shadow);
   position: absolute;
   top: 40px;
   left: -168px;
   width: 200px;
+  padding: 20px;
+  line-height: 1.8em;
   z-index: 1;
 }
 
@@ -4116,6 +4156,88 @@ aside.active-sidenote {
 
 .settings-group-indent {
   margin-left: 10px;
+}
+
+.toggle {
+  flex-direction: row;
+  flex-wrap: nowrap;
+  border-radius: 34px;
+  height: 40px;
+  position: relative;
+  border: 2px solid var(--color-white);
+  vertical-align: middle;
+}
+
+.toggle label {
+  display: inline-block;
+  position: relative;
+  margin: 0;
+  padding: 5px 8px;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.toggle label svg {
+  color: var(--color-white);
+  z-index: 1;
+  width: 25px;
+  transition: color 0.3s ease-in-out;
+}
+
+label[for="light"] {
+  right: 2px;
+}
+
+label[for="automatic"] {
+  top: 0.5px;
+}
+
+.toggle input {
+  position: absolute;
+  height: 100%;
+  width: 40px;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.toggle span {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  background: var(--color-white);
+  display: block;
+  position: absolute;
+  left: 4px;
+  top: 3px;
+  z-index: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.toggle input#light:checked ~ span {
+  left: 4px;
+}
+
+.toggle input#automatic:checked ~ span {
+  left: 50px;
+}
+
+.toggle input#dark:checked ~ span {
+  left: 95px;
+}
+
+.toggle input:checked + label svg {
+  color: var(--ghost-accent-color);
+}
+
+@media (max-width: 767px) {
+  #mobile-site-settings-panel {
+    display: flex;
+  }
+
+  #site-settings-button {
+    display: none;
+  }
 }
 
 /* 26. Dark mode overrides 
