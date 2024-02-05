@@ -896,6 +896,12 @@ Search                         LOGO                    Login Subscribe
     top: 159px;
   }
 
+  .gh-navigation-menu .nav-rss,
+  .gh-navigation-menu .nav-tip-jar {
+    /* Only show these in the mobile nav and page footer */
+    display: none;
+  }
+
   .gh-navigation.is-stacked .gh-navigation-actions {
     grid-row-start: 1;
     grid-column: 1 / 4;
@@ -2699,6 +2705,7 @@ blockquote.kg-blockquote-alt cite {
 .kg-card.kg-button-card .kg-btn {
   font-size: 1em;
   border-radius: 0 !important;
+  background-color: var(--color-button);
 }
 
 /* Header */
