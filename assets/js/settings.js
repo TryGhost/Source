@@ -38,7 +38,8 @@ function getSettings() {
 
 /* DARK MODE 
  ----------------------------------------------------------*/
-function setTweetsTheme(theme) {
+function setTweetsTheme() {
+  const theme = document.documentElement.getAttribute("data-theme");
   const tweets = document.querySelectorAll("[data-tweet-id]");
   let changeFlag = false;
   tweets.forEach(function (tweet) {
@@ -94,7 +95,7 @@ function onSystemThemeChange() {
 function onThemeChange({ target: { value } }) {
   setTheme(value);
   setLocalStorage("theme", value);
-  setTweetsTheme(value);
+  setTweetsTheme();
 }
 
 function onCheckboxChange({ target: { id, checked } }) {
@@ -150,10 +151,10 @@ function onPageClick(evt) {
 
 /* SETUP
  ----------------------------------------------------------*/
-function setInitialTweetsTheme(theme) {
+function setInitialTweetsTheme() {
   let counter = 0;
   const interval = setInterval(function () {
-    const result = setTweetsTheme(theme);
+    const result = setTweetsTheme();
     if (result || counter > 10) {
       clearInterval(interval);
     }
