@@ -4084,6 +4084,7 @@ button.button-reset {
   position: relative;
   grid-column: main-end / wide-end;
   font-size: 0.7em;
+  pointer-events: none;
 }
 
 .hide-sidenotes .gh-notes-wrapper {
@@ -4096,6 +4097,7 @@ button.button-reset {
   left: calc(var(--grid-gap) * 1.5);
   padding: 5px 10px;
   border: 1px solid transparent;
+  pointer-events: all;
 }
 
 .gh-note .note-identifier {
