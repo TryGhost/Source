@@ -4075,6 +4075,7 @@ button.button-reset {
 /* Anchors */
 .footnote-anchor a,
 .reference-anchor a {
+  font-family: var(--font-mono);
   padding: 0 3px;
   text-transform: none !important;
 }
@@ -4101,6 +4102,7 @@ button.button-reset {
 }
 
 .gh-note .note-identifier {
+  font-family: var(--font-mono);
   position: absolute;
   text-align: right;
   width: 28px;

@@ -9,7 +9,11 @@ function getAnchorParentContainer(anchor) {
 function insertSidenotes({ showFootnotes, showReferences }) {
   const articleContent = document.querySelector("article .gh-content");
   for (const child of articleContent.children) {
-    if (child.classList.contains("gh-notes-wrapper")) {
+    if (
+      child.classList.contains("gh-notes-wrapper") ||
+      child.classList.contains("footnotes") ||
+      child.classList.contains("references")
+    ) {
       // Don't add sidenotes for refs used within sidenotes
       continue;
     }

@@ -96,6 +96,8 @@ function onThemeChange({ target: { value } }) {
   setTheme(value);
   setLocalStorage("theme", value);
   setTweetsTheme();
+  // Handles bug where comments are unreadable just after theme change
+  document.querySelector('iframe[title="comments-frame"]').contentWindow.location.reload();
 }
 
 function onCheckboxChange({ target: { id, checked } }) {
