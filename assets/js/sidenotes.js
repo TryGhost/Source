@@ -110,6 +110,7 @@ function onResize() {
     if (!sidenotesInDom) {
       insertSidenotes(getSidenotesSettings());
     }
+    showSidenotes();
     positionSidenotes();
   } else {
     if (sidenotesInDom) {
