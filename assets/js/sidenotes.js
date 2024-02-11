@@ -122,12 +122,15 @@ function onResize() {
 function onAnchorClick(evt) {
   const mediaQuery = window.matchMedia("(min-width: 1349px)");
   if (mediaQuery.matches) {
-    evt.preventDefault();
-    evt.stopPropagation();
-    dehilightNotes();
-    evt.target.classList.add("active-sidenote");
     const sidenote = document.getElementById(evt.target.parentNode.id.replace("anchor-", "sidenote-"));
-    sidenote.classList.add("active-sidenote");
+    if (sidenote) {
+      evt.preventDefault();
+      evt.stopPropagation();
+      dehilightNotes();
+      evt.target.classList.add("active-sidenote");
+      const sidenote = document.getElementById(evt.target.parentNode.id.replace("anchor-", "sidenote-"));
+      sidenote.classList.add("active-sidenote");
+    }
   }
 }
 
