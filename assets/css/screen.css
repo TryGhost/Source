@@ -2800,6 +2800,10 @@ blockquote.kg-blockquote-alt cite {
   border-radius: 0 0.2em 0.2em 0;
 }
 
+a.kg-bookmark-container {
+  background: none;  
+}
+
 /* Product */
 
 .kg-product-card.kg-card .kg-product-card-image {
