@@ -369,7 +369,7 @@ button.gh-form-input {
     .gh-form {
         font-size: 1.6rem;
     }
-    
+
     .gh-form .gh-button {
         padding-inline: 12px;
     }
@@ -973,7 +973,6 @@ Search                         LOGO                    Login Subscribe
     display: -webkit-box;
     overflow-y: hidden;
     margin-top: 8px;
-    max-width: 720px;
     font-size: 1.45rem;
     line-height: 1.4;
     -webkit-line-clamp: 2;
