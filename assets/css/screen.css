@@ -983,12 +983,20 @@ Search                         LOGO                    Login Subscribe
     display: flex;
     gap: 4px;
     flex-wrap: wrap;
+    align-items: center;
     padding-bottom: 1px;
     font-size: 1.25rem;
     font-weight: 500;
     line-height: 1.05;
     letter-spacing: -0.004em;
     color: var(--color-secondary-text);
+}
+
+.gh-card-meta svg {
+    width: 16px;
+    height: 16px;
+    margin-right: 2px;
+    margin-top: -2px;
 }
 
 .gh-card-meta:not(:empty) {
