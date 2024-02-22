@@ -2127,6 +2127,20 @@ unless a heading is the very first element in the post content */
     margin-top: calc(56px * var(--content-spacing-factor, 1));
 }
 
+/* Add drop cap setting */
+.post-template .gh-content.drop-cap > p:first-of-type:first-letter {
+    margin :0 0.2em 0em 0;
+    font-size: 3.1em;
+    float:left;
+    line-height: 1;
+    margin-left: -1px;
+    font-weight: 700;
+}
+
+.has-serif-body.post-template .gh-content.drop-cap > p:first-of-type:first-letter {
+    font-size: 3.2em;
+}
+
 /* Add a small margin between a heading and paragraph after it */
 .gh-content > [id] + p {
     margin-top: calc(12px * var(--content-spacing-factor, 1));

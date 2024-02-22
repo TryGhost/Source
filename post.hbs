@@ -17,6 +17,7 @@
                 <p class="gh-article-excerpt is-body">{{custom_excerpt}}</p>
             {{/if}}
 
+            {{#if @custom.show_post_metadata}}
             <div class="gh-article-meta">
                 <div class="gh-article-author-image">
                     {{#foreach authors}}
@@ -39,12 +40,13 @@
                     </div>
                 </div>
             </div>
+            {{/if}}
 
             {{> "feature-image"}}
 
         </header>
 
-        <section class="gh-content gh-canvas is-body">
+        <section class="gh-content gh-canvas is-body{{#if @custom.enable_drop_caps_on_posts}} drop-cap{{/if}}">
             {{content}}
         </section>
 
@@ -60,17 +62,19 @@
 
 {{/post}}
 
-{{#get "posts" include="authors" filter="id:-{{post.id}}" limit="4" as |next|}}
-    {{#if next}}
-        <section class="gh-container is-grid gh-outer">
-            <div class="gh-container-inner gh-inner">
-                <h2 class="gh-container-title">Read more</h2>
-                <div class="gh-feed">
-                    {{#foreach next}}
-                        {{> "post-card" lazyLoad=true}}
-                    {{/foreach}}
+{{#if @custom.show_related_articles}}
+    {{#get "posts" include="authors" filter="id:-{{post.id}}" limit="4" as |next|}}
+        {{#if next}}
+            <section class="gh-container is-grid gh-outer">
+                <div class="gh-container-inner gh-inner">
+                    <h2 class="gh-container-title">Read more</h2>
+                    <div class="gh-feed">
+                        {{#foreach next}}
+                            {{> "post-card" lazyLoad=true}}
+                        {{/foreach}}
+                    </div>
                 </div>
-            </div>
-        </section>
-    {{/if}}
-{{/get}}
+            </section>
+        {{/if}}
+    {{/get}}
+{{/if}}
