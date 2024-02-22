@@ -1,5 +1,5 @@
 <section class="gh-header is-{{#match headerStyle "Magazine"}}magazine{{else match headerStyle "Highlight"}}highlight{{else}}classic{{/match}}{{#if @custom.background_image}}{{#if @site.cover_image}} has-image{{/if}}{{/if}} gh-outer">
-        
+
     {{!-- Background image --}}
     {{#if @custom.background_image}}
         {{#match headerStyle "!=" "Magazine"}}
@@ -64,7 +64,7 @@
         {{!-- Landing layout --}}
         {{#match headerStyle "Landing"}}
             <h1 class="gh-header-title is-title">{{#if @custom.header_text}}{{@custom.header_text}}{{else}}{{@site.description}}{{/if}}</h1>
-            {{> "email-subscription"}}
+            {{> "email-subscription" email_field_id="header-email"}}
         {{/match}}
 
         {{!-- Search layout --}}
