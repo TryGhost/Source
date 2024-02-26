@@ -16,7 +16,7 @@
                 Powered by <a href="https://ghost.org/" target="_blank" rel="noopener">Ghost</a>
             </div>
         </div>
-        
+
         {{#if @site.members_enabled}}
             {{#unless @member}}
                 <section class="gh-footer-signup">
@@ -26,7 +26,7 @@
                     <p class="gh-footer-signup-subhead is-body">
                         {{#if @custom.signup_subheading}}{{@custom.signup_subheading}}{{else}}{{@site.description}}{{/if}}
                     </p>
-                    {{> "email-subscription"}}
+                    {{> "email-subscription" email_field_id="footer-email"}}
                 </section>
             {{/unless}}
         {{/if}}

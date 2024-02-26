@@ -59,9 +59,9 @@ production stylesheet in assets/built/screen.css
     --color-darker-gray: #15171a;
     --color-black: #000;
     --color-primary-text: var(--color-darker-gray);
-    --color-secondary-text: rgb(0 0 0 / 0.5);
+    --color-secondary-text: rgb(0 0 0 / 0.55);
     --color-border: rgb(0 0 0 / 0.08);
-    --color-dark-border: rgb(0 0 0 / 0.5);
+    --color-dark-border: rgb(0 0 0 / 0.55);
     --font-sans: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     --font-serif: "EB Garamond", Georgia, Times, serif;
     --font-serif-alt: Georgia, Times, serif;
@@ -369,7 +369,7 @@ button.gh-form-input {
     .gh-form {
         font-size: 1.6rem;
     }
-    
+
     .gh-form .gh-button {
         padding-inline: 12px;
     }
@@ -973,7 +973,6 @@ Search                         LOGO                    Login Subscribe
     display: -webkit-box;
     overflow-y: hidden;
     margin-top: 8px;
-    max-width: 720px;
     font-size: 1.45rem;
     line-height: 1.4;
     -webkit-line-clamp: 2;
@@ -984,12 +983,20 @@ Search                         LOGO                    Login Subscribe
     display: flex;
     gap: 4px;
     flex-wrap: wrap;
+    align-items: center;
     padding-bottom: 1px;
     font-size: 1.25rem;
     font-weight: 500;
     line-height: 1.05;
     letter-spacing: -0.004em;
     color: var(--color-secondary-text);
+}
+
+.gh-card-meta svg {
+    width: 16px;
+    height: 16px;
+    margin-right: 2px;
+    margin-top: -2px;
 }
 
 .gh-card-meta:not(:empty) {
@@ -2126,6 +2133,20 @@ headings, text, images and lists. We deal with cards lower down. */
 unless a heading is the very first element in the post content */
 .gh-content > [id]:not(:first-child) {
     margin-top: calc(56px * var(--content-spacing-factor, 1));
+}
+
+/* Add drop cap setting */
+.post-template .gh-content.drop-cap > p:first-of-type:first-letter {
+    margin :0 0.2em 0em 0;
+    font-size: 3.1em;
+    float:left;
+    line-height: 1;
+    margin-left: -1px;
+    font-weight: 700;
+}
+
+.has-serif-body.post-template .gh-content.drop-cap > p:first-of-type:first-letter {
+    font-size: 3.2em;
 }
 
 /* Add a small margin between a heading and paragraph after it */
