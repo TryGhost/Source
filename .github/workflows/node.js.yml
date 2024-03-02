@@ -5,8 +5,8 @@ name: Node.js CI
 
 on:
   workflow_dispatch:
-  # push:
-  #   branches: [ "main" ]
+  push:
+     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 permissions:
@@ -38,7 +38,7 @@ jobs:
     - run: |
           yarn install &&
           npm install -g gulp 
-    - run: yarn dev & sleep 5 && pkill -f "yarn dev" || true
+    - run: yarn dev && sleep 10 && pkill -f "yarn dev" || true
     - run: yarn test
 
     # Push changes to the repo on success only using 
