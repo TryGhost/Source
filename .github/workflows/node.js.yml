@@ -5,8 +5,8 @@ name: Node.js CI
 
 on:
   workflow_dispatch:
-  # push:
-  #   branches: [ "main" ]
+  push:
+     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 permissions:
@@ -24,13 +24,13 @@ jobs:
       fail-fast: true
       matrix:
         # node-version: [14.x, 16.x, 18.x]
-        node-version: [18.x]
+        node-version: [18]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
     - uses: actions/checkout@v4
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'yarn'
@@ -38,7 +38,7 @@ jobs:
     - run: |
           yarn install &&
           npm install -g gulp 
-    - run: yarn dev & sleep 5 && pkill -f "yarn dev" || true
+    - run: yarn dev & sleep 15 && pkill -f "yarn dev" || true
     - run: yarn test
 
     # Push changes to the repo on success only using 
