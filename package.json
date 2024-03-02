@@ -213,5 +213,6 @@
         "extends": [
             "@tryghost:theme"
         ]
-    }
+    },
+    "dependencies": {}
 }
