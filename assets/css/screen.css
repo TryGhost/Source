@@ -47,6 +47,9 @@ production stylesheet in assets/built/screen.css
 
 */
 
+/* Prism syntax highlighting files. */
+@import "prism.css";
+
 /* 1. Variables
 /* ---------------------------------------------------------- */
 
