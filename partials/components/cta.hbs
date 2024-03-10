@@ -14,7 +14,7 @@
                             {{#if @custom.signup_subheading}}{{@custom.signup_subheading}}{{else}}{{@site.description}}{{/if}}
                         </p>
                     </div>
-                    {{> "email-subscription"}}
+                    {{> "email-subscription" email_field_id="cta-email"}}
                 </div>
             </section>
         {{/match}}
