@@ -14,7 +14,7 @@ jobs:
         name: Checkout Repository
       
       - name: Deploy Ghost Theme to website
-        uses: sredevopsdev/action-deploy-theme@main
+        uses: sredevopsorg/action-deploy-theme@main
         continue-on-error: false
         with:
           api-url: ${{ secrets.SREDEVOPS_API_URL }}

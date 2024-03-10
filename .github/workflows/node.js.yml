@@ -6,7 +6,7 @@ name: Node.js CI
 on:
   workflow_dispatch:
   push:
-     branches: [ "main" ]
+    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 permissions:
@@ -39,12 +39,12 @@ jobs:
     - run: |
           yarn install &&
           npm install -g gulp 
-    - run: yarn dev & sleep 15 && pkill -f "yarn dev" || true
+    - run: yarn dev & sleep 10 && pkill -f "yarn dev" || true
     - run: yarn test
 
     # Push changes to the repo on success only using 
     - name: Update pull request with changed files if previous steps were successful
-      if: success() && github.event_name == 'pull_request' 
+      if: success()
       uses: stefanzweifel/git-auto-commit-action@v5
       with:
         # Optional. Commit message for the created commit.
@@ -66,7 +66,7 @@ jobs:
         # file_pattern: '*.php src/*.js tests/*.js'
         # # Optional. Local file path to the repository.
         # # Defaults to the root of the repository.
-        # repository: .
+        repository: .
         # # Optional commit user and author settings
         # commit_user_name: My GitHub Actions Bot # defaults to "github-actions[bot]"
         # commit_user_email: my-github-actions-bot@example.org # defaults to "41898282+github-actions[bot]@users.noreply.github.com"
