@@ -9,9 +9,17 @@
 
         <header class="gh-article-header gh-canvas">
 
-            {{#if primary_tag}}
-                <a class="gh-article-tag" href="{{primary_tag.url}}">{{primary_tag.name}}</a>
+            {{#post}}
+            {{#if tags}}            
+                {{#foreach tags}}
+                    <a class="gh-article-tag" href="{{url}}" title="{{name}}">{{name}}</a>
+                {{/foreach}}
             {{/if}}
+            {{/post}}
+
+            {{!-- {{#if primary_tag}}
+                <a class="gh-article-tag" href="{{primary_tag.url}}">{{primary_tag.name}}</a>
+            {{/if}} --}}
             <h1 class="gh-article-title is-title">{{title}}</h1>
             {{#if custom_excerpt}}
                 <p class="gh-article-excerpt is-body">{{custom_excerpt}}</p>
@@ -31,9 +39,10 @@
                     {{/foreach}}
                 </div>
                 <div class="gh-article-meta-wrapper">
+
                     <h4 class="gh-article-author-name">{{authors}}</h4>
                     <div class="gh-article-meta-content">
-                        <time class="gh-article-meta-date" datetime="{{date format="YYYY-MM-DD"}}">{{date}}</time>
+                        <time class="gh-article-meta-date" datetime="{{date format="DD-MM-YYYY"}}">{{date}}</time>
                         {{#if reading_time}}
                             <span class="gh-article-meta-length"><span class="bull">—</span> {{reading_time}}</span>
                         {{/if}}
@@ -62,19 +71,33 @@
 
 {{/post}}
 
-{{#if @custom.show_related_articles}}
-    {{#get "posts" include="authors" filter="id:-{{post.id}}" limit="4" as |next|}}
-        {{#if next}}
-            <section class="gh-container is-grid gh-outer">
-                <div class="gh-container-inner gh-inner">
-                    <h2 class="gh-container-title">Read more</h2>
-                    <div class="gh-feed">
-                        {{#foreach next}}
-                            {{> "post-card" lazyLoad=true}}
-                        {{/foreach}}
-                    </div>
+{{#get "posts" include="tags" filter="primary_tag:hash-{{primary_tag.slug}}" limit="3" as |related|}}
+    {{#if related}}
+        <section class="gh-container is-grid gh-outer">
+            <div class="gh-container-inner gh-inner">
+                <h2 class="gh-container-title">Keep reading on SREDevOps: </h2>
+                <div class="gh-feed">
+                    {{#foreach related}}
+                        {{> "post-card" lazyLoad=true}}
+                    {{/foreach}}
                 </div>
-            </section>
-        {{/if}}
-    {{/get}}
+            </div>
+        </section>
+    {{/if}}
+{{/get}}
+
+{{!-- 
+{{#get "posts" include="authors" filter="id:-{{post.id}}" limit="4" as |next|}}
+{{#if next}}
+<section class="gh-container is-grid gh-outer">
+    <div class="gh-container-inner gh-inner">
+        <h2 class="gh-container-title">Leer más</h2>
+        <div class="gh-feed">
+            {{#foreach next}}
+            {{> "post-card" lazyLoad=true}}
+            {{/foreach}}
+        </div>
+    </div>
+</section>
 {{/if}}
+{{/get}} --}}

@@ -1,0 +1,16 @@
+{{!< default}}
+<section class="error-message">
+<h1 class="error-code">404</h1>
+	<a class="error-link" href="{{@site.url}}">Go to the front page →</a>
+</section>
+{{!-- The tag above means: insert everything in this file into the body of the default.hbs template --}}
+{{!-- 
+{{> "components/header" headerStyle=@custom.header_style}}
+
+{{#match @custom.header_style "!=" "Highlight"}}
+    {{> "components/featured" showFeatured=@custom.show_featured_posts limit=4}}
+{{/match}}
+
+{{> "components/cta"}} --}}
+
+{{> "components/post-list" feed="index" postFeedStyle=@custom.post_feed_style showTitle=true showSidebar=@custom.show_publication_info_sidebar}}

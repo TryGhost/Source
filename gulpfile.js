@@ -10,7 +10,7 @@ const postcss = require('gulp-postcss');
 const zip = require('gulp-zip');
 const concat = require('gulp-concat');
 const uglify = require('gulp-uglify');
-const beeper = require('beeper');
+// const beeper = require('beeper');
 const fs = require('fs');
 
 // postcss plugins
@@ -18,8 +18,8 @@ const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
 const easyimport = require('postcss-easy-import');
 
-const REPO = 'TryGhost/Source';
-const REPO_READONLY = 'TryGhost/Source';
+const REPO = 'sredevopsdev/ghost-source-theme';
+const REPO_READONLY = 'sredevopsdev/ghost-source-theme';
 const CHANGELOG_PATH = path.join(process.cwd(), '.', 'changelog.md');
 
 function serve(done) {
@@ -30,7 +30,8 @@ function serve(done) {
 const handleError = (done) => {
     return function (err) {
         if (err) {
-            beeper();
+            // beeper();
+console.log(err);
         }
         return done(err);
     };
