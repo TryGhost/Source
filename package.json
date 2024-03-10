@@ -197,11 +197,6 @@
                 "default": true,
                 "group": "post"
             },
-            "enable_drop_caps_on_posts": {
-                "type": "boolean",
-                "default": false,
-                "group": "post"
-            },
             "show_related_articles": {
                 "type": "boolean",
                 "default": true,
