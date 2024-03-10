@@ -34,6 +34,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'yarn'
+        cache-dependency-path: ./yarn.lock
 
     - run: |
           yarn install &&
@@ -45,17 +46,18 @@ jobs:
     - name: Update pull request with changed files if previous steps were successful
       if: success() && github.event_name == 'pull_request' 
       uses: stefanzweifel/git-auto-commit-action@v5
-      # with:
+      with:
         # Optional. Commit message for the created commit.
         # Defaults to "Apply automatic changes"
-        # commit_message: Automated Change
+        commit_message: Automated Change
         # # Optional. Local and remote branch name where commit is going to be pushed
         # #  to. Defaults to the current branch.
         # #  You might need to set `create_branch: true` if the branch does not exist.
         # branch: feature-123
+        create_branch: true
         # # Optional. Options used by `git-commit`.
         # # See https://git-scm.com/docs/git-commit#_options
-        # commit_options: '--no-verify --signoff'
+        commit_options: '--no-verify --signoff'
         # # Optional glob pattern of files which should be added to the commit
         # # Defaults to all (.)
         # # See the `pathspec`-documentation for git
