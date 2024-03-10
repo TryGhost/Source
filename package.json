@@ -191,7 +191,17 @@
                 "type": "boolean",
                 "default": false,
                 "group": "homepage"
-                        }
+            },
+            "enable_drop_caps_on_posts": {
+                "type": "boolean",
+                "default": false,
+                "group": "post"
+            },
+            "show_post_metadata": {
+                "type": "boolean",
+                "default": true,
+                "group": "post"
+            }
         }
     },
     "renovate": {
