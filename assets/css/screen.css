@@ -2376,6 +2376,7 @@ blockquote.kg-blockquote-alt {
 .kg-card.kg-button-card .kg-btn {
     height: unset;
     padding: .6em 1.2em;
+    text-align: center;
     font-size: 1em;
     line-height: 1.2em;
 }
