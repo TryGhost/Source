@@ -518,6 +518,10 @@ button.gh-form-input {
     background-color: var(--background-color);
 }
 
+.gh-navigation.has-accent-color .gh-navigation-actions {
+    background-color: var(--ghost-accent-color);
+}
+
 .gh-navigation-members {
     display: flex;
     gap: 20px;
