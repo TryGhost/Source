@@ -39,7 +39,10 @@
         "url": "https://github.com/sredevopsorg/ghost-source-theme"
     },
     "bugs": "https://github.com/sredevopsorg/ghost-source-theme/issues",
-    "contributors": ["Ghost Foundation", "sredevopsorg"],
+    "contributors": [
+        "Ghost Foundation",
+        "sredevopsorg"
+    ],
     "devDependencies": {
         "@tryghost/release-utils": "0.8.1",
         "autoprefixer": "10.4.17",
