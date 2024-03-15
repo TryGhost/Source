@@ -133,7 +133,7 @@ exports.release = async () => {
             uri: `https://api.github.com/repos/${REPO_READONLY}/releases`
         });
 
-        if (!releasesResponse || !releasesResponse) {
+        if (!releasesResponse || !assetsResponse) {
             console.log('No releases found. Skipping...');
             return;
         }
