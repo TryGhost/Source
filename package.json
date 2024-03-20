@@ -1,5 +1,5 @@
 {
-    "name": "source",
+    "name": "source-sredevops",
     "description": "A default theme for the Ghost publishing platform",
     "demo": "https://source.ghost.io",
     "version": "1.2.1",
@@ -36,24 +36,27 @@
     ],
     "repository": {
         "type": "git",
-        "url": "https://github.com/TryGhost/Source.git"
+        "url": "https://github.com/sredevopsorg/ghost-source-theme"
     },
-    "bugs": "https://github.com/TryGhost/Source/issues",
-    "contributors": "https://github.com/TryGhost/Source/graphs/contributors",
+    "bugs": "https://github.com/sredevopsorg/ghost-source-theme/issues",
+    "contributors": [
+        "Ghost Foundation",
+        "sredevopsorg"
+    ],
     "devDependencies": {
         "@tryghost/release-utils": "0.8.1",
-        "autoprefixer": "10.4.7",
-        "beeper": "2.1.0",
-        "cssnano": "5.1.12",
-        "gscan": "4.39.4",
+        "autoprefixer": "10.4.17",
+        "beeper": "3.0.0",
+        "cssnano": "5.1.15",
+        "gscan": "4.42.0",
         "gulp": "4.0.2",
         "gulp-concat": "2.6.1",
         "gulp-livereload": "4.0.2",
         "gulp-postcss": "9.0.1",
         "gulp-uglify": "3.0.2",
         "gulp-zip": "5.1.0",
-        "inquirer": "8.2.4",
-        "postcss": "8.2.13",
+        "inquirer": "8.2.6",
+        "postcss": "8.4.35",
         "postcss-easy-import": "4.0.0",
         "pump": "3.0.0"
     },
@@ -192,17 +195,12 @@
                 "default": false,
                 "group": "homepage"
             },
-            "show_post_metadata": {
-                "type": "boolean",
-                "default": true,
-                "group": "post"
-            },
             "enable_drop_caps_on_posts": {
                 "type": "boolean",
                 "default": false,
                 "group": "post"
             },
-            "show_related_articles": {
+            "show_post_metadata": {
                 "type": "boolean",
                 "default": true,
                 "group": "post"
