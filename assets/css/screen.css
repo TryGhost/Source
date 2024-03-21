@@ -518,6 +518,10 @@ button.gh-form-input {
     background-color: var(--background-color);
 }
 
+.gh-navigation.has-accent-color .gh-navigation-actions {
+    background-color: var(--ghost-accent-color);
+}
+
 .gh-navigation-members {
     display: flex;
     gap: 20px;
@@ -2374,7 +2378,11 @@ blockquote.kg-blockquote-alt {
 /* Button */
 
 .kg-card.kg-button-card .kg-btn {
+    height: unset;
+    padding: .6em 1.2em;
+    text-align: center;
     font-size: 1em;
+    line-height: 1.2em;
 }
 
 /* Header */
