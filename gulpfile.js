@@ -18,8 +18,8 @@ const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
 const easyimport = require('postcss-easy-import');
 
-const REPO = 'sredevopsdev/ghost-source-theme';
-const REPO_READONLY = 'sredevopsdev/ghost-source-theme';
+const REPO = 'sredevopsorg/ghost-source-theme';
+const REPO_READONLY = 'sredevopsorg/ghost-source-theme';
 const CHANGELOG_PATH = path.join(process.cwd(), '.', 'changelog.md');
 
 function serve(done) {
