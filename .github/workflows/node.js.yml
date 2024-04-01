@@ -29,6 +29,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+      with:
+        ref: ${{ github.head_ref }}
+
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
       with:
@@ -37,15 +40,17 @@ jobs:
         cache-dependency-path: ./yarn.lock
 
     - run: |
-          yarn install &&
-          npm install -g gulp 
-    - run: yarn dev & sleep 10 && pkill -f "yarn dev" || true
-    - run: yarn test
+          yarn install
+          yarn upgrade
+    - run: |
+          yarn pretest
+          yarn preship
+          yarn test:ci
 
     # Push changes to the repo on success only using 
     - name: Update pull request with changed files if previous steps were successful
       if: success()
-      uses: stefanzweifel/git-auto-commit-action@v5
+      uses: stefanzweifel/git-auto-commit-action@v4
       with:
         # Optional. Commit message for the created commit.
         # Defaults to "Apply automatic changes"
@@ -54,10 +59,10 @@ jobs:
         # #  to. Defaults to the current branch.
         # #  You might need to set `create_branch: true` if the branch does not exist.
         # branch: feature-123
-        create_branch: true
+        create_branch: false
         # # Optional. Options used by `git-commit`.
         # # See https://git-scm.com/docs/git-commit#_options
-        commit_options: '--no-verify --signoff'
+        commit_options: '--no-verify'
         # # Optional glob pattern of files which should be added to the commit
         # # Defaults to all (.)
         # # See the `pathspec`-documentation for git
@@ -66,7 +71,6 @@ jobs:
         # file_pattern: '*.php src/*.js tests/*.js'
         # # Optional. Local file path to the repository.
         # # Defaults to the root of the repository.
-        repository: .
         # # Optional commit user and author settings
         # commit_user_name: My GitHub Actions Bot # defaults to "github-actions[bot]"
         # commit_user_email: my-github-actions-bot@example.org # defaults to "41898282+github-actions[bot]@users.noreply.github.com"
@@ -76,16 +80,16 @@ jobs:
         # tagging_message: 'v1.0.0'
         # # Optional. Option used by `git-status` to determine if the repository is 
         # # dirty. See https://git-scm.com/docs/git-status#_options
-        # status_options: '--untracked-files=no'
+        status_options: '--untracked-files=no'
         # # Optional. Options used by `git-add`.
         # # See https://git-scm.com/docs/git-add#_options
-        # add_options: '-u'
+        add_options: '-u'
         # # Optional. Options used by `git-push`.
         # # See https://git-scm.com/docs/git-push#_options
-        # push_options: '--force'
+        push_options: '--force'
 
         # # Optional. Disable dirty check and always try to create a commit and push
-        # skip_dirty_check: true    
+        skip_dirty_check: true    
 
         # # Optional. Skip internal call to `git fetch`
         # skip_fetch: true    
@@ -94,6 +98,6 @@ jobs:
         # skip_checkout: true
         # # Optional. Prevents the shell from expanding filenames. 
         # # Details: https://www.gnu.org/software/bash/manual/html_node/Filename-Expansion.html
-        # disable_globbing: true
+        disable_globbing: true
         # #     Optional. Create given branch name in local and remote repository.
         # create_branch: true
