@@ -30,8 +30,8 @@ function serve(done) {
 const handleError = (done) => {
     return function (err) {
         if (err) {
+            console.log(err);
             // beeper();
-console.log(err);
         }
         return done(err);
     };
@@ -133,7 +133,7 @@ exports.release = async () => {
             uri: `https://api.github.com/repos/${REPO_READONLY}/releases`
         });
 
-        if (!releasesResponse || !assetsResponse) {
+        if (!releasesResponse || !releasesResponse) {
             console.log('No releases found. Skipping...');
             return;
         }

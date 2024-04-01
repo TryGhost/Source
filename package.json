@@ -1,8 +1,8 @@
 {
-    "name": "source-sredevops",
+    "name": "source-sredevopsorg",
     "description": "A default theme for the Ghost publishing platform",
     "demo": "https://source.ghost.io",
-    "version": "1.2.3",
+    "version": "1.2.1",
     "engines": {
         "ghost": ">=5.0.0"
     },
@@ -36,26 +36,23 @@
     ],
     "repository": {
         "type": "git",
-        "url": "https://github.com/sredevopsorg/ghost-source-theme"
+        "url": "https://github.com/sredevopsorg/ghost-source-theme.git"
     },
     "bugs": "https://github.com/sredevopsorg/ghost-source-theme/issues",
-    "contributors": [
-        "Ghost Foundation",
-        "@sredevopsorg"
-    ],
+    "contributors": ["https://github.com/sredevopsorg/ghost-source-theme/graphs/contributors"],
     "devDependencies": {
         "@tryghost/release-utils": "0.8.1",
-        "autoprefixer": "^10.4.17",
-        "cssnano": "5.1.15",
-        "gscan": "4.42.0",
-        "gulp": "5.0.0",
+        "autoprefixer": "10.4.7",
+        "cssnano": "5.1.12",
+        "gscan": "4.39.4",
+        "gulp": "4.0.2",
         "gulp-concat": "2.6.1",
         "gulp-livereload": "4.0.2",
-        "gulp-postcss": "^9.0.1",
+        "gulp-postcss": "9.0.1",
         "gulp-uglify": "3.0.2",
-        "gulp-zip": "^5.1.0",
-        "inquirer": "8.2.6",
-        "postcss": "^8.4.35",
+        "gulp-zip": "5.1.0",
+        "inquirer": "8.2.4",
+        "postcss": "8.2.13",
         "postcss-easy-import": "4.0.0",
         "pump": "3.0.0"
     },
@@ -194,12 +191,17 @@
                 "default": false,
                 "group": "homepage"
             },
+            "show_post_metadata": {
+                "type": "boolean",
+                "default": true,
+                "group": "post"
+            },
             "enable_drop_caps_on_posts": {
                 "type": "boolean",
                 "default": false,
                 "group": "post"
             },
-            "show_post_metadata": {
+            "show_related_articles": {
                 "type": "boolean",
                 "default": true,
                 "group": "post"
