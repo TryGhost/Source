@@ -12,6 +12,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         name: Checkout Repository
+        with:
+          fetch-depth: 1
       
       - name: Deploy Ghost Theme to website
         uses: sredevopsorg/action-deploy-theme@main
