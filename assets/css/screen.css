@@ -2547,10 +2547,13 @@ unless a heading is the very first element in the post content */
   width: 100%;
   font-family: var(--font-sans);
   font-size: 1.5rem;
-  white-space: nowrap;
   vertical-align: top;
   border-spacing: 0;
   border-collapse: collapse;
+}
+
+.gh-content .gh-table a {
+  background-position: 0 100%;
 }
 
 .gh-content .gh-table table th {
@@ -2603,7 +2606,7 @@ unless a heading is the very first element in the post content */
 }
 
 .voiceover-caption {
-  font-family: var(--font-sans); 
+  font-family: var(--font-sans);
   color: var(--color-secondary-text);
   margin-top: 0.5em !important;
   font-size: 0.75em;
@@ -2754,6 +2757,11 @@ blockquote.kg-blockquote-alt cite {
   background-color: var(--color-button);
 }
 
+.gh-content .kg-button-card a {
+  text-shadow: none;
+  background-image: none;
+}
+
 /* Header */
 
 .has-serif-title .kg-card.kg-header-card h2.kg-header-card-header {
@@ -2800,8 +2808,8 @@ blockquote.kg-blockquote-alt cite {
   border-radius: 0 0.2em 0.2em 0;
 }
 
-a.kg-bookmark-container {
-  background: none;  
+.gh-content a.kg-bookmark-container {
+  background: none;
 }
 
 /* Product */
@@ -4358,4 +4366,28 @@ html[data-theme="dark"] .gh-content a {
 
 html[data-theme="dark"] .gh-content a:hover {
   background-image: var(--image-underline-hover-white);
+}
+
+html[data-theme="dark"] .gh-content .kg-button-card a {
+  background-image: none;
+  text-shadow: none;
+}
+
+html[data-theme="dark"] .gh-content a.kg-bookmark-container {
+  background-image: none;
+}
+
+/*
+* 27. Post-specific fixes
+/* ---------------------------------------------------------- */
+#sbf-letters-table-ref {
+  display: none;
+}
+
+#sbf-letters-table-ref + .gh-table th:first-child {
+  width: 4em;
+}
+
+#sbf-letters-table-ref + .gh-table th:nth-child(2) {
+  min-width: 7em;
 }
