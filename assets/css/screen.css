@@ -1023,6 +1023,7 @@ Search                         LOGO                    Login Subscribe
 .gh-header-inner {
     position: relative;
     overflow: hidden;
+    padding-bottom: 1px;
 }
 
 /* 8.1. Magazine layout */
