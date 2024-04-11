@@ -3357,14 +3357,8 @@ figcaption a {
 
 /* Share button */
     .share-block {
-        margin-top: 8rem;
-        text-align: center;
-    }
-    .share-block span {
-        display: inline-block;
-        font-weight: bold;
-        margin-right: 1rem;
-        font-size: 2rem;
+        /* margin-top: 8rem; */
+        text-align: right;
     }
     .share-block a {
         display: inline-block;
@@ -3372,5 +3366,58 @@ figcaption a {
         margin: 0 0.25rem;
     }
     .share-block a:hover {
-        transform: scale(1.1);
+        transform: scale(1.2);
     }
+
+    .nav .nav-discord a,
+    .nav .nav-discourse a,
+    .nav .nav-facebook a,
+    .nav .nav-github a,
+    .nav .nav-instagram a,
+    .nav .nav-linkedin a,
+    .nav .nav-mastodon a,
+    .nav .nav-slack a,
+    .nav .nav-threads a,
+    .nav .nav-twitch a,
+    .nav .nav-twitter a,
+    .nav .nav-x a,
+    .nav .nav-youtube a {
+        font-size: 0 !important;
+    }
+
+    .nav .nav-discord a::before,
+    .nav .nav-discourse a::before,
+    .nav .nav-facebook a::before,
+    .nav .nav-github a::before,
+    .nav .nav-instagram a::before,
+    .nav .nav-linkedin a::before,
+    .nav .nav-mastodon a::before,
+    .nav .nav-slack a::before,
+    .nav .nav-threads a::before,
+    .nav .nav-twitch a::before,
+    .nav .nav-twitter a::before,
+    .nav .nav-x a::before,
+    .nav .nav-youtube a::before {
+        font-family: "Font Awesome 6 Brands";
+        display: inline-block;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .nav .nav-discord a::before {content: "\f392"}
+    .nav .nav-discourse a::before {content: "\f393"}
+    .nav .nav-facebook a::before {content: "\f09a"}
+    .nav .nav-github a::before {content: "\f09b"}
+    .nav .nav-instagram a::before {content: "\f16d"}
+    .nav .nav-linkedin a::before {content: "\f08c"}
+    .nav .nav-mastodon a::before {content: "\f4f6"}
+    .nav .nav-slack a::before {content: "\f198"}
+    .nav .nav-threads a::before {content: "\e618"}
+    .nav .nav-twitch a::before {content: "\f1e8"}
+    .nav .nav-twitter a::before {content: "\f099"}
+    .nav .nav-x a::before {content: "\e61b"}
+    .nav .nav-youtube a::before {content: "\f167"}
