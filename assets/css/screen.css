@@ -2648,8 +2648,8 @@ unless a heading is the very first element in the post content */
   margin-left: auto;
 }
 
-.kg-image img,
-.kg-image-card img {
+.kg-image:not(.kg-width-full, .kg-width-wide) img,
+.kg-image-card:not(.kg-width-full, .kg-width-wide) img {
   width: auto;
   max-height: 600px;
 }
@@ -2696,8 +2696,10 @@ unless a heading is the very first element in the post content */
   border-radius: 0.25em;
 }
 
-.kg-callout-card-accent a {
+.kg-callout-card.kg-card a {
   text-decoration: underline;
+  text-shadow: none;
+  background-image: none;
 }
 
 /* Blockquote */
