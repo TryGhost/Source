@@ -330,7 +330,8 @@ body {
 
 a {
   color: var(--color-primary-text);
-  text-decoration: none;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
 }
 
 a:hover {
@@ -377,6 +378,10 @@ pre code {
   cursor: pointer;
   background-color: var(--color-button);
   border: 0;
+}
+
+a.gh-button {
+  text-decoration: none;
 }
 
 .gh-button.on-dark {
@@ -668,6 +673,7 @@ button.gh-form-input {
   font-weight: 300;
   font-size: calc(3rem * var(--factor, 1));
   white-space: nowrap;
+  text-decoration: none;
 }
 
 .logo-group {
@@ -1170,6 +1176,7 @@ Search                         LOGO                    Login Subscribe
 }
 
 .gh-card-link {
+  text-decoration: none;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -1210,6 +1217,12 @@ Search                         LOGO                    Login Subscribe
   font-size: calc(1.9rem * var(--factor, 1));
   letter-spacing: -0.014em;
   line-height: 1.3;
+}
+
+a .gh-card-title {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
 }
 
 .gh-card-link:hover .gh-card-title {
@@ -2476,22 +2489,6 @@ unless a heading is the very first element in the post content */
   letter-spacing: -0.017em;
 }
 
-.gh-content a {
-  text-decoration: none;
-  background-image: var(--image-underline-black);
-  background-repeat: repeat-x;
-  background-position: 0 calc(100% - 0.15em);
-  /* Mimic text-decoration-skip */
-  text-shadow: 0 0.05em var(--background-color), 0.05em 0.05em var(--background-color),
-    -0.05em 0.05em var(--background-color), 0.1em 0.05em var(--background-color), -0.1em 0.05em var(--background-color),
-    0.1em 0 var(--background-color), -0.1em 0 var(--background-color), 0em -0.05em var(--background-color),
-    0em -0.075em var(--background-color), -0.125em 0 var(--background-color), 0.125em 0 var(--background-color);
-}
-
-.gh-content a:hover {
-  background-image: var(--image-underline-hover-black);
-}
-
 .gh-content a[href^="https://en.wikipedia.org/"]::after
 {
   content: url("../images/wikipedia.svg");
@@ -2696,12 +2693,6 @@ unless a heading is the very first element in the post content */
   border-radius: 0.25em;
 }
 
-.kg-callout-card.kg-card a {
-  text-decoration: underline;
-  text-shadow: none;
-  background-image: none;
-}
-
 /* Blockquote */
 
 blockquote:not([class]) {
@@ -2757,11 +2748,6 @@ blockquote.kg-blockquote-alt cite {
   font-size: 1em;
   border-radius: 0 !important;
   background-color: var(--color-button);
-}
-
-.gh-content .kg-button-card a {
-  text-shadow: none;
-  background-image: none;
 }
 
 /* Header */
@@ -2870,7 +2856,6 @@ figcaption {
 
 figcaption a {
   color: var(--color-primary-text);
-  text-decoration: underline;
 }
 
 /* Description lists */
@@ -3409,7 +3394,6 @@ figcaption a {
 
 .pswp__error-msg a {
   color: var(--color-secondary-text);
-  text-decoration: underline;
 }
 
 .pswp__button {
@@ -3938,7 +3922,6 @@ button.button-reset {
 
 .gh-pwyw button {
   color: var(--color-accent-text);
-  text-decoration: underline;
   cursor: pointer;
 }
 
@@ -4011,7 +3994,6 @@ button.button-reset {
 .gh-signup-popup a {
   color: var(--color-accent-text);
   font-weight: bold;
-  text-decoration: underline;
 }
 
 .gh-signup-popup-illustration {
@@ -4360,23 +4342,6 @@ label[for="light"] svg {
 
 html[data-theme="dark"] .gh-content hr {
   background-image: url(/content/images/fancy-divider-dark-mode.png);
-}
-
-html[data-theme="dark"] .gh-content a {
-  background-image: var(--image-underline-white);
-}
-
-html[data-theme="dark"] .gh-content a:hover {
-  background-image: var(--image-underline-hover-white);
-}
-
-html[data-theme="dark"] .gh-content .kg-button-card a {
-  background-image: none;
-  text-shadow: none;
-}
-
-html[data-theme="dark"] .gh-content a.kg-bookmark-container {
-  background-image: none;
 }
 
 /*
