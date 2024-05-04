@@ -3,6 +3,7 @@ const pump = require('pump');
 const path = require('path');
 const releaseUtils = require('@tryghost/release-utils');
 const inquirer = require('inquirer');
+const fs = require('fs');
 
 // gulp plugins and utils
 const livereload = require('gulp-livereload');
@@ -11,7 +12,6 @@ const zip = require('gulp-zip');
 const concat = require('gulp-concat');
 const uglify = require('gulp-uglify');
 // const beeper = require('beeper');
-const fs = require('fs');
 
 // postcss plugins
 const autoprefixer = require('autoprefixer');

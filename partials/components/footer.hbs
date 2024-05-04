@@ -13,11 +13,11 @@
                 {{navigation type="secondary"}}
             </nav>
             <div class="gh-footer-copyright">
-                Powered by <a href="https://ghost.org/" target="_blank" rel="noopener">Ghost</a>
+                Basado en <a href="https://ghost.org/" target="_blank" rel="noopener">Ghost</a>
             </div>
         </div>
 
-        {{#if @site.members_enabled}}
+        {{!-- {{#if @site.members_enabled}}
             {{#unless @member}}
                 <section class="gh-footer-signup">
                     <h2 class="gh-footer-signup-header is-title">
@@ -29,7 +29,7 @@
                     {{> "email-subscription" email_field_id="footer-email"}}
                 </section>
             {{/unless}}
-        {{/if}}
+        {{/if}} --}}
 
     </div>
 </footer>

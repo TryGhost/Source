@@ -27,3 +27,5 @@ config.json
 changelog.md
 changelog.md.bk
 old/
+**.local
+**.local.**
