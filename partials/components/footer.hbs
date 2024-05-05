@@ -4,7 +4,7 @@
         <div class="gh-footer-bar">
             <span class="gh-footer-logo is-title">
                 {{#if @site.logo}}
-                    <img src="{{@site.logo}}" alt="{{@site.title}}">
+                    <a href="{{@site.url}}" rel="noopener" alt="{{@site.title}}"><img src="{{@site.logo}}" alt="{{@site.title}}"></a>
                 {{else}}
                     {{@site.title}}
                 {{/if}}
