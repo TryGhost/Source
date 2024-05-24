@@ -238,7 +238,6 @@ a:hover {
     display: flex;
     align-items: center;
     position: relative;
-    overflow: hidden;
     max-width: 560px;
     width: 100%;
     height: 56px;
@@ -363,6 +362,15 @@ button.gh-form-input {
 
 .gh-form.success .gh-button svg:last-of-type {
     display: block;
+}
+
+.gh-form [data-members-error] {
+    position: absolute;
+    top: 100%;
+    margin-top: 10px;
+    width: 100%;
+    font-size: 1.4rem;
+    line-height: 1.4;
 }
 
 @media (max-width: 576px) {
@@ -1389,6 +1397,7 @@ Search                         LOGO                    Login Subscribe
     flex-direction: column;
     align-items: center;
     gap: 48px;
+    overflow: unset;
     margin: auto;
     max-width: 1020px;
     text-align: center;
