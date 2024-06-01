@@ -152,6 +152,8 @@ function sidenotes({ showFootnotes = true, showReferences = false } = {}) {
   if (document.body.classList.contains("post-template")) {
     if (showFootnotes || showReferences) {
       window.addEventListener("resize", debounce(onResize, 100));
+      window.addEventListener("beforeprint", hideSidenotes);
+      window.addEventListener("afterprint", showSidenotes);
       const anchors = document.querySelectorAll(".footnote-anchor, .reference-anchor");
       for (const anchor of anchors) {
         anchor.addEventListener("click", onAnchorClick);
