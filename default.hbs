@@ -26,6 +26,11 @@
         https://gomakethings.com/dynamically-changing-the-text-color-based-on-background-color-contrast-with-vanilla-js/ */
         var accentColor = getComputedStyle(document.documentElement).getPropertyValue('--background-color');
         accentColor = accentColor.trim().slice(1);
+
+        if (accentColor.length === 3) {
+            accentColor = accentColor[0] + accentColor[0] + accentColor[1] + accentColor[1] + accentColor[2] + accentColor[2];
+        }
+
         var r = parseInt(accentColor.substr(0, 2), 16);
         var g = parseInt(accentColor.substr(2, 2), 16);
         var b = parseInt(accentColor.substr(4, 2), 16);
