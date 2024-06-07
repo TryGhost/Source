@@ -3409,3 +3409,10 @@ figcaption a {
     .nav .nav-twitter a::before {content: "\f099"}
     .nav .nav-x a::before {content: "\e61b"}
     .nav .nav-youtube a::before {content: "\f167"}
+
+.gh-article-meta span {
+    display: inline-block;
+    margin-right: 12px;
+    font-size: 1.5rem;
+    color: var(--color-secondary-text);
+}
