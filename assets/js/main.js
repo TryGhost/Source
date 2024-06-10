@@ -61,15 +61,14 @@
 
 // Share button
 function copyToClipboard() {
-    var copiarurl = document.createElement('input'),
-    text = window.location.href;
+    var text = window.location.href;
 
-    document.body.appendChild(copiarurl);
-    copiarurl.value = text;
-    copiarurl.select();
-    document.execCommand('copy');
-    document.body.removeChild(copiarurl);
-
+    navigator.clipboard.writeText(text)
+        .then(function() {
     alert("Link copied to clipboard!");
+        })
+        .catch(function(error) {
+            console.error('Failed to copy text: ', error);
+        });
 }
 
