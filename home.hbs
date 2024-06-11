@@ -1,12 +1,133 @@
-{{!< default}}
-{{!-- The tag above means: insert everything in this file into the body of the default.hbs template --}}
+{{!< default}} {{!-- The tag above means: insert everything in this file into the body of the default.hbs template --}}
+    {{> "components/header" headerStyle=@custom.header_style}}
 
-{{> "components/header" headerStyle=@custom.header_style}}
+    <style scoped>
+        .previous-clients {
+            display: grid; 
+            grid-template-columns: auto auto auto auto auto auto; 
+            margin-left: 4em; 
+            column-gap: 50px;"; 
+        }
+        @media (max-width: 991px) {
+            .previous-clients {
+                display: grid; 
+                grid-template-columns: auto auto; 
+                margin-left: 4em; 
+            }
+        }
+        </style>
 
-{{#match @custom.header_style "!=" "Highlight"}}
-    {{> "components/featured" showFeatured=@custom.show_featured_posts limit=4}}
-{{/match}}
 
-{{> "components/cta"}}
+    <main class="gh-main gh-outer">
 
-{{> "components/post-list" feed="home" postFeedStyle=@custom.post_feed_style showTitle=true showSidebar=@custom.show_publication_info_sidebar}}
+        <br />
+
+        <div class="gh-inner" style="padding: max(1vmin, 10px) 15;">
+
+            <hgroup>
+                <h1 style="color:#2563eb; ">Tech for creating our dreams</h1>
+                <p>Many small steps lead to great distances.</p>
+                <br />
+            </hgroup>
+
+            <small>I am extremely excited about...</small>
+
+            <ul>
+                <small>
+                    <li>Getting ambitious things done.</li>
+                </small><small>
+                    <li>Always having the long-term view.</li>
+                </small><small>
+                    <li>Building long-term partnerships.</li>
+                </small><small>
+                    <li>Investing in startups.</li>
+                </small><small>
+                    <li>Improving the transparency and oversight of what we are accomplishing.</li>
+                </small><small>
+                    <li>Working on projects for a <em style="color:#c026d3">sustainable</em> future.</li>
+                </small>
+            </ul>
+
+            <br />
+
+
+
+            <h2 style="color:#2563eb; margin-top: 1em;">Current Projects</h2>
+
+            <div class="gh-container" style="
+        display: grid; 
+        gap: 4vmin; 
+        grid-template-columns: 50% 50%; 
+        margin-top: 1em; 
+        margin-right: 1em;
+        ">
+
+                <div style="margin: 1em">
+                    <center style="margin: 1em">
+                        <img src="https://www.alliander.com/content/uploads/dotcom/Alliander-logo-1.jpg"
+                            style="height: 120px;" />
+                    </center>
+
+                    <hr />
+
+                    <small>
+                        Building data-pipelines for the web app which provides insight into energy infrastructure for
+                        municipalities required for the energy transition.
+                    </small>
+
+                </div>
+
+                <div style="margin: 1em">
+
+                    <center style="margin: 1em">
+                        <img src="https://www.groenezaken.com/storage/app/uploads/public/32d/eb0/83b/thumb__600_0_0_0_landscape.jpg"
+                            style="height: 120px" />
+                    </center>
+
+                    <hr />
+
+                    <small>
+                        Building a warehouse management application in order to be as efficient as possible when it
+                        comes to
+                        processing pre-owned devices and thus creating a circular economy.
+                    </small>
+                </div>
+
+
+            </div>
+
+            <h2 style="color:#2563eb; margin-top: 2em; margin-bottom: 2em;"> Previous Projects </h2>
+
+            <div class="previous-clients">
+                <div>
+                    <img src="https://play-lh.googleusercontent.com/NJ5cpY42R-ddMCpbJZalqD47dI-0tO4RBSyxZ9Uft5K32Btf7BkVvniKt-2H-beOCuI"
+                        style="height:100px;" />
+                </div>
+                <div>
+                    <img src="https://sefa.nl/wp-content/uploads/VodafoneZiggo.png" style="height:100px;" />
+                </div>
+                <div>
+                    <img src="https://cdn.worldvectorlogo.com/logos/prorail.svg" style="height:100px;" />
+                </div>
+                <div>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Original_Adidas_logo.svg/1039px-Original_Adidas_logo.svg.png"
+                        style="height:100px;" />
+                </div>
+                <div>
+                    <img src="https://www.mn.nl/uploads/favicon.png" style="height:100px;" />
+                </div>
+                <div>
+                    <img src="https://www.inter-on.nl/wp-content/uploads/2019/11/Vattenfall-logo-300x251.png"
+                        style="height:100px;" />
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+
+
+
+    </main>

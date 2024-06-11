@@ -1,6 +1,6 @@
 {
     "name": "good-theme",
-    "description": "A default theme for the Ghost publishing platform",
+    "description": "Good Coder Theme",
     "demo": "https://source.ghost.io",
     "version": "1.2.3",
     "engines": {
@@ -18,9 +18,9 @@
         "postship": "git fetch && gulp release"
     },
     "author": {
-        "name": "Ghost Foundation",
-        "email": "hello@ghost.org",
-        "url": "https://ghost.org/"
+        "name": "Good Coder B.V.",
+        "email": "info@goodcoder.nl",
+        "url": "https://goodcoder.nl/"
     },
     "gpm": {
         "type": "theme",
