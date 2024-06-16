@@ -1,4 +1,3 @@
-# Learn more → https://github.com/TryGhost/action-deploy-theme#getting-started
 name: Deploy Theme
 on:
   # push:

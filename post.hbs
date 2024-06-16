@@ -9,9 +9,17 @@
 
         <header class="gh-article-header gh-canvas">
 
-            {{#if primary_tag}}
+            {{!-- {{#if primary_tag}}
                 <a class="gh-article-tag" href="{{primary_tag.url}}">{{primary_tag.name}}</a>
+            {{/if}} --}}
+            {{#if tags}}
+                <div class="gh-article-tags">
+                    {{#foreach tags}}
+                        <a class="gh-article-tag" href="{{url}}">{{name}}</a>&nbsp;
+                    {{/foreach}}
+                </div>
             {{/if}}
+
             <h1 class="gh-article-title is-title">{{title}}</h1>
             {{> share-block}}
             {{#if custom_excerpt}}
@@ -43,9 +51,10 @@
             </div>
             {{/if}}
 
-            {{> "feature-image"}}
 
         </header>
+
+            {{> "feature-image"}}
 
         <section class="gh-content gh-canvas is-body{{#if @custom.enable_drop_caps_on_posts}} drop-cap{{/if}}">
             <aside class="gh-sidebar"><div class="gh-toc"></div></aside> {{! The TOC will be inserted here }}
@@ -54,11 +63,32 @@
 
     </article>
 
-    {{#if comments}}
+{{!-- Comments --}}
+        <div class="gh-comments gh-canvas">
+        <script src="https://giscus.app/client.js"
+        data-repo="sredevopsorg/.github"
+        data-repo-id="R_kgDOIa4NMg"
+        data-category="Comentarios en SREDevOps.org"
+        data-category-id="DIC_kwDOIa4NMs4CgHgt"
+        data-mapping="url"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="dark"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+        async>
+</script>
+        </div>
+
+    {{!-- {{#if comments}}
         <div class="gh-comments gh-canvas">
             {{comments}}
         </div>
-    {{/if}}
+    {{/if}} --}}
 
 </main>
 
