@@ -2,7 +2,7 @@
     "name": "ghost-source-theme",
     "description": "Fork of the default theme of Ghost publishing platform, customized for sredevops.org",
     "demo": "https://sredevops.org",
-    "version": "1.4.1",
+    "version": "1.4.2",
     "engines": {
         "ghost": ">=5.0.0"
     },
@@ -13,9 +13,7 @@
         "test": "gscan .",
         "test:ci": "gscan --fatal --verbose .",
         "pretest": "gulp build",
-        "preship": "yarn test",
-        "ship": "STATUS=$(git status --porcelain); echo $STATUS; if [ -z \"$STATUS\" ]; then yarn version && git push --follow-tags; else echo \"Uncomitted changes found.\" && exit 1; fi",
-        "postship": "git fetch && gulp release"
+        "preship": "yarn test"
     },
     "author": {
         "name": "Ghost Foundation",

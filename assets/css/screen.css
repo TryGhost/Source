@@ -58,7 +58,7 @@ production stylesheet in assets/built/screen.css
     --color-dark-gray: #444;
     --color-darker-gray: #15171a;
     --color-black: #000;
-    --color-primary-text: #ffffff;
+    --color-primary-text: var(--color-darker-gray);
     --color-secondary-text: rgb(0 0 0 / 0.55);
     --color-border: rgb(0 0 0 / 0.08);
     --color-dark-border: rgb(0 0 0 / 0.55);
@@ -3383,8 +3383,6 @@ figcaption a {
 .pswp--minimal--dark .pswp__top-bar {
     background: none;
 }
-
-
 
 /* Share button */
 
