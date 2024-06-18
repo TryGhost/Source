@@ -11,7 +11,7 @@
         
         {{#if showTitle}}
             <h2 class="gh-container-title">
-                {{#unless title}}Latest{{else}}{{title}}{{/unless}}
+                {{#unless title}} + SREDevOps.org: {{else}}{{title}}{{/unless}}
             </h2>
         {{/if}}
 
@@ -92,11 +92,11 @@
                         {{/if}}
                         {{#if @site.members_enabled}}
                             {{#unless @member}}
-                                <button class="gh-button" data-portal="signup">Subscribe</button>
+                                <button class="gh-button" data-portal="signup">{{t "Subscribe"}}</button>
                             {{else}}
                                 {{#if @site.paid_members_enabled}}
                                     {{#unless @member.paid}}
-                                        <button class="gh-button" data-portal="upgrade">Upgrade</button>
+                                        <button class="gh-button" data-portal="upgrade">{{t "Upgrade"}}</button>
                                     {{/unless}}
                                 {{/if}}
                             {{/unless}}
@@ -106,7 +106,7 @@
                         <section class="gh-recommendations">
                             <h4 class="gh-sidebar-title">Recomendados</h4>
                             {{recommendations}}
-                            <button data-portal="recommendations">Ver todos {{> "icons/arrow"}}</button>
+                            <button data-portal="recommendations" class="gh-button">Ver todos {{> "icons/arrow"}}</button>
                         </section>
                     {{/if}}
                 </div>
@@ -115,7 +115,7 @@
 
         {{#match pagination.pages ">" 1}}
             <div class="gh-more is-title">
-                <a href="{{@site.url}}/page/2">More content in SREDevOps.org {{> "icons/arrow"}}</a>
+                <a href="{{@site.url}}/page/2">Ver más en SREDevOps.org {{> "icons/arrow"}}</a>
             </div>
         {{/match}}
 
