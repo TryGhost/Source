@@ -51,6 +51,11 @@ production stylesheet in assets/built/screen.css
 /* ---------------------------------------------------------- */
 
 :root {
+    --color-lighter-gray: rgb(255 255 255 / 0.1);
+    --color-darker-gray: #fff;
+    --color-secondary-text: rgb(255 255 255 / 0.64);
+    --color-border: rgb(255 255 255 / 0.15);
+    --color-dark-border: rgb(255 255 255 / 0.5);
     --color-white: #fff;
     --color-lighter-gray: rgb(0 0 0 / 0.05);
     --color-light-gray: #e6e6e6;
@@ -58,7 +63,7 @@ production stylesheet in assets/built/screen.css
     --color-dark-gray: #444;
     --color-darker-gray: #15171a;
     --color-black: #000;
-    --color-primary-text: var(--color-darker-gray);
+    --color-primary-text: #fff;
     --color-secondary-text: rgb(0 0 0 / 0.55);
     --color-border: rgb(0 0 0 / 0.08);
     --color-dark-border: rgb(0 0 0 / 0.55);

@@ -1,9 +1,9 @@
 const {series, watch, src, dest, parallel} = require('gulp');
 const pump = require('pump');
-const path = require('path');
-const releaseUtils = require('@tryghost/release-utils');
-const inquirer = require('inquirer');
-const fs = require('fs');
+// const path = require('path');
+// const releaseUtils = require('@tryghost/release-utils');
+// const inquirer = require('inquirer');
+// const fs = require('fs');
 
 // gulp plugins and utils
 const livereload = require('gulp-livereload');
@@ -18,9 +18,9 @@ const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
 const easyimport = require('postcss-easy-import');
 
-const REPO = 'sredevopsorg/ghost-source-theme';
-const REPO_READONLY = 'sredevopsorg/ghost-source-theme';
-const CHANGELOG_PATH = path.join(process.cwd(), '.', 'changelog.md');
+// const REPO = 'sredevopsorg/ghost-source-theme';
+// const REPO_READONLY = 'sredevopsorg/ghost-source-theme';
+// const CHANGELOG_PATH = path.join(process.cwd(), '.', 'changelog.md');
 
 function serve(done) {
     livereload.listen();

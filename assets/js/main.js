@@ -1,4 +1,3 @@
-// dddddd
 /* Mobile menu burger toggle */
 (function () {
     const navigation = document.querySelector('.gh-navigation');
@@ -59,17 +58,3 @@
         wrapper.appendChild(table);
     });
 })();
-// Customized SREDevOps
-// Share button
-function copyToClipboard() {
-    var text = window.location.href;
-
-    navigator.clipboard.writeText(text)
-        .then(function() {
-    alert("Link copied to clipboard!");
-        })
-        .catch(function(error) {
-            console.error('Failed to copy text: ', error);
-        });
-}
-

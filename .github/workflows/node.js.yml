@@ -40,7 +40,9 @@ jobs:
 
     - name: Install and test with ${{ matrix.node-version }}
       run: |
+          npm install -g gscan
           yarn install
-          yarn pretest
+          yarn build
+          yarn test
           yarn test:ci
 

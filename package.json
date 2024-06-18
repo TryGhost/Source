@@ -2,18 +2,16 @@
     "name": "ghost-source-theme",
     "description": "Fork of the default theme of Ghost publishing platform, customized for sredevops.org",
     "demo": "https://sredevops.org",
-    "version": "1.4.2",
+    "version": "1.4.5",
     "engines": {
         "ghost": ">=5.0.0"
     },
     "license": "MIT",
     "scripts": {
         "dev": "gulp",
-        "zip": "gulp zip",
         "test": "gscan .",
         "test:ci": "gscan --fatal --verbose .",
-        "pretest": "gulp build",
-        "preship": "yarn test"
+        "build": "gulp build"
     },
     "author": {
         "name": "Ghost Foundation",
@@ -42,17 +40,13 @@
         "SREDevOps.org"
     ],
     "devDependencies": {
-        "@tryghost/release-utils": "0.8.1",
         "autoprefixer": "10.4.19",
         "cssnano": "5.1.15",
-        "gscan": "4.43.1",
         "gulp": "5.0.0",
         "gulp-concat": "2.6.1",
         "gulp-livereload": "4.0.2",
         "gulp-postcss": "10.0.0",
         "gulp-uglify": "3.0.2",
-        "gulp-zip": "5.1.0",
-        "inquirer": "8.2.6",
         "postcss": "8.4.38",
         "postcss-easy-import": "4.0.0",
         "pump": "3.0.0"
