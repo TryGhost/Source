@@ -2,7 +2,7 @@
     "name": "source-i18n",
     "description": "A default theme for the Ghost publishing platform",
     "demo": "https://source.ghost.io",
-    "version": "1.2.2-2i18n",
+    "version": "1.2.3-1i18n",
     "engines": {
         "ghost": ">=5.0.0"
     },
