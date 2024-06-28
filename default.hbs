@@ -21,7 +21,9 @@
             --background-color: {{@custom.site_background_color}}
         }
     </style>
-
+{{#is "home"}}
+{{!-- Home dont need change locales --}}
+{{else}}
     <script>
         /* Set the language attribute on the HTML element based on the subpath of the URL
         This script will set the language attribute on the HTML element based on the subpath of the URL
@@ -45,14 +47,13 @@
             document.querySelector('html').setAttribute('lang', lang);
         });
     </script>
-    
-
-
-
+{{/is}}
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/brands.min.css" integrity="sha512-DJLNx+VLY4aEiEQFjiawXaiceujj5GA7lIY8CHCIGQCBPfsEG0nGz1edb4Jvw1LR7q031zS5PpPqFuPA8ihlRA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+{{#is "post, page"}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.28.2/tocbot.min.css" integrity="sha512-4q0OX9NAYcRTFEfy9nTK0AV9N7MxM665neDXEW3CjAj1pXc6+8Bcd6ryXl6cY8mTBBXt0aXepnSDLLQZSuJRww==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+{{/is}}
+    {{!-- Ghost outputs important meta data with this tag --}}
     {{ghost_head}}
 
 </head>

@@ -3403,6 +3403,7 @@ figcaption a {
     .nav .nav-twitch a,
     .nav .nav-twitter a,
     .nav .nav-x a,
+    .nav .nav-whatsapp a,
     .nav .nav-youtube a {
         font-size: 0 !important;
     }
@@ -3419,6 +3420,7 @@ figcaption a {
     .nav .nav-twitch a::before,
     .nav .nav-twitter a::before,
     .nav .nav-x a::before,
+    .nav .nav-whatsapp a::before,
     .nav .nav-youtube a::before {
         font-family: "Font Awesome 6 Brands";
         display: inline-block;
@@ -3442,6 +3444,7 @@ figcaption a {
     .nav .nav-twitch a::before {content: "\f1e8"}
     .nav .nav-twitter a::before {content: "\f099"}
     .nav .nav-x a::before {content: "\e61b"}
+    .nav .nav-whatsapp a::before {content: "\f232"}
     .nav .nav-youtube a::before {content: "\f167"}
 
 .gh-article-meta span {

@@ -1,0 +1,36 @@
+{{!< default}}
+{{!-- The tag above means: insert everything in this file into the body of the default.hbs template --}}
+
+{{#post}}
+
+<main class="gh-main">
+    <article class="gh-article {{post_class}}">
+        {{#get 'tags' limit='all' include='count.posts'}}
+          {{#foreach tags}}
+            <div class="gh"
+              <a href="{{url}}" aria-label="{{name}}">
+                {{#if feature_image}}
+                  <img class="m-tag-card__picture" src="{{img_url feature_image size="m"}}" loading="lazy" alt="">
+                {{/if}}
+                <div class="m-tag-card__info {{#unless feature_image}}no-picture{{/unless}}">
+                  <h4 class="m-tag-card__name">{{name}}</h4>
+                  <span class="m-tag-card__counter">
+                    {{plural count.posts empty=(t "No posts") singular=(t "1 post") plural=(t "% posts")}}
+                  </span>
+                </div>
+              </a>
+            </div>
+            {{else}}
+              <p class="m-not-found">
+                "No tags found"
+              </p>
+          {{/foreach}}
+        {{/get}}
+        <section class="gh-content gh-canvas is-body">
+            {{content}}
+        </section>
+
+    </article>
+</main>
+
+{{/post}}

@@ -2,15 +2,15 @@
     "name": "ghost-source-theme",
     "description": "Fork of the default theme of Ghost publishing platform, customized for sredevops.org",
     "demo": "https://sredevops.org",
-    "version": "1.4.5",
+    "version": "1.4.6",
     "engines": {
         "ghost": ">=5.0.0"
     },
     "license": "MIT",
     "scripts": {
         "dev": "gulp",
-        "test": "gscan .",
-        "test:ci": "gscan --fatal --verbose .",
+        "test": "npx gscan .",
+        "test:ci": "npx gscan --fatal --verbose .",
         "build": "gulp build"
     },
     "author": {
