@@ -10,7 +10,7 @@
                             {{img_url feature_image size="xl" format="webp"}} 1200w,
                             {{img_url feature_image size="xxl" format="webp"}} 2000w"
                     sizes="{{#if imageSizes}}{{imageSizes}}{{else}}320px{{/if}}"
-                    src="{{img_url feature_image size="m"}}"
+                    src="{{img_url feature_image size="s"}}"
                     alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
                     {{#if lazyLoad}}loading="lazy"{{/if}}
                 >
@@ -30,19 +30,19 @@
                 {{/if}}
             {{/unless}}
             <footer class="gh-card-meta">
-                {{tags separator=" | " prefix="Tags:" autolink="true" visibility="public"}}
+                {{tags separator=" | " prefix="Tags:" autolink="true" visibility="public" limit="7" from="2" to="7"}}
                 {{#unless access}}
                     {{^has visibility="public"}}
                         {{> "icons/lock"}}
                     {{/has}}
-                {{/unless}}<!--
-             -->{{#if @custom.show_author}}
-                    <span class="gh-card-author">By {{#foreach authors}}{{#if @first}}{{name}}{{else}}, {{name}}{{/if}}{{/foreach}}</span>
+                {{/unless}}
+                {{#if @custom.show_author}}
+                    <span class="gh-card-author">Author: {{#foreach authors}}{{#if @first}}{{name}}{{else}}, {{name}}{{/if}}{{/foreach}}</span>
                 {{/if}}
                 {{#if @custom.show_publish_date}}
                     <time class="gh-card-date" datetime="{{date format="DD-MM-YYYY"}}">{{date}}</time>
-                {{/if}}<!--
-         --></footer>
+                {{/if}}
+            </footer>
         </div>
     </a>
 </article>

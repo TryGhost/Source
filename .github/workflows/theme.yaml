@@ -1,14 +1,24 @@
-name: Deploy Theme
+name: deploy-theme
 on:
-  push:
-    branches:
-      - main
+  workflow_run:
+    workflows: ["tests"]
+    branches: [main]
+    types: 
+      - completed
+  # push:
+  #   branches:
+  #     - main
   workflow_dispatch:
 jobs: 
   deploy:
-    #  checks for runners with label runner-k3s, if active use it, failover to ubuntu:latest
     runs-on: ubuntu-latest
     steps:
+      - 
+        name: Harden Runner
+        uses: step-security/harden-runner@17d0e2bd7d51742c71671bd19fa12bdc9d40a3d6 # v2.8.1
+        with:
+          egress-policy: audit
+
       - uses: actions/checkout@v4
         name: Checkout Repository
         with:
@@ -21,3 +31,5 @@ jobs:
         with:
           api-url: ${{ secrets.SREDEVOPS_API_URL }}
           api-key: ${{ secrets.SREDEVOPS_ADMIN_API_KEY }}
+          exclude: "node_modules gulpfile.js yarn.lock .gitignore .github .git LICENSE README.md"
+

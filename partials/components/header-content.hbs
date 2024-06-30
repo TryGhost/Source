@@ -21,16 +21,16 @@
                 {{/foreach}}
             </div>
             <div class="gh-header-middle">
-                {{#foreach posts from="2" limit="3"}}
+                {{#foreach posts from="2" limit="2"}}
                     {{> "post-card"}}
                 {{/foreach}}
             </div>
             <div class="gh-header-right">
                 {{#if @custom.show_featured_posts}}
-                    {{> "components/featured" showFeatured=@custom.show_featured_posts limit=6}}
+                    {{> "components/featured" showFeatured=@custom.show_featured_posts limit=4}}
                 {{else}}
                     <div class="gh-featured-feed">
-                        {{#foreach posts from="5" limit="6"}}
+                        {{#foreach posts from="4" limit="5"}}
                             {{> "post-card" imageSizes="80px"}}
                         {{/foreach}}
                     </div>
