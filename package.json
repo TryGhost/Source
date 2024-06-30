@@ -2,15 +2,16 @@
     "name": "ghost-source-theme",
     "description": "Fork of the default theme of Ghost publishing platform, customized for sredevops.org",
     "demo": "https://sredevops.org",
-    "version": "1.4.6",
+    "version": "1.5.0",
     "engines": {
         "ghost": ">=5.0.0"
     },
     "license": "MIT",
     "scripts": {
         "dev": "gulp",
-        "test": "npx gscan .",
-        "test:ci": "npx gscan --fatal --verbose .",
+        "test": "gscan .",
+        "test:local": "npx gscan --verbose .",
+        "test:ci": "gscan --fatal --verbose .",
         "build": "gulp build"
     },
     "author": {
@@ -41,13 +42,13 @@
     ],
     "devDependencies": {
         "autoprefixer": "10.4.19",
-        "cssnano": "5.1.15",
+        "cssnano": "7.0.3",
         "gulp": "5.0.0",
         "gulp-concat": "2.6.1",
         "gulp-livereload": "4.0.2",
         "gulp-postcss": "10.0.0",
         "gulp-uglify": "3.0.2",
-        "postcss": "8.4.38",
+        "postcss": "8.4.39",
         "postcss-easy-import": "4.0.0",
         "pump": "3.0.0"
     },
@@ -55,7 +56,7 @@
         "defaults"
     ],
     "config": {
-        "posts_per_page": 16,
+        "posts_per_page": 27,
         "image_sizes": {
             "xs": {
                 "width": 160
@@ -202,10 +203,5 @@
                 "group": "post"
             }
         }
-    },
-    "renovate": {
-        "extends": [
-            "@tryghost:theme"
-        ]
     }
 }

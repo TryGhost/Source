@@ -5,29 +5,34 @@
 
 <main class="gh-main">
     <article class="gh-article {{post_class}}">
-        {{#get 'tags' limit='all' include='count.posts'}}
-          {{#foreach tags}}
-            <div class="gh"
-              <a href="{{url}}" aria-label="{{name}}">
-                {{#if feature_image}}
-                  <img class="m-tag-card__picture" src="{{img_url feature_image size="m"}}" loading="lazy" alt="">
+
+        {{#match @page.show_title_and_feature_image}}
+            <header class="gh-article-header gh-canvas">
+                <h1 class="gh-article-title is-title">{{title}}</h1>
+                {{#if custom_excerpt}}
+                    <p class="gh-article-excerpt is-body">{{custom_excerpt}}</p>
                 {{/if}}
-                <div class="m-tag-card__info {{#unless feature_image}}no-picture{{/unless}}">
-                  <h4 class="m-tag-card__name">{{name}}</h4>
-                  <span class="m-tag-card__counter">
-                    {{plural count.posts empty=(t "No posts") singular=(t "1 post") plural=(t "% posts")}}
-                  </span>
-                </div>
-              </a>
-            </div>
-            {{else}}
-              <p class="m-not-found">
-                "No tags found"
-              </p>
-          {{/foreach}}
-        {{/get}}
+                {{> "feature-image"}}
+            </header>
+        {{/match}}
         <section class="gh-content gh-canvas is-body">
-            {{content}}
+        {{#get 'tags' limit='all' include='count.posts,description,feature_image' order='count.posts desc'}}
+            {{#foreach tags}}
+                <div class="gh-card">
+                  <a href='{{ url }}'>
+                    <h3>{{ name }}</h3>
+                  </a>
+                  <p>({{ count.posts }} Posts)</p>
+                  {{#if feature_image}}
+                    <a href='{{ url }}' alt='{{ description }}'>
+                      <img src='{{ feature_image }}' alt='{{ description }}' />
+                    </a>
+                  {{/if}}
+                  <p>{{ description }}</p>
+                </div>
+            {{/foreach}}
+        {{/get}}
+            {{!-- {{content}} --}}
         </section>
 
     </article>

@@ -957,7 +957,7 @@ Search                         LOGO                    Login Subscribe
 .gh-card-link {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 12px;
 }
 
 .gh-card-link:hover {
@@ -983,9 +983,10 @@ Search                         LOGO                    Login Subscribe
 }
 
 .gh-card-tag {
-    display: none;
-    margin-bottom: 4px;
-    font-size: 1.2rem;
+    display: inline-block;
+    margin-bottom: 0px;
+    margin-top: 10px;
+    font-size: 1.6rem;
     font-weight: 500;
     letter-spacing: 0.01em;
     text-transform: uppercase;
@@ -1018,9 +1019,9 @@ Search                         LOGO                    Login Subscribe
     flex-wrap: wrap;
     align-items: center;
     padding-bottom: 1px;
-    font-size: 1.25rem;
+    font-size: 1.6rem;
     font-weight: 500;
-    line-height: 1.05;
+    line-height: 1.2;
     letter-spacing: -0.004em;
     color: var(--color-secondary-text);
 }
@@ -1255,7 +1256,7 @@ Search                         LOGO                    Login Subscribe
 }
 
 .gh-header.is-highlight .gh-header-left .gh-card .gh-card-link {
-    gap: 28px;
+    gap: 0px;
 }
 
 .gh-header.is-highlight .gh-header-left .gh-card .gh-card-image {
@@ -1264,7 +1265,7 @@ Search                         LOGO                    Login Subscribe
 
 .gh-header.is-highlight .gh-header-left .gh-card .gh-card-tag {
     display: block;
-    margin-bottom: 12px;
+    margin-bottom: 0px;
 }
 
 .gh-header.is-highlight .gh-header-left .gh-card .gh-card-title {
@@ -1276,11 +1277,12 @@ Search                         LOGO                    Login Subscribe
 
 .gh-header.is-highlight .gh-header-left .gh-card .gh-card-excerpt {
     margin-top: clamp(12px, 0.45vw + 10.18px, 16px);
-    font-size: 1.8rem;
+    font-size: 2rem;
+    line-height: 1.4;
 }
 
 .gh-header.is-highlight .gh-header-left .gh-card .gh-card-meta:not(:empty) {
-    margin-top: 14px;
+    margin-top: 4px;
 }
 
 .gh-header.is-highlight .gh-header-middle {
@@ -2028,7 +2030,7 @@ Search                         LOGO                    Login Subscribe
 
 .gh-article-tag {
     margin-bottom: 12px;
-    font-size: 1.3rem;
+    font-size: 1.9rem;
     font-weight: 500;
     letter-spacing: 0.01em;
     text-transform: uppercase;
@@ -2433,6 +2435,7 @@ blockquote.kg-blockquote-alt {
 
 .kg-bookmark-card .kg-bookmark-container {
     border-radius: 0.25em !important;
+    background-color: var(--color-lighter-gray)!important;
 }
 
 .kg-bookmark-card .kg-bookmark-container:hover {
