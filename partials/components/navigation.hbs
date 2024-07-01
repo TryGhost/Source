@@ -37,11 +37,11 @@
                         {{#unless @site.members_invite_only}}
                             {{#unless hideSubscribeButton}}
                                 {{!-- <span><a class="sign-google" href="https://login.spectralwebservices.com/auth/google?inbound=b89c0c7a-1b79-4c68-b75e-32060012d7ca" alt="Sign in with Google">Google</a></span> --}}
-                                <span>Login with <a class="sign-github" href="https://login.spectralwebservices.com/auth/github?inbound=b89c0c7a-1b79-4c68-b75e-32060012d7ca" alt="Sign in with Github">Github</a></span>
+                                <span class="gh-button">Login with &nbsp;<a class="sign-github" href="https://login.spectralwebservices.com/auth/github?inbound=b89c0c7a-1b79-4c68-b75e-32060012d7ca" alt="Sign in with Github">Github</a></span>
                             {{/unless}}
                         {{else}}
                                 {{!-- <span><a class="sign-google" href="https://login.spectralwebservices.com/auth/google?inbound=b89c0c7a-1b79-4c68-b75e-32060012d7ca" alt="Sign in with Google">Google</a></span> --}}
-                                <span>Login with <a class="sign-github" href="https://login.spectralwebservices.com/auth/github?inbound=b89c0c7a-1b79-4c68-b75e-32060012d7ca" alt="Sign in with Github">Github</a></span>
+                                <span class="gh-button">Login with &nbsp;<a class="sign-github" href="https://login.spectralwebservices.com/auth/github?inbound=b89c0c7a-1b79-4c68-b75e-32060012d7ca" alt="Sign in with Github">Github</a></span>
                         {{/unless}}
                     {{else}}
                         <a class="gh-button" href="#/portal/account" data-portal="account">Settings</a>
