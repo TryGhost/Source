@@ -18,13 +18,19 @@ jobs:
       fail-fast: true
       matrix:
         # node-version: [14.x, 16.x, 18.x]
-        node-version: [20, 18]
+        node-version: [20]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
+    - 
+      name: Harden Runner
+      uses: step-security/harden-runner@17d0e2bd7d51742c71671bd19fa12bdc9d40a3d6 # v2.8.1
+      with:
+        egress-policy: audit
+
     - uses: actions/checkout@v4
       with:
-        ref: ${{ github.head_ref }}
+        ref: ${{ github.head_ref || github.ref }}
         fetch-depth: 1
         persist-credentials: false
 

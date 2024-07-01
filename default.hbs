@@ -50,9 +50,6 @@
 {{/is}}
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/brands.min.css" integrity="sha512-DJLNx+VLY4aEiEQFjiawXaiceujj5GA7lIY8CHCIGQCBPfsEG0nGz1edb4Jvw1LR7q031zS5PpPqFuPA8ihlRA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-{{#is "post, page"}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.28.2/tocbot.min.css" integrity="sha512-4q0OX9NAYcRTFEfy9nTK0AV9N7MxM665neDXEW3CjAj1pXc6+8Bcd6ryXl6cY8mTBBXt0aXepnSDLLQZSuJRww==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-{{/is}}
     {{!-- Ghost outputs important meta data with this tag --}}
     {{ghost_head}}
 
@@ -69,9 +66,11 @@
     {{> "components/footer"}}
     
 </div>
-
 {{#is "post, page"}}
-    {{> "lightbox"}}
+{{> "lightbox"}}
+{{/is}}
+{{#is "post"}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.28.2/tocbot.min.css" integrity="sha512-4q0OX9NAYcRTFEfy9nTK0AV9N7MxM665neDXEW3CjAj1pXc6+8Bcd6ryXl6cY8mTBBXt0aXepnSDLLQZSuJRww==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         .gh-content {
             position: relative;

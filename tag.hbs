@@ -1,6 +1,17 @@
 {{!< default}}
 {{!-- The tag above means: insert everything in this file into the body of the default.hbs template --}}
-
+{{#is "paged"}}
+{{#if tag.meta_description}}
+{{#contentFor "extraMeta"}}<meta name="description" content="{{tag.meta_description}}">
+{{/contentFor}}
+{{else if tag.description}}
+{{#contentFor "extraMeta"}}<meta name="description" content="{{tag.description}}">
+{{/contentFor}}
+{{else}}
+{{#contentFor "extraMeta"}}<meta name="description" content="{{@site.meta_description}}">
+{{/contentFor}}
+{{/if}}
+{{/is}}
 <main class="gh-main gh-outer">
 
     {{#tag}}

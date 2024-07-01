@@ -9,7 +9,7 @@
                     {{@site.title}}
                 {{/if}}
             </a>
-            {{> "search-toggle"}}
+            {{> "email"}}
             <button class="gh-burger gh-icon-button" aria-label="Menu">
                 {{> "icons/burger"}}
                 {{> "icons/close"}}
@@ -20,7 +20,7 @@
             {{navigation}}
             {{#unless @site.members_enabled}}
                 {{#match navigationLayout "Stacked"}}
-                    {{> "search-toggle"}}
+                    {{> "email"}}
                 {{/match}}
             {{/unless}}
         </nav>
@@ -28,22 +28,23 @@
         <div class="gh-navigation-actions">
             {{#unless @site.members_enabled}}
                 {{^match navigationLayout "Stacked"}}
-                    {{> "search-toggle"}}
+                    {{> "email"}}
                 {{/match}}
             {{else}}
-                {{> "search-toggle"}}
-                <div class="gh-navigation-members">
+                {{> "email"}}
+                <div class="nav">
                     {{#unless @member}}
                         {{#unless @site.members_invite_only}}
-                            <a href="#/portal/signin" data-portal="signin">Sign in</a>
                             {{#unless hideSubscribeButton}}
-                                <a class="gh-button" href="#/portal/signup" data-portal="signup">Subscribe</a>
+                                <span><a class="sign-google" href="https://login.spectralwebservices.com/auth/google?inbound=b89c0c7a-1b79-4c68-b75e-32060012d7ca" alt="Sign in with Google">Google</a></span>
+                                <span><a class="sign-github" href="https://login.spectralwebservices.com/auth/github?inbound=b89c0c7a-1b79-4c68-b75e-32060012d7ca" alt="Sign in with Github">Github</a></span>
                             {{/unless}}
                         {{else}}
-                            <a class="gh-button" href="#/portal/signin" data-portal="signin">Sign in</a>
+                                <span><a class="sign-google" href="https://login.spectralwebservices.com/auth/google?inbound=b89c0c7a-1b79-4c68-b75e-32060012d7ca" alt="Sign in with Google">Google</a></span>
+                                <span><a class="sign-github" href="https://login.spectralwebservices.com/auth/github?inbound=b89c0c7a-1b79-4c68-b75e-32060012d7ca" alt="Sign in with Github">Github</a></span>
                         {{/unless}}
                     {{else}}
-                        <a class="gh-button" href="#/portal/account" data-portal="account">Account</a>
+                        <a class="gh-button" href="#/portal/account" data-portal="account">Settings</a>
                     {{/unless}}
                 </div>
             {{/unless}}
