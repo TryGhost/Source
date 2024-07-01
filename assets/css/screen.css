@@ -3393,7 +3393,8 @@ figcaption a {
 }
 
 /* Share button */
-
+    span .sign-google,
+    span .sign-github,
     .nav .nav-discord a,
     .nav .nav-discourse a,
     .nav .nav-facebook a,
@@ -3410,7 +3411,8 @@ figcaption a {
     .nav .nav-youtube a {
         font-size: 0 !important;
     }
-
+    span .sign-google::before,
+    span .sign-github::before,
     .nav .nav-discord a::before,
     .nav .nav-discourse a::before,
     .nav .nav-facebook a::before,
@@ -3434,10 +3436,12 @@ figcaption a {
         text-rendering: auto;
         -webkit-font-smoothing: antialiased;
     }
-
+    span .sign-google::before {content: "\f1a0"}
+    span .sign-github::before {content: "\f09b"}
     .nav .nav-discord a::before {content: "\f392"}
     .nav .nav-discourse a::before {content: "\f393"}
     .nav .nav-facebook a::before {content: "\f09a"}
+    .nav .nav-github a::before {content: "\f09b"}
     .nav .nav-github a::before {content: "\f09b"}
     .nav .nav-instagram a::before {content: "\f16d"}
     .nav .nav-linkedin a::before {content: "\f08c"}
