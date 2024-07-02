@@ -233,6 +233,7 @@ a:hover {
     letter-spacing: inherit;
     line-height: 1.1;
     border: 0;
+    border-radius: 40px;
     background-color: transparent;
     outline: none;
     transition: 0.3s ease-in-out;
@@ -2702,7 +2703,7 @@ figcaption a {
     letter-spacing: 0;
 }
 
-.has-serif-title :is(.gh-button, .gh-form) {
+.has-serif-title :is(.gh-button, .gh-form, .gh-form-input) {
     border-radius: 0;
 }
 
