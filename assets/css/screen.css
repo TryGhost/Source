@@ -2378,6 +2378,11 @@ blockquote.kg-blockquote-alt {
     opacity: 1;
 }
 
+.kg-bookmark-card a.kg-bookmark-container,
+.kg-bookmark-card a.kg-bookmark-container:hover {
+    background: var(--background-color) !important;
+}
+
 .kg-bookmark-card .kg-bookmark-content {
     padding: 1.15em;
 }
