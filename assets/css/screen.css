@@ -2034,7 +2034,7 @@ Search                         LOGO                    Login Subscribe
     font-weight: 500;
     letter-spacing: 0.01em;
     text-transform: uppercase;
-    color: var(--ghost-accent-color);
+    color: var(--color-secondary-text);
 }
 
 .gh-article-title {
@@ -2156,7 +2156,7 @@ headings, text, images and lists. We deal with cards lower down. */
 
 /* Default vertical spacing */
 .gh-content>*+* {
-    margin-top: calc(28px * var(--content-spacing-factor, 1));
+    margin-top: calc(16px * var(--content-spacing-factor, 1));
     margin-bottom: 0;
 }
 
@@ -3459,4 +3459,13 @@ figcaption a {
     margin-right: 12px;
     font-size: 1.5rem;
     color: var(--color-secondary-text);
+}
+
+.gh-button #logingh {
+    display: inline-block;
+    padding: 0.6em 1.2em;
+    text-align: center;
+    text-wrap: nowrap;
+
+    
 }

@@ -2,7 +2,7 @@
     "name": "ghost-source-theme",
     "description": "Fork of the default theme of Ghost publishing platform, customized for sredevops.org",
     "demo": "https://sredevops.org",
-    "version": "1.5.1",
+    "version": "1.5.3",
     "engines": {
         "ghost": ">=5.0.0"
     },

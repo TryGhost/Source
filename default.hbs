@@ -10,7 +10,7 @@
     
     {{!-- Preload main styles and scripts for better performance --}}
     <link rel="preload" as="style" href="{{asset "built/screen.css"}}">
-    <link rel="preload" as="script" href="{{asset "built/source.js"}}">
+    {{!-- <link rel="preload" as="script" href="{{asset "built/source.js"}}"> --}}
 
     {{!-- Theme assets - use the {{asset}} helper to reference styles & scripts, this will take care of caching and cache-busting automatically --}}
     <link rel="stylesheet" type="text/css" href="{{asset "built/screen.css"}}">
@@ -69,9 +69,10 @@
 {{#is "post, page"}}
 {{> "lightbox"}}
 {{/is}}
+
 {{#is "post"}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.28.2/tocbot.min.css" integrity="sha512-4q0OX9NAYcRTFEfy9nTK0AV9N7MxM665neDXEW3CjAj1pXc6+8Bcd6ryXl6cY8mTBBXt0aXepnSDLLQZSuJRww==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <style>
+        <style>
         .gh-content {
             position: relative;
         }
@@ -105,22 +106,19 @@
             background-color: var(--ghost-accent-color); /* Defines TOC   accent color based on Accent color set in Ghost Admin */
         } 
         </style>
-    {{! Initialize Tocbot after you load the script }}
-
-    {{!-- The following script is for TOC Bot --}}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.28.2/tocbot.min.js" integrity="sha512-+9XzRSJjnUN2OI106uAbbVZ3f+z1ncIRZFOr56hEdaxbQeZ8i1+B7OVjdF8tG4YhgxM/rWP73K2SiG93x6UJoQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script>
-        tocbot.init({
-            // Where to render the table of contents.
-            tocSelector: '.gh-toc',
-            // Where to grab the headings to build the table of contents.
-            contentSelector: '.gh-content',
-            // Which headings to grab inside of the contentSelector element.
-            headingSelector: 'h1, h2, h3, h4, h5, h6',
-            // Ensure correct positioning
-            hasInnerContainers: true,
-        });
-    </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.28.2/tocbot.min.js" integrity="sha512-+9XzRSJjnUN2OI106uAbbVZ3f+z1ncIRZFOr56hEdaxbQeZ8i1+B7OVjdF8tG4YhgxM/rWP73K2SiG93x6UJoQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script>
+            tocbot.init({
+                // Where to render the table of contents.
+                tocSelector: '.gh-toc',
+                // Where to grab the headings to build the table of contents.
+                contentSelector: '.gh-content',
+                // Which headings to grab inside of the contentSelector element.
+                headingSelector: 'h1, h2, h3, h4, h5, h6',
+                // Ensure correct positioning
+                hasInnerContainers: true,
+            });
+        </script>
 {{/is}}
 
 {{!-- Scripts - handle responsive videos, infinite scroll, and navigation dropdowns --}}
