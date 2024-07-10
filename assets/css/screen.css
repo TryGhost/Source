@@ -2381,6 +2381,7 @@ blockquote.kg-blockquote-alt {
 .kg-bookmark-card a.kg-bookmark-container,
 .kg-bookmark-card a.kg-bookmark-container:hover {
     background: var(--background-color) !important;
+    color: var(--color-darker-gray) !important;
 }
 
 .kg-bookmark-card .kg-bookmark-content {
