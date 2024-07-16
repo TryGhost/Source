@@ -3,7 +3,7 @@ function pagination(isInfinite = true, done, isMasonry = false) {
     if (!feedElement) return;
 
     let loading = false;
-    const target = feedElement.nextElementSibling || document.querySelector('.gh-footer');
+    const target = document.querySelector('.gh-footer');
     const buttonElement = document.querySelector('.gh-loadmore');
 
     if (!document.querySelector('link[rel=next]') && buttonElement) {

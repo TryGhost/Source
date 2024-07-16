@@ -24,7 +24,7 @@
                         {{#if @custom.show_featured_posts}}
                             {{#match posts.length ">=" 4}}
                                 {{#get "posts" include="authors" limit="16"}}
-                                    {{#foreach posts from="5" limit="12"}}
+                                    {{#foreach posts from="5"}}
                                         {{> "post-card" lazyLoad=true}}
                                     {{/foreach}}
                                 {{/get}}
@@ -32,7 +32,7 @@
                         {{else}}
                             {{#match posts.length ">=" 10}}
                                 {{#get "posts" include="authors" limit="22"}}
-                                    {{#foreach posts from="11" limit="12"}}
+                                    {{#foreach posts from="11"}}
                                         {{> "post-card" lazyLoad=true}}
                                     {{/foreach}}
                                 {{/get}}
@@ -41,7 +41,7 @@
                     {{else match @custom.header_style "Magazine"}}
                         {{#match posts.length ">=" 7}}
                             {{#get "posts" include="authors" limit="19"}}
-                                {{#foreach posts from="8" limit="12"}}
+                                {{#foreach posts from="8"}}
                                     {{> "post-card" lazyLoad=true}}
                                 {{/foreach}}
                             {{/get}}
@@ -77,6 +77,12 @@
                 {{/match}}
 
             </div>
+
+            {{#match pagination.pages ">" 1}}
+                <div class="gh-more is-title">
+                    <a href="{{@site.url}}/page/2">See all {{> "icons/arrow"}}</a>
+                </div>
+            {{/match}}
         </main>
 
         {{#if showSidebar}}
@@ -112,12 +118,6 @@
                 </div>
             </aside>
         {{/if}}
-
-        {{#match pagination.pages ">" 1}}
-            <div class="gh-more is-title">
-                <a href="{{@site.url}}/page/2">See all {{> "icons/arrow"}}</a>
-            </div>
-        {{/match}}
 
     </div>
 </section>
