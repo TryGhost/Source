@@ -1594,7 +1594,7 @@ Search                         LOGO                    Login Subscribe
     grid-column: span 12;
 }
 
-.home-template .gh-more {
+.home-template .gh-feed:has(> :nth-child(12):last-child) ~ .gh-more {
     display: block;
 }
 
@@ -2381,6 +2381,7 @@ blockquote.kg-blockquote-alt {
 .kg-bookmark-card a.kg-bookmark-container,
 .kg-bookmark-card a.kg-bookmark-container:hover {
     background: var(--background-color) !important;
+    color: var(--color-darker-gray) !important;
 }
 
 .kg-bookmark-card .kg-bookmark-content {
