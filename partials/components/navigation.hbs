@@ -1,37 +1,60 @@
 <header id="gh-navigation" class="gh-navigation is-{{#match navigationLayout "Logo on the left"}}left-logo{{else match navigationLayout "Stacked"}}stacked{{else}}middle-logo{{/match}}{{#match @custom.header_and_footer_color "Accent color"}} has-accent-color{{/match}} gh-outer">
     <div class="gh-navigation-inner gh-inner">
-
-        <div class="gh-navigation-brand">
-            <a class="gh-navigation-logo is-title" href="{{@site.url}}">
-                {{#if @site.logo}}
-                    <img src="{{@site.logo}}" alt="{{@site.title}}">
-                {{else}}
-                    {{@site.title}}
-                {{/if}}
-            </a>
-            {{> "search-toggle"}}
-            <button class="gh-burger gh-icon-button" aria-label="Menu">
-                {{> "icons/burger"}}
-                {{> "icons/close"}}
-            </button>
+        <div class="gh-navigation-pagetitle">
+            <div class="gh-navigation-brand">
+                <div class="gh-navigation-brand-logo-username">
+                    <a class="gh-navigation-logo is-title" href="{{@site.url}}">
+                        {{#if @site.logo}}
+                            <img src="{{@site.logo}}" alt="{{@site.title}}">
+                        {{else}}
+                            <svg width="68" height="42" viewBox="0 0 68 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g clip-path="url(#clip0_762_2210)">
+                                <path d="M5.43004 26C5.18095 26 5.0315 25.8491 5.0315 25.5977V15.6402L0 0.402321C0 0.15087 0 0 0.348718 0H4.53333C4.78242 0 4.93187 0.10058 4.98168 0.402321L7.52234 9.90716H7.67179L10.1128 0.402321C10.2125 0.15087 10.3121 0 10.5612 0H14.696C14.9949 0 15.0945 0.15087 14.9949 0.402321L10.0132 15.6905V25.648C10.0132 25.8994 9.86374 26.0503 9.61465 26.0503H5.43004V26Z" fill="#2B2B2B"/>
+                                <path d="M29.6411 26C29.392 26 29.2923 25.8491 29.2425 25.5977L26.951 10.1586H26.8513L24.4601 25.5977C24.4601 25.8491 24.2608 26 24.0616 26H20.3751C20.126 26 19.9766 25.8491 19.9766 25.5977L15.8418 0.402321C15.8418 0.15087 15.9414 0 16.1905 0H20.4748C20.7238 0 20.8733 0.10058 20.8733 0.402321L22.5671 16.4449H22.6667L25.0579 0.402321C25.0579 0.15087 25.2572 0 25.4564 0H28.296C28.5451 0 28.6945 0.10058 28.7444 0.402321L31.1356 16.4449H31.2352L32.9788 0.402321C32.9788 0.15087 33.1781 0 33.3773 0H37.5619C37.811 0 37.9605 0.15087 37.8608 0.402321L33.726 25.648C33.6264 25.8994 33.5268 26.0503 33.3275 26.0503H29.5912L29.6411 26Z" fill="#2B2B2B"/>
+                                <path d="M39.4551 0.402321C39.4551 0.15087 39.6045 0 39.8536 0H44.0382C44.2873 0 44.4368 0.15087 44.4368 0.402321V21.2727C44.4368 21.4236 44.5364 21.5242 44.6858 21.5242H51.2119C51.4609 21.5242 51.6104 21.675 51.6104 21.9265V25.6983C51.6104 25.9497 51.4609 26.1006 51.2119 26.1006H39.9034C39.6543 26.1006 39.5049 25.9497 39.5049 25.6983V0.402321H39.4551Z" fill="#2B2B2B"/>
+                                <path d="M63.2178 26C62.9687 26 62.8691 25.8994 62.8192 25.6983L59.88 15.8414H58.4354C58.2859 15.8414 58.1863 15.942 58.1863 16.0928V25.648C58.1863 25.8994 58.0368 26.0503 57.7877 26.0503H53.6031C53.354 26.0503 53.2046 25.8994 53.2046 25.648V0.402321C53.2046 0.15087 53.354 0 53.6031 0H59.7306C64.3137 0 67.2529 2.16248 67.2529 7.94584C67.2529 13.7292 66.157 13.3772 64.3636 14.5841L67.9006 25.5977C68.0002 25.7988 67.9006 26 67.7013 26H63.168H63.2178ZM62.3211 7.94584C62.3211 5.23017 61.4742 4.37524 59.5313 4.37524H58.4354C58.2859 4.37524 58.1863 4.47582 58.1863 4.62669V11.265C58.1863 11.4159 58.2859 11.5164 58.4354 11.5164H59.5313C61.4742 11.5164 62.3211 10.7118 62.3211 7.94584Z" fill="#2B2B2B"/>
+                                </g>
+                                <defs>
+                                <clipPath id="clip0_762_2210">
+                                <rect width="70" height="26" fill="white"/>
+                                </clipPath>
+                                </defs>
+                            </svg>
+                        {{/if}}
+                    </a>
+                    {{#if @member}}
+                    <div class="gh-navigation-user">
+                        <img src="{{@member.profile_image}}" alt="{{@member.name}}" class="gh-navigation-user-avatar">
+                        <span class="gh-navigation-user-name">{{@member.name}}</span>
+                    </div>
+                    {{/if}}
+                </div>
+                <button class="gh-burger gh-icon-button" aria-label="Menu">
+                    {{> "icons/burger"}}
+                    {{> "icons/close"}}
+                </button>
+            </div>
+            <div class="gh-page-title">
+                {{#is "home"}}
+                    <h1>Home</h1>
+                {{/is}}
+                {{#page}}
+                    {{#if title}}
+                        <h1>{{title}}</h1>
+                    {{/if}}
+                    {{!-- TODO：記事詳細などの時に入れる値などのロジック --}}
+                {{/page}}
+            </div>
         </div>
 
         <nav class="gh-navigation-menu">
             {{navigation}}
-            {{#unless @site.members_enabled}}
-                {{#match navigationLayout "Stacked"}}
-                    {{> "search-toggle"}}
-                {{/match}}
-            {{/unless}}
         </nav>
 
         <div class="gh-navigation-actions">
             {{#unless @site.members_enabled}}
-                {{^match navigationLayout "Stacked"}}
-                    {{> "search-toggle"}}
-                {{/match}}
+
             {{else}}
-                {{> "search-toggle"}}
                 <div class="gh-navigation-members">
                     {{#unless @member}}
                         {{#unless @site.members_invite_only}}

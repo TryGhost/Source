@@ -403,6 +403,8 @@ button.gh-form-input {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    width: 390px;
+    margin: auto;
 }
 
 .gh-outer {
@@ -415,8 +417,7 @@ button.gh-form-input {
 
 .gh-inner {
     margin: 0 auto;
-    max-width: var(--container-width);
-    width: 100%;
+    max-width: 390px;
 }
 
 .gh-main {
@@ -460,6 +461,8 @@ button.gh-form-input {
     font-weight: 550;
     background-color: var(--background-color);
     color: var(--color-darker-gray);
+    width: 100%;
+    padding: 10px 0px;
 }
 
 .gh-navigation :is(.gh-navigation-logo, a:not(.gh-button), .gh-icon-button) {
@@ -472,10 +475,29 @@ button.gh-form-input {
     column-gap: 24px;
     align-items: center;
     height: 100%;
+    padding: 0px 20px;
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 1fr;
+    gap: 48px;
+}
+.gh-navigation-pagetitle{
+    display: flex;
+    flex-direction: column;
 }
 
 .gh-navigation-brand {
-    line-height: 1;
+    display: flex; /* Flexboxを使用 */
+    justify-content: space-between; /* 子要素を等間隔に配置 */
+    align-items: center; /* 縦方向で中央に揃える */
+    height: 42px;
+    line-height: 2;
+    width: 100%; /* 要素を幅いっぱいに広げる */
+}
+
+.gh-navigation-brand-logo-username{
+    display: flex;
+    align-items: center;
+    gap: 16px;
 }
 
 .gh-navigation-logo {
@@ -484,6 +506,7 @@ button.gh-form-input {
     font-weight: 725;
     letter-spacing: -0.015em;
     white-space: nowrap;
+    width: fit-content;
 }
 
 .gh-navigation-logo img {
@@ -494,6 +517,11 @@ button.gh-form-input {
     display: flex;
     gap: 24px;
     align-items: center;
+    position: fixed;
+    visibility: hidden;
+    opacity: 0;
+    transition: none;
+    transform: translateY(0);
 }
 
 .gh-navigation .nav {
@@ -522,8 +550,12 @@ button.gh-form-input {
     display: flex;
     gap: 24px;
     align-items: center;
-    justify-content: flex-end;
     background-color: var(--background-color);
+    position: fixed;
+    justify-content: center;
+    visibility: hidden;
+    opacity: 0;
+    text-align: center;
 }
 
 .gh-navigation.has-accent-color .gh-navigation-actions {
@@ -542,35 +574,28 @@ button.gh-form-input {
     font-weight: 600;
 }
 
-.gh-search {
-    margin-right: -2px;
-    margin-left: -2px;
+.gh-navigation-user {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
-@media (max-width: 767px) {
-    .gh-navigation-logo {
-        white-space: normal;
-    }
-
-    .gh-navigation-members {
-        flex-direction: column-reverse;
-        gap: 16px;
-        width: 100%;
-    }
-
-    .gh-navigation-actions .gh-search {
-        display: none;
-    }
+.gh-navigation-user-avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    margin-right: 4px;
 }
 
-@media (min-width: 768px) {
-    .gh-navigation-brand .gh-search {
-        display: none;
-    }
+.gh-navigation-user-name {
+    font-size: 13px;
+    font-weight: 400;
+    color: #494949;
+}
 
-    .gh-navigation:not(.is-dropdown-loaded) .gh-navigation-menu .nav > li {
-        opacity: 0;
-    }
+.gh-page-title {
+    color: #333333;
+    font-size: 16px;
 }
 
 /* 6.1. Navigation styles */
@@ -586,129 +611,6 @@ button.gh-form-input {
 
 /* 6.2. Navigation layouts */
 
-/*
-======================================================================
-LOGO   Home About Collection Author Portal             Login Subscribe
-======================================================================
-*/
-
-.gh-navigation.is-left-logo .gh-navigation-inner {
-    grid-template-columns: auto 1fr auto;
-}
-
-@media (min-width: 768px) {
-    .gh-navigation.is-left-logo .gh-navigation-logo:not(:has(img)) {
-        top: -2px;
-    }
-}
-
-@media (min-width: 992px) {
-    .gh-navigation.is-left-logo .gh-navigation-menu {
-        margin-right: 100px;
-        margin-left: 16px;
-    }
-}
-
-/*
-======================================================================
-Home About Collection            LOGO                  Login Subscribe
-======================================================================
-*/
-
-.gh-navigation.is-middle-logo .gh-navigation-inner {
-    grid-template-columns: 1fr auto 1fr;
-}
-
-.gh-navigation.is-middle-logo .gh-navigation-brand {
-    grid-column-start: 2;
-}
-
-.gh-navigation.is-middle-logo .gh-navigation-actions {
-    gap: 28px;
-}
-
-@media (min-width: 992px) {
-    .gh-navigation.is-middle-logo .gh-navigation-menu {
-        margin-right: 64px;
-    }
-}
-
-/*
-======================================================================
-Search                         LOGO                    Login Subscribe
-                 Home About Collection Author Portal
-======================================================================
-*/
-
-.gh-navigation.is-stacked {
-    position: relative;
-    height: auto;
-}
-
-.gh-navigation.is-stacked .gh-navigation-inner {
-    grid-template-columns: 1fr auto 1fr;
-}
-
-.gh-navigation.is-stacked .gh-navigation-brand {
-    display: flex;
-    align-items: center;
-    grid-row-start: 1;
-    grid-column-start: 2;
-    min-height: 80px;
-}
-
-@media (max-width: 767px) {
-    .gh-navigation.is-stacked .gh-navigation-brand {
-        min-height: unset;
-    }
-}
-
-@media (min-width: 992px) {
-    .gh-navigation.is-stacked .gh-navigation-inner {
-        padding: 0;
-    }
-
-    .gh-navigation.is-stacked .gh-navigation-brand {
-        display: flex;
-        align-items: center;
-        height: 80px;
-    }
-
-    .gh-navigation.is-stacked .gh-navigation-menu {
-        grid-row-start: 2;
-        grid-column: 1 / 4;
-        justify-content: center;
-        height: 60px;
-        margin: 0 48px;
-    }
-
-    .gh-navigation.is-stacked .gh-navigation-menu::before,
-    .gh-navigation.is-stacked .gh-navigation-menu::after {
-        position: absolute;
-        top: 80px;
-        left: 0;
-        width: 100%;
-        height: 1px;
-        content: "";
-        background-color: var(--color-border);
-    }
-
-    .gh-navigation.is-stacked .gh-navigation-menu::after {
-        top: 140px;
-    }
-
-    .gh-navigation.is-stacked .gh-navigation-actions {
-        grid-row-start: 1;
-        grid-column: 1 / 4;
-        justify-content: space-between;
-    }
-
-    .gh-navigation.is-stacked .gh-navigation-actions .gh-search {
-        display: flex;
-        gap: 10px;
-        width: auto;
-    }
-}
 
 /* 6.3. Dropdown menu */
 
@@ -762,15 +664,12 @@ Search                         LOGO                    Login Subscribe
     padding: 8px 0;
 }
 
-/* 6.4. Mobile menu */
-
 .gh-burger {
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
     display: none;
-    margin-right: -7px;
     margin-left: 4px;
 }
 
@@ -791,140 +690,99 @@ Search                         LOGO                    Login Subscribe
     display: block;
 }
 
-@media (max-width: 767px) {
-    .gh-burger {
-        display: flex;
-    }
 
-    #gh-navigation {
-        height: 64px;
-    }
-
-    #gh-navigation .gh-navigation-inner {
-        grid-template-rows: auto 1fr auto;
-        grid-template-columns: 1fr;
-        gap: 48px;
-    }
-
-    #gh-navigation .gh-navigation-brand {
-        display: grid;
-        grid-template-columns: 1fr auto auto;
-        grid-column-start: 1;
-        align-items: center;
-        height: 64px;
-    }
-
-    #gh-navigation .gh-navigation-logo {
-        font-size: 2.2rem;
-    }
-
-    #gh-navigation .gh-navigation-menu,
-    #gh-navigation .gh-navigation-actions {
-        position: fixed;
-        justify-content: center;
-        visibility: hidden;
-        opacity: 0;
-    }
-
-    #gh-navigation .gh-navigation-menu {
-        transition: none;
-        transform: translateY(0);
-    }
-
-    #gh-navigation .nav {
-        gap: 20px;
-        align-items: center;
-        line-height: 1.4;
-    }
-
-    #gh-navigation .nav a {
-        font-size: 1.75rem;
-        font-weight: 600;
-        text-transform: none;
-    }
-
-    #gh-navigation .nav li {
-        opacity: 0;
-        transform: translateY(-4px);
-    }
-
-    #gh-navigation .gh-navigation-actions {
-        text-align: center;
-    }
-
-    #gh-navigation :is(.gh-button, a[data-portal="signin"]) {
-        opacity: 0;
-        transform: translateY(8px);
-    }
-
-    #gh-navigation .gh-button {
-        width: 100%;
-        font-size: 1.75rem;
-        text-transform: none;
-    }
-
-    #gh-navigation a[data-portal="signin"] {
-        font-size: 1.75rem;
-    }
-
-    #gh-main {
-        transition: opacity 0.4s;
-    }
-
-    .is-open#gh-navigation {
-        position: fixed;
-        inset: 0;
-        z-index: 3999999;
-        height: 100%;
-        overflow-y: scroll;
-        -webkit-overflow-scrolling: touch;
-    }
-
-    .is-open#gh-navigation .gh-navigation-menu,
-    .is-open#gh-navigation .gh-navigation-actions {
-        position: static;
-        visibility: visible;
-        opacity: 1;
-    }
-
-    .is-open#gh-navigation .nav {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .is-open#gh-navigation .nav li {
-        opacity: 1;
-        transition: transform 0.2s, opacity 0.2s;
-        transform: translateY(0);
-    }
-
-    .is-open#gh-navigation .gh-navigation-actions {
-        position: sticky;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        display: inline-flex;
-        flex-direction: column;
-        gap: 12px;
-        align-items: center;
-        padding: var(--container-gap) 0;
-    }
-
-    .is-open#gh-navigation :is(.gh-button, a[data-portal="signin"]) {
-        opacity: 1;
-        transition: transform 0.4s, opacity 0.4s;
-        transition-delay: 0.2s;
-        transform: translateY(0);
-    }
-
-    .is-open#gh-navigation a[data-portal="signin"] {
-        transition-delay: 0.4s;
-    }
-
-    .is-open#gh-main {
-        opacity: 0;
-    }
+.gh-burger {
+    display: flex;
 }
+
+#gh-navigation .nav a {
+    font-size: 24px;
+    font-weight: 700;
+    text-transform: none;
+}
+
+#gh-navigation .nav li {
+    opacity: 0;
+    transform: translateY(-4px);
+}
+
+#gh-navigation :is(.gh-button, a[data-portal="signin"]) {
+    opacity: 0;
+    transform: translateY(8px);
+}
+
+#gh-navigation .gh-button {
+    width: 100%;
+    font-size: 1.75rem;
+    text-transform: none;
+}
+
+#gh-navigation a[data-portal="signin"] {
+    font-size: 1.75rem;
+}
+
+#gh-main {
+    transition: opacity 0.4s;
+}
+
+.is-open#gh-navigation {
+    position: fixed;
+    inset: 0;
+    z-index: 3999999;
+    height: 100%;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
+.is-open#gh-navigation .gh-inner{
+    padding: 0px 20px;
+}
+
+.is-open#gh-navigation .gh-navigation-menu,
+.is-open#gh-navigation .gh-navigation-actions {
+    position: static;
+    visibility: visible;
+    opacity: 1;
+}
+
+.is-open#gh-navigation .nav {
+    display: flex;
+    flex-direction: column;
+}
+
+.is-open#gh-navigation .nav li {
+    opacity: 1;
+    transition: transform 0.2s, opacity 0.2s;
+    transform: translateY(0);
+}
+
+.is-open#gh-navigation .gh-navigation-actions {
+    position: sticky;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: inline-flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+    padding: var(--container-gap) 0;
+}
+
+.is-open#gh-navigation :is(.gh-button, a[data-portal="signin"]) {
+    opacity: 1;
+    transition: transform 0.4s, opacity 0.4s;
+    transition-delay: 0.2s;
+    transform: translateY(0);
+}
+
+.is-open#gh-navigation a[data-portal="signin"] {
+    transition-delay: 0.4s;
+}
+
+.is-open#gh-main {
+    opacity: 0;
+}
+
 
 /* 7. Card
 /* ---------------------------------------------------------- */
@@ -1026,6 +884,7 @@ Search                         LOGO                    Login Subscribe
 .gh-header {
     position: relative;
     margin-top: 40px;
+    width: 100%;
 }
 
 .gh-header-inner {
