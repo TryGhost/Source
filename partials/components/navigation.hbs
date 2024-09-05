@@ -1,37 +1,48 @@
 <header id="gh-navigation" class="gh-navigation is-{{#match navigationLayout "Logo on the left"}}left-logo{{else match navigationLayout "Stacked"}}stacked{{else}}middle-logo{{/match}}{{#match @custom.header_and_footer_color "Accent color"}} has-accent-color{{/match}} gh-outer">
     <div class="gh-navigation-inner gh-inner">
-
-        <div class="gh-navigation-brand">
-            <a class="gh-navigation-logo is-title" href="{{@site.url}}">
-                {{#if @site.logo}}
-                    <img src="{{@site.logo}}" alt="{{@site.title}}">
-                {{else}}
-                    {{@site.title}}
-                {{/if}}
-            </a>
-            {{> "search-toggle"}}
-            <button class="gh-burger gh-icon-button" aria-label="Menu">
-                {{> "icons/burger"}}
-                {{> "icons/close"}}
-            </button>
+        <div class="gh-navigation-pagetitle">
+            <div class="gh-navigation-brand">
+                <div class="gh-navigation-brand-logo-username">
+                    <a class="gh-navigation-logo is-title" href="{{@site.url}}">
+                        {{#if @site.logo}}
+                            <img src="{{@site.logo}}" alt="{{@site.title}}">
+                        {{else}}
+                            <img src="../../assets/images/navigation-logo.svg" alt="{{@site.title}}">
+                        {{/if}}
+                    </a>
+                    {{#if @member}}
+                    <div class="gh-navigation-user">
+                        <img src="{{@member.profile_image}}" alt="{{@member.name}}" class="gh-navigation-user-avatar">
+                        <span class="gh-navigation-user-name">{{@member.name}}</span>
+                    </div>
+                    {{/if}}
+                </div>
+                <button class="gh-burger gh-icon-button" aria-label="Menu">
+                    {{> "icons/burger"}}
+                    {{> "icons/close"}}
+                </button>
+            </div>
+            <div class="gh-page-title">
+                {{#is "home"}}
+                    <h1>Home</h1>
+                {{/is}}
+                {{#page}}
+                    {{#if title}}
+                        <h1>{{title}}</h1>
+                    {{/if}}
+                    {{!-- TODO：記事詳細などの時に入れる値などのロジック --}}
+                {{/page}}
+            </div>
         </div>
 
         <nav class="gh-navigation-menu">
             {{navigation}}
-            {{#unless @site.members_enabled}}
-                {{#match navigationLayout "Stacked"}}
-                    {{> "search-toggle"}}
-                {{/match}}
-            {{/unless}}
         </nav>
 
         <div class="gh-navigation-actions">
             {{#unless @site.members_enabled}}
-                {{^match navigationLayout "Stacked"}}
-                    {{> "search-toggle"}}
-                {{/match}}
+
             {{else}}
-                {{> "search-toggle"}}
                 <div class="gh-navigation-members">
                     {{#unless @member}}
                         {{#unless @site.members_invite_only}}
