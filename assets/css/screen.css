@@ -483,6 +483,7 @@ button.gh-form-input {
 .gh-navigation-pagetitle{
     display: flex;
     flex-direction: column;
+    gap: 8px;
 }
 
 .gh-navigation-brand {
