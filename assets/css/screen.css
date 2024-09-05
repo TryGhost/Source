@@ -588,14 +588,14 @@ button.gh-form-input {
 }
 
 .gh-navigation-user-name {
-    font-size: 13px;
+    font-size: 1.3rem;
     font-weight: 400;
     color: #494949;
 }
 
 .gh-page-title {
     color: #333333;
-    font-size: 16px;
+    font-size: 1.2rem;
 }
 
 /* 6.1. Navigation styles */
