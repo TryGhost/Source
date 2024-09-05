@@ -486,12 +486,12 @@ button.gh-form-input {
 }
 
 .gh-navigation-brand {
-    display: flex; /* Flexboxを使用 */
-    justify-content: space-between; /* 子要素を等間隔に配置 */
-    align-items: center; /* 縦方向で中央に揃える */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     height: 42px;
     line-height: 2;
-    width: 100%; /* 要素を幅いっぱいに広げる */
+    width: 100%;
 }
 
 .gh-navigation-brand-logo-username{
