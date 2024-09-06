@@ -41,7 +41,8 @@ production stylesheet in assets/built/screen.css
 20. Design settings
 21. Footer
 22. Lightbox
-23. Home Gallery 
+23. Home Gallery
+24. Home Post
 
 */
 
@@ -409,7 +410,7 @@ button.gh-form-input {
 }
 
 .gh-outer {
-    padding: 0 max(4vmin, 20px);
+    padding: 0 20px;
 }
 
 .gh-outer .gh-outer {
@@ -1235,7 +1236,6 @@ button.gh-form-input {
 
     .gh-header.is-highlight .gh-featured-feed {
         display: flex;
-        /* gap: var(--grid-gap); */
     }
 
     .gh-header.is-highlight .gh-card-image {
@@ -1253,23 +1253,15 @@ button.gh-form-input {
     display: flex;
     margin-top: 0;
     padding-block: 160px;
+    align-items: start;
 }
 
 .gh-header.is-classic .gh-header-inner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 48px;
-    overflow: unset;
-    margin: auto;
-    max-width: 1020px;
-    text-align: center;
+    margin: 52px 0 0;
 }
 
 .gh-header.is-classic .gh-header-title {
-    font-size: 4.6rem;
-    line-height: 1.1;
-    letter-spacing: -0.028em;
+
 }
 
 .gh-header.is-classic.has-image {
@@ -3186,6 +3178,7 @@ figcaption a {
 .gh-home-contents {
     background-color: #2B2B2B;
     color: #fff;
+    padding-bottom: 60px;
 }
 
 .gh-home-contents-head {
@@ -3207,4 +3200,44 @@ figcaption a {
 .gh-home-contents-head-more span {
     font-weight: 700;
     margin-right: 4px;
+}
+
+/* 24. Home Post 
+/* ---------------------------------------------------------- */
+
+.gh-home-post-feed {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 20px;
+    row-gap: 40px;
+    padding: 0px 20px;
+    align-items: start;
+    grid-auto-rows: 1fr;
+}
+
+.gh-home-post-card {
+    display: flex;
+    flex-direction: column;
+    min-height: 340px;
+    justify-content: space-between;
+}
+
+.gh-home-post-card a {
+    height: 264px;
+}
+
+.gh-home-post-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.gh-home-post-title {
+    font-size: 1.4rem;
+
+}
+
+.gh-home-post-date {
+    align-items: center;
+    text-align: left;
 }

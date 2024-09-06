@@ -15,13 +15,9 @@
 
         {{!-- Landing layout --}}
         {{#match headerStyle "Landing"}}
-            <h1 class="gh-header-title is-title">{{#if @custom.header_text}}{{@custom.header_text}}
-                {{else}}
-                    YUTA<br/>
-                    WATANABE’s<br/>
-                    Locker Room
-                {{/if}}
-            </h1>
+            <div class="gh-header-title is-title">
+                {{> "components/header-logo"}}
+            </div>
         {{/match}}
     </div>
 
