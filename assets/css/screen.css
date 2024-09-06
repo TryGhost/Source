@@ -3435,3 +3435,71 @@ figcaption a {
 	line-height: normal;
 	letter-spacing: 1px;
 }
+
+/* Tags
+/* ---------------------------------------------------------- */
+.gh-tag-section {
+	margin: 16px 20px 65px;
+}
+
+.gh-tag-section-title {
+	color: #fff;
+	font-family: "Noto Sans";
+	font-size: 2.4rem;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+	letter-spacing: 1px;
+}
+
+.gh-tag-post-feed {
+	margin-top: 49px;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	column-gap: 20px;
+	row-gap: 38px;
+	align-items: start;
+	grid-auto-rows: 1fr;
+}
+
+.gh-tag-post-card {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	min-height: 340px;
+	justify-content: space-between;
+}
+
+.gh-tag-post-card a {
+	height: 264px;
+}
+
+.gh-tag-post-card img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.gh-tag-post-title {
+	color: #fff;
+	font-feature-settings: "liga" off, "clig" off;
+	font-family: "Noto Sans";
+	font-size: 1.4rem;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+	letter-spacing: 1px;
+}
+
+.gh-tag-post-date {
+	align-items: center;
+	text-align: left;
+	color: #fff;
+	font-feature-settings: "liga" off, "clig" off;
+	font-family: "Noto Sans";
+	font-size: 1rem;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	letter-spacing: 1px;
+}
