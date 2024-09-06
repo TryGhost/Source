@@ -2628,7 +2628,6 @@ figcaption a {
 
 .gh-footer-site-title {
 	text-align: left;
-	height: 60px;
 	font-size: 2.4rem;
 	color: #fff;
 	font-feature-settings: "liga" off, "clig" off;
@@ -2636,7 +2635,6 @@ figcaption a {
 	letter-spacing: 1px;
 }
 .gh-footer-menu {
-	height: 150px;
 	margin-top: 53px;
 }
 
@@ -2670,7 +2668,6 @@ figcaption a {
 }
 
 .gh-footer-copyright {
-	height: 30px;
 	margin-top: 49px;
 	color: #fff;
 	text-align: center;
