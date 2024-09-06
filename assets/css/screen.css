@@ -3196,7 +3196,6 @@ figcaption a {
 }
 
 .gh-error-code {
-	height: 44px;
 	color: #2b2b2b;
 	font-feature-settings: "liga" off, "clig" off;
 	font-size: 3.2rem;
@@ -3207,7 +3206,6 @@ figcaption a {
 }
 
 .gh-error-description {
-	height: 19px;
 	color: #2b2b2b;
 	font-feature-settings: "liga" off, "clig" off;
 	font-size: 1.4rem;
@@ -3228,7 +3226,7 @@ figcaption a {
 	align-self: end;
 	display: flex;
 	width: 350px;
-	height: 54px;
+	height: 5.4rem;
 	padding: 16px 20px 16px 24px;
 	justify-content: center;
 	align-items: center;
