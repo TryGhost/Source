@@ -172,10 +172,13 @@ h1, h2, h3, h4, h5, h6 {
 /* ---------------------------------------------------------- */
 
 body {
-    font-family: var(--font-sans);
-    font-size: 1.6rem;
-    background-color: var(--background-color);
-    color: var(--color-primary-text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-image: url("../images/bg-ywlr.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 a {
@@ -694,7 +697,7 @@ button.gh-form-input {
 }
 
 #gh-navigation .nav a {
-    font-size: 2.4rem;
+    font-size: 24px;
     font-weight: 700;
     text-transform: none;
 }
