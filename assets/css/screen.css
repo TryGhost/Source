@@ -3197,7 +3197,13 @@ figcaption a {
     align-items: center;
 }
 
+.gh-home-contents-head-more a {
+    display: flex;
+    align-items: center;
+}
+
 .gh-home-contents-head-more span {
+    color: #fff;
     font-weight: 700;
     margin-right: 4px;
 }
