@@ -44,10 +44,8 @@ production stylesheet in assets/built/screen.css
 23. 404Error
 24. Home Gallery
 25. Home Post
-
-23. Home Gallery
-24. Home Post
-25. Gallery Page
+26. Gallery Page
+27. About Page
 
 */
 
@@ -3322,7 +3320,7 @@ figcaption a {
     text-align: left;
 }
 
-/* 25. Gallery Page
+/* 26. Gallery Page
 /* ---------------------------------------------------------- */
 
 .gh-gallery-page-article {
@@ -3330,7 +3328,7 @@ figcaption a {
     margin-bottom: 40px;
 }
 
-/* 26. About Page
+/* 27. About Page
 /* ---------------------------------------------------------- */
 
 .gh-about-page-article {
