@@ -2638,7 +2638,7 @@ figcaption a {
 	margin-top: 53px;
 }
 
-.gh-footer-menu .nav {
+.gh-footer-menu > .nav {
 	padding-left: 0;
 	display: flex;
 	flex-direction: column;
