@@ -21,7 +21,13 @@
 		<section class="gh-author-archive">
 			<h2 class="gh-author-section-title">New</h2>
 			<div class="gh-author-post-feed">
-				{{#get "posts" include="authors" limit="4"}}
+				{{#get
+					"posts"
+					filter="authors:{{slug}}"
+					include="authors"
+					limit="4"
+					order="published_at desc"
+				}}
 					{{#foreach posts}}
 						<article class="gh-author-post-card">
 							<a href="{{url}}">
