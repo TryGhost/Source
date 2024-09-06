@@ -8,7 +8,7 @@
 				<h2 class="gh-tag-section-title">{{name}}</h2>
 			{{/if}}
 			<div class="gh-tag-post-feed">
-				{{#get "posts" include="tags" limit="10"}}
+				{{#get "posts" filter="tags:{{slug}}" include="tags" limit="all"}}
 					{{#foreach posts}}
 						<article class="gh-tag-post-card">
 							<a href="{{url}}">
