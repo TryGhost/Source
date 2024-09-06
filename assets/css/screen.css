@@ -41,6 +41,7 @@ production stylesheet in assets/built/screen.css
 20. Design settings
 21. Footer
 22. Lightbox
+23. Home Gallery 
 
 */
 
@@ -422,6 +423,7 @@ button.gh-form-input {
 
 .gh-main {
     flex-grow: 1;
+    background-color: #2B2B2B;
 }
 
 .gh-canvas,
@@ -1462,7 +1464,7 @@ button.gh-form-input {
 
 .gh-container {
     flex-grow: 1;
-    margin-top: 64px;
+    background-color: #2B2B2B;
 }
 
 .gh-container-inner {
@@ -3176,4 +3178,33 @@ figcaption a {
 
 .pswp--minimal--dark .pswp__top-bar {
     background: none;
+}
+
+
+/* 23. Home Gallery 
+/* ---------------------------------------------------------- */
+.gh-home-contents {
+    background-color: #2B2B2B;
+    color: #fff;
+}
+
+.gh-home-contents-head {
+    padding: 20px 20px 30px;
+    display: flex;
+}
+
+.gh-home-contents-head-title {
+    font-size: 2.4rem;
+    font-weight: 700;
+}
+
+.gh-home-contents-head-more {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+.gh-home-contents-head-more span {
+    font-weight: 700;
+    margin-right: 4px;
 }
