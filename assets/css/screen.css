@@ -45,6 +45,9 @@ production stylesheet in assets/built/screen.css
 24. Home Gallery
 25. Home Post
 
+23. Home Gallery
+24. Home Post
+25. Gallery Page
 
 */
 
@@ -3317,4 +3320,12 @@ figcaption a {
 .gh-home-post-date {
     align-items: center;
     text-align: left;
+}
+
+/* 25. Gallery Page
+/* ---------------------------------------------------------- */
+
+.gh-gallery-page-article {
+    padding: 20px;
+    margin-bottom: 40px;
 }
