@@ -607,7 +607,59 @@ button.gh-form-input {
     color: #333333;
     font-size: 1.2rem;
 }
+.gh-fixed-naigation {
+	display: none;
+}
 
+/* メインコンテンツの幅(390px) + 固定ナビゲーションの幅2つ分(165px × 2) + 右橋からの余白2つ分(5vw × 2) + バッファ(30px) 以上でナビゲーションが表示 */
+@media screen and (width >= calc(750px + 10vw)) {
+	.gh-fixed-naigation {
+		position: fixed;
+		top: 3vh;
+		right: 5vw;
+		display: flex;
+		flex-direction: column;
+		gap: 22px;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.gh-signin-link {
+		padding: 10px 14px;
+		text-align: center;
+		border-radius: 30px;
+		background: #2b2b2b;
+		color: #fff;
+		font-feature-settings: "liga" off, "clig" off;
+		font-family: "Noto Sans";
+		font-size: 1rem;
+		font-style: normal;
+		font-weight: 500;
+		line-height: normal;
+		letter-spacing: 1px;
+	}
+
+	.gh-fixed-naigation-list > .nav {
+		padding-left: 0;
+		display: flex;
+		flex-direction: column;
+		list-style-type: none;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.gh-fixed-naigation-list a {
+		color: var(--white, #fff);
+		text-align: center;
+		font-feature-settings: "liga" off, "clig" off;
+		font-family: "Noto Sans";
+		font-size: 2.4rem;
+		font-style: normal;
+		font-weight: 700;
+		line-height: 2;
+		letter-spacing: 1px;
+	}
+}
 /* 6.1. Navigation styles */
 
 .gh-navigation.has-accent-color {

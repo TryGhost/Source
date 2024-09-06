@@ -1,0 +1,11 @@
+<div class="gh-fixed-naigation">
+	{{#unless @member}}
+		{{! TODO: Buttonコンポーネントを使用する }}
+		<a class="gh-signin-link" href="#/portal/signin" data-portal="signin">{{t
+				"🏀ロッカールームへ入室⛹️"
+			}}</a>
+	{{/unless}}
+	<nav class="gh-fixed-naigation-list">
+		{{navigation}}
+	</nav>
+</div>
