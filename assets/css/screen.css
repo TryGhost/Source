@@ -3197,6 +3197,7 @@ figcaption a {
 
 .gh-error-code {
 	color: #2b2b2b;
+	font-family: "Noto Sans";
 	font-feature-settings: "liga" off, "clig" off;
 	font-size: 3.2rem;
 	font-style: normal;
@@ -3207,6 +3208,7 @@ figcaption a {
 
 .gh-error-description {
 	color: #2b2b2b;
+	font-family: "Noto Sans";
 	font-feature-settings: "liga" off, "clig" off;
 	font-size: 1.4rem;
 	font-style: normal;
@@ -3233,6 +3235,11 @@ figcaption a {
 	border-radius: 30px;
 	background: #1b1b1b;
 	color: #fff;
+	font-family: "Noto Sans";
+	font-size: 1.6rem;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
 }
 
 /* 24. Home Gallery 
