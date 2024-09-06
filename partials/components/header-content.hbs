@@ -5,7 +5,7 @@
         {{#match headerStyle "!=" "Magazine"}}
         {{#match headerStyle "!=" "Highlight"}}
             {{#if @site.cover_image}}
-                <img class="gh-header-image" src="../../assets/images/home-header-ywlr.jpeg" alt="{{@site.title}}">
+            <img class="gh-header-image" src="{{asset "images/home-header-ywlr.jpeg"}}" alt="{{@site.title}}">
             {{/if}}
         {{/match}}
         {{/match}}

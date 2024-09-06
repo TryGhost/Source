@@ -7,7 +7,7 @@
                         {{#if @site.logo}}
                             <img src="{{@site.logo}}" alt="{{@site.title}}">
                         {{else}}
-                            <img src="../../assets/images/navigation-logo.svg" alt="{{@site.title}}">
+                            <img src="{{asset "images/navigation-logo.svg"}}" alt="{{@site.title}}">
                         {{/if}}
                     </a>
                     {{#if @member}}
