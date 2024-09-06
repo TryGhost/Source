@@ -44,7 +44,8 @@ production stylesheet in assets/built/screen.css
 23. 404Error
 24. Home Gallery
 25. Home Post
-
+26. Gallery Page
+27. About Page
 
 */
 
@@ -3317,4 +3318,27 @@ figcaption a {
 .gh-home-post-date {
     align-items: center;
     text-align: left;
+}
+
+/* 26. Gallery Page
+/* ---------------------------------------------------------- */
+
+.gh-gallery-page-article {
+    padding: 20px;
+    margin-bottom: 40px;
+}
+
+/* 27. About Page
+/* ---------------------------------------------------------- */
+
+.gh-about-page-article {
+    margin-bottom: 40px;
+}
+
+.gh-about-page-section {
+    padding: 40px 20px 0px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    font-family: "Noto Sans";
 }
