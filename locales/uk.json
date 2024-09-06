@@ -1,17 +1,17 @@
 {
   "Read more": "Читати далі",
-  "Featured": "Рекомендовано",
+  "Featured": "Обрані дописи",
   "Powered by {ghostlink}": "За підтримки {ghostlink}",
   "Search posts, tags and authors": "Пошук дописів, теґів та авторів",
   "Subscribe": "Підписатися",
-  "Sign in": "Увійдіть",
+  "Sign in": "Увійти",
   "Account": "Акаунт",
   "Latest": "Останні",
   "Upgrade": "Покращити",
   "Recommendations": "Рекомендації",
   "See all": "Переглянути всі",
   "Search this site": "Пошук на сайті",
-  "By": "",
+  "By": "Автор",
   "Close (Esc)": "Закрити (Esc)",
   "Share": "Поділитися",
   "Toggle fullscreen": "Повноекранний режим",
@@ -23,5 +23,5 @@
   "This content is for paying subscribers only": "Цей контент доступний лише для платних підписників",
   "This content is for subscribers only": "Цей контент доступний лише для підписників",
   "Upgrade your account": "Покращити свій обліковий запис",
-  "Already member?": "Вже є членом?"
+  "Already member?": "Вже є учасником?"
 }
