@@ -3184,6 +3184,7 @@ figcaption a {
 .gh-home-contents-head {
     padding: 20px 20px 30px;
     display: flex;
+    justify-content: space-between;
 }
 
 .gh-home-contents-head-title {
@@ -3192,7 +3193,6 @@ figcaption a {
 }
 
 .gh-home-contents-head-more {
-    margin-left: auto;
     display: flex;
     align-items: center;
 }
@@ -3200,12 +3200,12 @@ figcaption a {
 .gh-home-contents-head-more a {
     display: flex;
     align-items: center;
+    gap: 4px;
 }
 
 .gh-home-contents-head-more span {
     color: #fff;
     font-weight: 700;
-    margin-right: 4px;
 }
 
 /* 24. Home Post 
