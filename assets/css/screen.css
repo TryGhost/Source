@@ -41,8 +41,10 @@ production stylesheet in assets/built/screen.css
 20. Design settings
 21. Footer
 22. Lightbox
-23. Home Gallery
-24. Home Post
+23. 404Error
+24. Home Gallery
+25. Home Post
+
 
 */
 
@@ -3175,8 +3177,72 @@ figcaption a {
     background: none;
 }
 
+/* 23. 404Error
+/* ---------------------------------------------------------- */
 
-/* 23. Home Gallery 
+.gh-error-content {
+	display: grid;
+	height: 100vh;
+	background-color: #d9d9d9;
+	padding: 24px 20px 27px;
+}
+
+.gh-error-message {
+	display: flex;
+	flex-direction: column;
+	gap: 7px;
+	justify-self: start;
+	align-self: start;
+}
+
+.gh-error-code {
+	color: #2b2b2b;
+	font-family: "Noto Sans";
+	font-feature-settings: "liga" off, "clig" off;
+	font-size: 3.2rem;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+	letter-spacing: 1px;
+}
+
+.gh-error-description {
+	color: #2b2b2b;
+	font-family: "Noto Sans";
+	font-feature-settings: "liga" off, "clig" off;
+	font-size: 1.4rem;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	letter-spacing: 1px;
+}
+
+.gh-error-image {
+	justify-self: center;
+	align-self: start;
+	border-radius: 8px;
+}
+
+.gh-error-link {
+	justify-self: center;
+	align-self: end;
+	display: flex;
+	width: 350px;
+	height: 5.4rem;
+	padding: 16px 20px 16px 24px;
+	justify-content: center;
+	align-items: center;
+	border-radius: 30px;
+	background: #1b1b1b;
+	color: #fff;
+	font-family: "Noto Sans";
+	font-size: 1.6rem;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+/* 24. Home Gallery 
 /* ---------------------------------------------------------- */
 .gh-home-contents {
     background-color: #2B2B2B;
@@ -3213,7 +3279,7 @@ figcaption a {
     font-family: "Noto Sans";
 }
 
-/* 24. Home Post 
+/* 25. Home Post 
 /* ---------------------------------------------------------- */
 
 .gh-home-post-feed {
