@@ -487,6 +487,7 @@ button.gh-form-input {
     display: flex;
     flex-direction: column;
     gap: 8px;
+    font-family: "Noto Sans";
 }
 
 .gh-navigation-brand {
@@ -526,6 +527,7 @@ button.gh-form-input {
     opacity: 0;
     transition: none;
     transform: translateY(0);
+    font-family: "Noto Sans";
 }
 
 .gh-navigation .nav {
@@ -594,6 +596,7 @@ button.gh-form-input {
 .gh-navigation-user-name {
     font-size: 1.3rem;
     font-weight: 400;
+    font-family: "Noto Sans";
     color: #494949;
 }
 
@@ -3190,6 +3193,7 @@ figcaption a {
 .gh-home-contents-head-title {
     font-size: 2.4rem;
     font-weight: 700;
+    font-family: "Noto Sans";
 }
 
 .gh-home-contents-head-more {
@@ -3206,6 +3210,7 @@ figcaption a {
 .gh-home-contents-head-more span {
     color: #fff;
     font-weight: 700;
+    font-family: "Noto Sans";
 }
 
 /* 24. Home Post 
@@ -3226,6 +3231,7 @@ figcaption a {
     flex-direction: column;
     min-height: 340px;
     justify-content: space-between;
+    font-family: "Noto Sans";
 }
 
 .gh-home-post-card a {
@@ -3240,7 +3246,6 @@ figcaption a {
 
 .gh-home-post-title {
     font-size: 1.4rem;
-
 }
 
 .gh-home-post-date {
