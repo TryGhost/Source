@@ -2499,6 +2499,16 @@ unless a heading is the very first element in the post content */
   background-position: right 0 bottom 40%;
 }
 
+.gh-content a[href^="https://www.followthecrypto.org/"]::after
+{
+  background-image: url("../images/follow-the-crypto.svg");
+  background-repeat: no-repeat;
+  background-size: 0.6em;
+  content: "   ";
+  white-space: pre-wrap;
+  background-position: right 0 bottom 40%;
+}
+
 .gh-content .kg-callout-card .kg-callout-text,
 .gh-content .kg-toggle-card .kg-toggle-content > :is(ul, ol, p) {
   font-size: 0.95em;
@@ -4333,7 +4343,8 @@ label[for="light"] svg {
 /* 26. Dark mode overrides 
 /* ---------------------------------------------------------- */
 .kg-audio-card {
-  background-color: var(--card-background-color);
+  background: var(--card-background-color) !important;
+  color: var(--color-primary-text) !important;
 }
 
 .kg-audio-player svg,
