@@ -886,6 +886,7 @@ button.gh-form-input {
     position: relative;
     margin-top: 40px;
     width: 100%;
+    min-height: 690px;
 }
 
 .gh-header-inner {
@@ -1264,7 +1265,7 @@ button.gh-form-input {
 }
 
 .gh-header.is-classic .gh-header-title {
-    font-size: calc(clamp(3rem, 1.82vw + 2.27rem, 4.6rem) * var(--factor, 1));
+    font-size: 4.6rem;
     line-height: 1.1;
     letter-spacing: -0.028em;
 }
