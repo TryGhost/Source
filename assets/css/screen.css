@@ -3329,3 +3329,18 @@ figcaption a {
     padding: 20px;
     margin-bottom: 40px;
 }
+
+/* 26. About Page
+/* ---------------------------------------------------------- */
+
+.gh-about-page-article {
+    margin-bottom: 40px;
+}
+
+.gh-about-page-section {
+    padding: 40px 20px 0px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    font-family: "Noto Sans";
+}
