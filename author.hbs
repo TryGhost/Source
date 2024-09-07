@@ -1,43 +1,47 @@
 {{!< default}}
-{{!-- The tag above means: insert everything in this file into the body of the default.hbs template --}}
+{{! The tag above means: insert everything in this file into the body of the default.hbs template }}
 
-<main class="gh-main gh-outer">
-
-    {{#author}}
-        <section class="gh-archive{{#if @custom.show_publication_info_sidebar}} has-sidebar{{/if}} gh-inner">
-            <div class="gh-archive-inner">
-                <div class="gh-archive-wrapper">
-                    <h1 class="gh-article-title is-title">
-                        {{#if website}}
-                            <a class="gh-author-social-link" href="{{website}}" target="_blank" rel="noopener">{{name}}</a>
-                        {{else}}
-                            {{name}}
-                        {{/if}}
-                    </h1>
-                    {{#if bio}}
-                        <p class="gh-article-excerpt">{{bio}}</p>
-                    {{/if}}
-                    <footer class="gh-author-meta">
-                        <div class="gh-author-social">
-                            {{#if facebook}}
-                                <a class="gh-author-social-link" href="{{facebook_url}}" target="_blank" rel="noopener">{{> "icons/facebook"}}</a>
-                            {{/if}}
-                            {{#if twitter}}
-                                <a class="gh-author-social-link" href="{{twitter_url}}" target="_blank" rel="noopener">{{> "icons/twitter"}}</a>
-                            {{/if}}
-                        </div>
-                        {{#if location}}
-                            <div class="gh-author-location">{{location}}</div>
-                        {{/if}}
-                    </footer>
-                </div>
-                {{#if profile_image}}
-                    <img class="gh-article-image" src="{{img_url profile_image size="s"}}" alt="{{name}}">
-                {{/if}}
-            </div>
-        </section>
-    {{/author}}
-    
-    {{> "components/post-list" feed="archive" postFeedStyle=@custom.post_feed_style showTitle=false showSidebar=@custom.show_publication_info_sidebar}}
-
+<main class="gh-main">
+	{{#author}}
+		{{#if cover_image}}
+			<img
+				class="gh-author-cover-image"
+				src="{{img_url cover_image size="l"}}"
+				alt="{{name}}の写真"
+			/>
+		{{/if}}
+		<section class="gh-author-introduction">
+			{{#if name}}
+				<h2 class="gh-author-section-title"> {{name}}</h2>
+			{{/if}}
+			{{#if bio}}
+				<p class="gh-author-excerpt">{{bio}}</p>
+			{{/if}}
+		</section>
+		<section class="gh-author-archive">
+			<h2 class="gh-author-section-title">New</h2>
+			<div class="gh-author-post-feed">
+				{{#get
+					"posts"
+					filter="authors:{{slug}}"
+					include="authors"
+					limit="4"
+					order="published_at desc"
+				}}
+					{{#foreach posts}}
+						<article class="gh-author-post-card">
+							<a href="{{url}}">
+								<img src="{{feature_image}}" alt="{{title}}" />
+							</a>
+							<h3 class="gh-author-post-title">{{title}}</h3>
+							<time
+								class="gh-author-post-date"
+								datetime="{{date format="YYYY-MM-DD"}}"
+							>date {{date format="YYYY.MM.DD"}}</time>
+						</article>
+					{{/foreach}}
+				{{/get}}
+			</div>
+		</section>
+	{{/author}}
 </main>

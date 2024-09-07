@@ -3342,3 +3342,164 @@ figcaption a {
     flex-direction: column;
     font-family: "Noto Sans";
 }
+
+/* Author
+/* ---------------------------------------------------------- */
+
+.gh-author-cover-image {
+	width: 390px;
+	height: 218px;
+	object-fit: cover;
+}
+
+.gh-author-introduction {
+	margin-top: 21px;
+	margin-left: 16px;
+	margin-right: 19px;
+}
+
+.gh-author-section-title {
+	color: #fff;
+	font-family: "Noto Sans";
+	font-size: 2.4rem;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+	letter-spacing: 0.36px;
+}
+
+.gh-author-excerpt {
+	margin-top: 21px;
+	margin-left: 6px;
+	color: #fff;
+	font-family: Inter;
+	font-size: 1.4rem;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 2;
+}
+
+.gh-author-archive {
+	margin-top: 74px;
+	margin-left: 16px;
+	margin-right: 19px;
+}
+.gh-author-post-feed {
+	margin-top: 52px;
+	margin-left: 4px;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	column-gap: 20px;
+	row-gap: 40px;
+	align-items: start;
+	grid-auto-rows: 1fr;
+}
+
+.gh-author-post-card {
+	display: flex;
+	flex-direction: column;
+	min-height: 340px;
+	justify-content: space-between;
+}
+
+.gh-author-post-card a {
+	height: 264px;
+}
+
+.gh-author-post-card img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.gh-author-post-title {
+	color: #fff;
+	font-feature-settings: "liga" off, "clig" off;
+	font-family: "Noto Sans";
+	font-size: 1.4rem;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+	letter-spacing: 1px;
+}
+
+.gh-author-post-date {
+	align-items: center;
+	text-align: left;
+	color: #fff;
+	font-feature-settings: "liga" off, "clig" off;
+	font-family: "Noto Sans";
+	font-size: 1rem;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	letter-spacing: 1px;
+}
+
+/* Tags
+/* ---------------------------------------------------------- */
+.gh-tag-section {
+	margin: 16px 20px 65px;
+}
+
+.gh-tag-section-title {
+	color: #fff;
+	font-family: "Noto Sans";
+	font-size: 2.4rem;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+	letter-spacing: 1px;
+}
+
+.gh-tag-post-feed {
+	margin-top: 49px;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	column-gap: 20px;
+	row-gap: 38px;
+	align-items: start;
+	grid-auto-rows: 1fr;
+}
+
+.gh-tag-post-card {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	min-height: 340px;
+	justify-content: space-between;
+}
+
+.gh-tag-post-card a {
+	height: 264px;
+}
+
+.gh-tag-post-card img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.gh-tag-post-title {
+	color: #fff;
+	font-feature-settings: "liga" off, "clig" off;
+	font-family: "Noto Sans";
+	font-size: 1.4rem;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+	letter-spacing: 1px;
+}
+
+.gh-tag-post-date {
+	align-items: center;
+	text-align: left;
+	color: #fff;
+	font-feature-settings: "liga" off, "clig" off;
+	font-family: "Noto Sans";
+	font-size: 1rem;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	letter-spacing: 1px;
+}
