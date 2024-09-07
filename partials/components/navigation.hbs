@@ -49,6 +49,12 @@
         <nav class="gh-navigation-menu">
             <div class="gh-navigation-menu-primary">
                 {{navigation}}
+                {{#if @member}}
+                    <div class="gh-navigation-signout-button">
+                        <div>-</div>
+                        <a href="javascript:" data-members-signout>Log Out</a>
+                    </div>
+                {{/if}}
             </div>
             <div class="gh-navigation-menu-secondary">
                 {{navigation type="secondary"}}

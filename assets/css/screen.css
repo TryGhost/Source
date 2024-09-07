@@ -476,15 +476,15 @@ button.gh-form-input {
 }
 
 .gh-navigation-inner {
-    display: grid;
-    grid-auto-flow: row dense;
-    column-gap: 24px;
-    align-items: center;
-    height: 100%;
-    padding: 0px 20px;
-    grid-template-rows: auto 1fr auto;
-    grid-template-columns: 1fr;
-    gap: 48px;
+	display: grid;
+	grid-auto-flow: row dense;
+	column-gap: 24px;
+	align-items: center;
+	height: 100%;
+	padding: 0px 20px;
+	grid-template-rows: auto 1fr;
+	grid-template-columns: 1fr;
+	gap: 48px;
 }
 .gh-navigation-pagetitle{
     display: flex;
@@ -559,6 +559,17 @@ button.gh-form-input {
 .gh-navigation-menu-primary > .nav {
 	padding-left: 0;
 	list-style-type: none;
+	color: #1b1b1b;
+	font-feature-settings: "liga" off, "clig" off;
+	font-family: "Noto Sans";
+	font-size: 2.4rem;
+	font-style: normal;
+	font-weight: 700;
+	line-height: 43px; /* 179.167% */
+	letter-spacing: 1px;
+}
+
+.gh-navigation-signout-button {
 	color: #1b1b1b;
 	font-feature-settings: "liga" off, "clig" off;
 	font-family: "Noto Sans";
