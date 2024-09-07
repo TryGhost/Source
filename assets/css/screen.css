@@ -521,6 +521,30 @@ button.gh-form-input {
     max-height: 40px;
 }
 
+.gh-navigation-title-wrapper {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.gh-navigation-siginin-button {
+	padding: 10px 14px;
+	border-radius: 30px;
+	background: #2b2b2b;
+	color: #fff;
+	font-feature-settings: "liga" off, "clig" off;
+	font-family: "Noto Sans";
+	font-size: 1rem;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	letter-spacing: 1px;
+}
+
+.is-open#gh-navigation .gh-navigation-siginin-button {
+	display: none;
+}
+
 .gh-navigation-menu {
 	display: grid;
 	height: 100%;
@@ -789,21 +813,6 @@ button.gh-form-input {
 #gh-navigation .nav li {
     opacity: 0;
     transform: translateY(-4px);
-}
-
-#gh-navigation :is(.gh-button, a[data-portal="signin"]) {
-    opacity: 0;
-    transform: translateY(8px);
-}
-
-#gh-navigation .gh-button {
-    width: 100%;
-    font-size: 1.75rem;
-    text-transform: none;
-}
-
-#gh-navigation a[data-portal="signin"] {
-    font-size: 1.75rem;
 }
 
 #gh-main {

@@ -18,8 +18,8 @@
                     {{> "icons/close"}}
                 </button>
             </div>
-
-            <div class="gh-page-title">
+            <div class="gh-navigation-title-wrapper">
+                <div class="gh-page-title">
                     {{#is "home"}}
                         <h1>Home</h1>
                     {{/is}}
@@ -37,6 +37,12 @@
                     {{else if post}}
                         <h1>Articles</h1>
                     {{/if}}
+                </div>
+                {{#unless @member}}
+                    <div class="gh-navigation-siginin-button">
+                        <a href="#/portal/signin" data-portal="signin">{{t "ログイン"}}</a>
+                    </div>
+                {{/unless}}
             </div>
         </div>
 
@@ -48,28 +54,6 @@
                 {{navigation type="secondary"}}
             </div>
         </nav>
-
-        <div class="gh-navigation-actions">
-            {{#unless @site.members_enabled}}
-
-            {{else}}
-                <div class="gh-navigation-members">
-                    {{#unless @member}}
-                        {{#unless @site.members_invite_only}}
-                            <a href="#/portal/signin" data-portal="signin">{{t "Sign in"}}</a>
-                            {{#unless hideSubscribeButton}}
-                                <a class="gh-button" href="#/portal/signup" data-portal="signup">{{t "Subscribe"}}</a>
-                            {{/unless}}
-                        {{else}}
-                            <a class="gh-button" href="#/portal/signin" data-portal="signin">{{t "Sign in"}}</a>
-                        {{/unless}}
-                    {{else}}
-                        <a class="gh-button" href="#/portal/account" data-portal="account">{{t "Account"}}</a>
-                    {{/unless}}
-                </div>
-            {{/unless}}
-        </div>
-
     </div>
 </header>
 
