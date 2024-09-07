@@ -522,25 +522,54 @@ button.gh-form-input {
 }
 
 .gh-navigation-menu {
-    display: flex;
-    gap: 24px;
-    align-items: center;
-    position: fixed;
-    visibility: hidden;
-    opacity: 0;
-    transition: none;
-    transform: translateY(0);
-    font-family: "Noto Sans";
+	display: grid;
+	height: 100%;
+	transition: none;
+	transform: translateY(0);
 }
 
-.gh-navigation .nav {
-    display: inline-flex;
-    gap: 28px;
-    align-items: center;
-    padding: 0;
-    margin: 0;
-    white-space: nowrap;
-    list-style: none;
+.gh-navigation-menu-primary {
+	align-self: start;
+}
+
+.gh-navigation-menu-primary > .nav {
+	padding-left: 0;
+	list-style-type: none;
+	color: #1b1b1b;
+	font-feature-settings: "liga" off, "clig" off;
+	font-family: "Noto Sans";
+	font-size: 2.4rem;
+	font-style: normal;
+	font-weight: 700;
+	line-height: 43px; /* 179.167% */
+	letter-spacing: 1px;
+}
+
+.gh-navigation-menu-secondary {
+	align-self: end;
+}
+
+.gh-navigation-menu-secondary > .nav {
+	padding-left: 0;
+	list-style-type: none;
+	color: #1b1b1b;
+	font-feature-settings: "liga" off, "clig" off;
+	font-family: "Noto Sans";
+	font-size: 1.4rem;
+	font-style: normal;
+	font-weight: 700;
+	line-height: 30px;
+	letter-spacing: 1px;
+}
+
+.gh-navigation > .nav {
+	display: inline-flex;
+	gap: 28px;
+	align-items: center;
+	padding: 0;
+	margin: 0;
+	white-space: nowrap;
+	list-style: none;
 }
 
 .gh-navigation .gh-more-toggle {
@@ -755,12 +784,6 @@ button.gh-form-input {
 
 .gh-burger {
     display: flex;
-}
-
-#gh-navigation .nav a {
-    font-size: 2.4rem;
-    font-weight: 700;
-    text-transform: none;
 }
 
 #gh-navigation .nav li {

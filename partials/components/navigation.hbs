@@ -1,14 +1,10 @@
-<header id="gh-navigation" class="gh-navigation is-{{#match navigationLayout "Logo on the left"}}left-logo{{else match navigationLayout "Stacked"}}stacked{{else}}middle-logo{{/match}}{{#match @custom.header_and_footer_color "Accent color"}} has-accent-color{{/match}} gh-outer">
+<header id="gh-navigation" class="gh-navigation gh-outer">
     <div class="gh-navigation-inner gh-inner">
         <div class="gh-navigation-pagetitle">
             <div class="gh-navigation-brand">
                 <div class="gh-navigation-brand-logo-username">
                     <a class="gh-navigation-logo is-title" href="{{@site.url}}">
-                        {{#if @site.logo}}
-                            <img src="{{@site.logo}}" alt="{{@site.title}}">
-                        {{else}}
-                            <img src="{{asset "images/navigation-logo.svg"}}" alt="{{@site.title}}">
-                        {{/if}}
+                        <img src="{{asset "images/navigation-logo.svg"}}" alt="{{@site.title}}">
                     </a>
                     {{#if @member}}
                     <div class="gh-navigation-user">
@@ -45,7 +41,12 @@
         </div>
 
         <nav class="gh-navigation-menu">
-            {{navigation}}
+            <div class="gh-navigation-menu-primary">
+                {{navigation}}
+            </div>
+            <div class="gh-navigation-menu-secondary">
+                {{navigation type="secondary"}}
+            </div>
         </nav>
 
         <div class="gh-navigation-actions">
