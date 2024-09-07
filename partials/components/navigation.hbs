@@ -72,3 +72,29 @@
 
     </div>
 </header>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const header = document.querySelector('header');
+        const pageTitle = document.querySelector('.gh-page-title h1');
+
+        if (header && pageTitle) {
+            const prevPageTitle = pageTitle.textContent;
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.attributeName === 'class') {
+                        if (header.classList.contains('is-open')) {
+                            pageTitle.textContent = 'MENU';
+                        } else {
+                            pageTitle.textContent = prevPageTitle;
+                        }
+                    }
+                });
+            });
+
+            observer.observe(header, { attributes: true });
+        }
+    });
+</script>
+
+
