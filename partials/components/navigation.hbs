@@ -22,22 +22,25 @@
                     {{> "icons/close"}}
                 </button>
             </div>
+
             <div class="gh-page-title">
-                {{#is "home"}}
-                    <h1>Home</h1>
-                {{/is}}
-                {{#page}}
-                    {{#if title}}
-                        <h1>{{title}}</h1>
+                    {{#is "home"}}
+                        <h1>Home</h1>
+                    {{/is}}
+                    {{#is "articles"}}
+                        <h1>Articles</h1>
+                    {{/is}}
+                    {{#author}}
+                        <h1>Author</h1>
+                    {{/author}}
+                    {{#tag}}
+                        <h1>Articles</h1>
+                    {{/tag}}
+                    {{#if page}}
+                        <h1>{{page.title}}</h1>
+                    {{else if post}}
+                        <h1>Articles</h1>
                     {{/if}}
-                    {{!-- TODO：記事詳細などの時に入れる値などのロジック --}}
-                {{/page}}
-                {{#author}}
-                    <h1>Author</h1>
-                {{/author}}
-                {{#tag}}
-                    <h1>Articles</h1>
-                {{/tag}}
             </div>
         </div>
 
