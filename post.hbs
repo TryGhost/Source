@@ -6,6 +6,13 @@
 <main class="gh-main">
 
     <article class="gh-article {{post_class}}">
+        {{#foreach tags}}
+            {{#match name "有料記事"}}
+                <div class="gh-article-paid-announcement">
+                    <p>有料記事もイマだけ無料公開中！</p>
+                </div>
+            {{/match}}
+        {{/foreach}}
         {{> "feature-image"}}
 
         <header class="gh-article-header">
@@ -24,7 +31,11 @@
 
             <div class="gh-article-tags">
                 {{#foreach tags}}
-                    <a class="gh-article-tag" href="{{url}}">{{name}}</a>
+                    {{#match name "有料記事"}}
+                        <a class="gh-article-tag is-paid-tag" href="{{url}}">{{name}}</a>
+                    {{else}}
+                        <a class="gh-article-tag" href="{{url}}">{{name}}</a>
+                    {{/match}}
                 {{/foreach}}
             </div>
 
