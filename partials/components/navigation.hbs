@@ -8,7 +8,11 @@
                     </a>
                     {{#if @member}}
                     <div class="gh-navigation-user">
-                        <img src="{{@member.profile_image}}" alt="{{@member.name}}" class="gh-navigation-user-avatar">
+                        {{#if @member.paid}}
+                            <img src="{{@member.avatar_image}}" alt="{{@member.name}}" class="gh-navigation-user-avatar">
+                        {{else}}
+                            <div class="gh-navigation-user-avatar-placeholder"></div>
+                        {{/if}}
                         <span class="gh-navigation-user-name">{{@member.name}}</span>
                     </div>
                     {{/if}}

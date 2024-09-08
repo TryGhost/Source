@@ -660,6 +660,15 @@ button.gh-form-input {
     margin-right: 4px;
 }
 
+.gh-navigation-user-avatar-placeholder {
+	width: 24px;
+	height: 24px;
+	border-radius: 50%;
+	margin-right: 4px;
+	background-color: #818181;
+	border-radius: 50%;
+}
+
 .gh-navigation-user-name {
     font-size: 1.3rem;
     font-weight: 400;
