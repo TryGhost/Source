@@ -2,7 +2,7 @@
 {{! The tag above means: insert everything in this file into the body of the default.hbs template }}
 
 <main class="gh-main">
-	{{#author}}
+	{{#primary_author}}
 		{{#if cover_image}}
 			<img
 				class="gh-author-cover-image"
@@ -43,5 +43,5 @@
 				{{/get}}
 			</div>
 		</section>
-	{{/author}}
+	{{/primary_author}}
 </main>
