@@ -3741,7 +3741,7 @@ figcaption a {
 /* content-cta (会員限定フタ) */
 
 .gh-article-content > :not(.gh-post-upgrade-cta) {
-    padding: 0px 20px; 
+    padding: 0px 20px;
 }
 
 
@@ -3751,6 +3751,7 @@ figcaption a {
     display: flex;
     flex-direction: column;
     gap: 24px;
+    padding: 40px 20px !important;
 }
 
 .gh-post-upgrade-cta h2 {

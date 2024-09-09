@@ -8,10 +8,16 @@
             <h2>この先は部員限定</h2>
         {{/has}}
         {{#has visibility="tiers"}}
-            <h2>この先は{{tiers}}限定 </h2>
+            <h2>この先は
+                {{#each tiers}}
+                    {{name}}プラン
+                {{/each}} 限定
+            </h2>
+            <a class="gh-post-upgrade-signup-link" href="#/portal/signup" data-portal="signup">{{t 
+                "プランを確認する"
+            }}</a>
         {{/has}}
         {{#if @member}}
-            <a class="gh-btn" data-portal="account/plans" >Upgrade your account</a>
         {{else}}
             <a class="gh-post-upgrade-signup-link" href="#/portal/signup" data-portal="signup">{{t
 				"🏀入部する⛹️"
