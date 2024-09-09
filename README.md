@@ -26,7 +26,6 @@ One neat trick is that you can also create custom one-off templates by adding th
 - `tag-news.hbs` - Custom template for `/tag/news/` archive
 - `author-ali.hbs` - Custom template for `/author/ali/` archive
 
-
 # Development
 
 Source styles are compiled using Gulp/PostCSS to polyfill future CSS spec. You'll need [Node](https://nodejs.org/), [Yarn](https://yarnpkg.com/) and [Gulp](https://gulpjs.com) installed globally. After that, from the theme's root directory:
@@ -52,13 +51,32 @@ yarn zip
 
 - Autoprefixer - Don't worry about writing browser prefixes of any kind, it's all done automatically with support for the latest 2 major versions of every browser.
 
-
 # SVG Icons
 
 Source uses inline SVG icons, included via Handlebars partials. You can find all icons inside `/partials/icons`. To use an icon just include the name of the relevant file, eg. To include the SVG icon in `/partials/icons/rss.hbs` - use `{{> "icons/rss"}}`.
 
 You can add your own SVG icons in the same manner.
 
+# Production Deployment Flow
+
+本番環境へのデプロイ時には、検証環境の設定を反映させるため、以下の手順を実行してください。
+
+1. テーマのアップロード
+
+   - テーマの変更がある場合は、yarn zip コマンドで生成したテーマの zip ファイルを本番環境にアップロードします。
+   - 本番環境の Ghost Admin から、テーマをアップロードして適用します
+
+2. Navigation の設定
+
+   - 検証環境の Ghost Admin にログインし、「Design」セクションから「Navigation」の設定を確認します。
+   - この設定を本番環境の Ghost Admin にも同様に反映します。
+
+3. routes.yaml の移植
+
+   - 検証環境の Ghost Admin にアクセスし、routes.yaml ファイルをダウンロードします。
+     - Admin の「Labs」セクションに移動し、「Download current routes.yaml」をクリックしてダウンロードします。
+   - ダウンロードした routes.yaml を本番環境にアップロードし、同様に適用します。
+     - 本番環境の Ghost Admin にアクセスし、「Upload routes.yaml」を使用して反映させます。
 
 # Copyright & License
 
