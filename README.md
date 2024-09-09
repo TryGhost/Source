@@ -78,6 +78,17 @@ You can add your own SVG icons in the same manner.
    - ダウンロードした routes.yaml を本番環境にアップロードし、同様に適用します。
      - 本番環境の Ghost Admin にアクセスし、「Upload routes.yaml」を使用して反映させます。
 
+4. Pages の移植
+
+   - 検証環境の Ghost Admin にアクセスし、「Pages」を確認します。
+   - 本番環境の Ghost Admin にアクセスし、検証環境に設定されている「Pages」のうち、今回のリリース対象である「Pages」を本番環境にも作成します。（About や Gallery など）
+
+5. (サブスクリプション機能実装までの暫定対応) 有料記事タグの作成
+
+   - 本番環境の Ghost Admin にアクセスし、「Tags」から、以下のタグを作成
+     - Name: 有料記事
+     - Slug: paid-content
+
 # Copyright & License
 
 Copyright (c) 2013-2023 Ghost Foundation - Released under the [MIT license](LICENSE).
