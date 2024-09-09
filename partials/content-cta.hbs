@@ -2,7 +2,13 @@
 <aside class="gh-post-upgrade-cta">
     <div class="gh-post-upgrade-cta-content">
         {{#has visibility="paid"}}
-            <h2>This post is for paying subscribers only</h2>
+            <h2>この先は有料プラン限定
+            </h2>
+            {{#if @member}}
+                <a class="gh-post-upgrade-signup-link" href="#/portal/signup" data-portal="signup">
+                    {{t "プランを確認する"}}
+                </a>
+            {{/if}}
         {{/has}}
         {{#has visibility="members"}}
             <h2>この先は部員限定</h2>
