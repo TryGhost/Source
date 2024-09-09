@@ -537,6 +537,7 @@ button.gh-form-input {
 }
 
 .gh-navigation-siginin-button {
+    display: none;
 	padding: 10px 14px;
 	border-radius: 30px;
 	background: #2b2b2b;
