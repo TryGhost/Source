@@ -1,0 +1,21 @@
+{{{html}}}
+<aside class="gh-post-upgrade-cta">
+    <div class="gh-post-upgrade-cta-content">
+        {{#has visibility="paid"}}
+            <h2>This post is for paying subscribers only</h2>
+        {{/has}}
+        {{#has visibility="members"}}
+            <h2>この先は部員限定</h2>
+        {{/has}}
+        {{#has visibility="tiers"}}
+            <h2>この先は{{tiers}}限定 </h2>
+        {{/has}}
+        {{#if @member}}
+            <a class="gh-btn" data-portal="account/plans" >Upgrade your account</a>
+        {{else}}
+            <a class="gh-post-upgrade-signup-link" href="#/portal/signup" data-portal="signup">{{t
+				"🏀入部する⛹️"
+			}}</a>
+        {{/if}}
+    </div>
+</aside>

@@ -2065,10 +2065,6 @@ button.gh-form-input {
     width: 100%;
 }
 
-.gh-article-content {
-    padding: 0px 20px;
-}
-
 /* 14.2. Page template */
 
 .page-template .gh-article-header {
@@ -3740,4 +3736,37 @@ figcaption a {
 .newer-posts-placeholder,
 .older-posts-placeholder {
     opacity: 0.5;
+}
+
+/* content-cta (会員限定フタ) */
+
+.gh-article-content > :not(.gh-post-upgrade-cta) {
+    padding: 0px 20px; 
+}
+
+
+.gh-post-upgrade-cta-content {
+    position: relative;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.gh-post-upgrade-cta h2 {
+    color: #2B2B2B !important;
+    font-size: 2.4rem !important;
+    font-weight: 700 !important;
+    font-family: "Noto Sans" !important;
+}
+
+.gh-post-upgrade-signup-link {
+    background-color: #1B1B1B;
+    width: 100%;
+    border-radius: 30px;
+    padding: 16px 20px;
+    text-decoration: none !important;
+    font-size: 1.6rem;
+    font-weight: 500;
+    font-family: "Noto Sans";
 }
