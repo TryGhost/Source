@@ -2796,6 +2796,7 @@ figcaption a {
 	text-align: left;
 	font-size: 2.4rem;
 	color: #fff;
+    font-family: "Noto Sans";
 	font-feature-settings: "liga" off, "clig" off;
 	font-weight: 700;
 	letter-spacing: 1px;
