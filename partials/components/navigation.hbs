@@ -1,53 +1,94 @@
-<header id="gh-navigation" class="gh-navigation is-{{#match navigationLayout "Logo on the left"}}left-logo{{else match navigationLayout "Stacked"}}stacked{{else}}middle-logo{{/match}}{{#match @custom.header_and_footer_color "Accent color"}} has-accent-color{{/match}} gh-outer">
+<header id="gh-navigation" class="gh-navigation gh-outer">
     <div class="gh-navigation-inner gh-inner">
-
-        <div class="gh-navigation-brand">
-            <a class="gh-navigation-logo is-title" href="{{@site.url}}">
-                {{#if @site.logo}}
-                    <img src="{{@site.logo}}" alt="{{@site.title}}">
-                {{else}}
-                    {{@site.title}}
-                {{/if}}
-            </a>
-            {{> "search-toggle"}}
-            <button class="gh-burger gh-icon-button" aria-label="Menu">
-                {{> "icons/burger"}}
-                {{> "icons/close"}}
-            </button>
+        <div class="gh-navigation-pagetitle">
+            <div class="gh-navigation-brand">
+                <div class="gh-navigation-brand-logo-username">
+                    <a class="gh-navigation-logo is-title" href="{{@site.url}}">
+                        <img src="{{asset "images/navigation-logo.svg"}}" alt="{{@site.title}}">
+                    </a>
+                    {{#if @member}}
+                    <div class="gh-navigation-user">
+                        {{#if @member.paid}}
+                            <img src="{{@member.avatar_image}}" alt="{{@member.name}}" class="gh-navigation-user-avatar">
+                        {{else}}
+                            <div class="gh-navigation-user-avatar-placeholder"></div>
+                        {{/if}}
+                        <span class="gh-navigation-user-name">{{@member.name}}</span>
+                    </div>
+                    {{/if}}
+                </div>
+                <button class="gh-burger gh-icon-button" aria-label="Menu">
+                    {{> "icons/burger"}}
+                    {{> "icons/close"}}
+                </button>
+            </div>
+            <div class="gh-navigation-title-wrapper">
+                <div class="gh-page-title">
+                    {{#is "home"}}
+                        <h1>Home</h1>
+                    {{/is}}
+                    {{#is "articles"}}
+                        <h1>Articles</h1>
+                    {{/is}}
+                    {{#author}}
+                        <h1>Author</h1>
+                    {{/author}}
+                    {{#tag}}
+                        <h1>Articles</h1>
+                    {{/tag}}
+                    {{#if page}}
+                        <h1>{{page.title}}</h1>
+                    {{else if post}}
+                        <h1>Articles</h1>
+                    {{/if}}
+                </div>
+                {{#unless @member}}
+                    <div class="gh-navigation-siginin-button">
+                        <a href="#/portal/signin" data-portal="signin">{{t "ログイン"}}</a>
+                    </div>
+                {{/unless}}
+            </div>
         </div>
 
         <nav class="gh-navigation-menu">
-            {{navigation}}
-            {{#unless @site.members_enabled}}
-                {{#match navigationLayout "Stacked"}}
-                    {{> "search-toggle"}}
-                {{/match}}
-            {{/unless}}
+            <div class="gh-navigation-menu-primary">
+                {{navigation}}
+                {{#if @member}}
+                    <div class="gh-navigation-signout-button">
+                        <div>-</div>
+                        <a href="javascript:" data-members-signout>Log Out</a>
+                    </div>
+                {{/if}}
+            </div>
+            <div class="gh-navigation-menu-secondary">
+                {{navigation type="secondary"}}
+            </div>
         </nav>
-
-        <div class="gh-navigation-actions">
-            {{#unless @site.members_enabled}}
-                {{^match navigationLayout "Stacked"}}
-                    {{> "search-toggle"}}
-                {{/match}}
-            {{else}}
-                {{> "search-toggle"}}
-                <div class="gh-navigation-members">
-                    {{#unless @member}}
-                        {{#unless @site.members_invite_only}}
-                            <a href="#/portal/signin" data-portal="signin">{{t "Sign in"}}</a>
-                            {{#unless hideSubscribeButton}}
-                                <a class="gh-button" href="#/portal/signup" data-portal="signup">{{t "Subscribe"}}</a>
-                            {{/unless}}
-                        {{else}}
-                            <a class="gh-button" href="#/portal/signin" data-portal="signin">{{t "Sign in"}}</a>
-                        {{/unless}}
-                    {{else}}
-                        <a class="gh-button" href="#/portal/account" data-portal="account">{{t "Account"}}</a>
-                    {{/unless}}
-                </div>
-            {{/unless}}
-        </div>
-
     </div>
 </header>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const header = document.querySelector('header');
+        const pageTitle = document.querySelector('.gh-page-title h1');
+
+        if (header && pageTitle) {
+            const prevPageTitle = pageTitle.textContent;
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.attributeName === 'class') {
+                        if (header.classList.contains('is-open')) {
+                            pageTitle.textContent = 'MENU';
+                        } else {
+                            pageTitle.textContent = prevPageTitle;
+                        }
+                    }
+                });
+            });
+
+            observer.observe(header, { attributes: true });
+        }
+    });
+</script>
+
+
