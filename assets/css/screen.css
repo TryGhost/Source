@@ -3486,7 +3486,6 @@ figcaption a {
 /* ---------------------------------------------------------- */
 
 .gh-gallery-page-article {
-    padding: 20px;
     margin-bottom: 40px;
 }
 
@@ -3498,7 +3497,7 @@ figcaption a {
 }
 
 .gh-about-page-section {
-    padding: 40px 20px 0px;
+    padding-top: 40px;
     color: #fff;
     display: flex;
     flex-direction: column;
@@ -3742,6 +3741,17 @@ figcaption a {
 
 .gh-article-content > :not(.gh-post-upgrade-cta) {
     padding: 0px 20px;
+}
+
+.gh-gallery-page-article > section > :not(.gh-post-upgrade-cta) {
+    padding: 0px 20px;
+}
+.gh-about-page-section > :not(.gh-post-upgrade-cta) {
+    padding: 0px 20px;
+}
+
+.gh-post-upgrade-cta {
+    padding-top: 20px;
 }
 
 
