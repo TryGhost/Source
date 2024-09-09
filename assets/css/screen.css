@@ -2789,7 +2789,6 @@ figcaption a {
 .gh-footer {
 	display: grid;
 	background-color: #2b2b2b;
-	padding-left: 20px;
 	padding-top: 60px;
 	padding-bottom: 6px;
 }
@@ -2802,6 +2801,7 @@ figcaption a {
 	font-feature-settings: "liga" off, "clig" off;
 	font-weight: 700;
 	letter-spacing: 1px;
+    padding-left: 20px;
 }
 .gh-footer-menu {
 	margin-top: 53px;
@@ -2821,6 +2821,7 @@ figcaption a {
 	font-weight: 700;
 	line-height: 1.875;
 	letter-spacing: 1px;
+    padding-left: 20px;
 }
 
 .gh-footer-links {
