@@ -19,9 +19,11 @@
                     {{name}}プラン
                 {{/each}} 限定
             </h2>
-            <a class="gh-post-upgrade-signup-link" href="#/portal/signup" data-portal="signup">{{t 
-                "プランを確認する"
-            }}</a>
+            {{#if @member}}
+                <a class="gh-post-upgrade-signup-link" href="#/portal/signup" data-portal="signup">
+                    {{t "プランを確認する"}}
+                </a>
+            {{/if}}
         {{/has}}
         {{#if @member}}
         {{else}}
