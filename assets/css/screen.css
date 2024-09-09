@@ -546,9 +546,17 @@ button.gh-form-input {
 }
 
 .gh-navigation-menu {
+	pointer-events: none;
+	opacity: 0;
+	transform: translateY(-10px);
+	transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.is-open#gh-navigation .gh-navigation-menu {
+	pointer-events: auto;
 	display: grid;
 	height: 100%;
-	transition: none;
+	opacity: 1;
 	transform: translateY(0);
 }
 
