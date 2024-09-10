@@ -537,7 +537,6 @@ button.gh-form-input {
 }
 
 .gh-navigation-siginin-button {
-    display: none;
 	padding: 10px 14px;
 	border-radius: 30px;
 	background: #2b2b2b;
@@ -716,7 +715,6 @@ button.gh-form-input {
 	}
 
 	.gh-signin-link {
-		display: none;
 		padding: 10px 14px;
 		text-align: center;
 		border-radius: 30px;
