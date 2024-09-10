@@ -59,6 +59,19 @@
 {{!-- Scripts - handle responsive videos, infinite scroll, and navigation dropdowns --}}
 <script src="{{asset "built/source.js"}}"></script>
 
+
+{{!-- Custom Script to reposition the Announcement Bar below the Navigation --}}
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const announcementBar = document.getElementById("announcement-bar-root");
+        const navigation = document.getElementById("gh-navigation");
+
+        if (navigation && announcementBar) {
+            navigation.insertAdjacentElement("afterend", announcementBar);
+        }
+    });
+</script>
+
 {{!-- Ghost outputs required functional scripts with this tag, it should always be the last thing before the closing body tag --}}
 {{ghost_foot}}
 
