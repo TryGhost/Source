@@ -552,7 +552,7 @@ button.gh-form-input {
     line-height: normal;
     letter-spacing: 1px;
     text-align: center;
-    text-decoration: none; /* 下線を消す */
+    text-decoration: none;
 }
 
 .is-open#gh-navigation .gh-navigation-siginin-button {
