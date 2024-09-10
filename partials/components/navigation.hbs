@@ -42,11 +42,16 @@
                         <h1>Articles</h1>
                     {{/if}}
                 </div>
-                {{#unless @member}}
+                
+                {{#if @member}}
+                    <div class="gh-navigation-siginin-button">
+                        <a href="#/portal/account" data-portal="subscribe">{{t "アカウント"}}</a>
+                    </div>
+                    {{else}}
                     <div class="gh-navigation-siginin-button">
                         <a href="#/portal/signin" data-portal="signin">{{t "ログイン"}}</a>
                     </div>
-                {{/unless}}
+                {{/if}}
             </div>
         </div>
 
