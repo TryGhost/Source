@@ -2480,6 +2480,7 @@ figcaption a {
 
 .gh-comments {
     margin-top: 48px;
+    display: block;
 }
 
 /* 18. Recommend posts
