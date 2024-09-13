@@ -3492,6 +3492,12 @@ figcaption a {
     flex-grow: 1;
 }
 
+.gh-home-post-meta {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
 .gh-home-post-date {
     align-items: center;
     text-align: left;
