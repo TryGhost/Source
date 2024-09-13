@@ -3418,7 +3418,7 @@ figcaption a {
 	line-height: normal;
 }
 
-/* 24. Home Gallery 
+/* 24. Home Gallery
 /* ---------------------------------------------------------- */
 .gh-home-contents {
     background-color: #2B2B2B;
@@ -3455,7 +3455,7 @@ figcaption a {
     font-family: "Noto Sans";
 }
 
-/* 25. Home Post 
+/* 25. Home Post
 /* ---------------------------------------------------------- */
 
 .gh-home-post-feed {
@@ -3784,8 +3784,18 @@ figcaption a {
 
 .gh-post-upgrade-cta {
     padding-top: 20px;
+    position: relative;
+    margin-top: 0;
+    padding-top: 0;
 }
 
+.gh-post-upgrade-cta-gradation {
+    position: absolute;
+    bottom: 190px;
+    height: 800px;
+    width: 100%;
+    background: linear-gradient(179.93deg, rgba(255, 255, 255, 0) 74.94%, #FFFFFF 99.94%);
+}
 
 .gh-post-upgrade-cta-content {
     position: relative;
@@ -3794,6 +3804,7 @@ figcaption a {
     flex-direction: column;
     gap: 24px;
     padding: 40px 20px !important;
+    border-radius: 0 0 8px 8px !important;
 }
 
 .gh-post-upgrade-cta h2 {
