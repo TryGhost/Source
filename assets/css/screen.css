@@ -2555,6 +2555,7 @@ figcaption a {
     font-family: "Noto Sans";
     font-weight: 400;
     color: #fff;
+    letter-spacing: 0.1rem;
 }
 
 /* 19. Archive
