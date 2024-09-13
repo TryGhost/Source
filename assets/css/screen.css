@@ -3519,6 +3519,14 @@ figcaption a {
     font-family: "Noto Sans";
 }
 
+.gh-about-page-section p {
+    font-size: 1.4rem;
+}
+
+.gh-about-page-section h3 {
+    font-size: 2.4rem;
+}
+
 /* Author
 /* ---------------------------------------------------------- */
 
