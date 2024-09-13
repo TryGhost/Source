@@ -2003,7 +2003,7 @@ button.gh-form-input {
 .gh-article-header {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 32px;
     margin: 40px 0px 20px;
     padding-inline: 20px;
 }
@@ -2058,6 +2058,13 @@ button.gh-form-input {
     line-height: 1.2;
     font-family: "Noto Sans";
     letter-spacing: -0.006em;
+}
+
+.gh-article-meta-date {
+    font-family: "Noto Sans";
+    font-weight: 400;
+    font-size: 1.4rem;
+    letter-spacing: 0.1rem;
 }
 
 .gh-article-image {
@@ -3465,6 +3472,7 @@ figcaption a {
     min-height: 340px;
     justify-content: space-between;
     font-family: "Noto Sans";
+    gap: 12px;
 }
 
 .gh-home-post-card a {
@@ -3479,11 +3487,14 @@ figcaption a {
 
 .gh-home-post-title {
     font-size: 1.4rem;
+    line-height: 20px;
+    flex-grow: 1;
 }
 
 .gh-home-post-date {
     align-items: center;
     text-align: left;
+    letter-spacing: 0.1rem;
 }
 
 /* 26. Gallery Page
