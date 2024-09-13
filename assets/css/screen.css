@@ -2020,10 +2020,11 @@ button.gh-form-input {
 .gh-article-tag {
     font-size: 1.2rem;
     font-weight: 500;
+    letter-spacing: 1px;
     background-color: white;
     color: black;
     border-radius: 20px;
-    padding: 8px 18px;
+    padding: 10px 16px;
 }
 
 .is-paid-tag {
@@ -3716,10 +3717,11 @@ figcaption a {
 .gh-all-article-tag {
     font-size: 1.2rem;
     font-weight: 500;
+    letter-spacing: 1px;
     background-color: #2B2B2B;
     color: #fff;
     border-radius: 20px;
-    padding: 8px 18px;
+    padding: 10px 16px;
 }
 
 
