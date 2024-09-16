@@ -3795,6 +3795,7 @@ figcaption a {
     height: 800px;
     width: 100%;
     background: linear-gradient(179.93deg, rgba(255, 255, 255, 0) 74.94%, #FFFFFF 99.94%);
+    pointer-events: none;
 }
 
 .gh-post-upgrade-cta-content {
