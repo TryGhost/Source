@@ -417,7 +417,7 @@ button.gh-form-input {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    width: 390px;
+    max-width: 390px;
     margin: auto;
 }
 
@@ -536,19 +536,23 @@ button.gh-form-input {
 	align-items: center;
 }
 
-.gh-navigation-siginin-button {
-    display: none;
-	padding: 10px 14px;
-	border-radius: 30px;
-	background: #2b2b2b;
-	color: #fff;
-	font-feature-settings: "liga" off, "clig" off;
-	font-family: "Noto Sans";
-	font-size: 1rem;
-	font-style: normal;
-	font-weight: 500;
-	line-height: normal;
-	letter-spacing: 1px;
+.gh-navigation-siginin-button a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 10px 14px;
+    border-radius: 30px;
+    background: #2b2b2b;
+    color: #fff !important;
+    font-feature-settings: "liga" off, "clig" off;
+    font-family: "Noto Sans";
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 1px;
+    text-align: center;
+    text-decoration: none;
 }
 
 .is-open#gh-navigation .gh-navigation-siginin-button {
@@ -716,7 +720,6 @@ button.gh-form-input {
 	}
 
 	.gh-signin-link {
-		display: none;
 		padding: 10px 14px;
 		text-align: center;
 		border-radius: 30px;
@@ -2000,7 +2003,7 @@ button.gh-form-input {
 .gh-article-header {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 32px;
     margin: 40px 0px 20px;
     padding-inline: 20px;
 }
@@ -2017,6 +2020,7 @@ button.gh-form-input {
 .gh-article-tag {
     font-size: 1.2rem;
     font-weight: 500;
+    letter-spacing: 1px;
     background-color: white;
     color: black;
     border-radius: 20px;
@@ -2057,16 +2061,19 @@ button.gh-form-input {
     letter-spacing: -0.006em;
 }
 
+.gh-article-meta-date {
+    font-family: "Noto Sans";
+    font-weight: 400;
+    font-size: 1.4rem;
+    letter-spacing: 0.1rem;
+}
+
 .gh-article-image {
     grid-column: wide;
 }
 
 .gh-article-image img {
     width: 100%;
-}
-
-.gh-article-content {
-    padding: 0px 20px;
 }
 
 /* 14.2. Page template */
@@ -2481,6 +2488,7 @@ figcaption a {
 
 .gh-comments {
     margin-top: 48px;
+    display: block;
 }
 
 /* 18. Recommend posts
@@ -2548,6 +2556,7 @@ figcaption a {
     font-family: "Noto Sans";
     font-weight: 400;
     color: #fff;
+    letter-spacing: 0.1rem;
 }
 
 /* 19. Archive
@@ -3409,7 +3418,7 @@ figcaption a {
 	line-height: normal;
 }
 
-/* 24. Home Gallery 
+/* 24. Home Gallery
 /* ---------------------------------------------------------- */
 .gh-home-contents {
     background-color: #2B2B2B;
@@ -3446,7 +3455,7 @@ figcaption a {
     font-family: "Noto Sans";
 }
 
-/* 25. Home Post 
+/* 25. Home Post
 /* ---------------------------------------------------------- */
 
 .gh-home-post-feed {
@@ -3465,6 +3474,7 @@ figcaption a {
     min-height: 340px;
     justify-content: space-between;
     font-family: "Noto Sans";
+    gap: 12px;
 }
 
 .gh-home-post-card a {
@@ -3479,18 +3489,26 @@ figcaption a {
 
 .gh-home-post-title {
     font-size: 1.4rem;
+    line-height: 20px;
+    flex-grow: 1;
+}
+
+.gh-home-post-meta {
+    display: flex;
+    align-items: center;
+    gap: 4px;
 }
 
 .gh-home-post-date {
     align-items: center;
     text-align: left;
+    letter-spacing: 0.1rem;
 }
 
 /* 26. Gallery Page
 /* ---------------------------------------------------------- */
 
 .gh-gallery-page-article {
-    padding: 20px;
     margin-bottom: 40px;
 }
 
@@ -3502,11 +3520,19 @@ figcaption a {
 }
 
 .gh-about-page-section {
-    padding: 40px 20px 0px;
+    padding-top: 40px;
     color: #fff;
     display: flex;
     flex-direction: column;
     font-family: "Noto Sans";
+}
+
+.gh-about-page-section p {
+    font-size: 1.4rem;
+}
+
+.gh-about-page-section h3 {
+    font-size: 2.4rem;
 }
 
 /* Author
@@ -3691,6 +3717,7 @@ figcaption a {
 .gh-all-article-tag {
     font-size: 1.2rem;
     font-weight: 500;
+    letter-spacing: 1px;
     background-color: #2B2B2B;
     color: #fff;
     border-radius: 20px;
@@ -3740,4 +3767,87 @@ figcaption a {
 .newer-posts-placeholder,
 .older-posts-placeholder {
     opacity: 0.5;
+}
+
+/* content-cta (会員限定フタ) */
+
+.gh-article-content > :not(.gh-post-upgrade-cta) {
+    padding: 0px 20px;
+}
+
+.gh-gallery-page-article > section > :not(.gh-post-upgrade-cta) {
+    padding: 0px 20px;
+}
+.gh-about-page-section > :not(.gh-post-upgrade-cta) {
+    padding: 0px 20px;
+}
+
+.gh-post-upgrade-cta {
+    padding-top: 20px;
+    position: relative;
+    margin-top: 0;
+    padding-top: 0;
+}
+
+.gh-post-upgrade-cta-gradation {
+    position: absolute;
+    bottom: 190px;
+    height: 800px;
+    width: 100%;
+    background: linear-gradient(179.93deg, rgba(255, 255, 255, 0) 74.94%, #FFFFFF 99.94%);
+}
+
+.gh-post-upgrade-cta-content {
+    position: relative;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 40px 20px !important;
+    border-radius: 0 0 8px 8px !important;
+}
+
+.gh-post-upgrade-cta h2 {
+    color: #2B2B2B !important;
+    font-size: 2.4rem !important;
+    font-weight: 700 !important;
+    font-family: "Noto Sans" !important;
+}
+
+.gh-post-upgrade-signup-link {
+    background-color: #1B1B1B;
+    width: 100%;
+    border-radius: 30px;
+    padding: 16px 20px;
+    text-decoration: none !important;
+    font-size: 1.6rem;
+    font-weight: 500;
+    font-family: "Noto Sans";
+}
+
+/* announcement bar */
+#announcement-bar-root {
+    background-color: #fff;
+    color: #000;
+    border: 3px solid #000;
+    padding: 10px 20px;
+    font-size: 1.4rem;
+    font-weight: 400;
+    font-family: "Noto Sans";
+}
+.gh-announcement-bar {
+    background-color: transparent !important;
+    color: #4D4D4D !important;
+    padding: 0px !important;
+    min-height: 0px !important;
+    justify-content: start !important;
+    text-align: left !important;
+    overflow-wrap: anywhere !important;
+    font-size: 1.4rem !important;
+    font-family: "Noto Sans" !important;
+    font-weight: 400 !important;
+}
+
+.gh-announcement-bar button {
+    display: none !important;
 }

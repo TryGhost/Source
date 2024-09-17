@@ -49,7 +49,7 @@
 
     {{#if comments}}
         <div class="gh-comments gh-canvas">
-            {{comments}}
+            {{comments title="Comments" count=false}}
         </div>
     {{/if}}
 
@@ -67,7 +67,11 @@
                         {{#foreach posts}}
                             <article class="recommend-post-card">
                                 <a href="{{url}}">
-                                    <img src="{{feature_image}}" alt="{{title}}" >
+                                    {{#if feature_image}}
+                                    <img src="{{feature_image}}" alt="{{title}}">
+                                    {{else}}
+                                        <img src="{{asset "images/default_post_feature_img.png"}}" alt="{{title}}">
+                                    {{/if}}
                                 </a>
                                 <h3 class="recommend-post-title">{{title}}</h3>
                                 <time class="recommend-post-date" datetime="{{date format="YYYY-MM-DD"}}">date {{date format="YYYY.MM.DD"}}</time>

@@ -12,7 +12,11 @@
 					{{#foreach posts}}
 						<article class="gh-tag-post-card">
 							<a href="{{url}}">
-								<img src="{{feature_image}}" alt="{{title}}" />
+								{{#if feature_image}}
+                                <img src="{{feature_image}}" alt="{{title}}">
+								{{else}}
+									<img src="{{asset "images/default_post_feature_img.png"}}" alt="{{title}}">
+								{{/if}}
 							</a>
 							<h3 class="gh-tag-post-title">{{title}}</h3>
 							<time
