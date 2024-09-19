@@ -1,0 +1,104 @@
+{{^if @member}}
+<aside class="gh-post-upgrade-cta">
+	<div class="gh-post-upgrade-cta-content">
+        <h2>この先は部員限定</h2>
+        <a class="gh-post-upgrade-signup-link" href="#/portal/signup" data-portal="signup">
+            {{t "🏀入部する⛹️"}}
+        </a>
+	</div>
+</aside>
+{{/if}}
+
+<div id="cove"></div>
+
+<script>
+const Cove = {
+  contentId: "{{id}}",
+  memberId: "{{@member.uuid}}",
+  memberEmail: "{{@member.email}}",
+  memberName: "{{@member.firstname}}"
+};
+
+const observer = new MutationObserver((mutationsList, observer) => {
+  const form = document.getElementById('cove-form');
+  console.log('form:', form);
+  if (form) {
+
+    const nameInput = document.getElementById('cove-input-name');
+
+    if (nameInput) {
+      const nameLabel = document.createElement('label');
+      nameLabel.setAttribute('for', 'cove-input-name');
+      nameLabel.textContent = 'メールアドレス';
+
+      const nameGroup = document.createElement('div');
+      nameGroup.classList.add('form-group');
+      nameGroup.appendChild(nameLabel);
+      nameGroup.appendChild(nameInput);
+
+      form.insertBefore(nameGroup, form.firstChild);
+    }
+
+    const bodyInput = document.getElementById('cove-input-body');
+
+    if (bodyInput) {
+      const bodyLabel = document.createElement('label');
+      bodyLabel.setAttribute('for', 'cove-input-body');
+      bodyLabel.textContent = '渡邊雄太への質問';
+
+      const bodyGroup = document.createElement('div');
+      bodyGroup.classList.add('form-group');
+      bodyGroup.appendChild(bodyLabel);
+      bodyGroup.appendChild(bodyInput);
+
+      const errorSpan = document.createElement('span');
+      errorSpan.textContent = 'テキストを140字以内に修正してください。';
+      errorSpan.style.color = 'red';
+      errorSpan.style.display = 'none';
+      bodyGroup.appendChild(errorSpan);
+
+      const note = document.createElement('p');
+      note.textContent = '※質問には抽選で不定期に渡邊雄太本人がArticlesの中で回答いたします。';
+      bodyGroup.appendChild(note);
+
+      form.insertBefore(bodyGroup, form.querySelector('#cove-submit'));
+
+      const submitButton = document.getElementById('cove-submit');
+      submitButton.classList.add('disabled');
+      submitButton.setAttribute('disabled', true);
+
+      const checkInput = () => {
+        const isBodyFilled = bodyInput.value.trim() !== '';
+        const bodyValue = bodyInput.value;
+        const isBodyWithinLimit = bodyValue.length <= 140;
+
+        if (!isBodyWithinLimit) {
+          errorSpan.style.display = 'block';
+        } else {
+          errorSpan.style.display = 'none';
+        }
+
+        const isNameFilled = nameInput ? nameInput.value.trim() !== '' : true;
+
+        // メールアドレスフォームが存在しない場合は、質問フィールドの入力状態だけでチェック
+        if (isNameFilled && isBodyFilled && isBodyWithinLimit) {
+          submitButton.classList.remove('disabled');
+          submitButton.removeAttribute('disabled');
+        } else {
+          submitButton.classList.add('disabled');
+          submitButton.setAttribute('disabled', true);
+        }
+      };
+
+      bodyInput.addEventListener('input', checkInput);
+      if (nameInput) {
+        nameInput.addEventListener('input', checkInput);
+      }
+    }
+
+    observer.disconnect();
+  }
+});
+
+observer.observe(document.body, { childList: true, subtree: true });
+</script>
