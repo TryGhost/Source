@@ -1,24 +1,13 @@
-<section class="gh-header is-{{#match headerStyle "Magazine"}}magazine{{else match headerStyle "Highlight"}}highlight{{else}}classic{{/match}}{{#if @custom.background_image}}{{#if @site.cover_image}} has-image{{/if}}{{/if}} gh-outer">
+<section class="gh-header-container">
+    <img class="gh-header-image" src="{{asset "images/home-header-ywlr.jpeg"}}" alt="{{@site.title}}">
+    <div class="gh-header-title-wrapper">
+        <div class="gh-header-title">
+            {{> "components/header-logo"}}
+        </div>
 
-    {{!-- Background image --}}
-    {{#if @custom.background_image}}
-        {{#match headerStyle "!=" "Magazine"}}
-        {{#match headerStyle "!=" "Highlight"}}
-            {{#if @site.cover_image}}
-            <img class="gh-header-image" src="{{asset "images/home-header-ywlr.jpeg"}}" alt="{{@site.title}}">
-            {{/if}}
-        {{/match}}
-        {{/match}}
-    {{/if}}
-
-    <div class="gh-header-inner gh-inner">
-
-        {{!-- Landing layout --}}
-        {{#match headerStyle "Landing"}}
-            <div class="gh-header-title is-title">
-                {{> "components/header-logo"}}
-            </div>
-        {{/match}}
+        {{^if @member.paid}}
+            {{! TODO: Buttonコンポーネントにする }}
+            <a class="gh-header-link" href="/about">Locker Roomとは？</a>
+        {{/if}}
     </div>
-
 </section>
