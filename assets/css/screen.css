@@ -3934,3 +3934,90 @@ figcaption a {
 #cove-comments {
     display: none;
 }
+
+.gh-qa-upgrade-cta {
+    margin-top: 20px;
+    padding-top: 20px;
+    position: relative;
+    text-align: center;
+}
+
+.gh-qa-upgrade-cta-content {
+    position: relative;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 40px 20px !important;
+    border-radius: 0 0 8px 8px !important;
+}
+
+.gh-qa-upgrade-cta h2 {
+    color: #2B2B2B !important;
+    font-size: 2.4rem !important;
+    font-weight: 700 !important;
+    font-family: "Noto Sans" !important;
+}
+
+.gh-qa-upgrade-cta a {
+    color: #fff;
+}
+
+/* home-Q&A */
+.gh-home-qa-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    padding-inline: 20px;
+}
+
+.gh-home-qa-cta {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 8px;
+    height: 224px;
+    width: 100%;
+    padding-inline: 20px;
+}
+
+.gh-home-qa-cta h3{
+    font-size: 2.4rem;
+    font-weight: 700;
+    font-family: "Noto Sans";
+    padding-top: 44px;
+    padding-inline: 20px;
+    padding-bottom: 30px;
+    color: #4D4D4D;
+    text-align: center;
+    letter-spacing: 1px;
+    line-height: 32px;
+}
+
+.gh-home-qa-cta a {
+    background-color: #1B1B1B;
+    width: 100%;
+    border-radius: 30px;
+    padding: 16px 20px;
+    text-decoration: none !important;
+    font-size: 1.6rem;
+    font-weight: 400;
+    font-family: "Noto Sans";
+    text-align: center;
+    color: #fff;
+}
+
+.gh-home-qa-latest-articles {
+    background-color: #FFFFFF;
+    width: 100%;
+    border-radius: 30px;
+    padding: 16px 20px;
+    text-decoration: none !important;
+    font-size: 1.6rem;
+    font-weight: 400;
+    font-family: "Noto Sans";
+    text-align: center;
+    color: #1B1B1B;
+}
