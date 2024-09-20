@@ -3852,3 +3852,173 @@ figcaption a {
 .gh-announcement-bar button {
     display: none !important;
 }
+
+
+
+/* Q&A */
+#cove-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 28px;
+    padding-inline: 20px;
+}
+
+#cove-input-name {
+    width: 100% !important;
+    margin-left: 0px !important;
+    height: 60px !important;
+    font-size: 2rem !important;
+    display: none !important;
+}
+
+#cove-input-body {
+    min-height: 140px !important;
+    font-size: 1.4rem !important;
+    height: auto !important;
+    field-sizing: content;
+    margin-bottom: 0px !important;
+}
+
+.cove-input {
+    border-radius: 8px !important;
+    font-family: "Noto Sans";
+}
+
+#cove-submit {
+    order: 3 !important;
+    width: 100% !important;
+    max-width: 400px !important;
+    padding: 12px !important;
+    border: 1px solid transparent !important;
+    text-align: center !important;
+    font-family: "Noto Sans", sans-serif !important;
+    font-size: 16px !important;
+    font-weight: normal !important;
+    color: white !important;
+    background-color: #111 !important;
+    border-radius: 30px !important;
+    outline: none !important;
+    cursor: pointer !important;
+    transition: opacity 150ms background-color 150ms !important;
+    margin: 0 !important;
+}
+
+#cove-submit.disabled {
+    background-color: #D9D9D9 !important;
+    cursor: not-allowed !important;
+}
+
+.form-group {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 8px !important;
+}
+
+.form-group label {
+    font-size: 1.4rem !important;
+    font-weight: 400 !important;
+    color: #FFFFFF !important;
+    font-family: "Noto Sans" !important;
+    letter-spacing: 0.1rem;
+}
+
+.form-group p {
+    font-size: 1rem !important;
+    font-weight: 400 !important;
+    color: #FFFFFF !important;
+    font-family: "Noto Sans" !important;
+    letter-spacing: 0.1rem;
+}
+
+#cove-comments {
+    display: none;
+}
+
+.gh-qa-upgrade-cta {
+    margin-top: 20px;
+    padding-top: 20px;
+    position: relative;
+    text-align: center;
+}
+
+.gh-qa-upgrade-cta-content {
+    position: relative;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 40px 20px !important;
+    border-radius: 0 0 8px 8px !important;
+}
+
+.gh-qa-upgrade-cta h2 {
+    color: #2B2B2B !important;
+    font-size: 2.4rem !important;
+    font-weight: 700 !important;
+    font-family: "Noto Sans" !important;
+}
+
+.gh-qa-upgrade-cta a {
+    color: #fff;
+}
+
+/* home-Q&A */
+.gh-home-qa-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    padding-inline: 20px;
+}
+
+.gh-home-qa-cta {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 8px;
+    height: 224px;
+    width: 100%;
+    padding-inline: 20px;
+}
+
+.gh-home-qa-cta h3{
+    font-size: 2.4rem;
+    font-weight: 700;
+    font-family: "Noto Sans";
+    padding-top: 44px;
+    padding-inline: 20px;
+    padding-bottom: 30px;
+    color: #4D4D4D;
+    text-align: center;
+    letter-spacing: 1px;
+    line-height: 32px;
+}
+
+.gh-home-qa-cta a {
+    background-color: #1B1B1B;
+    width: 100%;
+    border-radius: 30px;
+    padding: 16px 20px;
+    text-decoration: none !important;
+    font-size: 1.6rem;
+    font-weight: 400;
+    font-family: "Noto Sans";
+    text-align: center;
+    color: #fff;
+}
+
+.gh-home-qa-latest-articles {
+    background-color: #FFFFFF;
+    width: 100%;
+    border-radius: 30px;
+    padding: 16px 20px;
+    text-decoration: none !important;
+    font-size: 1.6rem;
+    font-weight: 400;
+    font-family: "Noto Sans";
+    text-align: center;
+    color: #1B1B1B;
+}
