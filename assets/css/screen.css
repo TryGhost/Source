@@ -3869,6 +3869,7 @@ figcaption a {
     margin-left: 0px !important;
     height: 60px !important;
     font-size: 2rem !important;
+    display: none !important;
 }
 
 #cove-input-body {
@@ -3876,10 +3877,6 @@ figcaption a {
     font-size: 1.4rem !important;
     height: auto !important;
     field-sizing: content;
-}
-
-#cove-submit {
-
 }
 
 .cove-input {

@@ -21,22 +21,12 @@ const Cove = {
 
 const observer = new MutationObserver((mutationsList, observer) => {
   const form = document.getElementById('cove-form');
-  console.log('form:', form);
   if (form) {
 
     const nameInput = document.getElementById('cove-input-name');
 
     if (nameInput) {
-      const nameLabel = document.createElement('label');
-      nameLabel.setAttribute('for', 'cove-input-name');
-      nameLabel.textContent = 'メールアドレス';
-
-      const nameGroup = document.createElement('div');
-      nameGroup.classList.add('form-group');
-      nameGroup.appendChild(nameLabel);
-      nameGroup.appendChild(nameInput);
-
-      form.insertBefore(nameGroup, form.firstChild);
+      nameInput.value = "{{@member.email}}";
     }
 
     const bodyInput = document.getElementById('cove-input-body');
@@ -80,8 +70,7 @@ const observer = new MutationObserver((mutationsList, observer) => {
 
         const isNameFilled = nameInput ? nameInput.value.trim() !== '' : true;
 
-        // メールアドレスフォームが存在しない場合は、質問フィールドの入力状態だけでチェック
-        if (isNameFilled && isBodyFilled && isBodyWithinLimit) {
+         if (isBodyFilled && isBodyWithinLimit) {
           submitButton.classList.remove('disabled');
           submitButton.removeAttribute('disabled');
         } else {
@@ -91,9 +80,6 @@ const observer = new MutationObserver((mutationsList, observer) => {
       };
 
       bodyInput.addEventListener('input', checkInput);
-      if (nameInput) {
-        nameInput.addEventListener('input', checkInput);
-      }
     }
 
     observer.disconnect();
