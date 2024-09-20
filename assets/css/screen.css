@@ -3517,6 +3517,8 @@ figcaption a {
     display: flex;
     flex-direction: column;
     gap: 28px;
+    font-family: "Noto Sans";
+    color: #fff;
 }
 
 /* 27. About Page
