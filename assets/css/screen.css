@@ -3877,6 +3877,7 @@ figcaption a {
     font-size: 1.4rem !important;
     height: auto !important;
     field-sizing: content;
+    margin-bottom: 0px !important;
 }
 
 .cove-input {
