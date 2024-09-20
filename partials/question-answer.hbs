@@ -1,4 +1,4 @@
-{{^if @member}}
+{{^if @member.paid}}
 <aside class="gh-qa-upgrade-cta">
 	<div class="gh-qa-upgrade-cta-content">
         <h2>この先は部員限定</h2>
@@ -9,7 +9,7 @@
 </aside>
 {{/if}}
 
-<div id="cove"></div>
+<div id="cove" style="{{#unless @member.paid}}display: none;{{/unless}}"></div>
 
 <script>
 const Cove = {
