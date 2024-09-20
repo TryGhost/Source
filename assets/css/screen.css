@@ -3885,21 +3885,21 @@ figcaption a {
 }
 
 #cove-submit {
-    order: 3 !important; /* 順番を維持 */
+    order: 3 !important;
     width: 100% !important;
     max-width: 400px !important;
-    padding: 12px !important; /* ボタンのパディングを調整 */
+    padding: 12px !important;
     border: 1px solid transparent !important;
     text-align: center !important;
-    font-family: "Noto Sans", sans-serif !important; /* 使用しているフォントに合わせてください */
+    font-family: "Noto Sans", sans-serif !important;
     font-size: 16px !important;
     font-weight: normal !important;
     color: white !important;
-    background-color: #111 !important; /* 背景色: bg-neutral-900 */
+    background-color: #111 !important;
     border-radius: 30px !important;
     outline: none !important;
     cursor: pointer !important;
-    transition: opacity 150ms background-color 150ms !important; /* トランジション */
+    transition: opacity 150ms background-color 150ms !important;
     margin: 0 !important;
 }
 
