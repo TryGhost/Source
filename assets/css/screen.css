@@ -3819,7 +3819,7 @@ figcaption a {
     opacity: 0.5;
 }
 
-/* content-cta (会員限定フタ) */
+/* content-cta 部員限定フタ) */
 
 .gh-article-content > :not(.gh-post-upgrade-cta) {
     padding: 0px 20px;
