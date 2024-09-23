@@ -4082,3 +4082,30 @@ figcaption a {
 .gh-post-author-link a {
     color: #fff !important;
 }
+
+/* home-articles-cta */
+.gh-articles-upgrade-cta {
+    position: relative;
+    text-align: center;
+}
+
+.gh-articles-upgrade-cta-content {
+    position: relative;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 40px 20px !important;
+    border-radius: 0 0 8px 8px !important;
+}
+
+.gh-articles-upgrade-cta h2 {
+    color: #2B2B2B !important;
+    font-size: 2.4rem !important;
+    font-weight: 700 !important;
+    font-family: "Noto Sans" !important;
+}
+
+.gh-articles-upgrade-cta a {
+    color: #fff;
+}
