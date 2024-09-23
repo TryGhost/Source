@@ -25,8 +25,8 @@
                     <time class="gh-home-post-date" datetime="{{date format="YYYY-MM-DD"}}">{{date format="YYYY.MM.DD"}}</time>
                 </article>
             {{/foreach}}
-            {{pagination}}
         </div>
+        {{pagination}}
     {{else}}
         <div id="post-feed" class="gh-home-post-feed">
             {{#foreach posts limit="4"}}
