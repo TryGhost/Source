@@ -19,11 +19,11 @@
 
             {{#if @custom.show_post_metadata}}
             <div class="gh-article-meta">
-                <div class="gh-article-author-image">
+                <div class="gh-article-author-image instapaper_ignore">
                     {{#foreach authors}}
                         {{#if profile_image}}
                             <a href="{{url}}">
-                                <img class="author-profile-image" src="{{img_url profile_image size="xs"}}" alt="{{name}}" />
+                                <img class="author-profile-image" src="{{img_url profile_image size="xs"}}" alt="{{name}}">
                             </a>
                         {{else}}
                             <a href="{{url}}">{{> "icons/avatar"}}</a>
