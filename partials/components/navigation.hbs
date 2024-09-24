@@ -27,9 +27,9 @@
                     {{#is "home"}}
                         <h1>Home</h1>
                     {{/is}}
-                    {{#author}}
+                    {{#is "author"}}
                         <h1>Author</h1>
-                    {{/author}}
+                    {{/is}}
                     {{#tag}}
                         <h1>Articles</h1>
                     {{/tag}}
@@ -39,7 +39,7 @@
                         <h1>Articles</h1>
                     {{/if}}
                 </div>
-                
+
                 {{#if @member}}
                     <div class="gh-navigation-siginin-button">
                         <a href="#/portal/account" data-portal="subscribe">{{t "アカウント"}}</a>
