@@ -38,9 +38,10 @@
 - Galleryページ
   - タイトル: Gallery
   - コンテンツ: 要求のとおりに設定
+    - 部員への限定公開部分はpublic previewブロックを差し込む
   - Page URL: gallery
   - Tags: 空欄
-  - Page access: Public
+  - Page access: 任意のアクセスを設定する
   - Excerpt: 空欄
   - Authors: 誰でも
   - Meta data: meta情報の設定を参考
