@@ -43,6 +43,13 @@
 
         <section class="gh-content gh-article-content is-body{{#if @custom.enable_drop_caps_on_posts}} drop-cap{{/if}}">
             {{content}}
+            <div class="gh-post-author-link">
+                <p>Authors:
+                    {{#foreach authors}}
+                        <a href="{{url}}"><span>{{name}}</span></a>{{#unless @last}}, {{/unless}}
+                    {{/foreach}}
+                </p>
+            </div>
         </section>
 
     </article>
