@@ -101,8 +101,8 @@
     - Meta title: Locker Room ギャラリー | 渡邊雄太公式ファンコミュニティ
     - Meta description: 渡邊雄太公式ファンコミュニティ「Locker Room」は、NBAでのプレー経験や自信がバスケットボールと向き合ってきた考え方の発信など、ファンの方々にYutaをもっと知ってもらい、交流できる場を目指しています。
   - Q&Aページ
-    - Meta title: 確認中
-    - Meta description: 確認中
+    - Meta title: Locker Room Q&A | 渡邊雄太公式ファンコミュニティ
+    - Meta description: 渡邊雄太公式ファンコミュニティ「Locker Room」は、NBAでのプレー経験や自信がバスケットボールと向き合ってきた考え方の発信など、ファンの方々にYutaをもっと知ってもらい、交流できる場を目指しています。
 - 各Postにtitleとdescriptionを設定
   - Meta title、Meta descriptionともにコンテンツ管理者が設定する
 - faviconを設定
