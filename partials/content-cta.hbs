@@ -17,9 +17,9 @@
 
 		{{#has visibility="tiers"}}
 			<h2>この先は
-				{{#each tiers}}
+				{{#foreach tiers}}
 					{{name}}プラン
-				{{/each}} 限定
+				{{/foreach}} 限定
 			</h2>
 			{{#if @member}}
 				<a class="gh-post-upgrade-signup-link" href="#/portal/signup" data-portal="signup">
