@@ -55,6 +55,32 @@
   - Excerpt: 空欄
   - Authors: 誰でも
   - Meta data: meta情報の設定を参考
+ 
+### Authorページの設定
+
+各記事から遷移できる著者ページには、StaffのProfileを設定する必要がある
+
+サンプルページ：https://test.yuta-watanabe.com/author/soichiro/
+
+- 設定先：Ghost Admin > Setting > General settings > Staff
+  - トップ画像設定：Cover Image
+  - 著者名：Full name
+  - プロフィールテキスト：Bio
+    - 200文字制限がありますので、ご注意ください
+
+記事投稿staffは以下の2名の想定ですので、各々に対し、Profileを設定する
+- 渡邊雄太
+  - トップ画像設定：デザインを参考 [Figma | Author](https://www.figma.com/design/uhBLODjKus6eIENUmBcpim/Yuta-Watanabe?node-id=440-11321&t=Qj45tc1X3KhVm0h9-4)
+  - 著者名：渡邊雄太
+  - プロフィールテキスト：1994年10月13日生まれ。香川県出身。うどんをこよなく愛するが、実は町中華も好き。ゲームも大好きで、自宅での空き時間は結構な時間を費やしている。Locker Roomではみんなから気軽にYutaって呼んでほしいらしい。尽誠学園→ジョージ・ワシントン大学→NBA（メンフィス・グリズリーズ、トロント・ラプターズ、ブルックリン・ネッツ、フェニックスサンズ）→千葉ジェッツ
+ 
+- スタッフ
+  - トップ画像設定：デザインを参考 [Figma | Author](https://www.figma.com/design/uhBLODjKus6eIENUmBcpim/Yuta-Watanabe?node-id=440-11321&t=Qj45tc1X3KhVm0h9-4)
+  - 著者名：スタッフ
+  - プロフィールテキスト：私たちは渡邊雄太選手の魅力を広めるため、ブログ執筆や動画・写真の管理を行っています。ファンの皆様と共に、渡邊選手の素晴らしいプレーや最新情報を共有し、応援の輪を広げることを使命としています。チーム一同、情熱を持って活動に取り組んでおりますので、どうぞよろしくお願いいたします。
+
+
+
 
 ### meta情報の設定
 
