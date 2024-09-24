@@ -1,32 +1,41 @@
 {{!< default}}
-{{! The tag above means: insert everything in this file into the body of the default.hbs template }}
-
 <main class="gh-main">
-	{{#tag}}
-		<section class="gh-tag-section">
-			{{#if name}}
-				<h2 class="gh-tag-section-title">{{name}}</h2>
-			{{/if}}
-			<div class="gh-tag-post-feed">
-				{{#get "posts" filter="tags:{{slug}}" include="tags" limit="all"}}
-					{{#foreach posts}}
-						<article class="gh-tag-post-card">
-							<a href="{{url}}">
-								{{#if feature_image}}
-                                <img src="{{feature_image}}" alt="{{title}}">
-								{{else}}
-									<img src="{{asset "images/default_post_feature_img.png"}}" alt="{{title}}">
-								{{/if}}
-							</a>
-							<h3 class="gh-tag-post-title">{{title}}</h3>
-							<time
-								class="gh-tag-post-date"
-								datetime="{{date format="YYYY-MM-DD"}}"
-							>date {{date format="YYYY.MM.DD"}}</time>
-						</article>
-					{{/foreach}}
-				{{/get}}
-			</div>
-		</section>
-	{{/tag}}
+    {{#tag}}
+        <section class="gh-tag-section">
+            {{#if name}}
+                <h2 class="gh-tag-section-title">{{name}}</h2>
+            {{/if}}
+                {{#if @member.paid}}
+				<div class="gh-tag-post-feed">
+                    {{#get "posts" filter="tags:{{slug}}" include="tags" limit="all"}}
+                        {{#foreach posts}}
+                            <article class="gh-tag-post-card">
+                                <a href="{{url}}">
+                                    {{#if feature_image}}
+                                        <img src="{{feature_image}}" alt="{{title}}">
+                                    {{else}}
+                                        <img src="{{asset "images/default_post_feature_img.png"}}" alt="{{title}}">
+                                    {{/if}}
+                                </a>
+                                <h3 class="gh-tag-post-title">{{title}}</h3>
+                                <time
+                                    class="gh-tag-post-date"
+                                    datetime="{{date format="YYYY-MM-DD"}}"
+                                >{{date format="YYYY.MM.DD"}}</time>
+                            </article>
+                        {{/foreach}}
+                    {{/get}}
+				</div>
+                {{else}}
+				<aside class="gh-tag-upgrade-cta">
+					<div class="gh-tag-upgrade-cta-content">
+						<h2>この先は部員限定</h2>
+						<a class="gh-post-upgrade-signup-link" href="#/portal/signup" data-portal="signup">
+							{{t "🏀入部する⛹️"}}
+						</a>
+					</div>
+				</aside>
+                {{/if}}
+        </section>
+    {{/tag}}
 </main>

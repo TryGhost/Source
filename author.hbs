@@ -12,12 +12,14 @@
 		{{/if}}
 		<section class="gh-author-introduction">
 			{{#if name}}
-				<h2 class="gh-author-section-title"> {{name}}</h2>
+				<h2 class="gh-author-section-title">{{name}}</h2>
 			{{/if}}
 			{{#if bio}}
 				<p class="gh-author-excerpt">{{bio}}</p>
 			{{/if}}
 		</section>
+
+		{{#if @member.paid}}
 		<section class="gh-author-archive">
 			<h2 class="gh-author-section-title">New</h2>
 			<div class="gh-author-post-feed">
@@ -47,5 +49,6 @@
 				{{/get}}
 			</div>
 		</section>
+		{{/if}}
 	{{/author}}
 </main>
