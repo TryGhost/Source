@@ -27,9 +27,12 @@
                     {{#is "home"}}
                         <h1>Home</h1>
                     {{/is}}
-                    {{#primary_author}}
+                    {{#is "articles"}}
+                        <h1>Articles</h1>
+                    {{/is}}
+                    {{#author}}
                         <h1>Author</h1>
-                    {{/primary_author}}
+                    {{/author}}
                     {{#tag}}
                         <h1>Articles</h1>
                     {{/tag}}
