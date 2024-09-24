@@ -4072,3 +4072,13 @@ figcaption a {
     text-align: center;
     color: #1B1B1B;
 }
+
+
+/* post内のauthorリンク */
+.gh-post-author-link p {
+    font-size: 1.4rem !important;
+    font-weight: 500 !important;
+}
+.gh-post-author-link a {
+    color: #fff !important;
+}
