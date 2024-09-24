@@ -13,12 +13,15 @@
 					{{t "🏀 質問を投稿する ⛹️"}}
 				</a>
 			</div>
-			<a class="gh-home-qa-latest-articles" href="/tag/qa/">
-				<div >
-					{{t "✉️ 最新のQ&Aを見る ✉️"}}
-				</div>
-			</a>
-
+			{{#get "posts" filter="tag:qa" limit="1"}}
+				{{#if posts.length}}
+					<a class="gh-home-qa-latest-articles" href="/tag/qa/">
+					<div>
+						{{t "✉️ 最新のQ&Aを見る ✉️"}}
+					</div>
+					</a>
+				{{/if}}
+			{{/get}}
         </div>
     </div>
 </section>
