@@ -1,35 +1,48 @@
 {{!< default}}
 <section class="gh-all-articles-tags-section">
-	{{#get "tags" limit="all"}}
-		<div class="gh-all-article-tags">
-			{{#foreach tags}}
-				<a class="gh-all-article-tag" href="{{url}}">{{name}}</a>
-			{{/foreach}}
-		</div>
-	{{/get}}
+    {{#get "tags" limit="all"}}
+        <div class="gh-all-article-tags">
+        {{#foreach tags}}
+            <a class="gh-all-article-tag" href="{{url}}">{{name}}</a>
+        {{/foreach}}
+        </div>
+    {{/get}}
 </section>
 <section class="gh-all-articles">
-	<h2>Articles</h2>
-	<div id="post-feed" class="gh-home-post-feed">
-		{{#foreach posts}}
-			<article class="gh-home-post-card">
-				<a href="{{url}}">
-					{{#if feature_image}}
-						<img src="{{feature_image}}" alt="{{title}}" />
-					{{else}}
-						<img
-							src="{{asset 'images/default_post_feature_img.png'}}"
-							alt="{{title}}"
-						/>
-					{{/if}}
-				</a>
-				<h3 class="gh-home-post-title">{{title}}</h3>
-				<time
-					class="gh-home-post-date"
-					datetime="{{date format="YYYY-MM-DD"}}"
-				>{{date format="YYYY.MM.DD"}}</time>
-			</article>
-		{{/foreach}}
-	</div>
-	{{pagination}}
+    <h2>Articles</h2>
+    {{#if @member.paid}}
+        <div id="post-feed" class="gh-home-post-feed">
+            {{#foreach posts }}
+                <article class="gh-home-post-card">
+                    <a href="{{url}}">
+                    {{#if feature_image}}
+                        <img src="{{feature_image}}" alt="{{title}}">
+                    {{else}}
+                        <img src="{{asset "images/default_post_feature_img.png"}}" alt="{{title}}">
+                    {{/if}}
+                    </a>
+                    <h3 class="gh-home-post-title">{{title}}</h3>
+                    <time class="gh-home-post-date" datetime="{{date format="YYYY-MM-DD"}}">{{date format="YYYY.MM.DD"}}</time>
+                </article>
+            {{/foreach}}
+        </div>
+        {{pagination}}
+    {{else}}
+        <div id="post-feed" class="gh-home-post-feed">
+            {{#foreach posts limit="4"}}
+                <article class="gh-home-post-card">
+                    <a href="{{url}}">
+                    {{#if feature_image}}
+                        <img src="{{feature_image}}" alt="{{title}}">
+                    {{else}}
+                        <img src="{{asset "images/default_post_feature_img.png"}}" alt="{{title}}">
+                    {{/if}}
+                    </a>
+                    <h3 class="gh-home-post-title">{{title}}</h3>
+                    <time class="gh-home-post-date" datetime="{{date format="YYYY-MM-DD"}}">{{date format="YYYY.MM.DD"}}</time>
+                </article>
+            {{/foreach}}
+        </div>
+        {{> "articles-cta"}}
+    {{/if}}
 </section>

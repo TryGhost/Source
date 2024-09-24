@@ -3819,7 +3819,7 @@ figcaption a {
     opacity: 0.5;
 }
 
-/* content-cta (会員限定フタ) */
+/* content-cta 部員限定フタ) */
 
 .gh-article-content > :not(.gh-post-upgrade-cta) {
     padding: 0px 20px;
@@ -4081,4 +4081,31 @@ figcaption a {
 }
 .gh-post-author-link a {
     color: #fff !important;
+}
+
+/* home-articles-cta */
+.gh-home-upgrade-cta {
+    position: relative;
+    text-align: center;
+}
+
+.gh-home-upgrade-cta-content {
+    position: relative;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 40px 20px !important;
+    border-radius: 0 0 8px 8px !important;
+}
+
+.gh-home-upgrade-cta h2 {
+    color: #2B2B2B !important;
+    font-size: 2.4rem !important;
+    font-weight: 700 !important;
+    font-family: "Noto Sans" !important;
+}
+
+.gh-home-upgrade-cta a {
+    color: #fff;
 }
