@@ -27,12 +27,9 @@
                     {{#is "home"}}
                         <h1>Home</h1>
                     {{/is}}
-                    {{#is "articles"}}
-                        <h1>Articles</h1>
-                    {{/is}}
-                    {{#primary_author}}
+                    {{#is "author"}}
                         <h1>Author</h1>
-                    {{/primary_author}}
+                    {{/is}}
                     {{#tag}}
                         <h1>Articles</h1>
                     {{/tag}}
@@ -42,12 +39,12 @@
                         <h1>Articles</h1>
                     {{/if}}
                 </div>
-                
+
                 {{#if @member}}
                     <div class="gh-navigation-siginin-button">
                         <a href="#/portal/account" data-portal="subscribe">{{t "アカウント"}}</a>
                     </div>
-                    {{else}}
+                {{else}}
                     <div class="gh-navigation-siginin-button">
                         <a href="#/portal/signin" data-portal="signin">{{t "ログイン"}}</a>
                     </div>

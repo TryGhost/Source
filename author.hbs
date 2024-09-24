@@ -2,7 +2,7 @@
 {{! The tag above means: insert everything in this file into the body of the default.hbs template }}
 
 <main class="gh-main">
-	{{#primary_author}}
+	{{#author}}
 		{{#if cover_image}}
 			<img
 				class="gh-author-cover-image"
@@ -12,12 +12,14 @@
 		{{/if}}
 		<section class="gh-author-introduction">
 			{{#if name}}
-				<h2 class="gh-author-section-title"> {{name}}</h2>
+				<h2 class="gh-author-section-title">{{name}}</h2>
 			{{/if}}
 			{{#if bio}}
 				<p class="gh-author-excerpt">{{bio}}</p>
 			{{/if}}
 		</section>
+
+		{{#if @member.paid}}
 		<section class="gh-author-archive">
 			<h2 class="gh-author-section-title">New</h2>
 			<div class="gh-author-post-feed">
@@ -31,7 +33,11 @@
 					{{#foreach posts}}
 						<article class="gh-author-post-card">
 							<a href="{{url}}">
-								<img src="{{feature_image}}" alt="{{title}}" />
+								{{#if feature_image}}
+									<img src="{{feature_image}}" alt="{{title}}">
+								{{else}}
+									<img src="{{asset "images/default_post_feature_img.png"}}" alt="{{title}}">
+								{{/if}}
 							</a>
 							<h3 class="gh-author-post-title">{{title}}</h3>
 							<time
@@ -43,5 +49,6 @@
 				{{/get}}
 			</div>
 		</section>
-	{{/primary_author}}
+		{{/if}}
+	{{/author}}
 </main>

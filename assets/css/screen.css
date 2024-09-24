@@ -136,7 +136,7 @@ production stylesheet in assets/built/screen.css
     font-weight: 100 900;
     font-display: swap;
     src: url("../fonts/NotoSansJP-VariableFont_wght.ttf") format("truetype"); /* 拡張子を追加 */
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD, U+3000-30FF, U+4E00-9FFF, U+FF00-FFEF;
 }
 
 /* 3. Resets
@@ -1017,16 +1017,66 @@ button.gh-form-input {
 /* 8. Header
 /* ---------------------------------------------------------- */
 
-.gh-header {
+.gh-header-container {
     position: relative;
-    margin-top: 40px;
     width: 100%;
+    height: 100%;
     min-height: 690px;
 }
+.gh-header-container::before {
+    position: absolute;
+    inset: 0;
+    content: "";
+    opacity: 0.3;
+    background-color: var(--color-black);
+    transition: opacity 1.5s ease;
+}
 
-.gh-header-inner {
-    position: relative;
+.gh-header-image {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     overflow: hidden;
+}
+
+.gh-header-title-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 20px;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    z-index: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.gh-header-title {
+    align-self: center; 
+    justify-self: start;
+    grid-row: 2;
+}
+
+.gh-header-link {
+    align-self: end;    
+    justify-self: center;
+    grid-row: 3;
+    width: 100%;   
+    display: flex;
+    padding: 16px 20px 16px 24px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    background: #fff;
+    color: #1B1B1B;
+    font-family: "Noto Sans";
+    font-size: 1.6rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }
 
 /* 8.1. Magazine layout */
@@ -1411,15 +1461,6 @@ button.gh-form-input {
 
 .gh-header.is-classic.has-image .gh-header-inner {
     color: #fff;
-}
-
-.gh-header.is-classic.has-image .gh-header-image {
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
 }
 
 .gh-header.is-classic.has-image .gh-form {
@@ -3509,7 +3550,16 @@ figcaption a {
 /* ---------------------------------------------------------- */
 
 .gh-gallery-page-article {
+    margin-top: 40px;
     margin-bottom: 40px;
+}
+
+.gh-gallery-page-section {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    font-family: "Noto Sans";
+    color: #fff;
 }
 
 /* 27. About Page
@@ -3696,6 +3746,34 @@ figcaption a {
 	letter-spacing: 1px;
 }
 
+.gh-tag-upgrade-cta {
+    margin-top: 20px;
+    padding-top: 20px;
+    position: relative;
+    text-align: center;
+}
+
+.gh-tag-upgrade-cta-content {
+    position: relative;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 40px 20px !important;
+    border-radius: 0 0 8px 8px !important;
+}
+
+.gh-tag-upgrade-cta h2 {
+    color: #2B2B2B !important;
+    font-size: 2.4rem !important;
+    font-weight: 700 !important;
+    font-family: "Noto Sans" !important;
+}
+
+.gh-tag-upgrade-cta a {
+    color: #fff;
+}
+
 
 
 /* 28. All Articles
@@ -3769,7 +3847,7 @@ figcaption a {
     opacity: 0.5;
 }
 
-/* content-cta (会員限定フタ) */
+/* content-cta 部員限定フタ) */
 
 .gh-article-content > :not(.gh-post-upgrade-cta) {
     padding: 0px 20px;
@@ -3851,4 +3929,211 @@ figcaption a {
 
 .gh-announcement-bar button {
     display: none !important;
+}
+
+
+
+/* Q&A */
+#cove-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 28px;
+    padding-inline: 20px;
+}
+
+#cove-input-name {
+    width: 100% !important;
+    margin-left: 0px !important;
+    height: 60px !important;
+    font-size: 2rem !important;
+    display: none !important;
+}
+
+#cove-input-body {
+    min-height: 140px !important;
+    font-size: 1.4rem !important;
+    height: auto !important;
+    field-sizing: content;
+    margin-bottom: 0px !important;
+}
+
+.cove-input {
+    border-radius: 8px !important;
+    font-family: "Noto Sans";
+}
+
+#cove-submit {
+    order: 3 !important;
+    width: 100% !important;
+    max-width: 400px !important;
+    padding: 12px !important;
+    border: 1px solid transparent !important;
+    text-align: center !important;
+    font-family: "Noto Sans", sans-serif !important;
+    font-size: 16px !important;
+    font-weight: normal !important;
+    color: white !important;
+    background-color: #111 !important;
+    border-radius: 30px !important;
+    outline: none !important;
+    cursor: pointer !important;
+    transition: opacity 150ms background-color 150ms !important;
+    margin: 0 !important;
+}
+
+#cove-submit.disabled {
+    background-color: #D9D9D9 !important;
+    cursor: not-allowed !important;
+}
+
+.form-group {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 8px !important;
+}
+
+.form-group label {
+    font-size: 1.4rem !important;
+    font-weight: 400 !important;
+    color: #FFFFFF !important;
+    font-family: "Noto Sans" !important;
+    letter-spacing: 0.1rem;
+}
+
+.form-group p {
+    font-size: 1rem !important;
+    font-weight: 400 !important;
+    color: #FFFFFF !important;
+    font-family: "Noto Sans" !important;
+    letter-spacing: 0.1rem;
+}
+
+#cove-comments {
+    display: none;
+}
+
+.gh-qa-upgrade-cta {
+    margin-top: 20px;
+    padding-top: 20px;
+    position: relative;
+    text-align: center;
+}
+
+.gh-qa-upgrade-cta-content {
+    position: relative;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 40px 20px !important;
+    border-radius: 0 0 8px 8px !important;
+}
+
+.gh-qa-upgrade-cta h2 {
+    color: #2B2B2B !important;
+    font-size: 2.4rem !important;
+    font-weight: 700 !important;
+    font-family: "Noto Sans" !important;
+}
+
+.gh-qa-upgrade-cta a {
+    color: #fff;
+}
+
+/* home-Q&A */
+.gh-home-qa-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    padding-inline: 20px;
+}
+
+.gh-home-qa-cta {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 8px;
+    height: 224px;
+    width: 100%;
+    padding-inline: 20px;
+}
+
+.gh-home-qa-cta h3{
+    font-size: 2.4rem;
+    font-weight: 700;
+    font-family: "Noto Sans";
+    padding-top: 44px;
+    padding-inline: 20px;
+    padding-bottom: 30px;
+    color: #4D4D4D;
+    text-align: center;
+    letter-spacing: 1px;
+    line-height: 32px;
+}
+
+.gh-home-qa-cta a {
+    background-color: #1B1B1B;
+    width: 100%;
+    border-radius: 30px;
+    padding: 16px 20px;
+    text-decoration: none !important;
+    font-size: 1.6rem;
+    font-weight: 400;
+    font-family: "Noto Sans";
+    text-align: center;
+    color: #fff;
+}
+
+.gh-home-qa-latest-articles {
+    background-color: #FFFFFF;
+    width: 100%;
+    border-radius: 30px;
+    padding: 16px 20px;
+    text-decoration: none !important;
+    font-size: 1.6rem;
+    font-weight: 400;
+    font-family: "Noto Sans";
+    text-align: center;
+    color: #1B1B1B;
+}
+
+
+/* post内のauthorリンク */
+.gh-post-author-link p {
+    font-size: 1.4rem !important;
+    font-weight: 500 !important;
+}
+.gh-post-author-link a {
+    color: #fff !important;
+}
+
+/* home-articles-cta */
+.gh-home-upgrade-cta {
+    position: relative;
+    text-align: center;
+}
+
+.gh-home-upgrade-cta-content {
+    position: relative;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 40px 20px !important;
+    border-radius: 0 0 8px 8px !important;
+}
+
+.gh-home-upgrade-cta h2 {
+    color: #2B2B2B !important;
+    font-size: 2.4rem !important;
+    font-weight: 700 !important;
+    font-family: "Noto Sans" !important;
+}
+
+.gh-home-upgrade-cta a {
+    color: #fff;
 }
