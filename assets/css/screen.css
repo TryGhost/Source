@@ -3931,7 +3931,11 @@ figcaption a {
     display: none !important;
 }
 
-
+.gh-announcement-bar a {
+	color: #4D4D4D !important;
+    font-size: 1.4rem !important;
+    font-weight: 400 !important;
+}
 
 /* Q&A */
 #cove-form {
