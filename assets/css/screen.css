@@ -3938,6 +3938,17 @@ figcaption a {
 }
 
 /* Q&A */
+#cove {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#cove svg {
+    margin-inline: auto;
+    margin-top: 20px;
+}
+
 #cove-form {
     display: flex;
     flex-direction: column;
