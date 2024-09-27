@@ -2213,7 +2213,7 @@ unless a heading is the very first element in the post content */
 }
 
 .gh-content a {
-    color: var(--ghost-accent-color);
+    color: #fff;
     text-decoration: underline;
 }
 
