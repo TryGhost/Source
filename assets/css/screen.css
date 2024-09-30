@@ -1937,6 +1937,7 @@ Search                         LOGO                    Login Subscribe
     text-transform: uppercase;
     background-color: transparent;
     border: 0;
+    color: var(--color-darker-gray);
 }
 
 .gh-recommendations button svg {
