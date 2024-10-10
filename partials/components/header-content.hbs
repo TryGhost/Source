@@ -63,13 +63,13 @@
 
         {{!-- Landing layout --}}
         {{#match headerStyle "Landing"}}
-            <h1 class="gh-header-title is-title gh-heading-font">{{#if @custom.header_text}}{{@custom.header_text}}{{else}}{{@site.description}}{{/if}}</h1>
+            <h1 class="gh-header-title gh-heading-font">{{#if @custom.header_text}}{{@custom.header_text}}{{else}}{{@site.description}}{{/if}}</h1>
             {{> "email-subscription" email_field_id="header-email"}}
         {{/match}}
 
         {{!-- Search layout --}}
         {{#match headerStyle "Search"}}
-            <h1 class="gh-header-title is-title gh-heading-font">{{#if @custom.header_text}}{{@custom.header_text}}{{else}}{{@site.description}}{{/if}}</h1>
+            <h1 class="gh-header-title gh-heading-font">{{#if @custom.header_text}}{{@custom.header_text}}{{else}}{{@site.description}}{{/if}}</h1>
             <form class="gh-form">
                 {{> "icons/search"}}
                 <button class="gh-form-input" data-ghost-search>Search posts, tags and authors</button>

@@ -8,15 +8,15 @@
 
         {{#match @page.show_title_and_feature_image}}
             <header class="gh-article-header gh-canvas">
-                <h1 class="gh-article-title is-title gh-heading-font gh-heading-font">{{title}}</h1>
+                <h1 class="gh-article-title gh-heading-font gh-heading-font">{{title}}</h1>
                 {{#if custom_excerpt}}
-                    <p class="gh-article-excerpt is-body gh-body-font">{{custom_excerpt}}</p>
+                    <p class="gh-article-excerpt gh-body-font">{{custom_excerpt}}</p>
                 {{/if}}
                 {{> "feature-image"}}
             </header>
         {{/match}}
 
-        <section class="gh-content gh-canvas is-body gh-body-font">
+        <section class="gh-content gh-canvas gh-body-font">
             {{content}}
         </section>
 

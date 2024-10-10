@@ -79,7 +79,7 @@
             </div>
 
             {{#match pagination.pages ">" 1}}
-                <div class="gh-more is-title gh-heading-font">
+                <div class="gh-more gh-heading-font">
                     <a href="{{@site.url}}/page/2">See all {{> "icons/arrow"}}</a>
                 </div>
             {{/match}}
@@ -92,9 +92,9 @@
                         {{#if @site.icon}}
                             <img class="gh-about-icon" src="{{@site.icon}}" alt="{{@site.title}}" loading="lazy">
                         {{/if}}
-                        <h3 class="gh-about-title is-title gh-heading-font">{{@site.title}}</h3>
+                        <h3 class="gh-about-title gh-heading-font">{{@site.title}}</h3>
                         {{#if @site.description}}
-                            <p class="gh-about-description is-body gh-body-font">{{@site.description}}</p>
+                            <p class="gh-about-description gh-body-font">{{@site.description}}</p>
                         {{/if}}
                         {{#if @site.members_enabled}}
                             {{#unless @member}}
