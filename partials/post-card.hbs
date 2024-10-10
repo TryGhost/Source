@@ -20,13 +20,13 @@
             {{#if primary_tag}}
                 <p class="gh-card-tag">{{primary_tag.name}}</p>
             {{/if}}
-            <h3 class="gh-card-title is-title">{{title}}</h3>
+            <h3 class="gh-card-title is-title gh-heading-font">{{title}}</h3>
             {{#if custom_excerpt}}
-                <p class="gh-card-excerpt is-body">{{custom_excerpt}}</p>
+                <p class="gh-card-excerpt is-body gh-body-font">{{custom_excerpt}}</p>
             {{/if}}
             {{#unless custom_excerpt}}
                 {{#if excerpt}}
-                    <p class="gh-card-excerpt is-body">{{excerpt}}</p>
+                    <p class="gh-card-excerpt is-body gh-body-font">{{excerpt}}</p>
                 {{/if}}
             {{/unless}}
             <footer class="gh-card-meta">

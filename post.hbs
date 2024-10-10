@@ -12,9 +12,9 @@
             {{#if primary_tag}}
                 <a class="gh-article-tag" href="{{primary_tag.url}}">{{primary_tag.name}}</a>
             {{/if}}
-            <h1 class="gh-article-title is-title">{{title}}</h1>
+            <h1 class="gh-article-title is-title gh-heading-font">{{title}}</h1>
             {{#if custom_excerpt}}
-                <p class="gh-article-excerpt is-body">{{custom_excerpt}}</p>
+                <p class="gh-article-excerpt is-body gh-body-font">{{custom_excerpt}}</p>
             {{/if}}
 
             {{#if @custom.show_post_metadata}}
@@ -46,7 +46,7 @@
 
         </header>
 
-        <section class="gh-content gh-canvas is-body{{#if @custom.enable_drop_caps_on_posts}} drop-cap{{/if}}">
+        <section class="gh-content gh-canvas is-body gh-body-font{{#if @custom.enable_drop_caps_on_posts}} drop-cap{{/if}}">
             {{content}}
         </section>
 
