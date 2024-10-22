@@ -1937,6 +1937,7 @@ Search                         LOGO                    Login Subscribe
     text-transform: uppercase;
     background-color: transparent;
     border: 0;
+    color: var(--color-darker-gray);
 }
 
 .gh-recommendations button svg {
@@ -1981,8 +1982,8 @@ Search                         LOGO                    Login Subscribe
 .gh-article-excerpt {
     margin-top: clamp(12px, 0.45vw + 10.18px, 16px);
     max-width: 720px;
-    font-size: clamp(1.5rem, 0.45vw + 1.32rem, 1.9rem);
-    line-height: 1.4;
+    font-size: clamp(1.7rem, 0.23vw + 1.61rem, 1.9rem);
+    line-height: 1.45;
     letter-spacing: -0.018em;
 }
 
