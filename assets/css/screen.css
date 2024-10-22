@@ -132,14 +132,14 @@ h1, h2, h3, h4, h5, h6 {
 /* ---------------------------------------------------------- */
 
 body {
-    font-family: var(--gh-font-body, --font-sans);
+    font-family: var(--gh-font-body, var(--font-sans));
     font-size: 1.6rem;
     background-color: var(--background-color);
     color: var(--color-primary-text);
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: var(--gh-font-heading);
+    font-family: var(--gh-font-heading, var(--font-sans));
 }
 
 a {
@@ -2611,24 +2611,24 @@ figcaption a {
 }
 
 .has-sans-title :is(.is-title, .gh-content :is(h2, h3)) {
-    font-family: var(--gh-font-heading, --font-sans);
+    font-family: var(--gh-font-heading, var(--font-sans));
 }
 
 .has-serif-title :is(.is-title, .gh-content :is(h2, h3)) {
-    font-family: var(--gh-font-heading, --font-serif);
+    font-family: var(--gh-font-heading, var(--font-serif));
     font-weight: 550;
 }
 
 .has-mono-title :is(.is-title, .gh-content :is(h2, h3)) {
-    font-family: var(--gh-font-heading, --font-mono);
+    font-family: var(--gh-font-heading, var(--font-mono));
 }
 
 .has-sans-body .is-body {
-    font-family: var(--gh-font-body, --font-sans);
+    font-family: var(--gh-font-body, var(--font-sans));
 }
 
 .has-serif-body .is-body {
-    font-family: var(--gh-font-body, --font-serif-alt);
+    font-family: var(--gh-font-body, var(--font-serif-alt));
 }
 
 .has-serif-title .gh-header.is-classic .gh-header-title {
