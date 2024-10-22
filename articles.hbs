@@ -11,7 +11,7 @@
 <section class="gh-all-articles">
     <h2>Articles</h2>
     {{#if @member.paid}}
-        <div id="post-feed" class="gh-home-post-feed">
+        <div id="post-feed" class="gh-home-post-feed" data-member-status="paid">
             {{#foreach posts }}
                 <article class="gh-home-post-card">
                     <a href="{{url}}">
@@ -28,21 +28,57 @@
         </div>
         {{pagination}}
     {{else}}
-        <div id="post-feed" class="gh-home-post-feed">
-            {{#foreach posts limit="4"}}
-                <article class="gh-home-post-card">
-                    <a href="{{url}}">
-                    {{#if feature_image}}
-                        <img src="{{feature_image}}" alt="{{title}}">
-                    {{else}}
-                        <img src="{{asset "images/default_post_feature_img.png"}}" alt="{{title}}">
-                    {{/if}}
-                    </a>
-                    <h3 class="gh-home-post-title">{{title}}</h3>
-                    <time class="gh-home-post-date" datetime="{{date format="YYYY-MM-DD"}}">{{date format="YYYY.MM.DD"}}</time>
-                </article>
-            {{/foreach}}
+        <div id="post-feed" class="gh-home-post-feed" data-member-status="free">
+            {{!-- 無料記事の取得 --}}
+            {{#get "posts" filter="visibility:public" limit="4"}}
+                {{#foreach posts}}
+                    <article class="gh-home-post-card">
+                        <a href="{{url}}">
+                        {{#if feature_image}}
+                            <img src="{{feature_image}}" alt="{{title}}">
+                        {{else}}
+                            <img src="{{asset "images/default_post_feature_img.png"}}" alt="{{title}}">
+                        {{/if}}
+                        </a>
+                        <h3 class="gh-home-post-title">{{title}}</h3>
+                        <time class="gh-home-post-date" datetime="{{date format="YYYY-MM-DD"}}">{{date format="YYYY.MM.DD"}}</time>
+                    </article>
+                {{/foreach}}
+            {{/get}}
+            {{!-- 有料記事を取得 --}}
+            {{#get "posts" filter="visibility:paid" limit="4"}}
+                {{#foreach posts}}
+                    <article class="gh-home-post-card">
+                        <a href="{{url}}">
+                        {{#if feature_image}}
+                            <img src="{{feature_image}}" alt="{{title}}">
+                        {{else}}
+                            <img src="{{asset "images/default_post_feature_img.png"}}" alt="{{title}}">
+                        {{/if}}
+                        </a>
+                        <h3 class="gh-home-post-title">{{title}}</h3>
+                        <time class="gh-home-post-date" datetime="{{date format="YYYY-MM-DD"}}">{{date format="YYYY.MM.DD"}}</time>
+                    </article>
+                {{/foreach}}
+            {{/get}}
         </div>
         {{> "articles-cta"}}
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                // data-member-status 属性を確認して、ユーザーのステータスを取得
+                const postFeed = document.getElementById('post-feed');
+                const memberStatus = postFeed.getAttribute('data-member-status');
+
+                // 無料ユーザー (free) の場合のみ処理を実行
+                if (memberStatus === 'free') {
+                    const postCards = document.querySelectorAll('.gh-home-post-card');
+                    if (postCards.length > 4) {
+                        for (let i = 4; i < postCards.length; i++) {
+                            postCards[i].style.display = 'none';
+                        }
+                    }
+                }
+            });
+        </script>
     {{/if}}
 </section>

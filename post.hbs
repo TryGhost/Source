@@ -54,28 +54,93 @@
 {{/post}}
 
 {{#if @custom.show_related_articles}}
-    {{#get "posts" include="authors" filter="id:-{{post.id}}" limit="2" as |next|}}
-        {{#if next}}
-            <section class="recommend-container">
-                <div class="recommend-container-inner">
-                    <h2 class="recommend-container-title">You may also like</h2>
-                    <div class="recommend-feed">
-                        {{#foreach posts}}
+    {{!-- 有料メンバーの場合 --}}
+    {{#if @member.paid}}
+        {{#get "posts" include="authors" filter="id:-{{post.id}}" limit="2" as |next|}}
+            {{#if next}}
+                <section class="recommend-container">
+                    <div class="recommend-container-inner">
+                        <h2 class="recommend-container-title">You may also like</h2>
+                        <div class="recommend-feed">
+                            {{#foreach posts}}
+                                <article class="recommend-post-card">
+                                    <a href="{{url}}">
+                                        {{#if feature_image}}
+                                            <img src="{{feature_image}}" alt="{{title}}">
+                                        {{else}}
+                                            <img src="{{asset "images/default_post_feature_img.png"}}" alt="{{title}}">
+                                        {{/if}}
+                                    </a>
+                                    <h3 class="recommend-post-title">{{title}}</h3>
+                                    <time class="recommend-post-date" datetime="{{date format="YYYY-MM-DD"}}">
+                                        {{date format="YYYY.MM.DD"}}
+                                    </time>
+                                </article>
+                            {{/foreach}}
+                        </div>
+                    </div>
+                </section>
+            {{/if}}
+        {{/get}}
+    {{!-- 無料メンバーの場合 --}}
+    {{else}}
+        <section class="recommend-container">
+            <div class="recommend-container-inner">
+                <h2 class="recommend-container-title">You may also like</h2>
+                <div id="recommend-feed" class="recommend-feed">
+                    {{!-- 無料記事を2件取得 --}}
+                    {{#get "posts" filter="visibility:public+id:-{{post.id}}" limit="2" as |freePosts|}}
+                        {{#foreach freePosts}}
                             <article class="recommend-post-card">
                                 <a href="{{url}}">
                                     {{#if feature_image}}
-                                    <img src="{{feature_image}}" alt="{{title}}">
+                                        <img src="{{feature_image}}" alt="{{title}}">
                                     {{else}}
                                         <img src="{{asset "images/default_post_feature_img.png"}}" alt="{{title}}">
                                     {{/if}}
                                 </a>
                                 <h3 class="recommend-post-title">{{title}}</h3>
-                                <time class="recommend-post-date" datetime="{{date format="YYYY-MM-DD"}}">date {{date format="YYYY.MM.DD"}}</time>
+                                <time class="recommend-post-date" datetime="{{date format="YYYY-MM-DD"}}">
+                                    {{date format="YYYY.MM.DD"}}
+                                </time>
                             </article>
                         {{/foreach}}
-                    </div>
+                    {{/get}}
+
+                    {{!-- 有料記事を2件取得 --}}
+                    {{#get "posts" filter="visibility:paid+id:-{{post.id}}" limit="2" as |paidPosts|}}
+                        {{#foreach paidPosts}}
+                            <article class="recommend-post-card">
+                                <a href="{{url}}">
+                                    {{#if feature_image}}
+                                        <img src="{{feature_image}}" alt="{{title}}">
+                                    {{else}}
+                                        <img src="{{asset "images/default_post_feature_img.png"}}" alt="{{title}}">
+                                    {{/if}}
+                                </a>
+                                <h3 class="recommend-post-title">{{title}}</h3>
+                                <time class="recommend-post-date" datetime="{{date format="YYYY-MM-DD"}}">
+                                    {{date format="YYYY.MM.DD"}}
+                                </time>
+                            </article>
+                        {{/foreach}}
+                    {{/get}}
                 </div>
-            </section>
-        {{/if}}
-    {{/get}}
+            </div>
+        </section>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const recommendFeed = document.getElementById('recommend-feed');
+                const posts = recommendFeed.querySelectorAll('.recommend-post-card');
+
+                // 3件目以降の投稿を非表示にする
+                if (posts.length > 2) {
+                    for (let i = 2; i < posts.length; i++) {
+                        posts[i].style.display = 'none';
+                    }
+                }
+            });
+        </script>
+    {{/if}}
 {{/if}}
