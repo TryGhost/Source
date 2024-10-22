@@ -132,10 +132,14 @@ h1, h2, h3, h4, h5, h6 {
 /* ---------------------------------------------------------- */
 
 body {
-    font-family: var(--font-sans);
+    font-family: var(--gh-font-body, --font-sans);
     font-size: 1.6rem;
     background-color: var(--background-color);
     color: var(--color-primary-text);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--gh-font-heading);
 }
 
 a {
