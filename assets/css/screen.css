@@ -2607,24 +2607,24 @@ figcaption a {
 }
 
 .has-sans-title :is(.is-title, .gh-content :is(h2, h3)) {
-    font-family: var(--font-sans);
+    font-family: var(--gh-font-heading, --font-sans);
 }
 
 .has-serif-title :is(.is-title, .gh-content :is(h2, h3)) {
-    font-family: var(--font-serif);
+    font-family: var(--gh-font-heading, --font-serif);
     font-weight: 550;
 }
 
 .has-mono-title :is(.is-title, .gh-content :is(h2, h3)) {
-    font-family: var(--font-mono);
+    font-family: var(--gh-font-heading, --font-mono);
 }
 
 .has-sans-body .is-body {
-    font-family: var(--font-sans);
+    font-family: var(--gh-font-body, --font-sans);
 }
 
 .has-serif-body .is-body {
-    font-family: var(--font-serif-alt);
+    font-family: var(--gh-font-body, --font-serif-alt);
 }
 
 .has-serif-title .gh-header.is-classic .gh-header-title {
