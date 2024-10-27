@@ -1,17 +1,32 @@
 <div class="gh-signup-label-wrapper-inline hidden">
-  $<select class="gh-signup-select gh-signup-custom-amount" id="signup-{{plan}}-custom-amount"
-    name="signup-{{plan}}-custom-amount" data-interval="{{plan}}" 
-      aria-label="Custom {{plan}} subscription amount in US dollars" required>
-    <option value="658cc24f9458ad1f4271e4c0" selected>10{{#match plan "annual"}}0{{/match}}</option>
-    <option value="658cc23f9458ad1f4271e4bb">9{{#match plan "annual"}}0{{/match}}</option>
-    <option value="658cc2319458ad1f4271e4b6">8{{#match plan "annual"}}0{{/match}}</option>
-    <option value="658cc2239458ad1f4271e4b1">7{{#match plan "annual"}}0{{/match}}</option>
-    <option value="658cc2169458ad1f4271e4ac">6{{#match plan "annual"}}0{{/match}}</option>
-    <option value="658cc2079458ad1f4271e4a7">5{{#match plan "annual"}}0{{/match}}</option>
-    <option value="658cc1fa9458ad1f4271e4a2">4{{#match plan "annual"}}0{{/match}}</option>
-    <option value="658cc1ea9458ad1f4271e49d">3{{#match plan "annual"}}0{{/match}}</option>
-    <option value="658cc1ba9458ad1f4271e498">2{{#match plan "annual"}}0{{/match}}</option>
-    <option value="659383719458ad1f42750852">1{{#match plan "annual"}}0{{/match}}</option>
+  $<select
+    class="gh-signup-select gh-signup-custom-amount"
+    id="signup-{{plan}}-custom-amount"
+    name="signup-{{plan}}-custom-amount"
+    data-interval="{{plan}}"
+    aria-label="Custom {{plan}} subscription amount in US dollars"
+    required
+  >
+    {{#match plan "!=" "founding"}}
+      <option value="658cc24f9458ad1f4271e4c0" selected>10{{#match plan "annual"}}0{{/match}}</option>
+      <option value="658cc23f9458ad1f4271e4bb">9{{#match plan "annual"}}0{{/match}}</option>
+      <option value="658cc2319458ad1f4271e4b6">8{{#match plan "annual"}}0{{/match}}</option>
+      <option value="658cc2239458ad1f4271e4b1">7{{#match plan "annual"}}0{{/match}}</option>
+      <option value="658cc2169458ad1f4271e4ac">6{{#match plan "annual"}}0{{/match}}</option>
+      <option value="658cc2079458ad1f4271e4a7">5{{#match plan "annual"}}0{{/match}}</option>
+      <option value="658cc1fa9458ad1f4271e4a2">4{{#match plan "annual"}}0{{/match}}</option>
+      <option value="658cc1ea9458ad1f4271e49d">3{{#match plan "annual"}}0{{/match}}</option>
+      <option value="658cc1ba9458ad1f4271e498">2{{#match plan "annual"}}0{{/match}}</option>
+      <option value="659383719458ad1f42750852">1{{#match plan "annual"}}0{{/match}}</option>
+    {{/match}}
+    {{#match plan "founding"}}
+      <option value="658cc2929458ad1f4271e4c5" selected>25{{#match interval "year"}}0{{/match}}</option>
+      <option value="671e74b555bc3ce8ee4b553c">50{{#match interval "year"}}0{{/match}}</option>
+      <option value="671e74ce55bc3ce8ee4b5542">75{{#match interval "year"}}0{{/match}}</option>
+      <option value="671e74ea55bc3ce8ee4b5553">1{{#match interval "year"}},{{/match}}00{{#match
+          interval "year"
+        }}0{{/match}}</option>
+    {{/match}}
   </select>
   <span class="gh-signup-interval">/{{interval}}</span>
 </div>

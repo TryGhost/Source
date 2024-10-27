@@ -7,20 +7,21 @@
         <span class="gh-signup-amount">$10</span><span class="gh-signup-interval">/month</span>
         <div class="gh-pwyw">or <button id="pwyw-monthly" class="button-reset">pay what you want</button></div>
       </div>
-      {{> "components/custom-subscription-input" plan="monthly" interval="month" defaultValue="10" minValue="1"}} 
+      {{> "components/custom-subscription-input" plan="monthly" interval="month"}} 
     {{/match}}
     {{#match plan "annual"}}
       <div class="gh-signup-default">
         <span class="gh-signup-amount">$100</span><span class="gh-signup-interval">/year</span>
         <div class="gh-pwyw">or <button id="pwyw-annual" class="button-reset">pay what you want</button></div>
       </div>
-      {{> "components/custom-subscription-input" plan="annual" interval="year" defaultValue="100" minValue="1"}} 
+      {{> "components/custom-subscription-input" plan="annual" interval="year"}} 
     {{/match}}
     {{#match plan "founding"}}
       <div class="gh-signup-default">
         <span class="gh-signup-amount">$250</span><span class="gh-signup-interval">/year</span>
+        <div class="gh-pwyw">or <button id="pwyw-founding" class="button-reset">pay what you want</button></div>
       </div>
-      {{> "components/custom-subscription-input" plan="founding" interval="year" defaultValue="200" minValue="100"}} 
+      {{> "components/custom-subscription-input" plan="founding" interval="year"}} 
     {{/match}}
   {{else}}
     <span class="gh-signup-interval">Free</span>

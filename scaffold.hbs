@@ -35,14 +35,14 @@
         document.documentElement.className = `has-${textColor}-text`;
     </script>
 
-    {{!-- This tag outputs all your advanced SEO meta, structured data, and other important settings, it should always be the last tag before the closing head tag --}}
-    {{ghost_head}}
-
     <link rel="me" href="https://bsky.app/profile/molly.wiki" />
     <link rel="me" href="https://hachyderm.io/@molly0xfff" />
     <link rel="me" href="https://www.tiktok.com/@molly0xfff" />
     <link rel="me" href="https://twitter.com/molly0xFFF" />
     <meta name="fediverse:creator" content="@molly0xfff@hachyderm.io" />
+
+    {{!-- This tag outputs all your advanced SEO meta, structured data, and other important settings, it should always be the last tag before the closing head tag --}}
+    {{ghost_head}}
 </head>
 <body class="{{body_class}} has-{{#match @custom.title_font "Elegant serif"}}serif{{else match @custom.title_font "Consistent mono"}}mono{{else}}sans{{/match}}-title has-{{#match @custom.body_font "Elegant serif"}}serif{{else}}sans{{/match}}-body">
 
