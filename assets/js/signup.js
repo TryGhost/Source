@@ -38,7 +38,7 @@ function onSelectChange(e) {
   e.preventDefault();
   const planId = e.target.value;
   const interval = e.target.getAttribute("data-interval");
-  const stripeInterval = interval === "annual" ? "yearly" : interval;
+  const stripeInterval = interval === "annual" || interval === "founding" ? "yearly" : interval;
   const chooseButton = document.getElementById(`choose-${interval}`);
   chooseButton.setAttribute("data-portal", `signup/${planId}/${stripeInterval}`);
 }
