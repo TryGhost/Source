@@ -442,6 +442,7 @@ button.gh-form-input {
 
 .gh-navigation-logo {
     position: relative;
+    font-family: var(--gh-font-heading, var(--font-sans));
     font-size: calc(2.4rem * var(--factor, 1));
     font-weight: 725;
     letter-spacing: -0.015em;
@@ -2773,6 +2774,7 @@ figcaption a {
 
 .gh-footer-logo {
     position: relative;
+    font-family: var(--gh-font-heading, var(--font-sans));
     font-size: calc(2.4rem * var(--factor, 1));
     font-weight: 725;
     letter-spacing: -0.015em;
