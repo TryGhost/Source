@@ -132,10 +132,14 @@ h1, h2, h3, h4, h5, h6 {
 /* ---------------------------------------------------------- */
 
 body {
-    font-family: var(--font-sans);
+    font-family: var(--gh-font-body, var(--font-sans));
     font-size: 1.6rem;
     background-color: var(--background-color);
     color: var(--color-primary-text);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--gh-font-heading, var(--font-sans));
 }
 
 a {
@@ -244,7 +248,7 @@ button.gh-form-input {
     color: rgb(0 0 0 / 0.3);
 }
 
-:is(.has-serif-title, .has-mono-title) .gh-form-input {
+:is(.has-serif-title, .has-mono-title):not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) .gh-form-input {
     padding-inline: 20px;
 }
 
@@ -280,7 +284,7 @@ button.gh-form-input {
     cursor: pointer;
 }
 
-:is(.has-serif-title,.has-mono-title) button.gh-form-input {
+:is(.has-serif-title,.has-mono-title):not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) button.gh-form-input {
     padding-inline-start: 50px;
 }
 
@@ -300,7 +304,7 @@ button.gh-form-input {
     color: var(--color-secondary-text);
 }
 
-:is(.has-serif-title,.has-mono-title) .gh-form > svg {
+:is(.has-serif-title,.has-mono-title):not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) .gh-form > svg {
     left: 16px;
 }
 
@@ -438,6 +442,7 @@ button.gh-form-input {
 
 .gh-navigation-logo {
     position: relative;
+    font-family: var(--gh-font-heading, var(--font-sans));
     font-size: calc(2.4rem * var(--factor, 1));
     font-weight: 725;
     letter-spacing: -0.015em;
@@ -1609,7 +1614,7 @@ Search                         LOGO                    Login Subscribe
     height: 18px;
 }
 
-.has-serif-title .gh-more svg {
+.has-serif-title:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) .gh-more svg {
     margin-top: 0;
 }
 
@@ -2118,7 +2123,7 @@ unless a heading is the very first element in the post content */
     font-weight: 700;
 }
 
-.has-serif-body.post-template .gh-content.drop-cap > p:first-of-type:first-letter {
+.has-serif-body.post-template:not([class*=" gh-font-body"]):not([class^="gh-font-body"]) .gh-content.drop-cap > p:first-of-type:first-letter {
     font-size: 3.2em;
 }
 
@@ -2163,15 +2168,15 @@ unless a heading is the very first element in the post content */
     font-size: 0.95em;
 }
 
-.has-serif-body .gh-content > blockquote,
-.has-serif-body .gh-content > ol,
-.has-serif-body .gh-content > ul,
-.has-serif-body .gh-content > dl,
-.has-serif-body .gh-content > p,
-.has-serif-body .gh-content .kg-callout-text,
-.has-serif-body .gh-content .kg-toggle-content > ol,
-.has-serif-body .gh-content .kg-toggle-content > ul,
-.has-serif-body .gh-content .kg-toggle-content > p {
+.has-serif-body:not([class*=" gh-font-body"]):not([class^="gh-font-body"]) .gh-content > blockquote,
+.has-serif-body:not([class*=" gh-font-body"]):not([class^="gh-font-body"]) .gh-content > ol,
+.has-serif-body:not([class*=" gh-font-body"]):not([class^="gh-font-body"]) .gh-content > ul,
+.has-serif-body:not([class*=" gh-font-body"]):not([class^="gh-font-body"]) .gh-content > dl,
+.has-serif-body:not([class*=" gh-font-body"]):not([class^="gh-font-body"]) .gh-content > p,
+.has-serif-body:not([class*=" gh-font-body"]):not([class^="gh-font-body"]) .gh-content .kg-callout-text,
+.has-serif-body:not([class*=" gh-font-body"]):not([class^="gh-font-body"]) .gh-content .kg-toggle-content > ol,
+.has-serif-body:not([class*=" gh-font-body"]):not([class^="gh-font-body"]) .gh-content .kg-toggle-content > ul,
+.has-serif-body:not([class*=" gh-font-body"]):not([class^="gh-font-body"]) .gh-content .kg-toggle-content > p {
     font-family: var(--font-serif-alt);
 }
 
@@ -2313,11 +2318,11 @@ unless a heading is the very first element in the post content */
     font-weight: 700;
 }
 
-.has-serif-title .kg-toggle-card .kg-toggle-heading-text {
+.has-serif-title:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) .kg-toggle-card .kg-toggle-heading-text {
     font-family: var(--font-serif);
 }
 
-.has-mono-title .kg-toggle-card .kg-toggle-heading-text {
+.has-mono-title:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) .kg-toggle-card .kg-toggle-heading-text {
     font-family: var(--font-mono);
 }
 
@@ -2356,15 +2361,15 @@ blockquote.kg-blockquote-alt {
 
 /* Header */
 
-.has-serif-title .kg-card.kg-header-card h2.kg-header-card-header {
+.has-serif-title:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) .kg-card.kg-header-card h2.kg-header-card-header {
     font-family: var(--font-serif);
 }
 
-.has-mono-title .kg-card.kg-header-card h2.kg-header-card-header {
+.has-mono-title:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) .kg-card.kg-header-card h2.kg-header-card-header {
     font-family: var(--font-mono);
 }
 
-.has-serif-body .kg-header-card h3.kg-header-card-subheader {
+.has-serif-body:not([class*=" gh-font-body"]):not([class^="gh-font-body"]) .kg-header-card h3.kg-header-card-subheader {
     font-family: var(--font-serif);
 }
 
@@ -2417,15 +2422,15 @@ blockquote.kg-blockquote-alt {
     margin-top: 12px;
 }
 
-.has-serif-title .kg-product-card.kg-card .kg-product-card-title {
+.has-serif-title:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) .kg-product-card.kg-card .kg-product-card-title {
     font-family: var(--font-serif);
 }
 
-.has-mono-title .kg-product-card.kg-card .kg-product-card-title {
+.has-mono-title:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) .kg-product-card.kg-card .kg-product-card-title {
     font-family: var(--font-mono);
 }
 
-.has-serif-body .kg-product-card-description :is(p, ul, ol) {
+.has-serif-body:not([class*=" gh-font-body"]):not([class^="gh-font-body"]) .kg-product-card-description :is(p, ul, ol) {
     font-family: var(--font-serif-alt);
 }
 
@@ -2597,131 +2602,131 @@ figcaption a {
 /* 20. Design settings
 /* ---------------------------------------------------------- */
 
-.has-serif-title {
+.has-serif-title:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) {
     --factor: 1.15;
 }
 
-.has-mono-title {
+.has-mono-title:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) {
     --factor: 1.1;
 }
 
-.has-sans-title :is(.is-title, .gh-content :is(h2, h3)) {
-    font-family: var(--font-sans);
+.has-sans-title:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) :is(.is-title, .gh-content :is(h2, h3)) {
+    font-family: var(--gh-font-heading, var(--font-sans));
 }
 
-.has-serif-title :is(.is-title, .gh-content :is(h2, h3)) {
-    font-family: var(--font-serif);
+.has-serif-title:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) :is(.is-title, .gh-content :is(h2, h3)) {
+    font-family: var(--gh-font-heading, var(--font-serif));
     font-weight: 550;
 }
 
-.has-mono-title :is(.is-title, .gh-content :is(h2, h3)) {
-    font-family: var(--font-mono);
+.has-mono-title:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) :is(.is-title, .gh-content :is(h2, h3)) {
+    font-family: var(--gh-font-heading, var(--font-mono));
 }
 
-.has-sans-body .is-body {
-    font-family: var(--font-sans);
+.has-sans-body:not([class*=" gh-font-body"]):not([class^="gh-font-body"]) .is-body {
+    font-family: var(--gh-font-body, var(--font-sans));
 }
 
-.has-serif-body .is-body {
-    font-family: var(--font-serif-alt);
+.has-serif-body:not([class*=" gh-font-body"]):not([class^="gh-font-body"]) .is-body {
+    font-family: var(--gh-font-body, var(--font-serif-alt));
 }
 
-.has-serif-title .gh-header.is-classic .gh-header-title {
+.has-serif-title:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) .gh-header.is-classic .gh-header-title {
     font-weight: 550;
     letter-spacing: -0.015em;
 }
 
-.has-mono-title .gh-header.is-classic .gh-header-title {
+.has-mono-title:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) .gh-header.is-classic .gh-header-title {
     letter-spacing: -0.01em;
 }
 
-.has-serif-title .gh-form {
+.has-serif-title:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) .gh-form {
     border-radius: 0;
 }
 
-.has-serif-title .gh-card-title {
+.has-serif-title:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) .gh-card-title {
     line-height: 1.15;
     letter-spacing: -0.006em;
     font-size: calc(2.0rem*var(--factor, 1))
 }
 
-.has-serif-title .gh-featured-feed .gh-card-title {
+.has-serif-title:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) .gh-featured-feed .gh-card-title {
     font-size: calc(1.6rem*var(--factor, 1))
 }
 
-.has-mono-title .gh-featured-feed .gh-card-title {
+.has-mono-title:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) .gh-featured-feed .gh-card-title {
     font-size: calc(1.5rem*var(--factor, 1));
     letter-spacing: 0;
 }
 
-.has-serif-title .gh-header.is-highlight .gh-featured-feed .gh-card-title {
+.has-serif-title:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) .gh-header.is-highlight .gh-featured-feed .gh-card-title {
     font-size: clamp(1.6rem, 0.23vw + 1.51rem, 1.8rem);
 }
 
-.has-mono-title .gh-card-title {
+.has-mono-title:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) .gh-card-title {
     font-size: calc(1.8rem*var(--factor, 1));
     line-height: 1.2;
 }
 
-.has-serif-title .gh-about-title {
+.has-serif-title:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) .gh-about-title {
     letter-spacing: -0.009em;
 }
 
-.has-serif-title .gh-footer-signup-header {
+.has-serif-title:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) .gh-footer-signup-header {
     letter-spacing: -0.019em;
 }
 
-.has-serif-title .gh-article-title {
+.has-serif-title:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) .gh-article-title {
     letter-spacing: -0.019em;
 }
 
-.has-serif-body {
+.has-serif-body:not([class*=" gh-font-body"]):not([class^="gh-font-body"]) {
     --content-font-size: 1.9rem;
 }
 
-.has-serif-body .gh-card-excerpt {
+.has-serif-body:not([class*=" gh-font-body"]):not([class^="gh-font-body"]) .gh-card-excerpt {
     font-size: 1.65rem;
     line-height: 1.4;
     letter-spacing: 0.0005em;
 }
 
-.has-serif-body .gh-header.is-magazine .gh-header-inner > .gh-card .gh-card-excerpt,
-.has-serif-body .gh-header.is-highlight .gh-card:first-child .gh-card-excerpt {
+.has-serif-body:not([class*=" gh-font-body"]):not([class^="gh-font-body"]) .gh-header.is-magazine .gh-header-inner > .gh-card .gh-card-excerpt,
+.has-serif-body:not([class*=" gh-font-body"]):not([class^="gh-font-body"]) .gh-header.is-highlight .gh-card:first-child .gh-card-excerpt {
     font-size: 1.8rem;
     letter-spacing: -0.001em;
 }
 
-.has-serif-title .gh-header.is-magazine .gh-header-inner>.gh-card .gh-card-title,
-.has-serif-title .gh-header.is-highlight .gh-header-left .gh-card-title {
+.has-serif-title:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) .gh-header.is-magazine .gh-header-inner>.gh-card .gh-card-title,
+.has-serif-title:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) .gh-header.is-highlight .gh-header-left .gh-card-title {
     font-weight: 550;
     font-size: clamp(3.2rem,1.82vw + 2.47rem,4.9rem)
 }
 
-.has-serif-body .gh-about-description {
+.has-serif-body:not([class*=" gh-font-body"]):not([class^="gh-font-body"]) .gh-about-description {
     font-size: 1.6rem;
 }
 
-.has-serif-body .gh-article-excerpt {
+.has-serif-body:not([class*=" gh-font-body"]):not([class^="gh-font-body"]) .gh-article-excerpt {
     letter-spacing: 0;
 }
 
-.has-serif-body .gh-footer-signup-subhead {
+.has-serif-body:not([class*=" gh-font-body"]):not([class^="gh-font-body"]) .gh-footer-signup-subhead {
     letter-spacing: 0;
 }
 
-.has-serif-title :is(.gh-button, .gh-form, .gh-form-input) {
+.has-serif-title:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) :is(.gh-button, .gh-form, .gh-form-input) {
     border-radius: 0;
 }
 
-.has-mono-title :is(.gh-button) {
+.has-mono-title:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) :is(.gh-button) {
     border-radius: 0;
 }
 
-.has-mono-title :is(.gh-form) {
+.has-mono-title:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) :is(.gh-form) {
     border-radius: 0;
 }
 
-.has-serif-title .gh-cta-title {
+.has-serif-title:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) .gh-cta-title {
     font-size: 4.8rem;
 }
 
@@ -2768,6 +2773,7 @@ figcaption a {
 
 .gh-footer-logo {
     position: relative;
+    font-family: var(--gh-font-heading, var(--font-sans));
     font-size: calc(2.4rem * var(--factor, 1));
     font-weight: 725;
     letter-spacing: -0.015em;
