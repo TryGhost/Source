@@ -37,7 +37,7 @@
                 {{/get}}
             {{else}}
                 {{!-- 無料メンバーの場合は、無料2件＋有料2件取得 --}}
-                {{#get "posts" filter="visibility:public" include="authors" limit="2"}}
+                {{#get "posts" filter="tags:'free'" include="authors" limit="2"}}
                     {{#foreach posts}}
                         <article class="gh-home-post-card">
                             <a href="{{url}}">

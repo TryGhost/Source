@@ -22,11 +22,13 @@
             </div>
             {{/if}}
 
-            <div class="gh-article-tags">
-                {{#foreach tags}}
-                    <a class="gh-article-tag" href="{{url}}">{{name}}</a>
-                {{/foreach}}
-            </div>
+            {{#if tags}}
+                <div class="gh-article-tags">
+                    {{#foreach tags}}
+                        <a class="gh-article-tag" href="{{url}}" data-slug="{{slug}}" style="display: none;">{{name}}</a>
+                    {{/foreach}}
+                </div>
+            {{/if}}
 
         </header>
 
@@ -140,6 +142,19 @@
                         posts[i].style.display = 'none';
                     }
                 }
+            });
+        </script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const tags = document.querySelectorAll('.gh-article-tag');
+
+                tags.forEach(tag => {
+                    const slug = tag.getAttribute('data-slug');
+                    // slug が "free" でない場合、タグを表示
+                    if (slug !== "free") {
+                        tag.style.display = "inline-block";
+                    }
+                });
             });
         </script>
     {{/if}}

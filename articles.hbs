@@ -1,6 +1,6 @@
 {{!< default}}
 <section class="gh-all-articles-tags-section">
-    {{#get "tags" limit="all"}}
+    {{#get "tags" filter="slug:-free" limit="all"}}
         <div class="gh-all-article-tags">
         {{#foreach tags}}
             <a class="gh-all-article-tag" href="{{url}}">{{name}}</a>
@@ -30,7 +30,7 @@
     {{else}}
         <div id="post-feed" class="gh-home-post-feed" data-member-status="free">
             {{!-- 無料記事の取得 --}}
-            {{#get "posts" filter="visibility:public" limit="4"}}
+            {{#get "posts" filter="tags:'free'" limit="4"}}
                 {{#foreach posts}}
                     <article class="gh-home-post-card">
                         <a href="{{url}}">
