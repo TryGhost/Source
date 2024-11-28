@@ -144,18 +144,18 @@
                 }
             });
         </script>
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-                const tags = document.querySelectorAll('.gh-article-tag');
-
-                tags.forEach(tag => {
-                    const slug = tag.getAttribute('data-slug');
-                    // slug が "free" でない場合、タグを表示
-                    if (slug !== "free") {
-                        tag.style.display = "inline-block";
-                    }
-                });
-            });
-        </script>
     {{/if}}
 {{/if}}
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const tags = document.querySelectorAll('.gh-article-tag');
+
+        tags.forEach(tag => {
+            const slug = tag.getAttribute('data-slug');
+            // slug が "free" でない場合、タグを表示
+            if (slug !== "free") {
+                tag.style.display = "inline-block";
+            }
+        });
+    });
+</script>
