@@ -62,21 +62,7 @@
         <div class="gh-comments gh-canvas">
             <div id="comments"></div>
             <script async src="https://talk.hyvor.com/embed/embed.js" type="module"></script>
-            <script>
-                const comments = document.createElement('hyvor-talk-comments');
-                comments.setAttribute('website-id', HYVOR_TALK_WEBSITE_ID);
-                comments.setAttribute('page-id', "{{ comment_id }}");
-                {{#if @member}}
-                    comments.setAttribute('sso-user', btoa(JSON.stringify({
-                        timestamp: Math.floor(Date.now() / 1000),
-                        id: "{{ @member.uuid }}",
-                        name: "{{ @member.name}}",
-                        email: "{{ @member.email}}",
-                        picture_url: "{{ @member.avatar_image }}"
-                    })))
-                {{/if}}
-                document.getElementById("comments").appendChild(comments);
-            </script>
+            <hyvor-talk-comments website-id=HYVOR_TALK_WEBSITE_ID page-id="{{ comment_id }}"></hyvor-talk-comments>
         </div>
 
 </main>
