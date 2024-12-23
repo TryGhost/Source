@@ -2896,7 +2896,7 @@ figcaption a {
 
 .gh-footer-x-modal-content {
     background: white;
-    padding: 20px;
+    padding: 24px;
     border-radius: 8px;
     max-width: 500px;
     width: 90%;
@@ -2906,11 +2906,11 @@ figcaption a {
 
 .gh-footer-x-modal-close {
     position: absolute;
-    top: 5px;
-    right: 10px;
+    top: -10px;
+    right: 0px;
     background: none;
     border: none;
-    font-size: 1.5rem;
+    font-size: 3rem;
     cursor: pointer;
     color: #000;
 }
@@ -2925,6 +2925,9 @@ figcaption a {
     border: 1px solid #000;
     border-radius: 4px;
     text-align: center;
+    font-family: "Noto Sans";
+    font-size: 1.6rem;
+    font-weight: 400;
 }
 
 .gh-footer-x-modal-links a:hover {
