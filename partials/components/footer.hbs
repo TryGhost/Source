@@ -1,15 +1,23 @@
 <footer class="gh-footer">
-    {{!-- TODO: {{@site.title}}で受けて改行する --}}
-    <h2 class="gh-footer-site-title"> YUTA WATANABE<br />Locker Room</h2>
+    <h2 class="gh-footer-site-title">YUTA WATANABE<br />Locker Room</h2>
     <nav class="gh-footer-menu">
         {{navigation type="secondary"}}
     </nav>
     <div class="gh-footer-links">
-        {{!-- TODO: adminからSNSアカウントの設定があるものを表示する --}}
         <a class="gh-footer-social-link" href="https://www.instagram.com/yutawatanabe12" target="_blank"
             rel="noopener">{{> "icons/instagram"}}</a>
-        <a class="gh-footer-social-link" href="https://x.com/wacchi1013" target="_blank" rel="noopener"> {{>
-            "icons/x"}}</a>
+        <a class="gh-footer-social-link" href="#!" id="openFooterXModal" rel="noopener">{{> "icons/x"}}</a>
     </div>
-    <small class="gh-footer-copyright">&copy; 2024 {{@site.title}} </small>
+    <small class="gh-footer-copyright">&copy; 2024 {{@site.title}}</small>
 </footer>
+
+{{!-- モーダルのHTML構造 --}}
+<div id="footerXModal" class="gh-footer-x-modal gh-footer-x-modal-hidden">
+    <div class="gh-footer-x-modal-content">
+        <button class="gh-footer-x-modal-close" id="closeFooterXModal" aria-label="Close">&times;</button>
+        <div class="gh-footer-x-modal-links">
+            <a href="https://x.com/YW_LockerRoom" target="_blank" rel="noopener">Locker Room 公式</a>
+            <a href="https://x.com/wacchi1013" target="_blank" rel="noopener">Yuta Watanabe（マネージャー管理）</a>
+        </div>
+    </div>
+</div>

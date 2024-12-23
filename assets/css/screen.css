@@ -2881,6 +2881,60 @@ figcaption a {
 	letter-spacing: 1px;
 }
 
+.gh-footer-x-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.gh-footer-x-modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.gh-footer-x-modal-close {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #000;
+}
+
+.gh-footer-x-modal-links a {
+    display: block;
+    padding: 10px;
+    margin: 10px 0;
+    background: #fff;
+    color: #000;
+    text-decoration: none;
+    border: 1px solid #000;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.gh-footer-x-modal-links a:hover {
+    background: #f0f0f0;
+}
+
+.gh-footer-x-modal-hidden {
+    display: none;
+}
+
 /* 22. Lightbox
 /* ---------------------------------------------------------- */
 
