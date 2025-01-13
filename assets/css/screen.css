@@ -2262,6 +2262,20 @@ unless a heading is the very first element in the post content */
     font-family: var(--font-mono);
 }
 
+/* Public Preview Fading Effect for Last Paragraph */
+.fadeout-content p:last-child {
+    -webkit-mask-image: linear-gradient(to bottom, var(--color-black) 1%, transparent 100%);
+    mask-image: linear-gradient(to bottom, var(--color-black) 1%, transparent 100%);
+    margin-bottom: 1.5em; /* Ensure consistent spacing */
+}
+
+/* Reset other paragraphs to prevent unintended effects */
+.fadeout-content p:not(:last-child) {
+    -webkit-mask-image: none;
+    mask-image: none;
+    margin-bottom: 1.5em; /* Ensure normal paragraph spacing */
+}
+
 /* 16. Cards
 /* ---------------------------------------------------------- */
 
