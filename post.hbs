@@ -41,6 +41,9 @@
                     {{/foreach}}
                 </p>
             </div>
+            {{#if @member}}
+                {{> "post-like" post_id=id}}
+            {{/if}}
         </section>
 
     </article>
