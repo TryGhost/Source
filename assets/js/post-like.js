@@ -8,15 +8,12 @@
  * GhostのContent APIエンドポイント (例: /ghost/api/content/posts/:postId/like?key=YOUR_API_KEY) を想定
  */
 
-// テーマファイルの反映時にContent APIキーを設定
-const API_KEY = '';
-
-const getMemberByEmail = async (email) => {
+const getMemberByEmail = async (email, contentApiKey) => {
     if (!email) {
         return null;
     }
 
-    const url = `/ghost/api/content/members/${encodeURIComponent(email)}?key=${API_KEY}`;
+    const url = `/ghost/api/content/members/${encodeURIComponent(email)}?key=${contentApiKey}`;
 
     const res = await fetch(url, {
         method: 'GET',
@@ -34,8 +31,8 @@ const getMemberByEmail = async (email) => {
     return member || null;
 };
 
-const getPostLike = async (postId) => {
-    const res = await fetch(`/ghost/api/content/posts/${postId}/like?key=${API_KEY}`, {
+const getPostLike = async (postId, contentApiKey) => {
+    const res = await fetch(`/ghost/api/content/posts/${postId}/like?key=${contentApiKey}`, {
         method: 'GET',
         headers: {'Content-Type': 'application/json'}
     });
@@ -48,8 +45,8 @@ const getPostLike = async (postId) => {
     return data;
 };
 
-const addPostLike = async (postId, memberId) => {
-    const res = await fetch(`/ghost/api/content/posts/${postId}/like?key=${API_KEY}`, {
+const addPostLike = async (postId, memberId, contentApiKey) => {
+    const res = await fetch(`/ghost/api/content/posts/${postId}/like?key=${contentApiKey}`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
@@ -66,8 +63,8 @@ const addPostLike = async (postId, memberId) => {
     return;
 };
 
-const removePostLike = async (postId, memberId) => {
-    const res = await fetch(`/ghost/api/content/posts/${postId}/like?key=${API_KEY}`, {
+const removePostLike = async (postId, memberId, contentApiKey) => {
+    const res = await fetch(`/ghost/api/content/posts/${postId}/like?key=${contentApiKey}`, {
         method: 'DELETE',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
@@ -91,10 +88,10 @@ const removePostLike = async (postId, memberId) => {
 async function initializeLikeButtonUI(button) {
     const postId = button.getAttribute('data-post-id');
     const memberEmail = button.getAttribute('data-member-email');
-
+    const contentApiKey = button.getAttribute('data-content-api-key');
     let memberId = ''; // 未ログイン or 存在しない場合は空
     if (memberEmail) {
-        const memberInfo = await getMemberByEmail(memberEmail);
+        const memberInfo = await getMemberByEmail(memberEmail, contentApiKey);
         if (memberInfo && memberInfo.id) {
             memberId = memberInfo.id;
         } else {
@@ -112,7 +109,7 @@ async function initializeLikeButtonUI(button) {
 
     try {
         // いいね情報を取得
-        const responsePostLikes = await getPostLike(postId);
+        const responsePostLikes = await getPostLike(postId, contentApiKey);
         const postLikes = responsePostLikes.post_likes?.[0] || [];
         const likeCount = postLikes.length;
 
@@ -156,7 +153,7 @@ async function handleLikeButtonClick(event) {
     const button = event.currentTarget;
     const postId = button.getAttribute('data-post-id');
     const memberId = button.getAttribute('data-member-id');
-
+    const contentApiKey = button.getAttribute('data-content-api-key');
     // 未ログイン？
     if (!memberId) {
         alert('ログインが必要です');
@@ -167,9 +164,9 @@ async function handleLikeButtonClick(event) {
 
     try {
         if (currentIsLiked) {
-            await removePostLike(postId, memberId);
+            await removePostLike(postId, memberId, contentApiKey);
         } else {
-            await addPostLike(postId, memberId);
+            await addPostLike(postId, memberId, contentApiKey);
         }
     } catch (error) {
         console.error('[post-like] いいね操作に失敗しました:', error);
