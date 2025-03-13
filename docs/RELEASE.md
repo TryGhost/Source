@@ -186,15 +186,7 @@
 
 ## 毎回の作業
 
-### 1. テーマファイル内のContent API keyの更新
-
-1. 各環境のGhost Adminにログインし、Content API keyを確認
-    - Ghost Admin > Advanced > Integrations > Cutom > テーマファイルで使用
-2. Content API keyをコピーする
-3. `assets/js/post-like.js`のAPI_KEYに代入する
-4. zipコマンドを実行する
-
-### 2. テーマzipファイルのアップロード
+### 1. テーマzipファイルのアップロード
 
 1. 検証環境のGhost Adminにログインし、テーマファイルを確認する
     - Ghost Admin > Setting > Site > Design & branding > Customize > Change theme > Installed
@@ -204,7 +196,7 @@
 3. ダウンロードしたファイルを本番環境にアップロードする
     - Ghost Admin > Setting > Site > Design & branding > Customize > Change theme > Upload theme
 
-### 3. Navigationの設定を確認
+### 2. Navigationの設定を確認
 
 1. リリース用のPRを参照し、設定するNavigationを確認する
     - [PRリスト](https://github.com/magaport/ghost-support/pulls?q=is:pr+is:closed)からリリース用のPullRequestを探す（例：20240913リリース）
@@ -212,7 +204,7 @@
 2. 本番環境のGhost Adminにログインし、設定を反映する
     - Ghost Admin > Setting > Site > Navigation > Customize
 
-### 4. routes.yaml を更新
+### 3. routes.yaml を更新
 
 1. リリース用のPRを参照し、設定するroutes.yamlを確認する
     - [PRリスト](https://github.com/magaport/ghost-support/pulls?q=is:pr+is:closed)からリリース用のPullRequestを探す（例：20240913リリース）
