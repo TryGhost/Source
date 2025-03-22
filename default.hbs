@@ -17,6 +17,23 @@
     {{!-- Theme assets - use the {{asset}} helper to reference styles & scripts, this will take care of caching and cache-busting automatically --}}
     <link rel="stylesheet" type="text/css" href="{{asset "built/screen.css"}}">
 
+    {{!-- TOC styles --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.35.3/tocbot.css">
+    
+    <style>
+    .gh-content {
+        position: relative;
+    }
+
+    .gh-toc > .toc-list {
+        position: relative;
+    }
+
+    .toc-list {
+        overflow: hidden;
+        list-style: none;
+    }
+
     {{!-- Custom background color --}}
     <style>
         :root {
@@ -65,6 +82,23 @@
 
 {{!-- Scripts - handle responsive videos, infinite scroll, and navigation dropdowns --}}
 <script src="{{asset "built/source.js"}}"></script>
+
+{{!-- Tocbot script --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.35.3/tocbot.min.js"></script>
+
+{{! Initialize Tocbot after you load the script }}
+<script>
+    tocbot.init({
+        // Where to render the table of contents.
+        tocSelector: '.gh-toc',
+        // Where to grab the headings to build the table of contents.
+        contentSelector: '.gh-content',
+        // Which headings to grab inside of the contentSelector element.
+        headingSelector: 'h1, h2, h3, h4',
+        // Ensure correct positioning
+        hasInnerContainers: true,
+    });
+</script>
 
 {{!-- Ghost outputs required functional scripts with this tag, it should always be the last thing before the closing body tag --}}
 {{ghost_foot}}
