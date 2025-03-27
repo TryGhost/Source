@@ -51,17 +51,13 @@
 
 <div class="gh-viewport">
     
-    {{> "components/navigation" navigationLayout=@custom.navigation_layout}}
+    {{> "components/header"}}
 
     {{{body}}}
     
     {{> "components/footer"}}
     
 </div>
-
-{{#is "post, page"}}
-    {{> "lightbox"}}
-{{/is}}
 
 {{!-- Scripts - handle responsive videos, infinite scroll, and navigation dropdowns --}}
 <script src="{{asset "built/source.js"}}"></script>

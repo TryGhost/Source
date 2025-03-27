@@ -1,0 +1,99 @@
+/* Arcat Header Styles */
+.arcat-header {
+    width: 100%;
+    background-color: #fff;
+    padding: 12px 15px;
+}
+
+.arcat-header-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.arcat-logo-wrapper {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+}
+
+.arcat-logo {
+    width: 80px; /* 幅を縮小 */
+    height: 20px; /* 高さを縮小 */
+}
+
+
+.arcat-logo-text {
+    width: 50px; /* 幅を縮小 */
+    height: 8px; /* 高さを縮小 */
+}
+
+.arcat-nav-user{
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+.arcat-user-avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+}
+
+.arcat-nav-user-avatar-placeholder {
+	width: 28px;
+	height: 28px;
+	border-radius: 50%;
+	background-color: #999999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.arcat-nav-user-initial {
+    line-height: 1;
+}
+
+.arcat-nav {
+    display: flex;
+    align-items: center;
+}
+
+.arcat-login, .arcat-signup {
+    display: inline-block;
+    padding: 8px 12px;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.arcat-login {
+    color: #000;
+    border-bottom: 3px solid #FDEC01;;
+}
+
+.arcat-signup {
+    color: #000;
+    border-bottom: 3px solid #000;
+}
+
+.arcat-menu-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 6px;
+}
+
+.arcat-hamburger {
+    width: 28px;
+    height: 24px;
+}

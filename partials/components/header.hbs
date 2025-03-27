@@ -1,19 +1,70 @@
-{{#match headerStyle "!=" "Off"}}
-
-    {{#match headerStyle "Highlight"}}
-        {{> "components/header-content"}}
-    {{else match headerStyle "Magazine"}}
-        {{> "components/header-content"}}
-    {{else}}
-        {{#match headerStyle "Landing"}}
-            {{#if @site.members_enabled}}
-                {{#unless @member}}
-                    {{> "components/header-content"}}
-                {{/unless}}
-            {{/if}}
+<header class="arcat-header">
+    <div class="arcat-header-wrapper">
+        <a class="arcat-logo-wrapper" href="{{@site.url}}">
+            <img class="arcat-logo" src="{{asset "images/arcat-logo.svg"}}" alt="Arcat by" />
+            <img class="arcat-logo-text" src="{{asset "images/catsissue-logo.png"}}" alt="Cats Isuue" />
+        </a>
+        {{#if @member}}
+            <div class="arcat-nav-user">
+                {{#if @member.paid}}
+                    <img src="{{@member.avatar_image}}" alt="{{@member.name}}" class="arcat-nav-user-avatar">
+                {{else}}
+                    <div class="arcat-nav-user-avatar-placeholder" data-member-name="{{@member.name}}">
+                        <span class="arcat-nav-user-initial"></span>
+                    </div>
+                {{/if}}
+                {{> "search-toggle"}}
+            </div>
         {{else}}
-            {{> "components/header-content"}}
-        {{/match}}
-    {{/match}}
+            <div class="arcat-nav">
+                <a class="arcat-login" href="#/portal/signin" data-portal="signin">ログイン</a>
+                <a class="arcat-signup" href="#/portal/signup" data-portal="signup">新規登録</a>
+            </div>
+        {{/if}}
+        <button class="arcat-menu-button" aria-label="メニュー">
+            <div class="arcat-hamburger">
+                {{> "icons/burger"}}
+            </div>
+        </button>
+    </div>
+</header>
 
-{{/match}}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize user avatar placeholders with first letter
+        const avatarPlaceholders = document.querySelectorAll('.arcat-nav-user-avatar-placeholder');
+
+        avatarPlaceholders.forEach(function(placeholder) {
+            // Get the data-member-name attribute or fallback to text content
+            const memberName = placeholder.getAttribute('data-member-name') || placeholder.textContent.trim();
+            if (memberName) {
+                // Get first letter and create or update the span
+                const firstLetter = memberName.charAt(0).toUpperCase();
+                let initialSpan = placeholder.querySelector('.arcat-nav-user-initial');
+                if (!initialSpan) {
+                    initialSpan = document.createElement('span');
+                    initialSpan.className = 'arcat-nav-user-initial';
+                    placeholder.appendChild(initialSpan);
+                }
+
+                initialSpan.textContent = firstLetter;
+            }
+        });
+
+        // Toggle mobile menu
+        const header = document.querySelector('.arcat-header');
+        const menuButton = header?.querySelector('.arcat-menu-button');
+        
+        if (menuButton) {
+            menuButton.addEventListener('click', function() {
+                header.classList.toggle('is-menu-open');
+                
+                if (header.classList.contains('is-menu-open')) {
+                    document.documentElement.style.overflowY = 'hidden';
+                } else {
+                    document.documentElement.style.overflowY = null;
+                }
+            });
+        }
+    });
+</script>

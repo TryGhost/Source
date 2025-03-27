@@ -47,6 +47,8 @@ production stylesheet in assets/built/screen.css
 
 */
 
+@import 'arcat-header.css';
+
 /* 1. Variables
 /* ---------------------------------------------------------- */
 
@@ -62,6 +64,7 @@ production stylesheet in assets/built/screen.css
     --color-secondary-text: rgb(0 0 0 / 0.55);
     --color-border: rgb(0 0 0 / 0.08);
     --color-dark-border: rgb(0 0 0 / 0.55);
+    --background-color: #F8F6F2;
     --font-sans: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     --font-serif: "EB Garamond", Georgia, Times, serif;
     --font-serif-alt: Georgia, Times, serif;
@@ -134,7 +137,7 @@ h1, h2, h3, h4, h5, h6 {
 body {
     font-family: var(--gh-font-body, var(--font-sans));
     font-size: 1.6rem;
-    background-color: var(--background-color);
+    background-color: #F8F6F2;
     color: var(--color-primary-text);
 }
 
@@ -367,6 +370,9 @@ body[class*=" gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-hea
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    max-width: 390px;
+    margin: auto;
+    background-color: #fff;
 }
 
 .gh-outer {
