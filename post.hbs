@@ -6,51 +6,55 @@
 <main class="gh-main">
 
     <article class="gh-article {{post_class}}">
-        {{> "feature-image"}}
 
-        <header class="gh-article-header">
+        <header class="gh-article-header gh-canvas">
 
+            {{#if primary_tag}}
+                <a class="gh-article-tag" href="{{primary_tag.url}}">{{primary_tag.name}}</a>
+            {{/if}}
             <h1 class="gh-article-title is-title">{{title}}</h1>
+            {{#if custom_excerpt}}
+                <p class="gh-article-excerpt is-body">{{custom_excerpt}}</p>
+            {{/if}}
 
             {{#if @custom.show_post_metadata}}
             <div class="gh-article-meta">
+                <div class="gh-article-author-image instapaper_ignore">
+                    {{#foreach authors}}
+                        {{#if profile_image}}
+                            <a href="{{url}}">
+                                <img class="author-profile-image" src="{{img_url profile_image size="xs"}}" alt="{{name}}">
+                            </a>
+                        {{else}}
+                            <a href="{{url}}">{{> "icons/avatar"}}</a>
+                        {{/if}}
+                    {{/foreach}}
+                </div>
                 <div class="gh-article-meta-wrapper">
+                    <h4 class="gh-article-author-name">{{authors}}</h4>
                     <div class="gh-article-meta-content">
-                        <time class="gh-article-meta-date" datetime="{{date format="YYYY.MM.DD"}}">date {{date format="YYYY.MM.DD"}}</time>
+                        <time class="gh-article-meta-date" datetime="{{date format="YYYY-MM-DD"}}">{{date format="DD MMM YYYY"}}</time>
+                        {{#if reading_time}}
+                            <span class="gh-article-meta-length"><span class="bull">—</span> {{reading_time}}</span>
+                        {{/if}}
                     </div>
                 </div>
             </div>
             {{/if}}
 
-            {{#if tags}}
-                <div class="gh-article-tags">
-                    {{#foreach tags}}
-                        <a class="gh-article-tag" href="{{url}}" data-slug="{{slug}}" style="display: none;">{{name}}</a>
-                    {{/foreach}}
-                </div>
-            {{/if}}
+            {{> "feature-image"}}
 
         </header>
 
-        <section class="gh-content gh-article-content is-body{{#if @custom.enable_drop_caps_on_posts}} drop-cap{{/if}}">
+        <section class="gh-content gh-canvas is-body{{#if @custom.enable_drop_caps_on_posts}} drop-cap{{/if}}">
             {{content}}
-            <div class="gh-post-author-link">
-                <p>Authors:
-                    {{#foreach authors}}
-                        <a href="{{url}}"><span>{{name}}</span></a>{{#unless @last}}, {{/unless}}
-                    {{/foreach}}
-                </p>
-            </div>
-            {{#if @member}}
-                {{> "post-like" post_id=id}}
-            {{/if}}
         </section>
 
     </article>
 
     {{#if comments}}
         <div class="gh-comments gh-canvas">
-            {{comments title="Comments" count=false}}
+            {{comments}}
         </div>
     {{/if}}
 
@@ -59,106 +63,18 @@
 {{/post}}
 
 {{#if @custom.show_related_articles}}
-    {{!-- 有料メンバーの場合 --}}
-    {{#if @member.paid}}
-        {{#get "posts" include="authors" filter="id:-{{post.id}}" limit="2" as |next|}}
-            {{#if next}}
-                <section class="recommend-container">
-                    <div class="recommend-container-inner">
-                        <h2 class="recommend-container-title">You may also like</h2>
-                        <div class="recommend-feed">
-                            {{#foreach posts}}
-                                <article class="recommend-post-card">
-                                    <a href="{{url}}">
-                                        {{#if feature_image}}
-                                            <img src="{{feature_image}}" alt="{{title}}">
-                                        {{else}}
-                                            <img src="{{asset "images/default_post_feature_img.png"}}" alt="{{title}}">
-                                        {{/if}}
-                                    </a>
-                                    <h3 class="recommend-post-title">{{title}}</h3>
-                                    <time class="recommend-post-date" datetime="{{date format="YYYY-MM-DD"}}">
-                                        {{date format="YYYY.MM.DD"}}
-                                    </time>
-                                </article>
-                            {{/foreach}}
-                        </div>
+    {{#get "posts" include="authors" filter="id:-{{post.id}}" limit="4" as |next|}}
+        {{#if next}}
+            <section class="gh-container is-grid gh-outer">
+                <div class="gh-container-inner gh-inner">
+                    <h2 class="gh-container-title">Read more</h2>
+                    <div class="gh-feed">
+                        {{#foreach next}}
+                            {{> "post-card" lazyLoad=true}}
+                        {{/foreach}}
                     </div>
-                </section>
-            {{/if}}
-        {{/get}}
-    {{!-- 無料メンバーの場合 --}}
-    {{else}}
-        <section class="recommend-container">
-            <div class="recommend-container-inner">
-                <h2 class="recommend-container-title">You may also like</h2>
-                <div id="recommend-feed" class="recommend-feed">
-                    {{!-- 無料記事を2件取得 --}}
-                    {{#get "posts" filter="visibility:public+id:-{{post.id}}" limit="2" as |freePosts|}}
-                        {{#foreach freePosts}}
-                            <article class="recommend-post-card">
-                                <a href="{{url}}">
-                                    {{#if feature_image}}
-                                        <img src="{{feature_image}}" alt="{{title}}">
-                                    {{else}}
-                                        <img src="{{asset "images/default_post_feature_img.png"}}" alt="{{title}}">
-                                    {{/if}}
-                                </a>
-                                <h3 class="recommend-post-title">{{title}}</h3>
-                                <time class="recommend-post-date" datetime="{{date format="YYYY-MM-DD"}}">
-                                    {{date format="YYYY.MM.DD"}}
-                                </time>
-                            </article>
-                        {{/foreach}}
-                    {{/get}}
-
-                    {{!-- 有料記事を2件取得 --}}
-                    {{#get "posts" filter="visibility:paid+id:-{{post.id}}" limit="2" as |paidPosts|}}
-                        {{#foreach paidPosts}}
-                            <article class="recommend-post-card">
-                                <a href="{{url}}">
-                                    {{#if feature_image}}
-                                        <img src="{{feature_image}}" alt="{{title}}">
-                                    {{else}}
-                                        <img src="{{asset "images/default_post_feature_img.png"}}" alt="{{title}}">
-                                    {{/if}}
-                                </a>
-                                <h3 class="recommend-post-title">{{title}}</h3>
-                                <time class="recommend-post-date" datetime="{{date format="YYYY-MM-DD"}}">
-                                    {{date format="YYYY.MM.DD"}}
-                                </time>
-                            </article>
-                        {{/foreach}}
-                    {{/get}}
                 </div>
-            </div>
-        </section>
-
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-                const recommendFeed = document.getElementById('recommend-feed');
-                const posts = recommendFeed.querySelectorAll('.recommend-post-card');
-
-                // 3件目以降の投稿を非表示にする
-                if (posts.length > 2) {
-                    for (let i = 2; i < posts.length; i++) {
-                        posts[i].style.display = 'none';
-                    }
-                }
-            });
-        </script>
-    {{/if}}
+            </section>
+        {{/if}}
+    {{/get}}
 {{/if}}
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const tags = document.querySelectorAll('.gh-article-tag');
-
-        tags.forEach(tag => {
-            const slug = tag.getAttribute('data-slug');
-            // slug が "free" でない場合、タグを表示
-            if (slug !== "free") {
-                tag.style.display = "inline-block";
-            }
-        });
-    });
-</script>

@@ -10,6 +10,9 @@
     {{!-- Preload main styles and scripts for better performance --}}
     <link rel="preload" as="style" href="{{asset "built/screen.css"}}">
     <link rel="preload" as="script" href="{{asset "built/source.js"}}">
+    
+    {{!-- Fonts are preloaded and defined in the default template to avoid layout shift --}}
+    {{> "typography/fonts"}}
 
     {{!-- Theme assets - use the {{asset}} helper to reference styles & scripts, this will take care of caching and cache-busting automatically --}}
     <link rel="stylesheet" type="text/css" href="{{asset "built/screen.css"}}">
@@ -26,6 +29,11 @@
         https://gomakethings.com/dynamically-changing-the-text-color-based-on-background-color-contrast-with-vanilla-js/ */
         var accentColor = getComputedStyle(document.documentElement).getPropertyValue('--background-color');
         accentColor = accentColor.trim().slice(1);
+
+        if (accentColor.length === 3) {
+            accentColor = accentColor[0] + accentColor[0] + accentColor[1] + accentColor[1] + accentColor[2] + accentColor[2];
+        }
+
         var r = parseInt(accentColor.substr(0, 2), 16);
         var g = parseInt(accentColor.substr(2, 2), 16);
         var b = parseInt(accentColor.substr(4, 2), 16);
@@ -44,7 +52,6 @@
 <div class="gh-viewport">
     
     {{> "components/navigation" navigationLayout=@custom.navigation_layout}}
-    {{> "components/fixed-navigation"}}
 
     {{{body}}}
     
@@ -58,22 +65,6 @@
 
 {{!-- Scripts - handle responsive videos, infinite scroll, and navigation dropdowns --}}
 <script src="{{asset "built/source.js"}}"></script>
-
-
-{{!-- Custom Script to reposition the Announcement Bar below the Navigation --}}
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const announcementBar = document.getElementById("announcement-bar-root");
-        const navigation = document.getElementById("gh-navigation");
-
-        if (navigation && announcementBar) {
-            navigation.insertAdjacentElement("afterend", announcementBar);
-        }
-    });
-</script>
-
-{{!-- 以下のコードを利用したいCoveのアカウントによって変更する --}}
-<script src="https://cdn.cove.chat/comments.js" data-cove-id="76bd734bb43a9136366c78a85fd1829f" async></script>
 
 {{!-- Ghost outputs required functional scripts with this tag, it should always be the last thing before the closing body tag --}}
 {{ghost_foot}}
