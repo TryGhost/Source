@@ -1,5 +1,7 @@
 /* Arcat Header Styles */
 .arcat-header {
+    position: relative;
+    height: 60px;
     width: 100%;
     background-color: #fff;
     padding: 12px 15px;
@@ -61,12 +63,13 @@
 .arcat-nav {
     display: flex;
     align-items: center;
+    gap: 8px;
 }
 
 .arcat-login, .arcat-signup {
     display: inline-block;
     padding: 8px 12px;
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-weight: 700;
 }
 
@@ -96,4 +99,80 @@
 .arcat-hamburger {
     width: 28px;
     height: 24px;
+}
+
+.arcat-hamburger svg:last-child {
+    display: none;
+}
+
+.is-open .arcat-hamburger svg:first-child {
+    display: none;
+}
+
+.is-open .arcat-hamburger svg:last-child {
+    display: block;
+}
+
+.arcat-nav-menu {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    background-color: #fff;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    pointer-events: none;
+    z-index: 200;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.is-open.arcat-nav-menu {
+    transform: translateX(0);
+    pointer-events: auto; /* 表示時はクリック可能 */
+    visibility: visible; /* メニューを表示 */
+    opacity: 1; /* メニューを不透明に */
+}
+
+.arcat-nav-overlay {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 199;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.is-open.arcat-nav-overlay {
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+    visibility: visible;
+    opacity: 1;
+}
+
+.arcat-nav-menu-primary {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 40px 20px;
+}
+
+.arcat-nav-menu-primary ul,
+.arcat-nav-menu-primary ol {
+    list-style: none;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 0;
+    font-weight: 700;
+}
+
+.arcat-nav-menu-signout {
+    color: #EEBB08CC;
+    font-weight: 700;
 }

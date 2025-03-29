@@ -24,10 +24,20 @@
         <button class="arcat-menu-button" aria-label="メニュー">
             <div class="arcat-hamburger">
                 {{> "icons/burger"}}
+                {{> "icons/close"}}
             </div>
         </button>
     </div>
 </header>
+<div class="arcat-nav-overlay"></div>
+<nav class="arcat-nav-menu">
+    <div class="arcat-nav-menu-primary">
+        {{navigation}}
+        {{^if @member}}
+            <a class="arcat-nav-menu-signout" href="javascript:" data-members-signout>ログアウト</a>
+        {{/if}}
+    </div>
+</nav>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -54,12 +64,15 @@
         // Toggle mobile menu
         const header = document.querySelector('.arcat-header');
         const menuButton = header?.querySelector('.arcat-menu-button');
-        
+        const navMenu = document.querySelector('.arcat-nav-menu');
+        const navOverlay = document.querySelector('.arcat-nav-overlay');
+
         if (menuButton) {
             menuButton.addEventListener('click', function() {
-                header.classList.toggle('is-menu-open');
-                
-                if (header.classList.contains('is-menu-open')) {
+                header.classList.toggle('is-open');
+                navMenu.classList.toggle('is-open');
+                navOverlay.classList.toggle('is-open');
+                if (header.classList.contains('is-open')) {
                     document.documentElement.style.overflowY = 'hidden';
                 } else {
                     document.documentElement.style.overflowY = null;
