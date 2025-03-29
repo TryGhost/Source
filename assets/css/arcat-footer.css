@@ -1,0 +1,68 @@
+.arcat-footer {
+    /* フッター全体が親要素390px内に収まるように */
+    width: 100%;
+    margin: 0 auto;
+    background-color: #fff;
+}
+
+/* ロゴ部分のスタイリング */
+.arcat-footer-logo-container {
+    padding: 20px 15px;
+    text-align: left; /* ロゴを中央配置する場合 */
+}
+
+.arcat-footer-logo {
+    width: 90px;
+    height: auto;
+}
+
+/* メニュー部分のスタイリング */
+.arcat-footer-menu {
+    padding: 0 15px;
+    box-sizing: border-box;
+}
+
+.arcat-footer-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.arcat-footer-menu li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* 各項目の下に仕切り線を引く */
+    border-bottom: 1px solid #000;
+    padding: 12px 0;
+}
+
+
+.arcat-footer-menu li a {
+    text-decoration: none;
+    color: #000;
+    flex: 1;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+/* 右端に矢印を表示する例 */
+.arcat-footer-menu li::after {
+    content: '>';
+    color: #000;
+    margin-left: 8px; /* テキストと矢印の間隔 */
+    font-weight: 700;
+}
+
+/* コピーライト部分のスタイリング */
+.arcat-footer-copyright {
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    margin-top: 30px;
+    padding: 20px 0;
+    font-size: 1rem;
+    line-height: 1.5;
+    font-weight: 700;
+    /* 必要に応じて余白を足す */
+}

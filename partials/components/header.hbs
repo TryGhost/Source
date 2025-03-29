@@ -33,7 +33,7 @@
 <nav class="arcat-nav-menu">
     <div class="arcat-nav-menu-primary">
         {{navigation}}
-        {{^if @member}}
+        {{#if @member}}
             <a class="arcat-nav-menu-signout" href="javascript:" data-members-signout>ログアウト</a>
         {{/if}}
     </div>
