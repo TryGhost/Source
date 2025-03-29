@@ -161,18 +161,25 @@
     padding: 40px 20px;
 }
 
-.arcat-nav-menu-primary ul,
-.arcat-nav-menu-primary ol {
+.arcat-nav-menu-primary ul {
     list-style: none;
     margin: 0;
     display: flex;
     flex-direction: column;
     gap: 16px;
     padding: 0;
+}
+
+.arcat-nav-menu-primary li a {
+    text-decoration: none;
+    color: #000;
+    flex: 1;
     font-weight: 700;
+    font-size: 1.2rem;
 }
 
 .arcat-nav-menu-signout {
     color: #EEBB08CC;
     font-weight: 700;
+    font-size: 1.2rem;
 }
