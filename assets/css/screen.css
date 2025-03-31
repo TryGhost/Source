@@ -49,6 +49,7 @@ production stylesheet in assets/built/screen.css
 
 @import 'arcat-header.css';
 @import 'arcat-footer.css';
+@import 'arcat-home.css';
 
 /* 1. Variables
 /* ---------------------------------------------------------- */
