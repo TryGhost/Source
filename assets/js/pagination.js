@@ -1,10 +1,10 @@
 function pagination(isInfinite = true, done, isMasonry = false) {
-    const feedElement = document.querySelector('.gh-feed');
+    const feedElement = document.querySelector('.arcat-post-list');
     if (!feedElement) return;
 
     let loading = false;
-    const target = document.querySelector('.gh-footer');
-    const buttonElement = document.querySelector('.gh-loadmore');
+    const target = document.querySelector('.arcat-pagination');
+    const buttonElement = document.querySelector('.arcat-loadmore');
 
     if (!document.querySelector('link[rel=next]') && buttonElement) {
         buttonElement.remove();
@@ -20,7 +20,7 @@ function pagination(isInfinite = true, done, isMasonry = false) {
             const parser = new DOMParser();
             const doc = parser.parseFromString(html, 'text/html');
 
-            const postElements = doc.querySelectorAll('.gh-feed:not(.gh-featured):not(.gh-related) > *');
+            const postElements = doc.querySelectorAll('.arcat-post-list > *');
             const fragment = document.createDocumentFragment();
             const elems = [];
 
