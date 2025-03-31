@@ -1,1 +1,128 @@
 {{!< default}}
+<main class="arcat-home-root">
+    <!-- メインビジュアルセクション -->
+    <section class="arcat-home-main-visual">
+        <div class="arcat-home-key-visual-container">
+            <img class="arcat-home-key-visual" src="{{asset "images/arcat-top.png"}}" alt="三毛猫" />
+            <div class="arcat-home-site-message-wrapper">
+                <h1 class="arcat-home-site-message">
+                    <img class="arcat-home-key-visual-logo" src="{{asset "images/arcat-footer-logo.svg"}}" alt="Arcat." />
+                    <button class="arcat-home-key-visual-button" data-portal="signup">
+                        Arcatを始めよう
+                    </button>
+                </h1>
+            </div>
+        </div>
+        <p class="arcat-home-section-message">A place to plan and share various things related to <br/> daily life with a focus on <br/> "people who live happily with cats".</p>
+        <p class="arcat-home-section-message">Arcatは猫と楽しく暮らす人を中心に、<br/>暮らしにまつわる様々なことを企画・共有するSNSです</p>
+    </section>
+
+    <!-- 蜜なコミュニケーションセクション -->
+    <section class="arcat-home-communication">
+        <h2 class="arcat-home-section-title">
+            {{> "icons/cat-footprint"}}
+            <span>
+                <span class="arcat-home-highlighted-title">Arcat_ by Cat's ISSUE</span>に参加して<br/>蜜なコミュニケーションを<br/>体験しよう
+            </span>
+        </h2>
+        <img class="arcat-home-tyatora" src="{{asset "images/arcat-tyatora.png"}}" alt="茶トラ猫" />
+        <div class="arcat-home-tyatora-message">
+            <p>好きなユーザーやメディアを応援</p>
+            {{> "icons/fukidashi"}}
+        </div>
+        <p class="arcat-home-section-message">Former Economist journalist Robert Cottrell created <br/> The Browser to curate the very best.</p>
+        <div class="arcat-home-link-group">
+            <a href="" target="_blank" rel="noopener noreferrer">メディアを探す</a>
+            <a href="" target="_blank" rel="noopener noreferrer">ユーザーを探す</a>
+        </div>
+    </section>
+
+    <!-- オリジナルコンテンツセクション -->
+    <section class="arcat-home-experts-content">
+        <h2 class="arcat-home-section-title">
+            {{> "icons/cat-footprint"}}
+            <span>
+                <span class="arcat-home-highlighted-title">専門家やライターによる</span><br/>オリジナルコンテンツ</span>
+            </span>
+        </h2>
+        <img class="arcat-home-shironeko" src="{{asset "images/shironeko.png"}}" alt="白猫" />
+        <p class="arcat-home-section-message">Former Economist journalist Robert Cottrell created <br/> The Browser to curate the very best.</p>
+        <div class="arcat-home-link-group">
+            <a href="" target="_blank" rel="noopener noreferrer">専門家を探す</a>
+            <a href="" target="_blank" rel="noopener noreferrer">ライターを探す</a>
+        </div>
+    </section>
+
+    <!-- プレミアムセクション -->
+    <section class="arcat-home-premium">
+        <h2 class="arcat-home-section-title">
+            {{> "icons/cat-footprint"}}
+            <span>
+                <span class="arcat-home-highlighted-title">プレミアム登録</span>で<br/>専門家と直接やりとり
+            </span>
+        </h2>
+        <img class="arcat-home-shirohuwaneko" src="{{asset "images/arcat-shirohuwaneko.png"}}" alt="白いふわふわな猫" />
+        <p class="arcat-home-section-message">Former Economist journalist Robert Cottrell created The Browser to curate the very best.</p>
+        <div class="arcat-home-premium-link-group">
+            <a class="arcat-home-premium-link" href="" target="_blank" rel="noopener noreferrer">
+                Magaport Premiumに加入する
+            </a>
+        </div>
+    </section>
+
+    <!-- 最新記事セクション -->
+    <section class="arcat-home-post">
+        <h2 class="arcat-home-section-title">
+            {{> "icons/cat-footprint"}}
+            <span>Arcat’s Post</span>
+        </h2>
+        <div class="arcat-home-post-subtitle">
+            <h3>最新記事</h3>
+            <a class="arcat-home-post-more" href="/posts">
+                <span>More</span>
+            </a>
+        </div>
+        <div class="arcat-home-post-list">
+            {{#get "posts" include="authors" limit="5"}}
+                {{#foreach posts}}
+                    <article class="arcat-home-post-item">
+                        <a href="{{url}}">
+                            {{#if feature_image}}
+                                <img class="arcat-home-post-item-image" src="{{feature_image}}" alt="{{title}}">
+                            {{else}}
+                                <img class="arcat-home-post-item-image" src="{{asset "images/default_post_feature_img.png"}}" alt="{{title}}">
+                            {{/if}}
+                            <div class="arcat-home-post-title">
+                                <h4>{{title}}</h4>
+                                <div class="arcat-home-post-meta">
+                                    <time datetime="{{date format="YYYY-MM-DD"}}">
+                                        {{date format="YYYY/MM/DD"}}
+                                    </time>
+                                    {{#if author}}
+                                        <span> {{author.name}}</span>
+                                    {{/if}}
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+                {{/foreach}}
+            {{/get}}
+        </div>
+    </section>
+
+    <!-- ギャラリーセクション -->
+    <section class="arcat-home-gallery">
+        <h2 class="arcat-home-section-title">
+            {{> "icons/cat-footprint"}}
+            <span>
+                Gallery
+            </span>
+        </h2>
+        <img class="arcat-home-black-cat" src="{{asset "images/black-cat.png"}}" alt="黒猫" />
+        <div class="arcat-home-gallery-link-group">
+            <a class="arcat-home-gallery-link" href="/gallery">
+                もっと見る
+            </a>
+        </div>
+    </section>
+</main>
