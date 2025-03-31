@@ -1,28 +1,28 @@
 /* Arcat HomePage Styles */
 /* トップページ全体の幅を最大390pxに制限 */
-.arcat-home {
+.arcat-home-root {
     width: 100%;
     margin: 0 auto;           /* テキスト色 */
 }
 
 /* メインビジュアル */
-.arcat-main-visual {
+.arcat-home-main-visual {
     margin: 0 auto;
     padding-bottom: 40px;
 }
 
-.arcat-key-visual-container {
+.arcat-home-key-visual-container {
     position: relative;
     z-index: 0;
 }
 
-.arcat-key-visual {
+.arcat-home-key-visual {
     width: 100%;
     height: auto;
     display: block;
 }
 
-.arcat-site-message-wrapper {
+.arcat-home-site-message-wrapper {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -36,7 +36,7 @@
     justify-content: center;
 }
 
-.arcat-site-message {
+.arcat-home-site-message {
     display: flex;
     flex-direction: column;
     gap: 24px;
@@ -44,12 +44,12 @@
     justify-content: center;
 }
 
-.arcat-key-visual-logo {
+.arcat-home-key-visual-logo {
     width: 230px;
 }
 
 /* ボタン */
-.arcat-key-visual-button {
+.arcat-home-key-visual-button {
     background-color: #FDEC01; /* 例: ゴールド系 */
     color: #000;
     padding: 8px 32px;
@@ -62,7 +62,7 @@
     width: fit-content;
 }
 
-.arcat-key-visual-message {
+.arcat-home-section-message {
     margin-top: 24px;
     color: #797979;
     font-size: 14px;
@@ -70,13 +70,13 @@
 }
 
 /* セクションのタイトルや要素配置 */
-.cat-communication {
+.arcat-home-communication {
     margin: 0 auto;
     padding: 24px 16px 40px;
 }
 
 
-.cat-communication-title {
+.arcat-home-section-title {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -88,27 +88,27 @@
     margin-bottom: 16px;
 }
 
-.cat-communication-title svg {
+.arcat-home-section-title svg {
     width: 28px;
     height: 24px;
 }
 
-.cat-communication-title span {
+.arcat-home-section-title span {
     text-align: center;
 }
 
-.strong-site-title {
+.arcat-home-highlighted-title {
     font-weight: 900;
     background: linear-gradient(transparent 60%, #FDEC01 30%);
     display: inline-block;
 }
 
-.arcat-tyatora-message {
+.arcat-home-tyatora-message {
     position: relative;
     margin-top: 24px;
 }
 
-.arcat-tyatora-message p {
+.arcat-home-tyatora-message p {
     font-weight: 700;
     font-size: 18px;
     display: inline-block;
@@ -120,36 +120,36 @@
 }
 
 /* 猫のイラスト・写真の共通スタイル */
-.arcat-tyatora,
-.arcat-shironeko,
-.arcat-black-cat {
+.arcat-home-tyatora,
+.arcat-home-shironeko,
+.arcat-home-black-cat {
     width: 100%;
     height: auto;
     object-fit: cover;
 }
 
-.arcat-shirohuwaneko {
+.arcat-home-shirohuwaneko {
     width: 100%;
     height: auto;
     object-fit: cover;
     margin-top: -16px;
 }
 
-.experts-content {
+.arcat-home-experts-content {
     margin: 0 auto;
     padding: 24px 16px 40px;
     background: #FFFAB9;
 }
 
 /* リンクグループ（メディアを探す / ユーザーを探す 等） */
-.arcat-link-group {
+.arcat-home-link-group {
     display: flex;
     gap: 8px;
     justify-content: center;
     margin-top: 16px;
 }
 
-.arcat-link-group a {
+.arcat-home-link-group a {
     border-radius: 8px;
     background: #1C1B1B;; /* 例: 薄い黄色 */
     color: #fff;
@@ -159,26 +159,26 @@
     font-size: 1.5rem;
 }
 
-.premium {
+.arcat-home-premium {
     margin: 0 auto;
     padding: 24px 16px 40px;
     background: #F8F6F2;
 }
 /* プレミアムセクション */
-.premium-label {
+.arcat-home-premium-label {
     font-size: 18px;
     font-weight: bold;
     color: #F00; /* 例: 赤文字 */
     text-align: center;
 }
 
-.arcat-premium-link-group {
+.arcat-home-premium-link-group {
     display: flex;
     justify-content: center;
     margin-top: 16px;
 }
 
-.arcat-premium-link {
+.arcat-home-premium-link {
     padding: 8px 24px;
     background-color: #FDEC01;
     color: #000;
@@ -189,23 +189,23 @@
 }
 
 /* Arcat’s Post */
-.arcat-post {
+.arcat-home-post {
     margin: 0 auto;
     padding: 24px 16px 40px;
 }
 
-.arcat-post-subtitle {
+.arcat-home-post-subtitle {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.arcat-post-subtitle h3 {
+.arcat-home-post-subtitle h3 {
     font-size: 18px;
     font-weight: 700;
     color: #000;
 }
 
-.arcat-post-more {
+.arcat-home-post-more {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -217,7 +217,7 @@
     font-size: 14px;
 }
 
-.arcat-post-more span::after {
+.arcat-home-post-more span::after {
     content: '→';
     color: #999;
     margin-left: 4px; /* テキストと矢印の間隔 */
@@ -225,18 +225,18 @@
     font-size: 14px;
 }
 
-.arcat-post-list {
+.arcat-home-post-list {
     margin-top: 16px;
 }
 
-.arcat-post-item {
+.arcat-home-post-item {
     border-top: 1px solid #ddd;
     padding-top: 16px;
     padding-bottom: 16px;
     overflow: hidden;
 }
 
-.arcat-post-item a {
+.arcat-home-post-item a {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -244,7 +244,7 @@
     gap: 16px;
 }
 
-.arcat-post-item a::after {
+.arcat-home-post-item a::after {
     content: '>';
     color: #000;
     text-align: right;
@@ -253,13 +253,13 @@
     margin-left: 16px;
 }
 
-.arcat-post-item-image {
+.arcat-home-post-item-image {
     width: 80px;
     height: 80px;
     object-fit: cover;
 }
 
-.arcat-post-title {
+.arcat-home-post-title {
     display: flex;
     flex-direction: column;
     align-items: stretch;
@@ -267,12 +267,12 @@
     width: 100%;
 }
 
-.arcat-post-title h4 {
+.arcat-home-post-title h4 {
     font-size: 14px;
     font-weight: 700;
 }
 
-.arcat-post-meta {
+.arcat-home-post-meta {
     font-size: 14px;
     color: #666;
     display: flex;
@@ -281,18 +281,18 @@
 }
 
 /* ギャラリー */
-.arcat-gallery {
+.arcat-home-gallery {
     margin: 0 auto;
     padding: 24px 16px 40px;
 }
 
-.arcat-gallery-link-group {
+.arcat-home-gallery-link-group {
     display: flex;
     justify-content: center;
     margin-top: 16px;
 }
 
-.arcat-gallery-link {
+.arcat-home-gallery-link {
     padding: 8px 24px;
     background-color: #000;
     color: #fff;
@@ -301,4 +301,3 @@
     font-weight: 700;
     font-size: 14px;
 }
-
