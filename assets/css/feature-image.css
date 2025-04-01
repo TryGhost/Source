@@ -1,0 +1,7 @@
+.arcat-article-image {
+    grid-column: wide;
+}
+
+.arcat-article-image img {
+    width: 100%;
+}

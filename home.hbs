@@ -71,44 +71,13 @@
     </section>
 
     <!-- 最新記事セクション -->
-    <section class="arcat-home-post">
-        <h2 class="arcat-home-section-title">
-            {{> "icons/cat-footprint"}}
-            <span>Arcat’s Post</span>
-        </h2>
-        <div class="arcat-home-post-subtitle">
-            <h3>最新記事</h3>
-            <a class="arcat-home-post-more" href="/posts">
-                <span>More</span>
-            </a>
-        </div>
-        <div class="arcat-home-post-list">
-            {{#get "posts" include="authors" limit="5"}}
-                {{#foreach posts}}
-                    <article class="arcat-home-post-item">
-                        <a href="{{url}}">
-                            {{#if feature_image}}
-                                <img class="arcat-home-post-item-image" src="{{feature_image}}" alt="{{title}}">
-                            {{else}}
-                                <img class="arcat-home-post-item-image" src="{{asset "images/default_post_feature_img.png"}}" alt="{{title}}">
-                            {{/if}}
-                            <div class="arcat-home-post-title">
-                                <h4>{{title}}</h4>
-                                <div class="arcat-home-post-meta">
-                                    <time datetime="{{date format="YYYY-MM-DD"}}">
-                                        {{date format="YYYY/MM/DD"}}
-                                    </time>
-                                    {{#if author}}
-                                        <span> {{author.name}}</span>
-                                    {{/if}}
-                                </div>
-                            </div>
-                        </a>
-                    </article>
-                {{/foreach}}
-            {{/get}}
-        </div>
-    </section>
+    {{> "components/post-list"
+        sectionTitle="Arcat’s Post"
+        hasMore=true
+        subSectionTitle="最新記事"
+        limit=5
+        showPagenation=false
+    }}
 
     <!-- ギャラリーセクション -->
     <section class="arcat-home-gallery">

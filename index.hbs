@@ -1,6 +1,10 @@
 {{!< default}}
-{{!-- The tag above means: insert everything in this file into the body of the default.hbs template --}}
-
 <main class="gh-main">
-    {{> "components/post-list" feed="index" postFeedStyle=@custom.post_feed_style showTitle=true showSidebar=@custom.show_publication_info_sidebar}}
+    {{> "components/post-list"
+        sectionTitle="Post"
+        hasMore=false
+        subSectionTitle="記事一覧"
+        limit="all"
+        showPagenation=false
+    }}
 </main>
