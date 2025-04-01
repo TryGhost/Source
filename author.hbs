@@ -1,43 +1,67 @@
 {{!< default}}
-{{!-- The tag above means: insert everything in this file into the body of the default.hbs template --}}
-
-<main class="gh-main gh-outer">
-
+<main class="arcat-author-main">
     {{#author}}
-        <section class="gh-archive{{#if @custom.show_publication_info_sidebar}} has-sidebar{{/if}} gh-inner">
-            <div class="gh-archive-inner">
-                <div class="gh-archive-wrapper">
-                    <h1 class="gh-article-title is-title">
-                        {{#if website}}
-                            <a class="gh-author-social-link" href="{{website}}" target="_blank" rel="noopener">{{name}}</a>
-                        {{else}}
-                            {{name}}
-                        {{/if}}
-                    </h1>
-                    {{#if bio}}
-                        <p class="gh-article-excerpt">{{bio}}</p>
-                    {{/if}}
-                    <footer class="gh-author-meta">
-                        <div class="gh-author-social">
-                            {{#if facebook}}
-                                <a class="gh-author-social-link" href="{{facebook_url}}" target="_blank" rel="noopener">{{> "icons/facebook"}}</a>
-                            {{/if}}
-                            {{#if twitter}}
-                                <a class="gh-author-social-link" href="{{twitter_url}}" target="_blank" rel="noopener">{{> "icons/twitter"}}</a>
-                            {{/if}}
-                        </div>
-                        {{#if location}}
-                            <div class="gh-author-location">{{location}}</div>
-                        {{/if}}
-                    </footer>
-                </div>
-                {{#if profile_image}}
-                    <img class="gh-article-image" src="{{img_url profile_image size="s"}}" alt="{{name}}">
+        <section class="arcat-author-profile">
+            {{#if cover_image}}
+                <img
+                    class="arcat-author-cover"
+                    src="{{img_url cover_image size="l"}}"
+                    alt="{{name}}"
+                >
+            {{else}}
+                <img class="arcat-author-cover" src="{{asset "images/default_author_feature.png"}}" alt="{{name}}">
+            {{/if}}
+            {{#if profile_image}}
+                <img class="arcat-author-profile-image" src="{{img_url profile_image size="s"}}" alt="{{name}}">
+            {{else}}
+                {{> "icons/avatar"}}
+            {{/if}}
+            <div class="arcat-author-details">
+                <h1 class="arcat-author-name">
+                    {{name}}
+                </h1>
+                {{#if location}}
+                    <p class="arcat-author-location">{{location}}</p>
                 {{/if}}
             </div>
         </section>
+        <h2 class="arcat-post-list-title">
+            {{> "icons/cat-footprint"}}
+            {{!-- TODO: All, Free, VIPというタブにより、postのfilterが切り替わるようにする --}}
+            <span>All / Free / VIP</span>
+        </h2>
+        {{#get "posts" include="authors" filter="authors:{{slug}}" limit="5" order="published_at desc" as |next|}}
+            {{#if next}}
+                <section class="arcat-post-list-section">
+                    <h3 class="arcat-post-list-subtitle-no-more">
+                        最新記事
+                    </h3>
+                    <div class="arcat-post-list">
+                        {{#foreach posts}}
+                            <article class="arcat-post-item">
+                                <a href="{{url}}">
+                                    {{#if feature_image}}
+                                        <img class="arcat-post-item-image" src="{{feature_image}}" alt="{{title}}">
+                                    {{else}}
+                                        <img class="arcat-post-item-image" src="{{asset "images/default_post_feature_img.png"}}" alt="{{title}}">
+                                    {{/if}}
+                                    <div class="arcat-post-title">
+                                        <h4>{{title}}</h4>
+                                        <div class="arcat-post-meta">
+                                            <time datetime="{{date format="YYYY-MM-DD"}}">
+                                                {{date format="YYYY/MM/DD"}}
+                                            </time>
+                                            {{#if author}}
+                                                <span> {{author.name}}</span>
+                                            {{/if}}
+                                        </div>
+                                    </div>
+                                </a>
+                            </article>
+                        {{/foreach}}
+                    </div>
+                </section>
+            {{/if}}
+        {{/get}}
     {{/author}}
-    
-    {{> "components/post-list" feed="archive" postFeedStyle=@custom.post_feed_style showTitle=false showSidebar=@custom.show_publication_info_sidebar}}
-
 </main>
