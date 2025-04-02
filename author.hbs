@@ -14,7 +14,10 @@
             {{#if profile_image}}
                 <img class="arcat-author-profile-image" src="{{img_url profile_image size="s"}}" alt="{{name}}">
             {{else}}
-                {{> "icons/avatar"}}
+                <div class="arcat-author-profile-image">
+                    {{> "icons/avatar"}}
+                </div>
+
             {{/if}}
             <div class="arcat-author-details">
                 <h1 class="arcat-author-name">

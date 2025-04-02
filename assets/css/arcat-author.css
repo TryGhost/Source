@@ -30,6 +30,7 @@
     border-radius: 50%;
     object-fit: cover;
     outline: 3px solid #fff;
+    background-color: #999;
     position: absolute;
     bottom: 70px;
     left: 50%;
