@@ -1,43 +1,175 @@
 {{!< default}}
-{{!-- The tag above means: insert everything in this file into the body of the default.hbs template --}}
-
-<main class="gh-main gh-outer">
-
+<main class="arcat-author-main">
     {{#author}}
-        <section class="gh-archive{{#if @custom.show_publication_info_sidebar}} has-sidebar{{/if}} gh-inner">
-            <div class="gh-archive-inner">
-                <div class="gh-archive-wrapper">
-                    <h1 class="gh-article-title is-title">
-                        {{#if website}}
-                            <a class="gh-author-social-link" href="{{website}}" target="_blank" rel="noopener">{{name}}</a>
-                        {{else}}
-                            {{name}}
-                        {{/if}}
-                    </h1>
-                    {{#if bio}}
-                        <p class="gh-article-excerpt">{{bio}}</p>
-                    {{/if}}
-                    <footer class="gh-author-meta">
-                        <div class="gh-author-social">
-                            {{#if facebook}}
-                                <a class="gh-author-social-link" href="{{facebook_url}}" target="_blank" rel="noopener">{{> "icons/facebook"}}</a>
-                            {{/if}}
-                            {{#if twitter}}
-                                <a class="gh-author-social-link" href="{{twitter_url}}" target="_blank" rel="noopener">{{> "icons/twitter"}}</a>
-                            {{/if}}
-                        </div>
-                        {{#if location}}
-                            <div class="gh-author-location">{{location}}</div>
-                        {{/if}}
-                    </footer>
+        <section class="arcat-author-profile">
+            {{#if cover_image}}
+                <img
+                    class="arcat-author-cover"
+                    src="{{img_url cover_image size="l"}}"
+                    alt="{{name}}"
+                >
+            {{else}}
+                <img class="arcat-author-cover" src="{{asset "images/default_author_feature.png"}}" alt="{{name}}">
+            {{/if}}
+            {{#if profile_image}}
+                <img class="arcat-author-profile-image" src="{{img_url profile_image size="s"}}" alt="{{name}}">
+            {{else}}
+                <div class="arcat-author-profile-image">
+                    {{> "icons/avatar"}}
                 </div>
-                {{#if profile_image}}
-                    <img class="gh-article-image" src="{{img_url profile_image size="s"}}" alt="{{name}}">
+
+            {{/if}}
+            <div class="arcat-author-details">
+                <h1 class="arcat-author-name">
+                    {{name}}
+                </h1>
+                {{#if location}}
+                    <p class="arcat-author-location">{{location}}</p>
                 {{/if}}
             </div>
         </section>
-    {{/author}}
-    
-    {{> "components/post-list" feed="archive" postFeedStyle=@custom.post_feed_style showTitle=false showSidebar=@custom.show_publication_info_sidebar}}
+        <h2 class="arcat-post-list-title">
+            {{> "icons/cat-footprint"}}
+            <ul class="arcat-post-list-tabs">
+                <li class="arcat-tab active" data-tab="all">All</li>
+                <li class="arcat-tab" data-tab="free">Free</li>
+                <li class="arcat-tab" data-tab="vip">VIP</li>
+            </ul>
+        </h2>
+        {{!-- All posts --}}
+        {{#get "posts" include="authors" filter="authors:{{slug}}"  order="published_at desc" as |postsAll|}}
+            {{#if postsAll}}
+                <section id="posts-all" class="arcat-post-list-section">
+                    <h3 class="arcat-post-list-subtitle-no-more">
+                        最新記事
+                    </h3>
+                    <div class="arcat-post-list">
+                        {{#foreach postsAll}}
+                            <article class="arcat-post-item">
+                                <a href="{{url}}">
+                                    {{#if feature_image}}
+                                        <img class="arcat-post-item-image" src="{{feature_image}}" alt="{{title}}">
+                                    {{else}}
+                                        <img class="arcat-post-item-image" src="{{asset "images/default_post_feature_img.png"}}" alt="{{title}}">
+                                    {{/if}}
+                                    <div class="arcat-post-title">
+                                        <h4>{{title}}</h4>
+                                        <div class="arcat-post-meta">
+                                            <time datetime="{{date format="YYYY-MM-DD"}}">
+                                                {{date format="YYYY/MM/DD"}}
+                                            </time>
+                                            {{#if author}}
+                                                <span> {{author.name}}</span>
+                                            {{/if}}
+                                        </div>
+                                    </div>
+                                </a>
+                            </article>
+                        {{/foreach}}
+                    </div>
+                </section>
+            {{/if}}
+        {{/get}}
 
+        {{!-- Free posts --}}
+        {{#get "posts" include="authors" filter="authors:{{slug}}" order="published_at desc" as |postsFree|}}
+            {{#if postsFree}}
+                <section id="posts-free" class="arcat-post-list-section" style="display: none;">
+                    <h3 class="arcat-post-list-subtitle-no-more">
+                        最新記事
+                    </h3>
+                    <div class="arcat-post-list">
+                        {{#foreach postsFree visibility='all'}}
+                            {{#has visibility="public"}}
+                                <article class="arcat-post-item">
+                                    <a href="{{url}}">
+                                        {{#if feature_image}}
+                                            <img class="arcat-post-item-image" src="{{feature_image}}" alt="{{title}}">
+                                        {{else}}
+                                            <img class="arcat-post-item-image" src="{{asset "images/default_post_feature_img.png"}}" alt="{{title}}">
+                                        {{/if}}
+                                        <div class="arcat-post-title">
+                                            <h4>{{title}}</h4>
+                                            <div class="arcat-post-meta">
+                                                <time datetime="{{date format="YYYY-MM-DD"}}">
+                                                    {{date format="YYYY/MM/DD"}}
+                                                </time>
+                                                {{#if author}}
+                                                    <span> {{author.name}}</span>
+                                                {{/if}}
+                                            </div>
+                                        </div>
+                                    </a>
+                                </article>
+                            {{/has}}
+                        {{/foreach}}
+                    </div>
+                </section>
+            {{/if}}
+        {{/get}}
+
+        {{!-- VIP posts --}}
+        {{#get "posts" include="authors" filter="authors:{{slug}}" order="published_at desc" as |postsVIP|}}
+            {{#if postsVIP}}
+                <section id="posts-vip" class="arcat-post-list-section" style="display: none;">
+                    <h3 class="arcat-post-list-subtitle-no-more">
+                        最新記事
+                    </h3>
+                    <div class="arcat-post-list">
+                        {{#foreach postsVIP visibility='all'}}
+                            {{#has visibility="paid"}}
+                                <article class="arcat-post-item">
+                                    <a href="{{url}}">
+                                        {{#if feature_image}}
+                                            <img class="arcat-post-item-image" src="{{feature_image}}" alt="{{title}}">
+                                        {{else}}
+                                            <img class="arcat-post-item-image" src="{{asset "images/default_post_feature_img.png"}}" alt="{{title}}">
+                                        {{/if}}
+                                        <div class="arcat-post-title">
+                                            <h4>{{title}}</h4>
+                                            <div class="arcat-post-meta">
+                                                <time datetime="{{date format="YYYY-MM-DD"}}">
+                                                    {{date format="YYYY/MM/DD"}}
+                                                </time>
+                                                {{#if author}}
+                                                    <span> {{author.name}}</span>
+                                                {{/if}}
+                                            </div>
+                                        </div>
+                                    </a>
+                                </article>
+                            {{/has}}
+                        {{/foreach}}
+                    </div>
+                </section>
+            {{/if}}
+        {{/get}}
+    {{/author}}
 </main>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function(){
+        const tabs = document.querySelectorAll('.arcat-tab');
+        const sections = {
+            all: document.getElementById('posts-all'),
+            free: document.getElementById('posts-free'),
+            vip: document.getElementById('posts-vip')
+        };
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', function(){
+                // Remove active class from all tabs
+                tabs.forEach(t => t.classList.remove('active'));
+                // Hide all sections
+                Object.values(sections).forEach(section => section.style.display = 'none');
+                // Activate the clicked tab and show corresponding section
+                this.classList.add('active');
+                const tabName = this.getAttribute('data-tab');
+                if (sections[tabName]) {
+                    sections[tabName].style.display = 'block';
+                }
+            });
+        });
+    });
+</script>
