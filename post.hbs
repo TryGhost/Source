@@ -26,13 +26,24 @@
             {{content}}
         </section>
     </article>
-    {{!-- {{#if @member}}
-        {{> "post-like" post_id=id}}
-    {{/if}} --}}
+
     {{#if comments}}
-        <div class="arcat-post-comments">
-            {{comments}}
-        </div>
+        <section>
+            <div class="arcat-post-actions">
+                <div class="arcat-post-commments">
+                    <button class="arcat-post-commment-icon" type="button" data-toggle="comments">
+                        {{> "icons/chat"}}
+                    </button>
+                    {{comment_count singular="" plural=""}}
+                </div>
+                {{!-- {{#if @member}}
+                    {{> "post-like" post_id=id}}
+                {{/if}} --}}
+            </div>
+            <div class="arcat-post-comments">
+                {{comments title="" count=false mode="light"}}
+            </div>
+        </section>
     {{/if}}
 </main>
 {{/post}}
@@ -70,3 +81,20 @@
         </section>
     {{/if}}
 {{/get}}
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const toggleButton = document.querySelector('.arcat-post-commment-icon');
+    const commentsDiv = document.querySelector('.arcat-post-comments');
+    if (toggleButton && commentsDiv) {
+        toggleButton.addEventListener('click', function() {
+            // トグル処理：非表示の場合は表示、表示中の場合は非表示にする
+            if (commentsDiv.style.display === 'none' || commentsDiv.style.display === '') {
+                commentsDiv.style.display = 'block';
+            } else {
+                commentsDiv.style.display = 'none';
+            }
+        });
+    }
+});
+</script>
