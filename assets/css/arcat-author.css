@@ -53,3 +53,20 @@
     font-size: 1em;
     color: #666;
 }
+
+.arcat-post-list-tabs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 0;
+}
+
+.arcat-tab {
+    list-style: none;
+    padding: 5px 15px;
+    border-bottom: 5px solid transparent;
+}
+
+.arcat-tab.active {
+    border-bottom: 5px solid #000;
+}

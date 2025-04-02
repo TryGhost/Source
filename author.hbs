@@ -27,17 +27,21 @@
         </section>
         <h2 class="arcat-post-list-title">
             {{> "icons/cat-footprint"}}
-            {{!-- TODO: All, Free, VIPというタブにより、postのfilterが切り替わるようにする --}}
-            <span>All / Free / VIP</span>
+            <ul class="arcat-post-list-tabs">
+                <li class="arcat-tab active" data-tab="all">All</li>
+                <li class="arcat-tab" data-tab="free">Free</li>
+                <li class="arcat-tab" data-tab="vip">VIP</li>
+            </ul>
         </h2>
-        {{#get "posts" include="authors" filter="authors:{{slug}}" limit="5" order="published_at desc" as |next|}}
-            {{#if next}}
-                <section class="arcat-post-list-section">
+        {{!-- All posts --}}
+        {{#get "posts" include="authors" filter="authors:{{slug}}"  order="published_at desc" as |postsAll|}}
+            {{#if postsAll}}
+                <section id="posts-all" class="arcat-post-list-section">
                     <h3 class="arcat-post-list-subtitle-no-more">
                         最新記事
                     </h3>
                     <div class="arcat-post-list">
-                        {{#foreach posts}}
+                        {{#foreach postsAll}}
                             <article class="arcat-post-item">
                                 <a href="{{url}}">
                                     {{#if feature_image}}
@@ -63,5 +67,106 @@
                 </section>
             {{/if}}
         {{/get}}
+
+        {{!-- Free posts --}}
+        {{#get "posts" include="authors" filter="authors:{{slug}}" order="published_at desc" as |postsFree|}}
+            {{#if postsFree}}
+                <section id="posts-free" class="arcat-post-list-section" style="display: none;">
+                    <h3 class="arcat-post-list-subtitle-no-more">
+                        最新記事
+                    </h3>
+                    <div class="arcat-post-list">
+                        {{#foreach postsFree visibility='all'}}
+                            {{#has visibility="public"}}
+                                <article class="arcat-post-item">
+                                    <a href="{{url}}">
+                                        {{#if feature_image}}
+                                            <img class="arcat-post-item-image" src="{{feature_image}}" alt="{{title}}">
+                                        {{else}}
+                                            <img class="arcat-post-item-image" src="{{asset "images/default_post_feature_img.png"}}" alt="{{title}}">
+                                        {{/if}}
+                                        <div class="arcat-post-title">
+                                            <h4>{{title}}</h4>
+                                            <div class="arcat-post-meta">
+                                                <time datetime="{{date format="YYYY-MM-DD"}}">
+                                                    {{date format="YYYY/MM/DD"}}
+                                                </time>
+                                                {{#if author}}
+                                                    <span> {{author.name}}</span>
+                                                {{/if}}
+                                            </div>
+                                        </div>
+                                    </a>
+                                </article>
+                            {{/has}}
+                        {{/foreach}}
+                    </div>
+                </section>
+            {{/if}}
+        {{/get}}
+
+        {{!-- VIP posts --}}
+        {{#get "posts" include="authors" filter="authors:{{slug}}" order="published_at desc" as |postsVIP|}}
+            {{#if postsVIP}}
+                <section id="posts-vip" class="arcat-post-list-section" style="display: none;">
+                    <h3 class="arcat-post-list-subtitle-no-more">
+                        最新記事
+                    </h3>
+                    <div class="arcat-post-list">
+                        {{#foreach postsVIP visibility='all'}}
+                            {{#has visibility="paid"}}
+                                <article class="arcat-post-item">
+                                    <a href="{{url}}">
+                                        {{#if feature_image}}
+                                            <img class="arcat-post-item-image" src="{{feature_image}}" alt="{{title}}">
+                                        {{else}}
+                                            <img class="arcat-post-item-image" src="{{asset "images/default_post_feature_img.png"}}" alt="{{title}}">
+                                        {{/if}}
+                                        <div class="arcat-post-title">
+                                            <h4>{{title}}</h4>
+                                            <div class="arcat-post-meta">
+                                                <time datetime="{{date format="YYYY-MM-DD"}}">
+                                                    {{date format="YYYY/MM/DD"}}
+                                                </time>
+                                                {{#if author}}
+                                                    <span> {{author.name}}</span>
+                                                {{/if}}
+                                            </div>
+                                        </div>
+                                    </a>
+                                </article>
+                            {{/has}}
+                        {{/foreach}}
+                    </div>
+                </section>
+            {{/if}}
+        {{/get}}
     {{/author}}
 </main>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function(){
+        const tabs = document.querySelectorAll('.arcat-tab');
+        const sections = {
+            all: document.getElementById('posts-all'),
+            free: document.getElementById('posts-free'),
+            vip: document.getElementById('posts-vip')
+        };
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', function(){
+                // Remove active class from all tabs
+                tabs.forEach(t => t.classList.remove('active'));
+                // Hide all sections
+                Object.values(sections).forEach(section => section.style.display = 'none');
+                // Activate the clicked tab and show corresponding section
+                this.classList.add('active');
+                const tabName = this.getAttribute('data-tab');
+                if (sections[tabName]) {
+                    sections[tabName].style.display = 'block';
+                }
+            });
+        });
+    });
+</script>
