@@ -6,9 +6,23 @@
         <span>Gallery</span>
     </h1>
     <article>
-        <section class="arcat-gallery-section">
-            {{content}}
-        </section>
+        {{#if @member.paid}}
+            <section class="arcat-gallery-section">
+                {{content}}
+            </section>
+        {{else}}
+            <aside class="arcat-cta">
+                <div class="arcat-cta-content">
+                    <h2>この先は有料会員限定</h2>
+                    {{#if @member}}
+                        <a class="arcat-cta-btn" data-portal="account/plans">プランを確認</a>
+                    {{else}}
+                        <a class="arcat-cta-btn" data-portal="signup">新規登録</a>
+                        <p class="arcat-cta-note"><small>すでにアカウントをお持ちの場合 <a data-portal="signin">ログイン</a></small></p>
+                    {{/if}}
+                </div>
+            </aside>
+        {{/if}}
     </article>
 </main>
 {{/page}}
