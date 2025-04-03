@@ -83,7 +83,7 @@
 
 .arcat-post-actions {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     border-bottom: #999 solid 0.5px;
     padding: 16px;
 }

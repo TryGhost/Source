@@ -36,9 +36,9 @@
                     </button>
                     {{comment_count singular="" plural=""}}
                 </div>
-                {{!-- {{#if @member}}
-                    {{> "post-like" post_id=id}}
-                {{/if}} --}}
+                {{#if @member}}
+                    {{> "components/post-like" post_id=id}}
+                {{/if}}
             </div>
             <div class="arcat-post-comments">
                 {{comments title="" count=false mode="light"}}
