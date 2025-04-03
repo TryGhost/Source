@@ -57,6 +57,7 @@ production stylesheet in assets/built/screen.css
 @import 'arcat-gallery.css';
 @import 'arcat-cta.css';
 @import 'arcat-error.css';
+@import 'arcat-fixed-navigation.css';
 
 /* 1. Variables
 /* ---------------------------------------------------------- */
@@ -148,6 +149,11 @@ body {
     font-size: 1.6rem;
     background-color: #F8F6F2;
     color: var(--color-primary-text);
+    background-image: url("../images/arcat-bg.png");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 90% auto;
 }
 
 h1, h2, h3, h4, h5, h6 {
