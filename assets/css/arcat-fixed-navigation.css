@@ -1,0 +1,49 @@
+.arcat-fixed-naigation {
+	display: none;
+}
+
+/* メインコンテンツの幅(390px) + 固定ナビゲーションの幅2つ分(150ppx × 2) + 右橋からの余白2つ分(5vw × 2) + バッファ(30px) 以上でナビゲーションが表示 */
+@media screen and (width >= calc(900px + 10vw)) {
+	.arcat-fixed-naigation {
+		position: fixed;
+		top: 50%;
+        transform: translateY(-50%);
+		right: 5vw;
+		display: flex;
+		flex-direction: column;
+		gap: 30px;
+        justify-content: flex-start;
+	}
+
+    .arcat-fixed-naigation-list > .nav {
+		padding-left: 0;
+		display: flex;
+		flex-direction: column;
+		list-style-type: none;
+		justify-content: flex-start;
+        gap: 16x;
+	}
+
+	.arcat-fixed-naigation-list a {
+		color: #000;
+		font-size: 2rem;
+		font-style: normal;
+		font-weight: 700;
+		line-height: 2;
+		letter-spacing: 1px;
+		cursor: pointer;
+	}
+
+	.arcat-signin-link {
+		padding: 10px 14px;
+		text-align: center;
+		border-radius: 5px;
+		background: #FDEC01;
+		color: #000;
+		font-size: 1,5rem;
+		font-style: normal;
+		font-weight: 700;
+		line-height: normal;
+		letter-spacing: 1px;
+	}
+}

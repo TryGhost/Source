@@ -1,0 +1,20 @@
+{{{html}}}
+<aside class="arcat-cta">
+    <div class="arcat-cta-content">
+        {{#has visibility="paid"}}
+            <h2>この先は有料会員限定</h2>
+        {{/has}}
+        {{#has visibility="members"}}
+            <h2>この先は会員限定</h2>
+        {{/has}}
+        {{#has visibility="tiers"}}
+            <h2>この先は{{tiers}}限定</h2>
+        {{/has}}
+        {{#if @member}}
+            <a class="arcat-cta-btn" data-portal="account/plans">プランを確認</a>
+        {{else}}
+            <a class="arcat-cta-btn" data-portal="signup">新規登録</a>
+            <p class="arcat-cta-note"><small>すでにアカウントをお持ちの場合 <a data-portal="signin">ログイン</a></small></p>
+        {{/if}}
+    </div>
+</aside>

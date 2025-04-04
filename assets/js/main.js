@@ -1,19 +1,19 @@
 /* Mobile menu burger toggle */
-(function () {
-    const navigation = document.querySelector('.gh-navigation');
-    const burger = navigation.querySelector('.gh-burger');
-    if (!burger) return;
+// (function () {
+//     const navigation = document.querySelector('.gh-navigation');
+//     const burger = navigation.querySelector('.gh-burger');
+//     if (!burger) return;
 
-    burger.addEventListener('click', function () {
-        if (!navigation.classList.contains('is-open')) {
-            navigation.classList.add('is-open');
-            document.documentElement.style.overflowY = 'hidden';
-        } else {
-            navigation.classList.remove('is-open');
-            document.documentElement.style.overflowY = null;
-        }
-    });
-})();
+//     burger.addEventListener('click', function () {
+//         if (!navigation.classList.contains('is-open')) {
+//             navigation.classList.add('is-open');
+//             document.documentElement.style.overflowY = 'hidden';
+//         } else {
+//             navigation.classList.remove('is-open');
+//             document.documentElement.style.overflowY = null;
+//         }
+//     });
+// })();
 
 /* Add lightbox to gallery images */
 (function () {
@@ -36,14 +36,14 @@
 })();
 
 /* Turn the main nav into dropdown menu when there are more than 5 menu items */
-(function () {
-    dropdown();
-})();
+// (function () {
+//     dropdown();
+// })();
 
 /* Infinite scroll pagination */
-(function () {
-    pagination();
-})();
+// (function () {
+//     pagination();
+// })();
 
 /* Responsive HTML table */
 (function () {

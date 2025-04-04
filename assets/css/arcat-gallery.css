@@ -1,0 +1,15 @@
+/* Arcat PostList Styles */
+/* トップページ全体の幅を最大390pxに制限 */
+.arcat-gallery-main {
+    width: 100%;
+    margin: 0 auto;
+    padding: 24px 16px 40px;
+}
+
+
+.arcat-gallery-section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    color: #999
+}

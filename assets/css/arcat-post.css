@@ -81,7 +81,31 @@
     width: 100%;
 }
 
+.arcat-post-actions {
+    display: flex;
+    align-items: center;
+    border-bottom: #999 solid 0.5px;
+    padding: 16px;
+}
+
+.arcat-post-commment-icon {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+.arcat-post-commment-icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+.arcat-post-commments {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 .arcat-post-comments {
-    /* Additional styles for arcat-post-comments can be added here */
+    display: none;
+    padding: 40px 16px 0;
 }
