@@ -8,3 +8,17 @@
         </a>
 	{{/unless}}
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Check membership status using {{@member}}
+        const isLoggedIn = {{#if @member}}true{{else}}false{{/if}};
+
+        // If not logged in, hide the .nav-contact link
+        // (assuming there is a <li class="nav-contact"> inside <ul class="nav">)
+        const navContact = document.querySelector('.arcat-fixed-naigation-list ul.nav li.nav-contact');
+        if (navContact && !isLoggedIn) {
+            navContact.style.display = 'none';
+        }
+    });
+</script>

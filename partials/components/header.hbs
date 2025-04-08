@@ -79,5 +79,15 @@
                 }
             });
         }
+
+        // Check membership status using {{@member}}
+        const isLoggedIn = {{#if @member}}true{{else}}false{{/if}};
+
+        // If not logged in, hide the .nav-contact link
+        // (assuming there is a <li class="nav-contact"> inside <ul class="nav">)
+        const navContact = document.querySelector('.arcat-nav-menu-primary ul.nav li.nav-contact');
+        if (navContact && !isLoggedIn) {
+            navContact.style.display = 'none';
+        }
     });
 </script>

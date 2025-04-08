@@ -9,3 +9,17 @@
         &copy; 2025 FUJISAN MAGAZINE SERVICE Co., Ltd.
     </p>
 </footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize user avatar placeholders with first letter
+        const isLoggedIn = {{#if @member}}true{{else}}false{{/if}};
+
+        // If not logged in, hide the .nav-contact link
+        // (assuming there is a <li class="nav-contact"> inside <ul class="nav">)
+        const navContact = document.querySelector('.arcat-footer-menu ul.nav li.nav-owen-ihe-wase');
+        if (navContact && !isLoggedIn) {
+            navContact.style.display = 'none';
+        }
+    });
+</script>
