@@ -9,9 +9,9 @@
                 {{#if @member.paid}}
                     <img src="{{@member.avatar_image}}" alt="{{@member.name}}" class="arcat-nav-user-avatar">
                 {{else}}
-                    <div class="arcat-nav-user-avatar-placeholder" data-member-name="{{@member.name}}">
+                    <a class="arcat-nav-user-avatar-placeholder" href="#/portal/account" data-portal="subscribe" data-member-name="{{@member.name}}">
                         <span class="arcat-nav-user-initial"></span>
-                    </div>
+                    </a>
                 {{/if}}
                 {{> "search-toggle"}}
             </div>
