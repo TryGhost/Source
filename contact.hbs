@@ -1,0 +1,107 @@
+{{!< default}}
+{{#page}}
+<main class="arcat-contact-main">
+    <h1 class="arcat-post-list-title">
+        {{> "icons/cat-footprint"}}
+        <span>Connect</span>
+    </h1>
+    {{#if @member}}
+        <p class="arcat-contact-explain">お問い合わせ内容を入力の上、送信ボタンを押してください。</p>
+        <p class="arcat-contact-note">※お名前とメールアドレスはログインしているアカウントのものになります。</p>
+        <div id="cove"></div>
+    {{else}}
+        <aside class="arcat-cta">
+            <div class="arcat-cta-content">
+                <h2>この先は会員限定</h2>
+                <a class="arcat-cta-btn" data-portal="signup">新規登録</a>
+                <p class="arcat-cta-note"><small>すでにアカウントをお持ちの場合 <a data-portal="signin">ログイン</a></small></p>
+            </div>
+        </aside>
+    {{/if}}
+</main>
+<script>
+    const Cove = {
+        contentId: "{{id}}",
+        memberId: "{{@member.uuid}}",
+        memberEmail: "{{@member.email}}",
+        memberName: "{{@member.firstname}}"
+    };
+
+    const observer = new MutationObserver((mutationsList, observer) => {
+    const form = document.getElementById('cove-form');
+    if (form) {
+        const nameInputHidden = document.getElementById('cove-input-name');
+        if (nameInputHidden) {
+            nameInputHidden.value = "{{@member.email}}";
+            nameInputHidden.readOnly = true;
+        }
+
+
+        const nameInput = document.createElement('input');
+        nameInput.id = 'cove-name';
+        nameInput.classList.add('cove-name');
+        nameInput.readOnly = true;
+        nameInput.value = "{{@member.firstname}}";
+        const nameGroup = document.createElement('div');
+        nameGroup.classList.add('form-group');
+        const nameLabel = document.createElement('label');
+        nameLabel.setAttribute('for', 'cove-name');
+        nameLabel.textContent = 'お名前';
+        nameGroup.appendChild(nameLabel);
+        nameGroup.appendChild(nameInput);
+        form.insertBefore(nameGroup, form.querySelector('#cove-submit'));
+
+        const emailInput = document.createElement('input');
+        emailInput.id = 'cove-email';
+        emailInput.classList.add('covet-email');
+        emailInput.readOnly = true;
+        emailInput.value = "{{@member.email}}";
+
+        const emailGroup = document.createElement('div');
+        emailGroup.classList.add('form-group');
+        const emailLabel = document.createElement('label');
+        emailLabel.setAttribute('for', 'cove-email');
+        emailLabel.textContent = 'Mail';
+        emailGroup.appendChild(emailLabel);
+        emailGroup.appendChild(emailInput);
+        form.insertBefore(emailGroup, form.querySelector('#cove-submit'));
+
+        const bodyInput = document.getElementById('cove-input-body');
+        if (bodyInput) {
+            const bodyLabel = document.createElement('label');
+            bodyLabel.setAttribute('for', 'cove-input-body');
+            bodyLabel.textContent = 'お問い合わせ内容';
+
+            const bodyGroup = document.createElement('div');
+            bodyGroup.classList.add('form-group');
+            bodyGroup.appendChild(bodyLabel);
+            bodyGroup.appendChild(bodyInput);
+
+            form.insertBefore(bodyGroup, form.querySelector('#cove-submit'));
+
+            const submitButton = document.getElementById('cove-submit');
+            submitButton.classList.add('disabled');
+            submitButton.setAttribute('disabled', true);
+
+            const checkInput = () => {
+                const isBodyFilled = bodyInput.value.trim() !== '';
+                if (isBodyFilled) {
+                    submitButton.classList.remove('disabled');
+                    submitButton.removeAttribute('disabled');
+                } else {
+                    submitButton.classList.add('disabled');
+                    submitButton.setAttribute('disabled', true);
+                }
+            };
+
+            bodyInput.addEventListener('input', checkInput);
+        }
+
+        observer.disconnect();
+    }
+    });
+
+observer.observe(document.body, { childList: true, subtree: true });
+</script>
+
+{{/page}}

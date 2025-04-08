@@ -58,6 +58,7 @@ production stylesheet in assets/built/screen.css
 @import 'arcat-cta.css';
 @import 'arcat-error.css';
 @import 'arcat-fixed-navigation.css';
+@import 'arcat-contact.css';
 
 /* 1. Variables
 /* ---------------------------------------------------------- */
