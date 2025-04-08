@@ -84,26 +84,9 @@
         },
         "card_assets": true,
         "custom": {
-            "navigation_layout": {
-                "type": "select",
-                "options": [
-                    "Logo in the middle",
-                    "Logo on the left",
-                    "Stacked"
-                ],
-                "default": "Logo in the middle"
-            },
             "site_background_color": {
                 "type": "color",
                 "default": "#ffffff"
-            },
-            "header_and_footer_color": {
-                "type": "select",
-                "options": [
-                    "Background color",
-                    "Accent color"
-                ],
-                "default": "Background color"
             },
             "title_font": {
                 "type": "select",
@@ -122,46 +105,6 @@
                 ],
                 "default": "Modern sans-serif"
             },
-            "signup_heading": {
-                "type": "text",
-                "description": "Used in your footer across your theme, defaults to site title when empty"
-            },
-            "signup_subheading": {
-                "type": "text",
-                "description": "Defaults to site description when empty"
-            },
-            "header_style": {
-                "type": "select",
-                "options": [
-                    "Landing",
-                    "Highlight",
-                    "Magazine",
-                    "Search",
-                    "Off"
-                ],
-                "description": "Landing is recommended for all sites, Highlight & Magazine for those with more content",
-                "default": "Landing",
-                "group": "homepage"
-            },
-            "header_text": {
-                "type": "text",
-                "group": "homepage",
-                "description": "Defaults to site description when empty",
-                "visibility": "header_style:[Landing, Search]"
-            },
-            "background_image": {
-                "type": "boolean",
-                "default": true,
-                "description": "Use the publication cover set on the Brand tab as your background",
-                "group": "homepage",
-                "visibility": "header_style:[Landing, Search]"
-            },
-            "show_featured_posts": {
-                "type": "boolean",
-                "default": false,
-                "group": "homepage",
-                "visibility": "header_style:[Highlight, Magazine]"
-            },
             "post_feed_style": {
                 "type": "select",
                 "options": [
@@ -171,40 +114,14 @@
                 "default": "List",
                 "group": "homepage"
             },
-            "show_images_in_feed": {
-                "type": "boolean",
-                "default": true,
-                "group": "homepage",
-                "visibility": "post_feed_style:List"
-            },
-            "show_author": {
-                "type": "boolean",
-                "default": true,
-                "group": "homepage"
-            },
-            "show_publish_date": {
-                "type": "boolean",
-                "default": true,
-                "group": "homepage"
-            },
             "show_publication_info_sidebar": {
                 "type": "boolean",
                 "default": false,
                 "group": "homepage"
             },
-            "show_post_metadata": {
-                "type": "boolean",
-                "default": true,
-                "group": "post"
-            },
             "enable_drop_caps_on_posts": {
                 "type": "boolean",
                 "default": false,
-                "group": "post"
-            },
-            "show_related_articles": {
-                "type": "boolean",
-                "default": true,
                 "group": "post"
             }
         }
