@@ -1,0 +1,111 @@
+/* 全体のコンテナ */
+.arcat-contact-main {
+  width: 100%;
+  margin: 0 auto;
+  padding: 24px 16px 40px;
+}
+
+.arcat-contact-explain {
+  color: #000;
+  font-size: 14px;
+  font-weight: 500;
+}
+.arcat-contact-note {
+  color: #999;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+#cove {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#cove svg {
+  margin-inline: auto;
+  margin-top: 20px;
+}
+
+#cove-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 28px;
+  width: 100% !important;
+}
+
+#cove-name {
+  width: 75% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: 1.4rem !important;
+  height: inner-content !important;
+  border: none !important;
+  text-align: left !important;
+}
+
+#cove-email {
+  width: 75% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: 1.4rem !important;
+  height: inner-content !important;
+  border: none !important;
+  text-align: left !important;
+}
+
+.form-group {
+  display: flex !important;;
+  width: 100% !important;
+  justify-content: space-between !important;
+  align-items: start !important;
+  gap: 8px !important;
+}
+
+.form-group label {
+  width: 25% !important;
+  font-size: 1.4rem !important;
+  font-weight: 700 !important;
+  color: #000 !important;
+  letter-spacing: 0.1rem;
+}
+
+
+#cove-input-body {
+  min-height: 140px !important;
+  width: 75% !important;
+  font-size: 1.4rem !important;
+  height: auto !important;
+  field-sizing: content;
+  margin-bottom: 0px !important;
+  resize: none;
+}
+
+#cove-submit {
+  width: 160px !important;
+  order: 3 !important;
+  padding: 8px 26px !important;
+  border: 1px solid transparent !important;
+  text-align: center !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  color: white !important;
+  background-color: #000 !important;
+  border-radius: 5px !important;
+  outline: none !important;
+  cursor: pointer !important;
+  transition: opacity 150ms background-color 150ms !important;
+  margin: 0 auto !important;
+}
+
+#cove-submit.disabled {
+  background-color: #797979 !important;
+  cursor: not-allowed !important;
+}
+
+
+
+#cove-comments {
+  display: none;
+}
