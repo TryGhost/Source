@@ -2,7 +2,8 @@
 /* トップページ全体の幅を最大390pxに制限 */
 .arcat-home-root {
     width: 100%;
-    margin: 0 auto;           /* テキスト色 */
+    margin: 0 auto;
+    flex-grow: 1;
 }
 
 /* メインビジュアル */

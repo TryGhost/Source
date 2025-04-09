@@ -4,6 +4,7 @@
     width: 100%;
     margin: 0 auto;
     padding: 24px 16px 40px;
+    flex-grow: 1;
 }
 
 
