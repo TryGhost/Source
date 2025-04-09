@@ -178,6 +178,22 @@
     font-size: 1.2rem;
 }
 
+.arcat-nav-menu-external-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #000;
+    flex: 1;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.arcat-nav-menu-external-link svg {
+    width: 20px;
+    height: 20px;
+
+}
+
 .arcat-nav-menu-signout {
     color: #EEBB08CC;
     font-weight: 700;

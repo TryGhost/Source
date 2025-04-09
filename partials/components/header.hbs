@@ -35,6 +35,9 @@
 <nav class="arcat-nav-menu">
     <div class="arcat-nav-menu-primary">
         {{navigation}}
+        <a class="arcat-nav-menu-external-link" href="" target="_blank" rel="noopener">
+            <span>SNS</span>{{> "icons/box-arrow"}}
+        </a>
         {{#if @member}}
             <a class="arcat-nav-menu-signout" href="javascript:" data-members-signout>ログアウト</a>
         {{/if}}
