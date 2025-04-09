@@ -41,9 +41,9 @@
 // })();
 
 /* Infinite scroll pagination */
-// (function () {
-//     pagination();
-// })();
+(function () {
+    pagination();
+})();
 
 /* Responsive HTML table */
 (function () {

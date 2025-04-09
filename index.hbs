@@ -1,10 +1,37 @@
 {{!< default}}
 <main class="gh-main">
-    {{> "components/post-list"
-        sectionTitle="Post"
-        hasMore=false
-        subSectionTitle="記事一覧"
-        limit="all"
-        showPagenation=false
-    }}
+    <section class="arcat-post-list-section">
+        <h2 class="arcat-post-list-title">
+            {{> "icons/cat-footprint"}}
+            <span>Post</span>
+        </h2>
+        <div class="arcat-post-list-subtitle">
+            <h3>記事一覧</h3>
+        </div>
+        <div class="arcat-post-list">
+            {{#foreach posts}}
+                <article class="arcat-post-item">
+                    <a href="{{url}}">
+                        {{#if feature_image}}
+                            <img class="arcat-post-item-image" src="{{feature_image}}" alt="{{title}}">
+                        {{else}}
+                            <img class="arcat-post-item-image" src="{{asset "images/default_post_feature.png"}}" alt="{{title}}">
+                        {{/if}}
+                        <div class="arcat-post-title">
+                            <h4>{{title}}</h4>
+                            <div class="arcat-post-meta">
+                                <time datetime="{{date format="YYYY-MM-DD"}}">
+                                    {{date format="YYYY/MM/DD"}}
+                                </time>
+                                {{#if authors.[0]}}
+                                    <span> {{authors.[0].name}}</span>
+                                {{/if}}
+                            </div>
+                        </div>
+                    </a>
+                </article>
+            {{/foreach}}
+        </div>
+        {{pagination}}
+    </section>
 </main>
