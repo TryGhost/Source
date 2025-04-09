@@ -96,6 +96,12 @@
     margin-left: 6px;
 }
 
+@media screen and (width >= calc(900px + 10vw)) {
+    .arcat-menu-button {
+        display: none;
+    }
+}
+
 .arcat-hamburger {
     width: 28px;
     height: 24px;
