@@ -7,7 +7,9 @@
         {{#if @member}}
             <div class="arcat-nav-user">
                 {{#if @member.paid}}
-                    <img src="{{@member.avatar_image}}" alt="{{@member.name}}" class="arcat-nav-user-avatar">
+                    <a class="arcat-nav-user-avatar-placeholder" href="#/portal/account" data-portal="subscribe">
+                        <img src="{{@member.avatar_image}}" alt="{{@member.name}}" class="arcat-nav-user-avatar">
+                    </a>
                 {{else}}
                     <a class="arcat-nav-user-avatar-placeholder" href="#/portal/account" data-portal="subscribe" data-member-name="{{@member.name}}">
                         <span class="arcat-nav-user-initial"></span>
