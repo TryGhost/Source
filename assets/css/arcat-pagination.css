@@ -1,0 +1,61 @@
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.pagination-nav {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.newer-posts {
+    font-size: 20px;
+    font-weight: 700;
+    color: #000;
+}
+
+.newer-posts-placeholder {
+    font-size: 20px;
+    font-weight: 700;
+    color: #D3D3D3;
+}
+
+.older-posts {
+    font-size: 20px;
+    font-weight: 700;
+    color: #000;
+}
+
+.older-posts-placeholder {
+    font-size: 20px;
+    font-weight: 700;
+    color: #D3D3D3;
+}
+
+.pagination-list {
+    display: flex;
+    gap:  5px;
+}
+
+.arcat-pegenation-jump {
+    font-size: 13px;
+    font-weight:  700;
+    padding: 3px 8px;
+    background: #D3D3D3;
+    border-radius: 5px;
+    color: #fff;
+}
+
+.current-page {
+    font-weight:  700;
+    font-size: 13px;
+    font-weight:  700;
+    padding: 3px 8px;
+    background: #000;
+    border-radius: 5px;
+    color: #fff;
+}
