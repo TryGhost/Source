@@ -163,7 +163,7 @@
 .arcat-nav-menu-primary {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 24px;
     padding: 40px 20px;
 }
 
@@ -182,6 +182,7 @@
     flex: 1;
     font-weight: 700;
     font-size: 1.2rem;
+    margin: 0;
 }
 
 .arcat-nav-menu-external-link {
