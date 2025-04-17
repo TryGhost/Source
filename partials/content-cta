@@ -1,0 +1,24 @@
+{{{html}}}
+<div class="fadeout">
+    <div class="fadeout-content">
+        {{{html}}}
+    </div>
+</div>
+    <div class="gh-post-upgrade-cta-content" style="background-color: {{@site.accent_color}}">
+        {{#has visibility="paid"}}
+            <h2>This content is for paying subscribers only</h2>
+        {{/has}}
+        {{#has visibility="members"}}
+            <h2>This content is for subscribers only</h2>
+        {{/has}}
+        {{#has visibility="tiers"}}
+            <h2>This content is for subscribers on the following tiers only: {{tiers}}</h2>
+        {{/has}}
+        {{#if @member}}
+            <a class="gh-btn" data-portal="account/plans" href="#/portal/account/plans" style="color:{{@site.accent_color}}">Upgrade your account</a>
+        {{else}}
+            <a class="gh-btn" data-portal="signup" href="#/portal/signup" style="color:{{@site.accent_color}}">Subscribe</a>
+            <p><small>Already member? <a data-portal="signin" href="#/portal/signin">Sign in</a></small></p>
+        {{/if}}
+    </div>
+</aside>
