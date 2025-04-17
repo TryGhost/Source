@@ -19,11 +19,32 @@
                     {{/if}}
                     <footer class="gh-author-meta">
                         <div class="gh-author-social">
-                            {{#if facebook}}
-                                <a class="gh-author-social-link" href="{{facebook_url}}" target="_blank" rel="noopener">{{> "icons/facebook"}}</a>
-                            {{/if}}
                             {{#if twitter}}
-                                <a class="gh-author-social-link" href="{{twitter_url}}" target="_blank" rel="noopener">{{> "icons/twitter"}}</a>
+                                <a class="gh-author-social-link" href="{{social_url type="twitter"}}" target="_blank" rel="noopener">{{> "icons/twitter"}}</a>
+                            {{/if}}
+                            {{#if facebook}}
+                                <a class="gh-author-social-link" href="{{social_url type="facebook"}}" target="_blank" rel="noopener">{{> "icons/facebook"}}</a>
+                            {{/if}}
+                            {{#if linkedin}}
+                                <a class="gh-author-social-link" href="{{social_url type="linkedin"}}" target="_blank" rel="noopener">{{> "icons/linkedin"}}</a>
+                            {{/if}}
+                            {{#if bluesky}}
+                                <a class="gh-author-social-link" href="{{social_url type="bluesky"}}" target="_blank" rel="noopener">{{> "icons/bluesky"}}</a>
+                            {{/if}}
+                            {{#if threads}}
+                                <a class="gh-author-social-link" href="{{social_url type="threads"}}" target="_blank" rel="noopener">{{> "icons/threads"}}</a>
+                            {{/if}}
+                            {{#if mastodon}}
+                                <a class="gh-author-social-link" href="{{social_url type="mastodon"}}" target="_blank" rel="noopener">{{> "icons/mastodon"}}</a>
+                            {{/if}}
+                            {{#if tiktok}}
+                                <a class="gh-author-social-link" href="{{social_url type="tiktok"}}" target="_blank" rel="noopener">{{> "icons/tiktok"}}</a>
+                            {{/if}}
+                            {{#if youtube}}
+                                <a class="gh-author-social-link" href="{{social_url type="youtube"}}" target="_blank" rel="noopener">{{> "icons/youtube"}}</a>
+                            {{/if}}
+                            {{#if instagram}}
+                                <a class="gh-author-social-link" href="{{social_url type="instagram"}}" target="_blank" rel="noopener">{{> "icons/instagram"}}</a>
                             {{/if}}
                         </div>
                         {{#if location}}

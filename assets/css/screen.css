@@ -2573,7 +2573,7 @@ figcaption a {
 
 .gh-author-social {
     display: flex;
-    gap: 10px;
+    gap: 16px;
     align-items: center;
     padding-left: 3px;
 }
