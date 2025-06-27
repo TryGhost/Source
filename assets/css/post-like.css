@@ -1,0 +1,153 @@
+.gh-post-like-wrapper {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+/* ボタン */
+.favorite {
+  width: 24px;
+  height: 24px;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  cursor: pointer;
+  outline: none;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ホバー効果 */
+.favorite:hover {
+  transform: scale(1.05);
+}
+
+.favorite {
+  /* Reset button defaults */
+  appearance: none;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+
+  /* Size and positioning */
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  position: relative;
+
+  /* Interaction */
+  transition: transform var(--transition-fast);
+}
+
+/* Heart icon styles */
+.favorite svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.favorite-heart {
+  stroke: var(--color-white);
+  fill: none;
+  transition: all var(--transition-normal);
+}
+
+/* Default state (not liked) */
+.favorite[data-liked="false"] .favorite-heart {
+  stroke: var(--color-white);
+  fill: none;
+}
+
+/* Hover state for unliked */
+.favorite[data-liked="false"]:hover .favorite-heart {
+  stroke: var(--color-white);
+  fill: rgba(255, 255, 255, 0.2);
+}
+
+/* Liked state */
+.favorite[data-liked="true"] .favorite-heart {
+  stroke: #ff3b30;
+  fill: #ff3b30;
+}
+
+/* Hover state for liked */
+.favorite[data-liked="true"]:hover .favorite-heart {
+  stroke: #ff3b30;
+  fill: #ff3b30;
+  opacity: 0.8;
+}
+
+/* Active/Click animation */
+.favorite:active {
+  transform: scale(0.9);
+}
+
+/* Focus state for accessibility */
+.favorite:focus {
+  outline: none;
+}
+
+.favorite:focus-visible {
+  outline: 2px solid var(--color-white);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Disabled state */
+.favorite:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.favorite:disabled:active {
+  transform: none;
+}
+
+/* Loading state */
+.favorite--loading {
+  pointer-events: none;
+}
+
+.favorite--loading .favorite-heart {
+  animation: favorite-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes favorite-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Size variants */
+.favorite--small {
+  width: 20px;
+  height: 20px;
+}
+
+.favorite--large {
+  width: 32px;
+  height: 32px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .favorite {
+    /* Larger tap target on mobile */
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .favorite svg {
+    width: 24px;
+    height: 24px;
+  }
+}

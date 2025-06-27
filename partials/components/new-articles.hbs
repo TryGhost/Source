@@ -1,0 +1,35 @@
+{{!--
+New Articles Component
+Usage: {{> "components/new-articles" posts=posts class="custom-class"}}
+
+Parameters:
+- posts: Array of post objects to display (required)
+- class: Additional CSS classes (optional)
+- showPagination: Boolean to show pagination (optional, default: false)
+- pagination: Pagination object (optional, required if showPagination is true)
+--}}
+
+<section class="author-section author-new-section {{#if class}}{{class}}{{/if}}">
+    <div class="author-section-container">
+        <div class="author-section-header">
+            <span class="author-section-label">NEW</span>
+            <h2 class="author-section-title">新着記事</h2>
+            <p class="author-section-description">Magacoの厳選された特集をお届けします。</p>
+        </div>
+        {{#if posts}}
+        <div class="author-section-grid">
+            {{#foreach posts}}
+                {{> "components/card" post=this class="author-post-card author-post-card--new"}}
+            {{/foreach}}
+        </div>
+        {{/if}}
+
+        {{#if showPagination}}
+        {{#if pagination}}
+        <div class="author-pagination-wrapper">
+            {{> "components/pagination" pagination=pagination class="author-pagination" showLoadMore=true}}
+        </div>
+        {{/if}}
+        {{/if}}
+    </div>
+</section>

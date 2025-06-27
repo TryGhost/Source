@@ -1,0 +1,129 @@
+/* Button Component Styles */
+
+.button {
+    /* Layout */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-xs);
+
+    /* Size */
+    padding: 10px var(--space-xl);
+    min-width: 250px;
+
+    /* Typography */
+    font: var(--text-regular-bold);
+    letter-spacing: var(--letter-spacing-wide-xs);
+    color: var(--color-text-primary);
+    text-align: center;
+    white-space: nowrap;
+
+    /* Background & Border */
+    background-color: var(--color-white);
+    border: 1px solid transparent;
+    border-radius: 100px;
+
+    /* Effects */
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    /* Reset browser defaults */
+    appearance: none;
+    text-decoration: none;
+}
+
+/* Hover state */
+.button:hover:not(:disabled) {
+    background-color: var(--color-text-primary);
+    color: var(--color-white);
+}
+
+/* Active state */
+.button:active:not(:disabled) {
+    transform: scale(0.98);
+}
+
+/* Disabled state */
+.button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Size variants */
+.button--small {
+    min-width: auto;
+    padding: var(--space-xs) var(--space-lg);
+    font: var(--text-sm-bold);
+}
+
+.button--large {
+    min-width: 300px;
+    padding: var(--space-md) var(--space-2xl);
+    font: var(--text-medium-bold);
+}
+
+/* Style variants */
+.button--primary {
+    background-color: var(--color-primary-bg);
+    color: var(--color-white);
+}
+
+.button--primary:hover:not(:disabled) {
+    background-color: var(--color-black);
+}
+
+.button--ghost {
+    background-color: transparent;
+    color: var(--color-text-primary);
+}
+
+.button--ghost:hover:not(:disabled) {
+    background-color: var(--color-text-primary);
+    color: var(--color-white);
+}
+
+/* Full width button */
+.button--full {
+    width: 100%;
+    min-width: auto;
+}
+
+/* Loading state */
+.button--loading {
+    color: transparent;
+    pointer-events: none;
+    position: relative;
+}
+
+.button--loading::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    top: 50%;
+    left: 50%;
+    margin-left: -8px;
+    margin-top: -8px;
+    border: 2px solid var(--color-text-primary);
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: button-spinner 0.8s linear infinite;
+}
+
+@keyframes button-spinner {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .button {
+        min-width: 200px;
+        padding: var(--space-xs) var(--space-lg);
+    }
+
+    .button--large {
+        min-width: 250px;
+    }
+}

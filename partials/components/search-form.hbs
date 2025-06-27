@@ -1,0 +1,16 @@
+{{!-- Search Form Component --}}
+{{!--
+  Usage: {{> "search-form" placeholder="渋谷　中華" class="header-search"}}
+  Parameters:
+    - placeholder: プレースホルダーテキスト（デフォルト: "渋谷　中華"）
+    - class: 追加のCSSクラス（デフォルト: なし）
+--}}
+<form class="search-form {{class}}" role="search">
+    <input
+        name="search"
+        type="search"
+        placeholder="{{#if placeholder}}{{placeholder}}{{else}}渋谷　中華{{/if}}"
+        class="search-form-input"
+    >
+    <button type="submit" class="search-form-btn" data-ghost-search>検索</button>
+</form>

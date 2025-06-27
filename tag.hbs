@@ -1,22 +1,30 @@
 {{!< default}}
 {{!-- The tag above means: insert everything in this file into the body of the default.hbs template --}}
 
-<main class="gh-main gh-outer">
+{{#tag}}
+<section class="tag-hero" {{#if feature_image}}style="background-image: url({{img_url feature_image size="xl"}})"{{/if}}>
+    <div class="tag-hero-inner">
+        <div class="tag-hero-content">
+            <h1 class="tag-hero-title">#{{name}}</h1>
+            {{#if description}}
+                <p class="tag-hero-description">{{description}}</p>
+            {{/if}}
+        </div>
+    </div>
+</section>
+{{/tag}}
 
-    {{#tag}}
-        <section class="gh-archive{{#if feature_image}} has-image{{/if}}{{#if @custom.show_publication_info_sidebar}} has-sidebar{{/if}} gh-inner">
-            <div class="gh-archive-inner">
-                <header class="gh-archive-wrapper">
-                    <h1 class="gh-article-title is-title">{{name}}</h1>
-                    {{#if description}}
-                        <p class="gh-article-excerpt">{{description}}</p>
-                    {{/if}}
-                </header>
-                {{> "feature-image"}}
+<section class="tag-posts-section">
+    <div class="tag-posts-container">
+        <div class="tag-posts-wrapper">
+            <div class="tag-posts-grid">
+                {{#foreach posts}}
+                    {{> "components/card" post=this}}
+                {{/foreach}}
             </div>
-        </section>
-    {{/tag}}
-
-    {{> "components/post-list" feed="archive" postFeedStyle=@custom.post_feed_style showTitle=false showSidebar=@custom.show_publication_info_sidebar}}
-
-</main>
+            {{#if pagination}}
+                {{> "components/pagination" pagination=pagination class="tag-pagination" showLoadMore=true}}
+            {{/if}}
+        </div>
+    </div>
+</section>

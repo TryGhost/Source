@@ -1,0 +1,238 @@
+/* Card Component Styles */
+
+.card {
+  background-color: var(--color-white);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Card Image Section */
+.card-image {
+  position: relative;
+  width: 100%;
+  height: 233px;
+  overflow: hidden;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Magazine Logo Badge */
+.card-magazine-logo {
+  position: absolute;
+  bottom: 0;
+  left: 9.577px;
+  width: 117px;
+  height: 46px;
+  background-color: var(--color-white);
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Card Favorite Button Positioning */
+.card-favorite {
+  position: absolute;
+  top: 20.5px;
+  right: 20px;
+}
+
+/* Card Content Section */
+.card-content {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  flex: 1;
+}
+
+/* Card Header */
+.card-header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Card Tags */
+.card-tags {
+  font: var(--text-regular-bold);
+  letter-spacing: var(--letter-spacing-wide-xs);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+/* Card Title */
+.card-title {
+  font: var(--heading-m);
+  letter-spacing: var(--letter-spacing-wide-2xl);
+  color: var(--color-text-primary);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.card-title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.card-title a:hover {
+  opacity: 0.8;
+}
+
+/* Card Excerpt */
+.card-excerpt {
+  font: var(--text-regular-regular);
+  letter-spacing: var(--letter-spacing-wide-xs);
+  color: var(--color-text-primary);
+  margin: 0;
+  margin-top: 8px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.4;
+}
+
+/* Card Footer */
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
+/* Card Date */
+.card-date {
+  font: var(--heading-xxs);
+  letter-spacing: var(--letter-spacing-wide-lg);
+  color: var(--color-black);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Card Read More Link */
+.card-readmore {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font: var(--text-regular-regular);
+  letter-spacing: var(--letter-spacing-wide-xs);
+  color: var(--color-text-primary);
+  text-decoration: none;
+}
+
+.card-readmore:hover {
+  opacity: 0.8;
+}
+
+.card-readmore svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* Card Variants */
+
+/* Featured Card */
+.card--featured {
+  background-color: var(--color-bg-featured-card);
+}
+
+/* Small Card */
+.card--small .card-image {
+  height: 180px;
+}
+
+.card--small .card-content {
+  padding: 24px;
+}
+
+.card--small .card-title {
+  font: var(--heading-s);
+}
+
+/* Large Card */
+.card--large .card-image {
+  height: 300px;
+}
+
+.card--large .card-content {
+  padding: 40px;
+}
+
+/* No Image Card */
+.card--no-image .card-content {
+  padding-top: 40px;
+}
+
+/* Horizontal Card */
+.card--horizontal {
+  flex-direction: row;
+}
+
+.card--horizontal .card-image {
+  width: 40%;
+  height: auto;
+  min-height: 250px;
+}
+
+.card--horizontal .card-content {
+  width: 60%;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .card-content {
+    padding: 24px;
+  }
+  
+  .card--horizontal {
+    flex-direction: column;
+  }
+  
+  .card--horizontal .card-image,
+  .card--horizontal .card-content {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .card-image {
+    height: 200px;
+  }
+  
+  .card-content {
+    padding: 20px;
+    gap: 16px;
+  }
+  
+  .card-magazine-logo {
+    width: 90px;
+    height: 36px;
+    margin-left: 8px;
+  }
+  
+  .card-favorite {
+    top: 16px;
+    right: 16px;
+  }
+  
+  .card-title {
+    font: var(--heading-s);
+  }
+  
+  .card-excerpt {
+    font: var(--text-sm-regular);
+  }
+  
+  .card-date {
+    font: var(--text-sm-regular);
+  }
+}

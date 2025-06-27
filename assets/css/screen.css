@@ -48,6 +48,19 @@ production stylesheet in assets/built/screen.css
 */
 
 @import "variables.css";
+@import "search-form.css";
+@import "search-results.css";
+@import "header.css";
+@import "home.css";
+@import "tag.css";
+@import "author.css";
+@import "button.css";
+@import "card.css";
+@import "pagination.css";
+@import "pickup-tag.css";
+@import "partners.css";
+@import "footer.css";
+@import "post-like.css";
 /* 1. Variables
 /* ---------------------------------------------------------- */
 

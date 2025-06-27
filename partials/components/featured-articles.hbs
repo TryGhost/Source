@@ -1,0 +1,35 @@
+{{!--
+Recommend Articles Component
+Usage: {{> "components/recommend-articles" posts=posts class="custom-class"}}
+
+Parameters:
+- posts: Array of post objects to display (required)
+- class: Additional CSS classes (optional)
+- showPagination: Boolean to show pagination (optional, default: false)
+- pagination: Pagination object (optional, required if showPagination is true)
+--}}
+
+<section class="author-section author-featured-section {{#if class}}{{class}}{{/if}}">
+    <div class="author-section-container">
+        <div class="author-section-header">
+            <span class="author-section-label">Featured</span>
+            <h2 class="author-section-title">おすすめの記事</h2>
+            <p class="author-section-description">行ってみたい、食べてみたいがきっと見つかる。<br />編集者の目線で選んだ、あなたのためのおすすめ記事です。</p>
+        </div>
+        {{#if posts}}
+        <div class="author-section-grid">
+            {{#foreach posts}}
+                {{> "components/card" post=this class="author-post-card"}}
+            {{/foreach}}
+        </div>
+        {{/if}}
+
+        {{#if showPagination}}
+        {{#if pagination}}
+        <div class="author-pagination-wrapper">
+            {{> "components/pagination" pagination=pagination class="author-pagination" showLoadMore=true}}
+        </div>
+        {{/if}}
+        {{/if}}
+    </div>
+</section>
