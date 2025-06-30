@@ -5,12 +5,13 @@
     - placeholder: プレースホルダーテキスト（デフォルト: "渋谷　中華"）
     - class: 追加のCSSクラス（デフォルト: なし）
 --}}
-<form class="search-form {{class}}" role="search">
+<form class="search-form {{class}}" role="search" action="/search-results" method="GET">
     <input
-        name="search"
+        name="q"
         type="search"
         placeholder="{{#if placeholder}}{{placeholder}}{{else}}渋谷　中華{{/if}}"
         class="search-form-input"
+        id="search-form-input"
     >
-    <button type="submit" class="search-form-btn" data-ghost-search>検索</button>
+    <button type="submit" class="search-form-btn">検索</button>
 </form>

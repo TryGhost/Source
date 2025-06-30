@@ -6,22 +6,6 @@
     <section class="search_results__navbar">
         <div class="search_results__navbar-container">
 
-            {{!-- Search Form --}}
-            <form class="search_results__form" action="/search/" method="get">
-                <div class="search_results__form-input-group">
-                    <input
-                        class="search_results__form-input"
-                        type="text"
-                        name="q"
-                        placeholder="詳細検索"
-                        value="{{q}}"
-                    >
-                    <button class="search_results__form-button" type="submit">
-                        検索
-                    </button>
-                </div>
-            </form>
-
             {{!-- Sort Controls --}}
             <div class="search_results__sort">
                 <label class="search_results__sort-label" id="sort">並び替え</label>
@@ -33,24 +17,25 @@
             </div>
 
             {{!-- Magazine Selection --}}
-            <div class="search_results__magazines">
-                <div class="search_results__magazines-title">雑誌を選択</div>
-                <div class="search_results__magazines-grid">
-                    {{#get "authors" limit="all"}}
-                        {{#foreach authors}}
-                            <div class="search_results__magazines-item">
-                                <input type="checkbox" id="author-{{slug}}" name="authors" value="{{slug}}" class="search_results__magazines-checkbox">
-                                <label for="author-{{slug}}" class="search_results__magazines-label">{{name}}</label>
-                            </div>
-                        {{/foreach}}
-                    {{/get}}
+            <form class="search_results__form-form" role="search" action="/search-results" method="GET">
+                <input type="hidden" name="q" id="hidden-q" value="">
+                <div class="search_results__magazines">
+                    <div class="search_results__magazines-title">雑誌を選択</div>
+                    <div class="search_results__magazines-grid">
+                        {{#get "authors" limit="all"}}
+                            {{#foreach authors}}
+                                <div class="search_results__magazines-item">
+                                    <input type="checkbox" id="author-{{slug}}" name="authors" value="{{slug}}" class="search_results__magazines-checkbox">
+                                    <label for="author-{{slug}}" class="search_results__magazines-label">{{name}}</label>
+                                </div>
+                            {{/foreach}}
+                        {{/get}}
+                    </div>
                 </div>
-            </div>
-
-            {{!-- Filter Button --}}
-            <button class="search_results__filter-button" type="button">
-                この条件で検索
-            </button>
+                <button class="search_results__filter-button" type="submit">
+                    この条件で検索
+                </button>
+            </form>
         </div>
     </section>
 
