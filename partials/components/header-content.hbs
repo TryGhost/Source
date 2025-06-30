@@ -46,7 +46,11 @@
             {{!-- Actions Section --}}
             <div class="header-actions">
                 <div class="header-members">
-                    <a class="header-login-btn" href="#/portal/signin" data-portal="signin">ログイン</a>
+                    {{#if @member}}
+                        <a class="header-login-btn" href="#/portal/account" data-portal="account">アカウント</a>
+                    {{else}}
+                        <a class="header-login-btn" href="#/portal/signin" data-portal="signin">ログイン</a>
+                    {{/if}}
                 </div>
             </div>
         </nav>
