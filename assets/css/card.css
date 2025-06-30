@@ -187,16 +187,22 @@
   width: 60%;
 }
 
+.gh-post-like-wrapper {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
   .card-content {
     padding: 24px;
   }
-  
+
   .card--horizontal {
     flex-direction: column;
   }
-  
+
   .card--horizontal .card-image,
   .card--horizontal .card-content {
     width: 100%;
@@ -207,31 +213,31 @@
   .card-image {
     height: 200px;
   }
-  
+
   .card-content {
     padding: 20px;
     gap: 16px;
   }
-  
+
   .card-magazine-logo {
     width: 90px;
     height: 36px;
     margin-left: 8px;
   }
-  
+
   .card-favorite {
     top: 16px;
     right: 16px;
   }
-  
+
   .card-title {
     font: var(--heading-s);
   }
-  
+
   .card-excerpt {
     font: var(--text-sm-regular);
   }
-  
+
   .card-date {
     font: var(--text-sm-regular);
   }

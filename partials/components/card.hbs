@@ -24,7 +24,9 @@ Parameters:
         <div class="card-magazine-logo" style="background-image: url({{img_url post.primary_author.profile_image size="xs"}})"></div>
         {{/if}}
         {{#if @member}}
+        <div class="gh-post-like-wrapper">
             {{> "components/post-like" post_id=id}}
+        </div>
         {{/if}}
     </div>
     {{/if}}
