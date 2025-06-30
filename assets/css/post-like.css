@@ -133,9 +133,6 @@
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .favorite {
-    /* Larger tap target on mobile */
-    min-width: 44px;
-    min-height: 44px;
     display: flex;
     align-items: center;
     justify-content: center;
