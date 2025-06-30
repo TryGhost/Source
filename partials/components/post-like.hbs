@@ -1,10 +1,11 @@
 {{!--
     テーマのテンプレート (例: post.hbs) から
         {{> "post_like" post_id=post.id}}
+        {{> "post_like" post_id=post.id stroke_color="#000000"}}
     のように呼び出すことを想定
 --}}
 <button
-    class="gh-post-like-button favorite"
+    class="gh-post-like-button favorite{{#if class}} {{class}}{{/if}}"
     data-post-id="{{post_id}}"
     data-member-email="{{@member.email}}"
     data-member-id=""
@@ -12,6 +13,7 @@
     data-liked="false"
     type="button"
     aria-label="{{#if liked}}お気に入り解除{{else}}お気に入り{{/if}}"
+    {{#if stroke_color}}style="--stroke-color: {{stroke_color}};"{{/if}}
     {{{attributes}}}
 >
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

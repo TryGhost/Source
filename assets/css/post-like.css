@@ -43,21 +43,22 @@
 }
 
 .favorite-heart {
-  stroke: var(--color-white);
+  stroke: var(--stroke-color, var(--color-white));
   fill: none;
   transition: all var(--transition-normal);
 }
 
 /* Default state (not liked) */
 .favorite[data-liked="false"] .favorite-heart {
-  stroke: var(--color-white);
+  stroke: var(--stroke-color, var(--color-white));
   fill: none;
 }
 
 /* Hover state for unliked */
 .favorite[data-liked="false"]:hover .favorite-heart {
-  stroke: var(--color-white);
-  fill: rgba(255, 255, 255, 0.2);
+  stroke: var(--stroke-color, var(--color-white));
+  fill: var(--stroke-color, var(--color-white));
+  fill-opacity: 0.2;
 }
 
 /* Liked state */
@@ -84,7 +85,7 @@
 }
 
 .favorite:focus-visible {
-  outline: 2px solid var(--color-white);
+  outline: 2px solid var(--stroke-color, var(--color-white));
   outline-offset: 2px;
   border-radius: 4px;
 }
