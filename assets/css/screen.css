@@ -61,6 +61,7 @@ production stylesheet in assets/built/screen.css
 @import "partners.css";
 @import "footer.css";
 @import "post-like.css";
+@import "post.css";
 /* 1. Variables
 /* ---------------------------------------------------------- */
 
