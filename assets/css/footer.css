@@ -1,0 +1,113 @@
+/* Footer Component Styles - Mobile First
+   ---------------------------------------------------------- */
+
+/* Base Footer Styles */
+.footer {
+  background-color: var(--color-bg-primary);
+  color: var(--color-white);
+  padding-block: var(--space-4xl);
+}
+
+.footer-container {
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+  padding-inline: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: var(--space-4xl);
+  text-align: center;
+}
+
+/* Logo */
+.footer-logo {
+  font: var(--heading-m);
+  letter-spacing: var(--letter-spacing-wide-2xl);
+  margin: 0;
+  color: var(--color-white);
+}
+
+/* Divider - Hidden on mobile */
+.footer-divider {
+  display: none;
+}
+
+.footer-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--space-4xl);
+}
+
+/* Navigation */
+.footer-nav {
+  width: 100%;
+}
+
+.footer-nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--space-lg);
+}
+
+.footer-nav-link {
+  color: var(--color-white);
+  text-decoration: none;
+  font: var(--heading-xxs);
+  letter-spacing: var(--letter-spacing-normal);
+  display: block;
+}
+
+.footer-nav-link:hover {
+  opacity: 0.8;
+}
+
+/* Copyright */
+.footer-copyright {
+  font: var(--heading-xxs);
+  color: var(--color-white);
+}
+
+/* Desktop Styles */
+@media (width >= 1025px) {
+  .footer {
+    padding-block: var(--space-6xl);
+  }
+
+  .footer-container {
+    padding-inline: var(--space-5xl);
+    gap: var(--space-3xl);
+    align-items: flex-start;
+  }
+
+  /* Logo */
+  .footer-logo {
+    font: var(--heading-l);
+    letter-spacing: var(--letter-spacing-wide-4xl);
+  }
+
+  .footer-content {
+    display: flex;
+    row-gap: var(--space-2xl);
+    align-items: flex-start;
+  }
+
+  /* Divider - Show on desktop */
+  .footer-divider {
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: var(--color-white);
+    opacity: 0.2;
+  }
+
+  /* Navigation - Horizontal on desktop */
+  .footer-nav-list {
+    flex-direction: row;
+    justify-content: flex-start;
+    column-gap: var(--space-xl);
+  }
+}

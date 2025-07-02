@@ -1,12 +1,40 @@
 {{!< default}}
 {{!-- The tag above means: insert everything in this file into the body of the default.hbs template --}}
 
-{{> "components/header" headerStyle=@custom.header_style}}
+<div class="home-page">
+    {{!-- Hero Section --}}
+    <section class="home-hero">
+        <div class="home-hero-overlay"></div>
+        <div class="home-hero-content">
+            <div class="home-hero-text">
+                <h1 class="home-hero-title">Magaco</h1>
+                <p class="home-hero-subtitle">
+                    あの雑誌に載ったお店が検索できるようになりました！<br>
+                    食のプロフェッショナルたちが選んだ<br>
+                    蓄積されてここだけの情報をあなたに！
+                </p>
+            </div>
+            <div class="home-search-bar">
+                {{> "components/search-form"}}
+            </div>
+        </div>
+    </section>
 
-{{#match @custom.header_style "!=" "Highlight"}}
-    {{> "components/featured" showFeatured=@custom.show_featured_posts limit=4}}
-{{/match}}
+    {{!-- New Articles Section --}}
+    {{#get "posts" order="published_at desc" limit="3" include="tags,authors"}}
+        {{> "components/new-articles" posts=posts}}
+    {{/get}}
 
-{{> "components/cta"}}
+    {{!-- Popular Articles Section --}}
+    {{#get "posts" order="published_at desc" limit="3" include="tags,authors"}}
+        {{> "components/popular-articles" posts=posts showPagination=true pagination=pagination}}
+    {{/get}}
 
-{{> "components/post-list" feed="home" postFeedStyle=@custom.post_feed_style showTitle=true showSidebar=@custom.show_publication_info_sidebar}}
+    {{!-- Featured Articles Section --}}
+    {{#get "posts" filter="featured:true" order="published_at desc" limit="3" include="tags,authors"}}
+        {{> "components/featured-articles" posts=posts}}
+    {{/get}}
+
+    {{> "components/pickup-tag" tag="osaka"}}
+    {{> "components/partners"}}
+</div>

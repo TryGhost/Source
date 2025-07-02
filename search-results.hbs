@@ -1,0 +1,75 @@
+{{!< default}}
+
+<div class="search_results__page">
+
+    {{!-- Search Filter Section --}}
+    <section class="search_results__navbar">
+        <div class="search_results__navbar-container">
+
+            {{!-- Sort Controls --}}
+            <div class="search_results__sort">
+                <label class="search_results__sort-label" id="sort">並び替え</label>
+                <select class="search_results__sort-dropdown" name="sort">
+                    <option value="newest">新着順</option>
+                    <option value="relevance">関連度順</option>
+                </select>
+            </div>
+
+            {{!-- Magazine Selection --}}
+            <form class="search_results__form-form" role="search" action="/search-results" method="GET">
+                <input type="hidden" name="q" id="hidden-q" value="">
+                <div class="search_results__magazines">
+                    <div class="search_results__magazines-title">雑誌を選択</div>
+                    <div class="search_results__magazines-grid">
+                        {{#get "authors" limit="all"}}
+                            {{#foreach authors}}
+                                <div class="search_results__magazines-item">
+                                    <input type="checkbox" id="author-{{slug}}" name="authors" value="{{slug}}" class="search_results__magazines-checkbox">
+                                    <label for="author-{{slug}}" class="search_results__magazines-label">{{name}}</label>
+                                </div>
+                            {{/foreach}}
+                        {{/get}}
+                    </div>
+                </div>
+                <button class="search_results__filter-button" type="submit">
+                    この条件で検索
+                </button>
+            </form>
+        </div>
+    </section>
+
+    {{!-- Results Content Section --}}
+    <main class="search_results__content">
+        <div class="search_results__content-container">
+            {{#get "posts" order="published_at desc" include="tags,authors"}}
+            {{#if posts}}
+                <div class="search_results__header">
+                    <div class="search_results__header-tag">Search Result</div>
+                    <h1 class="search_results__header-title">
+                        検索結果: {{#if posts}}{{posts.length}}{{else}}0{{/if}}件
+                    </h1>
+                </div>
+                <div class="search_results__grid">
+                    {{#foreach posts}}
+                        {{> "components/card" post=this}}
+                    {{/foreach}}
+                </div>
+
+                {{!-- Load More Button --}}
+                {{#if pagination.next}}
+                    <button class="search_results__load-more" type="button">
+                        もっとみる
+                    </button>
+                {{/if}}
+            {{else}}
+                <div class="search_results__header">
+                    <div class="search_results__header-tag">sorry</div>
+                    <div class="search_results__header-title">
+                        検索結果が見つかりませんでした。<br/>条件を変更して再度検索してください。
+                    </div>
+                </div>
+            {{/if}}
+        </div>
+        {{/get}}
+    </main>
+</div>

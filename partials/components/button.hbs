@@ -1,0 +1,20 @@
+{{!--
+Button Component
+Usage: {{> "components/button" text="Button Text" class="custom-class" attributes='data-foo="bar"'}}
+
+Parameters:
+- text: Button text content (required)
+- class: Additional CSS classes (optional)
+- type: Button type - "button", "submit", "reset" (default: "button")
+- attributes: Additional HTML attributes as a string (optional)
+- disabled: Boolean to disable the button (optional)
+--}}
+
+<button 
+    type="{{#if type}}{{type}}{{else}}button{{/if}}"
+    class="button {{#if class}}{{class}}{{/if}}"
+    {{#if disabled}}disabled{{/if}}
+    {{{attributes}}}
+>
+    {{text}}
+</button>

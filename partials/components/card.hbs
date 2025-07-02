@@ -1,0 +1,63 @@
+{{!--
+Card Component
+Usage: {{> "components/card" post=post}}
+
+Parameters:
+- post: Post object with following properties (required):
+  - feature_image: Feature image URL
+  - primary_author: Author object with profile_image
+  - tags: Array of tag objects
+  - title: Post title
+  - excerpt: Post excerpt
+  - date: Post date
+  - url: Post URL
+- class: Additional CSS classes (optional)
+--}}
+
+<article class="card {{#if class}}{{class}}{{/if}}">
+    {{#if post.feature_image}}
+    <div class="card-image">
+        <a href="{{post.url}}">
+            <img src="{{img_url post.feature_image size="m"}}" alt="" loading="lazy">
+        </a>
+        {{#if post.primary_author.profile_image}}
+        <div class="card-magazine-logo" style="background-image: url({{img_url post.primary_author.profile_image size="xs"}})"></div>
+        {{/if}}
+        {{#if @member}}
+        <div class="gh-post-like-wrapper">
+            {{> "components/post-like" post_id=id}}
+        </div>
+        {{/if}}
+    </div>
+    {{/if}}
+
+    <div class="card-content">
+        <div class="card-header">
+            {{#if post.tags}}
+            <div class="card-tags">
+                {{#foreach post.tags limit="2"}}
+                    #{{name}}{{#unless @last}} {{/unless}}
+                {{/foreach}}
+            </div>
+            {{/if}}
+            <h2 class="card-title">
+                <a href="{{post.url}}">{{post.title}}</a>
+            </h2>
+            {{#if post.excerpt}}
+                <p class="card-excerpt">{{post.excerpt}}</p>
+            {{/if}}
+        </div>
+
+        <div class="card-footer">
+            <time class="card-date" datetime="{{date post.date format="YYYY-MM-DD"}}">
+                {{date post.date format="YYYY.MM.DD"}}
+            </time>
+            <a href="{{post.url}}" class="card-readmore">
+                続きを読む
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 6l6 6-6 6" stroke="#0c060c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
+        </div>
+    </div>
+</article>

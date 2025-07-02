@@ -1,0 +1,43 @@
+{{!--
+Pickup Tag Component
+Usage: {{> "components/pickup-tag" tag="osaka"}}
+
+Parameters:
+- tag: Tag slug to display (required)
+--}}
+
+{{#if tag}}
+{{#get "tags" filter="slug:{{tag}}" limit="1"}}
+{{#foreach tags}}
+<section class="pickup-tag">
+    <div class="pickup-tag-container">
+        <div class="pickup-tag-header">
+            <p class="pickup-tag-label">特集</p>
+            <h2 class="pickup-tag-title">
+                {{name}}エリアの特集記事をまとめました。
+            </h2>
+            <p class="pickup-tag-description">
+                私たちの編集者が選んだ特集記事をお楽しみください。新しい視点で食の世界を探求します。
+            </p>
+        </div>
+
+        <div class="pickup-tag-content">
+            <div class="pickup-tag-image">
+                {{#if feature_image}}
+                    <img src="{{img_url feature_image size="lg"}}" alt="{{name}}" class="pickup-tag-img">
+                {{else}}
+                    <div class="pickup-tag-placeholder"></div>
+                {{/if}}
+            </div>
+
+            <div class="pickup-tag-action">
+                <a href="{{url}}" class="pickup-tag-btn">
+                    記事を見る
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{{/foreach}}
+{{/get}}
+{{/if}}

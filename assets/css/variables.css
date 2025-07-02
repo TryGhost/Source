@@ -1,0 +1,180 @@
+/* Magaco Design System Variables
+   ---------------------------------------------------------- */
+
+:root {
+  /* Color System */
+
+  /* Primary Colors */
+  --color-primary-bg: #0c060c;
+  --color-primary-text: #0c060c;
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  /* Background Colors */
+  --color-bg-primary: #0c060c;
+  --color-bg-secondary: #ffffff;
+  --color-bg-new-articles: #fef1f1;
+  --color-bg-popular-articles: #f9dc9a;
+  --color-bg-recommended-articles: #e5e5ea;
+  --color-bg-featured-card: #f7ce6f;
+  --color-bg-grouped-primary: #f2f2f7;
+
+  /* Text Colors */
+  --color-text-primary: #0c060c;
+  --color-text-secondary: #000000;
+  --color-text-white: #ffffff;
+  --color-text-light-gray: #a7a7a7;
+
+  /* Border & Opacity Colors */
+  --color-border-light: rgba(12, 6, 12, 0.02);
+  --color-overlay: rgba(12, 6, 12, 0.05);
+  --color-opacity-neutral-darkest-5: rgba(12, 6, 12, 0.05);
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(118.244deg, #f7ce6f 0%, #fb7373 100%);
+  --gradient-search: linear-gradient(114.444deg, #f7ce6f 0%, #fb7373 100%);
+
+  /* Typography System */
+
+  /* Font Families */
+  --font-family-primary: "Zen Kaku Gothic New", sans-serif;
+
+  /* Font Sizes */
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-regular: 16px;
+  --font-size-medium: 18px;
+  --font-size-large: 20px;
+  --font-size-xl: 24px;
+  --font-size-2xl: 32px;
+  --font-size-3xl: 48px;
+  --font-size-4xl: 56px;
+
+  /* Typography Styles */
+
+  /* Heading Styles */
+  --heading-xxl: 700 56px/1.2 var(--font-family-primary);
+  --heading-xl: 400 48px/1.2 var(--font-family-primary);
+  --heading-l: 400 40px/1.2 var(--font-family-primary);
+  --heading-m: 400 32px/1.4 var(--font-family-primary);
+  --heading-s: 400 24px/1.4 var(--font-family-primary);
+  --heading-xs: 400 20px/1.4 var(--font-family-primary);
+  --heading-xxs: 400 16px/1.5 var(--font-family-primary);
+
+  /* Text Styles */
+  --text-xlarge-bold: 700 24px/1.4 var(--font-family-primary);
+  --text-large-bold: 700 20px/1.4 var(--font-family-primary);
+  --text-medium-bold: 700 18px/1.4 var(--font-family-primary);
+  --text-medium-regular: 400 18px/1.4 var(--font-family-primary);
+  --text-regular-bold: 700 16px/1.4 var(--font-family-primary);
+  --text-regular-regular: 400 16px/1.4 var(--font-family-primary);
+  --text-regular-medium: 500 16px/1.5 var(--font-family-primary);
+  --text-small-bold: 700 14px/1.4 var(--font-family-primary);
+  --text-small-regular: 400 14px/1.4 var(--font-family-primary);
+  --text-xsmall-bold: 700 12px/1.4 var(--font-family-primary);
+  --text-xsmall-regular: 400 12px/1.4 var(--font-family-primary);
+
+  /* Letter Spacing */
+  --letter-spacing-tight: -0.022em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide-xs: 0.4px;
+  --letter-spacing-wide-sm: 0.5px;
+  --letter-spacing-wide-md: 0.6px;
+  --letter-spacing-wide-lg: 0.64px;
+  --letter-spacing-wide-xl: 0.8px;
+  --letter-spacing-wide-2xl: 1.28px;
+  --letter-spacing-wide-3xl: 1.92px;
+  --letter-spacing-wide-4xl: 2.8px;
+
+  /* Line Heights */
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.4;
+  --line-height-relaxed: 1.5;
+
+  /* Spacing System */
+  --space-2xs: 4px;
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 20px;
+  --space-xl: 24px;
+  --space-2xl: 32px;
+  --space-3xl: 40px;
+  --space-4xl: 48px;
+  --space-5xl: 64px;
+  --space-6xl: 80px;
+  --space-7xl: 112px;
+
+  /* Border Radius */
+  --radius-xs: 8px;
+  --radius-sm: 16px;
+  --radius-md: 32px;
+  --radius-lg: 40px;
+  --radius-full: 100px;
+
+  /* Layout */
+  --container-max-width: 1440px;
+
+  /* Grid System */
+  --grid-columns: 16;
+  --grid-gap-desktop: 30px;
+  --grid-gap-tablet: 24px;
+  --grid-gap-mobile: 16px;
+
+  /* Component Specific */
+
+  /* Card */
+  --card-radius: var(--radius-md);
+  --card-padding: var(--space-2xl);
+  --card-gap: var(--space-xl);
+  --card-image-height: 234px;
+  --card-magazine-label-height: 46px;
+  --card-magazine-label-width: 117px;
+
+  /* Button */
+  --button-radius: var(--radius-full);
+  --button-padding-x: var(--space-xl);
+  --button-padding-y: 10px;
+  --button-min-width: 416px;
+
+  /* Form */
+  --form-radius: var(--radius-lg);
+  --form-height: 42px;
+  --form-padding-x: 22px;
+
+  /* Navigation */
+  --nav-height: 72px;
+  --nav-gap: var(--space-2xl);
+  --nav-link-gap: var(--space-2xl);
+
+  /* Hero */
+  --hero-height: 763px;
+  --hero-overlay: linear-gradient(90deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.3) 100%);
+
+  /* Footer */
+  --footer-padding-y: var(--space-6xl);
+  --footer-gap: var(--space-2xl);
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+
+  /* Z-index System */
+  --z-index-dropdown: 50;
+  --z-index-header: 100;
+  --z-index-modal: 200;
+  --z-index-tooltip: 300;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Media Query Breakpoints */
+@custom-media --mobile (max-width: 767px);
+@custom-media --tablet (max-width: 1024px);
+@custom-media --desktop (min-width: 1025px);
+@custom-media --wide (min-width: 1440px);

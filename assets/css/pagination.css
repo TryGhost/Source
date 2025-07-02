@@ -1,0 +1,134 @@
+/* Pagination Component Styles */
+
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3xl);
+}
+
+.pagination-nav {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.pagination-item {
+  width: 29px;
+  height: 29px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: var(--text-regular-bold);
+  letter-spacing: var(--letter-spacing-wide-xs);
+  color: var(--color-text-primary);
+  text-decoration: none;
+}
+
+.pagination-separator {
+  font: var(--text-medium-bold);
+  letter-spacing: var(--letter-spacing-wide-sm);
+  color: var(--color-text-primary);
+  width: 29px;
+  text-align: center;
+}
+
+.pagination-arrow {
+  width: var(--space-xl);
+  height: var(--space-xl);
+  cursor: pointer;
+  transition: opacity var(--transition-fast);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pagination-arrow svg {
+  width: 100%;
+  height: 100%;
+}
+
+.pagination-arrow:hover {
+  opacity: 0.7;
+}
+
+.pagination-arrow--prev {
+  transform: rotate(180deg);
+}
+
+/* Load More Button Wrapper */
+.pagination-load-more-wrapper {
+  display: none;
+  width: 100%;
+  text-align: center;
+}
+
+/* Pagination variants */
+
+/* Centered pagination */
+.pagination--centered {
+  justify-content: center;
+}
+
+/* Spaced out pagination */
+.pagination--spaced {
+  justify-content: space-between;
+}
+
+/* Large pagination */
+.pagination--large .pagination-item {
+  width: 40px;
+  height: 40px;
+  font: var(--text-medium-bold);
+}
+
+.pagination--large .pagination-separator {
+  width: 40px;
+  font: var(--text-large-bold);
+}
+
+.pagination--large .pagination-arrow {
+  width: 40px;
+  height: 40px;
+}
+
+/* Small pagination */
+.pagination--small .pagination-item {
+  width: 24px;
+  height: 24px;
+  font: var(--text-sm-bold);
+}
+
+.pagination--small .pagination-separator {
+  width: 24px;
+  font: var(--text-sm-bold);
+}
+
+.pagination--small .pagination-arrow {
+  width: 20px;
+  height: 20px;
+}
+
+/* Pagination on dark backgrounds */
+.pagination--on-dark .pagination-item,
+.pagination--on-dark .pagination-separator {
+  color: var(--color-white);
+}
+
+.pagination--on-dark .pagination-arrow svg path {
+  stroke: var(--color-white);
+}
+
+/* Responsive styles */
+@media (max-width: 1024px) {
+  .pagination {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Show load more button on mobile by default */
+  .pagination-load-more-wrapper {
+    display: block;
+  }
+}
