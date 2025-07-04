@@ -1,13 +1,4 @@
-{{!--
-Pickup Tag Component
-Usage: {{> "components/pickup-tag" tag="osaka"}}
-
-Parameters:
-- tag: Tag slug to display (required)
---}}
-
-{{#if tag}}
-{{#get "tags" filter="slug:{{tag}}" limit="1"}}
+{{#get "tags" filter="slug:pickup" limit="1"}}
 {{#foreach tags}}
 <section class="pickup-tag">
     <div class="pickup-tag-container">
@@ -40,4 +31,3 @@ Parameters:
 </section>
 {{/foreach}}
 {{/get}}
-{{/if}}
