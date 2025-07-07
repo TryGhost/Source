@@ -14,7 +14,7 @@ Parameters:
 - class: Additional CSS classes (optional)
 --}}
 
-<article class="card {{#if class}}{{class}}{{/if}}">
+<article class="card {{#if card-class}}{{card-class}}{{/if}}">
     {{#if post.feature_image}}
     <div class="card-image">
         <a href="{{post.url}}">
@@ -31,7 +31,7 @@ Parameters:
     </div>
     {{/if}}
 
-    <div class="card-content">
+    <div class="card-content {{#if card-contents-class}}{{card-contents-class}}{{/if}}">
         <div class="card-header">
             {{#if post.tags}}
             <div class="card-tags">
