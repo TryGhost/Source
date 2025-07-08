@@ -99,7 +99,7 @@
 }
 
 .author-popular-section {
-  background-color: var(--color-bg-recommended-articles);
+  background-color: var(--color-bg-popular-articles);
 }
 
 .author-section-container {
@@ -153,10 +153,12 @@
 
 .author-post-card--new {
   /* Specific styles for new articles if needed */
+  background-color: var(--color-bg-new-articles);
 }
 
 .author-post-card--popular {
   /* Specific styles for popular articles if needed */
+  background-color: var(--color-bg-featured-card);
 }
 
 /* Author Pagination */

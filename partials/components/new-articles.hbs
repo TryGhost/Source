@@ -19,11 +19,11 @@ Parameters:
         {{#if posts}}
         <div class="author-section-grid">
             {{#foreach posts}}
-                {{> "components/card" post=this class="author-post-card author-post-card--new"}}
+                {{> "components/card" post=this card-class="author-post-card" card-contents-class="author-post-card--new"}}
             {{/foreach}}
         </div>
         {{/if}}
-
+ß
         {{#if showPagination}}
         {{#if pagination}}
         <div class="author-pagination-wrapper">

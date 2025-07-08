@@ -19,7 +19,7 @@ Parameters:
         {{#if posts}}
         <div class="author-section-grid">
             {{#foreach posts}}
-                {{> "components/card" post=this class="author-post-card author-post-card--popular"}}
+                {{> "components/card" post=this card-class="author-post-card" card-contents-class="author-post-card--popular"}}
             {{/foreach}}
         </div>
         {{/if}}
