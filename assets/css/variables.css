@@ -18,12 +18,14 @@
   --color-bg-recommended-articles: #e5e5ea;
   --color-bg-featured-card: #f7ce6f;
   --color-bg-grouped-primary: #f2f2f7;
+  --color-bg-gray: #d9d9d9;
 
   /* Text Colors */
   --color-text-primary: #0c060c;
   --color-text-secondary: #000000;
   --color-text-white: #ffffff;
   --color-text-light-gray: #a7a7a7;
+  
 
   /* Border & Opacity Colors */
   --color-border-light: rgba(12, 6, 12, 0.02);

@@ -2,30 +2,36 @@
 {{#foreach tags}}
 <section class="pickup-tag">
     <div class="pickup-tag-container">
-        <div class="pickup-tag-header">
-            <p class="pickup-tag-label">特集</p>
+        <div class="pickup-tag-content">
+            <p class="pickup-tag-label">注目のハッシュタグ</p>
             <h2 class="pickup-tag-title">
-                {{name}}エリアの特集記事をまとめました。
+                {{name}} の記事をみる。
             </h2>
             <p class="pickup-tag-description">
                 私たちの編集者が選んだ特集記事をお楽しみください。新しい視点で食の世界を探求します。
             </p>
-        </div>
-
-        <div class="pickup-tag-content">
-            <div class="pickup-tag-image">
-                {{#if feature_image}}
-                    <img src="{{img_url feature_image size="lg"}}" alt="{{name}}" class="pickup-tag-img">
-                {{else}}
-                    <div class="pickup-tag-placeholder"></div>
-                {{/if}}
-            </div>
-
+            {{!-- PC ONLY --}}
             <div class="pickup-tag-action">
-                <a href="{{url}}" class="pickup-tag-btn">
-                    記事を見る
+                <a href="{{url}}" class="pickup-tag-btn pickup-tag-btn-pc-only">
+                    一覧を見る
+                    <img src="{{asset "images/icons/ArrowRight.svg"}}" alt="" width="24" height="24"/>
                 </a>
             </div>
+        </div>
+        <div class="pickup-tag-image">
+            {{#if feature_image}}
+                <img src="{{img_url feature_image size="lg"}}" alt="{{name}}" class="pickup-tag-img">
+            {{else}}
+                <div class="pickup-tag-placeholder"></div>
+            {{/if}}
+        </div>
+        
+        {{!-- SP ONLY --}}
+        <div class="pickup-tag-action">
+            <a href="{{url}}" class="pickup-tag-btn pickup-tag-btn-sp-only">
+                一覧を見る
+                <img src="{{asset "images/icons/ArrowRight.svg"}}" alt="" width="24" height="24"/>
+            </a>
         </div>
     </div>
 </section>

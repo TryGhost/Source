@@ -28,14 +28,14 @@
 }
 
 .pickup-tag-title {
-  font: var(--heading-l);
+  font: var(--heading-xl);
   letter-spacing: var(--letter-spacing-wide-2xl);
   line-height: var(--line-height-tight);
   color: var(--color-text-primary);
 }
 
 .pickup-tag-description {
-  font: var(--text-regular-regular);
+  font: var(--text-medium-regular);
   line-height: var(--line-height-relaxed);
   color: var(--color-text-primary);
 }
@@ -43,7 +43,7 @@
 .pickup-tag-content {
   display: flex;
   flex-direction: column;
-  row-gap: var(--space-4xl);
+  row-gap: var(--space-md);
   flex-shrink: 0;
 }
 
@@ -59,19 +59,21 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: var(--radius-lg);
 }
 
-/* Action Section */
+/* SP Action Section */
 .pickup-tag-action {
   display: flex;
   justify-content: center;
+  text-align: center;
 }
 
 .pickup-tag-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: var(--color-overlay);
+  background: var(--color-bg-gray);
   color: var(--color-text-primary);
   text-decoration: none;
   padding: var(--space-sm) var(--space-4xl);
@@ -80,12 +82,33 @@
   letter-spacing: var(--letter-spacing-wide-xs);
   transition: var(--transition-fast);
   min-width: 160px;
+  margin: 0 auto;
+  width: fit-content;
+  white-space: nowrap;
+  gap: 0.5em;
+}
+
+.pickup-tag-btn img {
+  width: 1em;
+  height: auto;
+  flex-shrink: 0;
+  vertical-align: middle;
 }
 
 .pickup-tag-btn:hover {
   transform: translateY(-1px);
   background: rgba(12, 6, 12, 0.1);
 }
+
+/* SP Visibility control */
+.pickup-tag-btn-pc-only {
+  display: none;
+}
+.pickup-tag-btn-sp-only {
+  display: flex;
+  justify-content: center;
+}
+
 
 /* Desktop Styles */
 @media (width >= 1025px) {
@@ -94,11 +117,13 @@
   }
 
   .pickup-tag-container {
-    padding-inline: var(--space-5xl);
-    gap: var(--space-5xl);
-    flex-direction: row;
+    padding-inline: var(--space-md);
+    gap: var(--space-md);
+    /* flex-direction: column; */
     justify-content: space-between;
     width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
   }
 
   .pickup-tag-header {
@@ -124,5 +149,30 @@
     padding: var(--button-padding-y) var(--space-6xl);
     font: var(--text-regular-bold);
     min-width: 240px;
+    margin: 0 !important;
   }
+
+  /* PC Action Section */
+  .pickup-tag-action {
+    display: block;
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+  .pickup-tag-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    row-gap: var(--space-md);
+    flex-shrink: 0;
+    text-align: left; 
+  }
+
+  .pickup-tag-btn-pc-only {
+    display: inline-flex;
+  }
+  .pickup-tag-btn-sp-only {
+    display: none;
+  }
+
 }
