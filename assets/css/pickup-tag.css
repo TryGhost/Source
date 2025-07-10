@@ -28,7 +28,7 @@
 }
 
 .pickup-tag-title {
-  font: var(--heading-xl);
+  font: var(--heading-l);
   letter-spacing: var(--letter-spacing-wide-2xl);
   line-height: var(--line-height-tight);
   color: var(--color-text-primary);
@@ -117,9 +117,8 @@
   }
 
   .pickup-tag-container {
-    padding-inline: var(--space-md);
-    gap: var(--space-md);
-    /* flex-direction: column; */
+    padding-inline: var(--space-5xl);
+    gap: var(--space-5xl);
     justify-content: space-between;
     width: 100%;
     display: grid;
@@ -149,7 +148,6 @@
     padding: var(--button-padding-y) var(--space-6xl);
     font: var(--text-regular-bold);
     min-width: 240px;
-    margin: 0 !important;
   }
 
   /* PC Action Section */
