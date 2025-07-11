@@ -1,0 +1,408 @@
+// 検索結果ページの動的フィルター機能
+(function () {
+    'use strict';
+
+    let allPosts = []; // 取得した全投稿データを保存
+
+    /**
+     * URLクエリパラメータを解析して検索フィルター条件を取得
+     * @returns {Object} 検索パラメータオブジェクト
+     * @returns {string} returns.q - 検索クエリ文字列
+     * @returns {string[]} returns.tags - 選択されたタグスラッグの配列
+     * @returns {string} returns.sort - ソート順
+     */
+    function getUrlParams() {
+        const params = new URLSearchParams(window.location.search);
+
+        return {
+            q: params.get('q') || '',
+            tags: params.getAll('tags'),
+            sort: params.get('sort') || 'newest'
+        };
+    }
+
+    /**
+     * Ghost Content APIから投稿データを取得
+     * @param {string} key - Content APIのアクセスキー
+     * @returns {Promise<Array>} 投稿オブジェクトの配列
+     */
+    async function fetchPosts(key) {
+        try {
+            const response = await fetch(
+                `/ghost/api/content/posts/?key=${key}&include=tags,authors&limit=15`
+            );
+
+            if (!response.ok) {
+                return [];
+            }
+
+            const data = await response.json();
+            return data.posts || [];
+        } catch (error) {
+            return [];
+        }
+    }
+
+    /**
+     * 投稿データからcard.hbsパーシャルと同様のHTMLカードを生成
+     * @param {Object} post - 投稿オブジェクト
+     * @param {string} post.url - 投稿のURL
+     * @param {string} post.title - 投稿のタイトル
+     * @param {string} [post.feature_image] - アイキャッチ画像のURL
+     * @param {string} [post.excerpt] - 投稿の抜粋
+     * @param {string} post.published_at - 公開日時
+     * @param {Array} [post.tags] - タグの配列
+     * @param {Object} [post.primary_author] - 主要著者オブジェクト
+     * @returns {string} HTMLカードの文字列
+     */
+    function createPostCard(post) {
+        const featureImage = post.feature_image;
+        const authorProfileImage = post.primary_author?.profile_image;
+        const tags = post.tags ? post.tags.slice(0, 2) : [];
+        const tagHtml = tags.map(tag => `#${tag.name}`).join(' ');
+
+        // 日付をフォーマット
+        const publishedDate = new Date(post.published_at);
+        const formattedDate = publishedDate
+            .toLocaleDateString('ja-JP', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit'
+            })
+            .replace(/\//g, '.');
+
+        return `
+            <article class='card'>
+                ${
+                    featureImage
+                        ? `
+                    <div class='card-image'>
+                        <a href='${post.url}'>
+                            <img src='${featureImage}' alt='' loading='lazy'>
+                        </a>
+                        ${
+                            authorProfileImage
+                                ? `
+                            <div class='card-magazine-logo' style='background-image: url(${authorProfileImage})'></div>
+                        `
+                                : ''
+                        }
+                    </div>
+                `
+                        : ''
+                }
+
+                <div class='card-content'>
+                    <div class='card-header'>
+                        ${
+                            tags.length > 0
+                                ? `
+                            <div class='card-tags'>
+                                ${tagHtml}
+                            </div>
+                        `
+                                : ''
+                        }
+                        <h2 class='card-title'>
+                            <a href='${post.url}'>${post.title}</a>
+                        </h2>
+                        ${
+                            post.excerpt
+                                ? `
+                            <p class='card-excerpt'>${post.excerpt}</p>
+                        `
+                                : ''
+                        }
+                    </div>
+
+                    <div class='card-footer'>
+                        <time class='card-date' datetime='${post.published_at}'>
+                            ${formattedDate}
+                        </time>
+                        <a href='${post.url}' class='card-readmore'>
+                            続きを読む
+                            <svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                                <path d='M9 6l6 6-6 6' stroke='#0c060c' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </article>
+        `;
+    }
+
+    /**
+     * フィルタリングされた投稿を画面に表示
+     * @param {Array} posts - 表示する投稿オブジェクトの配列
+     */
+    function displayResults(posts) {
+        const container = document.getElementById('search-results-container');
+        if (!container) {
+            return;
+        }
+
+        if (posts.length === 0) {
+            container.innerHTML = `
+                <div class='search_results__header'>
+                    <div class='search_results__header-tag'>sorry</div>
+                    <div class='search_results__header-title'>
+                        検索結果が見つかりませんでした。<br/>条件を変更して再度検索してください。
+                    </div>
+                </div>
+            `;
+            return;
+        }
+
+        const headerHtml = `
+            <div class='search_results__header'>
+                <div class='search_results__header-tag'>Search Result</div>
+                <h1 class='search_results__header-title'>
+                    検索結果: ${posts.length}件
+                </h1>
+            </div>
+        `;
+
+        const postsHtml = posts.map(post => createPostCard(post)).join('');
+        const gridHtml = `<div class='search_results__grid'>${postsHtml}</div>`;
+
+        container.innerHTML = headerHtml + gridHtml;
+    }
+
+
+    /**
+     * 検索条件に基づいて投稿をフィルタリング
+     * @param {Array} posts - 投稿オブジェクトの配列
+     * @param {Object} params - フィルター条件オブジェクト
+     * @param {string} [params.q] - 検索クエリ（タイトルと抜粋で検索）
+     * @param {string[]} [params.tags] - フィルターするタグスラッグの配列
+     * @returns {Array} フィルタリングされた投稿の配列
+     */
+    function filterPosts(posts, params) {
+        return posts.filter((post) => {
+            // 検索クエリでフィルター
+            if (params.q) {
+                const query = params.q.toLowerCase();
+                const title = post.title.toLowerCase();
+                const excerpt = post.excerpt ? post.excerpt.toLowerCase() : '';
+
+                if (!title.includes(query) && !excerpt.includes(query)) {
+                    return false;
+                }
+            }
+
+            // タグでフィルター
+            if (params.tags && params.tags.length > 0) {
+                const postTags = post.tags
+                    ? post.tags.map(tag => tag.slug)
+                    : [];
+                const hasMatchingTag = params.tags.some(tag =>
+                    postTags.includes(tag)
+                );
+
+                if (!hasMatchingTag) {
+                    return false;
+                }
+            }
+
+            return true;
+        });
+    }
+
+    /**
+     * 投稿を指定された順序でソート
+     * @param {Array} posts - 投稿オブジェクトの配列
+     * @param {string} sortOrder - ソート順
+     * @returns {Array} ソートされた投稿の配列
+     */
+    function sortPosts(posts, sortOrder) {
+        return [...posts].sort((a, b) => {
+            const dateA = new Date(a.published_at);
+            const dateB = new Date(b.published_at);
+
+            if (sortOrder === 'newest') {
+                return dateB - dateA; // 新しい順
+            } else {
+                return dateA - dateB; // 古い順
+            }
+        });
+    }
+
+    /**
+     * URLパラメータに基づいてフォーム要素の初期状態を設定
+     */
+    function initializeForm() {
+        const params = getUrlParams();
+
+        // headerのキーワード検索フィールドを設定
+        const headerSearchInput = document.getElementById('search-form-input');
+        if (headerSearchInput) {
+            headerSearchInput.value = params.q;
+        }
+
+        // タグボタンのaria-pressed状態を設定
+        params.tags.forEach((tag) => {
+            const button = document.querySelector(`[data-tag-slug='${tag}']`);
+            if (button) {
+                button.setAttribute('aria-pressed', 'true');
+            }
+        });
+
+        // ソート選択を設定
+        const sortSelect = document.querySelector(
+            '.search_results__sort-dropdown'
+        );
+        if (sortSelect) {
+            sortSelect.value = params.sort;
+        }
+    }
+
+    /**
+     * ソートドロップダウンの変更イベントを処理
+     */
+    function handleSortChange() {
+        // TODO: ソートも query parameter に入れる
+        const sortSelect = document.querySelector(
+            '.search_results__sort-dropdown'
+        );
+
+        if (sortSelect) {
+            sortSelect.addEventListener('change', function () {
+                const params = getUrlParams();
+                params.sort = this.value;
+
+                // URLを更新
+                const url = new URL(window.location);
+                url.searchParams.set('sort', params.sort);
+                window.history.pushState({}, '', url);
+
+                // 結果を更新
+                applyFilters();
+            });
+        }
+    }
+
+    /**
+     * 現在のURLパラメータとheaderの検索値に基づいてフィルターとソートを適用し結果を表示
+     */
+    function applyFilters() {
+        const params = getUrlParams();
+        
+        // headerの検索フィールドから現在の値を取得
+        const headerSearchInput = document.getElementById('search-form-input');
+        const currentSearchQuery = headerSearchInput ? headerSearchInput.value.trim() : '';
+        
+        // headerの値がある場合はそれを優先、なければURLパラメータを使用
+        if (currentSearchQuery) {
+            params.q = currentSearchQuery;
+        }
+
+        // フィルタリング
+        let filteredPosts = filterPosts(allPosts, params);
+
+        // ソート
+        filteredPosts = sortPosts(filteredPosts, params.sort);
+
+        // 表示
+        displayResults(filteredPosts);
+    }
+
+    /**
+     * タグボタンのクリックイベントを処理してaria-pressed状態を切り替え
+     */
+    function handleTagButtonClicks() {
+        const tagButtons = document.querySelectorAll('#tag-list > button');
+
+        tagButtons.forEach((button) => {
+            button.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                // aria-pressed状態を切り替え
+                const isPressed = this.getAttribute('aria-pressed') === 'true';
+                this.setAttribute('aria-pressed', !isPressed);
+            });
+        });
+    }
+
+    /**
+     * フォーム送信時にaria-pressed状態のタグとheaderの検索値をhiddenフィールドに変換
+     */
+    function handleFormSubmit() {
+        const form = document.querySelector('form[id="posts"]');
+
+        if (!form) {
+            return;
+        }
+
+        form.addEventListener('submit', () => {
+            // headerの検索フィールドから値を取得
+            const headerSearchInput = document.getElementById('search-form-input');
+            const searchQuery = headerSearchInput ? headerSearchInput.value.trim() : '';
+            
+            // 既存のqのhiddenフィールドを削除
+            form.querySelectorAll('input[name="q"]').forEach(input => input.remove());
+            
+            // 検索クエリをhiddenフィールドに追加
+            if (searchQuery) {
+                const hiddenInput = document.createElement('input');
+                hiddenInput.type = 'hidden';
+                hiddenInput.name = 'q';
+                hiddenInput.value = searchQuery;
+                form.appendChild(hiddenInput);
+            }
+
+            // 選択されたタグをhiddenフィールドに設定
+            const selectedTags = [];
+            const tagButtons = document.querySelectorAll(
+                '#tag-list > button[aria-pressed="true"]'
+            );
+
+            tagButtons.forEach((button) => {
+                const tagSlug = button.getAttribute('data-tag-slug');
+                if (tagSlug) {
+                    selectedTags.push(tagSlug);
+                }
+            });
+
+            // 既存のtagsのhiddenフィールドを削除
+            form.querySelectorAll('input[name="tags"]').forEach(input =>
+                input.remove()
+            );
+
+            // 新しいtagsのhiddenフィールドを追加
+            selectedTags.forEach((tag) => {
+                const hiddenInput = document.createElement('input');
+                hiddenInput.type = 'hidden';
+                hiddenInput.name = 'tags';
+                hiddenInput.value = tag;
+                form.appendChild(hiddenInput);
+            });
+        });
+    }
+
+    /**
+     * ページ読み込み時の初期化処理
+     * 投稿データの取得、フォーム初期化、イベントハンドラー設定を行う
+     */
+    async function initialize() {
+        // 投稿データを取得
+        allPosts = await fetchPosts('d268b2375c8d0ab5ed046e2220');
+
+        // フォームを初期化
+        initializeForm();
+
+        // イベントハンドラーを設定
+        handleSortChange();
+        handleTagButtonClicks();
+        handleFormSubmit();
+
+        // 初回表示
+        applyFilters();
+    }
+
+    // DOMContentLoaded後に初期化
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initialize);
+    } else {
+        initialize();
+    }
+})();

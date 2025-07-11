@@ -66,7 +66,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  row-gap: var(--space-3xl);
+  row-gap: var(--space-lg);
 }
 
 .search_results__form-button {
@@ -119,55 +119,40 @@
   padding-inline-end: 40px;
 }
 
-/* Magazine Selection */
-.search_results__magazines {
+/* Tags Section */
+.search_results__tags {
   display: flex;
   flex-direction: column;
-  row-gap: var(--space-md);
+  row-gap: var(--space-lg);
 }
 
-.search_results__magazines-title {
+.search_results__tags-title {
   font: var(--heading-xxs);
   letter-spacing: var(--letter-spacing-wide-lg);
   color: var(--color-text-white);
 }
 
-.search_results__magazines-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-xs);
-}
-
-@media (768px <= width) {
-  .search_results__magazines {
-    display: flex;
-    flex-direction: row;
-    column-gap: 30px;
-  }
-
-  .search_results__magazines-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-.search_results__magazines-item {
+.search_results__tags-grid {
   display: flex;
-  align-items: center;
-  gap: var(--space-xs);
-  padding-block: 10px;
+  flex-wrap: wrap;
+  gap: var(--space-lg);
 }
 
-.search_results__magazines-checkbox {
-  inline-size: 24px;
-  block-size: 24px;
-  accent-color: var(--color-white);
+/* Tag Button Styles */
+.search_results__tag-button {
+  margin: 0;
+  white-space: nowrap;
 }
 
-.search_results__magazines-label {
-  font: var(--text-regular-bold);
-  letter-spacing: var(--letter-spacing-wide-xs);
-  color: var(--color-text-white);
-  cursor: pointer;
+.search_results__tag-button[aria-pressed="true"] {
+  background-color: var(--color-primary-bg);
+  color: var(--color-white);
+  border-color: var(--color-primary-bg);
+}
+
+.search_results__tag-button[aria-pressed="true"]:hover {
+  background-color: var(--color-black);
+  border-color: var(--color-black);
 }
 
 /* Filter Button */
@@ -228,7 +213,6 @@
   font: var(--heading-l);
   color: var(--color-text-primary);
   letter-spacing: var(--letter-spacing-wide-xl);
-  text-align: left;
 }
 
 /* Search Result Card */
@@ -378,7 +362,7 @@
     grid-template-columns: repeat(3, 1fr);
   }
 
-  .search_results__header-tag {
+  .search_results__header {
     text-align: left;
   }
 }
