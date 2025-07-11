@@ -1,20 +1,23 @@
 {{!< default}}
 
-<div class="search_results__page">
+<div class="search_results__page" id="search_results" data-content-api-key="{{content_api_key}}">
     {{!-- Search Filter Section --}}
     <section class="search_results__navbar">
         <div class="search_results__navbar-container">
-
-            {{!-- Sort Controls --}}
-            <div class="search_results__sort">
-                <label class="search_results__sort-label" id="sort">並び替え</label>
-                <select class="search_results__sort-dropdown" name="sort">
-                    <option value="newest">新着順</option>
-                    <option value="popular">人気順</option>
-                </select>
+            <div class="search_results__navbar-header">
+                {{> "components/button" text="詳細検索" width="126px" attributes='id="accordion-toggle" aria-expanded="false" aria-controls="accordion-content"' }}
+                {{!-- Sort Controls --}}
+                <div class="search_results__sort">
+                    <label class="search_results__sort-label" id="sort">並び替え</label>
+                    <select class="search_results__sort-dropdown" name="sort">
+                        <option value="newest">新着順</option>
+                        <option value="popular">人気順</option>
+                    </select>
+                </div>
             </div>
 
-            <form id="posts" class="search_results__form-form" role="search">
+            <div id="accordion-content" class="search_results__accordion" aria-hidden="true">
+                <form id="posts" class="search_results__form-form" role="search">
                 {{!-- タグセクション --}}
                 <div class="search_results__tags">
                     <div class="search_results__tags-title">タグを選択</div>
@@ -35,6 +38,7 @@
                     この条件で検索
                 </button>
             </form>
+            </div>
         </div>
     </section>
 

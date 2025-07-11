@@ -443,6 +443,51 @@
     }
 
     /**
+     * アコーディオンの開閉を処理
+     */
+    function handleAccordion() {
+        const toggleButton = document.getElementById('accordion-toggle');
+        const accordionContent = document.getElementById('accordion-content');
+        const stickyButton = document.querySelector('.search_results__sticky_btn');
+
+        if (!toggleButton || !accordionContent) {
+            return;
+        }
+
+        /**
+         * アコーディオンの開閉状態を切り替え
+         * @param {boolean} isOpen - 開く場合はtrue、閉じる場合はfalse
+         */
+        function toggleAccordion(isOpen) {
+            toggleButton.setAttribute('aria-expanded', isOpen);
+            accordionContent.setAttribute('aria-hidden', !isOpen);
+            accordionContent.classList.toggle('search_results__accordion--open', isOpen);
+        }
+
+        // 詳細検索ボタンのクリックイベント
+        toggleButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            const isExpanded = this.getAttribute('aria-expanded') === 'true';
+            toggleAccordion(!isExpanded);
+        });
+
+        // スティッキーボタンのクリックイベント
+        if (stickyButton) {
+            stickyButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                const isExpanded = toggleButton.getAttribute('aria-expanded') === 'true';
+                toggleAccordion(!isExpanded);
+
+                // スクロールしてナビゲーションバーを表示
+                const navbar = document.querySelector('.search_results__navbar');
+                if (navbar) {
+                    navbar.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        }
+    }
+
+    /**
      * ページ読み込み時の初期化処理
      * 投稿データの取得、フォーム初期化、イベントハンドラー設定を行う
      */
@@ -451,7 +496,8 @@
         toggleLoadMoreButton(false);
 
         // 投稿データを取得
-        allPosts = await fetchPosts('d268b2375c8d0ab5ed046e2220');
+        const contentApiKey = document.querySelector('#search_results')?.getAttribute('data-content-api-key');
+        allPosts = await fetchPosts(contentApiKey);
 
         // フォームを初期化
         initializeForm();
@@ -461,6 +507,7 @@
         handleTagButtonClicks();
         handleFormSubmit();
         handleLoadMoreButton();
+        handleAccordion();
 
         // 初回表示
         applyFilters();

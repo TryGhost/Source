@@ -16,12 +16,6 @@
     padding-inline: var(--space-lg);
 }
 
-@media (768px <= width) {
-    .search_results__navbar {
-        padding: var(--space-2xl) var(--space-5xl);
-    }
-}
-
 .search_results__navbar-container {
     display: flex;
     flex-direction: column;
@@ -30,61 +24,13 @@
     margin-inline: auto;
 }
 
-/* Search Form */
-.search_results__form {
+.search_results__navbar-header {
     display: flex;
-    flex-direction: column;
-    gap: var(--space-lg);
-}
-
-.search_results__form-input-group {
-    background-color: var(--color-white);
-    border-radius: var(--radius-lg);
-    display: flex;
-    align-items: center;
     justify-content: space-between;
-    overflow: hidden;
 }
 
-.search_results__form-input {
-    background: transparent;
-    border: none;
-    color: var(--color-text-primary);
-    font: var(--text-regular-bold);
-    letter-spacing: var(--letter-spacing-wide-xs);
-    padding-block: var(--space-sm);
-    padding-inline: var(--space-lg);
-    flex: 1;
-    outline: none;
-}
-
-.search_results__form-input::placeholder {
-    color: var(--color-text-primary);
-}
-
-.search_results__form-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    row-gap: var(--space-lg);
-}
-
-.search_results__form-button {
-    background: var(--gradient-search);
-    border: none;
-    border-radius: var(--radius-full);
-    color: var(--color-text-primary);
-    cursor: pointer;
-    font: var(--text-regular-medium);
-    letter-spacing: var(--letter-spacing-wide-xs);
-    padding-block: 10px;
-    padding-inline: var(--space-xl);
-    transition: var(--transition-fast);
-    width: fit-content;
-}
-
-.search_results__form-button:hover {
-    opacity: 0.9;
+.search_results__navbar-header > button {
+    display: none;
 }
 
 /* Sort Controls */
@@ -92,7 +38,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: var(--space-xl);
+    flex: 1;
+    gap: 22px;
 }
 
 .search_results__sort-label {
@@ -117,6 +64,46 @@
     background-position: right 12px center;
     background-size: 20px;
     padding-inline-end: 40px;
+}
+
+@media (768px <= width) {
+    .search_results__navbar {
+        padding: var(--space-2xl) var(--space-5xl);
+    }
+
+    .search_results__navbar-header > button {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .search_results__sort {
+        flex: initial;
+    }
+}
+
+/* Accordion */
+.search_results__accordion {
+    overflow: hidden;
+    max-block-size: 0;
+    transition: max-block-size 0.3s ease-in-out;
+}
+
+.search_results__accordion--open {
+    max-block-size: 1000px; /* 十分に大きな値 */
+}
+
+/* Search Form */
+.search_results__form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+}
+
+.search_results__form-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: var(--space-lg);
 }
 
 /* Tags Section */
