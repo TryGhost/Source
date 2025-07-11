@@ -45,8 +45,11 @@
                 検索中...
             </div>
         </div>
-        <button type="button" class="search_results__sticky_btn">
-            <img src="{{asset "images/icons/sp-sticky-search.svg"}}" alt="詳細検索">
-        </button>
+        <div id="load-more" class="search_results__load-more">
+            {{> "components/button" text="もっと見る" }}
+        </div>
     </main>
+    <button type="button" class="search_results__sticky_btn">
+        <img src="{{asset "images/icons/sp-sticky-search.svg"}}" alt="詳細検索">
+    </button>
 </div>

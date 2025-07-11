@@ -179,11 +179,14 @@
   background-color: var(--color-bg-popular-articles);
   padding: var(--space-5xl) var(--space-lg);
   flex: 1;
+  display: grid;
+  row-gap: var(--space-4xl);
 }
 
 @media (768px <= width) {
   .search_results__content {
     padding: var(--space-7xl) var(--space-5xl);
+    row-gap: var(--space-6xl);
   }
 }
 
@@ -369,21 +372,8 @@
 
 /* Load More Button */
 .search_results__load-more {
-  background-color: var(--color-white);
-  border: none;
-  border-radius: var(--radius-lg);
-  color: var(--color-text-primary);
-  cursor: pointer;
-  font: var(--text-regular-bold);
-  letter-spacing: var(--letter-spacing-wide-xs);
-  padding-block: 10px;
-  padding-inline: var(--space-6xl);
-  align-self: center;
-  transition: var(--transition-fast);
-}
-
-.search_results__load-more:hover {
-  background-color: #f0f0f0;
+    display: grid;
+    place-items: center;
 }
 
 /* Loading and Error States */

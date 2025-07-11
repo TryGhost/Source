@@ -3,6 +3,9 @@
     'use strict';
 
     let allPosts = []; // 取得した全投稿データを保存
+    let filteredPosts = []; // フィルタリング済み投稿データを保存
+    let displayedCount = 0; // 現在表示している投稿数
+    const POSTS_PER_PAGE = 15; // 1回に表示する投稿数
 
     /**
      * URLクエリパラメータを解析して検索フィルター条件を取得
@@ -29,7 +32,7 @@
     async function fetchPosts(key) {
         try {
             const response = await fetch(
-                `/ghost/api/content/posts/?key=${key}&include=tags,authors&limit=15`
+                `/ghost/api/content/posts/?key=${key}&include=tags,authors&limit=all`
             );
 
             if (!response.ok) {
@@ -132,16 +135,21 @@
     }
 
     /**
-     * フィルタリングされた投稿を画面に表示
+     * フィルタリングされた投稿を画面に表示（初期表示とページング対応）
      * @param {Array} posts - 表示する投稿オブジェクトの配列
+     * @param {boolean} isLoadMore - 追加読み込みかどうか
      */
-    function displayResults(posts) {
+    function displayResults(posts, isLoadMore = false) {
         const container = document.getElementById('search-results-container');
         if (!container) {
             return;
         }
 
+        // フィルタリング済み投稿を保存
+        filteredPosts = posts;
+
         if (posts.length === 0) {
+            displayedCount = 0;
             container.innerHTML = `
                 <div class='search_results__header'>
                     <div class='search_results__header-tag'>sorry</div>
@@ -150,22 +158,51 @@
                     </div>
                 </div>
             `;
+            // 検索結果が0件の場合はボタンを非表示
+            toggleLoadMoreButton(false);
             return;
         }
 
-        const headerHtml = `
-            <div class='search_results__header'>
-                <div class='search_results__header-tag'>Search Result</div>
-                <h1 class='search_results__header-title'>
-                    検索結果: ${posts.length}件
-                </h1>
-            </div>
-        `;
+        if (!isLoadMore) {
+            // 初回表示：最初の15件のみ
+            displayedCount = Math.min(POSTS_PER_PAGE, posts.length);
 
-        const postsHtml = posts.map(post => createPostCard(post)).join('');
-        const gridHtml = `<div class='search_results__grid'>${postsHtml}</div>`;
+            const headerHtml = `
+                <div class='search_results__header'>
+                    <div class='search_results__header-tag'>Search Result</div>
+                    <h1 class='search_results__header-title'>
+                        検索結果: ${posts.length}件
+                    </h1>
+                </div>
+            `;
 
-        container.innerHTML = headerHtml + gridHtml;
+            const displayPosts = posts.slice(0, displayedCount);
+            const postsHtml = displayPosts.map(post => createPostCard(post)).join('');
+            const gridHtml = `<div class='search_results__grid' id='posts-grid'>${postsHtml}</div>`;
+
+            container.innerHTML = headerHtml + gridHtml;
+
+            // 「もっと見る」ボタンの表示/非表示を判断
+            const shouldShowLoadMore = posts.length > displayedCount;
+            toggleLoadMoreButton(shouldShowLoadMore);
+        } else {
+            // 追加読み込み：次の15件を追加
+            const postsGrid = document.getElementById('posts-grid');
+            if (!postsGrid) return;
+
+            const startIndex = displayedCount;
+            const endIndex = Math.min(startIndex + POSTS_PER_PAGE, posts.length);
+            const additionalPosts = posts.slice(startIndex, endIndex);
+
+            const additionalPostsHtml = additionalPosts.map(post => createPostCard(post)).join('');
+            postsGrid.insertAdjacentHTML('beforeend', additionalPostsHtml);
+
+            displayedCount = endIndex;
+
+            // 「もっと見る」ボタンの表示/非表示を更新
+            const shouldShowLoadMore = displayedCount < posts.length;
+            toggleLoadMoreButton(shouldShowLoadMore);
+        }
     }
 
 
@@ -286,11 +323,11 @@
      */
     function applyFilters() {
         const params = getUrlParams();
-        
+
         // headerの検索フィールドから現在の値を取得
         const headerSearchInput = document.getElementById('search-form-input');
         const currentSearchQuery = headerSearchInput ? headerSearchInput.value.trim() : '';
-        
+
         // headerの値がある場合はそれを優先、なければURLパラメータを使用
         if (currentSearchQuery) {
             params.q = currentSearchQuery;
@@ -324,6 +361,32 @@
     }
 
     /**
+     * 「もっと見る」ボタンの表示/非表示を切り替え
+     * @param {boolean} show - 表示するかどうか
+     */
+    function toggleLoadMoreButton(show) {
+        const loadMoreContainer = document.querySelector('.search_results__load-more');
+        if (loadMoreContainer) {
+            loadMoreContainer.style.display = show ? 'grid' : 'none';
+        }
+    }
+
+    /**
+     * 「もっと見る」ボタンのクリックイベントを処理
+     */
+    function handleLoadMoreButton() {
+        const loadMoreBtn = document.querySelector('#load-more button');
+        if (loadMoreBtn) {
+            loadMoreBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                // 追加で15件表示
+                displayResults(filteredPosts, true);
+            });
+        }
+    }
+
+    /**
      * フォーム送信時にaria-pressed状態のタグとheaderの検索値をhiddenフィールドに変換
      */
     function handleFormSubmit() {
@@ -337,10 +400,10 @@
             // headerの検索フィールドから値を取得
             const headerSearchInput = document.getElementById('search-form-input');
             const searchQuery = headerSearchInput ? headerSearchInput.value.trim() : '';
-            
+
             // 既存のqのhiddenフィールドを削除
             form.querySelectorAll('input[name="q"]').forEach(input => input.remove());
-            
+
             // 検索クエリをhiddenフィールドに追加
             if (searchQuery) {
                 const hiddenInput = document.createElement('input');
@@ -384,6 +447,9 @@
      * 投稿データの取得、フォーム初期化、イベントハンドラー設定を行う
      */
     async function initialize() {
+        // 初期状態では「もっと見る」ボタンを非表示
+        toggleLoadMoreButton(false);
+
         // 投稿データを取得
         allPosts = await fetchPosts('d268b2375c8d0ab5ed046e2220');
 
@@ -394,6 +460,7 @@
         handleSortChange();
         handleTagButtonClicks();
         handleFormSubmit();
+        handleLoadMoreButton();
 
         // 初回表示
         applyFilters();
