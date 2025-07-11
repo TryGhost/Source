@@ -76,6 +76,15 @@
 
         // Set author checkboxes from URL query parameters
         setAuthorCheckboxes();
+
+        // Scroll behavior for the sticky button
+        const stickyBtn = document.querySelector('.search_results__sticky_btn');
+        const navbar = document.querySelector('.search_results__navbar');
+        if (stickyBtn && navbar) {
+            stickyBtn.addEventListener('click', function() {
+                navbar.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        }
     }
 
     // Initialize when DOM is ready
