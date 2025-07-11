@@ -429,3 +429,24 @@
   color: var(--color-text-primary);
   letter-spacing: var(--letter-spacing-wide-xl);
 }
+
+.search_results__sticky_btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+@media (768px <= width) {
+  .search_results__sticky_btn {
+    display: none;
+  }
+}
