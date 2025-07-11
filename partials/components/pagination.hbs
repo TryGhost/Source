@@ -39,7 +39,7 @@ Parameters:
 {{#if showLoadMore}}
     {{#if pagination.next}}
     <div class="pagination-load-more-wrapper tag-load-more-wrapper">
-        {{> "components/button" text="もっと見る" class="pagination-load-more tag-load-more" attributes=(concat 'data-next-url="' pagination.next '"')}}
+        {{> "components/button" text="もっと見る" attributes=(concat 'data-next-url="' pagination.next '"')}}
     </div>
     {{/if}}
 {{/if}}
