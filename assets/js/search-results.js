@@ -270,8 +270,13 @@
     function initializeForm() {
         const params = getUrlParams();
 
-        // headerのキーワード検索フィールドを設定
-        const headerSearchInput = document.getElementById('search-form-input');
+        // キーワード検索フィールドを設定（両方のフォームに値を設定）
+        const searchResultsInput = document.getElementById('search-results-input');
+        const headerSearchInput = document.getElementById('header-search-input');
+        
+        if (searchResultsInput) {
+            searchResultsInput.value = params.q;
+        }
         if (headerSearchInput) {
             headerSearchInput.value = params.q;
         }
@@ -324,9 +329,11 @@
     function applyFilters() {
         const params = getUrlParams();
 
-        // headerの検索フィールドから現在の値を取得
-        const headerSearchInput = document.getElementById('search-form-input');
-        const currentSearchQuery = headerSearchInput ? headerSearchInput.value.trim() : '';
+        // 検索フィールドから現在の値を取得（検索結果ページ内を優先）
+        const searchResultsInput = document.getElementById('search-results-input');
+        const headerSearchInput = document.getElementById('header-search-input');
+        const searchInput = searchResultsInput || headerSearchInput;
+        const currentSearchQuery = searchInput ? searchInput.value.trim() : '';
 
         // headerの値がある場合はそれを優先、なければURLパラメータを使用
         if (currentSearchQuery) {
@@ -397,9 +404,11 @@
         }
 
         form.addEventListener('submit', () => {
-            // headerの検索フィールドから値を取得
-            const headerSearchInput = document.getElementById('search-form-input');
-            const searchQuery = headerSearchInput ? headerSearchInput.value.trim() : '';
+            // 検索結果ページ内の検索フィールドを優先的に取得、なければヘッダーから取得
+            const searchResultsInput = document.getElementById('search-results-input');
+            const headerSearchInput = document.getElementById('header-search-input');
+            const searchInput = searchResultsInput || headerSearchInput;
+            const searchQuery = searchInput ? searchInput.value.trim() : '';
 
             // 既存のqのhiddenフィールドを削除
             form.querySelectorAll('input[name="q"]').forEach(input => input.remove());
@@ -447,21 +456,25 @@
      * 検索結果ページでヘッダーフォームが送信されたときに「この条件で検索」ボタンをクリック
      */
     function handleHeaderFormSubmit() {
-        const headerForm = document.querySelector('form[action="/search-results"]');
+        // 全ての検索フォーム（ヘッダーと検索結果ページ内の両方）を取得
+        const searchForms = document.querySelectorAll('form[action="/search-results"]');
         const postsForm = document.querySelector('form[id="posts"]');
         
-        if (!headerForm || !postsForm) {
+        if (!searchForms.length || !postsForm) {
             return;
         }
 
-        headerForm.addEventListener('submit', function(e) {
-            e.preventDefault(); // デフォルトのフォーム送信を無効化
-            
-            // 既存の「この条件で検索」ボタンをクリックして処理を実行
-            const submitButton = postsForm.querySelector('.search_results__filter-button');
-            if (submitButton) {
-                submitButton.click();
-            }
+        // 各検索フォームに対してイベントリスナーを設定
+        searchForms.forEach(function(form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault(); // デフォルトのフォーム送信を無効化
+                
+                // 既存の「この条件で検索」ボタンをクリックして処理を実行
+                const submitButton = postsForm.querySelector('.search_results__filter-button');
+                if (submitButton) {
+                    submitButton.click();
+                }
+            });
         });
     }
 

@@ -4,6 +4,11 @@
     {{!-- Search Filter Section --}}
     <section class="search_results__navbar">
         <div class="search_results__navbar-container">
+            <div class="search_results__query">
+                <form action="/search-results" method="GET">
+                    {{> "components/search-form" inputId="search-results-input"}}
+                </form>
+            </div>
             <div class="search_results__navbar-header">
                 {{> "components/button" text="詳細検索" width="126px" attributes='id="accordion-toggle" aria-expanded="false" aria-controls="accordion-content"' }}
                 {{!-- Sort Controls --}}
