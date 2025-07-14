@@ -9,7 +9,7 @@
 
 .pickup-tag-container {
   max-width: var(--container-max-width);
-  padding-inline: var(--space-md);
+  padding-inline: var(--space-lg);
   display: flex;
   flex-direction: column;
   row-gap: var(--space-xl);
@@ -19,12 +19,13 @@
 .pickup-tag-header {
   display: flex;
   flex-direction: column;
-  gap: var(--space-md);
+  gap: var(--space-lg);
 }
 
 .pickup-tag-label {
   font: var(--heading-xxs);
   color: var(--color-text-primary);
+  margin: 0 0 var(--space-sm) 0;
 }
 
 .pickup-tag-title {
@@ -32,18 +33,19 @@
   letter-spacing: var(--letter-spacing-wide-2xl);
   line-height: var(--line-height-tight);
   color: var(--color-text-primary);
+  margin: 0 0 var(--space-lg) 0;
 }
 
 .pickup-tag-description {
-  font: var(--text-medium-regular);
+  font: var(--text-regular-regular);
   line-height: var(--line-height-relaxed);
   color: var(--color-text-primary);
+  margin: 0 0 var(--space-xl) 0;
 }
 
 .pickup-tag-content {
   display: flex;
   flex-direction: column;
-  row-gap: var(--space-md);
   flex-shrink: 0;
 }
 
@@ -53,6 +55,7 @@
   aspect-ratio: 335/348;
   border-radius: var(--radius-lg);
   overflow: hidden;
+  margin: 0 0 var(--space-xl) 0;
 }
 
 .pickup-tag-img {
@@ -129,14 +132,22 @@
     gap: var(--space-xl);
   }
 
+  .pickup-tag-label {
+    font: var(--heading-xs);
+    color: var(--color-text-primary);
+    margin: 0 0 var(--space-md) 0;
+  }
+
   .pickup-tag-title {
-    font: var(--heading-xxl);
+    font: var(--heading-xl);
     letter-spacing: var(--letter-spacing-wide-4xl);
+    margin: 0 0 var(--space-xl) 0;
   }
 
   .pickup-tag-description {
     font: var(--text-medium-regular);
     letter-spacing: var(--letter-spacing-wide-md);
+    margin: 0 0 var(--space-2xl) 0;
   }
 
   .pickup-tag-img {
@@ -161,7 +172,6 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    row-gap: var(--space-md);
     flex-shrink: 0;
     text-align: left; 
   }
