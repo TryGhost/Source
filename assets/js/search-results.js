@@ -273,7 +273,7 @@
         // キーワード検索フィールドを設定（両方のフォームに値を設定）
         const searchResultsInput = document.getElementById('search-results-input');
         const headerSearchInput = document.getElementById('header-search-input');
-        
+
         if (searchResultsInput) {
             searchResultsInput.value = params.q;
         }
@@ -459,7 +459,7 @@
         // 全ての検索フォーム（ヘッダーと検索結果ページ内の両方）を取得
         const searchForms = document.querySelectorAll('form[action="/search-results"]');
         const postsForm = document.querySelector('form[id="posts"]');
-        
+
         if (!searchForms.length || !postsForm) {
             return;
         }
@@ -468,7 +468,7 @@
         searchForms.forEach(function(form) {
             form.addEventListener('submit', function(e) {
                 e.preventDefault(); // デフォルトのフォーム送信を無効化
-                
+
                 // 既存の「この条件で検索」ボタンをクリックして処理を実行
                 const submitButton = postsForm.querySelector('.search_results__filter-button');
                 if (submitButton) {
@@ -528,12 +528,16 @@
      * 投稿データの取得、フォーム初期化、イベントハンドラー設定を行う
      */
     async function initialize() {
-        // 初期状態では「もっと見る」ボタンを非表示
-        toggleLoadMoreButton(false);
-
         // 投稿データを取得
         const contentApiKey = document.querySelector('#search_results')?.getAttribute('data-content-api-key');
+        if (!contentApiKey) {
+            return;
+        }
+
         allPosts = await fetchPosts(contentApiKey);
+
+        // 初期状態では「もっと見る」ボタンを非表示
+        toggleLoadMoreButton(false);
 
         // フォームを初期化
         initializeForm();
