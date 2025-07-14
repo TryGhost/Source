@@ -1,19 +1,20 @@
 {{!--
 Button Component
-Usage: {{> "components/button" text="Button Text" class="custom-class" attributes='data-foo="bar"'}}
+Usage: {{> "components/button" text="Button Text" attributes='data-foo="bar"'}}
 
 Parameters:
 - text: Button text content (required)
-- class: Additional CSS classes (optional)
 - type: Button type - "button", "submit", "reset" (default: "button")
 - attributes: Additional HTML attributes as a string (optional)
 - disabled: Boolean to disable the button (optional)
+- width: Button width - CSS value like "100%", "200px", "auto" (optional)
 --}}
 
-<button 
+<button
     type="{{#if type}}{{type}}{{else}}button{{/if}}"
-    class="button {{#if class}}{{class}}{{/if}}"
+    class="button"
     {{#if disabled}}disabled{{/if}}
+    {{#if width}}style="width: {{width}};"{{/if}}
     {{{attributes}}}
 >
     {{text}}

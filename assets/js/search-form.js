@@ -79,7 +79,7 @@
 
         // Scroll behavior for the sticky button
         const stickyBtn = document.querySelector('.search_results__sticky_btn');
-        const navbar = document.querySelector('.search_results__navbar');
+        const navbar = document.querySelector('.search_results__page');
         if (stickyBtn && navbar) {
             stickyBtn.addEventListener('click', function() {
                 navbar.scrollIntoView({ behavior: 'smooth', block: 'start' });

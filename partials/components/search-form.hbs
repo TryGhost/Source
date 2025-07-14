@@ -1,17 +1,17 @@
-{{!-- Search Form Component --}}
+{{!-- Search Form Input Component --}}
 {{!--
-  Usage: {{> "search-form" placeholder="渋谷　中華" class="header-search"}}
+  Usage: {{> "search-form" placeholder="渋谷　中華" inputId="header-search-input" inputClass="header-search-input" buttonClass="header-search-btn"}}
   Parameters:
     - placeholder: プレースホルダーテキスト（デフォルト: "渋谷　中華"）
-    - class: 追加のCSSクラス（デフォルト: なし）
+    - inputId: input要素のID（デフォルト: "search-form-input"）
 --}}
-<form class="search-form {{class}}" role="search" action="/search-results" method="GET">
+<div class="search-form">
     <input
         name="q"
         type="search"
         placeholder="{{#if placeholder}}{{placeholder}}{{else}}渋谷　中華{{/if}}"
         class="search-form-input"
-        id="search-form-input"
+        {{#if inputId}}id="{{inputId}}"{{else}}id="search-form-input"{{/if}}
     >
     <button type="submit" class="search-form-btn">検索</button>
-</form>
+</div>

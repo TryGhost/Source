@@ -1,32 +1,40 @@
 {{!< default}}
 
-<div class="search_results__page">
-
+<div class="search_results__page" id="search_results" data-content-api-key="{{content_api_key}}">
     {{!-- Search Filter Section --}}
     <section class="search_results__navbar">
         <div class="search_results__navbar-container">
-
-            {{!-- Sort Controls --}}
-            <div class="search_results__sort">
-                <label class="search_results__sort-label" id="sort">並び替え</label>
-                <select class="search_results__sort-dropdown" name="sort">
-                    <option value="newest">新着順</option>
-                    <option value="relevance">関連度順</option>
-                </select>
+            <div class="search_results__query">
+                <form action="/search-results" method="GET">
+                    {{> "components/search-form" inputId="search-results-input"}}
+                </form>
+            </div>
+            <div class="search_results__navbar-header">
+                {{> "components/button" text="詳細検索" width="126px" attributes='id="accordion-toggle" aria-expanded="false" aria-controls="accordion-content"' }}
+                {{!-- Sort Controls --}}
+                <div class="search_results__sort">
+                    <label class="search_results__sort-label" id="sort">並び替え</label>
+                    <select class="search_results__sort-dropdown" name="sort">
+                        <option value="newest">新着順</option>
+                        <option value="popular">人気順</option>
+                    </select>
+                </div>
             </div>
 
-            {{!-- Magazine Selection --}}
-            <form class="search_results__form-form" role="search" action="/search-results" method="GET">
-                <input type="hidden" name="q" id="hidden-q" value="">
-                <div class="search_results__magazines">
-                    <div class="search_results__magazines-title">雑誌を選択</div>
-                    <div class="search_results__magazines-grid">
-                        {{#get "authors" limit="all"}}
-                            {{#foreach authors}}
-                                <div class="search_results__magazines-item">
-                                    <input type="checkbox" id="author-{{slug}}" name="authors" value="{{slug}}" class="search_results__magazines-checkbox">
-                                    <label for="author-{{slug}}" class="search_results__magazines-label">{{name}}</label>
-                                </div>
+            <div id="accordion-content" class="search_results__accordion" aria-hidden="true">
+                <form id="posts" class="search_results__form-form" role="search">
+                {{!-- タグセクション --}}
+                <div class="search_results__tags">
+                    <div class="search_results__tags-title">タグを選択</div>
+                    <div class="search_results__tags-grid" id="tag-list">
+                        {{#get "tags" filter="visibility:public" order="count.posts desc" limit="10"}}
+                            {{#foreach tags}}
+                                {{> "components/button"
+                                    text=(concat "#" name)
+                                    class="search_results__tag-button"
+                                    type="button"
+                                    attributes=(concat 'data-tag-slug="' slug '" aria-pressed="false"')
+                                }}
                             {{/foreach}}
                         {{/get}}
                     </div>
@@ -35,44 +43,22 @@
                     この条件で検索
                 </button>
             </form>
+            </div>
         </div>
     </section>
 
     {{!-- Results Content Section --}}
     <main class="search_results__content">
-        <div class="search_results__content-container">
-            {{#get "posts" order="published_at desc" include="tags,authors"}}
-            {{#if posts}}
-                <div class="search_results__header">
-                    <div class="search_results__header-tag">Search Result</div>
-                    <h1 class="search_results__header-title">
-                        検索結果: {{#if posts}}{{posts.length}}{{else}}0{{/if}}件
-                    </h1>
-                </div>
-                <div class="search_results__grid">
-                    {{#foreach posts}}
-                        {{> "components/card" post=this}}
-                    {{/foreach}}
-                </div>
-
-                {{!-- Load More Button --}}
-                {{#if pagination.next}}
-                    <button class="search_results__load-more" type="button">
-                        もっとみる
-                    </button>
-                {{/if}}
-            {{else}}
-                <div class="search_results__header">
-                    <div class="search_results__header-tag">sorry</div>
-                    <div class="search_results__header-title">
-                        検索結果が見つかりませんでした。<br/>条件を変更して再度検索してください。
-                    </div>
-                </div>
-            {{/if}}
+        <div class="search_results__content-container" id="search-results-container">
+            <div class="search_results__loading">
+                検索中...
+            </div>
         </div>
-        {{/get}}
-        <button type="button" class="search_results__sticky_btn">
-            <img src="{{asset "images/icons/sp-sticky-search.svg"}}" alt="詳細検索">
-        </button>
+        <div id="load-more" class="search_results__load-more">
+            {{> "components/button" text="もっと見る" }}
+        </div>
     </main>
+    <button type="button" class="search_results__sticky_btn">
+        <img src="{{asset "images/icons/sp-sticky-search.svg"}}" alt="詳細検索">
+    </button>
 </div>
