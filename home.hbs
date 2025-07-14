@@ -21,17 +21,17 @@
     </section>
 
     {{!-- New Articles Section --}}
-    {{#get "posts" order="published_at desc" limit="3" include="tags,authors"}}
+    {{#get "posts" order="published_at desc" limit="3" include="tags,group"}}
         {{> "components/new-articles" posts=posts}}
     {{/get}}
 
     {{!-- Popular Articles Section --}}
-    {{#get "posts" order="published_at desc" limit="3" include="tags,authors"}}
+    {{#get "posts" order="published_at desc" limit="3" include="tags,group"}}
         {{> "components/popular-articles" posts=posts showPagination=true pagination=pagination}}
     {{/get}}
 
     {{!-- Featured Articles Section --}}
-    {{#get "posts" filter="featured:true" order="published_at desc" limit="3" include="tags,authors"}}
+    {{#get "posts" filter="featured:true" order="published_at desc" limit="3" include="tags,group"}}
         {{> "components/featured-articles" posts=posts}}
     {{/get}}
 

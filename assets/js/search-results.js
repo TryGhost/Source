@@ -32,7 +32,7 @@
     async function fetchPosts(key) {
         try {
             const response = await fetch(
-                `/ghost/api/content/posts/?key=${key}&include=tags,authors&limit=all`
+                `/ghost/api/content/posts/?key=${key}&include=tags,group&limit=all`
             );
 
             if (!response.ok) {
@@ -55,12 +55,12 @@
      * @param {string} [post.excerpt] - 投稿の抜粋
      * @param {string} post.published_at - 公開日時
      * @param {Array} [post.tags] - タグの配列
-     * @param {Object} [post.primary_author] - 主要著者オブジェクト
+     * @param {Object} [post.group] - グループオブジェクト
      * @returns {string} HTMLカードの文字列
      */
     function createPostCard(post) {
         const featureImage = post.feature_image;
-        const authorProfileImage = post.primary_author?.profile_image;
+        const groupLogoImage = post.group?.logo_image;
         const tags = post.tags ? post.tags.slice(0, 2) : [];
         const tagHtml = tags.map(tag => `#${tag.name}`).join(' ');
 
@@ -83,9 +83,9 @@
                             : `<img src='/assets/images/default-post-image.png' alt='' loading='lazy'>`
                     }
                     ${
-                        authorProfileImage
+                        groupLogoImage
                             ? `
-                        <div class='card-magazine-logo' style='background-image: url(${authorProfileImage})'></div>
+                        <div class='card-magazine-logo' style='background-image: url(${groupLogoImage})'></div>
                     `
                             : ''
                     }
