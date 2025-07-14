@@ -17,7 +17,8 @@
 .partners-header {
   display: flex;
   flex-direction: column;
-  row-gap: var(--space-md);
+  row-gap: var(--space-lg);
+  text-wrap: pretty;
 }
 
 .partners-title {
@@ -65,8 +66,8 @@
   }
 
   .partners-header {
-    row-gap: var(--space-xl);
-    max-width: 600px;
+    flex-direction: row;
+    row-gap: var(--space-6xl);
   }
 
   .partners-title {
