@@ -16,13 +16,8 @@
   position: relative;
   height: 100vh;
   min-height: 500px;
-  background: linear-gradient(
-      90deg,
-      rgba(0, 0, 0, 0.3) 0%,
-      rgba(0, 0, 0, 0.3) 100%
-    ),
-    url("https://images.unsplash.com/photo-1514933651103-005eec06c04b")
-      center/cover;
+  background-size: cover;
+  background-position: center;
   display: flex;
   align-items: center;
   justify-content: center;
