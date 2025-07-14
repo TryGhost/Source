@@ -77,13 +77,11 @@
         return `
             <article class='card'>
                 <div class='card-image'>
-                    <a href='${post.url}'>
-                        ${
-                            featureImage
-                                ? `<img src='${featureImage}' alt='' loading='lazy'>`
-                                : `<img src='/assets/images/default-post-image.png' alt='' loading='lazy'>`
-                        }
-                    </a>
+                    ${
+                        featureImage
+                            ? `<img src='${featureImage}' alt='' loading='lazy'>`
+                            : `<img src='/assets/images/default-post-image.png' alt='' loading='lazy'>`
+                    }
                     ${
                         authorProfileImage
                             ? `
@@ -93,7 +91,7 @@
                     }
                 </div>
 
-                <div class='card-content'>
+                <a href='${post.url}' class='card-content'>
                     <div class='card-header'>
                         ${
                             tags.length > 0
@@ -105,7 +103,7 @@
                                 : ''
                         }
                         <h2 class='card-title'>
-                            <a href='${post.url}'>${post.title}</a>
+                            ${post.title}
                         </h2>
                         ${
                             post.excerpt
@@ -120,14 +118,14 @@
                         <time class='card-date' datetime='${post.published_at}'>
                             ${formattedDate}
                         </time>
-                        <a href='${post.url}' class='card-readmore'>
+                        <span class='card-readmore'>
                             続きを読む
                             <svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
                                 <path d='M9 6l6 6-6 6' stroke='#0c060c' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/>
                             </svg>
-                        </a>
+                        </span>
                     </div>
-                </div>
+                </a>
             </article>
         `;
     }
