@@ -76,24 +76,22 @@
 
         return `
             <article class='card'>
-                ${
-                    featureImage
-                        ? `
-                    <div class='card-image'>
-                        <a href='${post.url}'>
-                            <img src='${featureImage}' alt='' loading='lazy'>
-                        </a>
+                <div class='card-image'>
+                    <a href='${post.url}'>
                         ${
-                            authorProfileImage
-                                ? `
-                            <div class='card-magazine-logo' style='background-image: url(${authorProfileImage})'></div>
-                        `
-                                : ''
+                            featureImage
+                                ? `<img src='${featureImage}' alt='' loading='lazy'>`
+                                : `<img src='/assets/images/default-post-image.png' alt='' loading='lazy'>`
                         }
-                    </div>
-                `
-                        : ''
-                }
+                    </a>
+                    ${
+                        authorProfileImage
+                            ? `
+                        <div class='card-magazine-logo' style='background-image: url(${authorProfileImage})'></div>
+                    `
+                            : ''
+                    }
+                </div>
 
                 <div class='card-content'>
                     <div class='card-header'>

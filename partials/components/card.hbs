@@ -15,10 +15,13 @@ Parameters:
 --}}
 
 <article class="card {{#if card-class}}{{card-class}}{{/if}}">
-    {{#if post.feature_image}}
     <div class="card-image">
         <a href="{{post.url}}">
-            <img src="{{img_url post.feature_image size="m"}}" alt="" loading="lazy">
+            {{#if post.feature_image}}
+                <img src="{{img_url post.feature_image size="m"}}" alt="" loading="lazy">
+            {{else}}
+                <img src="{{asset "images/default-post-image.png"}}" alt="" loading="lazy">
+            {{/if}}
         </a>
         {{#if post.primary_author.profile_image}}
         <div class="card-magazine-logo" style="background-image: url({{img_url post.primary_author.profile_image size="xs"}})"></div>
@@ -29,7 +32,6 @@ Parameters:
         </div>
         {{/if}}
     </div>
-    {{/if}}
 
     <div class="card-content {{#if card-contents-class}}{{card-contents-class}}{{/if}}">
         <div class="card-header">
