@@ -443,6 +443,29 @@
     }
 
     /**
+     * ヘッダーフォームの送信処理
+     * 検索結果ページでヘッダーフォームが送信されたときに「この条件で検索」ボタンをクリック
+     */
+    function handleHeaderFormSubmit() {
+        const headerForm = document.querySelector('form[action="/search-results"]');
+        const postsForm = document.querySelector('form[id="posts"]');
+        
+        if (!headerForm || !postsForm) {
+            return;
+        }
+
+        headerForm.addEventListener('submit', function(e) {
+            e.preventDefault(); // デフォルトのフォーム送信を無効化
+            
+            // 既存の「この条件で検索」ボタンをクリックして処理を実行
+            const submitButton = postsForm.querySelector('.search_results__filter-button');
+            if (submitButton) {
+                submitButton.click();
+            }
+        });
+    }
+
+    /**
      * アコーディオンの開閉を処理
      */
     function handleAccordion() {
@@ -508,6 +531,7 @@
         handleFormSubmit();
         handleLoadMoreButton();
         handleAccordion();
+        handleHeaderFormSubmit();
 
         // 初回表示
         applyFilters();
