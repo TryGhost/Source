@@ -1,0 +1,32 @@
+{{!--
+Checkbox Component
+Usage: {{> "components/checkbox" name="fieldname" value="value" id="unique-id" checked=boolean label="Label text"}}
+
+Parameters:
+- name: String - The name attribute for the input (required)
+- value: String - The value attribute for the input (required)
+- id: String - The id attribute for the input (required)
+- checked: Boolean - Whether the checkbox is checked (optional, defaults to false)
+- label: String - The label text (optional)
+- disabled: Boolean - Whether the checkbox is disabled (optional, defaults to false)
+--}}
+
+<div class="checkbox-wrapper">
+    <label class="checkbox-label" for="{{id}}">
+        <input
+            type="checkbox"
+            class="checkbox-input"
+            name="{{name}}"
+            value="{{value}}"
+            id="{{id}}"
+            {{#if checked}}checked{{/if}}
+            {{#if disabled}}disabled{{/if}}
+        >
+        <span class="checkbox-box">
+            {{> "icons/checkbox"}}
+        </span>
+        {{#if label}}
+        <span class="checkbox-text">{{label}}</span>
+        {{/if}}
+    </label>
+</div>

@@ -12,6 +12,7 @@
      * @returns {Object} 検索パラメータオブジェクト
      * @returns {string} returns.q - 検索クエリ文字列
      * @returns {string[]} returns.tags - 選択されたタグスラッグの配列
+     * @returns {string[]} returns.groups - 選択されたグループIDの配列
      * @returns {string} returns.sort - ソート順
      */
     function getUrlParams() {
@@ -20,6 +21,7 @@
         return {
             q: params.get('q') || '',
             tags: params.getAll('tags'),
+            groups: params.getAll('groups'),
             sort: params.get('sort') || 'newest'
         };
     }
@@ -208,6 +210,7 @@
      * @param {Object} params - フィルター条件オブジェクト
      * @param {string} [params.q] - 検索クエリ（タイトルと抜粋で検索）
      * @param {string[]} [params.tags] - フィルターするタグスラッグの配列
+     * @param {string[]} [params.groups] - フィルターするグループIDの配列
      * @returns {Array} フィルタリングされた投稿の配列
      */
     function filterPosts(posts, params) {
@@ -237,6 +240,16 @@
                 }
             }
 
+            // グループでフィルター
+            if (params.groups && params.groups.length > 0) {
+                const postGroupId = post.group ? post.group.id : null;
+                const hasMatchingGroup = params.groups.includes(postGroupId);
+
+                if (!hasMatchingGroup) {
+                    return false;
+                }
+            }
+
             return true;
         });
     }
@@ -260,6 +273,7 @@
         });
     }
 
+
     /**
      * URLパラメータに基づいてフォーム要素の初期状態を設定
      */
@@ -277,11 +291,22 @@
             headerSearchInput.value = params.q;
         }
 
+        // 入力フィールドの同期を設定
+        setupInputSync()
+
         // タグボタンのaria-pressed状態を設定
         params.tags.forEach((tag) => {
             const button = document.querySelector(`[data-tag-slug='${tag}']`);
             if (button) {
                 button.setAttribute('aria-pressed', 'true');
+            }
+        });
+
+        // グループチェックボックスの初期状態を設定
+        params.groups.forEach((groupId) => {
+            const checkbox = document.querySelector(`input[name="magazine"][value="${groupId}"]`);
+            if (checkbox) {
+                checkbox.checked = true;
             }
         });
 
@@ -444,6 +469,31 @@
                 hiddenInput.value = tag;
                 form.appendChild(hiddenInput);
             });
+
+            // 選択されたグループをhiddenフィールドに設定
+            const selectedGroups = [];
+            const groupCheckboxes = document.querySelectorAll('input[name="magazine"]:checked');
+
+            groupCheckboxes.forEach((checkbox) => {
+                const groupId = checkbox.value;
+                if (groupId) {
+                    selectedGroups.push(groupId);
+                }
+            });
+
+            // 既存のgroupsのhiddenフィールドを削除
+            form.querySelectorAll('input[name="groups"]').forEach(input =>
+                input.remove()
+            );
+
+            // 新しいgroupsのhiddenフィールドを追加
+            selectedGroups.forEach((groupId) => {
+                const hiddenInput = document.createElement('input');
+                hiddenInput.type = 'hidden';
+                hiddenInput.name = 'groups';
+                hiddenInput.value = groupId;
+                form.appendChild(hiddenInput);
+            });
         });
     }
 
@@ -517,6 +567,29 @@
                 }
             });
         }
+    }
+
+    /**
+     * 検索入力フィールドの同期を設定
+     * search-results-inputとheader-search-inputの値を常に同期させる
+     */
+    function setupInputSync() {
+        const searchResultsInput = document.getElementById('search-results-input');
+        const headerSearchInput = document.getElementById('header-search-input');
+
+        if (!searchResultsInput || !headerSearchInput) {
+            return;
+        }
+
+        // search-results-inputの入力イベント
+        searchResultsInput.addEventListener('input', function() {
+            headerSearchInput.value = this.value;
+        });
+
+        // header-search-inputの入力イベント
+        headerSearchInput.addEventListener('input', function() {
+            searchResultsInput.value = this.value;
+        });
     }
 
     /**

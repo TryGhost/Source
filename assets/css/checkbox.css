@@ -1,0 +1,91 @@
+/* Checkbox Component Styles
+   ---------------------------------------------------------- */
+
+.checkbox-wrapper {
+    display: inline-block;
+}
+
+.checkbox-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+}
+
+.checkbox-input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.checkbox-box {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 17px;
+    height: 17px;
+    border: 2px solid var(--color-text-white, #ffffff);
+    border-radius: 2px;
+    background-color: transparent;
+    flex-shrink: 0;
+}
+
+.checkbox-box svg {
+    width: 18px;
+    height: 18px;
+    opacity: 0;
+}
+
+.checkbox-box svg path {
+    fill: var(--color-white);
+}
+
+.checkbox-text {
+    font: var(--text-regular, 14px/1.5 sans-serif);
+    color: var(--color-white, #ffffff);
+    white-space: nowrap;
+}
+
+/* Checked State */
+.checkbox-input:checked + .checkbox-box {
+    background-color: white;
+}
+
+.checkbox-input:checked + .checkbox-box svg {
+    opacity: 1;
+}
+
+/* Focus State */
+.checkbox-input:focus + .checkbox-box {
+    outline: 2px solid var(--color-primary-bg, #007bff);
+    outline-offset: 2px;
+}
+
+/* Disabled State */
+.checkbox-input:disabled + .checkbox-box {
+    opacity: 0.5;
+    cursor: not-allowed;
+    border-color: var(--color-text-disabled, #ccc);
+}
+
+.checkbox-input:disabled + .checkbox-box + .checkbox-text {
+    opacity: 0.5;
+    cursor: not-allowed;
+    color: var(--color-text-disabled, #ccc);
+}
+
+.checkbox-input:disabled:checked + .checkbox-box {
+    background-color: var(--color-text-disabled, #ccc);
+    border-color: var(--color-text-disabled, #ccc);
+}
+
+

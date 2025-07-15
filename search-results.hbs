@@ -23,20 +23,34 @@
 
             <div id="accordion-content" class="search_results__accordion" aria-hidden="true">
                 <form id="posts" class="search_results__form-form" role="search">
-                {{!-- タグセクション --}}
-                <div class="search_results__tags">
-                    <div class="search_results__tags-title">タグを選択</div>
-                    <div class="search_results__tags-grid" id="tag-list">
-                        {{#get "tags" filter="visibility:public" order="count.posts desc" limit="10"}}
-                            {{#foreach tags}}
-                                {{> "components/button"
-                                    text=(concat "#" name)
-                                    class="search_results__tag-button"
-                                    type="button"
-                                    attributes=(concat 'data-tag-slug="' slug '" aria-pressed="false"')
-                                }}
+                    <div class="search_results__form-filter">
+                    {{!-- タグセクション --}}
+                    <div class="search_results__tags">
+                        <div class="search_results__tags-title">タグを選択</div>
+                        <div class="search_results__tags-grid" id="tag-list">
+                            {{#get "tags" filter="visibility:public" order="count.posts desc" limit="10"}}
+                                {{#foreach tags}}
+                                    {{> "components/button"
+                                        text=(concat "#" name)
+                                        class="search_results__tag-button"
+                                        type="button"
+                                        attributes=(concat 'data-tag-slug="' slug '" aria-pressed="false"')
+                                    }}
+                                {{/foreach}}
+                            {{/get}}
+                        </div>
+                    </div>
+
+                    {{!-- 雑誌セクション --}}
+                    <div class="search_results__magazines">
+                        <div class="search_results__magazines-title">雑誌を選択</div>
+                        <div class="search_results__magazines-grid" id="magazine-list">
+                            {{#get "groups"}}
+                            {{#foreach groups}}
+                                {{> "components/checkbox" name="magazine" value=id id=(concat "group-" id) label=name }}
                             {{/foreach}}
-                        {{/get}}
+                            {{/get}}
+                        </div>
                     </div>
                 </div>
                 <button class="search_results__filter-button" type="submit">
