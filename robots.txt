@@ -1,0 +1,158 @@
+# robots.txt pour StackGUI.de
+# Dernière mise à jour : Juillet 2025
+# Objectif : Bloquer les robots IA tout en préservant l'accès aux moteurs de recherche
+
+# =============================================================================
+# CONFIGURATION POUR LES MOTEURS DE RECHERCHE TRADITIONNELS
+# =============================================================================
+# Google, Bing, Yahoo, DuckDuckGo, Yandex, Baidu - Accès autorisé partout
+User-agent: Googlebot
+User-agent: Bingbot
+User-agent: Slurp
+User-agent: DuckDuckBot
+User-agent: YandexBot
+User-agent: Baiduspider
+User-agent: facebookexternalhit
+Disallow: /ghost/
+Disallow: /email/
+Disallow: /members/api/comments/counts/
+Disallow: /r/
+Disallow: /webmentions/receive/
+
+# =============================================================================
+# BLOCAGE DES ROBOTS IA - ACCÈS INTERDIT PARTOUT SAUF ZONES AUTORISÉES
+# =============================================================================
+
+# OpenAI (ChatGPT, GPT-4)
+User-agent: ChatGPT-User
+User-agent: OAI-SearchBot
+User-agent: GPTBot
+Allow: /newsletter/*
+Allow: /ressources/*
+Allow: /services/
+Allow: /about/
+Disallow: /
+
+# Anthropic (Claude)
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+Allow: /newsletter/*
+Allow: /ressources/*
+Allow: /services/
+Allow: /about/
+Disallow: /
+
+# Google AI (Bard/Gemini)
+User-agent: Google-CloudVertexBot
+Allow: /newsletter/*
+Allow: /ressources/*
+Allow: /services/
+Allow: /about/
+Disallow: /
+
+# Microsoft AI
+User-agent: BingBot
+Allow: /newsletter/*
+Allow: /ressources/*
+Allow: /services/
+Allow: /about/
+Disallow: /
+
+# Meta AI
+User-agent: FacebookBot
+User-agent: Meta-ExternalAgent
+User-agent: Meta-ExternalFetcher
+Allow: /newsletter/*
+Allow: /ressources/*
+Allow: /services/
+Allow: /about/
+Disallow: /
+
+# Perplexity AI
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+Allow: /newsletter/*
+Allow: /ressources/*
+Allow: /services/
+Allow: /about/
+Disallow: /
+
+# Mistral AI
+User-agent: MistralAI-User
+Allow: /newsletter/*
+Allow: /ressources/*
+Allow: /services/
+Allow: /about/
+Disallow: /
+
+# ByteDance (TikTok)
+User-agent: Bytespider
+Allow: /newsletter/*
+Allow: /ressources/*
+Allow: /services/
+Allow: /about/
+Disallow: /
+
+# Amazon
+User-agent: Amazonbot
+Allow: /newsletter/*
+Allow: /ressources/*
+Allow: /services/
+Allow: /about/
+Disallow: /
+
+# Apple
+User-agent: Applebot
+Allow: /newsletter/*
+Allow: /ressources/*
+Allow: /services/
+Allow: /about/
+Disallow: /
+
+# Autres robots IA identifiés
+User-agent: archive.org_bot
+User-agent: CCBot
+User-agent: DuckAssistBot
+User-agent: PetalBot
+User-agent: ProRataInc
+User-agent: Timpibot
+Allow: /newsletter/*
+Allow: /ressources/*
+Allow: /services/
+Allow: /about/
+Disallow: /
+
+# =============================================================================
+# CONFIGURATION PAR DÉFAUT POUR TOUS LES AUTRES ROBOTS
+# =============================================================================
+# Tous les autres robots (non spécifiés) - Accès limité aux zones publiques
+User-agent: *
+Disallow: /ghost/
+Disallow: /email/
+Disallow: /members/api/comments/counts/
+Disallow: /r/
+Disallow: /webmentions/receive/
+
+# =============================================================================
+# INFORMATIONS GÉNÉRALES
+# =============================================================================
+# Sitemap pour l'indexation
+Sitemap: https://www.stackgui.de/sitemap.xml
+
+# =============================================================================
+# NOTES DE MAINTENANCE
+# =============================================================================
+# Pages autorisées pour tous (y compris IA) :
+# - /newsletter/* : Newsletter et archives
+# - /tag/ressources/* : Contenu ressources gratuites
+# - /services/ : Page services (commercial)
+# - /about/ : Page à propos
+#
+# Pages protégées contre l'IA :
+# - Tout le reste du contenu informationnel
+# - Articles de blog principaux
+# - Contenu premium
+#
+# Vérification recommandée : Tester avec Google Search Console
+# et surveiller les logs d'accès pour s'assurer du respect des directives
