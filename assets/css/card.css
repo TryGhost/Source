@@ -54,6 +54,18 @@
   flex: 1;
 }
 
+.card-content[data-card-color="new"] {
+  background-color: var(--color-bg-new-card);
+}
+
+.card-content[data-card-color="popular"] {
+  background-color: var(--color-bg-popular-card);
+}
+
+.card-content[data-card-color="featured"] {
+  background-color: var(--color-bg-featured-card);
+}
+
 /* Card Header */
 .card-header {
   display: flex;
@@ -136,13 +148,6 @@
 .card-readmore svg {
   width: 24px;
   height: 24px;
-}
-
-/* Card Variants */
-
-/* Featured Card */
-.card--featured {
-  background-color: var(--color-bg-featured-card);
 }
 
 /* Small Card */

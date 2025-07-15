@@ -14,9 +14,11 @@
   --color-bg-primary: #0c060c;
   --color-bg-secondary: #ffffff;
   --color-bg-new-articles: #fef1f1;
+  --color-bg-new-card: #fef1f1;
   --color-bg-popular-articles: #f9dc9a;
-  --color-bg-recommended-articles: #e5e5ea;
-  --color-bg-featured-card: #f7ce6f;
+  --color-bg-popular-card: #f7ce6f;
+  --color-bg-featured-articles: #e5e5ea;
+  --color-bg-featured-card: #ffffff;
   --color-bg-grouped-primary: #f2f2f7;
   --color-bg-gray: #d9d9d9;
 

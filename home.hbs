@@ -22,17 +22,17 @@
 
     {{!-- New Articles Section --}}
     {{#get "posts" order="published_at desc" limit="3" include="tags,group"}}
-        {{> "components/new-articles" posts=posts}}
+        {{> "components/articles-section" posts=posts enTitle="NEW" jaTitle="新着記事" description="Magacoの新着記事を紹介します。" section_type="new" pagination=pagination}}
     {{/get}}
 
     {{!-- Popular Articles Section --}}
     {{#get "posts" order="published_at desc" limit="3" include="tags,group"}}
-        {{> "components/popular-articles" posts=posts showPagination=true pagination=pagination}}
+        {{> "components/articles-section" posts=posts enTitle="Ranking" jaTitle="人気の記事" description="Magacoの人気の記事を紹介します。" section_type="popular"}}
     {{/get}}
 
     {{!-- Featured Articles Section --}}
     {{#get "posts" filter="featured:true" order="published_at desc" limit="3" include="tags,group"}}
-        {{> "components/featured-articles" posts=posts}}
+        {{> "components/articles-section" posts=posts enTitle="Featured" jaTitle="おすすめの記事" description="Magacoの厳選されたおすすめの記事を紹介します" section_type="featured"}}
     {{/get}}
 
     {{> "components/pickup-tag"}}
