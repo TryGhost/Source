@@ -2,7 +2,7 @@ name: Deploy to Ghost Pro
 
 on:
   push:
-    branches: [ main ]
+    branches: [ custom-modifications ]
 
 jobs:
   build-and-deploy:
