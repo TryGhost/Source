@@ -20,4 +20,4 @@ jobs:
         curl -X POST \
         "${{ secrets.GHOST_API_URL }}/themes/upload/" \
         -H "Authorization: Ghost ${{ secrets.GHOST_API_KEY }}" \
-        -F "file=@dist/source.zip"
+        -F "file=@dist/source_stck.zip"
