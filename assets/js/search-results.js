@@ -12,6 +12,7 @@
      * @returns {Object} 検索パラメータオブジェクト
      * @returns {string} returns.q - 検索クエリ文字列
      * @returns {string[]} returns.tags - 選択されたタグスラッグの配列
+     * @returns {string[]} returns.groups - 選択されたグループIDの配列
      * @returns {string} returns.sort - ソート順
      */
     function getUrlParams() {
@@ -20,6 +21,7 @@
         return {
             q: params.get('q') || '',
             tags: params.getAll('tags'),
+            groups: params.getAll('groups'),
             sort: params.get('sort') || 'newest'
         };
     }
@@ -32,7 +34,7 @@
     async function fetchPosts(key) {
         try {
             const response = await fetch(
-                `/ghost/api/content/posts/?key=${key}&include=tags,authors&limit=all`
+                `/ghost/api/content/posts/?key=${key}&include=tags,group&limit=all`
             );
 
             if (!response.ok) {
@@ -55,12 +57,12 @@
      * @param {string} [post.excerpt] - 投稿の抜粋
      * @param {string} post.published_at - 公開日時
      * @param {Array} [post.tags] - タグの配列
-     * @param {Object} [post.primary_author] - 主要著者オブジェクト
+     * @param {Object} [post.group] - グループオブジェクト
      * @returns {string} HTMLカードの文字列
      */
     function createPostCard(post) {
         const featureImage = post.feature_image;
-        const authorProfileImage = post.primary_author?.profile_image;
+        const groupLogoImage = post.group?.logo_image;
         const tags = post.tags ? post.tags.slice(0, 2) : [];
         const tagHtml = tags.map(tag => `#${tag.name}`).join(' ');
 
@@ -76,26 +78,22 @@
 
         return `
             <article class='card'>
-                ${
-                    featureImage
-                        ? `
-                    <div class='card-image'>
-                        <a href='${post.url}'>
-                            <img src='${featureImage}' alt='' loading='lazy'>
-                        </a>
-                        ${
-                            authorProfileImage
-                                ? `
-                            <div class='card-magazine-logo' style='background-image: url(${authorProfileImage})'></div>
-                        `
-                                : ''
-                        }
-                    </div>
-                `
-                        : ''
-                }
+                <div class='card-image'>
+                    ${
+                        featureImage
+                            ? `<img src='${featureImage}' alt='' loading='lazy'>`
+                            : `<img src='/assets/images/default-post-image.png' alt='' loading='lazy'>`
+                    }
+                    ${
+                        groupLogoImage
+                            ? `
+                        <div class='card-magazine-logo' style='background-image: url(${groupLogoImage})'></div>
+                    `
+                            : ''
+                    }
+                </div>
 
-                <div class='card-content'>
+                <a href='${post.url}' class='card-content'>
                     <div class='card-header'>
                         ${
                             tags.length > 0
@@ -107,7 +105,7 @@
                                 : ''
                         }
                         <h2 class='card-title'>
-                            <a href='${post.url}'>${post.title}</a>
+                            ${post.title}
                         </h2>
                         ${
                             post.excerpt
@@ -122,14 +120,14 @@
                         <time class='card-date' datetime='${post.published_at}'>
                             ${formattedDate}
                         </time>
-                        <a href='${post.url}' class='card-readmore'>
+                        <span class='card-readmore'>
                             続きを読む
                             <svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
                                 <path d='M9 6l6 6-6 6' stroke='#0c060c' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/>
                             </svg>
-                        </a>
+                        </span>
                     </div>
-                </div>
+                </a>
             </article>
         `;
     }
@@ -212,6 +210,7 @@
      * @param {Object} params - フィルター条件オブジェクト
      * @param {string} [params.q] - 検索クエリ（タイトルと抜粋で検索）
      * @param {string[]} [params.tags] - フィルターするタグスラッグの配列
+     * @param {string[]} [params.groups] - フィルターするグループIDの配列
      * @returns {Array} フィルタリングされた投稿の配列
      */
     function filterPosts(posts, params) {
@@ -241,6 +240,16 @@
                 }
             }
 
+            // グループでフィルター
+            if (params.groups && params.groups.length > 0) {
+                const postGroupId = post.group ? post.group.id : null;
+                const hasMatchingGroup = params.groups.includes(postGroupId);
+
+                if (!hasMatchingGroup) {
+                    return false;
+                }
+            }
+
             return true;
         });
     }
@@ -264,6 +273,7 @@
         });
     }
 
+
     /**
      * URLパラメータに基づいてフォーム要素の初期状態を設定
      */
@@ -273,7 +283,7 @@
         // キーワード検索フィールドを設定（両方のフォームに値を設定）
         const searchResultsInput = document.getElementById('search-results-input');
         const headerSearchInput = document.getElementById('header-search-input');
-        
+
         if (searchResultsInput) {
             searchResultsInput.value = params.q;
         }
@@ -281,11 +291,22 @@
             headerSearchInput.value = params.q;
         }
 
+        // 入力フィールドの同期を設定
+        setupInputSync()
+
         // タグボタンのaria-pressed状態を設定
         params.tags.forEach((tag) => {
             const button = document.querySelector(`[data-tag-slug='${tag}']`);
             if (button) {
                 button.setAttribute('aria-pressed', 'true');
+            }
+        });
+
+        // グループチェックボックスの初期状態を設定
+        params.groups.forEach((groupId) => {
+            const checkbox = document.querySelector(`input[name="magazine"][value="${groupId}"]`);
+            if (checkbox) {
+                checkbox.checked = true;
             }
         });
 
@@ -448,6 +469,31 @@
                 hiddenInput.value = tag;
                 form.appendChild(hiddenInput);
             });
+
+            // 選択されたグループをhiddenフィールドに設定
+            const selectedGroups = [];
+            const groupCheckboxes = document.querySelectorAll('input[name="magazine"]:checked');
+
+            groupCheckboxes.forEach((checkbox) => {
+                const groupId = checkbox.value;
+                if (groupId) {
+                    selectedGroups.push(groupId);
+                }
+            });
+
+            // 既存のgroupsのhiddenフィールドを削除
+            form.querySelectorAll('input[name="groups"]').forEach(input =>
+                input.remove()
+            );
+
+            // 新しいgroupsのhiddenフィールドを追加
+            selectedGroups.forEach((groupId) => {
+                const hiddenInput = document.createElement('input');
+                hiddenInput.type = 'hidden';
+                hiddenInput.name = 'groups';
+                hiddenInput.value = groupId;
+                form.appendChild(hiddenInput);
+            });
         });
     }
 
@@ -459,7 +505,7 @@
         // 全ての検索フォーム（ヘッダーと検索結果ページ内の両方）を取得
         const searchForms = document.querySelectorAll('form[action="/search-results"]');
         const postsForm = document.querySelector('form[id="posts"]');
-        
+
         if (!searchForms.length || !postsForm) {
             return;
         }
@@ -468,7 +514,7 @@
         searchForms.forEach(function(form) {
             form.addEventListener('submit', function(e) {
                 e.preventDefault(); // デフォルトのフォーム送信を無効化
-                
+
                 // 既存の「この条件で検索」ボタンをクリックして処理を実行
                 const submitButton = postsForm.querySelector('.search_results__filter-button');
                 if (submitButton) {
@@ -524,16 +570,43 @@
     }
 
     /**
+     * 検索入力フィールドの同期を設定
+     * search-results-inputとheader-search-inputの値を常に同期させる
+     */
+    function setupInputSync() {
+        const searchResultsInput = document.getElementById('search-results-input');
+        const headerSearchInput = document.getElementById('header-search-input');
+
+        if (!searchResultsInput || !headerSearchInput) {
+            return;
+        }
+
+        // search-results-inputの入力イベント
+        searchResultsInput.addEventListener('input', function() {
+            headerSearchInput.value = this.value;
+        });
+
+        // header-search-inputの入力イベント
+        headerSearchInput.addEventListener('input', function() {
+            searchResultsInput.value = this.value;
+        });
+    }
+
+    /**
      * ページ読み込み時の初期化処理
      * 投稿データの取得、フォーム初期化、イベントハンドラー設定を行う
      */
     async function initialize() {
-        // 初期状態では「もっと見る」ボタンを非表示
-        toggleLoadMoreButton(false);
-
         // 投稿データを取得
         const contentApiKey = document.querySelector('#search_results')?.getAttribute('data-content-api-key');
+        if (!contentApiKey) {
+            return;
+        }
+
         allPosts = await fetchPosts(contentApiKey);
+
+        // 初期状態では「もっと見る」ボタンを非表示
+        toggleLoadMoreButton(false);
 
         // フォームを初期化
         initializeForm();

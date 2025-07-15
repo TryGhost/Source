@@ -24,12 +24,12 @@
                 {{date format="YYYY. MM. DD"}}
             </time>
         </div>
-    {{!-- Magazine Label Overlay --}}
+        {{!-- Magazine Label Overlay --}}
+        {{#if feature_image}}
         <div class="post-magazine-label">
-            {{#if primary_author.profile_image}}
-                <img src="{{img_url primary_author.profile_image size="xs"}}" alt="{{primary_author.name}}" width="117" height="46">
-            {{/if}}
+            <img src="{{img_url group.logo_image size="xs"}}" alt="{{group.name}}" width="117" height="46">
         </div>
+        {{/if}}
     </section>
 
     {{!-- Content Section --}}
@@ -53,8 +53,8 @@
                 </div>
 
                 <div class="post-logo">
-                    {{#if primary_author.profile_image}}
-                        <img src="{{img_url primary_author.profile_image size="xs"}}" alt="{{primary_author.name}}" class="post-author-image">
+                    {{#if group.logo_image}}
+                        <img src="{{img_url group.logo_image size="xs"}}" alt="{{group.name}}" class="post-author-image">
                     {{/if}}
                 </div>
             </div>

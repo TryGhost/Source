@@ -111,8 +111,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    row-gap: var(--space-lg);
+    row-gap: var(--space-3xl);
     margin-block-start: var(--space-3xl);
+}
+
+.search_results__form-filter {
+    display: flex;
+    flex-direction: column;
+    row-gap: var(--space-md);
 }
 
 /* Tags Section */
@@ -150,6 +156,27 @@
     background-color: var(--color-black);
     border-color: var(--color-black);
 }
+
+/* Magazines Section */
+.search_results__magazines {
+    display: flex;
+    flex-direction: column;
+    row-gap: var(--space-lg);
+}
+
+.search_results__magazines-title {
+    font: var(--heading-xxs);
+    letter-spacing: var(--letter-spacing-wide-lg);
+    color: var(--color-text-white);
+}
+
+.search_results__magazines-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(172px, 1fr));
+    gap: var(--space-lg);
+}
+
+/* Magazine section uses checkbox component */
 
 /* Filter Button */
 .search_results__filter-button {
