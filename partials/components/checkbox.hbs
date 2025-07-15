@@ -12,19 +12,17 @@ Parameters:
 --}}
 
 <div class="checkbox-wrapper">
-    <label class="checkbox-label" for="{{id}}">
+    <label class="my-checkbox" for="{{id}}">
         <input
             type="checkbox"
-            class="checkbox-input"
+            class="checkbox"
             name="{{name}}"
             value="{{value}}"
             id="{{id}}"
             {{#if checked}}checked{{/if}}
             {{#if disabled}}disabled{{/if}}
         >
-        <span class="checkbox-box">
-            {{> "icons/checkbox"}}
-        </span>
+        <span class="checkmark"></span>
         {{#if label}}
         <span class="checkbox-text">{{label}}</span>
         {{/if}}

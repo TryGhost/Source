@@ -1,91 +1,44 @@
-/* Checkbox Component Styles
-   ---------------------------------------------------------- */
-
-.checkbox-wrapper {
-    display: inline-block;
-}
-
-.checkbox-label {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
+.my-checkbox {
+    display: block;
+    position: relative;
+    padding-left: calc(22px + var(--space-lg));
     cursor: pointer;
     user-select: none;
-    position: relative;
 }
 
-.checkbox-input {
+.my-checkbox input {
+    display: none;
+}
+
+.checkmark {
     position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
+    top: 0;
+    left: 0;
+    height: 22px;
+    width: 22px;
+    border: solid 2px var(--color-white);
+    border-radius: 4px;
+    box-sizing: border-box;
 }
 
-.checkbox-box {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 17px;
-    height: 17px;
-    border: 2px solid var(--color-text-white, #ffffff);
-    border-radius: 2px;
-    background-color: transparent;
-    flex-shrink: 0;
-}
-
-.checkbox-box svg {
-    width: 18px;
-    height: 18px;
+.checkmark:after {
+    content: "";
+    position: absolute;
+    left: 6px;
+    top: 3px;
+    width: 6px;
+    height: 10px;
+    border: solid #fff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
     opacity: 0;
 }
 
-.checkbox-box svg path {
-    fill: var(--color-white);
+.my-checkbox input:checked + .checkmark {
+    background-color: var(--color-white);
 }
 
-.checkbox-text {
-    font: var(--text-regular, 14px/1.5 sans-serif);
-    color: var(--color-white, #ffffff);
-    white-space: nowrap;
-}
-
-/* Checked State */
-.checkbox-input:checked + .checkbox-box {
-    background-color: white;
-}
-
-.checkbox-input:checked + .checkbox-box svg {
+.my-checkbox input:checked + .checkmark:after {
     opacity: 1;
+    border-color: var(--color-black);
 }
-
-/* Focus State */
-.checkbox-input:focus + .checkbox-box {
-    outline: 2px solid var(--color-primary-bg, #007bff);
-    outline-offset: 2px;
-}
-
-/* Disabled State */
-.checkbox-input:disabled + .checkbox-box {
-    opacity: 0.5;
-    cursor: not-allowed;
-    border-color: var(--color-text-disabled, #ccc);
-}
-
-.checkbox-input:disabled + .checkbox-box + .checkbox-text {
-    opacity: 0.5;
-    cursor: not-allowed;
-    color: var(--color-text-disabled, #ccc);
-}
-
-.checkbox-input:disabled:checked + .checkbox-box {
-    background-color: var(--color-text-disabled, #ccc);
-    border-color: var(--color-text-disabled, #ccc);
-}
-
-
