@@ -71,9 +71,3 @@
 </main>
 
 {{/post}}
-
-{{#get "posts" include="authors" filter="id:-{{post.id}}" limit="3" as |next|}}
-    {{#if next}}
-        {{> "components/featured-articles" posts=posts}}
-    {{/if}}
-{{/get}}
