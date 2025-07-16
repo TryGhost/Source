@@ -44,7 +44,15 @@
                         <span class="post-breadcrumb-separator">›</span>
                         <span>記事詳細</span>
                     </div>
-                    {{> "components/post-like" stroke_color="#000" post_id=id}}
+                    {{#if @member}}
+                        {{#has visibility="paid"}}
+                            {{#if @member.paid}}
+                            {{> "components/post-like" stroke_color="#000" post_id=id}}
+                            {{/if}}
+                        {{else}}
+                            {{> "components/post-like" stroke_color="#000" post_id=id}}
+                        {{/has}}
+                    {{/if}}
                 </div>
 
                 {{!-- Rich Text Content --}}

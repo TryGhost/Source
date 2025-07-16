@@ -8,11 +8,6 @@
         {{#if post.group.logo_image}}
         <div class="card-magazine-logo" style="background-image: url({{img_url post.group.logo_image size="xs"}})"></div>
         {{/if}}
-        {{#if @member}}
-        <div class="gh-post-like-wrapper">
-            {{> "components/post-like" post_id=id}}
-        </div>
-        {{/if}}
     </div>
 
     <a href="{{post.url}}" class="card-content" data-card-color="{{card_color}}">
