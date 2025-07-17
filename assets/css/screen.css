@@ -2354,7 +2354,7 @@ unless a heading is the very first element in the post content */
 
 blockquote:not([class]) {
     padding-left: 2rem;
-    border-left: 4px solid var(--ghost-accent-color);
+    font: var(--text-large-bold);
 }
 
 blockquote.kg-blockquote-alt {
