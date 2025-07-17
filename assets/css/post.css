@@ -120,7 +120,6 @@
 .post-content-inner {
   display: flex;
   flex-direction: column;
-  gap: var(--space-5xl);
   width: 100%;
 }
 
@@ -193,6 +192,10 @@
   color: #084fac;
   text-decoration: underline;
   text-underline-position: from-font;
+}
+
+.post-rich-text hr {
+  margin-block: var(--space-3xl);
 }
 
 /* Image with caption */
@@ -355,6 +358,7 @@ figure.kg-card.kg-image-card.kg-card-hascaption figcaption {
 }
 figure.kg-card.kg-image-card.kg-card-hascaption  {
   margin-block: 40px;
+  object-fit: cover;
 }
 
 /* Store Information Section */
@@ -567,6 +571,7 @@ figure.kg-card.kg-image-card.kg-card-hascaption  {
   .post-rich-text h3 {
     font: var(--heading-m);
   }
+
   /* image */
   figure.kg-card.kg-image-card.kg-card-hascaption  {
     margin-block: 48px;
