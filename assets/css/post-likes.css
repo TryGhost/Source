@@ -29,6 +29,7 @@
 }
 
 .post-likes-actions {
+    display: none;
     margin-inline: auto;
 }
 

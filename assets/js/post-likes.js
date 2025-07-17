@@ -1,6 +1,10 @@
 (function () {
     'use strict';
 
+    const POSTS_PER_PAGE = 15;
+    let allPosts = [];
+    let currentPage = 0;
+
     async function fetchLikedPosts(key, memberId) {
         try {
             const response = await fetch(
@@ -48,7 +52,70 @@
             headingElement.textContent = 'あなたのお気に入り記事一覧';
         }
 
-        displayCards(likedPosts, 'liked-posts');
+        allPosts = likedPosts;
+        currentPage = 0;
+        displayInitialPosts();
+
+        // イベントハンドラを追加
+        handleLoadMoreButton()
+    }
+
+    /**
+     * 初期の投稿表示
+     */
+    function displayInitialPosts() {
+        const container = document.getElementById('liked-posts');
+        if (!container) {
+            return;
+        }
+
+        container.innerHTML = '';
+
+        const postsToShow = allPosts.slice(0, POSTS_PER_PAGE);
+        displayCards(postsToShow, 'liked-posts');
+
+        currentPage = 1;
+        updateLoadMoreButton();
+    }
+
+    /**
+     * 「もっと見る」ボタンのクリックイベントを処理
+     */
+    function handleLoadMoreButton() {
+        const loadMoreButton = document.getElementById('load-more-posts');
+        if (loadMoreButton) {
+            loadMoreButton.addEventListener('click', loadMorePosts);
+        }
+    }
+
+    /**
+     * 「もっと見る」ボタンの表示・非表示を更新
+     */
+    function updateLoadMoreButton() {
+        const loadMoreContainer = document.getElementById('post-likes-load-more');
+        if (!loadMoreContainer) {
+            return;
+        }
+
+        const hasMorePosts = (currentPage * POSTS_PER_PAGE) < allPosts.length;
+        loadMoreContainer.style.display = hasMorePosts ? 'block' : 'none';
+    }
+
+    /**
+     * 追加の投稿を読み込む
+     */
+    function loadMorePosts() {
+        console.log("load more")
+        const startIndex = currentPage * POSTS_PER_PAGE;
+        const endIndex = startIndex + POSTS_PER_PAGE;
+        const additionalPosts = allPosts.slice(startIndex, endIndex);
+
+        if (additionalPosts.length > 0) {
+            displayCards(additionalPosts, 'liked-posts')
+
+            currentPage++;
+            updateLoadMoreButton();
+        }
     }
 
     /**
@@ -61,8 +128,6 @@
         if (!container) {
             return;
         }
-
-        container.innerHTML = '';
 
         posts.forEach(post => {
             const cardHtml = createPostCard(post);

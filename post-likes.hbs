@@ -11,11 +11,9 @@
         <div id="liked-posts" class="post-likes-container">
         </div>
 
-        <div class="post-likes-actions">
-            {{> "components/button" text="もっと見る"}}
+        <div class="post-likes-actions" id="post-likes-load-more">
+            {{> "components/button" text="もっと見る" attributes='id="load-more-posts"'}}
         </div>
     </section>
 </main>
 
-<script src="{{asset 'js/post-likes.js'}}"></script>
-<link rel="stylesheet" href="{{asset 'css/post-likes.css'}}">
