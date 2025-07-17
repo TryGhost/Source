@@ -8,29 +8,6 @@
  * GhostのContent APIエンドポイント (例: /ghost/api/content/posts/:postId/like?key=YOUR_API_KEY) を想定
  */
 
-const getMemberByEmail = async (email, contentApiKey) => {
-    if (!email) {
-        return null;
-    }
-
-    const url = `/ghost/api/content/members/${encodeURIComponent(email)}?key=${contentApiKey}`;
-
-    const res = await fetch(url, {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' }
-    });
-
-    if (!res.ok) {
-        // メール未登録などで404の場合はnull扱いにする
-        return null;
-    }
-
-    const data = await res.json();
-
-    const member = data.members[0];
-    return member || null;
-};
-
 const getPostLike = async (postId, contentApiKey) => {
     const res = await fetch(`/ghost/api/content/posts/${postId}/like?key=${contentApiKey}`, {
         method: 'GET',
@@ -87,7 +64,7 @@ const removePostLike = async (postId, memberId, contentApiKey) => {
  */
 async function initializeLikeButtonUI(button) {
     const postId = button.getAttribute('data-post-id');
-    const memberEmail = button.getAttribute('data-member-email');
+    const memberEmail = window.currentMember.email;
     const contentApiKey = button.getAttribute('data-content-api-key');
     let memberId = ''; // 未ログイン or 存在しない場合は空
     if (memberEmail) {
