@@ -6,7 +6,7 @@
             <img src="{{asset "images/default-post-image.png"}}" alt="" loading="lazy">
         {{/if}}
         {{#if post.group.logo_image}}
-        <div class="card-magazine-logo" style="background-image: url({{img_url post.group.logo_image size="xs"}})"></div>
+        <a href="/magazine?group={{post.group.slug}}" class="card-magazine-logo" style="background-image: url({{img_url post.group.logo_image size="xs"}})"></a>
         {{/if}}
     </div>
 
