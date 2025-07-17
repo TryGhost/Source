@@ -37,7 +37,7 @@ function createPostCard(post) {
                 ${
                     groupLogoImage
                         ? `
-                    <div class='card-magazine-logo' style='background-image: url(${groupLogoImage})'></div>
+                    <a href='/magazine?group=${post.group.slug}' class='card-magazine-logo' style='background-image: url(${groupLogoImage})'></a>
                 `
                         : ''
                 }

@@ -3,7 +3,7 @@ function createPostCard(e){var t=e.feature_image,n=e.group?.logo_image,o=e.tags?
             <div class='card-image'>
                 ${t?`<img src='${t}' alt='' loading='lazy'>`:"<img src='/assets/images/default-post-image.png' alt='' loading='lazy'>"}
                 ${n?`
-                    <div class='card-magazine-logo' style='background-image: url(${n})'></div>
+                    <a href='/magazine?group=${e.group.slug}' class='card-magazine-logo' style='background-image: url(${n})'></a>
                 `:""}
             </div>
 
