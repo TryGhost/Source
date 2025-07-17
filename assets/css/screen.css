@@ -2301,6 +2301,7 @@ unless a heading is the very first element in the post content */
 .kg-image {
     margin-right: auto;
     margin-left: auto;
+    border-radius: var(--radius-lg);
 }
 
 /* Embed */
@@ -2353,13 +2354,18 @@ unless a heading is the very first element in the post content */
 
 blockquote:not([class]) {
     padding-left: 2rem;
-    border-left: 4px solid var(--ghost-accent-color);
+    font: var(--text-large-bold);
 }
 
 blockquote.kg-blockquote-alt {
     font-style: normal;
     font-weight: 400;
-    color: var(--color-secondary-text);
+    color: var(--color-black);
+    text-align: left;
+    padding-inline: 20px;
+    padding-block:36px;
+    font: var(--text-large-bold);
+    letter-spacing: var(--letter-spacing-wide-xl);
 }
 
 /* Button */

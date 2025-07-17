@@ -120,7 +120,6 @@
 .post-content-inner {
   display: flex;
   flex-direction: column;
-  gap: var(--space-5xl);
   width: 100%;
 }
 
@@ -169,7 +168,7 @@
   color: var(--color-black);
   letter-spacing: var(--letter-spacing-wide-2xl);
   margin: 0;
-  padding-block: var(--space-xl) var(--space-md);
+  padding-block: var(--space-xl) var(--space-lg);
 }
 
 .post-rich-text h3 {
@@ -177,7 +176,7 @@
   color: var(--color-black);
   letter-spacing: var(--letter-spacing-wide-xl);
   margin: 0;
-  padding-block: var(--space-xl) var(--space-md);
+  padding-block: var(--space-xl) var(--space-xl);
 }
 
 .post-rich-text p {
@@ -193,6 +192,10 @@
   color: #084fac;
   text-decoration: underline;
   text-underline-position: from-font;
+}
+
+.post-rich-text hr {
+  margin-block: var(--space-3xl);
 }
 
 /* Image with caption */
@@ -334,6 +337,28 @@
 
 .post-toggle-content p:last-child {
   margin-block-end: 0;
+}
+
+.post-rich-text .kg-toggle-card {
+  border-radius: 0;
+  padding: 24px 30px;
+  letter-spacing: var(--letter-spacing-wide-xl);
+}
+
+.post-rich-text .kg-toggle-card + .kg-toggle-card {
+  margin-top: 0;
+}
+
+/* image */
+figure.kg-card.kg-image-card.kg-card-hascaption figcaption {
+  text-align: left;
+  margin-left: 10px;
+  margin-top: 16px;
+  font-size: 14px;
+}
+figure.kg-card.kg-image-card.kg-card-hascaption  {
+  margin-block: 40px;
+  object-fit: cover;
 }
 
 /* Store Information Section */
@@ -538,6 +563,19 @@
     max-width: 768px;
     padding-inline: var(--space-2xl);
   }
+
+  /* title */
+  .post-rich-text h2 {
+    font: var(--heading-l);
+  }
+  .post-rich-text h3 {
+    font: var(--heading-m);
+  }
+
+  /* image */
+  figure.kg-card.kg-image-card.kg-card-hascaption  {
+    margin-block: 48px;
+  }
 }
 
 @media (min-width: 1025px) {
@@ -558,6 +596,18 @@
   .post-subscription-content {
     max-width: 1024px;
     padding-inline: var(--space-3xl);
+  }
+
+  /* title */
+  .post-rich-text h2 {
+    font: var(--heading-l);
+  }
+  .post-rich-text h3 {
+    font: var(--heading-m);
+  }
+  /* image */
+  figure.kg-card.kg-image-card.kg-card-hascaption  {
+    margin-block: 48px;
   }
 }
 
