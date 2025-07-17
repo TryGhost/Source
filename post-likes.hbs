@@ -1,0 +1,24 @@
+{{!< default}}
+{{!-- The tag above means: insert everything in this file into the body of the default.hbs template --}}
+
+{{#if @member}}
+<main class="post-likes-main" data-content-api-key="{{content_api_key}}">
+    <section class="post-likes-section">
+        <div class="post-likes-title">
+            <div class="post-likes-tagline">Like</div>
+            <h1 class="post-likes-heading"></h1>
+        </div>
+
+        <div id="liked-posts" class="post-likes-container">
+        </div>
+
+        <div class="post-likes-actions" id="post-likes-load-more">
+            {{> "components/button" text="もっと見る" attributes='id="load-more-posts"'}}
+        </div>
+    </section>
+</main>
+{{else}}
+<script>
+    window.location.replace('{{@site.url}}/404/')
+</script>
+{{/if}}

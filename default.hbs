@@ -64,6 +64,17 @@
     {{> "lightbox"}}
 {{/is}}
 
+{{#if @member}}
+  <script>
+    window.currentMember = {
+      uuid: "{{@member.uuid}}",
+      name: "{{@member.name}}",
+      email: "{{@member.email}}",
+      paid: {{#if @member.paid}}true{{else}}false{{/if}}
+    };
+  </script>
+{{/if}}
+
 {{!-- Scripts - handle responsive videos, infinite scroll, and navigation dropdowns --}}
 <script src="{{asset "built/source.js"}}"></script>
 

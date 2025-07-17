@@ -41,6 +41,9 @@
             <div class="header-nav-desktop">
                 <a class="header-nav-desktop-link" href="/about">Magacoについて</a>
                 <a class="header-nav-desktop-link" href="/search-results">新着記事</a>
+                {{#if @member}}
+                <a class="header-nav-desktop-link" href="/post-likes">お気に入り</a>
+                {{/if}}
             </div>
 
             {{!-- Actions Section --}}
