@@ -5,6 +5,12 @@
     let allPosts = [];
     let currentPage = 0;
 
+     // Content API Keyを取得
+     const contentApiKey = document.querySelector('main.post-likes-main')?.getAttribute('data-content-api-key');
+     if (!contentApiKey) {
+         return;
+     }
+
     async function fetchLikedPosts(key, memberId) {
         try {
             const response = await fetch(
@@ -24,12 +30,6 @@
     }
 
     async function initialize() {
-        // Content API Keyを取得
-        const contentApiKey = document.querySelector('main.post-likes-main')?.getAttribute('data-content-api-key');
-        if (!contentApiKey) {
-            return;
-        }
-
         const memberEmail = window.currentMember.email;
         const memberInfo = await getMemberByEmail(memberEmail, contentApiKey);
         const memberId = memberInfo?.id;
@@ -105,7 +105,6 @@
      * 追加の投稿を読み込む
      */
     function loadMorePosts() {
-        console.log("load more")
         const startIndex = currentPage * POSTS_PER_PAGE;
         const endIndex = startIndex + POSTS_PER_PAGE;
         const additionalPosts = allPosts.slice(startIndex, endIndex);
