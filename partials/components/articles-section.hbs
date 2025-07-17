@@ -5,13 +5,13 @@
             <h2 class="articles-section-title">{{jaTitle}}</h2>
             <p class="articles-section-description">{{description}}</p>
         </div>
+        <div class="articles-section-grid" {{#if articlesSectionId}}id="{{articlesSectionId}}"{{/if}}>
         {{#if posts}}
-        <div class="articles-section-grid">
-            {{#foreach posts}}
-                {{> "components/card" post=this card_color=../section_type}}
-            {{/foreach}}
-        </div>
+        {{#foreach posts}}
+            {{> "components/card" post=this card_color=../section_type}}
+        {{/foreach}}
         {{/if}}
+        </div>
 
         {{#if pagination}}
         <div class="articles-pagination-wrapper">
