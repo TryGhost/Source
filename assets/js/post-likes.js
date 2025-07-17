@@ -34,8 +34,18 @@
         }
 
         const likedPosts = await fetchLikedPosts(contentApiKey, memberId);
-        if (!likedPosts) {
+        const headingElement = document.querySelector('h1.post-likes-heading')
+
+        if (likedPosts.length === 0) {
+            if (headingElement) {
+                headingElement.textContent = 'まだお気に入りがありません。';
+            }
+
             return;
+        }
+
+        if (headingElement) {
+            headingElement.textContent = 'あなたのお気に入り記事一覧';
         }
 
         displayCards(likedPosts, 'liked-posts');
