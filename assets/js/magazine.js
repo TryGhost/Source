@@ -65,12 +65,21 @@
      * グループIDで投稿一覧を取得
      * @param {string} key - Content API Key
      * @param {string} filter - 絞り込み条件
+     * @param {string} order - ソート条件
      * @returns {Promise<Array>} 投稿一覧
      */
-    async function fetchPosts(key, filter) {
+    async function fetchPosts(key, filter, order) {
+        const params = new URLSearchParams({
+            key,
+            filter,
+            include: 'tags,group',
+            order,
+            limit: 3
+        });
+
         try {
             const response = await fetch(
-                `/ghost/api/content/posts/?key=${key}&filter=${filter}&order=published_at%20desc&include=tags,group&limit=3`
+                `/ghost/api/content/posts/?${params.toString()}`
             );
 
             if (!response.ok) {
@@ -135,8 +144,8 @@
 
         // 記事の取得と表示
         const [newPostsResult, featuredPostsResult] = await Promise.allSettled([
-            fetchPosts(contentApiKey, `group_id:${group.id}`),
-            fetchPosts(contentApiKey, `group_id:${group.id}%2Btag:pickup`)
+            fetchPosts(contentApiKey, `group_id:${group.id}`, 'published_at DESC'),
+            fetchPosts(contentApiKey, `group_id:${group.id}+tag:pickup`, 'updated_at DESC')
         ]);
 
         // 新着投稿の表示
