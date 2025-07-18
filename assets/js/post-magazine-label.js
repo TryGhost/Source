@@ -97,6 +97,3 @@ document.addEventListener('DOMContentLoaded', () => {
     // 雑誌ラベルを更新
     updateMagazineLabel(postId, contentApiKey);
 });
-
-// 外部から呼び出せるようにエクスポート
-window.updateMagazineLabel = updateMagazineLabel;
