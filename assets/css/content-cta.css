@@ -1,0 +1,91 @@
+/* CTA Styles
+   ---------------------------------------------------------- */
+
+/* SP Base CTA Styles */
+.cta {
+    background-color: var(--color-bg-primary);
+    color: var(--color-white);
+    padding-block: var(--space-4xl);
+}
+
+.cta-container {
+    max-width: var(--container-max-width);
+    margin-inline: auto;
+    padding-inline: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* SP Text Styles */
+.cta-title {
+    font: var(--heading-xxs);
+    letter-spacing: var(--letter-spacing-wide-lg);
+    color: var(--color-white);
+    justify-content: center; 
+    margin-bottom: var(--space-sm);
+}
+
+.cta-text-main {
+    color: var(--color-white);
+    font: var(--heading-l);
+    letter-spacing: 1.6px;
+    text-align: center;
+    margin-bottom: var(--space-lg);
+}
+
+.cta-text-secondary {
+    font: var(--text-regular-regular);
+    color: var(--color-white);
+    text-align: center;
+    letter-spacing: var(--letter-spacing-wide-xs);
+    margin-bottom: var(--space-5xl);
+}
+
+
+/* CTR Button */
+.cta-button {
+    background: var(--gradient-primary);
+    border: none;
+    border-radius: var(--radius-full);
+    color: var(--color-text-primary);
+    cursor: pointer;
+    font: var(--text-regular-bold);
+    letter-spacing: var(--letter-spacing-wide-xs);
+    padding-block: 10px;
+    padding-inline: var(--space-6xl);
+    align-self: center;
+    transition: var(--transition-fast);
+}
+
+.cta-button:hover {
+    opacity: 0.9;
+}
+
+
+/* PC Styles */
+@media (min-width: 1025px) {
+
+    /* PC Base CTA Styles */
+    .cta {
+        background-color: var(--color-bg-primary);
+        color: var(--color-white);
+        padding-block: var(--space-6xl);
+    }
+    /*PC text */
+    .cta-title {
+        font: var(--heading-xxs);
+        letter-spacing: var(--letter-spacing-wide-lg);
+        margin-bottom: var(--space-md);
+    }
+    .cta-text-main {
+        font: var(--heading-xl);
+        letter-spacing: var(--letter-spacing-wide-3xl);
+        margin-bottom: var(--space-xl);
+    }
+    .cta-text-secondary {
+        font: var(--text-medium-regular);
+        letter-spacing: var(--letter-spacing-wide-md);
+        margin-bottom: var(--space-3xl);
+    }
+}
