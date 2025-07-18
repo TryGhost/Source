@@ -3,8 +3,7 @@
 
 {{#post}}
 
-<main class="post-main">
-
+<main class="post-main" data-filter-tag="{{primary_tag.slug}}" data-post-id="{{id}}">
     {{!-- Hero Section --}}
     <section class="post-hero" {{#if feature_image}}style="background-image: url('{{img_url feature_image size="xl"}}')"{{/if}}>
         <div class="post-hero-content">
@@ -25,11 +24,9 @@
             </time>
         </div>
         {{!-- Magazine Label Overlay --}}
-        {{#if feature_image}}
-        <div class="post-magazine-label">
-            <img src="{{img_url group.logo_image size="xs"}}" alt="{{group.name}}" width="117" height="46">
+        <div class="post-magazine-label" data-post-id="{{id}}" data-content-api-key="{{content_api_key}}">
+            <img src="" alt="" width="117" height="46">
         </div>
-        {{/if}}
     </section>
 
     {{!-- Content Section --}}
@@ -61,13 +58,15 @@
                 </div>
 
                 <div class="post-logo">
-                    {{#if group.logo_image}}
-                        <img src="{{img_url group.logo_image size="xs"}}" alt="{{group.name}}" class="post-author-image">
-                    {{/if}}
+                    <img src="" alt="" class="post-author-image" style="display: none;">
                 </div>
             </div>
         </div>
     </section>
 </main>
+
+{{#get "posts" filter="primary_tag:{{primary_tag.slug}}+id:-{{id}}" limit="3" page="1" include="tags,group" order="published_at desc" as |posts pages|}}
+    {{> "components/articles-section" posts=posts enTitle="Articles" jaTitle="おすすめの記事" description="行ってみたい、食べてみたいがきっと見つかる。編集者の目線で選んだ、あなたのためのおすすめ記事です。" section_type="featured" showLoadMore=pages.next}}
+{{/get}}
 
 {{/post}}

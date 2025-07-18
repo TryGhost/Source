@@ -1,5 +1,13 @@
 .articles-section {
-    padding: var(--space-7xl) 0;
+    padding: var(--space-5xl) var(--space-lg);
+    row-gap: var(--space-4xl);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, auto);
+    grid-template-areas:
+        "header header header"
+        "card card card"
+        ".    button .";
 }
 
 .articles-section[data-section-type="new"] {
@@ -14,108 +22,52 @@
     background-color: var(--color-bg-featured-articles);
 }
 
-.articles-section-container {
-    max-width: var(--container-max-width);
-    margin: 0 auto;
-    padding: 0 var(--space-5xl);
-}
-
 .articles-section-header {
+    grid-area: header;
     text-align: center;
-    margin-bottom: var(--space-6xl);
 }
 
 .articles-section-label {
-    font: var(--text-sm-bold);
-    letter-spacing: var(--letter-spacing-wide-lg);
-    color: var(--color-text-primary);
-    margin-bottom: var(--space-xs);
-    display: block;
+    font: var(--heading-xxs);
 }
 
 .articles-section-title {
-    font: var(--heading-xl);
-    letter-spacing: var(--letter-spacing-wide-3xl);
-    color: var(--color-text-primary);
-    margin: 0 0 var(--space-md) 0;
+    font: var(--heading-l);
 }
 
 .articles-section-description {
     font: var(--text-regular-regular);
-    letter-spacing: var(--letter-spacing-wide-xs);
-    color: var(--color-text-primary);
-    margin: 0;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
 }
 
-/* Author Section Grid */
-.articles-section-grid {
+.articles-section-card {
+    --min: 335px;
+    grid-area: card;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 29px;
-    width: 100%;
+    grid-template-columns: repeat(auto-fill, minmax(var(--min), 1fr));
+    gap: var(--space-4xl);
 }
 
-.articles-post-card--new {
-    /* Specific styles for new articles if needed */
-    background-color: var(--color-bg-new-articles);
+.articles-section-action {
+    grid-area: button;
+    text-align: center;
 }
 
-.articles-post-card--popular {
-    /* Specific styles for popular articles if needed */
-    background-color: var(--color-bg-featured-card);
-}
-
-/* Author Pagination */
-.articles-pagination-wrapper {
-    margin-top: var(--space-6xl);
-    display: flex;
-    justify-content: center;
-}
-
-.articles-pagination {
-    /* Use pagination component base styles */
-}
-
-/* Responsive Styles */
-@media (max-width: 1024px) {
-    .articles-section-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
+@media (width >= 1025px) {
     .articles-section {
-        padding: var(--space-6xl) 0;
-    }
-}
-
-@media (max-width: 768px) {
-    .articles-section {
-        padding: var(--space-5xl) 0;
-    }
-
-    .articles-section-header {
-        margin-bottom: var(--space-4xl);
+        padding: 112px 67px;
+        row-gap: var(--space-6xl);
     }
 
     .articles-section-title {
-        font: var(--heading-l);
-        letter-spacing: var(--letter-spacing-wide-2xl);
+        font: var(--heading-xl);
     }
 
-    .articles-section-grid {
-        grid-template-columns: 1fr;
-        gap: var(--space-xl);
+    .articles-section-description {
+        font: var(--text-medium-regular);
     }
 
-    .articles-pagination-wrapper {
-        margin-top: var(--space-4xl);
-    }
-}
-
-@media (max-width: 480px) {
-    .articles-section-container {
-        padding: 0 var(--space-lg);
+    .articles-section-card {
+        --min: 416px;
+        gap: 29px;
     }
 }

@@ -64,6 +64,23 @@
     {{> "lightbox"}}
 {{/is}}
 
+{{#if @member}}
+  <script>
+    window.currentMember = {
+      uuid: "{{@member.uuid}}",
+      name: "{{@member.name}}",
+      email: "{{@member.email}}",
+      paid: {{#if @member.paid}}true{{else}}false{{/if}}
+    };
+  </script>
+{{/if}}
+
+<script>
+  window.ghostConfig = {
+    contentApiKey: "{{content_api_key}}"
+  };
+</script>
+
 {{!-- Scripts - handle responsive videos, infinite scroll, and navigation dropdowns --}}
 <script src="{{asset "built/source.js"}}"></script>
 

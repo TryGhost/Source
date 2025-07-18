@@ -72,42 +72,12 @@
   text-align: center;
 }
 
-.pickup-tag-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--color-bg-gray);
-  color: var(--color-text-primary);
-  text-decoration: none;
-  padding: var(--space-sm) var(--space-4xl);
-  border-radius: var(--radius-full);
-  font: var(--text-small-bold);
-  letter-spacing: var(--letter-spacing-wide-xs);
-  transition: var(--transition-fast);
-  min-width: 160px;
-  margin: 0 auto;
-  width: fit-content;
-  white-space: nowrap;
-  gap: 0.5em;
-}
-
-.pickup-tag-btn img {
-  width: 1em;
-  height: auto;
-  flex-shrink: 0;
-  vertical-align: middle;
-}
-
-.pickup-tag-btn:hover {
-  transform: translateY(-1px);
-  background: rgba(12, 6, 12, 0.1);
-}
-
 /* SP Visibility control */
-.pickup-tag-btn-pc-only {
+.pickup-tag-action.pc-only {
   display: none;
 }
-.pickup-tag-btn-sp-only {
+
+.pickup-tag-action.sp-only {
   display: flex;
   justify-content: center;
 }
@@ -173,13 +143,14 @@
     flex-direction: column;
     justify-content: center;
     flex-shrink: 0;
-    text-align: left; 
+    text-align: left;
   }
 
-  .pickup-tag-btn-pc-only {
-    display: inline-flex;
+  .pickup-tag-action.pc-only {
+    display: flex;
   }
-  .pickup-tag-btn-sp-only {
+
+  .pickup-tag-action.sp-only {
     display: none;
   }
 

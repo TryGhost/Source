@@ -551,6 +551,7 @@ figure.kg-card.kg-image-card.kg-card-hascaption  {
   .post-magazine-label > img {
     width: 117px;
     height: 46px;
+    border-radius: 10px 10px 0 0;
   }
 
   .post-content {

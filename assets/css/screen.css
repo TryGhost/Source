@@ -55,9 +55,9 @@ production stylesheet in assets/built/screen.css
 @import "tag.css";
 @import "author.css";
 @import "button.css";
+@import "link-button.css";
 @import "card.css";
 @import "checkbox.css";
-@import "pagination.css";
 @import "pickup-tag.css";
 @import "partners.css";
 @import "footer.css";
@@ -66,6 +66,7 @@ production stylesheet in assets/built/screen.css
 @import "articles-section.css";
 @import "magazine.css";
 @import "content-cta.css";
+@import "post-likes.css";
 /* 1. Variables
 /* ---------------------------------------------------------- */
 
