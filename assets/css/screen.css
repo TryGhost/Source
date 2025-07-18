@@ -55,6 +55,7 @@ production stylesheet in assets/built/screen.css
 @import "tag.css";
 @import "author.css";
 @import "button.css";
+@import "link-button.css";
 @import "card.css";
 @import "checkbox.css";
 @import "pickup-tag.css";
