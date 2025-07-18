@@ -1,11 +1,10 @@
 (function () {
     'use strict';
 
-    const selector = document.querySelector('section.tag-hero')
-    const contentApiKey = selector.getAttribute('data-content-api-key');;
-    const tagSlug = selector.getAttribute('data-tag-slug');;
+    const selector = document.querySelector('section.tag-hero');
+    const tagSlug = selector?.getAttribute('data-tag-slug');
 
-    if (!contentApiKey || !tagSlug) {
+    if (!tagSlug) {
         return;
     }
 
@@ -21,6 +20,7 @@
      */
     async function fetchTagPosts(limit, page) {
         try {
+            const contentApiKey = window.ghostConfig.contentApiKey;
             const response = await fetch(
                 `/ghost/api/content/posts/?key=${contentApiKey}&filter=tag:${tagSlug}&offset=${currentOffset}&limit=${limit}&page=${page}&include=tags,authors`
             );

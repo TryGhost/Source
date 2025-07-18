@@ -5,12 +5,6 @@
     let allPosts = [];
     let currentPage = 0;
 
-     // Content API Keyを取得
-     const contentApiKey = document.querySelector('main.post-likes-main')?.getAttribute('data-content-api-key');
-     if (!contentApiKey) {
-         return;
-     }
-
     async function fetchLikedPosts(key, memberId) {
         try {
             const response = await fetch(
@@ -30,6 +24,7 @@
     }
 
     async function initialize() {
+        const contentApiKey = window.ghostConfig.contentApiKey;
         const memberEmail = window.currentMember.email;
         const memberInfo = await getMemberByEmail(memberEmail, contentApiKey);
         const memberId = memberInfo?.id;

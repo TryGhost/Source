@@ -513,7 +513,7 @@
      */
     async function initialize() {
         // 投稿データを取得
-        const contentApiKey = document.querySelector('#search_results')?.getAttribute('data-content-api-key');
+        const contentApiKey = window.ghostConfig.contentApiKey;
         if (!contentApiKey) {
             return;
         }
