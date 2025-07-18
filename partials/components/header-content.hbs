@@ -16,6 +16,22 @@
         <button class="header-mobile-toggle" aria-label="メニューを開く" aria-expanded="false">
             <img src="{{asset "images/icons/menu.svg"}}" alt="" width="24" height="24" />
         </button>
+        {{!-- Fullscreen Mobile Menu --}}
+        <div class="header-fullscreen-menu" aria-hidden="true">
+            <div class="header-fullscreen-menu-content">
+                <div class="header-fullscreen-nav-links">
+                    {{#if @member}}
+                        <a class="header-fullscreen-nav-link" href="#/portal/account" data-portal="account">アカウント</a>
+                    {{else}}
+                        <a class="header-fullscreen-nav-link" href="#/portal/signin" data-portal="signin">ログイン</a>
+                    {{/if}}
+                    {{#if @member}}
+                    <a class="header-fullscreen-nav-link" href="/post-likes">お気に入り</a>
+                    {{/if}}
+                    <a class="header-fullscreen-nav-link" href="/about">Magacoについて</a>
+                </div>
+            </div>
+        </div>
 
         {{!-- Desktop Search Bar --}}
         {{#is "home"}}

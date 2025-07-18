@@ -34,6 +34,7 @@ section.gh-header .gh-header-inner {
   align-items: center;
   justify-content: space-between;
   height: 100%;
+  border: 1px solid var(--color-black);
 }
 
 /* Logo */
@@ -240,5 +241,49 @@ section.gh-header .gh-header-inner {
 
   .header-login-btn {
     font: var(--text-regular-medium);
+  }
+}
+
+/* Fullscreen Mobile Menu Styles */
+.header-fullscreen-menu {
+  position: fixed;
+  top: var(--nav-height);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--color-bg-primary);
+  z-index: calc(var(--z-index-header) - 1);
+  display: none;
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+}
+
+.header-fullscreen-menu.is-open {
+  display: flex;
+  opacity: 1;
+}
+
+.header-fullscreen-menu-content {
+  margin-block-start: var(--space-6xl);
+  width: 100%;
+}
+
+.header-fullscreen-nav-links {
+  display: grid;
+  justify-content: flex-start;
+  gap: var(--space-md);
+  padding-inline: var(--space-lg);
+}
+
+.header-fullscreen-nav-link {
+  color: var(--color-white);
+  font: var(--text-large-bold);
+  letter-spacing: var(--letter-spacing-wide-xl);
+}
+
+/* Hide fullscreen menu on desktop */
+@media (width >= 1025px) {
+  .header-fullscreen-menu {
+    display: none !important;
   }
 }
