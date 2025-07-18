@@ -67,7 +67,7 @@
 </main>
 
 {{#get "posts" filter="primary_tag:{{primary_tag.slug}}+id:-{{id}}" limit="3" include="tags,group"}}
-    {{> "components/articles-section" posts=posts enTitle="Articles" jaTitle="おすすめの記事" description="行ってみたい、食べてみたいがきっと見つかる。編集者の目線で選んだ、あなたのためのおすすめ記事です。" section_type="featured"}}
+    {{> "components/articles-section" posts=posts enTitle="Articles" jaTitle="おすすめの記事" description="行ってみたい、食べてみたいがきっと見つかる。編集者の目線で選んだ、あなたのためのおすすめ記事です。" section_type="featured" showLoadMore="true"}}
 {{/get}}
 
 {{/post}}

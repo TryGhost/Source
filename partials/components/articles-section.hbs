@@ -1,3 +1,4 @@
+{{#if posts}}
 <section class="articles-section" data-section-type="{{section_type}}">
     <div class="articles-section-header">
         <span class="articles-section-label">{{enTitle}}</span>
@@ -5,11 +6,9 @@
         <p class="articles-section-description">{{description}}</p>
     </div>
     <div class="articles-section-card" {{#if articlesSectionId}}id="{{articlesSectionId}}"{{/if}}>
-    {{#if posts}}
     {{#foreach posts}}
         {{> "components/card" post=this card_color=../section_type}}
     {{/foreach}}
-    {{/if}}
     </div>
 
     <div class="articles-section-action">
@@ -21,4 +20,4 @@
     {{/if}}
     <div>
 </section>
-
+{{/if}}
