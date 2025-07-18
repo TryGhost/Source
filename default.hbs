@@ -75,6 +75,12 @@
   </script>
 {{/if}}
 
+<script>
+  window.ghostConfig = {
+    contentApiKey: "{{content_api_key}}"
+  };
+</script>
+
 {{!-- Scripts - handle responsive videos, infinite scroll, and navigation dropdowns --}}
 <script src="{{asset "built/source.js"}}"></script>
 

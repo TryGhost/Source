@@ -3,8 +3,7 @@
 
 {{#post}}
 
-<main class="post-main">
-
+<main class="post-main" data-filter-tag="{{primary_tag.slug}}" data-post-id="{{id}}">
     {{!-- Hero Section --}}
     <section class="post-hero" {{#if feature_image}}style="background-image: url('{{img_url feature_image size="xl"}}')"{{/if}}>
         <div class="post-hero-content">
@@ -66,8 +65,8 @@
     </section>
 </main>
 
-{{#get "posts" filter="primary_tag:{{primary_tag.slug}}+id:-{{id}}" limit="3" include="tags,group"}}
-    {{> "components/articles-section" posts=posts enTitle="Articles" jaTitle="おすすめの記事" description="行ってみたい、食べてみたいがきっと見つかる。編集者の目線で選んだ、あなたのためのおすすめ記事です。" section_type="featured" showLoadMore="true"}}
+{{#get "posts" filter="primary_tag:{{primary_tag.slug}}+id:-{{id}}" limit="3" page="1" include="tags,group" order="published_at desc" as |posts pages|}}
+    {{> "components/articles-section" posts=posts enTitle="Articles" jaTitle="おすすめの記事" description="行ってみたい、食べてみたいがきっと見つかる。編集者の目線で選んだ、あなたのためのおすすめ記事です。" section_type="featured" showLoadMore=pages.next}}
 {{/get}}
 
 {{/post}}
