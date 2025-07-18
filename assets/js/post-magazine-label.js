@@ -44,7 +44,7 @@ const updateMagazineLabel = async (postId, contentApiKey) => {
 
         // groupとlogo_imageが存在するかチェック
         if (post.group && post.group.logo_image) {
-            // logo_imageをimgタグに設定
+            // post-magazine-labelのlogo_imageをimgタグに設定
             magazineLabelImg.src = post.group.logo_image;
             magazineLabelImg.alt = post.group.name || 'グループロゴ';
 
@@ -53,18 +53,36 @@ const updateMagazineLabel = async (postId, contentApiKey) => {
             if (magazineLabel) {
                 magazineLabel.style.display = 'block';
             }
+            
+            // post-logoのlogo_imageも設定
+            const postLogoImg = document.querySelector('.post-logo img');
+            if (postLogoImg) {
+                postLogoImg.src = post.group.logo_image;
+                postLogoImg.alt = post.group.name || 'グループロゴ';
+                postLogoImg.style.display = 'block';
+            }
         } else {
             // groupまたはlogo_imageが存在しない場合は非表示
             const magazineLabel = document.querySelector('.post-magazine-label');
             if (magazineLabel) {
                 magazineLabel.style.display = 'none';
             }
+            
+            const postLogoImg = document.querySelector('.post-logo img');
+            if (postLogoImg) {
+                postLogoImg.style.display = 'none';
+            }
         }
     } catch (error) {
-        // エラー時は雑誌ラベルを非表示にする
+        // エラー時は雑誌ラベルとロゴを非表示にする
         const magazineLabel = document.querySelector('.post-magazine-label');
         if (magazineLabel) {
             magazineLabel.style.display = 'none';
+        }
+        
+        const postLogoImg = document.querySelector('.post-logo img');
+        if (postLogoImg) {
+            postLogoImg.style.display = 'none';
         }
     }
 };
