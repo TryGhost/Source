@@ -12,8 +12,8 @@
     </div>
 
     <div class="articles-section-action">
-    {{#if showPagination}}
-        {{> "components/pagination" pagination=pagination class="articles-pagination" showLoadMore=true}}
+    {{#if moreLink}}
+        {{> "components/link-button" text="一覧を見る" href=moreLink icon="images/icons/ArrowRight.svg" color="white"}}
     {{/if}}
     {{#if showLoadMore}}
         {{> "components/button" text="もっと見る"}}

@@ -16,6 +16,14 @@
   gap: 0.5em;
 }
 
+.link-button[data-color='white'] {
+    background: var(--color-white);
+}
+
+.link-button[data-color='gray'] {
+    background: var(--color-bg-gray);
+}
+
 .link-button img {
   width: 1em;
   height: auto;
