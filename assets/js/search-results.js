@@ -36,7 +36,7 @@
         const filter = getSearchFilter(params);
         const searchParams = new URLSearchParams({
             filter,
-            order: params.sort === 'newest' ? 'published_at DESC' : 'published_at ASC'
+            order: params.order === 'newest' ? 'published_at DESC' : 'page_view_count DESC',
         });
         await displaySearchResults(searchParams);
     }
@@ -92,12 +92,16 @@
         const groupCheckboxes = document.querySelectorAll('input[name="magazine"]:checked');
         const selectedGroups = Array.from(groupCheckboxes).map(checkbox => checkbox.value).filter(Boolean);
 
-        setUrlParams({q: searchQuery, tags: selectedTags, groups:selectedGroups});
+        const orderSelect = document.querySelector('.search_results__sort-dropdown');
+        const order = getSearchOrder(orderSelect?.value);
+
+        setUrlParams({q: searchQuery, tags: selectedTags, groups:selectedGroups, order: orderSelect.value});
 
         const filter = getSearchFilter({q: searchQuery, tags: selectedTags, groups:selectedGroups});
         const params = new URLSearchParams({
             filter,
-            page: 1
+            page: 1,
+            order
         });
         await displaySearchResults(params)
     };
