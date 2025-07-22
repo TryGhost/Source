@@ -10,7 +10,7 @@
         initialize();
     }
 
-    function initialize() {
+    async function initialize() {
         // 投稿ページ以外では実行しない
         const isPostPage = Boolean(document.querySelector('.post-main'));
         if (!isPostPage) {
@@ -24,6 +24,7 @@
             return;
         }
 
+
         const cardContainerSelector = '.articles-section-card';
         const {handleLoadMoreButton} = useFetchPosts(cardContainerSelector, {
             include: 'tags,group',
@@ -34,5 +35,10 @@
         });
 
         handleLoadMoreButton();
+
+        // 有料会員のみページビューを記録
+        if (window.currentMember?.paid) {
+            await recordPageView(currentPostId);
+        }
     }
 })();
