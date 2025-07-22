@@ -73,7 +73,7 @@
             const data = await response.json();
             return [data.posts ?? [], data.meta.pagination.next !== null];
         } catch (error) {
-            return [];
+            return [[], false];
         }
     }
 

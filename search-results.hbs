@@ -5,7 +5,7 @@
     <section class="search_results__navbar">
         <div class="search_results__navbar-container">
             <div class="search_results__query">
-                <form action="/search-results" method="GET">
+                <form id="posts-sp">
                     {{> "components/search-form" inputId="search-results-input"}}
                 </form>
             </div>
@@ -63,11 +63,8 @@
 
     {{!-- Results Content Section --}}
     <main class="search_results__content">
-        <div class="search_results__content-container" id="search-results-container">
-            <div class="search_results__loading">
-                検索中...
-            </div>
-        </div>
+        <div class='search_results__header'></div>
+        <div class="search_results__content-container" id="search-results-container"></div>
         <div id="load-more" class="search_results__load-more">
             {{> "components/button" text="もっと見る" }}
         </div>

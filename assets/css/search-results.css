@@ -214,10 +214,9 @@
 }
 
 .search_results__content-container {
-    max-inline-size: var(--container-max-width);
-    margin-inline: auto;
-    display: flex;
-    flex-direction: column;
+    --min: 335px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(var(--min), 1fr));
     gap: var(--space-4xl);
 }
 
@@ -445,5 +444,9 @@
 @media (768px <= width) {
     .search_results__sticky_btn {
         display: none;
+    }
+
+    .search_results__content-container {
+        --min: 416px;
     }
 }
