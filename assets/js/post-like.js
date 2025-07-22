@@ -65,7 +65,7 @@ const removePostLike = async (postId, memberId, contentApiKey) => {
 async function initializeLikeButtonUI(button) {
     const postId = button.getAttribute('data-post-id');
     const memberEmail = window.currentMember.email;
-    const contentApiKey = button.getAttribute('data-content-api-key');
+    const contentApiKey = window.ghostConfig.contentApiKey;
     let memberId = ''; // 未ログイン or 存在しない場合は空
     if (memberEmail) {
         const memberInfo = await getMemberByEmail(memberEmail, contentApiKey);
@@ -132,7 +132,7 @@ async function handleLikeButtonClick(event) {
     const button = event.currentTarget;
     const postId = button.getAttribute('data-post-id');
     const memberId = button.getAttribute('data-member-id');
-    const contentApiKey = button.getAttribute('data-content-api-key');
+    const contentApiKey = window.ghostConfig.contentApiKey;
     // 未ログイン？
     if (!memberId) {
         alert('ログインが必要です');

@@ -2,7 +2,7 @@
 {{!-- The tag above means: insert everything in this file into the body of the default.hbs template --}}
 
 {{#tag}}
-<section class="tag-hero" {{#if feature_image}}style="background-image: url({{img_url feature_image size="xl"}})"{{/if}} data-content-api-key="{{content_api_key}}" data-tag-slug="{{slug}}">
+<section class="tag-hero" {{#if feature_image}}style="background-image: url({{img_url feature_image size="xl"}})"{{/if}} data-tag-slug="{{slug}}">
     <div class="tag-hero-inner">
         <div class="tag-hero-content">
             <h1 class="tag-hero-title">#{{name}}</h1>
@@ -22,7 +22,7 @@
                     {{> "components/card" post=this}}
                 {{/foreach}}
             </div>
-            <div class="">
+            <div id="load-more">
                 {{> "components/button" text="もっと見る" attributes='id="load-more-posts"'}}
             </div>
         </div>

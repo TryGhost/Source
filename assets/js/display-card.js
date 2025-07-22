@@ -81,3 +81,57 @@ function createPostCard(post) {
         </article>
     `;
 }
+
+/**
+ * 投稿カードを表示
+ * @param {Array} posts - 投稿一覧
+ * @param {string} selector - セクションのセレクタ
+ */
+function displayArticleCards(posts, selector) {
+  const container = document.querySelector(selector);
+  if (!container) {
+      return;
+  }
+
+  posts.forEach(post => {
+      const cardHtml = createPostCard(post);
+      container.insertAdjacentHTML('beforeend', cardHtml);
+  });
+}
+
+function clearElements(selector) {
+    const container = document.querySelector(selector);
+    if (container) {
+        container.innerHTML = '';
+    }
+}
+
+function displaySearchResultsSummary(selector, length) {
+    const container = document.querySelector(selector);
+    if (!container) {
+        return;
+    }
+
+    container.innerHTML = `
+        <div class='search_results__header-tag'>Search Result</div>
+        <h1 class='search_results__header-title'>
+            検索結果: ${length}件
+        </h1>
+    `
+}
+
+function displayNoResultsMessage(selector) {
+    const container = document.querySelector(selector);
+    if (!container) {
+        return;
+    }
+
+    container.innerHTML = `
+        <div class='search_results__header'>
+            <div class='search_results__header-tag'>sorry</div>
+            <div class='search_results__header-title'>
+                検索結果が見つかりませんでした。<br/>条件を変更して再度検索してください。
+            </div>
+        </div>
+   `;
+}

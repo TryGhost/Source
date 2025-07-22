@@ -15,7 +15,9 @@
         {{> "components/link-button" text="一覧を見る" href=moreLink icon="images/icons/ArrowRight.svg" color="white"}}
     {{/if}}
     {{#if showLoadMore}}
-        {{> "components/button" text="もっと見る"}}
+        <div id="load-more">
+            {{> "components/button" text="もっと見る"}}
+        </div>
     {{/if}}
     <div>
 </section>

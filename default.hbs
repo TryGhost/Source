@@ -72,6 +72,10 @@
       email: "{{@member.email}}",
       paid: {{#if @member.paid}}true{{else}}false{{/if}}
     };
+
+    window.ghostConfig = {
+      contentApiKey: "{{content_api_key}}"
+    };
   </script>
 {{/if}}
 

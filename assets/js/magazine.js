@@ -45,11 +45,7 @@
             return;
         }
 
-        // Content API Keyを取得
-        const contentApiKey = document.querySelector('section.magazine-section')?.getAttribute('data-content-api-key');
-        if (!contentApiKey) {
-            return;
-        }
+        const contentApiKey = window.ghostConfig.contentApiKey;
 
         // グループ情報を取得
         const group = await fetchGroupBySlug(groupSlug, contentApiKey);

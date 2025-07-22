@@ -37,7 +37,7 @@
         {{#is "home"}}
         {{!-- Hide search on home page --}}
         {{else}}
-        <form class="header-search"  role="search" action="/search-results" method="GET">
+        <form class="header-search"  role="search" action="/search-results" method="GET" id="header-search-form">
             {{> "components/search-form" inputId="header-search-input" inputClass="header-search-input" buttonClass="header-search-btn"}}
         </form>
         {{/is}}

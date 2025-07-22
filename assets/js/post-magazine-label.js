@@ -53,7 +53,7 @@ const updateMagazineLabel = async (postId, contentApiKey) => {
             if (magazineLabel) {
                 magazineLabel.style.display = 'block';
             }
-            
+
             // post-logoのlogo_imageも設定
             const postLogoImg = document.querySelector('.post-logo img');
             if (postLogoImg) {
@@ -67,7 +67,7 @@ const updateMagazineLabel = async (postId, contentApiKey) => {
             if (magazineLabel) {
                 magazineLabel.style.display = 'none';
             }
-            
+
             const postLogoImg = document.querySelector('.post-logo img');
             if (postLogoImg) {
                 postLogoImg.style.display = 'none';
@@ -79,7 +79,7 @@ const updateMagazineLabel = async (postId, contentApiKey) => {
         if (magazineLabel) {
             magazineLabel.style.display = 'none';
         }
-        
+
         const postLogoImg = document.querySelector('.post-logo img');
         if (postLogoImg) {
             postLogoImg.style.display = 'none';
@@ -99,14 +99,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // data属性からpost_idとcontent_api_keyを取得
     const postElement = document.querySelector('[data-post-id]');
-    const contentApiKeyElement = document.querySelector('[data-content-api-key]');
 
-    if (!postElement || !contentApiKeyElement) {
+    if (!postElement) {
         return;
     }
 
     const postId = postElement.getAttribute('data-post-id');
-    const contentApiKey = contentApiKeyElement.getAttribute('data-content-api-key');
+    const contentApiKey = window.ghostConfig.contentApiKey;
 
     if (!postId || !contentApiKey) {
         return;
