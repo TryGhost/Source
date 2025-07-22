@@ -1,4 +1,6 @@
-const getMemberByEmail = async (email, contentApiKey) => {
+const contentApiKey = window.ghostConfig.contentApiKey;
+
+const getMemberByEmail = async (email) => {
     if (!email) {
         return null;
     }

@@ -9,9 +9,10 @@
  * @param {Array} [post.tags] - タグの配列
  * @param {Object} [post.group] - グループオブジェクト
  * @param {boolean} [isShowLikeButton] - いいねボタンを表示するかどうか
+ * @param {boolean} [isLiked] - いいね状態（trueの場合いいね済み状態で表示）
  * @returns {string} HTMLカードの文字列
  */
-function createPostCard(post, isShowLikeButton = false) {
+function createPostCard(post, isShowLikeButton = false, isLiked = false) {
     const featureImage = post.feature_image;
     const groupLogoImage = post.group?.logo_image;
     const tags = post.tags ? post.tags.slice(0, 2) : [];
@@ -50,9 +51,9 @@ function createPostCard(post, isShowLikeButton = false) {
                             class='gh-post-like-button favorite'
                             data-post-id='${post.id}'
                             data-member-id=''
-                            data-liked='false'
+                            data-liked='${isLiked}'
                             type='button'
-                            aria-label='お気に入り'
+                            aria-label='${isLiked ? 'お気に入り解除' : 'お気に入り'}'
                         >
                             <svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
                                 <path d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'
