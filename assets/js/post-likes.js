@@ -124,7 +124,7 @@
         }
 
         posts.forEach(post => {
-            const cardHtml = createPostCard(post);
+            const cardHtml = createPostCard(post, true);
             container.insertAdjacentHTML('beforeend', cardHtml);
         });
     }
