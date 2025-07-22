@@ -68,7 +68,7 @@ async function initializeLikeButtonUI(button) {
     const contentApiKey = window.ghostConfig.contentApiKey;
     let memberId = ''; // 未ログイン or 存在しない場合は空
     if (memberEmail) {
-        const memberInfo = await getMemberByEmail(memberEmail, contentApiKey);
+        const memberInfo = await getMemberByEmail(memberEmail);
         if (memberInfo && memberInfo.id) {
             memberId = memberInfo.id;
         } else {
