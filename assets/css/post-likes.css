@@ -23,6 +23,7 @@
 }
 
 .post-likes-container {
+    --min: 335px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(var(--min), 1fr));
     gap: clamp(16px, 2vw, 24px);
