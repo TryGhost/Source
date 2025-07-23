@@ -40,6 +40,7 @@
     text-align: center;
     letter-spacing: var(--letter-spacing-wide-xs);
     margin-bottom: var(--space-5xl);
+    line-height: var(--line-height-normal);
 }
 
 
