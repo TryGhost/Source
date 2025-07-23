@@ -27,7 +27,7 @@
   --color-text-secondary: #000000;
   --color-text-white: #ffffff;
   --color-text-light-gray: #a7a7a7;
-  
+
 
   /* Border & Opacity Colors */
   --color-border-light: rgba(12, 6, 12, 0.02);
@@ -42,6 +42,7 @@
 
   /* Font Families */
   --font-family-primary: "Zen Kaku Gothic New", sans-serif;
+  --font-family-heading: "Work Sans", sans-serif;
 
   /* Font Sizes */
   --font-size-xs: 12px;

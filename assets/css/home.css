@@ -53,9 +53,10 @@
 }
 
 .home-hero-title {
-  font: var(--heading-l);
-  letter-spacing: var(--letter-spacing-wide-2xl);
-  margin: 0;
+  font-size: 2.5rem;
+  font-family: var(--font-family-heading);
+  letter-spacing: -0.4px;
+  line-height: var(--line-height-tight);
   color: var(--color-white);
 }
 
@@ -82,7 +83,7 @@
   }
 
   .home-hero-title {
-    font: var(--heading-xxl);
+    font-size: var(--font-size-4xl);
     letter-spacing: var(--letter-spacing-wide-4xl);
   }
 
