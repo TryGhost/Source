@@ -25,17 +25,27 @@
 .articles-section-header {
     grid-area: header;
     text-align: center;
+    display: grid;
+    grid-template:
+        "label"
+        "." 12px
+        "title"
+        "." 20px
+        "description";
 }
 
 .articles-section-label {
+    grid-area: label;
     font: var(--heading-xxs);
 }
 
 .articles-section-title {
+    grid-area: title;
     font: var(--heading-l);
 }
 
 .articles-section-description {
+    grid-area: description;
     font: var(--text-regular-regular);
 }
 
