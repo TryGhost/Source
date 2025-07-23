@@ -50,11 +50,11 @@ function initializeForm(params) {
     });
 
     // ソート選択を設定
-    const sortSelect = document.querySelector(
+    const orderSelect = document.querySelector(
         '.search_results__sort-dropdown'
     );
-    if (sortSelect) {
-        sortSelect.value = params.sort;
+    if (orderSelect) {
+        orderSelect.value = params.order;
     }
 }
 
@@ -87,7 +87,7 @@ function setupInputSync() {
  * @returns {string} returns.q - 検索クエリ文字列
  * @returns {string[]} returns.tags - 選択されたタグスラッグの配列
  * @returns {string[]} returns.groups - 選択されたグループIDの配列
- * @returns {string} returns.sort - ソート順
+ * @returns {string} returns.order - ソート順
  */
 function getUrlParams() {
     const params = new URLSearchParams(window.location.search);
@@ -96,7 +96,7 @@ function getUrlParams() {
         q: params.get('q') || '',
         tags: params.getAll('tags'),
         groups: params.getAll('groups'),
-        sort: params.get('sort') || 'newest'
+        order: params.get('order') || 'newest'
     };
 }
 
@@ -114,6 +114,10 @@ function setUrlParams(params) {
 
     if (params.groups.length > 0) {
         params.groups.forEach(group => searchParams.append('groups', group));
+    }
+
+    if (params.order) {
+        searchParams.set('order', params.order);
     }
 
     url.search = searchParams.toString();
@@ -138,6 +142,14 @@ function getSearchFilter(params) {
     }
 
     return filters.join('+');
+}
+
+function getSearchOrder(orderSelectValue) {
+    if (!orderSelectValue) {
+        return 'published_at DESC';
+    }
+
+    return orderSelectValue === 'newest' ? 'published_at DESC' : 'page_view_count DESC';
 }
 
 /**
