@@ -59,7 +59,7 @@
   /* Typography Styles */
 
   /* Heading Styles */
-  --heading-xxl: 700 56px/1.2 var(--font-family-primary);
+  --heading-xxl: 400 56px/1.2 var(--font-family-primary);
   --heading-xl: 400 48px/1.2 var(--font-family-primary);
   --heading-l: 400 40px/1.2 var(--font-family-primary);
   --heading-m: 400 32px/1.4 var(--font-family-primary);
