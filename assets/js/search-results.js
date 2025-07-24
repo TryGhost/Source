@@ -45,9 +45,9 @@
         clearElements(cardContainerSelector);
         clearElements('.search_results__header');
 
-        const [posts, hasNext] = await fetchPosts(searchParams);
+        const {posts, hasNext,count} = await fetchPosts(searchParams);
         if (posts.length > 0) {
-            displaySearchResultsSummary('.search_results__header', posts.length);
+            displaySearchResultsSummary('.search_results__header', count);
             await displayPosts(posts, hasNext);
         } else {
             toggleLoadMoreButton(false);

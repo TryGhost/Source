@@ -21,13 +21,26 @@ function useFetchPosts(postsSelector, baseParams) {
             );
 
             if (!response.ok) {
-                return [[], false];
+                return {
+                    posts: [],
+                    hasNext: false,
+                    count: 0
+                };
             }
 
             const data = await response.json();
-            return [data.posts ?? [], data.meta.pagination.next !== null];
+
+            return {
+                posts: data.posts || [],
+                hasNext: data.meta.pagination.next !== null,
+                count: data.meta.pagination.total
+            }
         } catch (error) {
-            return [[], false];
+            return {
+                posts: [],
+                hasNext: false,
+                count: 0
+            };
         }
     }
 
@@ -44,7 +57,7 @@ function useFetchPosts(postsSelector, baseParams) {
         const currentPage = isNaN(pageNumber) ? 1 : pageNumber;
         searchParams.set('page', currentPage + 1);
 
-        const [posts, hasNext] = await fetchPosts({page: currentPage + 1});
+        const {posts, hasNext} = await fetchPosts({page: currentPage + 1});
         if (posts.length > 0) {
             await displayPosts(posts, hasNext);
         } else {
