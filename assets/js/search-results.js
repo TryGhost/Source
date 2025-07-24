@@ -51,7 +51,7 @@
             await displayPosts(posts, hasNext);
         } else {
             toggleLoadMoreButton(false);
-            displayNoResultsMessage(cardContainerSelector);
+            displayNoResultsMessage('.search_results__header');
         }
     }
 
