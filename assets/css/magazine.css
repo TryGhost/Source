@@ -15,11 +15,11 @@
 
 .magazine-logo-image {
     grid-area: 2 / 2 / 3 / 4;
-    min-width: 257px;
-    min-height: 101px;
+    width: 257px;
+    height: 101px;
     object-fit: contain;
     background-color: var(--color-white);
-    border-radius: var(--radius-sm) var(--radius-sm) 0 0 ;
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
 }
 
 .magazine-info {
@@ -41,11 +41,20 @@
 }
 
 @media (768px <= width) {
+    .magazine-logo-image {
+        width: 180px;
+        height: 71px;
+    }
+
     .magazine-info {
         padding: 40px 64px 56px 64px;
     }
 
     .magazine-name {
         font: var(--heading-xl);
+    }
+
+    .magazine-description {
+        width: 563px;
     }
 }
