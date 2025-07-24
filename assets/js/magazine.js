@@ -64,13 +64,13 @@
      * @param {string} order - ソート条件
      * @returns {Promise<Array>} 投稿一覧
      */
-    async function fetchPosts(key, filter, order) {
+    async function fetchPosts(key, filter, order, limit = 3) {
         const params = new URLSearchParams({
             key,
             filter,
             include: 'tags,group',
             order,
-            limit: 3
+            limit
         });
 
         try {
@@ -139,9 +139,10 @@
         }
 
         // 記事の取得と表示
-        const [newPostsResult, featuredPostsResult] = await Promise.allSettled([
+        const [newPostsResult, featuredPostsResult, rankingPostsResult] = await Promise.allSettled([
             fetchPosts(contentApiKey, `group_id:${group.id}`, 'published_at DESC'),
-            fetchPosts(contentApiKey, `group_id:${group.id}+tag:pickup`, 'updated_at DESC')
+            fetchPosts(contentApiKey, `group_id:${group.id}+tag:pickup`, 'updated_at DESC'),
+            fetchPosts(contentApiKey, `group_id:${group.id}`, 'page_view_count DESC', 15)
         ]);
 
         // 新着投稿の表示
@@ -152,6 +153,11 @@
         // 特集投稿の表示
         if (featuredPostsResult.status === 'fulfilled') {
             displayCards(featuredPostsResult.value, 'magazine-featured');
+        }
+
+        // ランキング投稿の表示
+        if (featuredPostsResult.status === 'fulfilled') {
+            displayCards(rankingPostsResult.value, 'magazine-ranking');
         }
     }
 
