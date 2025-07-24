@@ -60,7 +60,6 @@
 .search_results__sort-dropdown {
     background-color: var(--color-white);
     border: none;
-    color: var(--color-text-primary);
     font: var(--text-regular-bold);
     letter-spacing: var(--letter-spacing-wide-xs);
     padding-block: 10px;
@@ -72,6 +71,7 @@
     background-position: right 12px center;
     background-size: 20px;
     padding-inline-end: 40px;
+    width: 160px;
 }
 
 @media (768px <= width) {
@@ -80,8 +80,7 @@
     }
 
     .search_results__navbar-header > button {
-        display: flex;
-        justify-content: space-between;
+        display: block;
     }
 
     .search_results__sort {
@@ -118,7 +117,7 @@
 .search_results__form-filter {
     display: flex;
     flex-direction: column;
-    row-gap: var(--space-md);
+    row-gap: var(--space-lg);
 }
 
 /* Tags Section */
@@ -448,5 +447,9 @@
 
     .search_results__content-container {
         --min: 416px;
+    }
+
+    .search_results__form-form {
+        margin-block-start: var(--space-lg);
     }
 }
