@@ -92,6 +92,7 @@
     flex-direction: column;
     align-items: center;
     padding-block: var(--space-5xl);
+    padding-inline: var(--space-lg);
     width: 100%;
     max-width: 375px;
     margin: 0 auto;
