@@ -9,6 +9,7 @@
   --color-primary-text: #0c060c;
   --color-white: #ffffff;
   --color-black: #000000;
+  --color-rich-text: #303030;
 
   /* Background Colors */
   --color-bg-primary: #0c060c;
@@ -69,6 +70,7 @@
   /* Text Styles */
   --text-xlarge-bold: 700 24px/1.4 var(--font-family-primary);
   --text-large-bold: 700 20px/1.4 var(--font-family-primary);
+  --text-large-medium: 500 20px/1.4 var(--font-family-primary);
   --text-medium-bold: 700 18px/1.4 var(--font-family-primary);
   --text-medium-regular: 400 18px/1.4 var(--font-family-primary);
   --text-regular-bold: 700 16px/1.4 var(--font-family-primary);

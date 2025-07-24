@@ -63,6 +63,7 @@ production stylesheet in assets/built/screen.css
 @import "footer.css";
 @import "post-like.css";
 @import "post.css";
+@import "post-article.css";
 @import "articles-section.css";
 @import "magazine.css";
 @import "content-cta.css";
@@ -2298,14 +2299,6 @@ unless a heading is the very first element in the post content */
     margin-top: calc(68px * var(--content-spacing-factor, 1));
 }
 
-/* Image */
-
-.kg-image {
-    margin-right: auto;
-    margin-left: auto;
-    border-radius: var(--radius-lg);
-}
-
 /* Embed */
 
 .kg-embed-card {
@@ -2329,11 +2322,6 @@ unless a heading is the very first element in the post content */
 
 /* Toggle */
 
-.kg-card.kg-toggle-card .kg-toggle-heading-text {
-    font-size: 2rem;
-    font-weight: 700;
-}
-
 .has-serif-title .kg-toggle-card .kg-toggle-heading-text {
     font-family: var(--font-serif);
 }
@@ -2350,24 +2338,6 @@ unless a heading is the very first element in the post content */
 
 .kg-callout-card-accent a {
     text-decoration: underline;
-}
-
-/* Blockquote */
-
-blockquote:not([class]) {
-    padding-left: 2rem;
-    font: var(--text-large-bold);
-}
-
-blockquote.kg-blockquote-alt {
-    font-style: normal;
-    font-weight: 400;
-    color: var(--color-black);
-    text-align: left;
-    padding-inline: 20px;
-    padding-block:36px;
-    font: var(--text-large-bold);
-    letter-spacing: var(--letter-spacing-wide-xl);
 }
 
 /* Button */
@@ -2475,16 +2445,6 @@ blockquote.kg-blockquote-alt {
 }
 
 /* Caption */
-
-figcaption {
-    margin-top: 12px;
-    font-size: 1.4rem;
-    text-align: center;
-}
-
-.kg-card.kg-width-full figcaption {
-    padding: 0 16px;
-}
 
 figcaption a {
     color: var(--ghost-accent-color);
