@@ -13,7 +13,12 @@
             <a class="magazine-url"></a>
         </div>
     </section>
-    {{> "components/articles-section" enTitle="Featured" jaTitle="特集記事" description="記事をハッシュタグでまとめて特集にしました。" section_type="featured" articlesSectionId="magazine-featured" showMoreLink=true moreLink="/search-results/?order=popular"}}
-    {{> "components/articles-section" enTitle="NEW" jaTitle="新着記事" description="Magacoの新着記事を紹介します。" section_type="new"  articlesSectionId="magazine-new" showMoreLink=true }}
-    {{> "components/articles-section" enTitle="Ranking" jaTitle="人気の記事" description="Magacoの人気の記事を紹介します。" section_type="featured" articlesSectionId="magazine-ranking" showMoreLink=true}}
+    {{#> "components/articles-section" enTitle="Featured" jaTitle="特集記事" description="記事をハッシュタグでまとめて特集にしました。" section_type="featured" articlesSectionId="magazine-featured" showMoreLink=true moreLink="/search-results/?order=popular"}}
+    {{/components/articles-section}}
+
+    {{#> "components/articles-section" enTitle="NEW" jaTitle="新着記事" description="Magacoの新着記事を紹介します。" section_type="new"  articlesSectionId="magazine-new" showMoreLink=true }}
+    {{/components/articles-section}}
+
+    {{#> "components/articles-section" enTitle="Ranking" jaTitle="人気の記事" description="Magacoの人気の記事を紹介します。" section_type="featured" articlesSectionId="magazine-ranking" showMoreLink=true}}
+    {{/components/articles-section}}
 </main>

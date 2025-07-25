@@ -55,7 +55,11 @@
 
 {{#get "posts" filter="primary_tag:{{primary_tag.slug}}+id:-{{id}}" limit="3" page="1" include="tags,group" order="published_at desc" as |posts pages|}}
     {{#if posts}}
-    {{> "components/articles-section" posts=posts enTitle="Articles" jaTitle="おすすめの記事" description="行ってみたい、食べてみたいがきっと見つかる。編集者の目線で選んだ、あなたのためのおすすめ記事です。" section_type="featured" showLoadMore=pages.next}}
+    {{#>"components/articles-section" enTitle="Articles" jaTitle="おすすめの記事" description="行ってみたい、食べてみたいがきっと見つかる。編集者の目線で選んだ、あなたのためのおすすめ記事です。" section_type="featured" showLoadMore=pages.next}}
+        {{#foreach posts}}
+              {{> "components/card" post=this card_color="featured"}}
+        {{/foreach}}
+    {{/components/articles-section}}
     {{/if}}
 {{/get}}
 
