@@ -29,7 +29,6 @@
   --color-text-white: #ffffff;
   --color-text-light-gray: #a7a7a7;
 
-
   /* Border & Opacity Colors */
   --color-border-light: rgba(12, 6, 12, 0.02);
   --color-overlay: rgba(12, 6, 12, 0.05);
@@ -44,6 +43,7 @@
   /* Font Families */
   --font-family-primary: "Zen Kaku Gothic New", sans-serif;
   --font-family-heading: "Work Sans", sans-serif;
+  --font-family-button-primary: "Montserrat", sans-serif;
 
   /* Typography Styles */
 
@@ -65,6 +65,7 @@
   --text-regular-bold: 700 16px/1.4 var(--font-family-primary);
   --text-regular-regular: 400 16px/1.4 var(--font-family-primary);
   --text-regular-medium: 500 16px/1.5 var(--font-family-primary);
+  --text-regular-medium-button: 500 16px/1.5 var(--font-family-button-primary);
   --text-small-bold: 700 14px/1.4 var(--font-family-primary);
   --text-small-regular: 400 14px/1.4 var(--font-family-primary);
   --text-xsmall-bold: 700 12px/1.4 var(--font-family-primary);
