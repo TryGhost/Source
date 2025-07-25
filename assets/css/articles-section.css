@@ -6,8 +6,8 @@
     grid-template-rows: repeat(3, auto);
     grid-template-areas:
         "header header header"
-        "card card card"
-        ".    button .";
+        "card   card   card"
+        "button button button";
 }
 
 .articles-section[data-section-type="new"] {
@@ -58,6 +58,11 @@
 .articles-section-action {
     grid-area: button;
     justify-items: center;
+
+    * {
+        width: 80%;
+        width: 80%;
+    }
 }
 
 @media (width >= 1025px) {
@@ -78,5 +83,15 @@
         --min: 416px;
         grid-template-columns: repeat(auto-fill, minmax(var(--min), 1fr));
         gap: 29px;
+    }
+
+    .articles-section-action {
+        div {
+            max-width: 222px;
+        }
+
+        a {
+            max-width: 270px;
+        }
     }
 }

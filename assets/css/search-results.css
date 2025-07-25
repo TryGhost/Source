@@ -80,7 +80,9 @@
     }
 
     .search_results__navbar-header > button {
-        display: block;
+        display: grid;
+        place-content: center;
+        width: 126px;
     }
 
     .search_results__sort {
@@ -187,9 +189,10 @@
     font: var(--text-regular-bold);
     letter-spacing: var(--letter-spacing-wide-xs);
     padding-block: 10px;
-    padding-inline: var(--space-6xl);
+    padding-inline: 60px;
     align-self: center;
     transition: var(--transition-fast);
+    width: 234px;
 }
 
 .search_results__filter-button:hover {
@@ -395,6 +398,8 @@
 .search_results__load-more {
     display: grid;
     place-items: center;
+    justify-self: center;
+    width: 80%;
 }
 
 /* Loading and Error States */
@@ -451,5 +456,9 @@
 
     .search_results__form-form {
         margin-block-start: var(--space-lg);
+    }
+
+    .search_results__load-more {
+        width: 222px;
     }
 }

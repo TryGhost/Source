@@ -10,7 +10,7 @@
                 </form>
             </div>
             <div class="search_results__navbar-header">
-                {{> "components/button" text="詳細検索" width="126px" attributes='id="accordion-toggle" aria-expanded="false" aria-controls="accordion-content"' }}
+                {{> "components/button" text="詳細検索" attributes='id="accordion-toggle" aria-expanded="false" aria-controls="accordion-content"' }}
                 {{!-- Sort Controls --}}
                 <div class="search_results__sort">
                     <label class="search_results__sort-label" id="sort">並び替え</label>
@@ -65,7 +65,7 @@
         <div class='search_results__header'></div>
         <div class="search_results__content-container" id="search-results-container"></div>
         <div id="load-more" class="search_results__load-more">
-            {{> "components/button" text="もっと見る" }}
+            {{> "components/button" text="もっと見る" attributes='data-size="full"'}}
         </div>
     </main>
     <button type="button" class="search_results__sticky_btn">

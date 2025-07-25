@@ -12,7 +12,6 @@
     column-gap: var(--space-xs);
     padding: var(--space-sm) var(--space-4xl);
     border-radius: var(--radius-full);
-    width: 270px;
     height: 44px;
     transition: opacity 0.1s ease;
 

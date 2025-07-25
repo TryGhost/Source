@@ -123,5 +123,9 @@
         display: block;
         justify-content: flex-start;
         text-align: left;
+
+        a {
+            width: 270px;
+        }
     }
 }

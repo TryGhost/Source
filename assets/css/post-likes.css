@@ -32,6 +32,7 @@
 .post-likes-actions {
     display: none;
     margin-inline: auto;
+    width: 80%;
 }
 
 @media (width >= 1025px) {
@@ -51,5 +52,9 @@
 
     .post-likes-container {
         --min: 416px;
+    }
+
+    .post-likes-actions {
+        width: 222px;
     }
 }

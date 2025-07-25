@@ -1,15 +1,14 @@
 .button {
     /* Layout */
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: var(--space-xs);
+    display: grid;
+    place-content: center;
 
     /* Size */
     padding: 10px var(--space-xl);
+    height: 42px;
 
     /* Typography */
-    font: var(--text-regular-bold);
+    font: var(--text-regular-medium);
     letter-spacing: var(--letter-spacing-wide-xs);
     color: var(--color-text-primary);
     text-align: center;
@@ -27,29 +26,22 @@
     /* Reset browser defaults */
     appearance: none;
     text-decoration: none;
-}
 
-/* Hover state */
-.button:hover:not(:disabled) {
-    background-color: var(--color-text-primary);
-    color: var(--color-white);
-}
+    &:not(:disabled):hover {
+        opacity: 0.8;
+        transition: opacity 0.1s ease;
+    }
 
-/* Active state */
-.button:active:not(:disabled) {
-    transform: scale(0.98);
-}
+    &:disable {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
 
-/* Disabled state */
-.button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
+    &[data-color="gradient"] {
+        background-image: var(--gradient-primary);
+    }
 
-.button[data-color='gradient'] {
-    background-image: var(--gradient-primary);
-}
-
-.button[aria-pressed='true'] {
-    background-image: var(--gradient-primary);
+    &[data-size="full"] {
+        width: 100%;
+    }
 }
