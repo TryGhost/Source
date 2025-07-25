@@ -15,7 +15,7 @@ module.exports = ({ t, email, url, siteTitle, siteUrl }) => `
     <meta charset="UTF-8">
     <title>${t('{siteTitle} へのログインリンクのお知らせ', { siteTitle, interpolation: { escapeValue: false } })}</title>
   </head>
-  <body style="font-family: sans-serif; font-size: 14px; color: #000; line-height: 1.6;">
+  <body>
     <p>${t('{siteTitle} へのログインリクエストを受け付けました。', { siteTitle, interpolation: { escapeValue: false } })}</p>
 
     <p>以下のリンクをクリックしてログインしてください。</p>
@@ -31,7 +31,7 @@ module.exports = ({ t, email, url, siteTitle, siteUrl }) => `
     <p>${t('{siteTitle} 運営事務局', { siteTitle, interpolation: { escapeValue: false } })}<br>
     <a href="${siteUrl}">${siteUrl}</a></p>
 
-    <p style="font-size: 12px; color: #666;">
+    <p>
       ※ このメールはシステムにより自動送信されています。ご返信いただいても対応できませんのでご了承ください。<br>
       ※ このメールにお心当たりがない場合は、第三者が誤ってあなたのメールアドレスを入力した可能性があります。<br>
       お手数ですが本メールを破棄していただきますようお願いいたします。<br>
