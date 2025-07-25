@@ -1,0 +1,29 @@
+<!-- filepath: Unleash/ghost/core/content/themes/source/partials/email-templates/new-paid-cancellation.hbs -->
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>有料プラン解約手続き完了のお知らせ</title>
+  </head>
+  <body>
+    {{memberData.name}}様
+
+    <br><br>
+    {{siteTitle}}の有料プラン解約手続きが完了いたしましたので、お知らせいたします。<br>
+    これまでご利用いただき、誠にありがとうございました。
+    <br><br>
+    お客様の有料プランは {{subscriptionData.expiryAt}} までご利用いただけます。<br>
+    期限日を過ぎますと、自動的に無料会員へ移行となります。
+    <br><br>
+    無料会員として、引き続き一部のコンテンツをお楽しみいただけます。<br>
+    またのご利用を心よりお待ちしております。
+    <br><br>
+    ---<br>
+    {{siteTitle}}運営事務局<br>
+    {{siteUrl}}<br>
+    <br><br>
+    ※ このメールはシステムにより自動送信されています。ご返信いただいても対応できませんのでご了承ください。<br>
+    ※ この手続きにお心当たりがない場合は、お手数ですが至急お問い合わせフォームよりご連絡ください。<br>
+    {{siteUrl}}/contact
+  </body>
+</html>
