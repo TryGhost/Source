@@ -57,7 +57,7 @@
 
 .articles-section-action {
     grid-area: button;
-    text-align: center;
+    justify-items: center;
 }
 
 @media (width >= 1025px) {
