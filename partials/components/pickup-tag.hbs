@@ -5,15 +5,11 @@
         <div class="pickup-tag-content">
             <p class="pickup-tag-label">注目のハッシュタグ</p>
             <h2 class="pickup-tag-title">
-                {{name}} の記事をみる。
+                #{{name}} の記事をみる。
             </h2>
             <p class="pickup-tag-description">
                 私たちの編集者が選んだ特集記事をお楽しみください。新しい視点で食の世界を探求します。
             </p>
-            {{!-- PC ONLY --}}
-            <div class="pickup-tag-action pc-only">
-                {{> "components/link-button" href=url text="一覧を見る" icon="images/icons/ArrowRight.svg"}}
-            </div>
         </div>
         <div class="pickup-tag-image">
             {{#if feature_image}}
@@ -22,9 +18,7 @@
                 <div class="pickup-tag-placeholder"></div>
             {{/if}}
         </div>
-
-        {{!-- SP ONLY --}}
-        <div class="pickup-tag-action sp-only">
+        <div class="pickup-tag-action">
             {{> "components/link-button" href=url text="一覧を見る" icon="images/icons/ArrowRight.svg"}}
         </div>
     </div>
