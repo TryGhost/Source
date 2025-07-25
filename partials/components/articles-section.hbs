@@ -6,7 +6,7 @@
     </div>
     <div class="articles-section-card" {{#if articlesSectionId}}id="{{articlesSectionId}}"{{/if}}>
     {{#foreach posts}}
-        {{> "components/card" post=this card_color=../section_type}}
+        {{> "components/card" post=this card_color=../section_type attributes=../attributes}}
     {{/foreach}}
     </div>
 
