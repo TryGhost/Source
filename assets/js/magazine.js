@@ -148,16 +148,31 @@
         // 新着投稿の表示
         if (newPostsResult.status === 'fulfilled') {
             displayCards(newPostsResult.value, 'magazine-new');
+
+            const linkElement = document.querySelector('#magazine-new+div a');
+            if (linkElement) {
+                linkElement.href = `/search-results?groups=${group.id}`;
+            }
         }
 
         // 特集投稿の表示
         if (featuredPostsResult.status === 'fulfilled') {
             displayCards(featuredPostsResult.value, 'magazine-featured');
+
+            const linkElement = document.querySelector('#magazine-featured+div a');
+            if (linkElement) {
+                linkElement.href = `/search-results?groups=${group.id}&tags=pickup`;
+            }
         }
 
         // ランキング投稿の表示
         if (featuredPostsResult.status === 'fulfilled') {
             displayCards(rankingPostsResult.value, 'magazine-ranking');
+
+            const linkElement = document.querySelector('#magazine-ranking+div a');
+            if (linkElement) {
+                linkElement.href = `/search-results?groups=${group.id}&order=popular`;
+            }
         }
     }
 

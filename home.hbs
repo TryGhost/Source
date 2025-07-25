@@ -30,7 +30,7 @@
     {{!-- Popular Articles Section --}}
     {{#get "posts" order="page_view_count desc" limit="3" include="tags,group"}}
         {{#if posts}}
-        {{> "components/articles-section" posts=posts enTitle="Ranking" jaTitle="人気の記事" description="Magacoの人気の記事を紹介します。" section_type="popular" moreLink="/search-results/?order=popular"}}
+        {{> "components/articles-section" posts=posts enTitle="Ranking" jaTitle="人気の記事" description="Magacoの人気の記事を紹介します。" section_type="popular" showMoreLink=true moreLink="/search-results/?order=popular"}}
         {{/if}}
     {{/get}}
 
