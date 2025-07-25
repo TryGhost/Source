@@ -30,11 +30,10 @@
                         <div class="search_results__tags-grid" id="tag-list">
                             {{#get "tags" filter="visibility:public" order="count.posts desc" limit="10"}}
                                 {{#foreach tags}}
-                                    {{> "components/button"
+                                    {{> "components/single-select"
                                         text=(concat "#" name)
-                                        class="search_results__tag-button"
-                                        type="button"
-                                        attributes=(concat 'data-tag-slug="' slug '" aria-pressed="false"')
+                                        name="tag"
+                                        value=slug
                                     }}
                                 {{/foreach}}
                             {{/get}}

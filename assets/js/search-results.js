@@ -25,7 +25,6 @@
 
     async function initialize() {
         // イベントハンドラの登録
-        handleTagButtonClicks();
         handleFormSubmit();
         handleLoadMoreButton();
         handleAccordion();
@@ -87,7 +86,8 @@
         const tagButtons = document.querySelectorAll(
             '#tag-list > button[aria-pressed="true"]'
         );
-        const selectedTags = Array.from(tagButtons).map(button => button.getAttribute('data-tag-slug')).filter(Boolean);
+        const tagCheckboxes = document.querySelectorAll('input[name="tag"]:checked');
+        const selectedTags = Array.from(tagCheckboxes).map(checkbox => checkbox.value).filter(Boolean);
 
         const groupCheckboxes = document.querySelectorAll('input[name="magazine"]:checked');
         const selectedGroups = Array.from(groupCheckboxes).map(checkbox => checkbox.value).filter(Boolean);
