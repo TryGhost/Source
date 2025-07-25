@@ -83,7 +83,7 @@
   }
 
   .home-hero-title {
-    font-size: var(--font-size-4xl);
+    font-size: 3.5rem;
     letter-spacing: var(--letter-spacing-wide-4xl);
   }
 
