@@ -1,10 +1,12 @@
 <article class="card" {{{attributes}}}>
     <div class="card-image">
-        {{#if post.feature_image}}
-            <img src="{{img_url post.feature_image size="m"}}" alt="" loading="lazy">
-        {{else}}
-            <img src="{{asset "images/default-post-image.png"}}" alt="" loading="lazy">
-        {{/if}}
+        <a href="{{post.url}}">
+            {{#if post.feature_image}}
+                <img src="{{img_url post.feature_image size="m"}}" alt="" loading="lazy">
+            {{else}}
+                <img src="{{asset "images/default-post-image.png"}}" alt="" loading="lazy">
+            {{/if}}
+        </a>
         {{#if post.group.logo_image}}
         <a href="/magazine?group={{post.group.slug}}" class="card-magazine-logo" style="background-image: url({{img_url post.group.logo_image size="xs"}})"></a>
         {{/if}}
