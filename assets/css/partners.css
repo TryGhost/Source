@@ -60,7 +60,7 @@
         grid-template:
             "title description"
             ". ." 80px
-            "logos logos";
+            "logos logos" / 50% 50%;
     }
 
     .partners-title {
