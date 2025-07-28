@@ -48,28 +48,28 @@
   /* Typography Styles */
 
   /* Heading Styles */
-  --heading-xxl: 400 56px/1.2 var(--font-family-primary);
-  --heading-xl: 400 48px/1.2 var(--font-family-primary);
-  --heading-l: 400 40px/1.2 var(--font-family-primary);
-  --heading-m: 400 32px/1.4 var(--font-family-primary);
-  --heading-s: 400 24px/1.4 var(--font-family-primary);
-  --heading-xs: 400 20px/1.4 var(--font-family-primary);
-  --heading-xxs: 400 16px/1.5 var(--font-family-primary);
+  --heading-xxl: 400 5.6rem/1.2 var(--font-family-primary);
+  --heading-xl: 400 4.8rem/1.2 var(--font-family-primary);
+  --heading-l: 400 4rem/1.2 var(--font-family-primary);
+  --heading-m: 400 3.2rem/1.4 var(--font-family-primary);
+  --heading-s: 400 2.4rem/1.4 var(--font-family-primary);
+  --heading-xs: 400 2rem/1.4 var(--font-family-primary);
+  --heading-xxs: 400 1.6rem/1.5 var(--font-family-primary);
 
   /* Text Styles */
-  --text-xlarge-bold: 700 24px/1.4 var(--font-family-primary);
-  --text-large-bold: 700 20px/1.4 var(--font-family-primary);
-  --text-large-medium: 500 20px/1.4 var(--font-family-primary);
-  --text-medium-bold: 700 18px/1.4 var(--font-family-primary);
-  --text-medium-regular: 400 18px/1.4 var(--font-family-primary);
-  --text-regular-bold: 700 16px/1.4 var(--font-family-primary);
-  --text-regular-regular: 400 16px/1.4 var(--font-family-primary);
-  --text-regular-medium: 500 16px/1.5 var(--font-family-primary);
-  --text-regular-medium-button: 500 16px/1.5 var(--font-family-button-primary);
-  --text-small-bold: 700 14px/1.4 var(--font-family-primary);
-  --text-small-regular: 400 14px/1.4 var(--font-family-primary);
-  --text-xsmall-bold: 700 12px/1.4 var(--font-family-primary);
-  --text-xsmall-regular: 400 12px/1.4 var(--font-family-primary);
+  --text-xlarge-bold: 700 2.4rem/1.4 var(--font-family-primary);
+  --text-large-bold: 700 2rem/1.4 var(--font-family-primary);
+  --text-large-medium: 500 2rem/1.4 var(--font-family-primary);
+  --text-medium-bold: 700 1.8rem/1.4 var(--font-family-primary);
+  --text-medium-regular: 400 1.8rem/1.4 var(--font-family-primary);
+  --text-regular-bold: 700 1.6rem/1.4 var(--font-family-primary);
+  --text-regular-regular: 400 1.6rem/1.4 var(--font-family-primary);
+  --text-regular-medium: 500 1.6rem/1.5 var(--font-family-primary);
+  --text-regular-medium-button: 500 1.6rem/1.5 var(--font-family-button-primary);
+  --text-small-bold: 700 1.4rem/1.4 var(--font-family-primary);
+  --text-small-regular: 400 1.4rem/1.4 var(--font-family-primary);
+  --text-xsmall-bold: 700 1.2rem/1.4 var(--font-family-primary);
+  --text-xsmall-regular: 400 1.2rem/1.4 var(--font-family-primary);
 
   /* Letter Spacing */
   --letter-spacing-tight: -0.022em;
