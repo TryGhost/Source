@@ -1,4 +1,4 @@
-function useFetchPosts(postsSelector, baseParams) {
+function useFetchPosts(postsSelector, baseParams, sectionType) {
     const contentApiKey = window.ghostConfig.contentApiKey;
     const searchParams = new URLSearchParams({
         key: contentApiKey,
@@ -45,7 +45,7 @@ function useFetchPosts(postsSelector, baseParams) {
     }
 
     async function displayPosts(posts, hasNext) {
-        displayArticleCards(posts, postsSelector);
+        displayArticleCards(posts, postsSelector, { section_type: sectionType });
 
         if (!hasNext) {
             toggleLoadMoreButton(false);

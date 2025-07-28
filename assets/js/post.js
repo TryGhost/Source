@@ -32,7 +32,7 @@
             page: 1,
             limit: POSTS_PER_PAGE,
             order: 'published_at DESC'
-        });
+        }, 'featured');
 
         handleLoadMoreButton();
 

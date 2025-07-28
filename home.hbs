@@ -22,31 +22,19 @@
 
     {{#get "posts" order="published_at desc" limit="3" include="tags,group"}}
         {{#if posts}}
-                {{#>"components/articles-section" enTitle="NEW" jaTitle="新着記事" description="Magacoの新着記事を紹介します。" showMoreLink=true moreLink="/search-results" section_type="new"}}
-                {{#foreach posts}}
-                      {{> "components/transparent-card" post=this section_type="new"}}
-                {{/foreach}}
-                {{/components/articles-section}}
+            {{>"components/articles-section" posts=posts enTitle="NEW" jaTitle="新着記事" description="Magacoの新着記事を紹介します。" showMoreLink=true moreLink="/search-results" section_type="new" }}
         {{/if}}
     {{/get}}
 
     {{#get "posts" order="page_view_count desc" limit="3" include="tags,group"}}
         {{#if posts}}
-              {{#> "components/articles-section" enTitle="Ranking" jaTitle="人気の記事" description="Magacoの人気の記事を紹介します。" showMoreLink=true moreLink="/search-results/?order=popular" section_type="popular"}}
-                {{#foreach posts}}
-                      {{> "components/card" post=this card_color="popular"}}
-                {{/foreach}}
-            {{/components/articles-section}}
+              {{> "components/articles-section" posts=posts enTitle="Ranking" jaTitle="人気の記事" description="Magacoの人気の記事を紹介します。" showMoreLink=true moreLink="/search-results/?order=popular" section_type="popular"}}
         {{/if}}
     {{/get}}
 
     {{#get "posts" filter="featured:true" limit="3" include="tags,group"}}
         {{#if posts}}
-              {{#> "components/articles-section" enTitle="Featured" jaTitle="おすすめの記事" description="Magacoの厳選されたおすすめの記事を紹介します" section_type="featured"}}
-                {{#foreach posts}}
-                      {{> "components/card" post=this card_color="featured"}}
-                {{/foreach}}
-            {{/components/articles-section}}
+              {{> "components/articles-section" posts=posts enTitle="Featured" jaTitle="おすすめの記事" description="Magacoの厳選されたおすすめの記事を紹介します" section_type="featured"}}
         {{/if}}
     {{/get}}
 

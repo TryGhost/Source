@@ -5,7 +5,10 @@
         <p class="articles-section-description">{{description}}</p>
     </div>
     <div class="articles-section-card" {{#if articlesSectionId}}id="{{articlesSectionId}}"{{/if}}>
-         {{> @partial-block post=this}}
+      {{#foreach posts}}
+        {{!-- TODO: section_type で transparent かどうかをチェックする --}}
+          {{> "components/card" post=this card_color=../section_type}}
+      {{/foreach}}
     </div>
 
     <div class="articles-section-action">
