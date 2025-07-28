@@ -147,7 +147,7 @@
 
         // 新着投稿の表示
         if (newPostsResult.status === 'fulfilled') {
-            displayCards(newPostsResult.value, 'magazine-new');
+            displayArticleCards(newPostsResult.value, '#magazine-new', { section_type: 'new' });
 
             const linkElement = document.querySelector('#magazine-new+div a');
             if (linkElement) {
@@ -157,7 +157,7 @@
 
         // 特集投稿の表示
         if (featuredPostsResult.status === 'fulfilled') {
-            displayCards(featuredPostsResult.value, 'magazine-featured');
+            displayArticleCards(featuredPostsResult.value, '#magazine-featured');
 
             const linkElement = document.querySelector('#magazine-featured+div a');
             if (linkElement) {
@@ -167,32 +167,13 @@
 
         // ランキング投稿の表示
         if (featuredPostsResult.status === 'fulfilled') {
-            displayCards(rankingPostsResult.value, 'magazine-ranking');
+            displayArticleCards(rankingPostsResult.value, '#magazine-ranking');
 
             const linkElement = document.querySelector('#magazine-ranking+div a');
             if (linkElement) {
                 linkElement.href = `/search-results?groups=${group.id}&order=popular`;
             }
         }
-    }
-
-    /**
-     * 投稿カードを表示
-     * @param {Array} posts - 投稿一覧
-     * @param {string} sectionId - 表示するセクションのid要素
-     */
-    function displayCards(posts, sectionId) {
-        const container = document.getElementById(sectionId);
-        if (!container) {
-            return;
-        }
-
-        container.innerHTML = '';
-
-        posts.forEach(post => {
-            const cardHtml = createPostCard(post);
-            container.insertAdjacentHTML('beforeend', cardHtml);
-        });
     }
 
     // DOMContentLoaded後に初期化
