@@ -111,7 +111,7 @@
 .search_results__form-form {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     row-gap: var(--space-3xl);
     margin-block-start: var(--space-3xl);
 }
@@ -181,22 +181,8 @@
 
 /* Filter Button */
 .search_results__filter-button {
-    background: var(--gradient-primary);
-    border: none;
-    border-radius: var(--radius-full);
-    color: var(--color-text-primary);
-    cursor: pointer;
-    font: var(--text-regular-bold);
-    letter-spacing: var(--letter-spacing-wide-xs);
-    padding-block: 10px;
-    padding-inline: 60px;
-    align-self: center;
-    transition: var(--transition-fast);
     width: 234px;
-}
-
-.search_results__filter-button:hover {
-    opacity: 0.9;
+    align-self: center;
 }
 
 /* Results Section */

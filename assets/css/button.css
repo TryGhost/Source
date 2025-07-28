@@ -16,7 +16,7 @@
 
     /* Background & Border */
     background-color: var(--color-white);
-    border: 1px solid transparent;
+    border: 1px solid var(--color-black);
     border-radius: 100px;
 
     /* Effects */
