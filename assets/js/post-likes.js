@@ -212,9 +212,9 @@
             return;
         }
 
-        posts.forEach(post => {
-            const cardHtml = createPostCard(post, true, true);
-            container.insertAdjacentHTML('beforeend', cardHtml);
+        displayArticleCards(posts, `#${sectionId}`, {
+            isShowLikeButton: true,
+            isLiked: true
         });
 
         // いいねボタンの初期化
