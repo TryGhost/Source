@@ -26,7 +26,6 @@ section.gh-header .gh-header-inner {
 }
 
 .header-container {
-    max-width: var(--container-max-width);
     margin-inline: auto;
     padding-inline: var(--space-md);
     display: flex;
