@@ -2,16 +2,22 @@
     display: grid;
     border-radius: var(--radius-md);
     grid-template-rows: 234px auto;
+    width: 335px;
 }
 
 .card-image {
     display: grid;
     column-gap: var(--space-xl);
-    grid-template: "stack" / 1fr;
+    grid-template-columns: repeat(3, auto);
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-areas:
+        ". . like-button"
+        ". . ."
+        "magazine-logo . .";
     height: 234px;
 
-    a:first-child {
-        grid-area: stack;
+    .post-feature-image {
+        grid-area: 1 / 1 / -1 / -1;
         display: grid;
         background-size: cover;
         background-position: center;
@@ -19,8 +25,8 @@
         border-radius: var(--radius-md) var(--radius-md) 0 0;
     }
 
-    a:nth-child(2) {
-        grid-area: stack;
+    .post-magazine-logo {
+        grid-area: magazine-logo;
         display: grid;
         width: 117px;
         height: 46px;
@@ -32,6 +38,13 @@
         align-self: flex-end;
         margin-inline-start: 9.58px;
         z-index: 1;
+    }
+
+    .card-like-button {
+        grid-area: like-button;
+        justify-self: flex-end;
+        margin-inline-end: 22.5px;
+        margin-block-start: 24px;
     }
 }
 
@@ -108,11 +121,11 @@
 }
 
 .card[data-transparent="true"] {
-    .card-image a:first-child {
+    .card-image .post-feature-image {
         border-radius: var(--radius-md);
     }
 
-    a:nth-child(2) {
+    .post-magazine-logo {
         margin-inline-start: 40px;
     }
 
