@@ -81,6 +81,7 @@
         -webkit-box-orient: vertical;
         display: -webkit-box;
         overflow: hidden;
+        align-self: flex-start;
     }
 
     .card-date {
