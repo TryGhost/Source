@@ -21,9 +21,13 @@
 
 .pickup-tag-content {
     grid-area: content;
-    display: flex;
-    flex-direction: column;
-    row-gap: var(--space-sm);
+    display: grid;
+    grid-template:
+        "label"
+        "." 12px
+        "title"
+        "." 20px
+        "description";
 }
 
 .pickup-tag-label {
@@ -65,8 +69,6 @@
     text-align: center;
 }
 
-/*TODO: container query */
-/* Desktop Styles */
 @media (width >= 1025px) {
     .pickup-tag {
         padding-block: var(--space-7xl);
@@ -77,20 +79,23 @@
             "content image"
             ". image" 32px
             "link image" / 50% 50%;
+        column-gap: 1rem;
         padding-inline: var(--space-5xl);
     }
 
     .pickup-tag-content {
-        row-gap: var(--space-sm);
+    grid-template:
+        "label"
+        "." 16px
+        "title"
+        "." 24px
+        "description";
         justify-content: flex-end;
+        align-content: end;
     }
 
     .pickup-tag-header {
         gap: var(--space-xl);
-    }
-
-    .pickup-tag-label {
-        font: var(--heading-xs);
     }
 
     .pickup-tag-title {
