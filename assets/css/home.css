@@ -76,6 +76,7 @@
     .home-hero-content {
         padding: var(--space-7xl) 0;
         max-width: 768px;
+        row-gap: var(--space-2xl);
     }
 
     .home-hero-text {
