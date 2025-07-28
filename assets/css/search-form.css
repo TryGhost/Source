@@ -5,6 +5,7 @@
 .search-form {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     background: var(--color-white);
     border-radius: var(--radius-full);
     overflow: hidden;
@@ -14,7 +15,6 @@
 }
 
 .search-form-input {
-    flex: 1;
     border: none;
     outline: none;
     padding: 0 var(--space-lg);
@@ -37,6 +37,7 @@
     height: 42px;
     font: var(--text-regular-medium-button);
     transition: opacity 0.1s ease;
+    white-space: nowrap;
 }
 
 .search-form-btn:hover {

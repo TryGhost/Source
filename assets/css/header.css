@@ -202,7 +202,7 @@ section.gh-header .gh-header-inner {
 }
 
 /* Desktop Styles */
-@media (width >= 1153px) {
+@media (width >= 1170px) {
     .header-container {
         padding-inline: var(--space-5xl);
         display: grid;
