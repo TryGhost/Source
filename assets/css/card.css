@@ -26,11 +26,11 @@
         height: 46px;
         background-color: var(--color-white);
         border-radius: var(--radius-sm) var(--radius-sm) 0 0;
-        background-size: contain;
+        background-size: 80%;
         background-position: center;
         background-repeat: no-repeat;
         align-self: flex-end;
-        margin-inline-start: 40px;
+        margin-inline-start: 9.58px;
         z-index: 1;
     }
 }
@@ -66,7 +66,7 @@
         display: flex;
         flex-wrap: wrap;
         column-gap: 0.5rem;
-        font: var(--text-large-bold);
+        font: var(--text-regular-bold);
     }
 
     .card-title {
@@ -94,9 +94,9 @@
         font: var(--text-regular-regular);
         justify-self: flex-end;
         display: flex;
+        column-gap: var(--space-xs);
         align-items: center;
         align-self: flex-end;
-        column-gap: var(--spacing-xs);
     }
 }
 

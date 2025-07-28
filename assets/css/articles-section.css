@@ -71,6 +71,15 @@
         row-gap: var(--space-6xl);
     }
 
+    .articles-section-header {
+        grid-template:
+            "label"
+            "." 16px
+            "title"
+            "." 24px
+            "description";
+    }
+
     .articles-section-title {
         font: var(--heading-xl);
     }
