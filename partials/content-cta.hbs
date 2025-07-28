@@ -18,13 +18,15 @@
                 <div class="cta-text-secondary">3ヶ月無料で使えるキャンペーン実施中</div>
             {{/has}}
             {{#if @member}}
-                <button class="cta-button" type="" data-portal="signin">
-                    会員登録する
-                </button>
+                {{> "components/button"
+                    text="会員登録する"
+                    attributes="data-portal='signin' data-color='gradient' data-size='full' data-font-weight='bold' style='width: 234px'"
+                }}
             {{else}}
-                <button class="cta-button" type="" data-portal="signin">
-                    会員登録する
-                </button>
+                {{> "components/button"
+                    text="会員登録する"
+                    attributes="data-portal='signin' data-color='gradient' data-size='full' data-font-weight='bold' style='width: 234px'"
+                }}
             {{/if}}
     </div>
 </aside>

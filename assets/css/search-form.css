@@ -32,13 +32,13 @@
     border: none;
     padding: 10px 24px;
     color: var(--color-text-primary);
-    font: var(--text-small-bold);
     border-radius: var(--radius-full);
     cursor: pointer;
     height: 44px;
     font: var(--text-regular-medium-button);
+    transition: opacity 0.1s ease;
 }
 
 .search-form-btn:hover {
-    opacity: 0.9;
+    opacity: 0.8;
 }

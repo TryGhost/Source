@@ -29,3 +29,7 @@
         vertical-align: middle;
     }
 }
+
+.link-button:hover {
+    opacity: 0.8;
+}

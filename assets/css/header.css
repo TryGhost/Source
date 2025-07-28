@@ -72,7 +72,6 @@ section.gh-header .gh-header-inner {
     height: 3px;
     background-color: var(--color-white);
     border-radius: 2px;
-    transition: var(--transition-normal);
     display: block;
 }
 
@@ -116,7 +115,7 @@ section.gh-header .gh-header-inner {
     text-decoration: none;
     font: var(--text-regular-regular);
     letter-spacing: var(--letter-spacing-wide-lg);
-    transition: var(--transition-fast);
+    transition: opacity 0.1s ease;
     display: block;
 }
 
@@ -144,7 +143,7 @@ section.gh-header .gh-header-inner {
     text-decoration: none;
     font: var(--text-regular-regular);
     letter-spacing: var(--letter-spacing-wide-lg);
-    transition: var(--transition-fast);
+    transition: opacity 0.1s ease;
 }
 
 .header-signin-btn:hover {
@@ -158,12 +157,12 @@ section.gh-header .gh-header-inner {
     padding: var(--space-xs) var(--space-lg);
     border-radius: var(--radius-full);
     font: var(--text-regular-medium);
-    transition: var(--transition-fast);
+    transition: opacity 0.1s ease;
     display: inline-block;
 }
 
 .header-login-btn:hover {
-    transform: translateY(-1px);
+    opacity: 0.8;
 }
 
 /* Fullscreen Mobile Menu Styles */
@@ -177,7 +176,6 @@ section.gh-header .gh-header-inner {
     z-index: calc(var(--z-index-header) - 1);
     display: none;
     opacity: 0;
-    transition: opacity var(--transition-normal);
 }
 
 .header-fullscreen-menu.is-open {

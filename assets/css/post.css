@@ -46,11 +46,11 @@
     text-decoration: none;
     text-align: center;
     letter-spacing: var(--letter-spacing-wide-xs);
-    transition: transform var(--transition-fast);
+    transition: opacity 0.1s ease;
 }
 
 .post-hero-tag:hover {
-    transform: translateY(-2px);
+    opacity: 0.8;
 }
 
 .post-hero-title {

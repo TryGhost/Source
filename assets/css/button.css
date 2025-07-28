@@ -21,7 +21,7 @@
 
     /* Effects */
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: opacity 0.1s ease;
 
     /* Reset browser defaults */
     appearance: none;
@@ -29,7 +29,6 @@
 
     &:not(:disabled):hover {
         opacity: 0.8;
-        transition: opacity 0.1s ease;
     }
 
     &:disable {
@@ -39,6 +38,10 @@
 
     &[data-color="gradient"] {
         background-image: var(--gradient-primary);
+    }
+
+    &[data-font-weight="bold"] {
+        font: var(--text-regular-bold);
     }
 
     &[data-size="full"] {
