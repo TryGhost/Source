@@ -60,7 +60,6 @@
 .search_results__sort-dropdown {
     background-color: var(--color-white);
     border: none;
-    color: var(--color-text-primary);
     font: var(--text-regular-bold);
     letter-spacing: var(--letter-spacing-wide-xs);
     padding-block: 10px;
@@ -72,6 +71,7 @@
     background-position: right 12px center;
     background-size: 20px;
     padding-inline-end: 40px;
+    width: 160px;
 }
 
 @media (768px <= width) {
@@ -80,8 +80,9 @@
     }
 
     .search_results__navbar-header > button {
-        display: flex;
-        justify-content: space-between;
+        display: grid;
+        place-content: center;
+        width: 126px;
     }
 
     .search_results__sort {
@@ -110,7 +111,7 @@
 .search_results__form-form {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     row-gap: var(--space-3xl);
     margin-block-start: var(--space-3xl);
 }
@@ -118,7 +119,7 @@
 .search_results__form-filter {
     display: flex;
     flex-direction: column;
-    row-gap: var(--space-md);
+    row-gap: var(--space-lg);
 }
 
 /* Tags Section */
@@ -180,21 +181,8 @@
 
 /* Filter Button */
 .search_results__filter-button {
-    background: var(--gradient-primary);
-    border: none;
-    border-radius: var(--radius-full);
-    color: var(--color-text-primary);
-    cursor: pointer;
-    font: var(--text-regular-bold);
-    letter-spacing: var(--letter-spacing-wide-xs);
-    padding-block: 10px;
-    padding-inline: var(--space-6xl);
+    width: 234px;
     align-self: center;
-    transition: var(--transition-fast);
-}
-
-.search_results__filter-button:hover {
-    opacity: 0.9;
 }
 
 /* Results Section */
@@ -396,6 +384,8 @@
 .search_results__load-more {
     display: grid;
     place-items: center;
+    justify-self: center;
+    width: 80%;
 }
 
 /* Loading and Error States */
@@ -448,5 +438,13 @@
 
     .search_results__content-container {
         --min: 416px;
+    }
+
+    .search_results__form-form {
+        margin-block-start: var(--space-lg);
+    }
+
+    .search_results__load-more {
+        width: 222px;
     }
 }

@@ -3,37 +3,25 @@
 
 {{#post}}
 
-<main class="post-main" data-filter-tag="{{primary_tag.slug}}" data-post-id="{{id}}">
-    {{!-- Hero Section --}}
+<main class="post-main gh-main" data-filter-tag="{{primary_tag.slug}}" data-post-id="{{id}}">
     <section class="post-hero" {{#if feature_image}}style="background-image: url('{{img_url feature_image size="xl"}}')"{{/if}}>
-        <div class="post-hero-content">
+        <div class="post-hero-tags">
             {{#if tags}}
-            <div class="post-hero-tags">
                 {{#foreach tags limit="5"}}
                     <a class="post-hero-tag" href="{{url}}">#{{name}}</a>
                 {{/foreach}}
-            </div>
             {{/if}}
-
-            <div class="post-hero-title">
-                <h1>{{title}}</h1>
-            </div>
-
-            <time class="post-hero-date" datetime="{{date format="YYYY-MM-DD"}}">
-                {{date format="YYYY. MM. DD"}}
-            </time>
         </div>
-        {{!-- Magazine Label Overlay --}}
-        <div class="post-magazine-label" data-post-id="{{id}}">
-            <img src="" alt="" width="117" height="46">
-        </div>
+        <h1 class="post-hero-title">{{title}}</h1>
+        <time class="post-hero-date" datetime="{{date format="YYYY-MM-DD"}}">
+            {{date format="YYYY. MM. DD"}}
+        </time>
     </section>
 
     {{!-- Content Section --}}
     <section class="post-content-wrapper">
         <div class="post-content">
             <div class="post-content-inner">
-
                 {{!-- Breadcrumbs and Favorite --}}
                 <div class="post-meta-header">
                     <div class="post-breadcrumbs">
@@ -57,8 +45,8 @@
                     {{content}}
                 </div>
 
-                <div class="post-logo">
-                    <img src="" alt="" class="post-author-image" style="display: none;">
+                <div class="post-magazine-logo">
+                    <img src="" alt="" style="display: none;" width="237" height="86">
                 </div>
             </div>
         </div>
@@ -67,7 +55,7 @@
 
 {{#get "posts" filter="primary_tag:{{primary_tag.slug}}+id:-{{id}}" limit="3" page="1" include="tags,group" order="published_at desc" as |posts pages|}}
     {{#if posts}}
-    {{> "components/articles-section" posts=posts enTitle="Articles" jaTitle="おすすめの記事" description="行ってみたい、食べてみたいがきっと見つかる。編集者の目線で選んだ、あなたのためのおすすめ記事です。" section_type="featured" showLoadMore=pages.next}}
+    {{>"components/articles-section" posts=posts enTitle="Articles" jaTitle="おすすめの記事" description="行ってみたい、食べてみたいがきっと見つかる。編集者の目線で選んだ、あなたのためのおすすめ記事です。" section_type="featured" showLoadMore=pages.next}}
     {{/if}}
 {{/get}}
 

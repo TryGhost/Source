@@ -1,42 +1,35 @@
-<article class="card">
+<article class="card" data-transparent="{{is_transparent}}">
     <div class="card-image">
-        {{#if post.feature_image}}
-            <img src="{{img_url post.feature_image size="m"}}" alt="" loading="lazy">
-        {{else}}
-            <img src="{{asset "images/default-post-image.png"}}" alt="" loading="lazy">
-        {{/if}}
+        <a href="{{post.url}}" {{#if post.feature_image}}style="background-image: url({{img_url post.feature_image size="m"}})"{{else}}style="background-image: url({{asset "images/default-post-image.png"}})"{{/if}}></a>
         {{#if post.group.logo_image}}
         <a href="/magazine?group={{post.group.slug}}" class="card-magazine-logo" style="background-image: url({{img_url post.group.logo_image size="xs"}})"></a>
         {{/if}}
     </div>
 
     <a href="{{post.url}}" class="card-content" data-card-color="{{card_color}}">
-        <div class="card-header">
-            {{#if post.tags}}
-            <div class="card-tags">
-                {{#foreach post.tags limit="2"}}
-                    #{{name}}{{#unless @last}} {{/unless}}
-                {{/foreach}}
-            </div>
-            {{/if}}
-            <h2 class="card-title">
-                {{post.title}}
-            </h2>
-            {{#if post.excerpt}}
-                <p class="card-excerpt">{{post.excerpt}}</p>
-            {{/if}}
+        {{#if post.tags}}
+        <div class="card-tags">
+            {{#foreach post.tags limit="2"}}
+                <span>#{{name}}{{#unless @last}} {{/unless}}</span>
+            {{/foreach}}
         </div>
+        {{/if}}
+        <h2 class="card-title">
+            {{post.title}}
+        </h2>
+        {{#if post.excerpt}}
+            <p class="card-excerpt">{{post.excerpt}}</p>
+        {{/if}}
 
-        <div class="card-footer">
-            <time class="card-date" datetime="{{date post.date format="YYYY-MM-DD"}}">
-                {{date post.date format="YYYY.MM.DD"}}
-            </time>
-            <span class="card-readmore">
-                続きを読む
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M9 6l6 6-6 6" stroke="#0c060c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </span>
-        </div>
+        <time class="card-date" datetime="{{date post.date format="YYYY-MM-DD"}}">
+            {{date post.date format="YYYY.MM.DD"}}
+        </time>
+        <span class="card-readmore">
+            続きを読む
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 6l6 6-6 6" stroke="#0c060c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </span>
     </a>
 </article>
+

@@ -1,21 +1,4 @@
 /**
- * タグボタンのクリックイベントを処理してaria-pressed状態を切り替え
- */
-function handleTagButtonClicks() {
-    const tagButtons = document.querySelectorAll('#tag-list > button');
-
-    tagButtons.forEach((button) => {
-        button.addEventListener('click', function(e) {
-            e.preventDefault();
-
-            // aria-pressed状態を切り替え
-            const isPressed = this.getAttribute('aria-pressed') === 'true';
-            this.setAttribute('aria-pressed', !isPressed);
-        });
-    });
-}
-
-/**
  * URLパラメータに基づいてフォーム要素の初期状態を設定
  */
 function initializeForm(params) {
@@ -35,9 +18,9 @@ function initializeForm(params) {
 
     // タグボタンのaria-pressed状態を設定
     params.tags.forEach(tag => {
-        const button = document.querySelector(`[data-tag-slug='${tag}']`);
-        if (button) {
-            button.setAttribute('aria-pressed', 'true');
+        const checkbox = document.querySelector(`input[name="tag"][value="${tag}"]`);
+        if (checkbox) {
+            checkbox.checked = true;
         }
     });
 

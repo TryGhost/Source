@@ -3,155 +3,129 @@
 
 /* Base Component Styles */
 .pickup-tag {
-  background: var(--color-white);
-  padding-block: var(--space-4xl);
+    background: var(--color-white);
+    padding-block: var(--space-4xl);
 }
 
 .pickup-tag-container {
-  max-width: var(--container-max-width);
-  padding-inline: var(--space-lg);
-  display: flex;
-  flex-direction: column;
-  row-gap: var(--space-xl);
-}
-
-/* Header Section */
-.pickup-tag-header {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-lg);
-}
-
-.pickup-tag-label {
-  font: var(--heading-xxs);
-  color: var(--color-text-primary);
-  margin: 0 0 var(--space-sm) 0;
-}
-
-.pickup-tag-title {
-  font: var(--heading-l);
-  letter-spacing: var(--letter-spacing-wide-2xl);
-  line-height: var(--line-height-tight);
-  color: var(--color-text-primary);
-  margin: 0 0 var(--space-lg) 0;
-}
-
-.pickup-tag-description {
-  font: var(--text-regular-regular);
-  line-height: var(--line-height-relaxed);
-  color: var(--color-text-primary);
-  margin: 0 0 var(--space-xl) 0;
+    display: grid;
+    grid-template:
+        "content"
+        "." 48px
+        "image"
+        "." 48px
+        "link";
+    justify-content: center;
+    padding-inline: var(--space-lg);
 }
 
 .pickup-tag-content {
-  display: flex;
-  flex-direction: column;
-  flex-shrink: 0;
-}
-
-/* Image Section */
-.pickup-tag-image {
-  width: 100%;
-  aspect-ratio: 335/348;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  margin: 0 0 var(--space-xl) 0;
-}
-
-.pickup-tag-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: var(--radius-lg);
-}
-
-/* SP Action Section */
-.pickup-tag-action {
-  display: flex;
-  justify-content: center;
-  text-align: center;
-}
-
-/* SP Visibility control */
-.pickup-tag-action.pc-only {
-  display: none;
-}
-
-.pickup-tag-action.sp-only {
-  display: flex;
-  justify-content: center;
-}
-
-
-/* Desktop Styles */
-@media (width >= 1025px) {
-  .pickup-tag {
-    padding-block: var(--space-7xl);
-  }
-
-  .pickup-tag-container {
-    padding-inline: var(--space-5xl);
-    gap: var(--space-5xl);
-    justify-content: space-between;
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .pickup-tag-header {
-    gap: var(--space-xl);
-  }
-
-  .pickup-tag-label {
-    font: var(--heading-xs);
-    color: var(--color-text-primary);
-    margin: 0 0 var(--space-md) 0;
-  }
-
-  .pickup-tag-title {
-    font: var(--heading-xl);
-    letter-spacing: var(--letter-spacing-wide-4xl);
-    margin: 0 0 var(--space-xl) 0;
-  }
-
-  .pickup-tag-description {
-    font: var(--text-medium-regular);
-    letter-spacing: var(--letter-spacing-wide-md);
-    margin: 0 0 var(--space-2xl) 0;
-  }
-
-  .pickup-tag-img {
-    max-width: 616px;
-    max-height: 640px;
-  }
-
-  .pickup-tag-btn {
-    padding: var(--button-padding-y) var(--space-6xl);
-    font: var(--text-regular-bold);
-    min-width: 240px;
-  }
-
-  /* PC Action Section */
-  .pickup-tag-action {
-    display: block;
-    justify-content: flex-start;
-    text-align: left;
-  }
-
-  .pickup-tag-content {
+    grid-area: content;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    flex-shrink: 0;
-    text-align: left;
-  }
+    row-gap: var(--space-sm);
+}
 
-  .pickup-tag-action.pc-only {
+.pickup-tag-label {
+    grid-area: label;
+    font: var(--heading-xxs);
+}
+
+.pickup-tag-title {
+    grid-area: title;
+    font: var(--heading-l);
+    letter-spacing: var(--letter-spacing-wide-2xl);
+    line-height: var(--line-height-tight);
+}
+
+.pickup-tag-description {
+    grid-area: description;
+    font: var(--text-regular-regular);
+    line-height: var(--line-height-relaxed);
+}
+
+.pickup-tag-image {
+    grid-area: image;
+    overflow: hidden;
+    object-fit: cover;
+    justify-items: center;
+
+    img {
+        width: 335px;
+        height: 348px;
+        object-fit: cover;
+        border-radius: var(--radius-lg);
+    }
+}
+
+.pickup-tag-action {
+    grid-area: link;
     display: flex;
-  }
+    justify-content: center;
+    text-align: center;
+}
 
-  .pickup-tag-action.sp-only {
-    display: none;
-  }
+/*TODO: container query */
+/* Desktop Styles */
+@media (width >= 1025px) {
+    .pickup-tag {
+        padding-block: var(--space-7xl);
+    }
 
+    .pickup-tag-container {
+        grid-template:
+            "content image"
+            ". image" 32px
+            "link image" / 50% 50%;
+        padding-inline: var(--space-5xl);
+    }
+
+    .pickup-tag-content {
+        row-gap: var(--space-sm);
+        justify-content: flex-end;
+    }
+
+    .pickup-tag-header {
+        gap: var(--space-xl);
+    }
+
+    .pickup-tag-label {
+        font: var(--heading-xs);
+    }
+
+    .pickup-tag-title {
+        font: var(--heading-xl);
+        letter-spacing: var(--letter-spacing-wide-4xl);
+    }
+
+    .pickup-tag-description {
+        font: var(--text-medium-regular);
+        letter-spacing: var(--letter-spacing-wide-md);
+    }
+
+    .pickup-tag-btn {
+        padding: var(--button-padding-y) var(--space-6xl);
+        font: var(--text-regular-bold);
+        min-width: 240px;
+    }
+
+    .pickup-tag-image {
+        justify-items: flex-end;
+
+        img {
+            width: 616px;
+            height: 640px;
+            object-fit: cover;
+        }
+    }
+
+    .pickup-tag-action {
+        display: block;
+        justify-content: flex-start;
+        text-align: left;
+
+        a {
+            width: 270px;
+        }
+    }
 }

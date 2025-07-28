@@ -64,13 +64,13 @@
      * @param {string} order - ソート条件
      * @returns {Promise<Array>} 投稿一覧
      */
-    async function fetchPosts(key, filter, order) {
+    async function fetchPosts(key, filter, order, limit = 3) {
         const params = new URLSearchParams({
             key,
             filter,
             include: 'tags,group',
             order,
-            limit: 3
+            limit
         });
 
         try {
@@ -139,39 +139,49 @@
         }
 
         // 記事の取得と表示
-        const [newPostsResult, featuredPostsResult] = await Promise.allSettled([
+        const [newPostsResult, featuredPostsResult, rankingPostsResult] = await Promise.allSettled([
             fetchPosts(contentApiKey, `group_id:${group.id}`, 'published_at DESC'),
-            fetchPosts(contentApiKey, `group_id:${group.id}+tag:pickup`, 'updated_at DESC')
+            fetchPosts(contentApiKey, `group_id:${group.id}+tag:pickup`, 'updated_at DESC'),
+            fetchPosts(contentApiKey, `group_id:${group.id}`, 'page_view_count DESC', 15)
         ]);
 
         // 新着投稿の表示
         if (newPostsResult.status === 'fulfilled') {
-            displayCards(newPostsResult.value, 'magazine-new');
+            displayArticleCards(newPostsResult.value, '#magazine-new', { section_type: 'new' });
+
+            const linkElement = document.querySelector('#magazine-new+div a');
+            if (linkElement) {
+                linkElement.href = `/search-results?groups=${group.id}`;
+            }
         }
 
         // 特集投稿の表示
         if (featuredPostsResult.status === 'fulfilled') {
-            displayCards(featuredPostsResult.value, 'magazine-featured');
+            if (featuredPostsResult.value.length === 0) {
+                const featuredSection = document.querySelector('.articles-section[data-section-type="featured"]');
+                if (featuredSection) {
+                    featuredSection.style.display = 'none';
+                }
+                return;
+            }
+
+            displayArticleCards(featuredPostsResult.value, '#magazine-featured');
+
+            const linkElement = document.querySelector('#magazine-featured+div a');
+            if (linkElement) {
+                linkElement.href = `/search-results?groups=${group.id}&tags=pickup`;
+            }
         }
-    }
 
-    /**
-     * 投稿カードを表示
-     * @param {Array} posts - 投稿一覧
-     * @param {string} sectionId - 表示するセクションのid要素
-     */
-    function displayCards(posts, sectionId) {
-        const container = document.getElementById(sectionId);
-        if (!container) {
-            return;
+        // ランキング投稿の表示
+        if (featuredPostsResult.status === 'fulfilled') {
+            displayArticleCards(rankingPostsResult.value, '#magazine-ranking');
+
+            const linkElement = document.querySelector('#magazine-ranking+div a');
+            if (linkElement) {
+                linkElement.href = `/search-results?groups=${group.id}&order=popular`;
+            }
         }
-
-        container.innerHTML = '';
-
-        posts.forEach(post => {
-            const cardHtml = createPostCard(post);
-            container.insertAdjacentHTML('beforeend', cardHtml);
-        });
     }
 
     // DOMContentLoaded後に初期化

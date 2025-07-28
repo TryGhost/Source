@@ -1,0 +1,25 @@
+{{!--
+Single Select Component
+Usage: {{> "components/single-select" name="option-name" value="option-value" text="Option Text" checked=false attributes='data-foo="bar"'}}
+
+Parameters:
+- name: Name attribute for the checkbox input (required)
+- value: Value attribute for the checkbox input (required)
+- text: Label text content (required)
+- checked: Boolean to set checked state (optional)
+- disabled: Boolean to disable the input (optional)
+- attributes: Additional HTML attributes as a string (optional)
+--}}
+
+<label class="single-select">
+    <input
+        type="checkbox"
+        name="{{name}}"
+        value="{{value}}"
+        class="single-select__input"
+        {{#if checked}}checked{{/if}}
+        {{#if disabled}}disabled{{/if}}
+        {{{attributes}}}
+    />
+    <span class="single-select__label">{{text}}</span>
+</label>

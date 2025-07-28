@@ -1,15 +1,14 @@
 .button {
     /* Layout */
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: var(--space-xs);
+    display: grid;
+    place-content: center;
 
     /* Size */
     padding: 10px var(--space-xl);
+    height: 42px;
 
     /* Typography */
-    font: var(--text-regular-bold);
+    font: var(--text-regular-medium);
     letter-spacing: var(--letter-spacing-wide-xs);
     color: var(--color-text-primary);
     text-align: center;
@@ -17,39 +16,35 @@
 
     /* Background & Border */
     background-color: var(--color-white);
-    border: 1px solid transparent;
+    border: 1px solid var(--color-black);
     border-radius: 100px;
 
     /* Effects */
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: opacity 0.1s ease;
 
     /* Reset browser defaults */
     appearance: none;
     text-decoration: none;
-}
 
-/* Hover state */
-.button:hover:not(:disabled) {
-    background-color: var(--color-text-primary);
-    color: var(--color-white);
-}
+    &:not(:disabled):hover {
+        opacity: 0.8;
+    }
 
-/* Active state */
-.button:active:not(:disabled) {
-    transform: scale(0.98);
-}
+    &:disable {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
 
-/* Disabled state */
-.button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
+    &[data-color="gradient"] {
+        background-image: var(--gradient-primary);
+    }
 
-.button[data-color='gradient'] {
-    background-image: var(--gradient-primary);
-}
+    &[data-font-weight="bold"] {
+        font: var(--text-regular-bold);
+    }
 
-.button[aria-pressed='true'] {
-    background-image: var(--gradient-primary);
+    &[data-size="full"] {
+        width: 100%;
+    }
 }

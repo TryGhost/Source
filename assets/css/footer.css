@@ -59,6 +59,7 @@
   font: var(--heading-xxs);
   letter-spacing: var(--letter-spacing-normal);
   display: block;
+  transition: opacity 0.1s ease;
 }
 
 .footer-nav-link:hover {

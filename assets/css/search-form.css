@@ -9,6 +9,8 @@
     border-radius: var(--radius-full);
     overflow: hidden;
     width: 100%;
+    max-width: 536px;
+    height: 44px;
 }
 
 .search-form-input {
@@ -28,27 +30,15 @@
 .search-form-btn {
     background: var(--gradient-search);
     border: none;
-    padding: var(--space-sm) var(--space-lg);
+    padding: 10px 24px;
     color: var(--color-text-primary);
-    font: var(--text-small-bold);
     border-radius: var(--radius-full);
-    margin: 1px;
     cursor: pointer;
-    transition: var(--transition-fast);
-    white-space: nowrap;
+    height: 44px;
+    font: var(--text-regular-medium-button);
+    transition: opacity 0.1s ease;
 }
 
 .search-form-btn:hover {
-    opacity: 0.9;
-}
-
-/* Desktop Styles */
-@media (width >= 1025px) {
-    .search-form-input {
-        font: var(--text-regular-medium);
-    }
-
-    .search-form-btn {
-        font: var(--text-regular-medium);
-    }
+    opacity: 0.8;
 }

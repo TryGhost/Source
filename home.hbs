@@ -1,13 +1,13 @@
 {{!< default}}
 {{!-- The tag above means: insert everything in this file into the body of the default.hbs template --}}
 
-<div class="home-page">
+<main class="home-page gh-main">
     {{!-- Hero Section --}}
     <section class="home-hero" style="background-image: url({{img_url @site.cover_image}})">
         <div class="home-hero-overlay"></div>
         <div class="home-hero-content">
             <div class="home-hero-text">
-                <h1 class="home-hero-title">Magaco</h1>
+                <h1 class="home-hero-title">{{@site.title}}</h1>
                 <p class="home-hero-subtitle">
                     あの雑誌に載ったお店が検索できるようになりました！<br>
                     食のプロフェッショナルたちが選んだ<br>
@@ -20,27 +20,24 @@
         </div>
     </section>
 
-    {{!-- New Articles Section --}}
     {{#get "posts" order="published_at desc" limit="3" include="tags,group"}}
         {{#if posts}}
-        {{> "components/articles-section" posts=posts enTitle="NEW" jaTitle="新着記事" description="Magacoの新着記事を紹介します。" section_type="new" showMoreLink=true moreLink="/search-results"}}
+            {{>"components/articles-section" posts=posts enTitle="NEW" jaTitle="新着記事" description="Magacoの新着記事を紹介します。" showMoreLink=true moreLink="/search-results" section_type="new" }}
         {{/if}}
     {{/get}}
 
-    {{!-- Popular Articles Section --}}
     {{#get "posts" order="page_view_count desc" limit="3" include="tags,group"}}
         {{#if posts}}
-        {{> "components/articles-section" posts=posts enTitle="Ranking" jaTitle="人気の記事" description="Magacoの人気の記事を紹介します。" section_type="popular" moreLink="/search-results/?order=popular"}}
+              {{> "components/articles-section" posts=posts enTitle="Ranking" jaTitle="人気の記事" description="Magacoの人気の記事を紹介します。" showMoreLink=true moreLink="/search-results/?order=popular" section_type="popular"}}
         {{/if}}
     {{/get}}
 
-    {{!-- Featured Articles Section --}}
-    {{#get "posts" filter="featured:true" order="published_at desc" limit="3" include="tags,group"}}
+    {{#get "posts" filter="featured:true" limit="3" include="tags,group"}}
         {{#if posts}}
-        {{> "components/articles-section" posts=posts enTitle="Featured" jaTitle="おすすめの記事" description="Magacoの厳選されたおすすめの記事を紹介します" section_type="featured"}}
+              {{> "components/articles-section" posts=posts enTitle="Featured" jaTitle="おすすめの記事" description="Magacoの厳選されたおすすめの記事を紹介します" section_type="featured"}}
         {{/if}}
     {{/get}}
 
     {{> "components/pickup-tag"}}
     {{> "components/partners"}}
-</div>
+</main>

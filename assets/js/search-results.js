@@ -25,7 +25,6 @@
 
     async function initialize() {
         // イベントハンドラの登録
-        handleTagButtonClicks();
         handleFormSubmit();
         handleLoadMoreButton();
         handleAccordion();
@@ -45,13 +44,13 @@
         clearElements(cardContainerSelector);
         clearElements('.search_results__header');
 
-        const [posts, hasNext] = await fetchPosts(searchParams);
+        const {posts, hasNext,count} = await fetchPosts(searchParams);
         if (posts.length > 0) {
-            displaySearchResultsSummary('.search_results__header', posts.length);
+            displaySearchResultsSummary('.search_results__header', count);
             await displayPosts(posts, hasNext);
         } else {
             toggleLoadMoreButton(false);
-            displayNoResultsMessage(cardContainerSelector);
+            displayNoResultsMessage('.search_results__header');
         }
     }
 
@@ -87,7 +86,8 @@
         const tagButtons = document.querySelectorAll(
             '#tag-list > button[aria-pressed="true"]'
         );
-        const selectedTags = Array.from(tagButtons).map(button => button.getAttribute('data-tag-slug')).filter(Boolean);
+        const tagCheckboxes = document.querySelectorAll('input[name="tag"]:checked');
+        const selectedTags = Array.from(tagCheckboxes).map(checkbox => checkbox.value).filter(Boolean);
 
         const groupCheckboxes = document.querySelectorAll('input[name="magazine"]:checked');
         const selectedGroups = Array.from(groupCheckboxes).map(checkbox => checkbox.value).filter(Boolean);

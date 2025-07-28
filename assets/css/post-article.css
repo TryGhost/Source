@@ -1,0 +1,89 @@
+.post-rich-text .kg-toggle-card + .kg-toggle-card {
+    margin-top: 0;
+}
+
+.post-rich-text {
+    h1 {
+        font: var(--heading-l);
+        letter-spacing: 1.6px;
+        padding-block: var(--space-xl);
+    }
+
+    h2 {
+        font: var(--heading-m);
+        letter-spacing: var(--letter-spacing-wide-2xl);
+        padding-block: var(--space-xl);
+    }
+
+    h3 {
+        font: var(--heading-s);
+        letter-spacing: 0.96px;
+        padding-block: var(--space-xl) var(--space-lg);
+    }
+
+    p {
+        font: var(--text-regular-regular);
+        letter-spacing: var(--letter-spacing-wide-xs);
+        padding-block-end: var(--space-md);
+    }
+
+    a {
+        color: #084fac;
+        text-decoration: underline;
+        text-underline-position: from-font;
+    }
+
+    blockquote {
+        font: var(--text-large-medium);
+        letter-spacing: var(--letter-spacing-wide-xl);
+        padding-inline-start: 22px;
+    }
+
+    hr {
+        margin-block: var(--space-3xl);
+    }
+
+    figure {
+        display: grid;
+        row-gap: var(--space-md);
+        margin-block: var(--space-3xl);
+
+        img {
+            border-radius: var(--radius-lg);
+            object-fit: cover;
+        }
+
+        figcaption {
+            font: var(--text-small-regular);
+            letter-spacing: 0.2px;
+            text-align: left;
+            margin-inline-start: var(--space-xs);
+        }
+    }
+
+    .kg-toggle-card {
+        padding-inline-start: var(--space-xl);
+        border-radius: 0;
+
+        h4 {
+            font: var(--text-large-bold) !important;
+        }
+
+        button > svg {
+            color: var(--color-black);
+        }
+
+        p {
+            font: var(--text-regular-regular) !important;
+            letter-spacing: var(--letter-spacing-wide-xs);
+        }
+    }
+
+    div[data-kg-toggle-state="close"] {
+        padding-block: var(--space-xl) 30px;
+    }
+
+    div[data-kg-toggle-state="open"] {
+        padding-block: var(--space-xl);
+    }
+}

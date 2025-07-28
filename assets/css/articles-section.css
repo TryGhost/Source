@@ -6,8 +6,8 @@
     grid-template-rows: repeat(3, auto);
     grid-template-areas:
         "header header header"
-        "card card card"
-        ".    button .";
+        "card   card   card"
+        "button button button";
 }
 
 .articles-section[data-section-type="new"] {
@@ -25,31 +25,44 @@
 .articles-section-header {
     grid-area: header;
     text-align: center;
+    display: grid;
+    grid-template:
+        "label"
+        "." 12px
+        "title"
+        "." 20px
+        "description";
 }
 
 .articles-section-label {
+    grid-area: label;
     font: var(--heading-xxs);
 }
 
 .articles-section-title {
+    grid-area: title;
     font: var(--heading-l);
 }
 
 .articles-section-description {
+    grid-area: description;
     font: var(--text-regular-regular);
 }
 
 .articles-section-card {
-    --min: 335px;
     grid-area: card;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(var(--min), 1fr));
     gap: var(--space-4xl);
 }
 
 .articles-section-action {
     grid-area: button;
-    text-align: center;
+    justify-items: center;
+
+    * {
+        width: 80%;
+        width: 80%;
+    }
 }
 
 @media (width >= 1025px) {
@@ -68,6 +81,17 @@
 
     .articles-section-card {
         --min: 416px;
+        grid-template-columns: repeat(auto-fill, minmax(var(--min), 1fr));
         gap: 29px;
+    }
+
+    .articles-section-action {
+        div {
+            max-width: 222px;
+        }
+
+        a {
+            max-width: 270px;
+        }
     }
 }

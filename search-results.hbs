@@ -1,6 +1,6 @@
 {{!< default}}
 
-<div class="search_results__page" id="search_results">
+<main class="search_results__page gh-main" id="search_results">
     {{!-- Search Filter Section --}}
     <section class="search_results__navbar">
         <div class="search_results__navbar-container">
@@ -10,7 +10,7 @@
                 </form>
             </div>
             <div class="search_results__navbar-header">
-                {{> "components/button" text="詳細検索" width="126px" attributes='id="accordion-toggle" aria-expanded="false" aria-controls="accordion-content"' }}
+                {{> "components/button" text="詳細検索" attributes='id="accordion-toggle" aria-expanded="false" aria-controls="accordion-content"' }}
                 {{!-- Sort Controls --}}
                 <div class="search_results__sort">
                     <label class="search_results__sort-label" id="sort">並び替え</label>
@@ -30,11 +30,10 @@
                         <div class="search_results__tags-grid" id="tag-list">
                             {{#get "tags" filter="visibility:public" order="count.posts desc" limit="10"}}
                                 {{#foreach tags}}
-                                    {{> "components/button"
+                                    {{> "components/single-select"
                                         text=(concat "#" name)
-                                        class="search_results__tag-button"
-                                        type="button"
-                                        attributes=(concat 'data-tag-slug="' slug '" aria-pressed="false"')
+                                        name="tag"
+                                        value=slug
                                     }}
                                 {{/foreach}}
                             {{/get}}
@@ -53,9 +52,9 @@
                         </div>
                     </div>
                 </div>
-                <button class="search_results__filter-button" type="submit">
-                    この条件で検索
-                </button>
+                <div class="search_results__filter-button">
+                    {{> "components/button" text="この条件で検索" type="submit" attributes="data-color='gradient' data-size='full'" }}
+                </div>
             </form>
             </div>
         </div>
@@ -66,10 +65,10 @@
         <div class='search_results__header'></div>
         <div class="search_results__content-container" id="search-results-container"></div>
         <div id="load-more" class="search_results__load-more">
-            {{> "components/button" text="もっと見る" }}
+            {{> "components/button" text="もっと見る" attributes='data-size="full"'}}
         </div>
     </main>
     <button type="button" class="search_results__sticky_btn">
         <img src="{{asset "images/icons/sp-sticky-search.svg"}}" alt="詳細検索">
     </button>
-</div>
+</main>
