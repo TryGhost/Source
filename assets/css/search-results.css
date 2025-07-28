@@ -56,6 +56,7 @@
     background-color: var(--color-white);
     border: none;
     font: var(--text-regular-bold);
+    color: var(--color-black);
     letter-spacing: var(--letter-spacing-wide-xs);
     padding-block: 10px;
     padding-inline: var(--space-md);
