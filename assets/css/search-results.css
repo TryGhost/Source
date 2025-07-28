@@ -94,7 +94,8 @@
 }
 
 .search_results__accordion--open {
-    max-block-size: 1000px; /* 十分に大きな値 */
+    max-block-size: 60svh;
+    overflow-y: auto;
 }
 
 /* Search Form */
