@@ -157,6 +157,14 @@
 
         // 特集投稿の表示
         if (featuredPostsResult.status === 'fulfilled') {
+            if (featuredPostsResult.value.length === 0) {
+                const featuredSection = document.querySelector('.articles-section[data-section-type="featured"]');
+                if (featuredSection) {
+                    featuredSection.style.display = 'none';
+                }
+                return;
+            }
+
             displayArticleCards(featuredPostsResult.value, '#magazine-featured');
 
             const linkElement = document.querySelector('#magazine-featured+div a');
