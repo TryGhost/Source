@@ -53,6 +53,7 @@
 @media (width >= 1025px) {
     .partners {
         padding-block: var(--space-7xl);
+        margin-inline: auto;
     }
 
     .partners-container {

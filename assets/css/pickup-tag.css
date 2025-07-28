@@ -72,6 +72,7 @@
 @media (width >= 1025px) {
     .pickup-tag {
         padding-block: var(--space-7xl);
+        margin-inline: auto;
     }
 
     .pickup-tag-container {
@@ -84,13 +85,12 @@
     }
 
     .pickup-tag-content {
-    grid-template:
-        "label"
-        "." 16px
-        "title"
-        "." 24px
-        "description";
-        justify-content: flex-end;
+        grid-template:
+            "label"
+            "." 16px
+            "title"
+            "." 24px
+            "description";
         align-content: end;
     }
 
