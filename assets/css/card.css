@@ -112,6 +112,10 @@
         border-radius: var(--radius-md);
     }
 
+    a:nth-child(2) {
+        margin-inline-start: 40px;
+    }
+
     .card-content {
         grid-template:
             "tag tag"

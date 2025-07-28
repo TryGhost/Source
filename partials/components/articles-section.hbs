@@ -6,8 +6,7 @@
     </div>
     <div class="articles-section-card" {{#if articlesSectionId}}id="{{articlesSectionId}}"{{/if}}>
       {{#foreach posts}}
-        {{!-- TODO: section_type で transparent かどうかをチェックする --}}
-          {{> "components/card" post=this card_color=../section_type}}
+          {{> "components/card" post=this card_color=../section_type is_transparent=../is_transparent}}
       {{/foreach}}
     </div>
 

@@ -22,7 +22,7 @@
 
     {{#get "posts" order="published_at desc" limit="3" include="tags,group"}}
         {{#if posts}}
-            {{>"components/articles-section" posts=posts enTitle="NEW" jaTitle="新着記事" description="Magacoの新着記事を紹介します。" showMoreLink=true moreLink="/search-results" section_type="new" }}
+            {{>"components/articles-section" posts=posts enTitle="NEW" jaTitle="新着記事" description="Magacoの新着記事を紹介します。" showMoreLink=true moreLink="/search-results" section_type="new" is_transparent=true }}
         {{/if}}
     {{/get}}
 
