@@ -1,6 +1,3 @@
-/* Search Results Page Styles
-   ---------------------------------------------------------- */
-
 /* Page Container */
 .search_results__page {
     display: flex;
@@ -12,14 +9,12 @@
 .search_results__navbar {
     background-color: var(--color-bg-primary);
     color: var(--color-text-white);
-    padding-block: var(--space-lg);
-    padding-inline: var(--space-lg);
+    padding: var(--space-lg);
 }
 
 .search_results__navbar-container {
     display: flex;
     flex-direction: column;
-    max-inline-size: var(--container-max-width);
     margin-inline: auto;
 }
 
@@ -76,7 +71,7 @@
 
 @media (768px <= width) {
     .search_results__navbar {
-        padding: var(--space-2xl) var(--space-5xl);
+        padding: var(--space-lg) var(--space-5xl);
     }
 
     .search_results__navbar-header > button {
@@ -212,12 +207,12 @@
 .search_results__header {
     display: flex;
     flex-direction: column;
-    gap: var(--space-sm);
+    row-gap: var(--space-sm);
     text-align: center;
 }
 
 .search_results__header-tag {
-    font: var(--text-regular-regular);
+    font: var(--heading-xxs);
     letter-spacing: var(--letter-spacing-wide-lg);
     color: var(--color-text-primary);
 }
@@ -377,6 +372,7 @@
 
     .search_results__header {
         text-align: left;
+        row-gap: var(--space-md);
     }
 }
 
@@ -404,14 +400,12 @@
 }
 
 .search_results__no-results .search_results__header-tag {
-    font: var(--text-regular-regular);
     letter-spacing: var(--letter-spacing-wide-lg);
     color: var(--color-text-primary);
     margin-block-end: var(--space-sm);
 }
 
 .search_results__no-results .search_results__header-title {
-    font: var(--heading-l);
     color: var(--color-text-primary);
     letter-spacing: var(--letter-spacing-wide-xl);
 }
@@ -431,7 +425,8 @@
     border: none;
     outline: none;
 }
-@media (768px <= width) {
+
+@media screen and (width >= 768px) {
     .search_results__sticky_btn {
         display: none;
     }
@@ -446,5 +441,9 @@
 
     .search_results__load-more {
         width: 222px;
+    }
+
+    .search_results__header-title {
+        font: var(--heading-xl);
     }
 }
