@@ -1,52 +1,42 @@
 /**
- * signup-paid.js
  *
- * - 有料プラン登録完了メールテンプレート
+ * ユーザー登録時の確認メール
  *
  */
-const subjects = require('./subjects');
+const contactUrl = 'https://www.fujisan.co.jp/Support/CSMail.asp';
 
-module.exports = ({ userName, planName, amount, nextRenewalDate, siteTitle, siteUrl}) => `
+module.exports = ({ t, url, siteTitle, siteUrl }) => `
 <!doctype html>
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>【${siteTitle}】有料プランお申し込みありがとうございます</title>
+    <title>${t('{siteTitle} メールアドレス確認のご案内', { siteTitle, interpolation: { escapeValue: false } })}</title>
   </head>
   <body>
-    <p>${userName}様</p>
-    <p>
-      この度は、${siteTitle}の有料プランにお申し込みいただき、誠にありがとうございます。<br>
-      お手続きが完了し、有料プランの全機能がご利用いただけるようになりました。
-    </p>
-    <p>
-      ■ご登録内容<br>
-      プラン名： ${planName}<br>
-      お支払い金額： ${amount}円<br>
-      次回更新日： ${nextRenewalDate}
-    </p>
-    <p>
-      ご登録内容の確認や変更は、マイページから行えます。
-    </p>
-    <p>
-      ▼マイページはこちら<br>
-       <a href="${siteUrl}/account">${siteUrl}/account</a>
-    </p>
-    <p>
-      今後とも${siteTitle}をよろしくお願いいたします。
-    </p>
+    <p>${t('{siteTitle} にご登録いただき、ありがとうございます。', { siteTitle, interpolation: { escapeValue: false } })}</p>
+
+    <p>まだ登録は完了しておりません。<br>
+    お手数ですが、以下のリンクをクリックしてメールアドレスの確認手続きを完了してください。</p>
+
+    <p><strong>▼メールアドレス確認用リンク</strong><br>
+    <a href="${url}">${url}</a></p>
+
+    <p>このリンクの有効期限は24時間です。<br>
+    期限が切れた場合は、お手数ですが再度ご登録手続きをお願いいたします。</p>
+
     <hr>
-    <p>
-      ${siteTitle}運営事務局<br>
-      <a href="${siteUrl}">${siteUrl}</a>
-    </p>
+
+    <p>${t('{siteTitle} 運営事務局', { siteTitle, interpolation: { escapeValue: false } })}<br>
+    <a href="${siteUrl}">${siteUrl}</a></p>
+
     <p>
       ※ このメールはシステムにより自動送信されています。ご返信いただいても対応できませんのでご了承ください。<br>
+      ※ このメールにお心当たりがない場合は、お手数ですが本メールを破棄していただきますようお願いいたします。<br>
       ※ ご不明な点がございましたら、以下のお問い合わせフォームよりご連絡ください。<br>
-      <a href="${siteUrl}/contact">${siteUrl}/contact</a>
+      <a href="${contactUrl}">${contactUrl}</a>
     </p>
-
   </body>
 </html>
 `;
+
 

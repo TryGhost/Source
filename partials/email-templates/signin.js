@@ -5,10 +5,9 @@
  *
  */
 
-const subjects = require('./subjects');
+const contactUrl = 'https://www.fujisan.co.jp/Support/CSMail.asp';
 
-
-module.exports = ({ t, email, url, siteTitle, siteUrl }) => `
+module.exports = ({ t, url, siteTitle, siteUrl }) => `
 <!doctype html>
 <html>
   <head>
@@ -23,7 +22,7 @@ module.exports = ({ t, email, url, siteTitle, siteUrl }) => `
     <p><strong>▼ログイン用リンク</strong><br>
     <a href="${url}">${url}</a></p>
 
-    <p>このリンクの有効期限は15分です。<br>
+    <p>このリンクの有効期限は24時間です。<br>
     有効期限が切れた場合は、お手数ですが再度ログイン手続きをお願いいたします。</p>
 
     <hr>
@@ -36,7 +35,7 @@ module.exports = ({ t, email, url, siteTitle, siteUrl }) => `
       ※ このメールにお心当たりがない場合は、第三者が誤ってあなたのメールアドレスを入力した可能性があります。<br>
       お手数ですが本メールを破棄していただきますようお願いいたします。<br>
       ※ ご不明な点がございましたら、以下のお問い合わせフォームよりご連絡ください。<br>
-      <a href="${siteUrl}/contact">${siteUrl}/contact</a>
+      <a href="${contactUrl}">${contactUrl}</a>
     </p>
   </body>
 </html>

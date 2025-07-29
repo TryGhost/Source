@@ -1,13 +1,11 @@
 /**
- * signup.js
  *
- * - ユーザー登録時の確認メールテンプレート
+ * ユーザー登録時の確認メール
  *
  */
+const contactUrl = 'https://www.fujisan.co.jp/Support/CSMail.asp';
 
-const subjects = require('./subjects');
-
-module.exports = ({ t, email, url, siteTitle, siteUrl }) => `
+module.exports = ({ t, url, siteTitle, siteUrl }) => `
 <!doctype html>
 <html>
   <head>
@@ -35,7 +33,7 @@ module.exports = ({ t, email, url, siteTitle, siteUrl }) => `
       ※ このメールはシステムにより自動送信されています。ご返信いただいても対応できませんのでご了承ください。<br>
       ※ このメールにお心当たりがない場合は、お手数ですが本メールを破棄していただきますようお願いいたします。<br>
       ※ ご不明な点がございましたら、以下のお問い合わせフォームよりご連絡ください。<br>
-      <a href="${siteUrl}/contact">${siteUrl}/contact</a>
+      <a href="${contactUrl}">${contactUrl}</a>
     </p>
   </body>
 </html>
