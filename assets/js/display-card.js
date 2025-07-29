@@ -40,7 +40,7 @@ function createPostCard(post, options = {}) {
     ).join('');
 
     // 画像URLの生成（サイズ付き）
-    const featureImageUrl = featureImage || '/assets/images/default-post-image.png';
+    const featureImageUrl = featureImage || '/assets/images/default-post-image.png?';
     const backgroundStyle = `background-image: url(${featureImageUrl})`;
 
     // いいねボタンのHTML生成
