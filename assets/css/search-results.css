@@ -270,14 +270,6 @@
     letter-spacing: var(--letter-spacing-wide-xs);
 }
 
-.search_results__card-content {
-    background-color: var(--color-white);
-    padding: var(--card-padding);
-    display: flex;
-    flex-direction: column;
-    gap: var(--card-gap);
-}
-
 .search_results__card-body {
     display: flex;
     flex-direction: column;

@@ -110,7 +110,7 @@
     }
 
     .pickup-tag-btn {
-        padding: var(--button-padding-y) var(--space-6xl);
+        padding: 10px var(--space-6xl);
         font: var(--text-regular-bold);
         min-width: 240px;
     }
