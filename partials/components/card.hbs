@@ -4,7 +4,7 @@
         {{#if post.group.logo_image}}
         <a class="post-magazine-logo" href="/magazine?group={{post.group.slug}}" class="card-magazine-logo" style="background-image: url({{img_url post.group.logo_image size="xs"}})"></a>
         {{/if}}
-        {{#if @showLikeButton}}
+        {{#if showLikeButton}}
         <div class="card-like-button gh-post-like-wrapper">
             {{> "components/post-like" post_id=id}}
         </div>
