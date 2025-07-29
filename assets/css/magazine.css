@@ -30,19 +30,27 @@
 
 .magazine-info {
     display: grid;
-    grid-row-gap: var(--space-lg);
+    grid-template:
+        "name"
+        "." 20px
+        "description"
+        "." 36px
+        "url";
     padding: var(--space-3xl) var(--space-lg);
 }
 
 .magazine-name {
+    grid-area: name;
     font: var(--heading-m);
 }
 
 .magazine-description {
+    grid-area: description;
     font: var(--text-regular-regular);
 }
 
 .magazine-url {
+    grid-area: url;
     font: var(--text-regular-regular);
 }
 
