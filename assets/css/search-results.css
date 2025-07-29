@@ -72,7 +72,7 @@
 
 @media (768px <= width) {
     .search_results__navbar {
-        padding: var(--space-lg) var(--space-5xl);
+        padding: 16px var(--space-5xl) 31px;
     }
 
     .search_results__navbar-header > button {
