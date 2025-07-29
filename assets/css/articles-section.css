@@ -89,13 +89,7 @@
     }
 
     .articles-section-card {
-        --gap: 29px;
-        --column-max-count: 3;
-        --column-min-width: 416px;
-        grid-template-columns: repeat(
-            var(--column-max-count),
-            var(--column-min-width)
-        );
+        grid-template-columns: repeat(3, 416px);
         gap: 29px;
     }
 }

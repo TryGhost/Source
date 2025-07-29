@@ -1,6 +1,7 @@
 .partners {
     background: var(--color-white);
     padding-block: var(--space-4xl);
+    max-width: var(--container-max-width);
 }
 
 .partners-container {

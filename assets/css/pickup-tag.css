@@ -5,6 +5,7 @@
 .pickup-tag {
     background: var(--color-white);
     padding-block: var(--space-4xl);
+    max-width: var(--container-max-width);
 }
 
 .pickup-tag-container {

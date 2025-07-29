@@ -1,3 +1,8 @@
+.magazine-section {
+    max-width: var(--container-max-width);
+    margin-inline: auto;
+}
+
 .magazine-hero {
     display: grid;
     grid-template-columns: 64px 1fr 1fr 64px;
