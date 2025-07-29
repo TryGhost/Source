@@ -441,5 +441,6 @@
     .search_results__content-container {
         grid-template-columns: repeat(3, 416px);
         gap: 29px;
+        justify-self: center;
     }
 }
