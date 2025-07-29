@@ -12,6 +12,7 @@
     width: 100%;
     max-width: 536px;
     height: 42px;
+    min-width: 200px;
 }
 
 .search-form-input {
@@ -22,6 +23,7 @@
     color: var(--color-text-primary);
     background: transparent;
     flex-grow: 1;
+    min-width: 80px;
 }
 
 .search-form-input::placeholder {
