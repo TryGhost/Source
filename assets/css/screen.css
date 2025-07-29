@@ -86,7 +86,6 @@ production stylesheet in assets/built/screen.css
     --color-border: rgb(0 0 0 / 0.08);
     --color-dark-border: rgb(0 0 0 / 0.55);
     --font-sans: "Zen Kaku Gothic New", sans-serif;
-    --font-serif: "EB Garamond", Georgia, Times, serif;
     --font-serif-alt: Georgia, Times, serif;
     --font-mono: "JetBrains Mono", Menlo, Consolas, Monaco, "Liberation Mono", "Lucida Console", monospace;
     --container-width: 1320px;
@@ -1982,10 +1981,6 @@ Search                         LOGO                    Login Subscribe
     word-break: break-word;
 }
 
-.gh-article-header {
-    margin: clamp(40px, 3.64vw + 25.45px, 72px) 0 40px;
-}
-
 .gh-article-tag {
     margin-bottom: 12px;
     font-size: 1.3rem;
@@ -2082,12 +2077,6 @@ Search                         LOGO                    Login Subscribe
     width: 100%;
 }
 
-/* 14.2. Page template */
-
-.page-template .gh-article-header {
-    margin-block: 72px 32px;
-}
-
 /* 14.3. Page without header */
 
 .page-template .gh-content:only-child > *:first-child:not(.kg-width-full) {
@@ -2116,19 +2105,12 @@ headings, text, images and lists. We deal with cards lower down. */
 
 /* Default vertical spacing */
 .gh-content > * + * {
-    margin-top: calc(28px * var(--content-spacing-factor, 1));
     margin-bottom: 0;
 }
 
 /* Remove space between full-width cards */
 .gh-content > .kg-width-full + .kg-width-full:not(.kg-width-full.kg-card-hascaption + .kg-width-full) {
     margin-top: 0;
-}
-
-/* Add back a top margin to all headings,
-unless a heading is the very first element in the post content */
-.gh-content > [id]:not(:first-child) {
-    margin-top: calc(56px * var(--content-spacing-factor, 1));
 }
 
 /* Add drop cap setting */
@@ -2143,11 +2125,6 @@ unless a heading is the very first element in the post content */
 
 .has-serif-body.post-template .gh-content.drop-cap > p:first-of-type:first-letter {
     font-size: 3.2em;
-}
-
-/* Add a small margin between a heading and paragraph after it */
-.gh-content > [id] + p {
-    margin-top: calc(12px * var(--content-spacing-factor, 1));
 }
 
 /* A larger margin before/after dividers, blockquotes and embeds */
@@ -2304,10 +2281,6 @@ unless a heading is the very first element in the post content */
 
 /* Toggle */
 
-.has-serif-title .kg-toggle-card .kg-toggle-heading-text {
-    font-family: var(--font-serif);
-}
-
 .has-mono-title .kg-toggle-card .kg-toggle-heading-text {
     font-family: var(--font-mono);
 }
@@ -2334,16 +2307,8 @@ unless a heading is the very first element in the post content */
 
 /* Header */
 
-.has-serif-title .kg-card.kg-header-card h2.kg-header-card-header {
-    font-family: var(--font-serif);
-}
-
 .has-mono-title .kg-card.kg-header-card h2.kg-header-card-header {
     font-family: var(--font-mono);
-}
-
-.has-serif-body .kg-header-card h3.kg-header-card-subheader {
-    font-family: var(--font-serif);
 }
 
 /* Bookmark */
@@ -2393,10 +2358,6 @@ unless a heading is the very first element in the post content */
 .kg-product-card.kg-card a.kg-product-card-button {
     height: 2.8em;
     margin-top: 12px;
-}
-
-.has-serif-title .kg-product-card.kg-card .kg-product-card-title {
-    font-family: var(--font-serif);
 }
 
 .has-mono-title .kg-product-card.kg-card .kg-product-card-title {
@@ -2571,15 +2532,6 @@ figcaption a {
 
 .has-mono-title {
     --factor: 1.1;
-}
-
-.has-sans-title :is(.is-title, .gh-content :is(h2, h3)) {
-    font-family: var(--font-sans);
-}
-
-.has-serif-title :is(.is-title, .gh-content :is(h2, h3)) {
-    font-family: var(--font-serif);
-    font-weight: 550;
 }
 
 .has-mono-title :is(.is-title, .gh-content :is(h2, h3)) {
