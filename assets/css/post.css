@@ -175,7 +175,7 @@
 
     .post-content {
         max-width: 770px;
-        padding-block: var(--space-7xl);
+        padding-block: 143px;
     }
 
     .post-content-inner {
