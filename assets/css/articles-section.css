@@ -8,6 +8,7 @@
         "header header header"
         "card   card   card"
         "button button button";
+    justify-items: center;
 }
 
 .articles-section[data-section-type="new"] {
