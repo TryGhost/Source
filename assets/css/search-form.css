@@ -21,6 +21,7 @@
     font: var(--text-small-medium);
     color: var(--color-text-primary);
     background: transparent;
+    flex-grow: 1;
 }
 
 .search-form-input::placeholder {
