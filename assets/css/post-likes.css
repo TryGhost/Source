@@ -23,10 +23,9 @@
 }
 
 .post-likes-container {
-    --min: 335px;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(var(--min), 1fr));
-    gap: clamp(16px, 2vw, 24px);
+    justify-self: center;
+    row-gap: var(--space-4xl);
 }
 
 .post-likes-actions {
@@ -35,7 +34,7 @@
     width: 80%;
 }
 
-@media (width >= 1025px) {
+@media (width >= 1440px) {
     .post-likes-main {
         padding: var(--space-7xl) var(--space-5xl);
     }
@@ -51,9 +50,12 @@
     }
 
     .post-likes-container {
-        --min: 416px;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 80px 29px;
     }
+}
 
+@media (width > 375px) {
     .post-likes-actions {
         width: 222px;
     }
