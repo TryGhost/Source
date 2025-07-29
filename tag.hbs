@@ -23,9 +23,11 @@
                         {{> "components/card" post=this}}
                     {{/foreach}}
                 </div>
+                {{#if pagination.next}}
                 <div id="load-more" class="tag-posts-load-more">
                     {{> "components/button" text="もっと見る" attributes='id="load-more-posts" data-size="full"'}}
                 </div>
+                {{/if}}
             </div>
         </div>
     </section>
