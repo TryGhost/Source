@@ -8,7 +8,7 @@
     async function fetchLikedPosts(key, memberId) {
         try {
             const response = await fetch(
-                `/ghost/api/content/liked-posts/?key=${key}&memberId=${memberId}`
+                `/ghost/api/content/liked-posts/?key=${key}&memberId=${memberId}&limit=50`
             );
 
             if (!response.ok) {
