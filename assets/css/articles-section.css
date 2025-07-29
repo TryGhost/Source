@@ -48,6 +48,7 @@
 .articles-section-description {
     grid-area: description;
     font: var(--text-regular-regular);
+    white-space: pre-line;
 }
 
 .articles-section-card {
