@@ -68,6 +68,11 @@
     display: flex;
     justify-content: center;
     text-align: center;
+
+    a {
+        max-width: 80%;
+        min-width: 268px;
+    }
 }
 
 @media (width >= 1025px) {
