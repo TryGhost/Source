@@ -15,6 +15,7 @@
 
 .magazine-logo-image {
     grid-area: 2 / 2 / 3 / 4;
+    justify-self: center;
     width: 257px;
     height: 101px;
     object-fit: contain;
@@ -44,6 +45,7 @@
     .magazine-logo-image {
         width: 180px;
         height: 71px;
+        justify-self: flex-start;
     }
 
     .magazine-info {
