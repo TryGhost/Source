@@ -61,12 +61,11 @@
     justify-items: center;
 
     * {
-        width: 80%;
-        width: 80%;
+        width: 270px;
     }
 }
 
-@media (width >= 1025px) {
+@media (width >= 1440px) {
     .articles-section {
         padding: 112px 67px;
         row-gap: var(--space-6xl);
@@ -93,17 +92,10 @@
         --gap: 29px;
         --column-max-count: 3;
         --column-min-width: 416px;
-        grid-template-columns: repeat(var(--column-max-count), var(--column-min-width));
+        grid-template-columns: repeat(
+            var(--column-max-count),
+            var(--column-min-width)
+        );
         gap: 29px;
-    }
-
-    .articles-section-action {
-        div {
-            max-width: 222px;
-        }
-
-        a {
-            max-width: 270px;
-        }
     }
 }
