@@ -23,9 +23,18 @@
 }
 
 .post-likes-container {
+    --card-min-width: 335px;
     display: grid;
     justify-self: center;
     row-gap: var(--space-4xl);
+    grid-template-columns: repeat(
+        auto-fill,
+        minmax(var(--card-min-width), 1fr)
+    );
+    justify-self: center;
+    justify-items: center;
+    gap: var(--space-4xl) 29px;
+    width: 100%;
 }
 
 .post-likes-actions {
@@ -50,7 +59,7 @@
     }
 
     .post-likes-container {
-        grid-template-columns: repeat(3, 1fr);
+        --card-min-width: 416px;
         gap: 80px 29px;
     }
 }
