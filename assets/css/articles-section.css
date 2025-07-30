@@ -52,10 +52,15 @@
 }
 
 .articles-section-card {
+    --card-width: 335px;
+    --card-max-count: 3;
     grid-area: card;
+    width: 100%;
+    max-width: calc(var(--card-width) * var(--card-max-count) + var(--space-4xl) * (var(--card-max-count) - 1));
     display: grid;
-    gap: var(--space-4xl);
+    grid-template-columns: repeat(auto-fit, var(--card-width));
     justify-content: center;
+    gap: var(--space-4xl);
 }
 
 .articles-section-action {
@@ -91,7 +96,8 @@
     }
 
     .articles-section-card {
-        grid-template-columns: repeat(3, 416px);
+        --card-width: 416px;
+        max-width: calc(var(--card-width) * var(--card-max-count) + 29px * (var(--card-max-count) - 1));
         gap: 29px;
     }
 }
