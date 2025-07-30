@@ -8,7 +8,9 @@
             {{#foreach groups}}
             {{#if logo_image}}
               <div class="partners-logo">
-                <img src="{{img_url logo_image}}" alt="{{name}}" class="partners-logo-img">
+                <a href="/magazine?group={{slug}}">
+                    <img src="{{img_url logo_image}}" alt="{{name}}" class="partners-logo-img">
+                </a>
               </div>
             {{/if}}
             {{/foreach}}

@@ -8,7 +8,7 @@
     async function fetchLikedPosts(key, memberId) {
         try {
             const response = await fetch(
-                `/ghost/api/content/liked-posts/?key=${key}&memberId=${memberId}`
+                `/ghost/api/content/liked-posts/?key=${key}&memberId=${memberId}&limit=50`
             );
 
             if (!response.ok) {
@@ -212,9 +212,9 @@
             return;
         }
 
-        posts.forEach(post => {
-            const cardHtml = createPostCard(post, true, true);
-            container.insertAdjacentHTML('beforeend', cardHtml);
+        displayArticleCards(posts, `#${sectionId}`, {
+            isShowLikeButton: true,
+            isLiked: true
         });
 
         // いいねボタンの初期化

@@ -5,6 +5,7 @@
 .pickup-tag {
     background: var(--color-white);
     padding-block: var(--space-4xl);
+    max-width: var(--container-max-width);
 }
 
 .pickup-tag-container {
@@ -21,9 +22,13 @@
 
 .pickup-tag-content {
     grid-area: content;
-    display: flex;
-    flex-direction: column;
-    row-gap: var(--space-sm);
+    display: grid;
+    grid-template:
+        "label"
+        "." 12px
+        "title"
+        "." 20px
+        "description";
 }
 
 .pickup-tag-label {
@@ -63,13 +68,17 @@
     display: flex;
     justify-content: center;
     text-align: center;
+
+    a {
+        max-width: 80%;
+        min-width: 268px;
+    }
 }
 
-/*TODO: container query */
-/* Desktop Styles */
 @media (width >= 1025px) {
     .pickup-tag {
         padding-block: var(--space-7xl);
+        margin-inline: auto;
     }
 
     .pickup-tag-container {
@@ -77,20 +86,22 @@
             "content image"
             ". image" 32px
             "link image" / 50% 50%;
+        column-gap: 1rem;
         padding-inline: var(--space-5xl);
     }
 
     .pickup-tag-content {
-        row-gap: var(--space-sm);
-        justify-content: flex-end;
+        grid-template:
+            "label"
+            "." 16px
+            "title"
+            "." 24px
+            "description";
+        align-content: end;
     }
 
     .pickup-tag-header {
         gap: var(--space-xl);
-    }
-
-    .pickup-tag-label {
-        font: var(--heading-xs);
     }
 
     .pickup-tag-title {
@@ -104,7 +115,7 @@
     }
 
     .pickup-tag-btn {
-        padding: var(--button-padding-y) var(--space-6xl);
+        padding: 10px var(--space-6xl);
         font: var(--text-regular-bold);
         min-width: 240px;
     }

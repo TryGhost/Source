@@ -1,6 +1,3 @@
-/* Search Results Page Styles
-   ---------------------------------------------------------- */
-
 /* Page Container */
 .search_results__page {
     display: flex;
@@ -12,14 +9,12 @@
 .search_results__navbar {
     background-color: var(--color-bg-primary);
     color: var(--color-text-white);
-    padding-block: var(--space-lg);
-    padding-inline: var(--space-lg);
+    padding: var(--space-lg);
 }
 
 .search_results__navbar-container {
     display: flex;
     flex-direction: column;
-    max-inline-size: var(--container-max-width);
     margin-inline: auto;
 }
 
@@ -61,6 +56,7 @@
     background-color: var(--color-white);
     border: none;
     font: var(--text-regular-bold);
+    color: var(--color-black);
     letter-spacing: var(--letter-spacing-wide-xs);
     padding-block: 10px;
     padding-inline: var(--space-md);
@@ -69,14 +65,14 @@
     background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='currentColor' viewBox='0 0 256 256'%3e%3cpath d='M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z'/%3e%3c/svg%3e");
     background-repeat: no-repeat;
     background-position: right 12px center;
-    background-size: 20px;
+    background-size: 24px;
     padding-inline-end: 40px;
     width: 160px;
 }
 
 @media (768px <= width) {
     .search_results__navbar {
-        padding: var(--space-2xl) var(--space-5xl);
+        padding: 16px var(--space-5xl) 31px;
     }
 
     .search_results__navbar-header > button {
@@ -98,7 +94,8 @@
 }
 
 .search_results__accordion--open {
-    max-block-size: 1000px; /* 十分に大きな値 */
+    max-block-size: 60svh;
+    overflow-y: auto;
 }
 
 /* Search Form */
@@ -120,6 +117,7 @@
     display: flex;
     flex-direction: column;
     row-gap: var(--space-lg);
+    width: 100%;
 }
 
 /* Tags Section */
@@ -173,7 +171,7 @@
 
 .search_results__magazines-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(172px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: var(--space-lg);
 }
 
@@ -202,22 +200,21 @@
 }
 
 .search_results__content-container {
-    --min: 335px;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(var(--min), 1fr));
-    gap: var(--space-4xl);
+    gap: 29px;
+    justify-items: center;
 }
 
 /* Results Header */
 .search_results__header {
     display: flex;
     flex-direction: column;
-    gap: var(--space-sm);
+    row-gap: var(--space-sm);
     text-align: center;
 }
 
 .search_results__header-tag {
-    font: var(--text-regular-regular);
+    font: var(--heading-xxs);
     letter-spacing: var(--letter-spacing-wide-lg);
     color: var(--color-text-primary);
 }
@@ -272,14 +269,6 @@
     font: var(--text-small-bold);
     color: var(--color-text-primary);
     letter-spacing: var(--letter-spacing-wide-xs);
-}
-
-.search_results__card-content {
-    background-color: var(--color-white);
-    padding: var(--card-padding);
-    display: flex;
-    flex-direction: column;
-    gap: var(--card-gap);
 }
 
 .search_results__card-body {
@@ -377,6 +366,7 @@
 
     .search_results__header {
         text-align: left;
+        row-gap: var(--space-md);
     }
 }
 
@@ -404,14 +394,12 @@
 }
 
 .search_results__no-results .search_results__header-tag {
-    font: var(--text-regular-regular);
     letter-spacing: var(--letter-spacing-wide-lg);
     color: var(--color-text-primary);
     margin-block-end: var(--space-sm);
 }
 
 .search_results__no-results .search_results__header-title {
-    font: var(--heading-l);
     color: var(--color-text-primary);
     letter-spacing: var(--letter-spacing-wide-xl);
 }
@@ -431,13 +419,10 @@
     border: none;
     outline: none;
 }
-@media (768px <= width) {
+
+@media screen and (width >= 768px) {
     .search_results__sticky_btn {
         display: none;
-    }
-
-    .search_results__content-container {
-        --min: 416px;
     }
 
     .search_results__form-form {
@@ -446,5 +431,17 @@
 
     .search_results__load-more {
         width: 222px;
+    }
+
+    .search_results__header-title {
+        font: var(--heading-xl);
+    }
+}
+
+@media (width >= 1440px) {
+    .search_results__content-container {
+        grid-template-columns: repeat(3, 416px);
+        gap: 29px;
+        justify-self: center;
     }
 }

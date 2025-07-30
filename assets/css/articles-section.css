@@ -8,6 +8,7 @@
         "header header header"
         "card   card   card"
         "button button button";
+    justify-items: center;
 }
 
 .articles-section[data-section-type="new"] {
@@ -47,12 +48,14 @@
 .articles-section-description {
     grid-area: description;
     font: var(--text-regular-regular);
+    white-space: pre-line;
 }
 
 .articles-section-card {
     grid-area: card;
     display: grid;
     gap: var(--space-4xl);
+    justify-content: center;
 }
 
 .articles-section-action {
@@ -60,15 +63,23 @@
     justify-items: center;
 
     * {
-        width: 80%;
-        width: 80%;
+        width: 270px;
     }
 }
 
-@media (width >= 1025px) {
+@media (width >= 1440px) {
     .articles-section {
         padding: 112px 67px;
         row-gap: var(--space-6xl);
+    }
+
+    .articles-section-header {
+        grid-template:
+            "label"
+            "." 16px
+            "title"
+            "." 24px
+            "description";
     }
 
     .articles-section-title {
@@ -80,18 +91,7 @@
     }
 
     .articles-section-card {
-        --min: 416px;
-        grid-template-columns: repeat(auto-fill, minmax(var(--min), 1fr));
+        grid-template-columns: repeat(3, 416px);
         gap: 29px;
-    }
-
-    .articles-section-action {
-        div {
-            max-width: 222px;
-        }
-
-        a {
-            max-width: 270px;
-        }
     }
 }

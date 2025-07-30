@@ -1,0 +1,10 @@
+<nav class="footer-nav" aria-label="フッターナビゲーション">
+    <ul class="footer-nav-list">
+        {{#foreach navigation}}
+            <li class="footer-nav-item">
+                <a href="{{url absolute="true"}}" class="footer-nav-link">{{label}}</a>
+            </li>
+        {{/foreach}}
+
+    </ul>
+</nav>

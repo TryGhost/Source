@@ -1,14 +1,18 @@
-.gh-content {
+.gh-main:has(article.gh-article) {
+    article {
+        margin-block: 64px;
+    }
+
     h1 {
-        font: var(--heading-l);
-        letter-spacing: 1.6px;
+        font: var(--heading-m);
+        letter-spacing: var(--letter-spacing-wide-2xl);
         padding-block: var(--space-xl);
     }
 
     h2 {
-        font: var(--heading-m);
-        letter-spacing: var(--letter-spacing-wide-2xl);
-        padding-block: var(--space-xl);
+        font: var(--heading-s);
+        letter-spacing: 0.96px;
+        padding-block: var(--space-xl) var(--space-lg);
     }
 
     h3 {
@@ -21,6 +25,7 @@
         font: var(--text-regular-regular);
         letter-spacing: var(--letter-spacing-wide-xs);
         padding-block-end: var(--space-md);
+        margin: 0;
     }
 
     a {
@@ -81,5 +86,18 @@
 
     div[data-kg-toggle-state="open"] {
         padding-block: var(--space-xl);
+    }
+}
+
+@media screen and (width >= 768px) {
+    .gh-main:has(article.gh-article) {
+        article {
+            margin-block: 112px 43px;
+        }
+
+        h1 {
+            font: var(--heading-l);
+            letter-spacing: 1.6px;
+        }
     }
 }

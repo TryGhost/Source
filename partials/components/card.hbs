@@ -1,8 +1,13 @@
 <article class="card" data-transparent="{{is_transparent}}">
     <div class="card-image">
-        <a href="{{post.url}}" {{#if post.feature_image}}style="background-image: url({{img_url post.feature_image size="m"}})"{{else}}style="background-image: url({{asset "images/default-post-image.png"}})"{{/if}}></a>
+        <a class="post-feature-image" href="{{post.url}}" {{#if post.feature_image}}style="background-image: url({{img_url post.feature_image size="m"}})"{{else}}style="background-image: url({{asset "images/default-post-image.png"}})"{{/if}}></a>
         {{#if post.group.logo_image}}
-        <a href="/magazine?group={{post.group.slug}}" class="card-magazine-logo" style="background-image: url({{img_url post.group.logo_image size="xs"}})"></a>
+        <a class="post-magazine-logo" href="/magazine?group={{post.group.slug}}" class="card-magazine-logo" style="background-image: url({{img_url post.group.logo_image size="xs"}})"></a>
+        {{/if}}
+        {{#if showLikeButton}}
+        <div class="card-like-button gh-post-like-wrapper">
+            {{> "components/post-like" post_id=id}}
+        </div>
         {{/if}}
     </div>
 

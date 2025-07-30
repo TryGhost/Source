@@ -30,9 +30,7 @@
   --color-text-light-gray: #a7a7a7;
 
   /* Border & Opacity Colors */
-  --color-border-light: rgba(12, 6, 12, 0.02);
   --color-overlay: rgba(12, 6, 12, 0.05);
-  --color-opacity-neutral-darkest-5: rgba(12, 6, 12, 0.05);
 
   /* Gradients */
   --gradient-primary: linear-gradient(118.244deg, #f7ce6f 0%, #fb7373 100%);
@@ -112,56 +110,15 @@
   /* Layout */
   --container-max-width: 1440px;
 
-  /* Grid System */
-  --grid-columns: 16;
-  --grid-gap-desktop: 30px;
-  --grid-gap-tablet: 24px;
-  --grid-gap-mobile: 16px;
-
-  /* Component Specific */
-
-  /* Card */
-  --card-radius: var(--radius-md);
-  --card-padding: var(--space-2xl);
-  --card-gap: var(--space-xl);
-  --card-image-height: 234px;
-  --card-magazine-label-height: 46px;
-  --card-magazine-label-width: 117px;
-
-  /* Button */
-  --button-radius: var(--radius-full);
-  --button-padding-x: var(--space-xl);
-  --button-padding-y: 10px;
-  --button-min-width: 416px;
-
-  /* Form */
-  --form-radius: var(--radius-lg);
-  --form-height: 42px;
-  --form-padding-x: 22px;
-
   /* Navigation */
   --nav-height: 72px;
-  --nav-gap: var(--space-2xl);
-  --nav-link-gap: var(--space-2xl);
-
-  /* Hero */
-  --hero-height: 763px;
-  --hero-overlay: linear-gradient(90deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.3) 100%);
-
-  /* Footer */
-  --footer-padding-y: var(--space-6xl);
-  --footer-gap: var(--space-2xl);
 
   /* Transitions */
   --transition-fast: 0.2s ease;
   --transition-normal: 0.3s ease;
   --transition-slow: 0.5s ease;
 
-  /* Z-index System */
-  --z-index-dropdown: 50;
   --z-index-header: 100;
-  --z-index-modal: 200;
-  --z-index-tooltip: 300;
 
   /* Shadows */
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -170,8 +127,3 @@
   --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
 }
 
-/* Media Query Breakpoints */
-@custom-media --mobile (max-width: 767px);
-@custom-media --tablet (max-width: 1024px);
-@custom-media --desktop (min-width: 1025px);
-@custom-media --wide (min-width: 1440px);

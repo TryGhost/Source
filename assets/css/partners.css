@@ -1,6 +1,7 @@
 .partners {
     background: var(--color-white);
     padding-block: var(--space-4xl);
+    max-width: var(--container-max-width);
 }
 
 .partners-container {
@@ -35,6 +36,7 @@
         display: flex;
         justify-content: center;
         row-gap: var(--space-3xl);
+        column-gap: var(--space-6xl);
         flex-wrap: wrap;
     }
 
@@ -53,6 +55,7 @@
 @media (width >= 1025px) {
     .partners {
         padding-block: var(--space-7xl);
+        margin-inline: auto;
     }
 
     .partners-container {

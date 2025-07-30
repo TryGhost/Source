@@ -5,22 +5,25 @@
 .search-form {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     background: var(--color-white);
     border-radius: var(--radius-full);
     overflow: hidden;
     width: 100%;
     max-width: 536px;
-    height: 44px;
+    height: 42px;
+    min-width: 200px;
 }
 
 .search-form-input {
-    flex: 1;
     border: none;
     outline: none;
     padding: 0 var(--space-lg);
     font: var(--text-small-medium);
     color: var(--color-text-primary);
     background: transparent;
+    flex-grow: 1;
+    min-width: 80px;
 }
 
 .search-form-input::placeholder {
@@ -34,9 +37,10 @@
     color: var(--color-text-primary);
     border-radius: var(--radius-full);
     cursor: pointer;
-    height: 44px;
+    height: 42px;
     font: var(--text-regular-medium-button);
     transition: opacity 0.1s ease;
+    white-space: nowrap;
 }
 
 .search-form-btn:hover {

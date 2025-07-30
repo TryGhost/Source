@@ -10,17 +10,19 @@
  * @param {Object} [post.group] - グループオブジェクト
  * @param {Object} [options] - オプション設定
  * @param {string} [options.section_type] - セクションの種類
+ * @param {boolean} [options.isShowLikeButton] - いいねボタンを表示するかどうか
+ * @param {boolean} [options.isLiked] - いいね状態かどうか
  * @returns {string} HTMLカードの文字列
  */
 function createPostCard(post, options = {}) {
     const featureImage = post.feature_image;
     const groupLogoImage = post.group?.logo_image;
     const tags = post.tags ? post.tags.slice(0, 2) : [];
-    const {section_type = ''} = options;
+    const {section_type = '', isShowLikeButton = false, isLiked = false} = options;
     const is_transparent = section_type === 'new';
 
     // 日付をフォーマット
-    const publishedDate = new Date(post.published_at);
+    const publishedDate = new Date(post.published_at || post.date);
     const formattedDate = publishedDate
         .toLocaleDateString('ja-JP', {
             year: 'numeric',
@@ -38,18 +40,39 @@ function createPostCard(post, options = {}) {
     ).join('');
 
     // 画像URLの生成（サイズ付き）
-    const featureImageUrl = featureImage || '/assets/images/default-post-image.png';
+    const featureImageUrl = featureImage || '/assets/images/default-post-image.png?';
     const backgroundStyle = `background-image: url(${featureImageUrl})`;
+
+    // いいねボタンのHTML生成
+    const likeButtonHtml = isShowLikeButton ? `
+        <div class="card-like-button gh-post-like-wrapper">
+            <button
+                class="gh-post-like-button favorite"
+                data-post-id="${post.id}"
+                data-member-id=""
+                data-liked="${isLiked}"
+                type="button"
+                aria-label="${isLiked ? 'お気に入り解除' : 'お気に入り'}"
+            >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                          class="favorite-heart"
+                          stroke-width="2"/>
+                </svg>
+            </button>
+        </div>
+    ` : '';
 
     return `
         <article class="card" data-transparent="${is_transparent}">
             <div class="card-image">
-                <a href="${post.url}" style="${backgroundStyle}"></a>
+                <a class="post-feature-image" href="${post.url}" style="${backgroundStyle}"></a>
                 ${
                     groupLogoImage
-                        ? `<a href="/magazine?group=${post.group.slug}" class="card-magazine-logo" style="background-image: url(${groupLogoImage})"></a>`
+                        ? `<a class="post-magazine-logo" href="/magazine?group=${post.group.slug}" class="card-magazine-logo" style="background-image: url(${groupLogoImage})"></a>`
                         : ''
                 }
+                ${likeButtonHtml}
             </div>
 
             <a href="${post.url}" class="card-content"${section_type ? ` data-card-color="${section_type}"` : ''}>
@@ -91,6 +114,8 @@ function createPostCard(post, options = {}) {
  * @param {string} selector - セクションのセレクタ
  * @param {Object} [options] - オプション設定
  * @param {string} [options.section_type] - セクションの種類
+ * @param {boolean} [options.isShowLikeButton] - いいねボタンを表示するかどうか
+ * @param {boolean} [options.isLiked] - いいね状態かどうか
  */
 function displayArticleCards(posts, selector, options = {}) {
   const container = document.querySelector(selector);
@@ -140,3 +165,4 @@ function displayNoResultsMessage(selector) {
         </div>
    `;
 }
+

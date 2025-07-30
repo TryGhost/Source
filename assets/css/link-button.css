@@ -1,5 +1,5 @@
 .link-button {
-    font: var(--text-small-bold);
+    font: var(--text-regular-medium);
     color: var(--color-text-primary);
     background: var(--color-bg-gray);
     letter-spacing: var(--letter-spacing-wide-xs);
@@ -10,7 +10,7 @@
     justify-content: center;
     align-items: center;
     column-gap: var(--space-xs);
-    padding: var(--space-sm) var(--space-4xl);
+    padding: 11px var(--space-4xl);
     border-radius: var(--radius-full);
     height: 44px;
     transition: opacity 0.1s ease;
@@ -27,9 +27,11 @@
         height: auto;
         flex-shrink: 0;
         vertical-align: middle;
+        width: 24px;
+        height: 24px;
     }
-}
 
-.link-button:hover {
-    opacity: 0.8;
+    &:hover {
+        opacity: 0.8;
+    }
 }
