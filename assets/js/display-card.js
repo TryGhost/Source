@@ -22,7 +22,7 @@ function createPostCard(post, options = {}) {
     const is_transparent = section_type === 'new';
 
     // 日付をフォーマット
-    const publishedDate = new Date(post.published_at || post.date);
+    const publishedDate = new Date(post.published_at);
     const formattedDate = publishedDate
         .toLocaleDateString('ja-JP', {
             year: 'numeric',
