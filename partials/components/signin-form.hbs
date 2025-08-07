@@ -1,0 +1,45 @@
+<dialog id="signin-modal" class="custom-portal-modal">
+    <div class="custom-portal-container">
+        <div class="custom-portal-header">
+            <h2 class="custom-portal-title">ログイン</h2>
+            <button type="button" class="custom-portal-close" onclick="closeSigninModal()">&times;</button>
+        </div>
+        
+        <form class="custom-portal-form" id="signin-form" data-members-form>
+            <div class="custom-portal-form-group">
+                <label for="signin-email" class="custom-portal-label">メールアドレス</label>
+                <input 
+                    type="email" 
+                    id="signin-email" 
+                    class="custom-portal-input" 
+                    placeholder="example@email.com"
+                    required
+                    data-members-email
+                >
+            </div>
+            
+            <div class="custom-portal-form-actions">
+                <button 
+                    type="submit" 
+                    class="custom-portal-button custom-portal-button-primary"
+                    id="signin-submit"
+                >
+                    <span class="custom-portal-button-text">ログイン</span>
+                    <span class="custom-portal-loading" style="display: none;">送信中...</span>
+                </button>
+            </div>
+            
+            <div class="custom-portal-error" id="signin-error" style="display: none;"></div>
+            <div class="custom-portal-success" id="signin-success" style="display: none;">
+                ログインリンクをメールでお送りしました。メールをご確認ください。
+            </div>
+        </form>
+        
+        <div class="custom-portal-footer">
+            <p class="custom-portal-footer-text">
+                アカウントをお持ちでない方は 
+                <button type="button" class="custom-portal-link" onclick="switchToSignup()">新規登録</button>
+            </p>
+        </div>
+    </div>
+</dialog>

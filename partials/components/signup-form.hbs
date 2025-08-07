@@ -1,0 +1,286 @@
+<dialog id="signup-modal" class="custom-portal-modal">
+    <div class="custom-portal-container">
+        <div class="custom-portal-header">
+            <h2 class="custom-portal-title">新規登録</h2>
+            <button type="button" class="custom-portal-close" onclick="closeSignupModal()">&times;</button>
+        </div>
+        
+        <form class="custom-portal-form" id="signup-form" data-members-form>
+            {{!-- 名前入力 --}}
+            <div class="custom-portal-form-group">
+                <label for="signup-name" class="custom-portal-label">名前</label>
+                <input 
+                    type="text" 
+                    id="signup-name" 
+                    class="custom-portal-input" 
+                    placeholder="お名前を入力してください"
+                    data-members-name
+                >
+            </div>
+            
+            {{!-- メール入力 --}}
+            <div class="custom-portal-form-group">
+                <label for="signup-email" class="custom-portal-label">メールアドレス</label>
+                <input 
+                    type="email" 
+                    id="signup-email" 
+                    class="custom-portal-input" 
+                    placeholder="example@email.com"
+                    required
+                    data-members-email
+                >
+            </div>
+            
+            {{!-- 利用規約セクション --}}
+            <div class="custom-portal-terms-section">
+                <label class="custom-portal-label">利用規約について</label>
+                <div class="custom-portal-terms-text">
+                    <h4 style="font-weight: 600; margin-bottom: 8px;">Magaco利用規約</h4>
+                    <p style="margin-bottom: 12px;">この利用規約（以下「本規約」）は、Magaco（以下「当社」）が提供するサービス（以下「本サービス」）の利用条件を定めるものです。</p>
+                    <h5 style="font-weight: 600; margin-bottom: 4px;">1. サービスの利用</h5>
+                    <p style="margin-bottom: 12px;">本サービスを利用するには、アカウントの登録が必要です。登録時に提供される情報は正確である必要があります。</p>
+                    <h5 style="font-weight: 600; margin-bottom: 4px;">2. プライバシー</h5>
+                    <p style="margin-bottom: 12px;">当社は、お客様の個人情報を適切に管理し、第三者に提供することはありません。詳細はプライバシーポリシーをご確認ください。</p>
+                    <h5 style="font-weight: 600; margin-bottom: 4px;">3. 禁止事項</h5>
+                    <ul style="margin-bottom: 12px; margin-left: 16px; list-style-type: disc;">
+                        <li>違法行為や公序良俗に反する行為</li>
+                        <li>他のユーザーへの迷惑行為</li>
+                        <li>システムへの不正アクセス</li>
+                        <li>著作権やその他の知的財産権の侵害</li>
+                    </ul>
+                    <h5 style="font-weight: 600; margin-bottom: 4px;">4. サービスの変更・停止</h5>
+                    <p style="margin-bottom: 12px;">当社は、必要に応じて本サービスの内容を変更または停止することがあります。</p>
+                    <h5 style="font-weight: 600; margin-bottom: 4px;">5. 免責事項</h5>
+                    <p>当社は、本サービスの利用によって生じた損害について一切の責任を負いません。</p>
+                </div>
+                
+                <label class="custom-portal-checkbox-label">
+                    <input type="checkbox" id="agree-terms" name="agree_terms" required class="custom-portal-checkbox">
+                    <span class="custom-portal-checkmark"></span>
+                    <span>利用規約・プライバシーポリシーに同意する</span>
+                </label>
+            </div>
+            
+            {{!-- プラン選択 --}}
+            <div>
+                <label class="custom-portal-label">プランを選択</label>
+                
+                {{!-- 月額・年額切り替えトグル --}}
+                <div style="display: flex; justify-content: center; margin-bottom: 16px;">
+                    <div style="background: #f1f3f4; padding: 4px; border-radius: 6px; display: flex;">
+                        <button type="button" id="monthly-toggle" style="padding: 8px 16px; font-size: 14px; font-weight: 500; border-radius: 4px; transition: all 0.15s ease; background: none; border: none; cursor: pointer; color: #738a94;" onclick="togglePlanType('monthly')">
+                            月額
+                        </button>
+                        <button type="button" id="yearly-toggle" style="padding: 8px 16px; font-size: 14px; font-weight: 500; border-radius: 4px; transition: all 0.15s ease; background: #ffffff; border: none; cursor: pointer; color: #3eb0ef; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);" onclick="togglePlanType('yearly')">
+                            年額 <span style="font-size: 12px; background: #f0fdf4; color: #16a34a; padding: 2px 8px; border-radius: 12px; margin-left: 4px;">59%オフ</span>
+                        </button>
+                    </div>
+                </div>
+                
+                {{!-- プラン選択肢 --}}
+                <div id="plans-container">
+                    {{!-- デバッグ情報（コンパクト） --}}
+                    <div style="background: #e8f4f8; padding: 8px; margin: 6px 0; font-size: 10px; border-radius: 3px; text-align: center; color: #666;">
+                        🔍 Members: {{@site.members_enabled}} | Paid: {{@site.paid_members_enabled}} | {{date format="HH:mm:ss"}}
+                    </div>
+                    
+                    {{!-- Tiers デバッグ情報 --}}
+                    {{#get "tiers"}}
+                        <div style="background: #fff3cd; padding: 8px; margin: 6px 0; font-size: 10px; border-radius: 3px; color: #856404;">
+                            🎯 Tiers found: {{#if tiers}}{{tiers.length}}{{else}}0{{/if}} | 
+                            {{#if tiers}}
+                                Names: {{#foreach tiers}}{{name}}{{#unless @last}}, {{/unless}}{{/foreach}}
+                            {{else}}
+                                No tiers available
+                            {{/if}}
+                        </div>
+                        {{!-- 詳細デバッグ --}}
+                        {{#if tiers}}
+                            {{#foreach tiers}}
+                                <div style="background: #d1ecf1; padding: 4px; margin: 2px 0; font-size: 9px; border-radius: 2px; color: #0c5460;">
+                                    {{@index}}: {{name}} | Type: {{type}} | Monthly: {{monthly_price}} | Yearly: {{yearly_price}} | ID: {{id}}
+                                </div>
+                            {{/foreach}}
+                        {{/if}}
+                    {{/get}}
+                    
+                    {{!-- Ghost Tiersを使った動的プラン表示 --}}
+                    {{#get "tiers"}}
+                        {{#if tiers}}
+                            <div style="background: #f8fcff; padding: 16px; border-radius: 8px; border: 1px solid #e5eff5;">
+                                <p style="color: #3eb0ef; font-weight: bold; margin-bottom: 12px; text-align: center;">💳 利用可能なプラン</p>
+                                
+                                {{#foreach tiers}}
+                                    <div class="custom-portal-tier-option tier-option" 
+                                         data-tier-id="{{id}}" 
+                                         data-tier-name="{{name}}"
+                                         data-tier-type="{{type}}"
+                                         data-monthly-price="{{monthly_price}}"
+                                         data-yearly-price="{{yearly_price}}"
+                                         style="margin-bottom: 12px;">
+                                        
+                                        <input 
+                                            type="radio" 
+                                            id="tier-{{id}}" 
+                                            name="data-members-plan"
+                                            value="{{id}}" 
+                                            class="custom-portal-radio"
+                                            {{#if @first}}checked{{/if}}
+                                            data-members-plantype="yearly"
+                                        >
+                                        
+                                        <label for="tier-{{id}}" class="custom-portal-tier-label">
+                                            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                                                <div style="flex: 1;">
+                                                    {{!-- プラン名と無料体験バッジ --}}
+                                                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                                                        <h4 class="custom-portal-tier-name">{{name}}</h4>
+                                                        {{#if trial_days}}
+                                                            <span style="background: #f0fdf4; color: #16a34a; padding: 4px 8px; border-radius: 12px; font-size: 11px; font-weight: 600;">
+                                                                {{trial_days}}日無料
+                                                            </span>
+                                                        {{/if}}
+                                                    </div>
+                                                    
+                                                    {{!-- プラン説明 --}}
+                                                    {{#if description}}
+                                                        <p class="custom-portal-tier-description">{{description}}</p>
+                                                    {{/if}}
+                                                    
+                                                    {{!-- 価格表示（簡略化） --}}
+                                                    <div class="price-display">
+                                                        {{#if yearly_price}}
+                                                            <div class="yearly-price">
+                                                                <div class="custom-portal-tier-price" style="font-size: 18px; margin-bottom: 4px;">
+                                                                    ¥{{yearly_price}} <span style="font-size: 12px; color: #738a94;">/年</span>
+                                                                </div>
+                                                                {{#if monthly_price}}
+                                                                    <p style="font-size: 11px; color: #738a94;">月額プランもあります</p>
+                                                                {{/if}}
+                                                            </div>
+                                                        {{/if}}
+                                                        {{#if monthly_price}}
+                                                            <div class="monthly-price" style="{{#if yearly_price}}display: none;{{/if}}">
+                                                                <div class="custom-portal-tier-price" style="font-size: 18px;">
+                                                                    ¥{{monthly_price}} <span style="font-size: 12px; color: #738a94;">/月</span>
+                                                                </div>
+                                                            </div>
+                                                        {{/if}}
+                                                        {{#unless monthly_price}}
+                                                            {{#unless yearly_price}}
+                                                                <div class="custom-portal-tier-price" style="font-size: 18px; color: #16a34a;">
+                                                                    ¥0 <span style="font-size: 12px; color: #738a94;">/永久無料</span>
+                                                                </div>
+                                                            {{/unless}}
+                                                        {{/unless}}
+                                                    </div>
+                                                    
+                                                    {{!-- 特典リスト --}}
+                                                    {{#if benefits}}
+                                                        <ul style="font-size: 12px; color: #738a94; margin: 8px 0; padding-left: 16px;">
+                                                            {{#foreach benefits}}
+                                                                <li>{{this}}</li>
+                                                            {{/foreach}}
+                                                        </ul>
+                                                    {{/if}}
+                                                </div>
+                                                
+                                                {{!-- ラジオボタン --}}
+                                                <div style="margin-left: 12px;">
+                                                    <div style="width: 20px; height: 20px; border: 2px solid #e5eff5; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                                        <div style="width: 10px; height: 10px; background: #3eb0ef; border-radius: 50%; display: none;" class="tier-radio-dot"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            {{!-- 選択ボタン --}}
+                                            {{#if monthly_price}}
+                                                {{!-- 有料プランの場合、バリデーション後にGhost Portalを開く --}}
+                                                <a href="javascript:void(0)" 
+                                                   class="custom-portal-button custom-portal-button-primary tier-select-button" 
+                                                   onclick="selectPaidTier('{{id}}', '{{type}}', '{{name}}')"
+                                                   {{!-- data-tier-id="{{id}}" --}}
+                                                   data-portal="signup/{{id}}/monthly"
+                                                   style="width: 100%; margin-top: 12px; text-decoration: none; display: flex; align-items: center; justify-content: center;">
+                                                    {{#if trial_days}}
+                                                        {{trial_days}}日無料で始める
+                                                    {{else}}
+                                                        このプランを選択
+                                                    {{/if}}
+                                                </a>
+                                            {{else}}
+                                                {{!-- 無料プランの場合、従来の処理 --}}
+                                                <button type="button" 
+                                                        class="custom-portal-button tier-select-button" 
+                                                        onclick="selectTier('{{id}}', '{{type}}', '{{name}}')" 
+                                                        style="width: 100%; margin-top: 12px; background: #f1f3f4; color: #738a94;">
+                                                    無料で始める
+                                                </button>
+                                            {{/if}}
+                                        </label>
+                                    </div>
+                                {{/foreach}}
+                            </div>
+                        {{else}}
+                            {{!-- フォールバック: 手動プラン表示 --}}
+                            <div style="background: #f8fcff; padding: 16px; border-radius: 8px; border: 1px solid #e5eff5;">
+                                <p style="color: #dc2626; font-weight: bold; margin-bottom: 12px; text-align: center;">⚠️ フォールバックプラン（Tiersが取得できませんでした）</p>
+                                
+                                {{!-- Freeプラン --}}
+                                <div class="custom-portal-tier-option tier-option" data-tier-id="free" data-tier-name="Free" data-tier-type="free" style="margin-bottom: 12px;">
+                                    <input type="radio" id="fallback-tier-free" name="data-members-plan" value="free" class="custom-portal-radio" checked data-members-plantype="free">
+                                    <label for="fallback-tier-free" class="custom-portal-tier-label">
+                                        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                                            <div style="flex: 1;">
+                                                <h4 class="custom-portal-tier-name">Free</h4>
+                                                <p class="custom-portal-tier-description">無料で基本機能をご利用いただけます</p>
+                                                <div class="custom-portal-tier-price" style="font-size: 18px; margin: 8px 0; color: #16a34a;">¥0 <span style="font-size: 12px; color: #738a94;">/永久無料</span></div>
+                                                <ul style="font-size: 12px; color: #738a94; margin: 8px 0; padding-left: 16px;">
+                                                    <li>基本機能の利用</li>
+                                                    <li>コミュニティサポート</li>
+                                                </ul>
+                                            </div>
+                                            <div style="margin-left: 12px;">
+                                                <div style="width: 20px; height: 20px; border: 2px solid #e5eff5; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                                    <div style="width: 10px; height: 10px; background: #3eb0ef; border-radius: 50%; display: none;" class="tier-radio-dot"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="custom-portal-button" style="background: #f1f3f4; color: #738a94; width: 100%; margin-top: 12px;" onclick="selectTier('free', 'free', 'Free')">
+                                            無料で始める
+                                        </button>
+                                    </label>
+                                </div>
+                            </div>
+                        {{/if}}
+                    {{/get}}
+                    </div>
+                </div>
+            </div>
+            
+            {{!-- 登録ボタン（非表示） --}}
+            <div class="custom-portal-form-actions" style="display: none;">
+                <button 
+                    type="submit" 
+                    class="custom-portal-button custom-portal-button-primary"
+                    id="signup-submit"
+                >
+                    <span class="custom-portal-button-text">アカウントを作成</span>
+                    <span class="custom-portal-loading" style="display: none;">作成中...</span>
+                </button>
+            </div>
+            
+            {{!-- エラー・成功メッセージ --}}
+            <div class="custom-portal-error" id="signup-error" style="display: none;"></div>
+            <div class="custom-portal-success" id="signup-success" style="display: none;"></div>
+        </form>
+        
+        {{!-- フッター --}}
+        <div class="custom-portal-footer">
+            <p class="custom-portal-footer-text">
+                すでにアカウントをお持ちですか？ 
+                <button type="button" class="custom-portal-link" onclick="switchToSignin()">ログイン</button>
+            </p>
+        </div>
+    </div>
+</dialog>

@@ -1,0 +1,35 @@
+/* カスタムPortalモーダルスタイル */
+
+/* Portal制御：不要な画面遷移を防ぐ */
+
+/* signin画面を無効化（カスタムsigninを使用） */
+body #ghost-portal-root .gh-portal-signin-view,
+body #ghost-portal-root [data-portal="signin"],
+body #ghost-portal-root .gh-portal-content[data-page="signin"],
+body .gh-portal-signin-view {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    height: 0 !important;
+    width: 0 !important;
+    position: absolute !important;
+    left: -9999px !important;
+}
+
+/* signin関連のリンクも無効化 */
+body #ghost-portal-root .gh-portal-signup-footer,
+body #ghost-portal-root .gh-portal-signup-footer a[href*="signin"],
+body #ghost-portal-root .gh-portal-signin-switch,
+body #ghost-portal-root .gh-portal-footer-signup,
+body #ghost-portal-root a[data-portal="signin"],
+body #ghost-portal-root button[data-portal="signin"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+
+/* signup画面は標準のものを使用（無効化しない） */
+/* アカウント管理、有料プラン関連も標準のものを使用 */
+
+/* Ghost Portal制御とサインイン用の共通スタイル（signup-form専用スタイルはsignup-form.cssに移動） */

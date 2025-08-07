@@ -1,0 +1,414 @@
+/* 新規登録フォーム専用スタイル */
+
+/* モーダル全体の設定 */
+.custom-portal-modal {
+    margin: 20px auto;
+    padding: 0;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(8px);
+    min-width: 400px;
+    max-width: 520px;
+    width: 90vw;
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+    background: transparent;
+    /* スクロールバーを非表示にしてドラッグスクロール有効 */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+}
+
+/* Webkit系ブラウザ（Chrome/Safari）のスクロールバーを非表示 */
+.custom-portal-modal::-webkit-scrollbar {
+    display: none;
+}
+
+.custom-portal-modal::backdrop {
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+}
+
+.custom-portal-modal[open] {
+    display: block;
+    animation: portalModalFadeIn 0.2s ease-out;
+}
+
+@keyframes portalModalFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* コンテナ */
+.custom-portal-container {
+    background: #ffffff;
+    border-radius: 12px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    min-height: auto;
+    max-height: none;
+}
+
+/* ヘッダー */
+.custom-portal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 32px 32px 0 32px;
+    border-bottom: none;
+}
+
+.custom-portal-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #15171a;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.custom-portal-close {
+    background: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: #738a94;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    transition: all 0.15s ease;
+}
+
+.custom-portal-close:hover {
+    color: #15171a;
+    background: #f1f3f4;
+}
+
+/* フォーム */
+.custom-portal-form {
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.custom-portal-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.custom-portal-label {
+    color: #15171a;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+}
+
+.custom-portal-input {
+    border: 1px solid #e5eff5;
+    border-radius: 6px;
+    padding: 12px 16px;
+    font-size: 16px;
+    color: #15171a;
+    background: #ffffff;
+    transition: border-color 0.15s ease;
+    box-sizing: border-box;
+}
+
+.custom-portal-input:focus {
+    outline: none;
+    border-color: #3eb0ef;
+    box-shadow: 0 0 0 3px rgba(62, 176, 239, 0.1);
+}
+
+.custom-portal-input::placeholder {
+    color: #738a94;
+}
+
+/* プランオプション */
+.custom-portal-tier-option {
+    border: 1px solid #e5eff5;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: border-color 0.15s ease;
+}
+
+.custom-portal-tier-option:hover {
+    border-color: #3eb0ef;
+}
+
+.custom-portal-radio {
+    display: none;
+}
+
+.custom-portal-radio:checked + .custom-portal-tier-label {
+    border-color: #3eb0ef;
+    background: #f8fcff;
+}
+
+.custom-portal-tier-label {
+    display: block;
+    padding: 16px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    border-radius: 6px;
+    transition: all 0.15s ease;
+}
+
+.custom-portal-tier-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #15171a;
+    margin-bottom: 4px;
+}
+
+.custom-portal-tier-description {
+    font-size: 14px;
+    color: #738a94;
+    line-height: 1.4;
+    margin-bottom: 8px;
+}
+
+.custom-portal-tier-price {
+    font-size: 14px;
+    font-weight: 600;
+    color: #3eb0ef;
+}
+
+/* 利用規約セクション */
+.custom-portal-terms-section {
+    border: 1px solid #e5eff5;
+    border-radius: 8px;
+    padding: 16px;
+    background: #f8fcff;
+}
+
+.custom-portal-terms-text {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #15171a;
+    max-height: 200px;
+    overflow-y: auto;
+    margin-bottom: 16px;
+    padding: 12px;
+    background: #ffffff;
+    border-radius: 6px;
+    border: 1px solid #e5eff5;
+    /* 利用規約テキストのスクロールバーも非表示 */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+}
+
+/* 利用規約テキストのWebkitスクロールバーを非表示 */
+.custom-portal-terms-text::-webkit-scrollbar {
+    display: none;
+}
+
+/* チェックボックス */
+.custom-portal-checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #15171a;
+}
+
+.custom-portal-checkbox {
+    display: none;
+}
+
+.custom-portal-checkmark {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #e5eff5;
+    border-radius: 4px;
+    flex-shrink: 0;
+    position: relative;
+    transition: all 0.15s ease;
+}
+
+.custom-portal-checkbox:checked + .custom-portal-checkmark {
+    background: #3eb0ef;
+    border-color: #3eb0ef;
+}
+
+.custom-portal-checkbox:checked + .custom-portal-checkmark::after {
+    content: '✓';
+    position: absolute;
+    top: -2px;
+    left: 2px;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* ボタン */
+.custom-portal-form-actions {
+    margin-top: 8px;
+}
+
+.custom-portal-button {
+    width: 100%;
+    padding: 14px 24px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.custom-portal-button-primary {
+    background: #3eb0ef;
+    color: #ffffff;
+}
+
+.custom-portal-button-primary:hover:not(:disabled) {
+    background: #1ea1de;
+}
+
+.custom-portal-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.custom-portal-loading {
+    font-size: 14px;
+}
+
+/* Tier選択ボタンの追加スタイル */
+.tier-select-button {
+    margin-top: 12px;
+}
+
+/* メッセージ */
+.custom-portal-error,
+.custom-portal-success {
+    padding: 12px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    line-height: 1.4;
+    margin-top: 16px;
+}
+
+.custom-portal-error {
+    background: #fef2f2;
+    color: #dc2626;
+    border: 1px solid #fecaca;
+}
+
+.custom-portal-success {
+    background: #f0fdf4;
+    color: #16a34a;
+    border: 1px solid #bbf7d0;
+}
+
+/* フッター */
+.custom-portal-footer {
+    padding: 24px 32px 32px 32px;
+    text-align: center;
+    background: #ffffff;
+    border-radius: 0 0 12px 12px;
+    margin-top: 0;
+}
+
+.custom-portal-footer-text {
+    font-size: 14px;
+    color: #738a94;
+    margin: 0;
+}
+
+.custom-portal-link {
+    background: none;
+    border: none;
+    color: #3eb0ef;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: underline;
+    padding: 0;
+}
+
+.custom-portal-link:hover {
+    color: #1ea1de;
+}
+
+/* プラン切り替えトグルボタンのスタイル */
+.plan-toggle-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.plan-toggle {
+    background: #f1f3f4;
+    padding: 4px;
+    border-radius: 6px;
+    display: flex;
+}
+
+.plan-toggle button {
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 4px;
+    transition: all 0.15s ease;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #738a94;
+}
+
+.plan-toggle button.active {
+    background: #ffffff;
+    color: #3eb0ef;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+/* body.custom-portal-open でスクロールを無効化 */
+body.custom-portal-open {
+    overflow: hidden;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 480px) {
+    .custom-portal-modal {
+        min-width: unset;
+        width: 95vw;
+        margin: 10px auto;
+        max-height: calc(100vh - 20px);
+    }
+    
+    .custom-portal-header,
+    .custom-portal-form,
+    .custom-portal-footer {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+    
+    .custom-portal-title {
+        font-size: 24px;
+    }
+    
+    .custom-portal-terms-text {
+        max-height: 150px;
+    }
+}

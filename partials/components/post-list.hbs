@@ -98,7 +98,7 @@
                         {{/if}}
                         {{#if @site.members_enabled}}
                             {{#unless @member}}
-                                <button class="gh-button" data-portal="signup">{{t "Subscribe"}}</button>
+                                <button class="gh-button subscribe-button" data-portal="signup">{{t "Subscribe"}}</button>
                             {{else}}
                                 {{#if @site.paid_members_enabled}}
                                     {{#unless @member.paid}}

@@ -13,6 +13,8 @@
 
     {{!-- Theme assets - use the {{asset}} helper to reference styles & scripts, this will take care of caching and cache-busting automatically --}}
     <link rel="stylesheet" type="text/css" href="{{asset "built/screen.css"}}">
+    <link rel="stylesheet" type="text/css" href="{{asset "css/custom-portal.css"}}">
+    <link rel="stylesheet" type="text/css" href="{{asset "css/signup-form.css"}}">
 
     <link rel="preconnect" href="https://fonts.googleapis.cot">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -60,6 +62,12 @@
 
 </div>
 
+{{!-- カスタムPortalモーダル --}}
+{{#if @site.members_enabled}}
+    {{> "components/signup-form"}}
+    {{> "components/signin-form"}}
+{{/if}}
+
 {{#is "post, page"}}
     {{> "lightbox"}}
 {{/is}}
@@ -77,6 +85,23 @@
       contentApiKey: "{{content_api_key}}"
     };
   </script>
+{{else}}
+  <script>
+    // ログイン後のリダイレクトやパラメータをチェック
+    document.addEventListener('DOMContentLoaded', function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const hasLoginParams = urlParams.has('action') || urlParams.has('success') || urlParams.has('token');
+      
+      if (hasLoginParams) {
+        console.log('Login parameters detected, reloading to refresh member state...');
+        // パラメータを削除してリロード
+        const cleanUrl = window.location.pathname;
+        setTimeout(() => {
+          window.location.replace(cleanUrl);
+        }, 1000);
+      }
+    });
+  </script>
 {{/if}}
 
 <script>
@@ -87,6 +112,112 @@
 
 {{!-- Scripts - handle responsive videos, infinite scroll, and navigation dropdowns --}}
 <script src="{{asset "built/source.js"}}"></script>
+<script src="{{asset "js/signup-form.js"}}"></script>
+{{!-- <script src="{{asset "js/signin-form.js"}}"></script> --}}
+
+{{!-- Portal制御スクリプト --}}
+<script>
+  // 最小限のsignin関数（競合を避けるため）
+  function openSigninModal() {
+    console.log('Opening signin modal (minimal)');
+    const modal = document.getElementById('signin-modal');
+    if (modal) {
+      modal.showModal();
+      document.body.classList.add('custom-portal-open');
+    } else {
+      console.log('Signin modal not found!');
+    }
+  }
+  
+  function closeSigninModal() {
+    const modal = document.getElementById('signin-modal');
+    if (modal) {
+      modal.close();
+      document.body.classList.remove('custom-portal-open');
+    }
+  }
+  
+  function switchToSignup() {
+    console.log('Switching to signup from signin modal');
+    
+    // Signin modalを閉じる
+    closeSigninModal();
+    
+    // 既存のGhost Portalがあれば閉じる
+    const existingPortal = document.getElementById('ghost-portal-root');
+    if (existingPortal) {
+      console.log('Removing existing portal before showing signup');
+      existingPortal.remove();
+    }
+    
+    // カスタムPortalクラスをクリア
+    document.body.classList.remove('custom-portal-open');
+    
+    setTimeout(() => {
+      if (window.openSignupModal) {
+        console.log('Opening custom signup modal');
+        window.openSignupModal();
+      }
+    }, 200);
+  }
+  
+  // グローバルに関数を登録
+  window.openSigninModal = openSigninModal;
+  window.closeSigninModal = closeSigninModal;
+  window.switchToSignup = switchToSignup;
+
+  document.addEventListener('DOMContentLoaded', function() {
+    console.log('Portal control loaded');
+    
+    // Ghost Portal イベントリスナー
+    window.addEventListener('message', function(event) {
+      if (event.origin !== window.location.origin) return;
+      
+      if (event.data && event.data.type) {
+        console.log('Portal event:', event.data.type, event.data);
+      }
+    });
+    
+    // クリックイベントの制御
+    document.addEventListener('click', function(e) {
+      const target = e.target.closest('[data-portal]');
+      
+      // Ghost Portal内のすべてのsigninリンクを無効化
+      const signinLink = e.target.closest('a[href*="signin"], button[data-portal="signin"], .gh-portal-signin-switch, [onclick*="signin"]');
+      if (signinLink && signinLink.closest('#ghost-portal-root')) {
+        console.log('Portal signin link blocked:', signinLink);
+        e.preventDefault();
+        e.stopPropagation();
+        return false;
+      }
+      
+      if (target) {
+        const portalType = target.getAttribute('data-portal');
+        
+        // signin処理：カスタムモーダルを使用（Ghost Portal外のみ）
+        if (portalType === 'signin' && !target.closest('#ghost-portal-root')) {
+          console.log('Custom signin button clicked');
+          e.preventDefault();
+          e.stopPropagation();
+          openSigninModal();
+          return false;
+        }
+        
+        // signup処理：post-listなど特定のボタンのみカスタムモーダルを使用
+        if (portalType === 'signup' && !target.closest('#ghost-portal-root') && 
+            target.classList.contains('subscribe-button')) {
+          console.log('Custom signup button clicked (from post-list or header)');
+          e.preventDefault();
+          e.stopPropagation();
+          openSignupModal();
+          return false;
+        }
+        
+        // その他のPortal機能（account, upgrade等）はそのまま動作させる
+      }
+    });
+  });
+</script>
 
 {{!-- Ghost outputs required functional scripts with this tag, it should always be the last thing before the closing body tag --}}
 {{ghost_foot}}
