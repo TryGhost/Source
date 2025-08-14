@@ -1,8 +1,53 @@
-# Source
+[![SourcePrime Logo](assets/images/readme/SourcePrime-Logo.png)](https://github.com/LokiRothbrook/SourcePrime)[![LokiSoft Banner](assets/images/readme/LokiSoft-Banner.png)](https://www.lokisoft.xyz)
+# SourcePrime: A Neon-Charged Ghost Theme Forked From Source With Several Quality of Life Enhancements. Brought to you by LokiSoft
 
-The default theme for [Ghost](http://github.com/tryghost/ghost/). This is the latest development version of Source! If you're just looking to download the latest release, head over to the [releases](https://github.com/TryGhost/Source/releases) page.
+**SourcePrime** is a vibrant fork of [TryGhost/Source](https://github.com/TryGhost/Source), built for [lokisoft.xyz](https://lokisoft.xyz)’s free tech education quest. With neon aesthetics, sticky navigation bars, tocbot-powered Table of Contents, and Prism syntax highlighting, it’s designed for community-driven learning and amazing neon pop. 
 
-&nbsp;
+
+## Features:
+
+ZzZzZzZzZzZz... Yeah we know, This Feature Set is looking kind of empty right now! But Check out What We've got planned below!
+
+
+## Coming Soon:
+
+- **Publication Cover**: The publication cover has been revamped and resized to 300px width, 200px height and is reactive giving you the ability to have an amazing logo on your blog!
+
+- **Neon Style**: Glowing borders and dividers with a neon vibe set to match your sites accent colors brings life to your content.
+
+- **Sticky Navigation bar**: Stays put on desktop but gets out of the way on mobile.
+
+- **Dynamic Table of Contents**: Tocbot auto-generates tables of contents (manual activation Via ghost snip-it required per post/page that needs a TOC). The Table of Contents has been restricted to only h2 elements and filters have been put into place so your callout cards and other cards you wouldn't want showing up or breaking your toc no longer show up. To add a cherry on top. We've added a button that follows your accent colors to open the toc on mobile. However. This feature comes at a price. Mobile has lost the ability to have a sticky button to open the portal on mobile. But we think you'll love what the toc brings to the table on mobile 
+
+- **Code Highlighting**: Prism for codeblocks with Syntax highlighting. But we didn't stop there. This bad boy's Themed out to match your aesthetics, ands packing the copy button we've all come to love! 
+
+- **Quizzes**: We've tapped into the power of Vue.js, With the power of snip-it code for HTML cards. Now with just a little tweaking, You can have interactive, fun quizzes baked right into your post! (manual activation Via ghost snip-it required per post/page that needs a quiz, footer injects might be required per page/post that needs a quiz! To be reviewed!)
+
+- **Analytics**: With the power of PostHog/GA4 You can actually see how your quizzers are doing! Gather Data and Rise to the top!(via site wide or per page/post code injections. for tracking of engagement with quizzes and/or other things.)
+
+- **Engagement**: Newsletter forms, Discourse links, X/Reddit embeds.
+
+- **Monetization**: We're Leveling up the playing field when it comes to more ways to make money! Google AdSense, Buy Me a Coffee, Donation through PayPal, We've got that covered to.  (through site wide or per page/post code injections. to be reviewed!)
+
+
+## Installation:
+
+1. Clone: `git clone https://github.com/LokiRothbrook/SourcePrime.git`.
+2. Copy to Ghost: `/var/www/ghost/content/themes/SourcePrime`.
+3. Restart: `ghost restart`.
+4. Activate in Ghost admin: Settings > Design > Change Theme.
+5. Put some new paint on that bad boy!: 
+
+
+## Customization Options:
+
+Coming Soon!
+
+
+## Snip-It PowerUp's:
+
+Coming Soon!
+
 
 # First time using a Ghost theme?
 
@@ -62,4 +107,4 @@ You can add your own SVG icons in the same manner.
 
 # Copyright & License
 
-Copyright (c) 2013-2025 Ghost Foundation - Released under the [MIT license](LICENSE).
+Copyright (c) 2025 LokiSoft - Released under the [MIT license](LICENSE).
