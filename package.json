@@ -159,8 +159,7 @@
             "show_featured_posts": {
                 "type": "boolean",
                 "default": false,
-                "group": "homepage",
-                "visibility": "header_style:[Highlight, Magazine]"
+                "group": "homepage"
             },
             "post_feed_style": {
                 "type": "select",
