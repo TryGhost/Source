@@ -1,0 +1,239 @@
+.header {
+    background: #ffffff;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.18);
+    padding: 0;
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    font-family: "Helvetica", "Arial", YuGothic, "Yu Gothic", "Hiragino Sans", "ヒラギノ角ゴシック", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+    word-break: normal;
+    overflow-wrap: break-word;
+    box-sizing: border-box;
+    display: block;
+    visibility: visible;
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+}
+
+.header.header-loaded {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+
+.header-container {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 188px;
+    min-height: 23px;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.header-content {
+    display: flex !important;
+    align-items: center;
+    justify-content: flex-start;
+    flex-grow: 1;
+    gap: 10px;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.header-logo {
+    flex-shrink: 0;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.header-logo a {
+    display: block !important;
+    line-height: 0;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.header-logo img {
+    height: 50px !important;
+    width: auto;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.header-tagline {
+    flex-shrink: 0;
+}
+
+.header-tagline p {
+    margin: 0;
+    font-size: 12.5px;
+    color: #252525;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    line-height: 1.5;
+    padding-top: 7px;
+    padding-left: 5px;
+}
+
+/* Body styles */
+body {
+    margin: 0;
+    background-color: #ffe4e1;
+    color: #252525;
+    font-family: "Helvetica", "Arial", YuGothic, "Yu Gothic", "Hiragino Sans", "ヒラギノ角ゴシック", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+    line-height: 1.75;
+    word-break: normal;
+    overflow-wrap: break-word;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Navigation (hidden in main header) */
+.header-nav {
+    display: none;
+}
+
+/* Hide default Ghost header elements */
+.header .gh-navigation-brand .is-title,
+.header .gh-navigation-actions,
+.header .search-toggle {
+    display: none;
+}
+
+.header .gh-navigation-menu {
+    display: none;
+}
+
+/* Override ALL Ghost default navigation spacing and height */
+.header,
+.header .gh-navigation,
+.header .gh-navigation-inner,
+.header .gh-inner {
+    padding: 0 !important;
+    margin: 0 !important;
+    min-height: auto !important;
+    height: auto !important;
+    max-height: none !important;
+}
+
+.header .gh-navigation-inner {
+    align-items: center !important;
+    column-gap: 10px !important;
+    display: flex !important;
+    grid-auto-flow: unset !important;
+    grid-template-columns: none !important;
+    grid-template-rows: none !important;
+}
+
+.header .gh-inner {
+    max-width: none !important;
+    width: 100% !important;
+    padding: 0 !important;
+}
+
+/* Force header to only be as tall as content */
+.header .gh-navigation {
+    height: fit-content !important;
+    min-height: 0 !important;
+}
+
+/* Mobile Menu Button */
+.header .gh-burger {
+    display: none;
+    background: transparent;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.header .gh-burger svg {
+    width: 40px !important;
+    height: 40px !important;
+    fill: #252525;
+    color: #252525;
+    filter: contrast(2) brightness(0.8);
+    transform: scaleY(1.2);
+}
+
+/* Continuous responsive design based on viewport width */
+@media (max-width: 768px) {
+    .header {
+        position: relative;
+        transform: translateY(0) !important;
+        opacity: 1 !important;
+        transition: none !important;
+    }
+
+    .header-container {
+        padding: 8px 0;
+        min-height: 60px;
+        justify-content: center;
+        position: relative;
+        width: 100%;
+    }
+
+    /* Mobile layout: hamburger fixed on left, content centered */
+    .header .gh-burger {
+        display: block;
+        position: absolute;
+        left: 2px;
+        top: 30%;
+        transform: translateY(-50%);
+        z-index: 100;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 6px;
+        padding: 8px;
+        min-width: 48px;
+        min-height: 48px;
+    }
+
+
+    .header-content {
+        flex-direction: column;
+        gap: 3px;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        text-align: center;
+        max-width: calc(100% - 80px);
+        margin: 0 auto;
+        padding: 0 15px;
+    }
+
+    .header-logo img {
+        height: 45px !important;
+        width: auto;
+    }
+
+    .header-tagline p {
+        font-size: clamp(11px, 2.2vw, 12.5px);
+        white-space: normal !important;
+        line-height: 1.3;
+        max-width: 100%;
+        padding: 0 5px;
+        text-align: center;
+        word-break: auto-phrase;
+        overflow-wrap: break-word;
+    }
+}
+
+@media (min-width: 769px) {
+    .header .gh-burger {
+        display: none;
+    }
+
+    .header-content {
+        flex-direction: row;
+        align-items: center;
+    }
+}
