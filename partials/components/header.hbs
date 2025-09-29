@@ -1,19 +1,24 @@
-{{#match headerStyle "!=" "Off"}}
-
-    {{#match headerStyle "Highlight"}}
-        {{> "components/header-content"}}
-    {{else match headerStyle "Magazine"}}
-        {{> "components/header-content"}}
-    {{else}}
-        {{#match headerStyle "Landing"}}
-            {{#if @site.members_enabled}}
-                {{#unless @member}}
-                    {{> "components/header-content"}}
-                {{/unless}}
-            {{/if}}
-        {{else}}
-            {{> "components/header-content"}}
-        {{/match}}
-    {{/match}}
-
-{{/match}}
+<header id="gh-navigation" class="gh-navigation header gh-outer">
+    <div class="gh-navigation-inner gh-inner">
+        <div class="header-container">
+            <div class="header-content">
+                <div class="header-logo">
+                    <a href="{{@site.url}}">
+                        {{#if @site.logo}}
+                            <img src="{{@site.logo}}" alt="{{@site.title}}">
+                        {{else}}
+                            {{@site.title}}
+                        {{/if}}
+                    </a>
+                </div>
+                <div class="header-tagline">
+                    <p>雑誌の付録を開封レビューでご紹介</p>
+                </div>
+            </div>
+            <button class="gh-burger gh-icon-button" aria-label="Menu">
+                {{> "icons/burger"}}
+                {{> "icons/close"}}
+            </button>
+        </div>
+    </div>
+</header>
