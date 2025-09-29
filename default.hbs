@@ -17,6 +17,10 @@
     {{!-- Theme assets - use the {{asset}} helper to reference styles & scripts, this will take care of caching and cache-busting automatically --}}
     <link rel="stylesheet" type="text/css" href="{{asset "built/screen.css"}}">
 
+    {{!-- Furoku Life Component Styles --}}
+    <link rel="stylesheet" type="text/css" href="{{asset "css/components/header.css"}}">
+    <link rel="stylesheet" type="text/css" href="{{asset "css/components/footer.css"}}">
+
     {{!-- Custom background color --}}
     <style>
         :root {
@@ -51,7 +55,7 @@
 
 <div class="gh-viewport">
     
-    {{> "components/navigation" navigationLayout=@custom.navigation_layout}}
+    {{> "components/header"}}
 
     {{{body}}}
     
