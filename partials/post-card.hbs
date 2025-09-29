@@ -39,7 +39,7 @@
                     <span class="gh-card-author">By {{#foreach authors}}{{#if @first}}{{name}}{{else}}, {{name}}{{/if}}{{/foreach}}</span>
                 {{/if}}
                 {{#if @custom.show_publish_date}}
-                    <time class="gh-card-date" datetime="{{date format="YYYY-MM-DD"}}">{{date}}</time>
+                    <time class="gh-card-date" datetime="{{date format="YYYY-MM-DD"}}">{{date format="DD MMM YYYY"}}</time>
                 {{/if}}<!--
          --></footer>
         </div>
