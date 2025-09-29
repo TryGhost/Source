@@ -80,6 +80,9 @@ production stylesheet in assets/built/screen.css
     --color-dark-border: rgb(255 255 255 / 0.5);
 }
 
+@import "./components/header.css";
+@import "./components/footer.css";
+
 /* 2. Fonts
 /* ---------------------------------------------------------- */
 
