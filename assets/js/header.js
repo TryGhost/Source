@@ -8,9 +8,12 @@
 (function () {
     'use strict';
 
+    // Breakpoint constant
+    const MOBILE_BREAKPOINT = 768;
+
     // Check if mobile (768px or less)
     function isMobile() {
-        return window.innerWidth <= 768;
+        return window.innerWidth <= MOBILE_BREAKPOINT;
     }
 
     // Header slide animation
