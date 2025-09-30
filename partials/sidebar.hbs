@@ -1,0 +1,149 @@
+{{!-- Sidebar Component --}}
+<div id="sidebar1" class="sidebar m-all t-1of3 d-2of7 last-col cf" role="complementary">
+    <aside>
+        <div class="insidesp">
+            <div id="notfix">
+
+                {{!-- Widget: Categories (Magazine Names) --}}
+                <div id="categories-7" class="widget widget_categories">
+                    <h4 class="widgettitle dfont">雑誌名から探す</h4>
+                    <form action="{{@site.url}}" method="get">
+                        <label class="screen-reader-text" for="categories-dropdown-7">雑誌名から探す</label>
+                        <select name="cat" id="categories-dropdown-7" class="postform">
+                            <option value="-1">雑誌名を選択</option>
+                            {{#get "tags" limit="all"}}
+                                {{#foreach tags}}
+                                <option value="{{id}}">{{name}}</option>
+                                {{/foreach}}
+                            {{/get}}
+                        </select>
+                    </form>
+                </div>
+
+                {{!-- Widget: Popular Posts Ranking --}}
+                <div id="popular-widget" class="widget widget_block">
+                    <div class="popular-posts">
+                        <h4 class="widgettitle">人気付録ランキング(週間)</h4>
+                        <ul class="wpp-list">
+                            {{#get "posts" limit="9" order="published_at desc"}}
+                                {{#foreach posts}}
+                                <li>
+                                    <a href="{{url}}" target="_self">
+                                        {{#if feature_image}}
+                                        <img loading="lazy"
+                                             src="{{img_url feature_image size="s"}}"
+                                             class="wpp-thumbnail"
+                                             alt="{{title}}">
+                                        {{/if}}
+                                    </a>
+                                </li>
+                                {{/foreach}}
+                            {{/get}}
+                        </ul>
+                    </div>
+                </div>
+
+                {{!-- Widget: Subscription Banner --}}
+                <div id="subscription-widget" class="widget widget_block">
+                    <h4 class="widgettitle dfont">雑誌の定期購読なら</h4>
+                    <div class="wp-widget-group__inner-blocks">
+                        <ul class="info_banner">
+                            <li>
+                                <a href="//www.fujisan.co.jp/ap-furoku">
+                                    <img src="{{asset "images/fujisan-logo.png"}}" alt="Fujisan">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                {{!-- Widget: Calendar --}}
+                <div id="calendar-widget" class="widget widget_block">
+                    <h4 class="widgettitle dfont">発売カレンダー</h4>
+                    <div class="wp-widget-group__inner-blocks">
+                        <div id="calendar-datepicker">
+                            <div id="datepicker"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            {{!-- Fixed Sidebar Area --}}
+            <div id="fixed_sidebar" class="">
+                {{!-- Additional fixed widgets can be added here --}}
+            </div>
+        </div>
+    </aside>
+</div>
+
+{{!-- Calendar Script --}}
+<script type="text/javascript">
+/* <![CDATA[ */
+
+(function() {
+    var dropdown = document.getElementById( "categories-dropdown-7" );
+    if (dropdown) {
+        function onCatChange() {
+            if ( dropdown.options[ dropdown.selectedIndex ].value > 0 ) {
+                dropdown.parentNode.submit();
+            }
+        }
+        dropdown.onchange = onCatChange;
+    }
+})();
+
+/* ]]> */
+</script>
+
+<script>
+// jQuery Datepicker Japanese locale
+( function( factory ) {
+    if ( typeof define === "function" && define.amd ) {
+        // AMD. Register as an anonymous module.
+        define( [ "../widgets/datepicker" ], factory );
+    } else {
+        // Browser globals
+        factory( jQuery.datepicker );
+    }
+}( function( datepicker ) {
+
+datepicker.regional.ja = {
+    closeText: "閉じる",
+    prevText: "&#x3C;前",
+    nextText: "次&#x3E;",
+    currentText: "今日",
+    monthNames: [ "1月","2月","3月","4月","5月","6月",
+    "7月","8月","9月","10月","11月","12月" ],
+    monthNamesShort: [ "1月","2月","3月","4月","5月","6月",
+    "7月","8月","9月","10月","11月","12月" ],
+    dayNames: [ "日曜日","月曜日","火曜日","水曜日","木曜日","金曜日","土曜日" ],
+    dayNamesShort: [ "日","月","火","水","木","金","土" ],
+    dayNamesMin: [ "日","月","火","水","木","金","土" ],
+    weekHeader: "週",
+    dateFormat: "yy/mm/dd",
+    firstDay: 0,
+    isRTL: false,
+    showMonthAfterYear: true,
+    yearSuffix: "年" };
+datepicker.setDefaults( datepicker.regional.ja );
+
+return datepicker.regional.ja;
+
+} ) );
+
+$(function() {
+    $('#calendar-datepicker #datepicker').datepicker({
+        onSelect: function(date, obj) {
+            console.log(date);
+            console.log(obj);
+            var year=( '0000' +Number(obj.selectedYear) ).slice( -4 );
+            var month=Number(obj.selectedMonth) + Number(1);
+            month=( '00' + month ).slice( -2 );
+            var day=( '00' +Number(obj.selectedDay)).slice( -2 );
+            console.log(location.protocol + '//' +  location.hostname + '/calendar' +year + month + '#' + month + '_' + day);
+            location.href= location.protocol + '//' +  location.hostname + '/calendar' +year + month + '#day_' + month + '_' + day;
+        },
+    });
+});
+</script>
