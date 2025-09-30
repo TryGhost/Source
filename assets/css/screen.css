@@ -44,8 +44,17 @@ production stylesheet in assets/built/screen.css
   21.2. Footer bar
   21.3. Footer signup
 22. Lightbox
+23. Components
+  23.1. Article
+  23.2. Pickup Tabs
 
 */
+
+/* Component Imports
+/* ---------------------------------------------------------- */
+
+@import "components/article-card.css";
+@import "components/pickup-tabs.css";
 
 /* 1. Variables
 /* ---------------------------------------------------------- */
