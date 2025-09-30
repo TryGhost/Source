@@ -1,0 +1,10 @@
+{{!< default}}
+{{!-- Template for /calendar page - showing upcoming release calendar --}}
+
+{{> "components/search-box"}}
+
+{{> "components/breadcrumb"}}
+
+{{> "components/content-menu" active="calendar"}}
+
+{{> "components/post-list" feed="page" postFeedStyle=@custom.post_feed_style showTitle=false showSidebar=@custom.show_publication_info_sidebar}}
