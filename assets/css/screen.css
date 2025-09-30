@@ -47,6 +47,12 @@ production stylesheet in assets/built/screen.css
 
 */
 
+@import "./components/header.css";
+@import "./components/footer.css";
+@import "./components/search-box.css";
+@import "./components/content-menu.css";
+@import "./components/breadcrumb.css";
+
 /* 1. Variables
 /* ---------------------------------------------------------- */
 
@@ -79,13 +85,6 @@ production stylesheet in assets/built/screen.css
     --color-border: rgb(255 255 255 / 0.15);
     --color-dark-border: rgb(255 255 255 / 0.5);
 }
-
-@import "./components/header.css";
-@import "./components/footer.css";
-@import "./components/search-box.css";
-@import "./components/content-menu.css";
-@import "./components/page-header.css";
-@import "./components/home-link.css";
 
 /* 2. Fonts
 /* ---------------------------------------------------------- */
