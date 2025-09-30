@@ -1,0 +1,106 @@
+.wrap.pickup {
+    display: flex;
+    gap: 0;
+    margin: 30px 0;
+}
+
+.wrap.pickup > div {
+    flex: 1;
+}
+
+.wrap.pickup .tab-date,
+.wrap.pickup .tab-review,
+.wrap.pickup .tab-calendar {
+    background-color: #dbdeaf;
+    width: 30%;
+    margin: 0 1.5%;
+}
+
+.wrap.pickup .cf {
+    padding: 0 !important;
+    font-weight: 700;
+}
+
+.btn-pickup {
+    padding: 0.5em 0;
+    text-align: center;
+    display: block;
+    color: #666;
+    border-bottom: 0;
+    font-size: 1.2em;
+    width: 90%;
+    margin: 0 auto;
+    text-decoration: none;
+    background: transparent;
+    border: none;
+    transition: all 0.3s ease;
+    font-weight: inherit;
+}
+
+.btn-pickup:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 2px;
+}
+
+.btn-pickup.active {
+    padding: 0.5em 0;
+    text-align: center;
+    display: block;
+    color: #df744a;
+    border-bottom: 3px #df744a solid;
+    font-size: 1.2em;
+    width: 100%;
+    margin: 0 auto;
+    font-weight: 700;
+}
+
+/* Main element */
+#main {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* More button */
+.btn {
+    margin: .5em .5em .5em 0;
+    text-decoration: none;
+}
+
+.raised {
+    display: inline-block;
+    margin: .5em 0;
+    padding: .4em 1.3em;
+    border-radius: 3px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, .2), 0 2px 3px -2px rgba(0, 0, 0, .15);
+    color: #fff;
+    text-decoration: none;
+    vertical-align: middle;
+    transition: .3s ease-in-out;
+}
+
+.red-bc {
+    background: #f88080;
+}
+
+.strong {
+    font-weight: bold;
+}
+
+.center {
+    text-align: center;
+}
+
+/* Responsive */
+@media only screen and (max-width: 768px) {
+    .wrap.pickup {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .btn-pickup {
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+}
