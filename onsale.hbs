@@ -1,0 +1,10 @@
+{{!< default}}
+{{!-- Template for /onsale page - showing posts tagged with "review" --}}
+
+{{> "components/search-box"}}
+
+{{> "components/breadcrumb"}}
+
+{{> "components/content-menu" active="onsale"}}
+
+{{> "components/post-list" feed="tag" postFeedStyle=@custom.post_feed_style showTitle=false showSidebar=@custom.show_publication_info_sidebar}}
