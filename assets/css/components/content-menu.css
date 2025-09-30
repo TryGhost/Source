@@ -1,7 +1,7 @@
 /* Content Menu Component
 /* ---------------------------------------------------------- */
 
-.wrap.pickup {
+.content-menu-wrap {
     display: flex;
     justify-content: center;
     align-items: stretch;
@@ -13,7 +13,7 @@
     box-sizing: border-box;
 }
 
-.m-1of3.t-1of3.d-1of3 {
+.content-menu-item {
     display: block;
     flex: 1;
     min-width: 0;
@@ -22,7 +22,7 @@
     box-sizing: border-box;
 }
 
-.btn-pickup {
+.content-menu-link {
     display: block;
     width: 100%;
     padding: 10.272px 0;
@@ -38,20 +38,20 @@
     transition: color 0.2s ease, border-color 0.2s ease;
 }
 
-.btn-pickup:hover,
-.btn-pickup:focus-visible {
+.content-menu-link:hover,
+.content-menu-link:focus-visible {
     color: #df744a;
     border-bottom-color: #df744a;
 }
 
-.btn-pickup.active {
+.content-menu-link.active {
     color: #df744a;
     border-bottom-color: #df744a;
 }
 
 /* Responsive styles */
 @media only screen and (max-width: 768px) {
-    .btn-pickup {
+    .content-menu-link {
         font-size: calc(1.44rem + (1.54 - 1.44) * ((100vw - 320px) / (768 - 320)));
     }
 }
