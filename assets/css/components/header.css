@@ -30,8 +30,12 @@
     display: flex !important;
     align-items: center;
     justify-content: space-between;
-    padding: 6px 188px;
+    max-width: 1180px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 6px 10px;
     min-height: 23px;
+    box-sizing: border-box;
     visibility: visible !important;
     opacity: 1 !important;
 }
