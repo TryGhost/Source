@@ -49,3 +49,9 @@
     border-bottom-color: #df744a;
 }
 
+/* Responsive styles */
+@media only screen and (max-width: 768px) {
+    .btn-pickup {
+        font-size: calc(1.44rem + (1.54 - 1.44) * ((100vw - 320px) / (768 - 320)));
+    }
+}
