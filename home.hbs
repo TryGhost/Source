@@ -9,4 +9,16 @@
 
 {{> "components/cta"}}
 
+<main id="main" class="m-all t-2of3 d-5of7 cf">
+    {{> "components/article-card"}}
+
+    <div align="center">
+        <p>
+            <a href="/page/2/" class="btn raised red-bc strong center">もっと見る</a>
+        </p>
+    </div>
+
+    {{> "components/pickup-tabs"}}
+</main>
+
 {{> "components/post-list" feed="home" postFeedStyle=@custom.post_feed_style showTitle=true showSidebar=@custom.show_publication_info_sidebar}}
