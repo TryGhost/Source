@@ -82,10 +82,10 @@ production stylesheet in assets/built/screen.css
 
 @import "./components/header.css";
 @import "./components/footer.css";
-@import "components/search-box.css";
-@import "components/content-menu.css";
-@import "components/page-header.css";
-@import "components/home-link.css";
+@import "./components/search-box.css";
+@import "./components/content-menu.css";
+@import "./components/page-header.css";
+@import "./components/home-link.css";
 
 /* 2. Fonts
 /* ---------------------------------------------------------- */
