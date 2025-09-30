@@ -1,6 +1,10 @@
 {{!< default}}
 {{!-- The tag above means: insert everything in this file into the body of the default.hbs template --}}
 
+{{> "components/search-box"}}
+
+{{> "components/content-menu" active="home"}}
+
 {{#match @custom.header_style "!=" "Highlight"}}
     {{> "components/featured" showFeatured=@custom.show_featured_posts limit=4}}
 {{/match}}
