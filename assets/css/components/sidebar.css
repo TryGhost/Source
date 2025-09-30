@@ -75,7 +75,18 @@
     border-width: 0;
 }
 
+/* Widget title icons */
+.sidebar .widgettitle:before {
+    padding-right: 4px;
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+}
+
 /* Categories Widget */
+.sidebar .widget_categories .widgettitle:before {
+    content: "\f0ca";
+}
+
 .widget_categories select.postform {
     width: 100%;
     padding: 8px 12px;
