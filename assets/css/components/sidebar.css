@@ -180,6 +180,18 @@
     width: 100%;
 }
 
+/* Advertisement Widget */
+.ad-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.ad-content > div {
+    max-width: 100%;
+}
+
 #datepicker {
     width: 100%;
 }
