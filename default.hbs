@@ -70,15 +70,8 @@
 {{!-- Scripts - handle responsive videos, infinite scroll, and navigation dropdowns --}}
 <script src="{{asset "built/source.js"}}"></script>
 
-{{!-- Header script - PC only --}}
-<script>
-    // Only load header.js for desktop devices
-    if (window.innerWidth > 768) {
-        var script = document.createElement('script');
-        script.src = '{{asset "js/header.js"}}';
-        document.body.appendChild(script);
-    }
-</script>
+{{!-- Header script --}}
+<script src="{{asset "js/header.js"}}"></script>
 
 {{!-- Ghost outputs required functional scripts with this tag, it should always be the last thing before the closing body tag --}}
 {{ghost_foot}}
