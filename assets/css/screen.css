@@ -82,6 +82,10 @@ production stylesheet in assets/built/screen.css
 
 @import "./components/header.css";
 @import "./components/footer.css";
+@import "components/search-box.css";
+@import "components/content-menu.css";
+@import "components/page-header.css";
+@import "components/home-link.css";
 
 /* 2. Fonts
 /* ---------------------------------------------------------- */
@@ -139,6 +143,11 @@ body {
     font-size: 1.6rem;
     background-color: var(--background-color);
     color: var(--color-primary-text);
+}
+
+.wrap {
+    width: 92%;
+    margin: 0 auto;
 }
 
 h1, h2, h3, h4, h5, h6 {
