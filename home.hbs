@@ -12,3 +12,10 @@
 {{> "components/cta"}}
 
 {{> "components/post-list" feed="home" postFeedStyle=@custom.post_feed_style showTitle=true showSidebar=@custom.show_publication_info_sidebar}}
+<div class="gh-content-wrapper">
+    <main class="gh-main-content">
+        {{> "components/post-list" feed="home" postFeedStyle=@custom.post_feed_style showTitle=true showSidebar=@custom.show_publication_info_sidebar}}
+    </main>
+
+    {{> "sidebar"}}
+</div>
