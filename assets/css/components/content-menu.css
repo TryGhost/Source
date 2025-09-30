@@ -1,0 +1,51 @@
+/* Content Menu Component
+/* ---------------------------------------------------------- */
+
+.wrap.pickup {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    max-width: 1180px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 10px;
+    gap: 12.406px;
+    box-sizing: border-box;
+}
+
+.m-1of3.t-1of3.d-1of3 {
+    display: block;
+    flex: 1;
+    min-width: 0;
+    padding: 0;
+    background: #dbdeaf;
+    box-sizing: border-box;
+}
+
+.btn-pickup {
+    display: block;
+    width: 100%;
+    padding: 10.272px 0;
+    margin: 0;
+    font-size: 2.054rem;
+    font-weight: 700;
+    line-height: 1.75;
+    color: #666;
+    text-align: center;
+    text-decoration: none;
+    border-bottom: 3px solid transparent;
+    box-sizing: border-box;
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn-pickup:hover,
+.btn-pickup:focus-visible {
+    color: #df744a;
+    border-bottom-color: #df744a;
+}
+
+.btn-pickup.active {
+    color: #df744a;
+    border-bottom-color: #df744a;
+}
+
