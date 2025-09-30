@@ -25,20 +25,15 @@
                     <div class="popular-posts">
                         <h4 class="widgettitle">人気付録ランキング(週間)</h4>
                         <ul class="wpp-list">
-                            {{#get "posts" limit="9" order="published_at desc"}}
-                                {{#foreach posts}}
-                                <li>
-                                    <a href="{{url}}" target="_self">
-                                        {{#if feature_image}}
-                                        <img loading="lazy"
-                                             src="{{img_url feature_image size="s"}}"
-                                             class="wpp-thumbnail"
-                                             alt="{{title}}">
-                                        {{/if}}
-                                    </a>
-                                </li>
-                                {{/foreach}}
-                            {{/get}}
+                            <li><a href="#" target="_self"><div class="wpp-thumbnail" style="background: #DFE6E9; width: 100%; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; color: #333; font-size: 18px; font-weight: bold; border-radius: 4px;">1</div></a></li>
+                            <li><a href="#" target="_self"><div class="wpp-thumbnail" style="background: #DFE6E9; width: 100%; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; color: #333; font-size: 18px; font-weight: bold; border-radius: 4px;">2</div></a></li>
+                            <li><a href="#" target="_self"><div class="wpp-thumbnail" style="background: #DFE6E9; width: 100%; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; color: #333; font-size: 18px; font-weight: bold; border-radius: 4px;">3</div></a></li>
+                            <li><a href="#" target="_self"><div class="wpp-thumbnail" style="background: #DFE6E9; width: 100%; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; color: #333; font-size: 18px; font-weight: bold; border-radius: 4px;">4</div></a></li>
+                            <li><a href="#" target="_self"><div class="wpp-thumbnail" style="background: #DFE6E9; width: 100%; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; color: #333; font-size: 18px; font-weight: bold; border-radius: 4px;">5</div></a></li>
+                            <li><a href="#" target="_self"><div class="wpp-thumbnail" style="background: #DFE6E9; width: 100%; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; color: #333; font-size: 18px; font-weight: bold; border-radius: 4px;">6</div></a></li>
+                            <li><a href="#" target="_self"><div class="wpp-thumbnail" style="background: #DFE6E9; width: 100%; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; color: #333; font-size: 18px; font-weight: bold; border-radius: 4px;">7</div></a></li>
+                            <li><a href="#" target="_self"><div class="wpp-thumbnail" style="background: #DFE6E9; width: 100%; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; color: #333; font-size: 18px; font-weight: bold; border-radius: 4px;">8</div></a></li>
+                            <li><a href="#" target="_self"><div class="wpp-thumbnail" style="background: #DFE6E9; width: 100%; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; color: #333; font-size: 18px; font-weight: bold; border-radius: 4px;">9</div></a></li>
                         </ul>
                     </div>
                 </div>

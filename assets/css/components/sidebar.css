@@ -59,6 +59,10 @@
     padding: 8px 0;
 }
 
+.widget .wp-widget-group__inner-blocks {
+    padding: 8px 0;
+}
+
 .widgettitle.dfont {
     font-family: inherit;
 }
@@ -119,17 +123,22 @@
     display: block;
 }
 
+.popular-posts .wpp-list {
+    padding: 8px 0;
+}
+
 .wpp-list {
     list-style: none;
     padding: 0;
     margin: 0;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+    gap: 0;
 }
 
 .wpp-list li {
     display: block;
+    margin: 0 2px 2px 2px;
 }
 
 .wpp-list li a {
@@ -137,7 +146,8 @@
     line-height: 0;
 }
 
-.wpp-list img.wpp-thumbnail {
+.wpp-list img.wpp-thumbnail,
+.wpp-list .wpp-thumbnail {
     width: 100%;
     height: auto;
     display: block;
@@ -145,7 +155,8 @@
     transition: opacity 0.2s ease;
 }
 
-.wpp-list li a:hover img.wpp-thumbnail {
+.wpp-list li a:hover img.wpp-thumbnail,
+.wpp-list li a:hover .wpp-thumbnail {
     opacity: 0.8;
 }
 
