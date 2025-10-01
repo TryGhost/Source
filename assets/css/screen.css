@@ -61,6 +61,46 @@ production stylesheet in assets/built/screen.css
 @import "components/article-card.css";
 @import "components/pickup-tabs.css";
 
+/* Global utility styles
+/* ---------------------------------------------------------- */
+
+/* Main element */
+#main {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* More button */
+.btn {
+    margin: .5em .5em .5em 0;
+    text-decoration: none;
+}
+
+.raised {
+    display: inline-block;
+    margin: .5em 0;
+    padding: .4em 1.3em;
+    border-radius: 3px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, .2), 0 2px 3px -2px rgba(0, 0, 0, .15);
+    color: #fff;
+    text-decoration: none;
+    vertical-align: middle;
+    transition: .3s ease-in-out;
+}
+
+.red-bc {
+    background: #f88080;
+}
+
+.strong {
+    font-weight: bold;
+}
+
+.center {
+    text-align: center;
+}
+
 /* 1. Variables
 /* ---------------------------------------------------------- */
 
