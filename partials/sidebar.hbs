@@ -7,13 +7,13 @@
                 {{!-- Widget: Categories (Magazine Names) --}}
                 <div id="categories-7" class="widget widget_categories">
                     <h4 class="widgettitle dfont">雑誌名から探す</h4>
-                    <form action="{{@site.url}}" method="get">
+                    <form>
                         <label class="screen-reader-text" for="categories-dropdown-7">雑誌名から探す</label>
-                        <select name="cat" id="categories-dropdown-7" class="postform">
-                            <option value="-1">雑誌名を選択</option>
+                        <select id="categories-dropdown-7" class="postform">
+                            <option value="">雑誌名を選択</option>
                             {{#get "tags" limit="all"}}
                                 {{#foreach tags}}
-                                <option value="{{id}}">{{name}}</option>
+                                <option value="{{url}}">{{name}}</option>
                                 {{/foreach}}
                             {{/get}}
                         </select>
@@ -127,14 +127,14 @@
 /* <![CDATA[ */
 
 (function() {
-    var dropdown = document.getElementById( "categories-dropdown-7" );
+    var dropdown = document.getElementById("categories-dropdown-7");
     if (dropdown) {
-        function onCatChange() {
-            if ( dropdown.options[ dropdown.selectedIndex ].value > 0 ) {
-                dropdown.parentNode.submit();
+        dropdown.onchange = function() {
+            var selectedUrl = this.options[this.selectedIndex].value;
+            if (selectedUrl) {
+                window.location.href = selectedUrl;
             }
-        }
-        dropdown.onchange = onCatChange;
+        };
     }
 })();
 
