@@ -16,10 +16,14 @@
     clear: both;
 }
 
+.footer .gh-footer-inner.gh-inner {
+    max-width: 1200px;
+}
+
 .footer-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 50px 20px;
 }
 
 /* Footer Links */
