@@ -68,6 +68,7 @@
     -webkit-appearance: none;
     -webkit-font-smoothing: antialiased;
     transition: 0.3s ease-in-out;
+    cursor: pointer;
 }
 
 #s::placeholder {
