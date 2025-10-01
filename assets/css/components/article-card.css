@@ -55,10 +55,6 @@
     padding-bottom: 45px;
 }
 
-.article-card__info time {
-    display: none;
-}
-
 .article-card__info h2 {
     font-size: 14px;
     line-height: 1.5;
