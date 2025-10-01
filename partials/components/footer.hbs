@@ -3,25 +3,29 @@
         <div class="footer-container">
             <div class="footer-links">
                 <div class="footer-group footer-group-left">
+                    {{#if @site.secondary_navigation}}
                     <ul class="footer-nav">
-                        <li><a href=""><span>女性ファッション雑誌</span></a></li>
-                        <li><a href=""><span>その他雑誌</span></a></li>
-                        <li><a href=""><span>全雑誌</span></a></li>
+                        {{#foreach @site.secondary_navigation limit="3"}}
+                        <li><a href="{{url}}"><span>{{label}}</span></a></li>
+                        {{/foreach}}
                     </ul>
+                    {{/if}}
                 </div>
                 <div class="footer-group footer-group-center">
+                    {{#if @site.secondary_navigation}}
                     <ul class="footer-nav">
-                        <li><a href=""><span>初めての方へ</span></a></li>
-                        <li><a href=""><span>会社概要</span></a></li>
-                        <li><a href="/" target="_blank" rel="noopener"><span>宝島社の雑誌</span></a></li>
+                        {{#foreach @site.secondary_navigation from="4" limit="3"}}
+                        <li><a href="{{url}}"><span>{{label}}</span></a></li>
+                        {{/foreach}}
                     </ul>
+                    {{/if}}
                 </div>
                 <div class="footer-group footer-group-right">
                 </div>
             </div>
             <div class="footer-bottom">
                 <div class="footer-copyright">
-                    © 2018 Fujisan.co.jp All rights reserved.
+                    © 2018 {{@site.title}}
                 </div>
             </div>
         </div>
