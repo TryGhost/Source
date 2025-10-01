@@ -180,14 +180,11 @@ return datepicker.regional.ja;
 $(function() {
     $('#calendar-datepicker #datepicker').datepicker({
         onSelect: function(date, obj) {
-            console.log(date);
-            console.log(obj);
-            var year=( '0000' +Number(obj.selectedYear) ).slice( -4 );
-            var month=Number(obj.selectedMonth) + Number(1);
-            month=( '00' + month ).slice( -2 );
-            var day=( '00' +Number(obj.selectedDay)).slice( -2 );
-            console.log(location.protocol + '//' +  location.hostname + '/calendar' +year + month + '#' + month + '_' + day);
-            location.href= location.protocol + '//' +  location.hostname + '/calendar' +year + month + '#day_' + month + '_' + day;
+            var year = ('0000' + obj.selectedYear).slice(-4);
+            var month = ('00' + (obj.selectedMonth + 1)).slice(-2);
+            var day = ('00' + obj.selectedDay).slice(-2);
+            var calendarUrl = '/calendar' + year + month + '/#day_' + month + '_' + day;
+            window.location.href = calendarUrl;
         },
     });
 });
