@@ -178,11 +178,15 @@ return datepicker.regional.ja;
 } ) );
 
 $(function() {
+    var YEAR_PADDING = 4;
+    var MONTH_DAY_PADDING = 2;
+    var MONTH_OFFSET = 1;
+
     $('#calendar-datepicker #datepicker').datepicker({
         onSelect: function(date, obj) {
-            var year = ('0000' + obj.selectedYear).slice(-4);
-            var month = ('00' + (obj.selectedMonth + 1)).slice(-2);
-            var day = ('00' + obj.selectedDay).slice(-2);
+            var year = ('0'.repeat(YEAR_PADDING) + obj.selectedYear).slice(-YEAR_PADDING);
+            var month = ('0'.repeat(MONTH_DAY_PADDING) + (obj.selectedMonth + MONTH_OFFSET)).slice(-MONTH_DAY_PADDING);
+            var day = ('0'.repeat(MONTH_DAY_PADDING) + obj.selectedDay).slice(-MONTH_DAY_PADDING);
             var calendarUrl = '/calendar' + year + month + '/#day_' + month + '_' + day;
             window.location.href = calendarUrl;
         },
