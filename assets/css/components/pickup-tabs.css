@@ -1,27 +1,19 @@
-.wrap.pickup {
+.pickup-tabs {
     display: flex;
     gap: 0;
     margin: 30px 0;
 }
 
-.wrap.pickup > div {
+.pickup-tabs__item {
     flex: 1;
-}
-
-.wrap.pickup .tab-date,
-.wrap.pickup .tab-review,
-.wrap.pickup .tab-calendar {
     background-color: #dbdeaf;
     width: 30%;
     margin: 0 1.5%;
-}
-
-.wrap.pickup .cf {
     padding: 0 !important;
     font-weight: 700;
 }
 
-.btn-pickup {
+.pickup-tabs__link {
     padding: 0.5em 0;
     text-align: center;
     display: block;
@@ -37,13 +29,13 @@
     font-weight: inherit;
 }
 
-.btn-pickup:hover {
+.pickup-tabs__link:hover {
     text-decoration: underline;
     text-decoration-thickness: 2px;
     text-underline-offset: 2px;
 }
 
-.btn-pickup.active {
+.pickup-tabs__link--active {
     padding: 0.5em 0;
     text-align: center;
     display: block;
@@ -57,12 +49,12 @@
 
 /* Responsive */
 @media only screen and (max-width: 768px) {
-    .wrap.pickup {
+    .pickup-tabs {
         flex-direction: column;
         gap: 10px;
     }
 
-    .btn-pickup {
+    .pickup-tabs__link {
         padding: 10px 15px;
         font-size: 14px;
     }
