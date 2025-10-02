@@ -1,80 +1,253 @@
 {{!< default}}
-{{!-- The tag above means: insert everything in this file into the body of the default.hbs template --}}
 
 {{#post}}
-
-<main class="gh-main">
-
-    <article class="gh-article {{post_class}}">
-
-        <header class="gh-article-header gh-canvas">
-
-            {{#if primary_tag}}
-                <a class="gh-article-tag" href="{{primary_tag.url}}">{{primary_tag.name}}</a>
-            {{/if}}
-            <h1 class="gh-article-title is-title">{{title}}</h1>
-            {{#if custom_excerpt}}
-                <p class="gh-article-excerpt is-body">{{custom_excerpt}}</p>
-            {{/if}}
-
-            {{#if @custom.show_post_metadata}}
-            <div class="gh-article-meta">
-                <div class="gh-article-author-image instapaper_ignore">
-                    {{#foreach authors}}
-                        {{#if profile_image}}
-                            <a href="{{url}}">
-                                <img class="author-profile-image" src="{{img_url profile_image size="xs"}}" alt="{{name}}">
-                            </a>
-                        {{else}}
-                            <a href="{{url}}">{{> "icons/avatar"}}</a>
-                        {{/if}}
-                    {{/foreach}}
+<main id="main" class="post-main m-all t-2of3 d-5of7 cf">
+    <article id="entry" class="cf post-entry {{post_class}}">
+        <header class="article-header entry-header">
+            <nav id="breadcrumb">
+                <ul itemscope itemtype="http://schema.org/BreadcrumbList">
+                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                        <a href="{{@site.url}}" itemprop="item">
+                            <span itemprop="name">ホーム</span>
+                        </a>
+                        <meta itemprop="position" content="1">
+                    </li>
+                    {{#if primary_tag}}
+                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                        <a href="{{primary_tag.url}}" itemprop="item">
+                            <span itemprop="name">{{primary_tag.name}}</span>
+                        </a>
+                        <meta itemprop="position" content="2">
+                    </li>
+                    {{/if}}
+                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                        <span itemprop="name">{{title}}</span>
+                        <meta itemprop="position" content="{{#if primary_tag}}3{{else}}2{{/if}}">
+                    </li>
+                </ul>
+            </nav>
+            <div class="review-nav">
+                <div class="review-nav-tab active">
+                    予告
                 </div>
-                <div class="gh-article-meta-wrapper">
-                    <h4 class="gh-article-author-name">{{authors}}</h4>
-                    <div class="gh-article-meta-content">
-                        <time class="gh-article-meta-date" datetime="{{date format="YYYY-MM-DD"}}">{{date format="DD MMM YYYY"}}</time>
-                        {{#if reading_time}}
-                            <span class="gh-article-meta-length"><span class="bull">—</span> {{reading_time}}</span>
-                        {{/if}}
+                {{#if tags}}
+                    {{#foreach tags from="2" limit="1"}}
+                    <div class="review-nav-tab none-active">
+                        <a href="{{url}}">{{name}}</a>
+                    </div>
+                    {{else}}
+                    <div class="review-nav-tab review-nav-none">開封レビュー</div>
+                    {{/foreach}}
+                {{else}}
+                <div class="review-nav-tab review-nav-none">開封レビュー</div>
+                {{/if}}
+            </div>
+            <h1 class="entry-title single-title">{{title}}</h1>
+            <p class="entry-meta vcard dfont">
+                <time class="pubdate entry-time" datetime="{{date format="YYYY-MM-DD"}}">{{date format="YYYY/MM/DD"}}</time>
+            </p>
+            {{#if feature_image}}
+            <p class="post-thumbnail">
+                <img src="{{img_url feature_image}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}">
+            </p>
+            {{/if}}
+            <input type="checkbox" id="fab" class="fab-toggle">
+            <label class="fab-btn accent-bc" for="fab"><i class="fa fa-share-alt"></i></label>
+            <label class="fab__close-cover" for="fab"></label>
+            <div id="fab__contents">
+                <div class="fab__contents-main dfont">
+                    <label class="close" for="fab"><span></span></label>
+                    <p class="fab__contents_title">SHARE</p>
+                    {{#if feature_image}}
+                    <div class="fab__contents_img" style="background-image: url({{img_url feature_image size="m"}});"></div>
+                    {{/if}}
+                    <div class="sns-btn">
+                        <ul>
+                            <li class="tw sns-btn__item">
+                                <a href="https://twitter.com/share?url={{encode (url absolute="true")}}&amp;text={{encode title}}" target="_blank" rel="nofollow">
+                                    <i class="fa fa-twitter"></i>
+                                    <span class="share_txt">ツイート</span>
+                                </a>
+                            </li>
+                            <li class="fb sns-btn__item">
+                                <a href="https://www.facebook.com/share.php?u={{encode (url absolute="true")}}&amp;t={{encode title}}" target="_blank" rel="nofollow">
+                                    <i class="fa fa-facebook"></i>
+                                    <span class="share_txt">シェア</span>
+                                </a>
+                            </li>
+                            <li class="hatebu sns-btn__item">
+                                <a href="https://b.hatena.ne.jp/add?mode=confirm&amp;url={{encode (url absolute="true")}}" target="_blank" rel="nofollow">
+                                    <i class="fa fa-hatebu"></i>
+                                    <span class="share_txt">はてブ</span>
+                                </a>
+                            </li>
+                            <li class="gplus sns-btn__item">
+                                <a href="https://plus.google.com/share?url={{encode (url absolute="true")}}" target="_blank" rel="nofollow">
+                                    <i class="fa fa-google-plus" aria-hidden="true"></i>
+                                    <span class="share_txt">Google+</span>
+                                </a>
+                            </li>
+                            <li class="pkt sns-btn__item">
+                                <a href="https://getpocket.com/edit?url={{encode (url absolute="true")}}&amp;title={{encode title}}" target="_blank" rel="nofollow">
+                                    <i class="fa fa-get-pocket"></i>
+                                    <span class="share_txt">Pocket</span>
+                                </a>
+                            </li>
+                            <li class="line sns-btn__item">
+                                <a href="https://line.me/R/msg/text/?{{encode title}}%0D%0A{{encode (url absolute="true")}}" target="_blank" rel="nofollow">
+                                    <i class="fa fa-comment"></i>
+                                    <span class="share_txt dfont">LINE</span>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
-            {{/if}}
-
-            {{> "feature-image"}}
-
         </header>
-
-        <section class="gh-content gh-canvas is-body{{#if @custom.enable_drop_caps_on_posts}} drop-cap{{/if}}">
+        <section class="entry-content cf">
             {{content}}
+
+            {{!-- Advertisement after content --}}
+            {{> "ad-banner"}}
+
+            {{!-- Popular posts widget after content --}}
+            {{> "popular-posts"}}
         </section>
-
-    </article>
-
-    {{#if comments}}
-        <div class="gh-comments gh-canvas">
-            {{comments}}
-        </div>
-    {{/if}}
-
-</main>
-
-{{/post}}
-
-{{#if @custom.show_related_articles}}
-    {{#get "posts" include="authors" filter="id:-{{post.id}}" limit="4" as |next|}}
-        {{#if next}}
-            <section class="gh-container is-grid gh-outer">
-                <div class="gh-container-inner gh-inner">
-                    <h2 class="gh-container-title">Read more</h2>
-                    <div class="gh-feed">
-                        {{#foreach next}}
-                            {{> "post-card" lazyLoad=true}}
-                        {{/foreach}}
+        <footer class="article-footer entry-header">
+            <aside>
+                <div class="footer-contents">
+                    <div class="sns-btn normal-sns">
+                        <span class="sns-btn__title dfont">SHARE</span>
+                        <ul>
+                            <li class="tw sns-btn__item">
+                                <a href="https://twitter.com/share?url={{encode (url absolute="true")}}&amp;text={{encode title}}" target="_blank" rel="nofollow">
+                                    <i class="fa fa-twitter"></i>
+                                    <span class="share_txt">ツイート</span>
+                                </a>
+                            </li>
+                            <li class="fb sns-btn__item">
+                                <a href="https://www.facebook.com/share.php?u={{encode (url absolute="true")}}&amp;t={{encode title}}" target="_blank" rel="nofollow">
+                                    <i class="fa fa-facebook"></i>
+                                    <span class="share_txt">シェア</span>
+                                </a>
+                            </li>
+                            <li class="hatebu sns-btn__item">
+                                <a href="https://b.hatena.ne.jp/add?mode=confirm&amp;url={{encode (url absolute="true")}}" target="_blank" rel="nofollow">
+                                    <i class="fa fa-hatebu"></i>
+                                    <span class="share_txt">はてブ</span>
+                                </a>
+                            </li>
+                            <li class="gplus sns-btn__item">
+                                <a href="https://plus.google.com/share?url={{encode (url absolute="true")}}" target="_blank" rel="nofollow">
+                                    <i class="fa fa-google-plus" aria-hidden="true"></i>
+                                    <span class="share_txt">Google+</span>
+                                </a>
+                            </li>
+                            <li class="pkt sns-btn__item">
+                                <a href="https://getpocket.com/edit?url={{encode (url absolute="true")}}&amp;title={{encode title}}" target="_blank" rel="nofollow">
+                                    <i class="fa fa-get-pocket"></i>
+                                    <span class="share_txt">Pocket</span>
+                                </a>
+                            </li>
+                            <li class="line sns-btn__item">
+                                <a href="https://line.me/R/msg/text/?{{encode title}}%0D%0A{{encode (url absolute="true")}}" target="_blank" rel="nofollow">
+                                    <i class="fa fa-comment"></i>
+                                    <span class="share_txt dfont">LINE</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer-meta dfont">
+                        {{#if primary_tag}}
+                        <div>
+                            <p class="footer-meta_title">CATEGORY :</p>
+                            <ul class="post-categories">
+                                <li><a href="{{primary_tag.url}}" rel="category tag">{{primary_tag.name}}</a></li>
+                            </ul>
+                        </div>
+                        {{/if}}
+                        {{#if tags}}
+                        <div class="meta-tag">
+                            <p class="footer-meta_title">TAGS :</p>
+                            <ul>
+                                {{#foreach tags}}
+                                <li><a href="{{url}}" rel="tag">{{name}}</a></li>
+                                {{/foreach}}
+                            </ul>
+                        </div>
+                        {{/if}}
                     </div>
                 </div>
-            </section>
-        {{/if}}
-    {{/get}}
-{{/if}}
+                {{#primary_author}}
+                <div class="author-info pastel-bc">
+                    <div class="author-info__inner">
+                        <div class="tb">
+                            <div class="tb-left">
+                                <div class="author_label">
+                                    <span>私が書いたレビュー</span>
+                                </div>
+                                <div class="author_img">
+                                    {{#if profile_image}}
+                                    <img alt="{{name}}" src="{{img_url profile_image size="s"}}" srcset="{{img_url profile_image size="m"}} 2x" class="avatar avatar-100 photo" height="100" width="100" loading="lazy" decoding="async">
+                                    {{else}}
+                                    <span class="author-placeholder">{{name}}</span>
+                                    {{/if}}
+                                </div>
+                                <dl class="aut">
+                                    <dt>
+                                        <a class="dfont" href="{{url}}"><span>{{name}}</span></a>
+                                    </dt>
+                                    <dd>{{#if location}}{{location}}{{/if}}</dd>
+                                </dl>
+                            </div>
+                            <div class="tb-right">
+                                {{#if bio}}
+                                <p>{{bio}}</p>
+                                {{else}}
+                                <p>{{name}} のプロフィール情報はまだ設定されていません。</p>
+                                {{/if}}
+                                <div class="follow_btn dfont"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{/primary_author}}
+            </aside>
+        </footer>
+    </article>
+    {{#if comments}}
+    <div class="gh-comments">
+        {{comments}}
+    </div>
+    {{/if}}
+    <div class="prnx_box cf">
+        {{#prev_post}}
+        <a href="{{url}}" class="prnx pr">
+            <p><i class="fa fa-angle-left"></i> 前の記事</p>
+            <div class="prnx_tb">
+                {{#if feature_image}}
+                <figure>
+                    <img src="{{img_url feature_image size="s"}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}">
+                </figure>
+                {{/if}}
+                <span class="prev-next__text">{{title}}</span>
+            </div>
+        </a>
+        {{/prev_post}}
+        {{#next_post}}
+        <a href="{{url}}" class="prnx nx">
+            <p>次の記事 <i class="fa fa-angle-right"></i></p>
+            <div class="prnx_tb">
+                <span class="prev-next__text">{{title}}</span>
+                {{#if feature_image}}
+                <figure>
+                    <img src="{{img_url feature_image size="s"}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}">
+                </figure>
+                {{/if}}
+            </div>
+        </a>
+        {{/next_post}}
+    </div>
+</main>
+{{/post}}
+
