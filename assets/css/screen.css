@@ -57,9 +57,8 @@ production stylesheet in assets/built/screen.css
 @import "./components/layout.css";
 @import "./components/sidebar.css";
 @import "./components/drawer.css";
-@import "components/article-card.css";
-@import "components/post-card.css";
-@import "components/pickup-tabs.css";
+@import "./components/post-card.css";
+@import "./components/pickup-tabs.css";
 
 /* Global utility styles
 /* ---------------------------------------------------------- */
