@@ -3,17 +3,16 @@
 
 {{> "components/search-box"}}
 
-{{> "components/content-menu" active="home"}}
-
 {{#match @custom.header_style "!=" "Highlight"}}
     {{> "components/featured" showFeatured=@custom.show_featured_posts limit=4}}
 {{/match}}
 
 {{> "components/cta"}}
 
-{{> "components/post-list" feed="home" postFeedStyle=@custom.post_feed_style showTitle=true showSidebar=@custom.show_publication_info_sidebar}}
 <div class="gh-content-wrapper">
     <main class="gh-main-content">
+        {{> "components/content-menu" active="home"}}
+
         {{> "components/post-list" feed="home" postFeedStyle=@custom.post_feed_style showTitle=true showSidebar=@custom.show_publication_info_sidebar}}
     </main>
 
