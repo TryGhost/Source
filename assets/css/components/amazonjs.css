@@ -1,0 +1,69 @@
+/* Amazon product card styles */
+.amazonjs_item {
+    font-size: 14px;
+    margin: .5em 0 1em 0;
+    padding: 25px 10px 25px 10px;
+    border: 3px double #ddd;
+    border-radius: 0;
+    position: relative;
+    display: block;
+    background: white url(../images/amazon-logo.png) no-repeat right bottom;
+    color: #333;
+}
+
+.amazonjs_item a {
+    color: #e47911;
+    text-decoration: none;
+}
+
+.amazonjs_item a:hover {
+    color: #996633;
+}
+
+.amazonjs_item * {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.amazonjs_item .amazonjs_indicator {
+    margin: 0 10px;
+    clear: both;
+}
+
+.amazonjs_item .amazonjs_indicator .amazonjs_indicator_img {
+    float: left;
+    display: block;
+    width: 32px;
+    height: 32px;
+    background: transparent url(../images/preloader.gif) no-repeat center;
+}
+
+.amazonjs_item .amazonjs_indicator .amazonjs_indicator_title {
+    display: block;
+    line-height: 32px;
+    margin-left: 42px;
+}
+
+.amazonjs_item .amazonjs_indicator .amazonjs_indicator_footer {
+    clear: both;
+}
+
+.amazonjs_item .amazonjs_image {
+    display: block;
+    float: left;
+    margin-right: 10px;
+}
+
+.amazonjs_item .amazonjs_info {
+    display: block;
+}
+
+.amazonjs_item .amazonjs_info h4 {
+    margin: 0 0 5px;
+    padding: 0;
+    font-size: 1.2em;
+    font-weight: bold;
+    clear: none;
+    border: none;
+}

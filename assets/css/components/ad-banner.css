@@ -1,0 +1,37 @@
+/* Advertisement Banner Styles */
+.ad-banner {
+    margin: 32px auto;
+    max-width: 760px;
+    min-height: 398px;
+    background: #f0f0f0;
+    border: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.ad-banner__content {
+    text-align: center;
+    padding: 20px;
+}
+
+.ad-banner__label {
+    font-size: 1.2rem;
+    color: #999;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.ad-banner__placeholder {
+    font-size: 2rem;
+    color: #ccc;
+    font-weight: 300;
+}
+
+@media (max-width: 768px) {
+    .ad-banner {
+        min-height: 250px;
+    }
+}

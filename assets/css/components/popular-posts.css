@@ -1,0 +1,77 @@
+/* Popular posts widget styles */
+.sponsored {
+    margin: 1em 0;
+}
+
+.popular-posts {
+    width: 100%;
+}
+
+#inner-content .ads-title,
+.ads-title {
+    margin-bottom: .5em;
+    color: #878787;
+    font-size: 1.8rem;
+    text-align: center;
+}
+
+.wpp-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.wpp-list::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.wpp-list li {
+    float: left;
+    display: inline-block;
+    width: 33.3%;
+    padding: 0 2px 2px 2px;
+    clear: none;
+    font-size: 12px;
+    position: relative;
+    margin: 0;
+}
+
+.wpp-list a {
+    display: block;
+    text-decoration: none;
+    transition: none !important;
+}
+
+.wpp-list a:hover {
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+.wpp-thumbnail {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    object-fit: cover;
+    display: block;
+    vertical-align: middle;
+    border: none;
+    transition: none !important;
+}
+
+.wpp-list a:hover .wpp-thumbnail {
+    opacity: 1 !important;
+    filter: none !important;
+    transform: none !important;
+}
+
+.entry-content .size-auto,
+.entry-content .size-full,
+.entry-content .size-large,
+.entry-content .size-medium,
+.entry-content .size-thumbnail {
+    max-width: 100%;
+    height: auto;
+}
+

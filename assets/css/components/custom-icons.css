@@ -1,0 +1,11 @@
+/* Custom icon fonts for social media that aren't in Font Awesome 4 */
+
+/* Hatena Bookmark icon - using text-based icon */
+.fa.fa-hatebu:before {
+    content: "B!";
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 0.9em;
+    letter-spacing: -0.05em;
+}
