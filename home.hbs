@@ -19,7 +19,13 @@
     {{> "sidebar"}}
 </div>
 <main id="main" class="m-all t-2of3 d-5of7 cf">
-    {{> "components/article-card"}}
+    <div class="post-grid">
+        {{#get "posts" include="authors,tags" limit="24"}}
+            {{#foreach posts}}
+                {{> "post-card"}}
+            {{/foreach}}
+        {{/get}}
+    </div>
 
     <div align="center">
         <p>

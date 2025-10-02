@@ -49,7 +49,6 @@ production stylesheet in assets/built/screen.css
   23.2. Pickup Tabs
 
 */
-
 @import "./components/header.css";
 @import "./components/footer.css";
 @import "./components/search-form.css";
@@ -59,6 +58,7 @@ production stylesheet in assets/built/screen.css
 @import "./components/sidebar.css";
 @import "./components/drawer.css";
 @import "components/article-card.css";
+@import "components/post-card.css";
 @import "components/pickup-tabs.css";
 
 /* Global utility styles
