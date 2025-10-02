@@ -7,4 +7,10 @@
 
 {{> "components/content-menu" active="onsale"}}
 
-{{> "components/post-list" feed="tag" postFeedStyle=@custom.post_feed_style showTitle=false showSidebar=@custom.show_publication_info_sidebar}}
+<div class="gh-content-wrapper">
+    <main class="gh-main-content">
+        {{> "components/post-list" feed="tag" postFeedStyle=@custom.post_feed_style showTitle=false showSidebar=@custom.show_publication_info_sidebar}}
+    </main>
+
+    {{> "sidebar"}}
+</div>
