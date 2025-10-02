@@ -1,4 +1,3 @@
-
 {{!< default}}
 {{!-- Template for /calendar page - showing upcoming release calendar --}}
 
@@ -8,93 +7,7 @@
 
 {{> "components/content-menu" active="calendar"}}
 
-{{> "components/post-list" feed="page" postFeedStyle=@custom.post_feed_style showTitle=false showSidebar=@custom.show_publication_info_sidebar}}
-{{!-- Template for Calendar Page --}}
-<!DOCTYPE html>
-<html lang="{{@site.locale}}">
-<head>
-    {{!-- Basic meta --}}
-    <title>発売カレンダー - {{@site.title}}</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    {{!-- Preload main styles and scripts --}}
-    <link rel="preload" as="style" href="{{asset "built/screen.css"}}">
-    <link rel="preload" as="script" href="{{asset "built/source.js"}}">
-
-    {{!-- Fonts --}}
-    {{> "typography/fonts"}}
-
-    {{!-- Theme assets --}}
-    <link rel="stylesheet" type="text/css" href="{{asset "built/screen.css"}}">
-
-    {{!-- Component Styles --}}
-    <link rel="stylesheet" type="text/css" href="{{asset "css/components/sidebar.css"}}">
-
-    {{!-- Font Awesome 6 --}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-    {{!-- jQuery UI for Datepicker --}}
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
-
-    {{!-- Custom background color --}}
-    <style>
-        :root {
-            --background-color: {{@custom.site_background_color}}
-        }
-    </style>
-
-    {{ghost_head}}
-</head>
-<body class="{{body_class}}">
-
-<div class="gh-viewport">
-
-    {{> "components/header"}}
-
-    <main class="gh-main">
-        <div class="gh-container">
-
-            {{!-- Page Header --}}
-            {{> "components/page-header" title="発売カレンダー"}}
-
-            {{!-- Content Menu --}}
-            {{> "components/content-menu"}}
-
-            <div class="gh-content-wrapper">
-
-                {{!-- Main Content --}}
-                <div class="gh-content">
-                    <article class="gh-article">
-                        <div class="gh-article-content">
-                            <h2>発売カレンダー</h2>
-                            <p>雑誌の発売日をカレンダーで確認できます。</p>
-
-                            {{!-- Calendar content will be displayed here --}}
-                            <div id="calendar-content">
-                                {{!-- Dynamic calendar content --}}
-                            </div>
-                        </div>
-                    </article>
-                </div>
-
-                {{!-- Sidebar --}}
-                {{> "sidebar"}}
-
-            </div>
-        </div>
+        {{> "components/post-list" feed="page" postFeedStyle=@custom.post_feed_style showTitle=false showSidebar=@custom.show_publication_info_sidebar}}
     </main>
 
-    {{> "components/footer"}}
-
 </div>
-
-{{!-- Scripts --}}
-<script src="{{asset "built/source.js"}}"></script>
-
-{{ghost_foot}}
-
-</body>
-</html>
