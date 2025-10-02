@@ -1,0 +1,39 @@
+/* Layout wrapper - updated */
+.gh-content-wrapper {
+    display: flex;
+    gap: 30px;
+    max-width: 1180px !important;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.gh-main-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.gh-main-content .gh-container.gh-outer {
+    padding: 0 !important;
+}
+
+.gh-main-content .gh-container .gh-inner {
+    max-width: none !important;
+}
+
+.gh-main-content .gh-container .gh-container-inner {
+    max-width: none !important;
+    display: block !important;
+}
+
+.gh-main-content .gh-container.has-sidebar .gh-main {
+    grid-column: 1 / -1 !important;
+}
+
+/* Responsive Styles */
+@media only screen and (max-width: 768px) {
+    .gh-content-wrapper {
+        flex-direction: column;
+    }
+}

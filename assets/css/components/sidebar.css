@@ -9,20 +9,7 @@
     padding: 5px;
 }
 
-/* Layout Wrapper */
-.gh-content-wrapper {
-    display: flex;
-    gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-.gh-main-content {
-    flex: 1;
-    min-width: 0;
-}
-
+/* Sidebar Styles */
 .sidebar {
     width: 300px;
     flex-shrink: 0;
@@ -318,10 +305,6 @@
 
 /* Responsive Styles */
 @media only screen and (max-width: 768px) {
-    .gh-content-wrapper {
-        flex-direction: column;
-    }
-
     .sidebar {
         width: 100%;
         margin-top: 30px;
