@@ -1,0 +1,29 @@
+{{!-- Popular posts widget --}}
+<div class="sponsored dfont">
+    <div class="popular-posts">
+        <p class="ads-title">人気付録ランキング（週間）</p>
+        {{#get "posts" limit="9" include="feature_image" as |popular_posts|}}
+            {{#if popular_posts}}
+                <ul class="wpp-list">
+                    {{#foreach popular_posts}}
+                    <li>
+                        <a href="{{url}}" target="_self">
+                            {{#if feature_image}}
+                            <img
+                                decoding="async"
+                                width="150"
+                                height="150"
+                                loading="lazy"
+                                src="{{img_url feature_image size="s"}}"
+                                srcset="{{img_url feature_image size="s"}} 150w, {{img_url feature_image size="m"}} 300w"
+                                class="wpp-thumbnail wpp_featured attachment-thumbnail size-thumbnail wp-post-image"
+                                alt="{{title}}">
+                            {{/if}}
+                        </a>
+                    </li>
+                    {{/foreach}}
+                </ul>
+            {{/if}}
+        {{/get}}
+    </div>
+</div>
