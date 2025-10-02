@@ -29,7 +29,7 @@
     padding: 0;
 }
 
-#breadcrumb li::before {
+#breadcrumb li:first-child::before {
     content: "\f015";
     font-family: FontAwesome;
     margin-right: 8px;
@@ -41,6 +41,10 @@
     font-family: FontAwesome;
     margin-left: 8px;
     color: #b7b7b7;
+}
+
+#breadcrumb li:last-child::after {
+    display: none;
 }
 
 #breadcrumb a {
