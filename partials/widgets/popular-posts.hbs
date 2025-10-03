@@ -1,0 +1,26 @@
+{{!-- Widget: Popular Posts Ranking --}}
+<div class="widget widget_block widget-popular">
+    <div class="popular-posts">
+        <h4 class="widgettitle">人気付録ランキング（週間）</h4>
+        {{#get "posts" limit="9" order="views desc"}}
+        <ul class="wpp-list">
+            {{#foreach posts}}
+            <li>
+                <a href="{{url}}" target="_self">
+                    {{#if feature_image}}
+                    <img decoding="async" width="150" height="150" loading="lazy"
+                         src="{{img_url feature_image size="s"}}"
+                         class="wpp-thumbnail wpp_featured attachment-thumbnail size-thumbnail wp-post-image"
+                         alt="{{title}}">
+                    {{else}}
+                    <div class="wpp-thumbnail wpp-thumbnail-placeholder">
+                        <span class="wpp-rank">{{@number}}</span>
+                    </div>
+                    {{/if}}
+                </a>
+            </li>
+            {{/foreach}}
+        </ul>
+        {{/get}}
+    </div>
+</div>
