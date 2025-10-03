@@ -1,0 +1,43 @@
+{{!-- Mobile Drawer Menu --}}
+<div id="drawer" class="sp-only">
+    {{!-- Drawer Toggle Input (controlled by header button) --}}
+    <input type="checkbox" id="drawer__input" class="drawer--unshown">
+    <label class="drawer--unshown" id="drawer__close-cover" for="drawer__input"></label>
+
+    {{!-- Drawer Content --}}
+    <div id="drawer__content">
+        <div class="drawer__title dfont">MENU<label class="close" for="drawer__input"><span></span></label></div>
+
+        {{!-- Search Widget --}}
+        <div class="widget widget_block widget-search">
+            <h4 class="widgettitle">フリーワードから探す</h4>
+            <div class="wp-widget-group__inner-blocks">
+                {{> "widgets/search"}}
+            </div>
+        </div>
+
+        {{> "widgets/popular-posts"}}
+
+        {{!-- Tag Cloud Widget --}}
+        <div class="widget widget_block widget-tags">
+            <h4 class="widgettitle">付録タグから探す</h4>
+            <div class="wp-widget-group__inner-blocks">
+                <p class="wp-block-tag-cloud">
+                    {{#get "tags" limit="12" order="count.posts desc" include="count.posts"}}
+                        {{#foreach tags}}
+                        <a href="{{url}}" class="tag-cloud-link" aria-label="{{name}} ({{count.posts}}個の項目)">
+                            {{name}}<span class="tag-link-count"> ({{count.posts}})</span>
+                        </a>
+                        {{/foreach}}
+                    {{/get}}
+                </p>
+                <p class="tag_list">
+                    <a href="/tag/">もっと見る ≫</a>
+                </p>
+            </div>
+        </div>
+
+        {{> "widgets/magazines" id="drawer-categories"}}
+        {{> "widgets/subscription-banner"}}
+    </div>
+</div>

@@ -1,0 +1,428 @@
+/* ===================================
+   Mobile Drawer Menu Styles
+   =================================== */
+
+/* Drawer Container */
+#drawer {
+    position: relative;
+}
+
+/* Hidden Elements */
+.drawer--unshown {
+    display: none;
+}
+
+/* Drawer Toggle Input */
+#drawer__input {
+    display: none;
+}
+
+/* Drawer Open Button */
+#drawer__open {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#drawer__open:hover {
+    opacity: 0.7;
+}
+
+#drawer__open i {
+    font-size: 24px;
+    color: #333;
+}
+
+/* Drawer Close Cover (overlay) */
+#drawer__close-cover {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 1000;
+}
+
+/* Drawer Content */
+#drawer__content {
+    position: fixed;
+    top: 0;
+    left: -320px;
+    width: 320px;
+    max-width: 85vw;
+    height: 100vh;
+    background-color: #fff;
+    overflow-y: auto;
+    overflow-x: hidden;
+    transition: left 0.3s ease;
+    z-index: 1001;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Drawer Title */
+.drawer__title {
+    position: relative;
+    padding: 7px 15px;
+    background-color: #FFF;
+    color: #000000 !important;
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+.drawer__title.dfont {
+    font-family: "Quicksand", "Avenir", "Arial", YuGothic, "Yu Gothic", "Hiragino Sans", "ヒラギノ角ゴシック", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+}
+
+/* Close Button */
+.drawer__title .close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.drawer__title .close span {
+    position: relative;
+    display: block;
+    width: 20px;
+    height: 2px;
+}
+
+.drawer__title .close span::before,
+.drawer__title .close span::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #000;
+    transition: transform 0.3s ease;
+}
+
+.drawer__title .close span::before {
+    transform: rotate(45deg);
+}
+
+.drawer__title .close span::after {
+    transform: rotate(-45deg);
+}
+
+/* Widget Styles */
+#drawer__content .widget {
+    padding: 10px;
+}
+
+#drawer__content .widget h4 + * {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 8px 0;
+}
+
+#drawer__content .widgettitle {
+    color: #FFFFFF !important;
+    background-color: #57585A !important;
+    background-position: 5px 2px;
+    background-repeat: no-repeat;
+    background-size: 8px;
+    border-bottom: 1px solid #57585A;
+    border-left: 3px solid #7F0019;
+    font-size: 14px;
+    padding: 5px 0 5px 10px;
+    margin: 0 0 0 0;
+    font-weight: 700;
+}
+
+#drawer__content .widgettitle.dfont {
+    font-family: inherit;
+}
+
+/* Widget title icons */
+#drawer__content .widgettitle:before {
+    padding-right: 4px;
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+}
+
+#drawer__content .widget_categories .widgettitle:before {
+    content: "\f0ca";
+}
+
+/* Search Form */
+#drawer__content .searchform {
+    display: block;
+    padding: 0;
+    margin: 0;
+}
+
+#drawer__content .searchform > div {
+    position: relative;
+    display: block;
+    padding: 0;
+    margin: 0;
+}
+
+#drawer__content #s {
+    display: block;
+    width: 100%;
+    height: 45px;
+    margin: 0;
+    margin-bottom: 14px;
+    padding: 0 12px;
+    padding-right: 48px;
+    font-size: 14px;
+    font-family: inherit;
+    color: #5c6b80;
+    background: #fff;
+    border: solid 1px #ccc;
+    border-radius: 70px;
+    outline: none;
+    line-height: 45px;
+    box-sizing: border-box;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15), 0 3px 3px -2px rgba(0, 0, 0, 0.15);
+    appearance: none;
+    -webkit-appearance: none;
+    -webkit-font-smoothing: antialiased;
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+#drawer__content #s::placeholder {
+    color: var(--color-secondary-text);
+}
+
+#drawer__content #s:focus {
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.18);
+}
+
+#drawer__content #searchsubmit {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 48px;
+    height: 45px;
+    padding: 0;
+    font-size: 20px;
+    background: #df744a;
+    border: none;
+    border-radius: 0 70px 70px 0;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+#drawer__content #searchsubmit:hover,
+#drawer__content #searchsubmit:focus-visible {
+    background: #e7835d;
+}
+
+#drawer__content #searchsubmit i {
+    color: #fff;
+}
+
+/* Popular Posts */
+#drawer__content .wpp-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#drawer__content .wpp-list li {
+    margin: 0;
+}
+
+#drawer__content .wpp-list a {
+    display: block;
+    border-radius: 4px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+#drawer__content .wpp-list a:hover {
+    transform: scale(1.05);
+}
+
+#drawer__content .wpp-list img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Tag Cloud */
+#drawer__content .wp-block-tag-cloud {
+    margin: 0 0 15px 0;
+    line-height: 1.8;
+}
+
+#drawer__content .tag-cloud-link {
+    display: inline-block;
+    margin: 4px 4px 4px 0;
+    color: #4f96f6;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+#drawer__content .tag-cloud-link:hover {
+    color: #4f96f6;
+    opacity: 0.8;
+}
+
+#drawer__content .tag-link-count {
+    font-size: 0.9em;
+    opacity: 0.7;
+}
+
+#drawer__content .tag_list {
+    margin: 10px 0 0 0;
+    text-align: right;
+}
+
+#drawer__content .tag_list a {
+    color: #4f96f6;
+    text-decoration: none;
+    font-size: 14px;
+    transition: opacity 0.3s ease;
+}
+
+#drawer__content .tag_list a:hover {
+    opacity: 0.8;
+}
+
+/* Categories Select */
+#drawer__content .widget_categories .postform,
+#drawer__content .postform {
+    width: 100%;
+    padding: 8px 12px;
+    font-size: 14px;
+    border: 1px solid #CCC;
+    border-radius: 4px;
+    background-image: url(/assets/images/dropdown-arrow.png) !important;
+    background-color: transparent !important;
+    background-repeat: no-repeat !important;
+    background-position: 97.5% center !important;
+    outline: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+#drawer__content .widget_categories .postform:focus,
+#drawer__content .postform:focus {
+    outline: 0;
+    border-color: #CCC;
+}
+
+#drawer__content .widget_categories .postform option,
+#drawer__content .postform option {
+    padding: 5px;
+}
+
+#drawer__content .screen-reader-text {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* Banner */
+#drawer__content .info_banner {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#drawer__content .info_banner li {
+    margin: 0;
+}
+
+#drawer__content .info_banner a {
+    display: block;
+}
+
+#drawer__content .info_banner img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Checked State - Open Drawer */
+#drawer__input:checked ~ #drawer__close-cover {
+    display: block;
+    opacity: 0.5;
+}
+
+#drawer__input:checked ~ #drawer__content {
+    left: 0;
+}
+
+/* Smooth Scrollbar */
+#drawer__content::-webkit-scrollbar {
+    width: 6px;
+}
+
+#drawer__content::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+#drawer__content::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 3px;
+}
+
+#drawer__content::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Hide drawer on desktop */
+@media (min-width: 769px) {
+    #drawer {
+        display: none;
+    }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 480px) {
+    #drawer__content {
+        width: 280px;
+    }
+
+    #drawer__content .wpp-list {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+    }
+
+    .drawer__title {
+        font-size: 16px;
+        padding: 12px 15px;
+    }
+
+    #drawer__content .widget {
+        padding: 15px;
+    }
+}
