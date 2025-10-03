@@ -612,6 +612,9 @@ footer p {
 .footer-meta {
     display: block;
     text-align: right;
+    padding: 10px 5% 20px;
+    font-size: .95em;
+    font-weight: bold;
 }
 
 .footer-meta > div {
@@ -652,14 +655,26 @@ footer p {
     display: inline-block;
 }
 
+.meta-tag li::before {
+    content: '#';
+    margin-right: 2px;
+    color: var(--color-secondary-text);
+}
+
+.meta-tag li:not(:last-child)::after {
+    content: ' / ';
+    margin: 0 4px;
+    color: var(--color-secondary-text);
+}
+
 .post-categories a,
 .meta-tag a {
-    display: inline-block;
-    padding: 0;
-    margin: 0;
-    font-size: 1.3rem;
     background: transparent;
     color: var(--color-secondary-text);
+    display: inline-block;
+    font-size: 1.3rem;
+    margin: 0;
+    padding: 0;
     text-decoration: none;
     transition: opacity 0.2s ease;
 }
