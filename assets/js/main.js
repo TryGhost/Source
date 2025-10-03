@@ -72,3 +72,16 @@
         }
     });
 })();
+
+/* Show updated date only if different from published date */
+(function () {
+    const updatedTime = document.querySelector('.entry-header .updated');
+    if (!updatedTime) return;
+
+    const publishedDate = updatedTime.getAttribute('data-published');
+    const updatedDate = updatedTime.getAttribute('data-updated');
+
+    if (publishedDate !== updatedDate) {
+        updatedTime.classList.add('show');
+    }
+})();

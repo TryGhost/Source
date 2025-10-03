@@ -152,12 +152,27 @@ dl, menu, ol, ul {
 .pubdate,
 .entry-time {
     font-style: normal;
+    padding: 0 10px 0 0;
 }
 
 .entry-header .pubdate:before {
     padding-right: 5px;
     font-family: FontAwesome;
     content: "\f133";
+}
+
+.entry-header .updated {
+    display: none;
+}
+
+.entry-header .updated.show {
+    display: inline;
+}
+
+.entry-header .updated.show:before {
+    padding-right: 5px;
+    font-family: FontAwesome;
+    content: "\f021";
 }
 
 .post-thumbnail {

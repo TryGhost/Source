@@ -45,6 +45,7 @@
             <h1 class="entry-title single-title">{{title}}</h1>
             <p class="entry-meta vcard dfont">
                 <time class="pubdate entry-time" datetime="{{date format="YYYY-MM-DD"}}">{{date format="YYYY/MM/DD"}}</time>
+                <time class="updated entry-time" datetime="{{date updated_at format="YYYY-MM-DD"}}" data-published="{{date format="YYYY-MM-DD"}}" data-updated="{{date updated_at format="YYYY-MM-DD"}}">{{date updated_at format="YYYY/MM/DD"}}</time>
             </p>
             {{#if feature_image}}
             <p class="post-thumbnail">
