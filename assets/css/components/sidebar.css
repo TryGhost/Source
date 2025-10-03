@@ -24,6 +24,14 @@
     display: block;
 }
 
+/* Single post and page layout adjustments */
+.single .insidesp,
+.page .insidesp {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 2%;
+}
+
 #notfix {
     display: block;
 }
@@ -86,13 +94,14 @@
     content: "\f0ca";
 }
 
-.widget_categories select.postform {
+.widget_categories select.postform,
+.sidebar .postform {
     width: 100%;
     padding: 8px 12px;
     font-size: 14px;
     border: 1px solid #CCC;
     border-radius: 4px;
-    background-image: url(../images/dropdown-arrow.png);
+    background-image: url(/assets/images/dropdown-arrow.png);
     background-color: transparent;
     background-repeat: no-repeat;
     background-position: 97.5% center;
@@ -104,12 +113,14 @@
     box-sizing: border-box;
 }
 
-.widget_categories select.postform:focus {
+.widget_categories select.postform:focus,
+.sidebar .postform:focus {
     outline: 0;
     border-color: #CCC;
 }
 
-.widget_categories select.postform option {
+.widget_categories select.postform option,
+.sidebar .postform option {
     padding: 5px;
 }
 

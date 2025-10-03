@@ -4,53 +4,8 @@
         <div class="insidesp">
             <div id="notfix">
 
-                {{!-- Widget: Categories (Magazine Names) --}}
-                <div id="categories-7" class="widget widget_categories">
-                    <h4 class="widgettitle dfont">雑誌名から探す</h4>
-                    <form>
-                        <label class="screen-reader-text" for="categories-dropdown-7">雑誌名から探す</label>
-                        <select id="categories-dropdown-7" class="postform">
-                            <option value="">雑誌名を選択</option>
-                            <option value="/women-magazine/">女性ファッション雑誌</option>
-                            {{#get "tags" filter="slug:[androsy-takarajimasha,inred-takarajimasha]" include="count.posts"}}
-                                {{#foreach tags}}
-                                <option value="/women-magazine/{{slug}}/">&nbsp;&nbsp;{{name}} ({{count.posts}})</option>
-                                {{/foreach}}
-                            {{/get}}
-
-                            <option value="/women-manga/">少女・女性マンガの付録</option>
-                            {{#get "tags" filter="slug:[nakayosi-kodansha,ciao-shogakukan]" include="count.posts"}}
-                                {{#foreach tags}}
-                                <option value="/women-manga/{{slug}}/">&nbsp;&nbsp;{{name}} ({{count.posts}})</option>
-                                {{/foreach}}
-                            {{/get}}
-                        </select>
-                    </form>
-                </div>
-
-                {{!-- Widget: Popular Posts Ranking --}}
-                <div id="popular-widget" class="widget widget_block">
-                    <div class="popular-posts">
-                        <h4 class="widgettitle">人気付録ランキング(週間)</h4>
-                        {{#get "posts" limit="9" order="views desc"}}
-                        <ul class="wpp-list">
-                            {{#foreach posts}}
-                            <li>
-                                <a href="{{url}}" target="_self">
-                                    {{#if feature_image}}
-                                    <img class="wpp-thumbnail" src="{{img_url feature_image size="s"}}" alt="{{title}}">
-                                    {{else}}
-                                    <div class="wpp-thumbnail wpp-thumbnail-placeholder">
-                                        <span class="wpp-rank">{{@number}}</span>
-                                    </div>
-                                    {{/if}}
-                                </a>
-                            </li>
-                            {{/foreach}}
-                        </ul>
-                        {{/get}}
-                    </div>
-                </div>
+                {{> "widgets/magazines" id="categories-dropdown-7"}}
+                {{> "widgets/popular-posts"}}
 
                 {{!-- Widget: Advertisement --}}
                 <div id="ad-widget" class="widget widget_block">
@@ -67,19 +22,7 @@
                     </div>
                 </div>
 
-                {{!-- Widget: Subscription Banner --}}
-                <div id="subscription-widget" class="widget widget_block">
-                    <h4 class="widgettitle dfont">雑誌の定期購読なら</h4>
-                    <div class="wp-widget-group__inner-blocks">
-                        <ul class="info_banner">
-                            <li>
-                                <a href="//www.fujisan.co.jp/ap-furoku">
-                                    <img src="{{asset "images/fujisan-logo.png"}}" alt="Fujisan">
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+                {{> "widgets/subscription-banner"}}
 
                 {{!-- Widget: Calendar --}}
                 <div id="calendar-widget" class="widget widget_block">
@@ -131,24 +74,6 @@
 </div>
 
 {{!-- Calendar Script --}}
-<script type="text/javascript">
-/* <![CDATA[ */
-
-(function() {
-    var dropdown = document.getElementById("categories-dropdown-7");
-    if (dropdown) {
-        dropdown.onchange = function() {
-            var selectedUrl = this.options[this.selectedIndex].value;
-            if (selectedUrl) {
-                window.location.href = selectedUrl;
-            }
-        };
-    }
-})();
-
-/* ]]> */
-</script>
-
 <script>
 // Datepicker Japanese locale - Vanilla JavaScript implementation
 (function() {
