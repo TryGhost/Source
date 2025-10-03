@@ -1,0 +1,41 @@
+<div class="widget widget_categories widget-categories">
+    <h4 class="widgettitle">雑誌名から探す</h4>
+    <form>
+        <label class="screen-reader-text" for="{{id}}">雑誌名から探す</label>
+        <select id="{{id}}" class="postform">
+            <option value="">雑誌名を選択</option>
+
+            {{!-- 親カテゴリ --}}
+            <option value="/women-magazine/">女性ファッション雑誌</option>
+            {{#get "tags" filter="slug:[androsy-takarajimasha,inred-takarajimasha]" include="count.posts"}}
+                {{#foreach tags}}
+                <option value="/women-magazine/{{slug}}/">&nbsp;&nbsp;{{name}} ({{count.posts}})</option>
+                {{/foreach}}
+            {{/get}}
+
+            <option value="/women-manga/">少女・女性マンガの付録</option>
+            {{#get "tags" filter="slug:[nakayosi-kodansha,ciao-shogakukan]" include="count.posts"}}
+                {{#foreach tags}}
+                <option value="/women-manga/{{slug}}/">&nbsp;&nbsp;{{name}} ({{count.posts}})</option>
+                {{/foreach}}
+            {{/get}}
+        </select>
+    </form>
+</div>
+
+{{!-- Category Navigation Script --}}
+<script type="text/javascript">
+/* <![CDATA[ */
+(function() {
+    var dropdown = document.getElementById("{{id}}");
+    if (dropdown) {
+        dropdown.onchange = function() {
+            var selectedUrl = this.options[this.selectedIndex].value;
+            if (selectedUrl) {
+                window.location.href = selectedUrl;
+            }
+        };
+    }
+})();
+/* ]]> */
+</script>
