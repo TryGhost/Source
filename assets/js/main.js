@@ -50,11 +50,25 @@
 /* Responsive HTML table */
 (function () {
     const tables = document.querySelectorAll('.gh-content > table:not(.gist table)');
-    
+
     tables.forEach(function (table) {
         const wrapper = document.createElement('div');
         wrapper.className = 'gh-table';
         table.parentNode.insertBefore(wrapper, table);
         wrapper.appendChild(table);
+    });
+})();
+
+/* Show NEW badge for posts published within last 7 days */
+(function () {
+    const badges = document.querySelectorAll('.new-badge');
+    const now = new Date();
+    const sevenDaysAgo = new Date(now.getTime() - (7 * 24 * 60 * 60 * 1000));
+
+    badges.forEach(function (badge) {
+        const publishedDate = new Date(badge.getAttribute('data-published'));
+        if (publishedDate >= sevenDaysAgo) {
+            badge.style.display = 'inline';
+        }
     });
 })();

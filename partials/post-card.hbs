@@ -18,7 +18,7 @@
 
         <div class="post-card__info">
             <h2>
-                {{#if featured}}<span style="color:#F00;">New</span>{{/if}}{{title}}
+                <span class="new-badge" data-published="{{published_at}}" style="display:none;color:#F00;">New</span>{{title}}
             </h2>
         </div>
     </a>
