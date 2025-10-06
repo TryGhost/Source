@@ -50,7 +50,7 @@
 }
 
 /* Responsive styles */
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 786px) {
     .content-menu-link {
         font-size: calc(1.44rem + (1.54 - 1.44) * ((100vw - 320px) / (768 - 320)));
     }
