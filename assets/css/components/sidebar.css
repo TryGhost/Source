@@ -37,7 +37,7 @@
 }
 
 /* Widget Base Styles */
-.widget {
+.sidebar .widget {
     margin-bottom: 15px;
     padding: 0;
     background: #fff;
@@ -58,11 +58,11 @@
     font-weight: 700;
 }
 
-.widget > *:not(.widgettitle) {
+.sidebar .widget > *:not(.widgettitle) {
     padding: 8px 0;
 }
 
-.widget .wp-widget-group__inner-blocks {
+.sidebar .widget .wp-widget-group__inner-blocks {
     padding: 8px 0;
 }
 
@@ -321,7 +321,7 @@
         margin-top: 30px;
     }
 
-    .widget {
+    .sidebar .widget {
         padding: 15px;
         margin-bottom: 20px;
     }

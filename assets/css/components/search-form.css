@@ -7,10 +7,15 @@
     box-sizing: border-box;
 }
 
-.widget.widget_block {
+.top_widget .widget.widget_block {
     display: block;
     margin: 0;
     padding: 0;
+    background: transparent !important;
+}
+
+.top_widget .widget {
+    background: transparent !important;
 }
 
 #block-3.widget.widget_block {

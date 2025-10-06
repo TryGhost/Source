@@ -58,7 +58,6 @@ production stylesheet in assets/built/screen.css
 @import "./components/sidebar.css";
 @import "./components/drawer.css";
 @import "./components/post-card.css";
-@import "./components/pickup-tabs.css";
 
 /* Global utility styles
 /* ---------------------------------------------------------- */
@@ -102,6 +101,8 @@ production stylesheet in assets/built/screen.css
 
 .text-center {
     text-align: center;
+    margin-top: 2em;
+    margin-bottom: 2em;
 }
 
 /* 1. Variables
