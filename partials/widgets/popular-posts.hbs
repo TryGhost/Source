@@ -7,16 +7,10 @@
             {{#foreach posts}}
             <li>
                 <a href="{{url}}" target="_self">
-                    {{#if feature_image}}
                     <img decoding="async" width="150" height="150" loading="lazy"
-                         src="{{img_url feature_image size="s"}}"
+                         src="{{#if feature_image}}{{img_url feature_image size="s"}}{{else}}{{asset "images/noimage.png"}}{{/if}}"
                          class="wpp-thumbnail wpp_featured attachment-thumbnail size-thumbnail wp-post-image"
                          alt="{{title}}">
-                    {{else}}
-                    <div class="wpp-thumbnail wpp-thumbnail-placeholder">
-                        <span class="wpp-rank">{{@number}}</span>
-                    </div>
-                    {{/if}}
                 </a>
             </li>
             {{/foreach}}
