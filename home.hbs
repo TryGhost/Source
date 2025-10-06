@@ -12,24 +12,23 @@
 <div class="gh-content-wrapper">
     <main class="gh-main-content">
         {{> "components/content-menu" active="home"}}
+
+        <div class="post-grid">
+            {{#get "posts" include="authors,tags" limit="24"}}
+                {{#foreach posts}}
+                    {{> "post-card"}}
+                {{/foreach}}
+            {{/get}}
+        </div>
+
+        <div class="text-center">
+            <p>
+                <a href="/page/2/" class="btn raised red-bc strong center">もっと見る</a>
+            </p>
+        </div>
+
+        {{> "components/content-menu" active="home"}}
     </main>
 
     {{> "sidebar"}}
 </div>
-<main id="main" class="m-all t-2of3 d-5of7 cf">
-    <div class="post-grid">
-        {{#get "posts" include="authors,tags" limit="24"}}
-            {{#foreach posts}}
-                {{> "post-card"}}
-            {{/foreach}}
-        {{/get}}
-    </div>
-
-    <div class="text-center">
-        <p>
-            <a href="/page/2/" class="btn raised red-bc strong center">もっと見る</a>
-        </p>
-    </div>
-
-    {{> "components/pickup-tabs"}}
-</main>
