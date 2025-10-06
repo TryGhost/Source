@@ -1,0 +1,70 @@
+{{!< default}}
+
+{{> "components/search-form"}}
+
+<div id="cat_header">
+    <nav id="breadcrumb">
+        <ul itemscope itemtype="http://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                <a href="{{@site.url}}" itemprop="item">
+                    <span itemprop="name">ホーム</span>
+                </a>
+                <meta itemprop="position" content="1">
+            </li>
+            {{#tag}}
+                {{#primary_tag}}
+                <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                    <a href="{{url}}" itemprop="item">
+                        <span itemprop="name">{{name}}</span>
+                    </a>
+                    <meta itemprop="position" content="2">
+                </li>
+                {{/primary_tag}}
+            {{/tag}}
+        </ul>
+    </nav>
+
+    {{#tag}}
+        {{!-- Get page data by slug pattern --}}
+        {{#get "pages" filter="slug:women-magazine-{{slug}}+slug:women-manga-{{slug}}" limit="1"}}
+            {{#foreach pages}}
+                {{#if feature_image}}
+                <div class="cat-headerWrap" style="background: url('{{feature_image}}');">
+                    <div class="bkRGBA">
+                        <img src="{{@site.logo}}" alt="{{@site.title}}">
+                    </div>
+                </div>
+                {{/if}}
+
+                <h1>{{title}}について</h1>
+                {{#if html}}
+                <div class="taxonomy-description entry-content">
+                    {{content}}
+                </div>
+                {{/if}}
+            {{/foreach}}
+        {{/get}}
+    {{/tag}}
+</div>
+
+<div class="gh-content-wrapper">
+    <main class="gh-main-content">
+        {{#tag}}
+            {{#get "pages" filter="slug:women-magazine-{{slug}}+slug:women-manga-{{slug}}" limit="1"}}
+                {{#foreach pages}}
+                    <h2>{{title}}（発売日順）</h2>
+                {{/foreach}}
+            {{/get}}
+        {{/tag}}
+
+        <div class="post-grid">
+            {{#foreach posts}}
+                {{> "post-card"}}
+            {{/foreach}}
+        </div>
+
+        {{> "pagination"}}
+    </main>
+
+    {{> "sidebar"}}
+</div>
