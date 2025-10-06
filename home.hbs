@@ -12,8 +12,6 @@
 <div class="gh-content-wrapper">
     <main class="gh-main-content">
         {{> "components/content-menu" active="home"}}
-
-        {{> "components/post-list" feed="home" postFeedStyle=@custom.post_feed_style showTitle=true showSidebar=@custom.show_publication_info_sidebar}}
     </main>
 
     {{> "sidebar"}}
@@ -27,7 +25,7 @@
         {{/get}}
     </div>
 
-    <div align="center">
+    <div class="text-center">
         <p>
             <a href="/page/2/" class="btn raised red-bc strong center">もっと見る</a>
         </p>
@@ -35,5 +33,3 @@
 
     {{> "components/pickup-tabs"}}
 </main>
-
-{{> "components/post-list" feed="home" postFeedStyle=@custom.post_feed_style showTitle=true showSidebar=@custom.show_publication_info_sidebar}}

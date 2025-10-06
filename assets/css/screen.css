@@ -100,6 +100,10 @@ production stylesheet in assets/built/screen.css
     text-align: center;
 }
 
+.text-center {
+    text-align: center;
+}
+
 /* 1. Variables
 /* ---------------------------------------------------------- */
 
