@@ -85,3 +85,14 @@
         updatedTime.classList.add('show');
     }
 })();
+
+/* Set background image from data attribute */
+(function () {
+    const bgImageElement = document.querySelector('.fab__contents_img[data-bg-image]');
+    if (!bgImageElement) return;
+
+    const imageUrl = bgImageElement.getAttribute('data-bg-image');
+    if (imageUrl) {
+        bgImageElement.style.backgroundImage = `url(${imageUrl})`;
+    }
+})();

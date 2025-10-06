@@ -22,7 +22,7 @@
     margin: 0 0 20px;
 }
 
-#block-3 div[align="right"] {
+.social-links-right {
     text-align: right;
     margin: 0;
 }
