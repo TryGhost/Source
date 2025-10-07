@@ -9,7 +9,15 @@
     <main class="gh-main-content">
         {{> "components/content-menu" active="calendar"}}
 
-        {{> "components/post-list" feed="page" postFeedStyle=@custom.post_feed_style showTitle=false showSidebar=@custom.show_publication_info_sidebar}}
+        <div class="post-grid">
+            {{#get "posts" include="authors,tags" limit="24"}}
+                {{#foreach posts}}
+                    {{> "post-card"}}
+                {{/foreach}}
+            {{/get}}
+        </div>
+
+        {{> "pagination"}}
     </main>
     {{> "sidebar"}}
 </div>

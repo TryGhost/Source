@@ -15,19 +15,23 @@
     text-align: center;
 }
 
-.wpp-list {
+.entry-content .wpp-list,
+.popular-posts .wpp-list {
     list-style: none;
     padding: 0;
     margin: 0;
+    display: block !important;
 }
 
-.wpp-list::after {
+.entry-content .wpp-list::after,
+.popular-posts .wpp-list::after {
     content: "";
     display: table;
     clear: both;
 }
 
-.wpp-list li {
+.entry-content .wpp-list li,
+.popular-posts .wpp-list li {
     float: left;
     display: inline-block;
     width: 33.3%;
@@ -38,18 +42,21 @@
     margin: 0;
 }
 
-.wpp-list a {
+.entry-content .wpp-list a,
+.popular-posts .wpp-list a {
     display: block;
     text-decoration: none;
     transition: none !important;
 }
 
-.wpp-list a:hover {
+.entry-content .wpp-list a:hover,
+.popular-posts .wpp-list a:hover {
     opacity: 1 !important;
     transform: none !important;
 }
 
-.wpp-thumbnail {
+.entry-content .wpp-thumbnail,
+.popular-posts .wpp-thumbnail {
     width: 100%;
     height: auto;
     aspect-ratio: 1;
@@ -60,7 +67,8 @@
     transition: none !important;
 }
 
-.wpp-list a:hover .wpp-thumbnail {
+.entry-content .wpp-list a:hover .wpp-thumbnail,
+.popular-posts .wpp-list a:hover .wpp-thumbnail {
     opacity: 1 !important;
     filter: none !important;
     transform: none !important;
