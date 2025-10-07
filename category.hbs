@@ -3,26 +3,9 @@
 {{> "components/search-form"}}
 
 <div id="cat_header">
-    <nav id="breadcrumb">
-        <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-            <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                <a href="{{@site.url}}" itemprop="item">
-                    <span itemprop="name">ホーム</span>
-                </a>
-                <meta itemprop="position" content="1">
-            </li>
-            {{#tag}}
-                {{#primary_tag}}
-                <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                    <a href="{{url}}" itemprop="item">
-                        <span itemprop="name">{{name}}</span>
-                    </a>
-                    <meta itemprop="position" content="2">
-                </li>
-                {{/primary_tag}}
-            {{/tag}}
-        </ul>
-    </nav>
+    {{#tag}}
+        {{> "components/breadcrumb"}}
+    {{/tag}}
 
     {{#tag}}
         {{!-- Get page data by slug pattern --}}

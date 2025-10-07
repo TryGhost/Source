@@ -39,7 +39,7 @@
 #breadcrumb li::after {
     content: "\f105";
     font-family: FontAwesome;
-    margin-left: 8px;
+    margin: 0 8px;
     color: #b7b7b7;
 }
 
