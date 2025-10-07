@@ -9,7 +9,7 @@
 
     {{#tag}}
         {{!-- Get page data by slug pattern --}}
-        {{#get "pages" filter="slug:women-magazine-{{slug}}+slug:women-manga-{{slug}}" limit="1"}}
+        {{#get "pages" filter="slug:women-magazine-{{slug}},slug:women-manga-{{slug}}" limit="1"}}
             {{#foreach pages}}
                 {{#if feature_image}}
                 <div class="cat-headerWrap" style="background: url('{{feature_image}}');">
@@ -33,18 +33,24 @@
 <div class="gh-content-wrapper">
     <main class="gh-main-content">
         {{#tag}}
-            {{#get "pages" filter="slug:women-magazine-{{slug}}+slug:women-manga-{{slug}}" limit="1"}}
+            {{#get "pages" filter="slug:women-magazine-{{slug}},slug:women-manga-{{slug}}" limit="1"}}
                 {{#foreach pages}}
                     <h2>{{title}}（発売日順）</h2>
+                {{else}}
+                    <h2>{{name}}の記事一覧</h2>
                 {{/foreach}}
             {{/get}}
         {{/tag}}
 
-        <div class="post-grid">
-            {{#foreach posts}}
-                {{> "post-card"}}
-            {{/foreach}}
-        </div>
+        {{#tag}}
+            {{#get "posts" filter="tag:{{slug}}" limit="all" include="tags,authors"}}
+                <div class="post-grid">
+                    {{#foreach posts}}
+                        {{> "post-card"}}
+                    {{/foreach}}
+                </div>
+            {{/get}}
+        {{/tag}}
 
         {{> "pagination"}}
     </main>
