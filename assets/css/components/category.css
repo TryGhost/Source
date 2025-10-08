@@ -25,8 +25,10 @@
 }
 
 .cat-headerWrap .bkRGBA img {
-    max-width: 200px;
-    height: auto;
+    position: absolute;
+    width: 300px;
+    right: 10px;
+    bottom: 5px;
 }
 
 @media (max-width: 768px) {

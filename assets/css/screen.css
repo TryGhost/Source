@@ -198,10 +198,15 @@ h1, h2, h3, h4, h5, h6 {
 /* ---------------------------------------------------------- */
 
 body {
-    font-family: var(--gh-font-body, var(--font-sans));
-    font-size: 1.6rem;
-    background-color: var(--background-color);
-    color: var(--color-primary-text);
+    margin: 0;
+    background-color: #ffe4e1;
+    color: #252525;
+    font-family: "Helvetica", "Arial", YuGothic, "Yu Gothic", "Hiragino Sans", "ヒラギノ角ゴシック", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+    line-height: 1.75;
+    word-break: normal;
+    overflow-wrap: break-word;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .wrap {
@@ -211,6 +216,11 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--gh-font-heading, var(--font-sans));
+}
+
+h1 {
+    margin: .67em 0;
+    font-size: 2em;
 }
 
 a {
@@ -3401,4 +3411,10 @@ body[class*=" gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-hea
 
 .pswp--minimal--dark .pswp__top-bar {
     background: none;
+}
+
+@media only screen and (min-width: 1030px) {
+    body {
+        font-size: 107%;
+    }
 }
