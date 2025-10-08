@@ -116,68 +116,71 @@
             {{/foreach}}
         {{else}}
             {{!-- For tag/category pages (when called from category.hbs) --}}
-            {{#if slug}}
-                {{#match slug "=" "androsy-takarajimasha"}}
-                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                        <a href="/women-magazine/" itemprop="item">
-                            <span itemprop="name">女性ファッション雑誌</span>
-                        </a>
-                        <meta itemprop="position" content="2">
-                    </li>
-                {{/match}}
-                {{#match slug "=" "inred-takarajimasha"}}
-                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                        <a href="/women-magazine/" itemprop="item">
-                            <span itemprop="name">女性ファッション雑誌</span>
-                        </a>
-                        <meta itemprop="position" content="2">
-                    </li>
-                {{/match}}
-                {{#match slug "=" "with-kodansha"}}
-                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                        <a href="/women-magazine/" itemprop="item">
-                            <span itemprop="name">女性ファッション雑誌</span>
-                        </a>
-                        <meta itemprop="position" content="2">
-                    </li>
-                {{/match}}
-                {{#match slug "=" "nakayosi-kodansha"}}
-                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                        <a href="/women-manga/" itemprop="item">
-                            <span itemprop="name">少女・女性マンガの付録</span>
-                        </a>
-                        <meta itemprop="position" content="2">
-                    </li>
-                {{/match}}
-                {{#match slug "=" "ciao-shogakukan-2"}}
-                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                        <a href="/women-manga/" itemprop="item">
-                            <span itemprop="name">少女・女性マンガの付録</span>
-                        </a>
-                        <meta itemprop="position" content="2">
-                    </li>
-                {{/match}}
-                {{#match slug "=" "ciao-shogakukan"}}
-                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                        <a href="/women-manga/" itemprop="item">
-                            <span itemprop="name">少女・女性マンガの付録</span>
-                        </a>
-                        <meta itemprop="position" content="2">
-                    </li>
-                {{/match}}
-                {{#match slug "=" "shocomi-shogakukan"}}
-                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                        <a href="/women-manga/" itemprop="item">
-                            <span itemprop="name">少女・女性マンガの付録</span>
-                        </a>
-                        <meta itemprop="position" content="2">
-                    </li>
-                {{/match}}
-                {{!-- Parent category: women-magazine (no additional breadcrumb needed) --}}
-                {{#match slug "=" "women-manga"}}
-                    {{!-- Parent category: women-manga (no additional breadcrumb needed) --}}
-                {{/match}}
-            {{/if}}
+            {{#tag}}
+                {{!-- Parent tag pages - no additional breadcrumb needed --}}
+            {{else}}
+                {{!-- Child tag pages - get tag from first post --}}
+                {{#foreach posts limit="1"}}
+                    {{#foreach tags limit="1"}}
+                        {{#match slug "=" "androsy-takarajimasha"}}
+                            <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                                <a href="/women-magazine/" itemprop="item">
+                                    <span itemprop="name">女性ファッション雑誌</span>
+                                </a>
+                                <meta itemprop="position" content="2">
+                            </li>
+                        {{/match}}
+                        {{#match slug "=" "inred-takarajimasha"}}
+                            <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                                <a href="/women-magazine/" itemprop="item">
+                                    <span itemprop="name">女性ファッション雑誌</span>
+                                </a>
+                                <meta itemprop="position" content="2">
+                            </li>
+                        {{/match}}
+                        {{#match slug "=" "with-kodansha"}}
+                            <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                                <a href="/women-magazine/" itemprop="item">
+                                    <span itemprop="name">女性ファッション雑誌</span>
+                                </a>
+                                <meta itemprop="position" content="2">
+                            </li>
+                        {{/match}}
+                        {{#match slug "=" "nakayosi-kodansha"}}
+                            <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                                <a href="/women-manga/" itemprop="item">
+                                    <span itemprop="name">少女・女性マンガの付録</span>
+                                </a>
+                                <meta itemprop="position" content="2">
+                            </li>
+                        {{/match}}
+                        {{#match slug "=" "ciao-shogakukan-2"}}
+                            <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                                <a href="/women-manga/" itemprop="item">
+                                    <span itemprop="name">少女・女性マンガの付録</span>
+                                </a>
+                                <meta itemprop="position" content="2">
+                            </li>
+                        {{/match}}
+                        {{#match slug "=" "ciao-shogakukan"}}
+                            <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                                <a href="/women-manga/" itemprop="item">
+                                    <span itemprop="name">少女・女性マンガの付録</span>
+                                </a>
+                                <meta itemprop="position" content="2">
+                            </li>
+                        {{/match}}
+                        {{#match slug "=" "shocomi-shogakukan"}}
+                            <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                                <a href="/women-manga/" itemprop="item">
+                                    <span itemprop="name">少女・女性マンガの付録</span>
+                                </a>
+                                <meta itemprop="position" content="2">
+                            </li>
+                        {{/match}}
+                    {{/foreach}}
+                {{/foreach}}
+            {{/tag}}
         {{/if}}
     </ul>
 </nav>
