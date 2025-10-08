@@ -1,0 +1,64 @@
+.pagination {
+    text-align: left;
+    margin: 1.5em 0;
+}
+
+.dfont {
+    font-family: "Quicksand", "Avenir", "Arial", YuGothic, "Yu Gothic", "Hiragino Sans", "ヒラギノ角ゴシック", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+}
+
+.pagination ul {
+    display: block;
+    clear: both;
+    padding: 1.5em 0 0;
+    border-radius: 3px;
+    text-align: center;
+}
+
+.pagination li {
+    display: inline-block;
+    overflow: hidden;
+    margin: 3.5px;
+    padding: 0;
+    text-align: center;
+}
+
+.pagination a,
+.pagination span {
+    display: inline-block;
+    width: 46px;
+    height: 46px;
+    margin: 0;
+    border-radius: 50%;
+    background: #fff;
+    font-size: 17.5px;
+    font-weight: bold;
+    text-decoration: none;
+    line-height: 46px;
+    color: #000000;
+    transition: all 0.3s ease;
+}
+
+.pagination a:hover {
+    background-color: #f5f5f5;
+}
+
+.pagination .page-numbers.current,
+.pagination .current {
+    background-color: #df744a !important;
+    color: #fff;
+    cursor: default;
+}
+
+.pagination .page-numbers.dots {
+    width: auto;
+    padding: 0;
+    background: transparent;
+    cursor: default;
+}
+
+.pagination .prev.page-numbers,
+.pagination .next.page-numbers {
+    width: 15px;
+    background: transparent;
+}

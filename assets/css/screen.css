@@ -64,6 +64,7 @@ production stylesheet in assets/built/screen.css
 @import "./components/popular-posts.css";
 @import "./components/ad-banner.css";
 @import "./components/category.css";
+@import "./components/pagination.css";
 
 /* Global utility styles
 /* ---------------------------------------------------------- */
