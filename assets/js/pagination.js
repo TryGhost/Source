@@ -1,10 +1,18 @@
-function pagination(isInfinite = true, done, isMasonry = false) {
-    const feedElement = document.querySelector('.gh-feed');
-    if (!feedElement) return;
+/**
+ * pagination
+ * @param {Boolean} isInfinite  - trueなら無限スクロール、falseならロードボタンを使う
+ * @param {Function} done       - 読み込み完了後のコールバック関数(オプション)
+ * @param {Boolean} isMasonry   - Masonryレイアウト用のフラグ(オプション)
+ */
+function pagination(isInfinite = false, done, isMasonry = false) {
+    const feedElement = document.querySelector('.arcat-post-list');
+    if (!feedElement) {
+        return;
+    }
 
     let loading = false;
-    const target = document.querySelector('.gh-footer');
-    const buttonElement = document.querySelector('.gh-loadmore');
+    const target = document.querySelector('.pagination');
+    const buttonElement = document.querySelector('.arcat-loadmore');
 
     if (!document.querySelector('link[rel=next]') && buttonElement) {
         buttonElement.remove();
@@ -12,20 +20,21 @@ function pagination(isInfinite = true, done, isMasonry = false) {
 
     const loadNextPage = async function () {
         const nextElement = document.querySelector('link[rel=next]');
-        if (!nextElement) return;
+        if (!nextElement) {
+            return;
+        }
 
         try {
             const res = await fetch(nextElement.href);
             const html = await res.text();
             const parser = new DOMParser();
             const doc = parser.parseFromString(html, 'text/html');
-
-            const postElements = doc.querySelectorAll('.gh-feed:not(.gh-featured):not(.gh-related) > *');
+            const postElements = doc.querySelectorAll('.arcat-post-list > *');
             const fragment = document.createDocumentFragment();
             const elems = [];
 
             postElements.forEach(function (post) {
-                var clonedItem = document.importNode(post, true);
+                const clonedItem = document.importNode(post, true);
 
                 if (isMasonry) {
                     clonedItem.style.visibility = 'hidden';
@@ -51,26 +60,37 @@ function pagination(isInfinite = true, done, isMasonry = false) {
                 }
             }
         } catch (e) {
-            nextElement.remove();
+            const nextElement = document.querySelector('link[rel=next]');
+            if (nextElement) {
+                nextElement.remove();
+            }
             throw e;
         }
     };
 
     const loadNextWithCheck = async function () {
-        if (target.getBoundingClientRect().top <= window.innerHeight && document.querySelector('link[rel=next]')) {
+        if (
+            target &&
+            target.getBoundingClientRect().top <= window.innerHeight &&
+            document.querySelector('link[rel=next]')
+        ) {
             await loadNextPage();
         }
-    }
+    };
 
-    const callback = async function (entries) {
-        if (loading) return;
-
+    const callback = async function (entries, observer) {
+        if (loading) {
+            return;
+        }
         loading = true;
 
         if (entries[0].isIntersecting) {
-            // keep loading next page until target is out of the viewport or we've loaded the last page
             if (!isMasonry) {
-                while (target.getBoundingClientRect().top <= window.innerHeight && document.querySelector('link[rel=next]')) {
+                while (
+                    target &&
+                    target.getBoundingClientRect().top <= window.innerHeight &&
+                    document.querySelector('link[rel=next]')
+                ) {
                     await loadNextPage();
                 }
             } else {
@@ -88,8 +108,10 @@ function pagination(isInfinite = true, done, isMasonry = false) {
     const observer = new IntersectionObserver(callback);
 
     if (isInfinite) {
-        observer.observe(target);
-    } else {
+        if (target) {
+            observer.observe(target);
+        }
+    } else if (buttonElement) {
         buttonElement.addEventListener('click', loadNextPage);
     }
 }

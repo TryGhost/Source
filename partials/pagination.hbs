@@ -1,25 +1,99 @@
 {{#if pagination}}
-<nav class="pagination dfont">
-    <ul class="page-numbers">
+<nav
+    class="pagination dfont"
+    role="navigation"
+    data-current-page="{{pagination.page}}"
+    data-total-pages="{{pagination.pages}}"
+    data-first-url="{{page_url 1}}"
+    data-second-url="{{page_url 2}}"
+>
+    <div class="pagination-nav">
         {{#if pagination.prev}}
-        <li><a class="prev page-numbers" href="{{pagination.prev}}"><i class="fa fa-chevron-left"></i></a></li>
+            <a class="newer-posts" href="{{pagination.prev}}" aria-label="前のページ">
+                <span aria-hidden="true">&lt;</span>
+            </a>
+        {{else}}
+            <span class="newer-posts-placeholder" aria-hidden="true">&lt;</span>
         {{/if}}
 
-        {{#foreach pagination.pages}}
-            {{#if page}}
-                <li><a class="page-numbers" href="{{url}}">{{page}}</a></li>
-            {{else}}
-                {{#if current}}
-                    <li><span aria-current="page" class="page-numbers current">{{current}}</span></li>
-                {{else}}
-                    <li><span class="page-numbers dots">…</span></li>
-                {{/if}}
-            {{/if}}
-        {{/foreach}}
+        <div class="pagination-list"></div>
 
         {{#if pagination.next}}
-        <li><a class="next page-numbers" href="{{pagination.next}}"><i class="fa fa-chevron-right"></i></a></li>
+            <a class="older-posts" href="{{pagination.next}}" aria-label="次のページ">
+                <span aria-hidden="true">&gt;</span>
+            </a>
+        {{else}}
+            <span class="older-posts-placeholder" aria-hidden="true">&gt;</span>
         {{/if}}
-    </ul>
+    </div>
 </nav>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const scriptEl = document.currentScript;
+    const paginationNav = scriptEl && scriptEl.previousElementSibling && scriptEl.previousElementSibling.matches('.pagination[data-current-page]')
+        ? scriptEl.previousElementSibling
+        : document.querySelector('.pagination[data-current-page]');
+
+    if (!paginationNav) {
+        return;
+    }
+
+    const currentPage = parseInt(paginationNav.getAttribute('data-current-page'), 10) || 1;
+    const totalPages = parseInt(paginationNav.getAttribute('data-total-pages'), 10) || 1;
+    const firstUrl = paginationNav.getAttribute('data-first-url') || '/';
+    const secondUrl = paginationNav.getAttribute('data-second-url') || '';
+    const paginationList = paginationNav.querySelector('.pagination-list');
+
+    if (!paginationList) {
+        return;
+    }
+
+    const PAGE_WINDOW = 2;
+    let start = currentPage - PAGE_WINDOW;
+    let end = currentPage + PAGE_WINDOW;
+
+    if (start < 1) {
+        const shift = 1 - start;
+        start = 1;
+        end = Math.min(totalPages, end + shift);
+    }
+
+    if (end > totalPages) {
+        const shift = end - totalPages;
+        end = totalPages;
+        start = Math.max(1, start - shift);
+    }
+
+    const buildPageUrl = function (pageNum) {
+        if (pageNum === 1) {
+            return firstUrl;
+        }
+
+        if (secondUrl) {
+            return secondUrl.replace(/2(\/)?$/, `${pageNum}$1`);
+        }
+
+        const normalized = firstUrl.endsWith('/') ? firstUrl : `${firstUrl}/`;
+        return `${normalized}page/${pageNum}/`;
+    };
+
+    for (let i = start; i <= end; i++) {
+        const link = document.createElement('a');
+        link.classList.add('arcat-pegenation-jump');
+        link.textContent = String(i);
+        link.href = buildPageUrl(i);
+
+        if (i === currentPage) {
+            link.classList.add('current-page');
+            link.setAttribute('aria-current', 'page');
+            link.addEventListener('click', function (evt) {
+                evt.preventDefault();
+            });
+        }
+
+        paginationList.appendChild(link);
+    }
+});
+</script>
 {{/if}}

@@ -9,12 +9,12 @@
     <main class="gh-main-content">
         {{> "components/content-menu" active="calendar"}}
 
-        <div class="post-grid">
-            {{#get "posts" include="authors,tags" limit="24"}}
-                {{#foreach posts}}
-                    {{> "post-card"}}
-                {{/foreach}}
-            {{/get}}
+        <div class="post-grid arcat-post-list">
+            {{#foreach posts}}
+                {{> "post-card"}}
+            {{else}}
+                <p class="no-posts">まだ記事がありません。</p>
+            {{/foreach}}
         </div>
 
         {{> "pagination"}}

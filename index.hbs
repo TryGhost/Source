@@ -2,11 +2,13 @@
 {{!-- The tag above means: insert everything in this file into the body of the default.hbs template --}}
 
 <main class="gh-main">
-    <div class="gh-feed">
-        {{#get "posts" include="authors" limit="24"}}
-            {{#foreach posts}}
-                {{> "post-card"}}
-            {{/foreach}}
-        {{/get}}
+    <div class="gh-feed arcat-post-list">
+        {{#foreach posts}}
+            {{> "post-card"}}
+        {{else}}
+            <p class="no-posts">まだ記事がありません。</p>
+        {{/foreach}}
     </div>
+
+    {{> "pagination"}}
 </main>

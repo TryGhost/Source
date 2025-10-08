@@ -42,15 +42,13 @@
             {{/get}}
         {{/tag}}
 
-        {{#tag}}
-            {{#get "posts" filter="tag:{{slug}}" limit="all" include="tags,authors"}}
-                <div class="post-grid">
-                    {{#foreach posts}}
-                        {{> "post-card"}}
-                    {{/foreach}}
-                </div>
-            {{/get}}
-        {{/tag}}
+        <div class="post-grid arcat-post-list">
+            {{#foreach posts}}
+                {{> "post-card"}}
+            {{else}}
+                <p class="no-posts">まだ記事がありません。</p>
+            {{/foreach}}
+        </div>
 
         {{> "pagination"}}
     </main>
