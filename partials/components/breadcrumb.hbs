@@ -112,15 +112,7 @@
                     </li>
                 {{/match}}
 
-                {{!-- Parent category: women-magazine --}}
-                {{#match slug "=" "women-magazine"}}
-                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                        <a href="{{url}}" itemprop="item">
-                            <span itemprop="name">女性ファッション雑誌</span>
-                        </a>
-                        <meta itemprop="position" content="2">
-                    </li>
-                {{/match}}
+                {{!-- Parent category: women-magazine (no additional breadcrumb needed) --}}
             {{/foreach}}
         {{else}}
             {{!-- For tag/category pages (when called from category.hbs) --}}
@@ -181,13 +173,9 @@
                         <meta itemprop="position" content="2">
                     </li>
                 {{/match}}
-                {{#match slug "=" "women-magazine"}}
-                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                        <a href="/women-magazine/" itemprop="item">
-                            <span itemprop="name">女性ファッション雑誌</span>
-                        </a>
-                        <meta itemprop="position" content="2">
-                    </li>
+                {{!-- Parent category: women-magazine (no additional breadcrumb needed) --}}
+                {{#match slug "=" "women-manga"}}
+                    {{!-- Parent category: women-manga (no additional breadcrumb needed) --}}
                 {{/match}}
             {{/if}}
         {{/if}}

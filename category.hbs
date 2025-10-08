@@ -2,50 +2,80 @@
 
 {{> "components/search-form"}}
 
-{{!-- Get tag info from first post for header --}}
-{{#foreach posts limit="1"}}
-    {{#foreach tags limit="1"}}
-        <div id="cat_header">
-            {{> "components/breadcrumb"}}
+{{!-- ヘッダーセクション: 親タグページまたは子タグページ --}}
+<div id="cat_header">
+    {{> "components/breadcrumb"}}
 
-            {{!-- Get page data by slug pattern --}}
-            {{#get "pages" filter="slug:women-magazine-{{slug}},slug:women-manga-{{slug}}" limit="1"}}
-                {{#foreach pages}}
-                    {{#if feature_image}}
-                    <div class="cat-headerWrap" style="background: url('{{feature_image}}');">
-                        <div class="bkRGBA">
-                            <img src="{{@site.logo}}" alt="{{@site.title}}">
-                        </div>
+    {{#tag}}
+        {{!-- 親タグページ（data: tag.slug が設定されている） --}}
+        {{#get "pages" filter="slug:{{slug}}" limit="1"}}
+            {{#foreach pages}}
+                {{#if feature_image}}
+                <div class="cat-headerWrap" style="background: url('{{feature_image}}');">
+                    <div class="bkRGBA">
+                        <img src="{{@site.logo}}" alt="{{@site.title}}">
                     </div>
-                    {{/if}}
+                </div>
+                {{/if}}
 
-                    <h1>{{title}}について</h1>
-                    {{#if html}}
-                    <div class="taxonomy-description entry-content">
-                        {{content}}
-                    </div>
-                    {{/if}}
-                {{/foreach}}
-            {{/get}}
-        </div>
-    {{/foreach}}
-{{/foreach}}
-
-<div class="gh-content-wrapper">
-    <main class="gh-main-content">
-        {{!-- Get tag info from first post for title --}}
+                <h1>{{title}}</h1>
+                {{#if html}}
+                <div class="taxonomy-description entry-content">
+                    {{content}}
+                </div>
+                {{/if}}
+            {{/foreach}}
+        {{/get}}
+    {{else}}
+        {{!-- 子タグページ（最初の投稿からタグ情報を取得） --}}
         {{#foreach posts limit="1"}}
             {{#foreach tags limit="1"}}
                 {{#get "pages" filter="slug:women-magazine-{{slug}},slug:women-manga-{{slug}}" limit="1"}}
                     {{#foreach pages}}
-                        <h2>{{title}}（発売日順）</h2>
-                    {{else}}
-                        <h2>{{name}}の記事一覧</h2>
+                        {{#if feature_image}}
+                        <div class="cat-headerWrap" style="background: url('{{feature_image}}');">
+                            <div class="bkRGBA">
+                                <img src="{{@site.logo}}" alt="{{@site.title}}">
+                            </div>
+                        </div>
+                        {{/if}}
+
+                        <h1>{{title}}</h1>
+                        {{#if html}}
+                        <div class="taxonomy-description entry-content">
+                            {{content}}
+                        </div>
+                        {{/if}}
                     {{/foreach}}
                 {{/get}}
             {{/foreach}}
         {{/foreach}}
+    {{/tag}}
+</div>
 
+<div class="gh-content-wrapper">
+    <main class="gh-main-content">
+        {{!-- タイトルセクション: 親タグページまたは子タグページ --}}
+        {{#tag}}
+            {{!-- 親タグページ --}}
+            <h2>{{name}}（発売日順）</h2>
+        {{else}}
+            {{!-- 子タグページ --}}
+            {{#foreach posts limit="1"}}
+                {{#foreach tags limit="1"}}
+                    {{#get "pages" filter="slug:women-magazine-{{slug}},slug:women-manga-{{slug}}" limit="1" as |page_result|}}
+                        {{#if page_result}}
+                            {{#foreach page_result}}
+                                <h2>{{title}}（発売日順）</h2>
+                            {{/foreach}}
+
+                        {{/if}}
+                    {{/get}}
+                {{/foreach}}
+            {{/foreach}}
+        {{/tag}}
+
+        {{!-- 投稿セクション: routes.yamlのfilterから直接postsを利用 --}}
         <div class="post-grid arcat-post-list">
             {{#foreach posts}}
                 {{> "post-card"}}
