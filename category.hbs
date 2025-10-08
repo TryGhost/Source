@@ -2,45 +2,49 @@
 
 {{> "components/search-form"}}
 
-<div id="cat_header">
-    {{#tag}}
-        {{> "components/breadcrumb"}}
-    {{/tag}}
+{{!-- Get tag info from first post for header --}}
+{{#foreach posts limit="1"}}
+    {{#foreach tags limit="1"}}
+        <div id="cat_header">
+            {{> "components/breadcrumb"}}
 
-    {{#tag}}
-        {{!-- Get page data by slug pattern --}}
-        {{#get "pages" filter="slug:women-magazine-{{slug}},slug:women-manga-{{slug}}" limit="1"}}
-            {{#foreach pages}}
-                {{#if feature_image}}
-                <div class="cat-headerWrap" style="background: url('{{feature_image}}');">
-                    <div class="bkRGBA">
-                        <img src="{{@site.logo}}" alt="{{@site.title}}">
+            {{!-- Get page data by slug pattern --}}
+            {{#get "pages" filter="slug:women-magazine-{{slug}},slug:women-manga-{{slug}}" limit="1"}}
+                {{#foreach pages}}
+                    {{#if feature_image}}
+                    <div class="cat-headerWrap" style="background: url('{{feature_image}}');">
+                        <div class="bkRGBA">
+                            <img src="{{@site.logo}}" alt="{{@site.title}}">
+                        </div>
                     </div>
-                </div>
-                {{/if}}
+                    {{/if}}
 
-                <h1>{{title}}について</h1>
-                {{#if html}}
-                <div class="taxonomy-description entry-content">
-                    {{content}}
-                </div>
-                {{/if}}
-            {{/foreach}}
-        {{/get}}
-    {{/tag}}
-</div>
+                    <h1>{{title}}について</h1>
+                    {{#if html}}
+                    <div class="taxonomy-description entry-content">
+                        {{content}}
+                    </div>
+                    {{/if}}
+                {{/foreach}}
+            {{/get}}
+        </div>
+    {{/foreach}}
+{{/foreach}}
 
 <div class="gh-content-wrapper">
     <main class="gh-main-content">
-        {{#tag}}
-            {{#get "pages" filter="slug:women-magazine-{{slug}},slug:women-manga-{{slug}}" limit="1"}}
-                {{#foreach pages}}
-                    <h2>{{title}}（発売日順）</h2>
-                {{else}}
-                    <h2>{{name}}の記事一覧</h2>
-                {{/foreach}}
-            {{/get}}
-        {{/tag}}
+        {{!-- Get tag info from first post for title --}}
+        {{#foreach posts limit="1"}}
+            {{#foreach tags limit="1"}}
+                {{#get "pages" filter="slug:women-magazine-{{slug}},slug:women-manga-{{slug}}" limit="1"}}
+                    {{#foreach pages}}
+                        <h2>{{title}}（発売日順）</h2>
+                    {{else}}
+                        <h2>{{name}}の記事一覧</h2>
+                    {{/foreach}}
+                {{/get}}
+            {{/foreach}}
+        {{/foreach}}
 
         <div class="post-grid arcat-post-list">
             {{#foreach posts}}
