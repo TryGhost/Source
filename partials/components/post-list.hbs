@@ -1,0 +1,16 @@
+{{!-- Post list component for archive pages --}}
+<section class="gh-posts gh-inner">
+    {{#if posts}}
+        <div class="post-grid">
+            {{#foreach posts}}
+                {{> "post-card"}}
+            {{/foreach}}
+        </div>
+
+        {{pagination}}
+    {{else}}
+        <div class="gh-no-posts">
+            <p>No posts found</p>
+        </div>
+    {{/if}}
+</section>
