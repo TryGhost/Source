@@ -5,14 +5,14 @@
  * @param {Boolean} isMasonry   - Masonryレイアウト用のフラグ(オプション)
  */
 function pagination(isInfinite = false, done, isMasonry = false) {
-    const feedElement = document.querySelector('.arcat-post-list');
+    const feedElement = document.querySelector('.category-post-list, .home-post-list');
     if (!feedElement) {
         return;
     }
 
     let loading = false;
     const target = document.querySelector('.pagination');
-    const buttonElement = document.querySelector('.arcat-loadmore');
+    const buttonElement = document.querySelector('.category-loadmore');
 
     if (!document.querySelector('link[rel=next]') && buttonElement) {
         buttonElement.remove();
@@ -29,7 +29,7 @@ function pagination(isInfinite = false, done, isMasonry = false) {
             const html = await res.text();
             const parser = new DOMParser();
             const doc = parser.parseFromString(html, 'text/html');
-            const postElements = doc.querySelectorAll('.arcat-post-list > *');
+            const postElements = doc.querySelectorAll('.category-post-list > *, .home-post-list > *');
             const fragment = document.createDocumentFragment();
             const elems = [];
 
