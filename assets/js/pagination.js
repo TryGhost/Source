@@ -115,3 +115,144 @@ function pagination(isInfinite = false, done, isMasonry = false) {
         buttonElement.addEventListener('click', loadNextPage);
     }
 }
+
+/**
+ * renderPaginationNumbers
+ * ページネーション番号を動的に生成する
+ */
+function renderPaginationNumbers() {
+    const paginationNav = document.querySelector('.pagination[data-current-page]');
+
+    if (!paginationNav) {
+        return;
+    }
+
+    const currentPage = parseInt(paginationNav.getAttribute('data-current-page'), 10) || 1;
+    const totalPages = parseInt(paginationNav.getAttribute('data-total-pages'), 10) || 1;
+    const firstUrl = paginationNav.getAttribute('data-first-url') || '/';
+    const secondUrl = paginationNav.getAttribute('data-second-url') || '';
+    const pageNumbersList = paginationNav.querySelector('.page-numbers');
+
+    if (!pageNumbersList) {
+        return;
+    }
+
+    const buildPageUrl = function (pageNum) {
+        if (pageNum === 1) {
+            return firstUrl;
+        }
+
+        if (secondUrl) {
+            return secondUrl.replace(/2(\/)?$/, `${pageNum}$1`);
+        }
+
+        const normalized = firstUrl.endsWith('/') ? firstUrl : `${firstUrl}/`;
+        return `${normalized}page/${pageNum}/`;
+    };
+
+    // Previous button
+    if (currentPage > 1) {
+        const prevLi = document.createElement('li');
+        const prevLink = document.createElement('a');
+        prevLink.classList.add('prev', 'page-numbers');
+        prevLink.href = buildPageUrl(currentPage - 1);
+        prevLink.setAttribute('aria-label', '前のページ');
+        prevLink.innerHTML = '<i class="fa fa-chevron-left"></i>';
+        prevLi.appendChild(prevLink);
+        pageNumbersList.appendChild(prevLi);
+    }
+
+    // First page
+    const firstLi = document.createElement('li');
+    if (currentPage === 1) {
+        const firstSpan = document.createElement('span');
+        firstSpan.classList.add('page-numbers', 'current');
+        firstSpan.setAttribute('aria-current', 'page');
+        firstSpan.textContent = '1';
+        firstLi.appendChild(firstSpan);
+    } else {
+        const firstLink = document.createElement('a');
+        firstLink.classList.add('page-numbers');
+        firstLink.href = buildPageUrl(1);
+        firstLink.textContent = '1';
+        firstLi.appendChild(firstLink);
+    }
+    pageNumbersList.appendChild(firstLi);
+
+    // Dots before current range
+    const PAGE_WINDOW = 1;
+    const start = Math.max(2, currentPage - PAGE_WINDOW);
+    const end = Math.min(totalPages - 1, currentPage + PAGE_WINDOW);
+
+    if (start > 2) {
+        const dotsLi = document.createElement('li');
+        const dotsSpan = document.createElement('span');
+        dotsSpan.classList.add('page-numbers', 'dots');
+        dotsSpan.textContent = '…';
+        dotsLi.appendChild(dotsSpan);
+        pageNumbersList.appendChild(dotsLi);
+    }
+
+    // Page numbers around current page
+    for (let i = start; i <= end; i++) {
+        const li = document.createElement('li');
+        if (i === currentPage) {
+            const span = document.createElement('span');
+            span.classList.add('page-numbers', 'current');
+            span.setAttribute('aria-current', 'page');
+            span.textContent = String(i);
+            li.appendChild(span);
+        } else {
+            const link = document.createElement('a');
+            link.classList.add('page-numbers');
+            link.href = buildPageUrl(i);
+            link.textContent = String(i);
+            li.appendChild(link);
+        }
+        pageNumbersList.appendChild(li);
+    }
+
+    // Dots after current range
+    if (end < totalPages - 1) {
+        const dotsLi = document.createElement('li');
+        const dotsSpan = document.createElement('span');
+        dotsSpan.classList.add('page-numbers', 'dots');
+        dotsSpan.textContent = '…';
+        dotsLi.appendChild(dotsSpan);
+        pageNumbersList.appendChild(dotsLi);
+    }
+
+    // Last page
+    if (totalPages > 1) {
+        const lastLi = document.createElement('li');
+        if (currentPage === totalPages) {
+            const lastSpan = document.createElement('span');
+            lastSpan.classList.add('page-numbers', 'current');
+            lastSpan.setAttribute('aria-current', 'page');
+            lastSpan.textContent = String(totalPages);
+            lastLi.appendChild(lastSpan);
+        } else {
+            const lastLink = document.createElement('a');
+            lastLink.classList.add('page-numbers');
+            lastLink.href = buildPageUrl(totalPages);
+            lastLink.textContent = String(totalPages);
+            lastLi.appendChild(lastLink);
+        }
+        pageNumbersList.appendChild(lastLi);
+    }
+
+    // Next button
+    if (currentPage < totalPages) {
+        const nextLi = document.createElement('li');
+        const nextLink = document.createElement('a');
+        nextLink.classList.add('next', 'page-numbers');
+        nextLink.href = buildPageUrl(currentPage + 1);
+        nextLink.setAttribute('aria-label', '次のページ');
+        nextLink.innerHTML = '<i class="fa fa-chevron-right"></i>';
+        nextLi.appendChild(nextLink);
+        pageNumbersList.appendChild(nextLi);
+    }
+}
+
+// DOMContentLoadedで自動実行
+document.addEventListener('DOMContentLoaded', renderPaginationNumbers);
