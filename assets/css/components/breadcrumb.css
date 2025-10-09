@@ -43,12 +43,8 @@
     color: #b7b7b7;
 }
 
-#breadcrumb li:last-child::after {
-    display: none;
-}
-
 #breadcrumb a {
-    color: rgb(79, 150, 246);
+    color: rgb(79, 150, 246) !important;
     text-decoration: none;
     font-weight: 400;
     transition: color 0.2s ease;
@@ -56,12 +52,29 @@
 
 #breadcrumb a:hover,
 #breadcrumb a:focus-visible {
-    color: rgb(79, 150, 246);
-    opacity: 0.8;
+    color: #999 !important;
+    opacity: 1;
+}
+
+#breadcrumb a:hover span,
+#breadcrumb a:focus-visible span {
+    color: #999 !important;
+}
+
+#breadcrumb li:last-child:hover span {
+    color: #999 !important;
 }
 
 #breadcrumb span {
     display: inline;
+}
+
+#breadcrumb li a span {
+    color: rgb(79, 150, 246) !important;
+}
+
+#breadcrumb li:first-child a span {
+    color: rgb(79, 150, 246) !important;
 }
 
 @media (max-width: 767px) {

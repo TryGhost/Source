@@ -4,6 +4,10 @@
     padding: 0;
 }
 
+.tag-template #breadcrumb li:first-child a span {
+    color: rgb(79, 150, 246) !important;
+}
+
 .tag-template #breadcrumb li:last-child span {
     color: #777 !important;
 }
