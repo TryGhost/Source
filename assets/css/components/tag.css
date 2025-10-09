@@ -1,0 +1,27 @@
+/* Tag page styles */
+
+.tag-template #cat_header {
+    padding: 0;
+}
+
+.tag-template #breadcrumb li:last-child span {
+    color: #777 !important;
+}
+
+.tag-template #breadcrumb li:last-child .fa-tag {
+    color: #777 !important;
+}
+
+#cat_header h2.tag-title {
+    font-size: 28px;
+    color: #000000;
+    padding: 10px 0;
+    margin: 10px 0;
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    #cat_header h2.tag-title {
+        font-size: 24px;
+    }
+}
