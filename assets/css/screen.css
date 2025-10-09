@@ -93,6 +93,7 @@ production stylesheet in assets/built/screen.css
     text-decoration: none;
     vertical-align: middle;
     transition: .3s ease-in-out;
+    font-size: 18px;
 }
 
 .red-bc {
