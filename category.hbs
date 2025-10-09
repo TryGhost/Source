@@ -10,20 +10,7 @@
         {{!-- 親タグページ（data: tag.slug が設定されている） --}}
         {{#get "pages" filter="slug:{{slug}}" limit="1"}}
             {{#foreach pages}}
-                {{#if feature_image}}
-                <div class="cat-headerWrap" style="background: url('{{feature_image}}');">
-                    <div class="bkRGBA">
-                        <img src="{{asset "images/site-logo-white.png"}}" alt="{{@site.title}}">
-                    </div>
-                </div>
-                {{/if}}
-
-                <h1>{{title}}</h1>
-                {{#if html}}
-                <div class="taxonomy-description entry-content">
-                    {{content}}
-                </div>
-                {{/if}}
+                {{> "category-header"}}
             {{/foreach}}
         {{/get}}
     {{else}}
@@ -32,20 +19,7 @@
             {{#foreach tags limit="1"}}
                 {{#get "pages" filter="slug:women-magazine-{{slug}},slug:women-manga-{{slug}}" limit="1"}}
                     {{#foreach pages}}
-                        {{#if feature_image}}
-                        <div class="cat-headerWrap" style="background: url('{{feature_image}}');">
-                            <div class="bkRGBA">
-                                <img src="{{asset "images/site-logo-white.png"}}" alt="{{@site.title}}">
-                            </div>
-                        </div>
-                        {{/if}}
-
-                        <h1>{{title}}</h1>
-                        {{#if html}}
-                        <div class="taxonomy-description entry-content">
-                            {{content}}
-                        </div>
-                        {{/if}}
+                        {{> "category-header"}}
                     {{/foreach}}
                 {{/get}}
             {{/foreach}}
@@ -68,7 +42,6 @@
                             {{#foreach page_result}}
                                 <h2>{{title}}（発売日順）</h2>
                             {{/foreach}}
-
                         {{/if}}
                     {{/get}}
                 {{/foreach}}
@@ -76,7 +49,7 @@
         {{/tag}}
 
         {{!-- 投稿セクション: routes.yamlのfilterから直接postsを利用 --}}
-        <div class="post-grid arcat-post-list">
+        <div class="post-grid category-post-list">
             {{#foreach posts}}
                 {{> "post-card"}}
             {{/foreach}}

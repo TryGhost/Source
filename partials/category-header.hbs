@@ -1,0 +1,15 @@
+{{!-- Category header display --}}
+{{#if feature_image}}
+<div class="cat-headerWrap" style="background: url('{{feature_image}}');">
+    <div class="bkRGBA">
+        <img src="{{asset "images/site-logo-white.png"}}" alt="{{@site.title}}">
+    </div>
+</div>
+{{/if}}
+
+<h1>{{title}}</h1>
+{{#if html}}
+<div class="taxonomy-description entry-content">
+    {{content}}
+</div>
+{{/if}}
