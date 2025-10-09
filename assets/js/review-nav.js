@@ -1,20 +1,20 @@
 /**
- * Review Navigation
- * Handles navigation between 発売予告 (before) and 開封レビュー (after) posts
+ * レビューナビゲーション
+ * 発売予告（hash-before）と開封レビュー（hash-after）の記事間のナビゲーションを処理
  */
 /* eslint-env browser */
 (function () {
     'use strict';
 
     /**
-     * Remove prefix from title (e.g., 【発売予告】 or 【開封レビュー】)
+     * タイトルから接頭辞を削除（例：【発売予告】や【開封レビュー】）
      */
     function removeTitlePrefix(title) {
         return title.replace(/^【[^】]+】\s*/, '');
     }
 
     /**
-     * Initialize review navigation
+     * レビューナビゲーションを初期化
      */
     function initReviewNav() {
         const reviewNavElement = document.querySelector('.review-nav');
@@ -32,19 +32,19 @@
         const hasBefore = postTags.indexOf('hash-before') !== -1;
         const hasAfter = postTags.indexOf('hash-after') !== -1;
 
-        // Hide if post doesn't have either tag
+        // どちらのタグも持っていない場合は非表示
         if (!hasBefore && !hasAfter) {
             reviewNavElement.style.display = 'none';
             return;
         }
 
-        // Fetch all posts using RSS feed (simpler than Content API)
+        // RSSフィードを使って全投稿を取得（Content APIより簡単）
         fetch('/rss/')
             .then(function (response) {
                 return response.text();
             })
             .then(function (rssText) {
-                // Parse RSS XML
+                // RSS XMLをパース
                 const parser = new DOMParser();
                 const xmlDoc = parser.parseFromString(rssText, 'text/xml');
                 const items = xmlDoc.querySelectorAll('item');
@@ -53,7 +53,7 @@
                 items.forEach(function (item) {
                     const title = item.querySelector('title').textContent;
                     const link = item.querySelector('link').textContent;
-                    // Extract slug from link
+                    // リンクからスラッグを抽出
                     const slug = link.replace(window.location.origin + '/', '').replace(/\/$/, '');
 
                     allPosts.push({
@@ -63,19 +63,19 @@
                     });
                 });
 
-                processReviewNav(allPosts, hasBefore, hasAfter, postTitle, postSlug, reviewNavElement);
+                processReviewNav(allPosts);
             })
             .catch(function () {
-                // Failed to fetch posts, navigation will not be rendered
+                // 投稿の取得に失敗した場合、ナビゲーションは表示されない
             });
 
-        function processReviewNav(allPosts, hasBefore, hasAfter, postTitle, postSlug, reviewNavElement) {
+        function processReviewNav(allPosts) {
             const baseTitle = removeTitlePrefix(postTitle);
 
-            // Filter posts that might be related (same base title, different slug)
+            // 関連する可能性のある投稿をフィルタリング（同じベースタイトル、異なるスラッグ）
             const candidatePosts = allPosts.filter(function (post) {
                 if (post.slug === postSlug) {
-                    return false; // Skip current post
+                    return false; // 現在の投稿をスキップ
                 }
                 const postBaseTitle = removeTitlePrefix(post.title);
                 return postBaseTitle === baseTitle;
@@ -83,11 +83,11 @@
 
             let html = '';
 
-            // If there's a post with the same base title but different slug, it's the related post
+            // 同じベースタイトルで異なるスラッグの投稿があれば、それが関連投稿
             const relatedPost = candidatePosts.length > 0 ? candidatePosts[0] : null;
 
             if (hasBefore) {
-                // Current post is 発売予告
+                // 現在の投稿は発売予告
                 html += '<div class="review-nav-tab active">予告</div>';
 
                 if (relatedPost) {
@@ -98,7 +98,7 @@
                     html += '<div class="review-nav-tab review-nav-none">&nbsp;</div>';
                 }
             } else if (hasAfter) {
-                // Current post is 開封レビュー
+                // 現在の投稿は開封レビュー
                 if (relatedPost) {
                     html += '<div class="review-nav-tab none-active">' +
                         '<a href="' + relatedPost.url + '">予告</a>' +
@@ -114,7 +114,7 @@
         }
     }
 
-    // Wait for DOM to be ready
+    // DOMの準備ができるまで待機
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', initReviewNav);
     } else {

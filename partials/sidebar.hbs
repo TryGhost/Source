@@ -1,4 +1,4 @@
-{{!-- Sidebar Component --}}
+{{!-- サイドバーコンポーネント --}}
 <div id="sidebar1" class="sidebar m-all t-1of3 d-2of7 last-col cf" role="complementary">
     <aside>
         <div class="insidesp">
@@ -7,11 +7,11 @@
                 {{> "widgets/magazines" id="categories-dropdown-7"}}
                 {{> "widgets/popular-posts"}}
 
-                {{!-- Widget: Advertisement --}}
+                {{!-- ウィジェット: 広告 --}}
                 <div id="ad-widget" class="widget widget_block">
                     <div class="wp-widget-group__inner-blocks">
                         <div id="ad-container" class="ad-content">
-                            {{!-- Ad code placeholder (300x600) --}}
+                            {{!-- 広告コードプレースホルダー (300x600) --}}
                             <div class="ad-placeholder ad-placeholder-300x600">
                                 <div class="ad-placeholder-content">
                                     <p>広告スペース</p>
@@ -24,7 +24,7 @@
 
                 {{> "widgets/subscription-banner"}}
 
-                {{!-- Widget: Calendar --}}
+                {{!-- ウィジェット: カレンダー --}}
                 <div id="calendar-widget" class="widget widget_block">
                     <h4 class="widgettitle dfont">発売カレンダー</h4>
                     <div class="wp-widget-group__inner-blocks">
@@ -34,11 +34,11 @@
                     </div>
                 </div>
 
-                {{!-- Widget: Square Ad (200x200) --}}
+                {{!-- ウィジェット: 正方形広告 (200x200) --}}
                 <div id="square-ad-widget" class="widget widget_block">
                     <div class="wp-widget-group__inner-blocks">
                         <div id="square-ad-container" class="ad-content">
-                            {{!-- Ad code placeholder (200x200) --}}
+                            {{!-- 広告コードプレースホルダー (200x200) --}}
                             <div class="ad-placeholder ad-placeholder-200x200">
                                 <div class="ad-placeholder-content">
                                     <p>広告スペース</p>
@@ -50,18 +50,18 @@
                 </div>
             </div>
 
-            {{!-- Fixed Sidebar Area --}}
+            {{!-- 固定サイドバーエリア --}}
             <div id="fixed_sidebar" class="">
-                {{!-- Additional fixed widgets can be added here --}}
+                {{!-- 追加の固定ウィジェットをここに追加できます --}}
             </div>
         </div>
     </aside>
 
-    {{!-- Bottom Ad (300x250) - Outside Sidebar --}}
+    {{!-- 下部広告 (300x250) - サイドバー外 --}}
     <div id="bottom-ad-widget" class="widget widget_block">
         <div class="wp-widget-group__inner-blocks">
             <div id="bottom-ad-container" class="ad-content">
-                {{!-- Ad code placeholder (300x250) --}}
+                {{!-- 広告コードプレースホルダー (300x250) --}}
                 <div class="ad-placeholder ad-placeholder-300x250">
                     <div class="ad-placeholder-content">
                         <p>広告スペース</p>
@@ -73,11 +73,11 @@
     </div>
 </div>
 
-{{!-- Calendar Script --}}
+{{!-- カレンダースクリプト --}}
 <script>
-// Datepicker Japanese locale - Vanilla JavaScript implementation
+// Datepicker 日本語ロケール - Vanilla JavaScript 実装
 (function() {
-    // jQuery UI Datepicker Japanese locale configuration
+    // jQuery UI Datepicker 日本語ロケール設定
     if (typeof jQuery !== 'undefined' && jQuery.datepicker) {
         jQuery.datepicker.regional.ja = {
             closeText: "閉じる",
@@ -101,7 +101,7 @@
         jQuery.datepicker.setDefaults(jQuery.datepicker.regional.ja);
     }
 
-    // Initialize datepicker when DOM is ready
+    // DOMの準備ができたらdatepickerを初期化
     function initDatepicker() {
         const YEAR_PADDING = 4;
         const MONTH_DAY_PADDING = 2;
@@ -122,7 +122,7 @@
         }
     }
 
-    // Check if DOM is ready
+    // DOMの準備ができているか確認
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', initDatepicker);
     } else {

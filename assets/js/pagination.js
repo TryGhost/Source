@@ -150,7 +150,7 @@ function renderPaginationNumbers() {
         return `${normalized}page/${pageNum}/`;
     };
 
-    // Previous button
+    // 前へボタン
     if (currentPage > 1) {
         const prevLi = document.createElement('li');
         const prevLink = document.createElement('a');
@@ -162,7 +162,7 @@ function renderPaginationNumbers() {
         pageNumbersList.appendChild(prevLi);
     }
 
-    // First page
+    // 最初のページ
     const firstLi = document.createElement('li');
     if (currentPage === 1) {
         const firstSpan = document.createElement('span');
@@ -179,7 +179,7 @@ function renderPaginationNumbers() {
     }
     pageNumbersList.appendChild(firstLi);
 
-    // Dots before current range
+    // 現在の範囲前の省略記号
     const PAGE_WINDOW = 1;
     const start = Math.max(2, currentPage - PAGE_WINDOW);
     const end = Math.min(totalPages - 1, currentPage + PAGE_WINDOW);
@@ -193,7 +193,7 @@ function renderPaginationNumbers() {
         pageNumbersList.appendChild(dotsLi);
     }
 
-    // Page numbers around current page
+    // 現在のページ周辺のページ番号
     for (let i = start; i <= end; i++) {
         const li = document.createElement('li');
         if (i === currentPage) {
@@ -212,7 +212,7 @@ function renderPaginationNumbers() {
         pageNumbersList.appendChild(li);
     }
 
-    // Dots after current range
+    // 現在の範囲後の省略記号
     if (end < totalPages - 1) {
         const dotsLi = document.createElement('li');
         const dotsSpan = document.createElement('span');
@@ -222,7 +222,7 @@ function renderPaginationNumbers() {
         pageNumbersList.appendChild(dotsLi);
     }
 
-    // Last page
+    // 最後のページ
     if (totalPages > 1) {
         const lastLi = document.createElement('li');
         if (currentPage === totalPages) {
@@ -241,7 +241,7 @@ function renderPaginationNumbers() {
         pageNumbersList.appendChild(lastLi);
     }
 
-    // Next button
+    // 次へボタン
     if (currentPage < totalPages) {
         const nextLi = document.createElement('li');
         const nextLink = document.createElement('a');

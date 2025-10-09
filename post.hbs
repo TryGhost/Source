@@ -5,12 +5,12 @@
     <article id="entry" class="cf post-entry {{post_class}}">
         <header class="article-header entry-header">
             {{> "components/breadcrumb"}}
-            {{!-- Review Navigation --}}
+            {{!-- レビューナビゲーション --}}
             <div class="review-nav"
                  data-post-title="{{title}}"
                  data-post-slug="{{slug}}"
                  data-post-tags="{{#foreach tags visibility="all"}}{{slug}},{{/foreach}}">
-                {{!-- Content will be populated by JavaScript --}}
+                {{!-- コンテンツはJavaScriptで生成されます --}}
             </div>
             <h1 class="entry-title single-title">{{title}}</h1>
             <p class="entry-meta vcard dfont">
@@ -78,10 +78,10 @@
         <section class="entry-content cf">
             {{content}}
 
-            {{!-- Advertisement after content --}}
+            {{!-- コンテンツ後の広告 --}}
             {{> "ad-banner"}}
 
-            {{!-- Popular posts widget after content --}}
+            {{!-- コンテンツ後の人気記事ウィジェット --}}
             {{> "popular-posts"}}
         </section>
         <footer class="article-footer entry-header">

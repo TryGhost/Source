@@ -1,6 +1,6 @@
 /**
- * Header Functionality
- * Handles header animations and behavior for desktop only
+ * ヘッダー機能
+ * デスクトップのみでヘッダーアニメーションと動作を処理
  */
 
 /* global window, document */
@@ -8,17 +8,17 @@
 (function () {
     'use strict';
 
-    // Breakpoint constant
+    // ブレークポイント定数
     const MOBILE_BREAKPOINT = 768;
 
-    // Check if mobile (768px or less)
+    // モバイルかチェック (768px以下)
     function isMobile() {
         return window.innerWidth <= MOBILE_BREAKPOINT;
     }
 
-    // Header slide animation
+    // ヘッダースライドアニメーション
     function initHeaderAnimation() {
-        // Only run on desktop
+        // デスクトップのみで実行
         if (isMobile()) {
             return;
         }
@@ -28,27 +28,27 @@
             return;
         }
 
-        // Trigger animation after a short delay
+        // 短い遅延後にアニメーションをトリガー
         setTimeout(function () {
             header.classList.add('header-loaded');
         }, 300);
     }
 
-    // Initialize when DOM is ready
+    // DOMの準備ができたら初期化
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', initHeaderAnimation);
     } else {
         initHeaderAnimation();
     }
 
-    // Re-check on resize
+    // リサイズ時に再チェック
     let resizeTimer;
     window.addEventListener('resize', function () {
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(function () {
             const header = document.querySelector('.header');
             if (header && !isMobile()) {
-                // Ensure header is visible on desktop after resize
+                // リサイズ後にデスクトップでヘッダーが表示されることを確認
                 header.classList.add('header-loaded');
             }
         }, 250);
