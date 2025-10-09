@@ -69,44 +69,6 @@ dl, menu, ol, ul {
     padding: clamp(24px, 2vw + 16px, 48px);
 }
 
-.review-nav {
-    display: flex;
-    gap: 12px;
-    margin-bottom: clamp(16px, 1.5vw + 8px, 24px);
-    font-size: 0;
-}
-
-.review-nav-tab {
-    display: inline-block;
-    width: 50%;
-    font-size: 14px;
-    text-align: center;
-    padding: 10px 0;
-    font-weight: bold;
-}
-
-.review-nav-tab.active {
-    background: #fff;
-    border-top: 1px #696969 solid;
-    border-left: 1px #696969 solid;
-    border-right: 1px #696969 solid;
-}
-
-.review-nav-tab.none-active {
-    background: #AAA;
-}
-
-.review-nav-tab.none-active a {
-    color: #696969;
-    width: 100%;
-    display: inline-block;
-    text-decoration: none;
-}
-
-.review-nav-none {
-    opacity: 0;
-}
-
 .single-title, .page-title, .entry-title {
     position: relative;
     color: rgb(68, 68, 68);

@@ -65,6 +65,7 @@ production stylesheet in assets/built/screen.css
 @import "./components/ad-banner.css";
 @import "./components/category.css";
 @import "./components/tag.css";
+@import "./components/review-nav.css";
 @import "./components/pagination.css";
 
 /* Global utility styles

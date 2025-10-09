@@ -77,6 +77,11 @@
 {{!-- Scripts - handle responsive videos, infinite scroll, and navigation dropdowns --}}
 <script src="{{asset "built/source.js"}}"></script>
 
+{{!-- Review navigation data for posts --}}
+{{#is "post"}}
+    {{> "review-nav-data"}}
+{{/is}}
+
 {{!-- Header script --}}
 <script src="{{asset "js/header.js"}}"></script>
 

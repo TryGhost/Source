@@ -5,21 +5,12 @@
     <article id="entry" class="cf post-entry {{post_class}}">
         <header class="article-header entry-header">
             {{> "components/breadcrumb"}}
-            <div class="review-nav">
-                <div class="review-nav-tab active">
-                    予告
-                </div>
-                {{#if tags}}
-                    {{#foreach tags from="2" limit="1"}}
-                    <div class="review-nav-tab none-active">
-                        <a href="{{url}}">{{name}}</a>
-                    </div>
-                    {{else}}
-                    <div class="review-nav-tab review-nav-none">開封レビュー</div>
-                    {{/foreach}}
-                {{else}}
-                <div class="review-nav-tab review-nav-none">開封レビュー</div>
-                {{/if}}
+            {{!-- Review Navigation --}}
+            <div class="review-nav"
+                 data-post-title="{{title}}"
+                 data-post-slug="{{slug}}"
+                 data-post-tags="{{#foreach tags visibility="all"}}{{slug}},{{/foreach}}">
+                {{!-- Content will be populated by JavaScript --}}
             </div>
             <h1 class="entry-title single-title">{{title}}</h1>
             <p class="entry-meta vcard dfont">

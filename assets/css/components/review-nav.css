@@ -1,0 +1,60 @@
+/* Review Navigation Styles */
+
+.review-nav {
+    margin: 20px 0;
+}
+
+.review-nav .review-nav-tab {
+    display: inline-block;
+    width: 50%;
+    font-size: 14px;
+    text-align: center;
+    padding: 10px 0;
+    font-weight: bold;
+}
+
+.review-nav .active {
+    background: #fff;
+    border-top: 1px #696969 solid;
+    border-left: 1px #696969 solid;
+    border-right: 1px #696969 solid;
+}
+
+.review-nav .none-active {
+    background: #AAA;
+}
+
+.review-nav a {
+    color: #696969;
+    width: 100%;
+    display: inline-block;
+}
+
+.review-nav .none-active a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+}
+
+.review-nav .none-active a:hover {
+    opacity: 0.8;
+}
+
+.review-nav .review-nav-none {
+    background: #f4f4f4;
+    border-top: 1px #f4f4f4 solid;
+    border-bottom: 1px #696969 solid;
+    color: #ccc;
+}
+
+@media (max-width: 768px) {
+    .review-nav {
+        margin: 15px 0;
+    }
+
+    .review-nav .review-nav-tab {
+        font-size: 13px;
+        padding: 8px 0;
+    }
+}
