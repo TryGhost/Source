@@ -1,22 +1,55 @@
 {{!< default}}
-{{!-- The tag above means: insert everything in this file into the body of the default.hbs template --}}
 
-<main class="gh-main gh-outer">
+{{> "components/search-form"}}
+
+{{!-- ヘッダーセクション: タグページ --}}
+<div id="cat_header">
+    {{!-- パンくずナビゲーション: ホーム > タグ --}}
+    <nav id="breadcrumb">
+        <ul itemscope itemtype="http://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                <a href="{{@site.url}}" itemprop="item">
+                    <span itemprop="name">ホーム</span>
+                </a>
+                <meta itemprop="position" content="1">
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                <span itemprop="name"><i class="fa fa-tag"></i> タグ</span>
+                <meta itemprop="position" content="2">
+            </li>
+        </ul>
+    </nav>
 
     {{#tag}}
-        <section class="gh-archive{{#if feature_image}} has-image{{/if}}{{#if @custom.show_publication_info_sidebar}} has-sidebar{{/if}} gh-inner">
-            <div class="gh-archive-inner">
-                <header class="gh-archive-wrapper">
-                    <h1 class="gh-article-title is-title">{{name}}</h1>
-                    {{#if description}}
-                        <p class="gh-article-excerpt">{{description}}</p>
-                    {{/if}}
-                </header>
-                {{> "feature-image"}}
+        {{#if feature_image}}
+        <div class="cat-headerWrap" style="background: url('{{feature_image}}');">
+            <div class="bkRGBA">
+                <img src="{{asset "images/site-logo-white.png"}}" alt="{{@site.title}}">
             </div>
-        </section>
+        </div>
+        {{/if}}
+
+        <h2 class="tag-title">{{name}}タグの付いている付録</h2>
+        {{#if description}}
+        <div class="taxonomy-description entry-content">
+            <p>{{description}}</p>
+        </div>
+        {{/if}}
     {{/tag}}
+</div>
 
-    {{> "components/post-list" feed="archive" postFeedStyle=@custom.post_feed_style showTitle=false showSidebar=@custom.show_publication_info_sidebar}}
+<div class="gh-content-wrapper">
+    <main class="gh-main-content">
 
-</main>
+        {{!-- 投稿リスト --}}
+        <div class="post-grid category-post-list">
+            {{#foreach posts}}
+                {{> "post-card"}}
+            {{/foreach}}
+        </div>
+
+        {{> "pagination"}}
+    </main>
+
+    {{> "sidebar"}}
+</div>
