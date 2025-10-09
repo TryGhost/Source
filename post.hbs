@@ -129,14 +129,7 @@
                         </ul>
                     </div>
                     <div class="footer-meta dfont">
-                        {{#if primary_tag}}
-                        <div>
-                            <p class="footer-meta_title">CATEGORY :</p>
-                            <ul class="post-categories">
-                                <li><a href="{{primary_tag.url}}" rel="category tag">{{primary_tag.name}}</a></li>
-                            </ul>
-                        </div>
-                        {{/if}}
+                        <div class="post-category-placeholder" data-magazine-tags='{{#if tags}}[{{#foreach tags}}{"slug":"{{slug}}","name":"{{name}}","url":"{{url}}"}{{#unless @last}},{{/unless}}{{/foreach}}]{{/if}}'></div>
                         {{#if tags}}
                         <div class="meta-tag">
                             <p class="footer-meta_title">TAGS :</p>

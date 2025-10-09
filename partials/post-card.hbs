@@ -1,4 +1,4 @@
-<article class="post-card {{post_class}}">
+<article class="post-card {{post_class}}" data-magazine-tags='{{#if tags}}[{{#foreach tags}}{"slug":"{{slug}}","name":"{{name}}","url":"{{url}}"}{{#unless @last}},{{/unless}}{{/foreach}}]{{/if}}'>
     <a class="post-card__link" href="{{url}}">
         {{#if feature_image}}
             <div class="post-card__image">
@@ -24,7 +24,5 @@
             </h2>
         </div>
     </a>
-    {{#if primary_tag}}
-        <a class="dfont cat-name catid68" href="{{primary_tag.url}}">{{primary_tag.name}}</a>
-    {{/if}}
+    <div class="magazine-tag-placeholder"></div>
 </article>
