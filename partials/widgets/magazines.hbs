@@ -85,20 +85,3 @@
         </select>
     </form>
 </div>
-
-{{!-- Category Navigation Script --}}
-<script type="text/javascript">
-/* <![CDATA[ */
-(function() {
-    var dropdown = document.getElementById("{{id}}");
-    if (dropdown) {
-        dropdown.onchange = function() {
-            var selectedUrl = this.options[this.selectedIndex].value;
-            if (selectedUrl) {
-                window.location.href = selectedUrl;
-            }
-        };
-    }
-})();
-/* ]]> */
-</script>
