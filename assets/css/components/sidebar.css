@@ -274,12 +274,14 @@
 .ui-datepicker {
     width: 100% !important;
     border: none !important;
+    font-size: 16px;
 }
 
 .ui-datepicker .ui-datepicker-title {
     margin: 0 2.3em;
     line-height: 1.8em;
     text-align: center;
+    font-size: 18px;
 }
 
 .ui-datepicker .ui-datepicker-header {
@@ -294,11 +296,19 @@
 .ui-datepicker-calendar td,
 .ui-datepicker-calendar th {
     border: none !important;
+    font-size: 16px;
+}
+
+.ui-datepicker-calendar th {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
 }
 
 .ui-datepicker-calendar td a {
     background: #dbdeaf !important;
     border: none !important;
+    font-size: 16px;
+    padding: 8px;
 }
 
 .ui-datepicker-calendar td.ui-datepicker-today a {
