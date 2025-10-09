@@ -618,6 +618,11 @@ footer p {
     align-items: center;
 }
 
+.meta-tag ul {
+    justify-content: flex-end;
+    width: 100%;
+}
+
 .meta-tag {
     display: block;
     text-align: right;
