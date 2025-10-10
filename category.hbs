@@ -7,45 +7,39 @@
     {{> "components/breadcrumb"}}
 
     {{#tag}}
-        {{!-- 親タグページ（data: tag.slug が設定されている） --}}
-        {{#get "pages" filter="slug:{{slug}}" limit="1"}}
-            {{#foreach pages}}
-                {{> "category-header"}}
-            {{/foreach}}
+        {{!-- 親タグページ（slug そのまま）または子タグページ（親カテゴリー-slug）のpageを探す --}}
+        {{#get "pages" filter="slug:{{slug}},slug:women-magazine-{{slug}},slug:women-manga-{{slug}},slug:child-magazine-{{slug}},slug:mother-magazine-{{slug}},slug:wedding-magazine-{{slug}},slug:men-magazine-{{slug}},slug:outdoor-magazine-{{slug}},slug:other-magazine-{{slug}},slug:entertainment-{{slug}},slug:brandmook-{{slug}}" limit="1" as |page_result|}}
+            {{#if page_result}}
+                {{!-- ページが見つかった場合 --}}
+                {{#foreach page_result}}
+                    {{> "category-header"}}
+                {{/foreach}}
+            {{else}}
+                {{!-- ページが見つからない場合、タグ自体の情報を使用 --}}
+                {{#if ../feature_image}}
+                <div class="cat-headerWrap" style="background: url('{{../feature_image}}');">
+                    <div class="bkRGBA">
+                        <img src="{{asset "images/site-logo-white.png"}}" alt="{{@site.title}}">
+                    </div>
+                </div>
+                {{/if}}
+
+                <h1 style="margin-bottom: 20px;">{{../name}}</h1>
+                {{#if ../description}}
+                <div class="taxonomy-description entry-content" style="margin-bottom: 20px;">
+                    <p>{{../description}}</p>
+                </div>
+                {{/if}}
+            {{/if}}
         {{/get}}
-    {{else}}
-        {{!-- 子タグページ（最初の投稿からタグ情報を取得） --}}
-        {{#foreach posts limit="1"}}
-            {{#foreach tags limit="1"}}
-                {{#get "pages" filter="slug:women-magazine-{{slug}},slug:women-manga-{{slug}}" limit="1"}}
-                    {{#foreach pages}}
-                        {{> "category-header"}}
-                    {{/foreach}}
-                {{/get}}
-            {{/foreach}}
-        {{/foreach}}
     {{/tag}}
 </div>
 
 <div class="gh-content-wrapper">
     <main class="gh-main-content">
-        {{!-- タイトルセクション: 親タグページまたは子タグページ --}}
+        {{!-- タイトルセクション --}}
         {{#tag}}
-            {{!-- 親タグページ --}}
             <h2>{{name}}（発売日順）</h2>
-        {{else}}
-            {{!-- 子タグページ --}}
-            {{#foreach posts limit="1"}}
-                {{#foreach tags limit="1"}}
-                    {{#get "pages" filter="slug:women-magazine-{{slug}},slug:women-manga-{{slug}}" limit="1" as |page_result|}}
-                        {{#if page_result}}
-                            {{#foreach page_result}}
-                                <h2>{{title}}（発売日順）</h2>
-                            {{/foreach}}
-                        {{/if}}
-                    {{/get}}
-                {{/foreach}}
-            {{/foreach}}
         {{/tag}}
 
         {{!-- 投稿セクション: routes.yamlのfilterから直接postsを利用 --}}
