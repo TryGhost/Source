@@ -166,7 +166,7 @@
                 return {
                     slug: slug,
                     name: tags[i].name,
-                    url: '/' + parentCategory + '/' + slug + '/'
+                    url: '/category/' + parentCategory + '/' + slug + '/'
                 };
             }
         }
@@ -258,11 +258,118 @@
     }
 
     /**
+     * パンくずナビゲーションを処理
+     */
+    function processBreadcrumb() {
+        // 既に処理済みかチェック
+        if (document.querySelector('.breadcrumb-processed')) {
+            return;
+        }
+
+        const placeholders = document.querySelectorAll('.breadcrumb-placeholder[data-tag-slug]');
+        if (!placeholders || placeholders.length === 0) {
+            return;
+        }
+
+        // 最初のplaceholderのみ処理（重複を避ける）
+        const placeholder = placeholders[0];
+        const tagSlug = placeholder.getAttribute('data-tag-slug');
+        const tagName = placeholder.getAttribute('data-tag-name');
+        const postTitle = placeholder.getAttribute('data-post-title');
+
+        // 他のplaceholderを削除
+        for (let i = 1; i < placeholders.length; i++) {
+            placeholders[i].remove();
+        }
+
+        // カテゴリーページかどうかを判定（URLに/category/が含まれる）
+        const isCategoryPage = window.location.pathname.indexOf('/category/') === 0;
+
+        // 投稿ページかどうかを判定（postTitleがある）
+        const isPostPage = !!postTitle;
+
+        // 親カテゴリーのマッピング
+        const parentCategoryNames = {
+            'brandmook': 'ブランドムック',
+            'women-magazine': '女性ファッション雑誌',
+            'women-manga': '少女・女性マンガの付録',
+            'child-magazine': '子供・児童学習 雑誌',
+            'mother-magazine': 'ママ・主婦雑誌',
+            'wedding-magazine': '結婚情報誌',
+            'men-magazine': 'メンズファッション雑誌',
+            'outdoor-magazine': 'アウトドア雑誌',
+            'other-magazine': 'その他雑誌',
+            'entertainment': 'エンタメ',
+            'uncategorized': 'Uncategorized'
+        };
+
+        // 親カテゴリーかチェック
+        if (parentCategoryNames[tagSlug]) {
+            // 親カテゴリーページ
+            if (isCategoryPage) {
+                // カテゴリーページでは現在のページは表示しない
+                placeholder.remove();
+            } else {
+                // 投稿ページでは親カテゴリーリンクのみ表示
+                placeholder.innerHTML =
+                    '<a href="/category/' + tagSlug + '/" itemprop="item">' +
+                    '<span itemprop="name">' + tagName + '</span>' +
+                    '</a>' +
+                    '<meta itemprop="position" content="2">';
+                placeholder.setAttribute('itemprop', 'itemListElement');
+                placeholder.setAttribute('itemscope', '');
+                placeholder.setAttribute('itemtype', 'http://schema.org/ListItem');
+                placeholder.classList.add('breadcrumb-processed');
+            }
+        } else {
+            // 子タグページ
+            const parentCategory = MAGAZINE_CATEGORIES[tagSlug];
+            if (parentCategory && parentCategoryNames[parentCategory]) {
+                // 親カテゴリーのli要素を作成
+                const parentLi = document.createElement('li');
+                parentLi.setAttribute('itemprop', 'itemListElement');
+                parentLi.setAttribute('itemscope', '');
+                parentLi.setAttribute('itemtype', 'http://schema.org/ListItem');
+                parentLi.innerHTML =
+                    '<a href="/category/' + parentCategory + '/" itemprop="item">' +
+                    '<span itemprop="name">' + parentCategoryNames[parentCategory] + '</span>' +
+                    '</a>' +
+                    '<meta itemprop="position" content="2">';
+
+                // placeholderの前に親カテゴリーを挿入
+                placeholder.parentNode.insertBefore(parentLi, placeholder);
+
+                if (isCategoryPage) {
+                    // カテゴリーページでは現在のページは表示しない
+                    placeholder.remove();
+                } else {
+                    // 投稿ページでは子タグのリンクを表示（記事タイトルは表示しない）
+                    placeholder.innerHTML =
+                        '<a href="/category/' + parentCategory + '/' + tagSlug + '/" itemprop="item">' +
+                        '<span itemprop="name">' + tagName + '</span>' +
+                        '</a>' +
+                        '<meta itemprop="position" content="3">';
+                    placeholder.setAttribute('itemprop', 'itemListElement');
+                    placeholder.setAttribute('itemscope', '');
+                    placeholder.setAttribute('itemtype', 'http://schema.org/ListItem');
+                    placeholder.classList.add('breadcrumb-processed');
+                }
+            }
+        }
+    }
+
+    /**
      * 初期化
      */
     function init() {
+        // カテゴリーページかどうかを判定してbodyクラスを追加
+        if (window.location.pathname.indexOf('/category/') === 0) {
+            document.body.classList.add('category-page');
+        }
+
         processPostCardMagazineTags();
         processPostDetailMagazineTag();
+        processBreadcrumb();
     }
 
     // DOMの準備ができるまで待機
