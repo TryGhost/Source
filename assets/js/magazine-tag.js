@@ -217,11 +217,26 @@
             return;
         }
 
+        // 親カテゴリータグのリスト
+        const parentCategoryTags = {
+            'brandmook': 'ブランドムック',
+            'women-magazine': '女性ファッション雑誌',
+            'women-manga': '少女・女性マンガの付録',
+            'child-magazine': '子供・児童学習 雑誌',
+            'mother-magazine': 'ママ・主婦雑誌',
+            'wedding-magazine': '結婚情報誌',
+            'men-magazine': 'メンズファッション雑誌',
+            'outdoor-magazine': 'アウトドア雑誌',
+            'other-magazine': 'その他雑誌',
+            'entertainment': 'エンタメ'
+        };
+
         try {
             const tags = JSON.parse(tagsData);
             const magazineTag = findMagazineTag(tags);
 
             if (magazineTag) {
+                // 子タグが見つかった場合
                 categoryElement.innerHTML = '<div>' +
                     '<p class="footer-meta_title">CATEGORY :</p>' +
                     '<ul class="post-categories">' +
@@ -230,8 +245,33 @@
                     '</ul>' +
                     '</div>';
 
-                // TAGSセクションから雑誌タグを削除
+                // TAGSセクションから雑誌タグと親カテゴリータグを削除
                 removeMagazineTagFromTagsList(magazineTag.slug);
+
+                // 親カテゴリーも削除
+                const parentCategory = MAGAZINE_CATEGORIES[magazineTag.slug];
+                if (parentCategory) {
+                    removeMagazineTagFromTagsList(parentCategory);
+                }
+            } else {
+                // 子タグが見つからない場合、親カテゴリータグをチェック
+                for (let i = 0; i < tags.length; i++) {
+                    const slug = tags[i].slug;
+                    if (parentCategoryTags[slug]) {
+                        // 親カテゴリータグが見つかった
+                        categoryElement.innerHTML = '<div>' +
+                            '<p class="footer-meta_title">CATEGORY :</p>' +
+                            '<ul class="post-categories">' +
+                            '<li><a href="/category/' + slug + '/" rel="category tag">' +
+                            tags[i].name + '</a></li>' +
+                            '</ul>' +
+                            '</div>';
+
+                        // TAGSセクションから親カテゴリータグを削除
+                        removeMagazineTagFromTagsList(slug);
+                        break;
+                    }
+                }
             }
         } catch (e) {
             // JSONパースエラーは無視
