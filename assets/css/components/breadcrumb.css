@@ -85,12 +85,14 @@
     color: rgb(79, 150, 246) !important;
 }
 
-/* カテゴリーページの最後の要素は青 */
-.category-page #breadcrumb li:last-child span {
+/* カテゴリーページの最後の要素は青（tag-templateより優先） */
+body.category-page.tag-template #breadcrumb li:last-child span,
+body.category-page #breadcrumb li:last-child span {
     color: #4f96f6 !important;
 }
 
-.category-page #breadcrumb li:last-child .fa-tag {
+body.category-page.tag-template #breadcrumb li:last-child .fa-tag,
+body.category-page #breadcrumb li:last-child .fa-tag {
     color: #4f96f6 !important;
 }
 
