@@ -206,5 +206,20 @@
         {{/next_post}}
     </div>
 </main>
+
+{{!-- レビューナビゲーション用の投稿データ --}}
+{{!-- hash-before（予告）とhash-after（レビュー）の両方のデータを取得 --}}
+<script id="review-nav-posts-before" type="application/json">
+{{#get "posts" filter="tag:hash-before" limit="500"}}
+[{{#foreach posts}}{"title":"{{title}}","slug":"{{slug}}","url":"{{url absolute="true"}}"}{{#unless @last}},{{/unless}}{{/foreach}}]
+{{/get}}
+</script>
+
+<script id="review-nav-posts-after" type="application/json">
+{{#get "posts" filter="tag:hash-after" limit="500"}}
+[{{#foreach posts}}{"title":"{{title}}","slug":"{{slug}}","url":"{{url absolute="true"}}"}{{#unless @last}},{{/unless}}{{/foreach}}]
+{{/get}}
+</script>
+
 {{/post}}
 

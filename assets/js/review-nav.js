@@ -38,36 +38,27 @@
             return;
         }
 
-        // RSSフィードを使って全投稿を取得（Content APIより簡単）
-        fetch('/rss/')
-            .then(function (response) {
-                return response.text();
-            })
-            .then(function (rssText) {
-                // RSS XMLをパース
-                const parser = new DOMParser();
-                const xmlDoc = parser.parseFromString(rssText, 'text/xml');
-                const items = xmlDoc.querySelectorAll('item');
+        // テンプレートから投稿データを取得
+        // 現在の投稿がhash-beforeなら、hash-afterのデータから検索
+        // 現在の投稿がhash-afterなら、hash-beforeのデータから検索
+        let postsDataElement;
+        if (hasBefore) {
+            postsDataElement = document.getElementById('review-nav-posts-after');
+        } else if (hasAfter) {
+            postsDataElement = document.getElementById('review-nav-posts-before');
+        }
 
-                const allPosts = [];
-                items.forEach(function (item) {
-                    const title = item.querySelector('title').textContent;
-                    const link = item.querySelector('link').textContent;
-                    // リンクからスラッグを抽出
-                    const slug = link.replace(window.location.origin + '/', '').replace(/\/$/, '');
+        if (!postsDataElement) {
+            console.error('レビューナビゲーション: 投稿データが見つかりません');
+            return;
+        }
 
-                    allPosts.push({
-                        title: title,
-                        slug: slug,
-                        url: '/' + slug + '/'
-                    });
-                });
-
-                processReviewNav(allPosts);
-            })
-            .catch(function () {
-                // 投稿の取得に失敗した場合、ナビゲーションは表示されない
-            });
+        try {
+            const allPosts = JSON.parse(postsDataElement.textContent);
+            processReviewNav(allPosts);
+        } catch (error) {
+            console.error('レビューナビゲーション: 投稿データのパースエラー', error);
+        }
 
         function processReviewNav(allPosts) {
             const baseTitle = removeTitlePrefix(postTitle);
