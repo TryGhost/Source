@@ -7,8 +7,8 @@
     {{> "components/breadcrumb"}}
 
     {{#tag}}
-        {{!-- 親タグページ（slug そのまま）または子タグページ（親カテゴリー-slug）のpageを探す --}}
-        {{#get "pages" filter="slug:{{slug}},slug:women-magazine-{{slug}},slug:women-manga-{{slug}},slug:child-magazine-{{slug}},slug:mother-magazine-{{slug}},slug:wedding-magazine-{{slug}},slug:men-magazine-{{slug}},slug:outdoor-magazine-{{slug}},slug:other-magazine-{{slug}},slug:entertainment-{{slug}},slug:brandmook-{{slug}}" limit="1" as |page_result|}}
+        {{!-- 親タグページ（category-slug）または子タグページ（category-親-slug）のpageを探す --}}
+        {{#get "pages" filter="slug:category-{{slug}},slug:category-women-magazine-{{slug}},slug:category-women-manga-{{slug}},slug:category-child-magazine-{{slug}},slug:category-mother-magazine-{{slug}},slug:category-wedding-magazine-{{slug}},slug:category-men-magazine-{{slug}},slug:category-outdoor-magazine-{{slug}},slug:category-other-magazine-{{slug}},slug:category-entertainment-{{slug}},slug:category-brandmook-{{slug}}" limit="1" as |page_result|}}
             {{#if page_result}}
                 {{!-- ページが見つかった場合 --}}
                 {{#foreach page_result}}
@@ -16,14 +16,6 @@
                 {{/foreach}}
             {{else}}
                 {{!-- ページが見つからない場合、タグ自体の情報を使用 --}}
-                {{#if ../feature_image}}
-                <div class="cat-headerWrap" style="background: url('{{../feature_image}}');">
-                    <div class="bkRGBA">
-                        <img src="{{asset "images/site-logo-white.png"}}" alt="{{@site.title}}">
-                    </div>
-                </div>
-                {{/if}}
-
                 <h1 style="margin-bottom: 20px;">{{../name}}</h1>
                 {{#if ../description}}
                 <div class="taxonomy-description entry-content" style="margin-bottom: 20px;">
