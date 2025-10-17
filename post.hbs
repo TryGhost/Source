@@ -33,7 +33,11 @@
                 <div class="gh-article-meta-wrapper">
                     <h4 class="gh-article-author-name">{{authors}}</h4>
                     <div class="gh-article-meta-content">
-                        <time class="gh-article-meta-date" datetime="{{date format="YYYY-MM-DD"}}">{{date format="DD MMM YYYY"}}</time>
+                        {{#if @custom.show_publish_date}}
+                            <time class="gh-article-meta-date" datetime="{{date format="YYYY-MM-DD"}}">{{date format="DD MMM YYYY"}}</time>
+                        {{else}}
+                            <time class="gh-article-meta-date" datetime="{{date updated_at format="YYYY-MM-DD"}}">{{date updated_at format="DD MMM YYYY"}}</time>
+                        {{/if}}
                         {{#if reading_time}}
                             <span class="gh-article-meta-length"><span class="bull">—</span> {{reading_time}}</span>
                         {{/if}}
