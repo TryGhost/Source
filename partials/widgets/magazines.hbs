@@ -6,82 +6,82 @@
             <option value="">雑誌名を選択</option>
 
             {{!-- ブランドムック --}}
-            <option value="/brandmook/">ブランドムック</option>
+            <option value="/category/brandmook/">ブランドムック</option>
 
             {{!-- 女性ファッション雑誌 --}}
-            <option value="/women-magazine/">女性ファッション雑誌</option>
+            <option value="/category/women-magazine/">女性ファッション雑誌</option>
             {{#get "tags" filter="slug:[25ans-hearstfujingaho,androsy-takarajimasha,baila-shueisha,bestory-kobunsha,bijinhyakka-kadokawaharuki,biteki-shogakukan,cancam-shogakukan,domani-shogakukan,eclat-shueisha,elledecor-hearstfujingaho,ellejapon-hearstfujingaho,fudge-saneishobo,fujingaho-hearstfujingaho,gina-bunkasha,ginger-gentosha,glow-takarajimasha,harpersbazaar-hearstfujingaho,inred-takarajimasha,jelly-bunkasha,jj-kobunsha,jsgirl-saneishobo,kimonoanne-tacshuppan,kirapichi-gakken,kunel-magazinehouse,lafarfa-bunkasha,larme-tokumashoten,lee-shueisha,liniere-takarajimasha,loveggg-mediaboy,maquia-shueisha,marisol-shueisha,mini-takarajimasha,more-shueisha,nicola-shinchosha,nicopuchi-shinchosha,nonno-shueisha,numerotokyo-fusosha,oggi-shogakukan,osharetecho-takarajimasha,otonamuse-takarajimasha,popteen-kadokawaharuki,richesse-hearstfujingaho,seventeen-shueisha,spring-takarajimasha,spur-shueisha,steady-takarajimasha,sutekinaanohito-takarajimasha,sweet-takarajimasha,utsukushiikimono-hearstfujingaho,vivi-kodansha,voce-kodansha,waraku-shogakukan,with-kodansha,yogini-peacs]" include="count.posts"}}
                 {{#foreach tags}}
-                <option value="/women-magazine/{{slug}}/">&nbsp;&nbsp;{{name}} ({{count.posts}})</option>
+                <option value="/category/women-magazine/{{slug}}/">&nbsp;&nbsp;{{name}} ({{count.posts}})</option>
                 {{/foreach}}
             {{/get}}
 
             {{!-- 少女・女性マンガの付録 --}}
-            <option value="/women-manga/">少女・女性マンガの付録</option>
+            <option value="/category/women-manga/">少女・女性マンガの付録</option>
             {{#get "tags" filter="slug:[ciao-shogakukan,nakayosi-kodansha,ribon-shueisha,shocomi-shogakukan]" include="count.posts"}}
                 {{#foreach tags}}
-                <option value="/women-manga/{{slug}}/">&nbsp;&nbsp;{{name}} ({{count.posts}})</option>
+                <option value="/category/women-manga/{{slug}}/">&nbsp;&nbsp;{{name}} ({{count.posts}})</option>
                 {{/foreach}}
             {{/get}}
 
             {{!-- 子ども雑誌 --}}
-            <option value="/child-magazine/">子供・児童学習 雑誌</option>
+            <option value="/category/child-magazine/">子供・児童学習 雑誌</option>
             {{#get "tags" filter="slug:[babybook-shogakukan,fukufuku-fukuinkan,genki-kodansha,inaiinai-kodansha,mebae-shogakukan,nene-shufu,okaitsu-kodansha,otomodachi-kodansha,pucchigumi-shogakukan,sho1-shogakukan,sho8-shogakukan,tanoyo-kodansha,telemaga-kodansha,televikun-shogakukan,youchien-shogakukan]" include="count.posts"}}
                 {{#foreach tags}}
-                <option value="/child-magazine/{{slug}}/">&nbsp;&nbsp;{{name}} ({{count.posts}})</option>
+                <option value="/category/child-magazine/{{slug}}/">&nbsp;&nbsp;{{name}} ({{count.posts}})</option>
                 {{/foreach}}
             {{/get}}
 
             {{!-- ママ雑誌 --}}
-            <option value="/mother-magazine/">ママ・主婦雑誌</option>
+            <option value="/category/mother-magazine/">ママ・主婦雑誌</option>
             {{#get "tags" filter="slug:[39mag-benesse,akahoshi-shufunotomo,babymo-shufunotomo,cookpadplus-7andi,croissant-magazinehouse,ellegourmet-hearstfujingaho,esse-fusosha,hiyokoclub-benesse,hugmug-sekaibunkasha,kodomoe-hakusensha,lettuceclub-kadokawa,moe-hakusensha,orangepage,premo-shufunotomo,sutekinaokusan-shufutoseikatsusha]" include="count.posts"}}
                 {{#foreach tags}}
-                <option value="/mother-magazine/{{slug}}/">&nbsp;&nbsp;{{name}} ({{count.posts}})</option>
+                <option value="/category/mother-magazine/{{slug}}/">&nbsp;&nbsp;{{name}} ({{count.posts}})</option>
                 {{/foreach}}
             {{/get}}
 
             {{!-- 結婚情報誌 --}}
-            <option value="/wedding-magazine/">結婚情報誌</option>
+            <option value="/category/wedding-magazine/">結婚情報誌</option>
             {{#get "tags" filter="slug:[ellemariage-hearstfujingaho,zexy-recruit]" include="count.posts"}}
                 {{#foreach tags}}
-                <option value="/wedding-magazine/{{slug}}/">&nbsp;&nbsp;{{name}} ({{count.posts}})</option>
+                <option value="/category/wedding-magazine/{{slug}}/">&nbsp;&nbsp;{{name}} ({{count.posts}})</option>
                 {{/foreach}}
             {{/get}}
 
             {{!-- メンズ雑誌 --}}
-            <option value="/men-magazine/">メンズファッション雑誌</option>
+            <option value="/category/men-magazine/">メンズファッション雑誌</option>
             {{#get "tags" filter="slug:[dime-shogakukan,getnavi-gakkenplus,lightning-eipublishing,mensclub-hearstfujingaho,mensnonno-shueisha,monomaster-takarajimasha,monomax-takarajimasha,smart-takarajimasha,uomo-shueisha]" include="count.posts"}}
                 {{#foreach tags}}
-                <option value="/men-magazine/{{slug}}/">&nbsp;&nbsp;{{name}} ({{count.posts}})</option>
+                <option value="/category/men-magazine/{{slug}}/">&nbsp;&nbsp;{{name}} ({{count.posts}})</option>
                 {{/foreach}}
             {{/get}}
 
             {{!-- アウトドア雑誌 --}}
-            <option value="/outdoor-magazine/">アウトドア雑誌</option>
+            <option value="/category/outdoor-magazine/">アウトドア雑誌</option>
             {{#get "tags" filter="slug:[bepal-shogakukan,bicycleclub-eipublishing,camplife-yamakei,cyclesports-yaesu,fielder-kasakura,peaks-eipublishing,randonnee-eipublishing,wandervogel-yamakei]" include="count.posts"}}
                 {{#foreach tags}}
-                <option value="/outdoor-magazine/{{slug}}/">&nbsp;&nbsp;{{name}} ({{count.posts}})</option>
+                <option value="/category/outdoor-magazine/{{slug}}/">&nbsp;&nbsp;{{name}} ({{count.posts}})</option>
                 {{/foreach}}
             {{/get}}
 
             {{!-- その他雑誌 --}}
-            <option value="/other-magazine/">その他雑誌</option>
+            <option value="/category/other-magazine/">その他雑誌</option>
             {{#get "tags" filter="slug:[modernliving-hearstfujingaho,nikkeiwoman-nikkeibp,serai-shogakukan,tabinotecho-kotsushinbun,tokyowalker-kadokawa]" include="count.posts"}}
                 {{#foreach tags}}
-                <option value="/other-magazine/{{slug}}/">&nbsp;&nbsp;{{name}} ({{count.posts}})</option>
+                <option value="/category/other-magazine/{{slug}}/">&nbsp;&nbsp;{{name}} ({{count.posts}})</option>
                 {{/foreach}}
             {{/get}}
 
             {{!-- エンタメ --}}
-            <option value="/entertainment/">エンタメ</option>
+            <option value="/category/entertainment/">エンタメ</option>
             {{#get "tags" filter="slug:[campaign,furoku-favorite,furoku-ranking,furoku-sufficiency,other,recommended,subscription-tokuten]" include="count.posts"}}
                 {{#foreach tags}}
-                <option value="/entertainment/{{slug}}/">&nbsp;&nbsp;{{name}} ({{count.posts}})</option>
+                <option value="/category/entertainment/{{slug}}/">&nbsp;&nbsp;{{name}} ({{count.posts}})</option>
                 {{/foreach}}
             {{/get}}
 
             {{!-- 未分類 --}}
-            <option value="/uncategorized/">Uncategorized</option>
+            <option value="/category/uncategorized/">Uncategorized</option>
         </select>
     </form>
 </div>

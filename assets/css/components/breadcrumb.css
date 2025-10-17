@@ -61,8 +61,16 @@
     color: #999 !important;
 }
 
+#breadcrumb li:last-child::after {
+    content: none;
+}
+
+#breadcrumb li:last-child span {
+    color: #4f96f6 !important;
+}
+
 #breadcrumb li:last-child:hover span {
-    color: #999 !important;
+    color: #4f96f6 !important;
 }
 
 #breadcrumb span {
@@ -75,6 +83,17 @@
 
 #breadcrumb li:first-child a span {
     color: rgb(79, 150, 246) !important;
+}
+
+/* カテゴリーページの最後の要素は青（tag-templateより優先） */
+body.category-page.tag-template #breadcrumb li:last-child span,
+body.category-page #breadcrumb li:last-child span {
+    color: #4f96f6 !important;
+}
+
+body.category-page.tag-template #breadcrumb li:last-child .fa-tag,
+body.category-page #breadcrumb li:last-child .fa-tag {
+    color: #4f96f6 !important;
 }
 
 @media (max-width: 767px) {

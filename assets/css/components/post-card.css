@@ -145,3 +145,8 @@
         line-height: 18px;
     }
 }
+
+/* トップページ以外では記事カードの雑誌タグを非表示 */
+body:not(.home-template) .magazine-tag-placeholder {
+    display: none !important;
+}
