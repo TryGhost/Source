@@ -182,4 +182,72 @@
     .footer-nav a {
         white-space: nowrap;
     }
+
+    .fab-btn {
+        width: 60px !important;
+        height: 60px !important;
+        min-width: 60px;
+        min-height: 60px;
+        margin: -30px 10px 0 auto;
+    }
+
+    .footer .fab-btn {
+        width: 60px !important;
+        height: 60px !important;
+        min-width: 60px;
+        min-height: 60px;
+        margin: -30px 10px 0 auto;
+    }
+}
+
+/* ページトップへ戻るボタン */
+.fab-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+    width: 60px;
+    height: 60px;
+    margin: -30px 15px -30px auto;
+    border-radius: 50%;
+    outline: none;
+    box-shadow: 0 3px 4px rgba(0, 0, 0, .2), 0 0 2px 0 rgba(0, 0, 0, .2);
+    color: #fff;
+    font-size: 25px;
+    text-align: center;
+    cursor: pointer;
+    transition: .3s ease-in-out;
+    transition-delay: .1s;
+    animation: animScale 3.5s ease-out;
+}
+
+.footer .fab-btn {
+    margin: -30px 10px 0 auto;
+    color: #fff;
+    opacity: 1;
+}
+
+.fab-btn i {
+    color: #fff;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer .fab-btn i {
+    color: #fff;
+}
+
+@keyframes animScale {
+    0% {
+        transform: scale(0);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
