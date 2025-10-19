@@ -1,6 +1,9 @@
 {{!< default}}
 
+{{> "components/search-form"}}
+
 {{#post}}
+<div class="gh-content-wrapper">
 <main id="main" class="post-main m-all t-2of3 d-5of7 cf">
     <article id="entry" class="cf post-entry {{post_class}}">
         <header class="article-header entry-header">
@@ -206,6 +209,10 @@
         {{/next_post}}
     </div>
 </main>
+
+{{!-- サイドバー --}}
+{{> "sidebar"}}
+</div>
 
 {{!-- レビューナビゲーション用の投稿データ --}}
 {{!-- hash-before（予告）とhash-after（レビュー）の両方のデータを取得 --}}
