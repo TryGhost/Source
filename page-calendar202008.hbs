@@ -1,0 +1,47 @@
+{{!< default}}
+{{!-- Template for /calendar202401/ page --}}
+
+{{> "components/search-form"}}
+
+{{#match @custom.header_style "!=" "Highlight"}}
+    {{> "components/featured" showFeatured=@custom.show_featured_posts limit=4}}
+{{/match}}
+
+{{> "components/cta"}}
+
+<div id="cat_header">
+    {{> "components/breadcrumb"}}
+</div>
+
+<div class="gh-content-wrapper">
+    <main class="gh-main-content">
+        {{> "components/content-menu" active="calendar"}}
+
+        {{!-- Card container --}}
+        <div class="cardtype cf test">
+
+        </div>
+
+        {{!-- Calendar detail content --}}
+        <div id="calendar-detail-content" data-page-slug="calendar202008"></div>
+
+        {{> "calendar-posts-data"}}
+
+        {{!-- Calendar list --}}
+        <div id="past_sale" class="cf">
+            <p>
+                {{#get "pages" limit="all" order="slug desc"}}
+                    {{#foreach pages}}
+                        <span class="calendar-item" data-slug="{{slug}}">
+                            <small><a href="{{url}}">{{title}}</a></small>
+                        </span>
+                    {{/foreach}}
+                {{/get}}
+            </p>
+        </div>
+
+        {{> "components/content-menu" active="calendar"}}
+    </main>
+
+    {{> "sidebar"}}
+</div>
