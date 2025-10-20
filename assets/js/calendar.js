@@ -10,6 +10,11 @@
             return;
         }
 
+        // onsale詳細ページでは実行しない
+        if (document.getElementById('onsale-detail-content')) {
+            return;
+        }
+
         const items = document.querySelectorAll('.calendar-item');
 
         if (items.length === 0) {

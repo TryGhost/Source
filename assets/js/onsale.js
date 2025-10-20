@@ -4,8 +4,8 @@
 (function() {
     'use strict';
 
-    function filterOnsalePages() {
-        // onsaleページにいるかチェック
+    function filterOnsaleListPage() {
+        // onsale一覧ページにいるかチェック
         if (window.location.pathname !== '/onsale/') {
             return;
         }
@@ -52,8 +52,26 @@
         });
     }
 
+    function filterOnsaleDetailPage() {
+        // onsale詳細ページかチェック
+        if (!document.getElementById('onsale-detail-content')) {
+            return;
+        }
+
+        const items = document.querySelectorAll('.calendar-item');
+
+        items.forEach(function(item) {
+            const slug = item.getAttribute('data-slug');
+            // onsaleYYYYMMフォーマットかチェック
+            if (!slug || !slug.match(/^onsale\d{6}$/)) {
+                item.style.display = 'none';
+            }
+        });
+    }
+
     function init() {
-        filterOnsalePages();
+        filterOnsaleListPage();
+        filterOnsaleDetailPage();
     }
 
     // DOMの準備ができるまで待機
