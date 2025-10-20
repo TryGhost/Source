@@ -1,7 +1,20 @@
 {{!< default}}
-{{!-- Template for /onsale page - showing posts tagged with "review" --}}
+{{!-- Template for /onsale page - showing posts tagged with "hash-after" --}}
+
+{{!-- onsaleページで雑誌タグラベルを表示 --}}
+<style>
+    .magazine-tag-placeholder {
+        display: block !important;
+    }
+</style>
 
 {{> "components/search-form"}}
+
+{{#match @custom.header_style "!=" "Highlight"}}
+    {{> "components/featured" showFeatured=@custom.show_featured_posts limit=4}}
+{{/match}}
+
+{{> "components/cta"}}
 
 <div id="cat_header">
     {{> "components/breadcrumb"}}
@@ -11,13 +24,61 @@
     <main class="gh-main-content">
         {{> "components/content-menu" active="onsale"}}
 
+        {{!-- 最新3件の年月リンク --}}
+        <div id="recent_sale" class="cf">
+            <p>
+                {{#get "pages" limit="all" order="slug desc"}}
+                    {{#foreach pages}}
+                        <span class="calendar-item onsale-recent" data-slug="{{slug}}" data-index="{{@index}}">
+                            <small><a href="{{url}}">{{title}}</a></small>
+                        </span>
+                    {{/foreach}}
+                {{/get}}
+            </p>
+        </div>
+
+        <div class="cardtype cf test">
+        </div>
+
+        {{!-- ページタイトル --}}
+        <h2 class="onsale-title">全雑誌の付録（発売日順）</h2>
+
+        {{!-- 全投稿（ページネーション付き） --}}
         <div class="post-grid category-post-list">
             {{#foreach posts}}
-                {{> "post-card"}}
+                {{> "post-card" lazyLoad=true}}
             {{/foreach}}
         </div>
 
         {{> "pagination"}}
+
+        {{!-- Onsale posts tags data --}}
+        <script>
+            window.onsalePostsTags = {
+                {{#get "posts" filter="tag:hash-after" limit="all" include="tags"}}
+                    {{#foreach posts}}
+                    "{{slug}}": [{{#if tags}}{{#foreach tags}}{"slug":"{{slug}}","name":"{{name}}","url":"{{url}}"}{{#unless @last}},{{/unless}}{{/foreach}}{{/if}}]{{#unless @last}},{{/unless}}
+                    {{/foreach}}
+                {{/get}}
+            };
+        </script>
+
+        {{> "components/sns-share"}}
+
+        {{!-- 残りの年月リスト --}}
+        <div id="past_sale" class="cf">
+            <p>
+                {{#get "pages" limit="all" order="slug desc"}}
+                    {{#foreach pages}}
+                        <span class="calendar-item onsale-past" data-slug="{{slug}}" data-index="{{@index}}">
+                            <small><a href="{{url}}">{{title}}</a></small>
+                        </span>
+                    {{/foreach}}
+                {{/get}}
+            </p>
+        </div>
+
+        {{> "components/content-menu" active="onsale"}}
     </main>
 
     {{> "sidebar"}}

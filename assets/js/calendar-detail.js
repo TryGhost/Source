@@ -4,11 +4,32 @@
 (function() {
     'use strict';
 
-    function parseExcerpt(excerpt) {
-        if (!excerpt) return {};
+    function decodeHTMLEntities(text) {
+        const textarea = document.createElement('textarea');
+        textarea.innerHTML = text;
+        return textarea.value;
+    }
 
+    function parseExcerpt(excerpt) {
+        if (!excerpt) {
+            return {};
+        }
+
+        // HTMLエンティティをデコード
+        const decodedExcerpt = decodeHTMLEntities(excerpt);
+
+        // JSON形式の場合
+        if (decodedExcerpt.trim().startsWith('{')) {
+            try {
+                return JSON.parse(decodedExcerpt);
+            } catch (e) {
+                return {};
+            }
+        }
+
+        // 旧形式（key: value）の場合
         const data = {};
-        const lines = excerpt.split('\n');
+        const lines = decodedExcerpt.split('\n');
 
         lines.forEach(function(line) {
             const match = line.match(/^([^:]+):\s*(.+)$/);
@@ -41,7 +62,9 @@
             const excerptData = parseExcerpt(post.excerpt);
             const releaseDate = excerptData.release_date;
 
-            if (!releaseDate) return;
+            if (!releaseDate) {
+                return;
+            }
 
             // YYYY-MM形式で年月をチェック
             if (releaseDate.startsWith(targetYearMonth)) {
@@ -124,14 +147,20 @@
 
     function initCalendarDetail() {
         const contentDiv = document.getElementById('calendar-detail-content');
-        if (!contentDiv) return;
+        if (!contentDiv) {
+            return;
+        }
 
         const pageSlug = contentDiv.getAttribute('data-page-slug');
-        if (!pageSlug) return;
+        if (!pageSlug) {
+            return;
+        }
 
         // slugから年月を抽出（例：calendar202401 → 2024-01）
         const match = pageSlug.match(/^calendar(\d{4})(\d{2})$/);
-        if (!match) return;
+        if (!match) {
+            return;
+        }
 
         const year = match[1];
         const month = match[2];

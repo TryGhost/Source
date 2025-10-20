@@ -19,11 +19,13 @@ a.btn-simple:hover {
     margin-bottom: 1em;
 }
 
-#past_sale {
+#past_sale,
+#recent_sale {
     margin: 0 0 30px 0;
 }
 
-#past_sale p {
+#past_sale p,
+#recent_sale p {
     display: block;
     margin-block-start: 1em;
     margin-block-end: 1em;
@@ -32,24 +34,34 @@ a.btn-simple:hover {
     unicode-bidi: isolate;
 }
 
-#past_sale span {
+#past_sale span,
+#recent_sale span {
     width: 30%;
     height: 35px;
     margin: 0 5px 15px 5px;
     float: left;
 }
 
-#past_sale small {
+#past_sale small,
+#recent_sale small {
     font-size: 13px;
 }
 
-#past_sale span a {
+#past_sale span a,
+#recent_sale span a {
     display: block;
     text-align: center;
     line-height: 35px;
     color: #231F20;
     text-decoration: none;
     background: #FFFFFF;
+}
+
+/* Onsale page title */
+.onsale-title {
+    font-size: 24px;
+    margin: 20px 0;
+    font-weight: bold;
 }
 
 /* Calendar detail page styles */

@@ -146,7 +146,14 @@
     }
 }
 
-/* トップページ以外では記事カードの雑誌タグを非表示 */
-body:not(.home-template) .magazine-tag-placeholder {
+/* デフォルトで雑誌タグを非表示 */
+.magazine-tag-placeholder {
     display: none !important;
+}
+
+/* トップページ、カテゴリーページで雑誌タグを表示 */
+.home-template .magazine-tag-placeholder,
+.category-template .magazine-tag-placeholder,
+body[class*="onsale"] .magazine-tag-placeholder {
+    display: block !important;
 }
