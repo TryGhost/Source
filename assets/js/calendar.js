@@ -5,6 +5,11 @@
     'use strict';
 
     function filterCalendarPages() {
+        // onsaleページでは実行しない
+        if (window.location.pathname === '/onsale/') {
+            return;
+        }
+
         const items = document.querySelectorAll('.calendar-item');
 
         if (items.length === 0) {
