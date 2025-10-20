@@ -23,12 +23,9 @@
         </div>
 
         {{!-- Calendar detail content --}}
-        <div id="calendar-detail-content">
-            {{#post}}
-                <h2>{{title}}</h2>
-                {{!-- 2024年1月の記事一覧がここに表示される --}}
-            {{/post}}
-        </div>
+        <div id="calendar-detail-content" data-page-slug="calendar202401"></div>
+
+        {{> "calendar-posts-data"}}
 
         {{!-- Calendar list --}}
         <div id="past_sale" class="cf">
