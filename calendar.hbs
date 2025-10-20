@@ -3,21 +3,23 @@
 
 {{> "components/search-form"}}
 
-<div id="cat_header">
-    {{> "components/breadcrumb"}}
-</div>
+{{#match @custom.header_style "!=" "Highlight"}}
+    {{> "components/featured" showFeatured=@custom.show_featured_posts limit=4}}
+{{/match}}
+
+{{> "components/cta"}}
 
 <div class="gh-content-wrapper">
     <main class="gh-main-content">
         {{> "components/content-menu" active="calendar"}}
 
-        <div class="post-grid category-post-list">
-            {{#foreach posts}}
-                {{> "post-card"}}
-            {{/foreach}}
+        {{!-- Calendar content will go here --}}
+        <div class="calendar-container">
+            {{!-- Calendar UI will be added here --}}
         </div>
 
-        {{> "pagination"}}
+        {{> "components/content-menu" active="calendar"}}
     </main>
+
     {{> "sidebar"}}
 </div>
