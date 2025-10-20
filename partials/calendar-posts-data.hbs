@@ -1,0 +1,14 @@
+<script>
+    window.calendarPosts = [
+        {{#get "posts" limit="all" include="tags"}}
+            {{#foreach posts}}
+            {
+                url: "{{url}}",
+                title: "{{title}}",
+                feature_image: {{#if feature_image}}"{{feature_image}}"{{else}}null{{/if}},
+                excerpt: `{{excerpt}}`
+            }{{#unless @last}},{{/unless}}
+            {{/foreach}}
+        {{/get}}
+    ];
+</script>
