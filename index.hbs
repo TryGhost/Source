@@ -1,12 +1,28 @@
 {{!< default}}
 {{!-- The tag above means: insert everything in this file into the body of the default.hbs template --}}
 
-<main class="gh-main">
-    <div class="gh-feed home-post-list">
-        {{#foreach posts}}
-            {{> "post-card"}}
-        {{/foreach}}
-    </div>
+{{> "components/search-form"}}
 
-    {{> "pagination"}}
-</main>
+{{#match @custom.header_style "!=" "Highlight"}}
+    {{> "components/featured" showFeatured=@custom.show_featured_posts limit=4}}
+{{/match}}
+
+{{> "components/cta"}}
+
+<div class="gh-content-wrapper">
+    <main class="gh-main-content">
+        {{> "components/content-menu" active="home"}}
+
+        <div class="post-grid">
+            {{#foreach posts}}
+                {{> "post-card"}}
+            {{/foreach}}
+        </div>
+
+        {{> "pagination"}}
+
+        {{> "components/content-menu" active="home"}}
+    </main>
+
+    {{> "sidebar"}}
+</div>

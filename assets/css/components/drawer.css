@@ -156,12 +156,13 @@
 /* Widget title icons */
 #drawer__content .widgettitle:before {
     padding-right: 4px;
-    font-family: "Font Awesome 6 Free";
-    font-weight: 900;
+    font-family: "FontAwesome";
+    font-weight: normal;
 }
 
+/* Categories widget - no icon */
 #drawer__content .widget_categories .widgettitle:before {
-    content: "\f0ca";
+    content: none;
 }
 
 /* Search Form */

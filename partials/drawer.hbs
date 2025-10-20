@@ -22,10 +22,10 @@
         <div class="widget widget_block widget-tags">
             <h4 class="widgettitle">付録タグから探す</h4>
             <div class="wp-widget-group__inner-blocks">
-                <p class="wp-block-tag-cloud">
-                    {{#get "tags" limit="12" order="count.posts desc" include="count.posts"}}
+                <p class="wp-block-tag-cloud" id="drawer-tag-cloud">
+                    {{#get "tags" limit="50" order="updated_at desc" include="count.posts"}}
                         {{#foreach tags}}
-                        <a href="{{url}}" class="tag-cloud-link" aria-label="{{name}} ({{count.posts}}個の項目)">
+                        <a href="{{url}}" class="tag-cloud-link" data-count="{{count.posts}}" data-slug="{{slug}}" aria-label="{{name}} ({{count.posts}}個の項目)">
                             {{name}}<span class="tag-link-count"> ({{count.posts}})</span>
                         </a>
                         {{/foreach}}

@@ -1,18 +1,15 @@
 /* Amazon product card styles */
 .amazonjs_item {
     font-size: 14px;
-    margin: .5em 0 1em 0;
-    padding: 25px 10px 25px 10px;
-    border: 3px double #ddd;
-    border-radius: 0;
+    margin: 1.5em 0;
+    padding: 15px 10px;
+    border: double 4px #dbdbdb;
     position: relative;
-    display: block;
-    background: white url(../images/amazon-logo.png) no-repeat right bottom;
+    /* background: white url(../images/amazonjs.png) no-repeat right bottom; */
     color: #333;
 }
 
 .amazonjs_item a {
-    color: #e47911;
     text-decoration: none;
 }
 
@@ -36,7 +33,7 @@
     display: block;
     width: 32px;
     height: 32px;
-    background: transparent url(../images/preloader.gif) no-repeat center;
+    background: transparent url(../images/ajax-loader.gif) no-repeat center;
 }
 
 .amazonjs_item .amazonjs_indicator .amazonjs_indicator_title {

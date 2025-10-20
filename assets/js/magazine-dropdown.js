@@ -28,7 +28,9 @@
             // Check if this is a parent category (not indented)
             if (text && !text.startsWith('\u00A0')) {
                 currentParent = option;
-                parentCategories[i] = { element: option, total: 0, originalText: text };
+                // Check if the parent already has a post count (e.g., "ブランドムック (5)")
+                const hasCount = /\(\d+\)/.test(text);
+                parentCategories[i] = { element: option, total: 0, originalText: text, hasCount: hasCount };
             }
             // Check if this is a child category (indented with &nbsp;)
             else if (text && text.startsWith('\u00A0') && currentParent) {
@@ -50,7 +52,10 @@
         // Update parent category text with total counts
         for (const index in parentCategories) {
             const parent = parentCategories[index];
-            parent.element.text = parent.originalText + ' (' + parent.total + ')';
+            // Skip if the parent already has a post count from Handlebars
+            if (!parent.hasCount) {
+                parent.element.text = parent.originalText + ' (' + parent.total + ')';
+            }
         }
 
         // Handle dropdown change
