@@ -1,0 +1,76 @@
+{{!< default}}
+{{!-- Template for /onsale201808/ page --}}
+
+{{!-- onsale詳細ページで雑誌タグラベルを表示 --}}
+<style>
+    .magazine-tag-placeholder {
+        display: block !important;
+    }
+</style>
+
+{{> "components/search-form"}}
+
+{{#match @custom.header_style "!=" "Highlight"}}
+    {{> "components/featured" showFeatured=@custom.show_featured_posts limit=4}}
+{{/match}}
+
+{{> "components/cta"}}
+
+<div id="cat_header">
+    {{> "components/breadcrumb"}}
+</div>
+
+<div class="gh-content-wrapper">
+    <main class="gh-main-content">
+        {{> "components/content-menu" active="onsale"}}
+
+        {{!-- Card container --}}
+        <div class="cardtype cf test">
+        </div>
+
+        {{!-- Page title --}}
+        <h2 class="onsale-title" id="onsale-detail-title">2018年08月の付録発売日情報 – 全雑誌</h2>
+
+        {{!-- Onsale detail content --}}
+        <div id="onsale-detail-content" data-page-slug="onsale201808">
+            <div class="post-grid category-post-list" id="onsale-posts-grid">
+            </div>
+        </div>
+
+        {{!-- Onsale posts data --}}
+        <script>
+            window.onsalePosts = [
+                {{#get "posts" filter="tag:hash-after" limit="all"}}
+                    {{#foreach posts}}
+                    {
+                        url: "{{url}}",
+                        title: "{{title}}",
+                        feature_image: {{#if feature_image}}"{{feature_image}}"{{else}}null{{/if}},
+                        excerpt: `{{excerpt}}`,
+                        tags: [{{#if tags}}{{#foreach tags}}{"slug":"{{slug}}","name":"{{name}}","url":"{{url}}"}{{#unless @last}},{{/unless}}{{/foreach}}{{/if}}]
+                    }{{#unless @last}},{{/unless}}
+                    {{/foreach}}
+                {{/get}}
+            ];
+        </script>
+
+        {{!-- Onsale list --}}
+        <div id="past_sale" class="cf">
+            <p>
+                {{#get "pages" limit="all" order="slug desc"}}
+                    {{#foreach pages}}
+                        <span class="calendar-item" data-slug="{{slug}}">
+                            <small><a href="{{url}}">{{title}}</a></small>
+                        </span>
+                    {{/foreach}}
+                {{/get}}
+            </p>
+        </div>
+
+        {{> "components/sns-share"}}
+
+        {{> "components/content-menu" active="onsale"}}
+    </main>
+
+    {{> "sidebar"}}
+</div>
