@@ -1,5 +1,5 @@
 {{!< default}}
-{{!-- Template for /calendar page - showing upcoming release calendar --}}
+{{!-- Template for /calendar202401/ page --}}
 
 {{> "components/search-form"}}
 
@@ -17,15 +17,17 @@
     <main class="gh-main-content">
         {{> "components/content-menu" active="calendar"}}
 
-        {{!-- Today button --}}
-        <a href="#" class="btn-simple">Today</a>
-
         {{!-- Card container --}}
         <div class="cardtype cf test">
 
         </div>
 
-        {{!-- Calendar content --}}
+        {{!-- Calendar detail content --}}
+        <div id="calendar-detail-content" data-page-slug="calendar202004"></div>
+
+        {{> "calendar-posts-data"}}
+
+        {{!-- Calendar list --}}
         <div id="past_sale" class="cf">
             <p>
                 {{#get "pages" limit="all" order="slug desc"}}
