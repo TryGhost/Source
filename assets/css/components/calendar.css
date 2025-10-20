@@ -51,3 +51,62 @@ a.btn-simple:hover {
     text-decoration: none;
     background: #FFFFFF;
 }
+
+/* Calendar detail page styles */
+p.bar-day {
+    clear: both;
+    display: block;
+    background: #fedcd2;
+    color: #df744a;
+    padding: 2px 10px;
+    font-size: 1.8em;
+    margin: 1em 4px 0.5em 4px;
+    width: calc(100% - 8px);
+}
+
+.calendar__article {
+    border: 1px #DDD solid;
+    background: #FFF;
+    padding: 10px 20px;
+    margin: -1px 4px 0 4px;
+    width: calc(100% - 8px);
+    min-height: 170px;
+    overflow: hidden;
+}
+
+p.calendar__img {
+    display: inline-block;
+    float: left;
+    width: 150px;
+}
+
+p.calendar__img img {
+    width: 150px;
+    height: 150px;
+}
+
+a.calendar__link-inline-info {
+    color: #666;
+    text-decoration: none;
+    display: inline-block;
+    width: calc(100% - 160px);
+    padding: 18px 0 10px 15px;
+}
+
+.calendar__article-info {
+    display: block;
+}
+
+.calendar__article-info-title {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 18px;
+}
+
+.calendar__article-info-appendix {
+    display: block;
+    font-size: 14px;
+    line-height: 2em;
+    margin-top: 1em;
+}
