@@ -1,6 +1,13 @@
 {{!< default}}
 {{!-- Template for /onsale202401/ page --}}
 
+{{!-- onsale詳細ページで雑誌タグラベルを表示 --}}
+<style>
+    .magazine-tag-placeholder {
+        display: block !important;
+    }
+</style>
+
 {{> "components/search-form"}}
 
 {{#match @custom.header_style "!=" "Highlight"}}

@@ -1,6 +1,13 @@
 {{!< default}}
 {{!-- Template for /onsale page - showing posts tagged with "hash-after" --}}
 
+{{!-- onsaleページで雑誌タグラベルを表示 --}}
+<style>
+    .magazine-tag-placeholder {
+        display: block !important;
+    }
+</style>
+
 {{> "components/search-form"}}
 
 {{#match @custom.header_style "!=" "Highlight"}}
@@ -44,6 +51,17 @@
         </div>
 
         {{> "pagination"}}
+
+        {{!-- Onsale posts tags data --}}
+        <script>
+            window.onsalePostsTags = {
+                {{#get "posts" filter="tag:hash-after" limit="all" include="tags"}}
+                    {{#foreach posts}}
+                    "{{slug}}": [{{#if tags}}{{#foreach tags}}{"slug":"{{slug}}","name":"{{name}}","url":"{{url}}"}{{#unless @last}},{{/unless}}{{/foreach}}{{/if}}]{{#unless @last}},{{/unless}}
+                    {{/foreach}}
+                {{/get}}
+            };
+        </script>
 
         {{> "components/sns-share"}}
 

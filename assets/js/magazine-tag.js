@@ -405,7 +405,6 @@
         // カテゴリーページかどうかを判定してbodyクラスを追加
         if (window.location.pathname.indexOf('/category/') === 0) {
             document.body.classList.add('category-page');
-            console.log('Added category-page class to body');
         }
 
         processPostCardMagazineTags();
@@ -419,4 +418,11 @@
     } else {
         init();
     }
+
+    // 関数をグローバルに公開（他のスクリプトから呼び出せるようにする）
+    window.MagazineTag = {
+        processPostCardMagazineTags: processPostCardMagazineTags,
+        processPostDetailMagazineTag: processPostDetailMagazineTag,
+        processBreadcrumb: processBreadcrumb
+    };
 })();
