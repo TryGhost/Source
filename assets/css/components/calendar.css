@@ -1,0 +1,33 @@
+/* Calendar page styles */
+#past_sale {
+    margin: 0 0 30px 0;
+}
+
+#past_sale p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    unicode-bidi: isolate;
+}
+
+#past_sale span {
+    width: 30%;
+    height: 35px;
+    margin: 0 5px 15px 5px;
+    float: left;
+}
+
+#past_sale small {
+    font-size: 13px;
+}
+
+#past_sale span a {
+    display: block;
+    text-align: center;
+    line-height: 35px;
+    color: #231F20;
+    text-decoration: none;
+    background: #FFFFFF;
+}

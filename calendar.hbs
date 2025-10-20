@@ -13,9 +13,17 @@
     <main class="gh-main-content">
         {{> "components/content-menu" active="calendar"}}
 
-        {{!-- Calendar content will go here --}}
-        <div class="calendar-container">
-            {{!-- Calendar UI will be added here --}}
+        {{!-- Calendar content --}}
+        <div id="past_sale" class="cf">
+            <p>
+                {{#get "pages" limit="all" order="slug desc"}}
+                    {{#foreach pages}}
+                        <span class="calendar-item" data-slug="{{slug}}">
+                            <small><a href="{{url}}">{{title}}</a></small>
+                        </span>
+                    {{/foreach}}
+                {{/get}}
+            </p>
         </div>
 
         {{> "components/content-menu" active="calendar"}}
