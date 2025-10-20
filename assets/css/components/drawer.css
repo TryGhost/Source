@@ -160,8 +160,9 @@
     font-weight: normal;
 }
 
+/* Categories widget - no icon */
 #drawer__content .widget_categories .widgettitle:before {
-    content: "\f0ca";
+    content: none;
 }
 
 /* Search Form */
