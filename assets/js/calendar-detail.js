@@ -101,6 +101,27 @@
         return html;
     }
 
+    function scrollToHash() {
+        // URLにハッシュがあれば、その要素までスクロール
+        if (window.location.hash) {
+            let hash = window.location.hash.substring(1); // '#' を除去
+
+            // "day_" プレフィックスを除去（例：day_01_25 → 01_25）
+            if (hash.startsWith('day_')) {
+                hash = hash.substring(4);
+            }
+
+            const targetElement = document.getElementById(hash);
+
+            if (targetElement) {
+                // 少し遅延させてから実行（DOMの準備を待つ）
+                setTimeout(function() {
+                    targetElement.scrollIntoView({behavior: 'smooth', block: 'start'});
+                }, 300);
+            }
+        }
+    }
+
     function initCalendarDetail() {
         const contentDiv = document.getElementById('calendar-detail-content');
         if (!contentDiv) return;
@@ -120,7 +141,10 @@
         const posts = window.calendarPosts || [];
         const html = generateCalendarHTML(posts, targetYearMonth);
 
-        contentDiv.innerHTML = html || '<p>記事が見つかりませんでした。</p>';
+        contentDiv.innerHTML = html;
+
+        // HTMLを挿入した後、ハッシュがあればスクロール
+        scrollToHash();
     }
 
     // DOMの準備ができるまで待機
