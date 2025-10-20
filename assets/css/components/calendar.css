@@ -1,4 +1,24 @@
 /* Calendar page styles */
+a.btn-simple,
+a.btn-simple:hover {
+    border: 1px #DDD solid;
+    border-radius: 40px;
+    padding: 4px 10px;
+    text-align: center;
+    display: inline-block;
+    background: #FFF;
+    color: #df744a;
+    text-decoration: none;
+    margin: 1em 0 1em 4px;
+    min-width: 130px;
+    font-size: 18px;
+}
+
+.cardtype,
+.sidelong {
+    margin-bottom: 1em;
+}
+
 #past_sale {
     margin: 0 0 30px 0;
 }
