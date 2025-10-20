@@ -85,8 +85,8 @@
 /* Widget title icons */
 .sidebar .widgettitle:before {
     padding-right: 4px;
-    font-family: "Font Awesome 6 Free";
-    font-weight: 900;
+    font-family: "FontAwesome";
+    font-weight: normal;
 }
 
 /* Categories Widget */
