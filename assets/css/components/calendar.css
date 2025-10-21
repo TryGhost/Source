@@ -64,6 +64,13 @@ a.btn-simple:hover {
     font-weight: bold;
 }
 
+/* Tag list page title */
+.tag-list-title {
+    font-size: 24px;
+    margin: 20px 0;
+    font-weight: bold;
+}
+
 /* Calendar detail page styles */
 p.bar-day {
     clear: both;
