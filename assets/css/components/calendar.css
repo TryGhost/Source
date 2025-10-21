@@ -64,11 +64,101 @@ a.btn-simple:hover {
     font-weight: bold;
 }
 
-/* Tag list page title */
-.tag-list-title {
-    font-size: 24px;
-    margin: 20px 0;
-    font-weight: bold;
+/* Nothumb page-title underline */
+.nothumb .page-title:after {
+    position: absolute;
+    bottom: -24px;
+    left: 15px;
+    display: inline-block;
+    content: "";
+    width: 100px;
+    height: 4px;
+    border-radius: 2px;
+    background: #eaedf2;
+}
+
+@media only screen and (min-width: 768px) {
+    .nothumb .page-title:after {
+        left: 0;
+    }
+}
+
+/* Tag list page - remove entry-content padding */
+#tag-list-content {
+    padding: 0;
+}
+
+.entry-content #tag-list-content {
+    padding: 0 !important;
+}
+
+@media only screen and (min-width: 1030px) {
+    .entry-content:has(#tag-list-content) {
+        padding: 0 !important;
+    }
+}
+
+/* Tag list page grid */
+#tag-list-content.tag-grid {
+    display: block;
+    margin: 0;
+    padding: 0 10px !important;
+    line-height: 2;
+}
+
+.tag-item {
+    display: inline-block;
+    margin: 5px 5px 5px 0;
+}
+
+.tag-link {
+    display: inline-block;
+    padding: 1px 8px !important;
+    border-radius: 15px;
+    background: #f4f4f4;
+    color: #666;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 12px !important;
+}
+
+.tag-link:hover {
+    background: #df744a;
+    color: #fff;
+}
+
+.tag-name {
+    font-weight: 600;
+}
+
+.tag-count {
+    font-size: 12px;
+    opacity: 0.8;
+    margin-left: 4px;
+}
+
+@media only screen and (min-width: 1030px) {
+    #tag-list-content.tag-grid {
+        padding: 0 40px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .tag-link {
+        font-size: 12px;
+        padding: 5px 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .tag-item {
+        margin: 4px 4px 4px 0;
+    }
+
+    .tag-link {
+        font-size: 11px;
+        padding: 4px 8px;
+    }
 }
 
 /* Calendar detail page styles */
