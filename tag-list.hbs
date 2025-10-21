@@ -1,0 +1,42 @@
+{{!< default}}
+{{!-- Template for /tag/ page - showing all tags --}}
+
+{{> "components/search-form"}}
+
+{{#match @custom.header_style "!=" "Highlight"}}
+    {{> "components/featured" showFeatured=@custom.show_featured_posts limit=4}}
+{{/match}}
+
+{{> "components/cta"}}
+
+<div id="cat_header">
+    {{!-- パンくずナビゲーション: ホーム > タグ一覧 --}}
+    <nav id="breadcrumb">
+        <ul itemscope itemtype="http://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                <a href="{{@site.url}}" itemprop="item">
+                    <span itemprop="name">ホーム</span>
+                </a>
+                <meta itemprop="position" content="1">
+            </li>
+            <li>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+<div class="gh-content-wrapper">
+    <main class="gh-main-content">
+        {{!-- ページタイトル --}}
+        <h2 class="tag-list-title">タグ一覧</h2>
+
+        {{!-- タグ一覧（後で実装） --}}
+        <div id="tag-list-content">
+            <!-- タグ一覧をここに表示 -->
+        </div>
+
+        {{> "components/sns-share"}}
+    </main>
+
+    {{> "sidebar"}}
+</div>
