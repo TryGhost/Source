@@ -9,33 +9,47 @@
 
 {{> "components/cta"}}
 
-<div id="cat_header">
-    {{!-- パンくずナビゲーション: ホーム > タグ一覧 --}}
-    <nav id="breadcrumb">
-        <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-            <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                <a href="{{@site.url}}" itemprop="item">
-                    <span itemprop="name">ホーム</span>
-                </a>
-                <meta itemprop="position" content="1">
-            </li>
-            <li>
-            </li>
-        </ul>
-    </nav>
-</div>
-
 <div class="gh-content-wrapper">
     <main class="gh-main-content">
-        {{!-- ページタイトル --}}
-        <h2 class="tag-list-title">タグ一覧</h2>
+        <article id="entry" class="cf page nothumb">
+            <header class="article-header entry-header">
+                {{!-- パンくずナビゲーション: ホーム > タグ一覧 --}}
+                <nav id="breadcrumb">
+                    <ul itemscope itemtype="http://schema.org/BreadcrumbList">
+                        <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                            <a href="{{@site.url}}" itemprop="item">
+                                <span itemprop="name">ホーム</span>
+                            </a>
+                            <meta itemprop="position" content="1">
+                        </li>
+                        <li></li>
+                    </ul>
+                </nav>
+                <h1 class="page-title">タグ一覧</h1>
+            </header>
 
-        {{!-- タグ一覧（後で実装） --}}
-        <div id="tag-list-content">
-            <!-- タグ一覧をここに表示 -->
-        </div>
+            <section class="entry-content cf">
+                {{!-- タグ一覧 --}}
+                <div id="tag-list-content" class="tag-grid">
+                    {{#get "tags" filter="visibility:public" include="count.posts" limit="all"}}
+                        {{#foreach tags}}
+                            <div class="tag-item">
+                                <a href="{{url}}" class="tag-link">
+                                    <span class="tag-name">{{name}}</span>
+                                    {{#if count.posts}}
+                                        <span class="tag-count">({{count.posts}})</span>
+                                    {{/if}}
+                                </a>
+                            </div>
+                        {{/foreach}}
+                    {{/get}}
+                </div>
+            </section>
 
-        {{> "components/sns-share"}}
+            <footer class="article-footer">
+                {{> "components/sns-share"}}
+            </footer>
+        </article>
     </main>
 
     {{> "sidebar"}}
