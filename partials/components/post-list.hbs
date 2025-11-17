@@ -11,7 +11,7 @@
         
         {{#if showTitle}}
             <h2 class="gh-container-title">
-                {{#unless title}}Latest{{else}}{{title}}{{/unless}}
+                {{#unless title}}{{t "Latest"}}{{else}}{{title}}{{/unless}}
             </h2>
         {{/if}}
 
@@ -80,7 +80,7 @@
 
             {{#match pagination.pages ">" 1}}
                 <div class="gh-more is-title">
-                    <a href="{{@site.url}}/page/2">See all {{> "icons/arrow"}}</a>
+                    <a href="{{@site.url}}/page/2">{{t "See all"}} {{> "icons/arrow"}}</a>
                 </div>
             {{/match}}
         </main>
@@ -98,11 +98,11 @@
                         {{/if}}
                         {{#if @site.members_enabled}}
                             {{#unless @member}}
-                                <button class="gh-button" data-portal="signup">Subscribe</button>
+                                <button class="gh-button" data-portal="signup">{{t "Subscribe"}}</button>
                             {{else}}
                                 {{#if @site.paid_members_enabled}}
                                     {{#unless @member.paid}}
-                                        <button class="gh-button" data-portal="upgrade">Upgrade</button>
+                                        <button class="gh-button" data-portal="upgrade">{{t "Upgrade"}}</button>
                                     {{/unless}}
                                 {{/if}}
                             {{/unless}}
@@ -110,9 +110,9 @@
                     </section>
                     {{#if @site.recommendations_enabled}}
                         <section class="gh-recommendations">
-                            <h4 class="gh-sidebar-title">Recommendations</h4>
+                            <h4 class="gh-sidebar-title">{{t "Recommendations"}}</h4>
                             {{recommendations}}
-                            <button data-portal="recommendations">See all {{> "icons/arrow"}}</button>
+                            <button data-portal="recommendations">{{t "See all"}} {{> "icons/arrow"}}</button>
                         </section>
                     {{/if}}
                 </div>

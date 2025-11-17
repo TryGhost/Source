@@ -3335,3 +3335,10 @@ body[class*=" gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-hea
 .pswp--minimal--dark .pswp__top-bar {
     background: none;
 }
+
+/* Post-CTA */
+
+.gh-post-upgrade-cta ul {
+  padding-left: 0;
+  margin-top: 1rem;
+}
