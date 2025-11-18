@@ -34,7 +34,18 @@
                     {{^has visibility="public"}}
                         {{> "icons/lock"}}
                     {{/has}}
-                {{/unless}}<!--
+                {{/unless}}
+                {{!-- {{#get tags}}
+                    {{#foreach tags}}
+                        <a class="gh-article-tag" href="{{url}}">{{name}}</a>
+                    {{/foreach }}
+                {{/get}} --}}
+                {{#if tags}}
+                    <div class="post-tags">
+                        Tags: {{tags separator=", "}}
+                    </div>
+                {{/if}}
+                <!--
              -->{{#if @custom.show_author}}
                     <span class="gh-card-author">By {{#foreach authors}}{{#if @first}}{{name}}{{else}}, {{name}}{{/if}}{{/foreach}}</span>
                 {{/if}}
