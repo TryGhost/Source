@@ -310,9 +310,10 @@ NATHAN TEST
     </style>
 
     <div class="header">
-        <h1>The Perfect Season</h1>
-        <p class="subtitle">The Story of the Undefeated Miami Dolphins</p>
-        <div class="year">1972</div>
+        <h1>{{title}}</h1>
+        {{#if custom_excerpt}}
+            <p class="subtitle">{{custom_excerpt}}</p>
+        {{/if}}
     </div>
 
     <div class="scroll-container">
@@ -328,6 +329,7 @@ NATHAN TEST
                 <div class="step-content">
                     <h2>A Season Like No Other</h2>
                     <p>In 1972, the Miami Dolphins accomplished what no NFL team had done before, and what no team has done since. They finished the season without a single loss, going 17-0 including the playoffs and Super Bowl.</p>
+                    {{content}}
                 </div>
             </div>
 
@@ -335,6 +337,7 @@ NATHAN TEST
                 <div class="step-content">
                     <h2>The Coach</h2>
                     <p>Don Shula, in just his third season with Miami, orchestrated one of the greatest coaching performances in sports history. His no-nonsense approach and innovative strategies transformed the Dolphins into an unstoppable force.</p>
+                    {{content}}
                 </div>
             </div>
 
