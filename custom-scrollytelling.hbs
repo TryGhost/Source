@@ -26,3 +26,421 @@ NATHAN TEST
 </main>
 
 {{/post}}
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: #002244;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #002244 0%, #006b7d 100%);
+        }
+
+        .header h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .header .subtitle {
+            font-size: 1.5rem;
+            font-style: italic;
+            color: #FC4C02;
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        .header .year {
+            font-size: 8rem;
+            font-weight: bold;
+            color: rgba(252, 76, 2, 0.3);
+            margin-top: 2rem;
+            animation: fadeInUp 1s ease-out 1s both;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .scroll-container {
+            position: relative;
+        }
+
+        .sticky-visual {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #001a33;
+        }
+
+        .visual-content {
+            width: 100%;
+            max-width: 800px;
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.6s ease-out;
+        }
+
+        .record-display {
+            font-size: 8rem;
+            font-weight: bold;
+            color: #FC4C02;
+            text-shadow: 0 0 30px rgba(252, 76, 2, 0.5);
+            font-family: 'Arial Black', sans-serif;
+        }
+
+        .record-label {
+            font-size: 2rem;
+            color: #ffffff;
+            margin-top: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .stat-display {
+            display: flex;
+            gap: 3rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(252, 76, 2, 0.1);
+            border-radius: 10px;
+            min-width: 150px;
+        }
+
+        .stat-number {
+            font-size: 4rem;
+            color: #FC4C02;
+            font-weight: bold;
+        }
+
+        .stat-label {
+            font-size: 1.2rem;
+            color: #ffffff;
+            margin-top: 0.5rem;
+        }
+
+        .player-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            width: 90%;
+            max-width: 900px;
+        }
+
+        .player-card {
+            background: rgba(252, 76, 2, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid #FC4C02;
+        }
+
+        .player-name {
+            font-size: 1.5rem;
+            color: #FC4C02;
+            margin-bottom: 0.5rem;
+        }
+
+        .player-position {
+            font-size: 1rem;
+            color: #ffffff;
+            opacity: 0.8;
+        }
+
+        .trophy-icon {
+            font-size: 12rem;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        .content-sections {
+            position: relative;
+            z-index: 1;
+        }
+
+        .content-step {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 4rem 2rem;
+        }
+
+        .step-content {
+            max-width: 600px;
+            background: rgba(0, 34, 68, 0.95);
+            padding: 3rem;
+            border-radius: 15px;
+            border-left: 5px solid #FC4C02;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            margin-left: auto;
+            margin-right: 4rem;
+        }
+
+        .step-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #FC4C02;
+        }
+
+        .step-content p {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: #e0e0e0;
+        }
+
+        .footer {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #006b7d 0%, #002244 100%);
+        }
+
+        .footer h2 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            color: #FC4C02;
+        }
+
+        .footer p {
+            font-size: 1.5rem;
+            max-width: 800px;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .header .year {
+                font-size: 4rem;
+            }
+
+            .record-display {
+                font-size: 5rem;
+            }
+
+            .record-label {
+                font-size: 1.5rem;
+            }
+
+            .step-content {
+                margin-right: 2rem;
+                margin-left: 2rem;
+            }
+
+            .step-content h2 {
+                font-size: 2rem;
+            }
+
+            .step-content p {
+                font-size: 1.1rem;
+            }
+
+            .stat-display {
+                gap: 1.5rem;
+            }
+
+            .stat-number {
+                font-size: 3rem;
+            }
+
+            .trophy-icon {
+                font-size: 8rem;
+            }
+        }
+    </style>
+
+    <div class="header">
+        <h1>The Perfect Season</h1>
+        <p class="subtitle">The Story of the Undefeated Miami Dolphins</p>
+        <div class="year">1972</div>
+    </div>
+
+    <div class="scroll-container">
+        <div class="sticky-visual">
+            <div class="visual-content" id="visualContent">
+                <div class="record-display">17-0</div>
+                <div class="record-label">Perfect Record</div>
+            </div>
+        </div>
+
+        <div class="content-sections">
+            <div class="content-step" data-step="0">
+                <div class="step-content">
+                    <h2>A Season Like No Other</h2>
+                    <p>In 1972, the Miami Dolphins accomplished what no NFL team had done before, and what no team has done since. They finished the season without a single loss, going 17-0 including the playoffs and Super Bowl.</p>
+                </div>
+            </div>
+
+            <div class="content-step" data-step="1">
+                <div class="step-content">
+                    <h2>The Coach</h2>
+                    <p>Don Shula, in just his third season with Miami, orchestrated one of the greatest coaching performances in sports history. His no-nonsense approach and innovative strategies transformed the Dolphins into an unstoppable force.</p>
+                </div>
+            </div>
+
+            <div class="content-step" data-step="2">
+                <div class="step-content">
+                    <h2>The Perfect Pair</h2>
+                    <p>When starting quarterback Bob Griese was injured in Week 5, backup Earl Morrall stepped in seamlessly. The duo combined for 19 touchdowns and led the team without missing a beat, showcasing the depth that made this team special.</p>
+                </div>
+            </div>
+
+            <div class="content-step" data-step="3">
+                <div class="step-content">
+                    <h2>The No-Name Defense</h2>
+                    <p>Miami's defense earned the nickname "No-Name Defense" because of their lack of star power. But they were dominant, allowing just 12.2 points per game and creating turnovers when it mattered most.</p>
+                </div>
+            </div>
+
+            <div class="content-step" data-step="4">
+                <div class="step-content">
+                    <h2>The Ground Game</h2>
+                    <p>Larry Csonka and Mercury Morris formed a devastating running back duo, each rushing for over 1,000 yards. Their punishing style wore down defenses and controlled the clock, making Miami nearly impossible to beat.</p>
+                </div>
+            </div>
+
+            <div class="content-step" data-step="5">
+                <div class="step-content">
+                    <h2>Super Bowl VII</h2>
+                    <p>On January 14, 1973, at the Los Angeles Memorial Coliseum, the Dolphins defeated the Washington Redskins 14-7 to complete their perfect season. Safety Jake Scott's two interceptions earned him Super Bowl MVP honors.</p>
+                </div>
+            </div>
+
+            <div class="content-step" data-step="6">
+                <div class="step-content">
+                    <h2>The Legacy</h2>
+                    <p>Over 50 years later, the 1972 Dolphins remain the only team to complete a perfect season in NFL history. Team members famously toast champagne each year when the last undefeated team loses, celebrating their unique achievement.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <h2>Still Perfect</h2>
+        <p>The 1972 Miami Dolphins proved that teamwork, discipline, and determination can create something truly extraordinary. Their 17-0 record stands as a testament to one of the greatest teams in sports history.</p>
+        <div style="margin-top: 3rem; font-size: 6rem;">🏆</div>
+    </div>
+
+    <script>
+        const visualContent = document.getElementById('visualContent');
+        const steps = document.querySelectorAll('.content-step');
+
+        const visualStates = [
+            {
+                html: '<div class="record-display">17-0</div><div class="record-label">Perfect Record</div>'
+            },
+            {
+                html: '<div class="stat-box"><div class="stat-number">Don Shula</div><div class="stat-label">Head Coach</div></div>'
+            },
+            {
+                html: '<div class="stat-display"><div class="stat-box"><div class="stat-number">Bob<br>Griese</div><div class="stat-label">Starting QB</div></div><div class="stat-box"><div class="stat-number">Earl<br>Morrall</div><div class="stat-label">Backup QB</div></div></div>'
+            },
+            {
+                html: '<div class="stat-display"><div class="stat-box"><div class="stat-number">12.2</div><div class="stat-label">Points Allowed<br>Per Game</div></div><div class="stat-box"><div class="stat-number">2.0</div><div class="stat-label">Turnovers<br>Per Game</div></div></div>'
+            },
+            {
+                html: '<div class="stat-display"><div class="stat-box"><div class="stat-number">1,117</div><div class="stat-label">Larry Csonka<br>Rush Yards</div></div><div class="stat-box"><div class="stat-number">1,000</div><div class="stat-label">Mercury Morris<br>Rush Yards</div></div></div>'
+            },
+            {
+                html: '<div class="stat-display"><div class="stat-box"><div class="stat-number">14-7</div><div class="stat-label">Super Bowl VII<br>Final Score</div></div><div class="stat-box"><div class="stat-number">Jake<br>Scott</div><div class="stat-label">Super Bowl<br>MVP</div></div></div>'
+            },
+            {
+                html: '<div class="trophy-icon">🏆</div><div class="record-label">Only Perfect Season</div>'
+            }
+        ];
+
+        function updateVisual(stepIndex) {
+            if (stepIndex >= 0 && stepIndex < visualStates.length) {
+                visualContent.style.opacity = '0';
+                visualContent.style.transform = 'scale(0.9)';
+
+                setTimeout(() => {
+                    visualContent.innerHTML = visualStates[stepIndex].html;
+                    visualContent.style.opacity = '1';
+                    visualContent.style.transform = 'scale(1)';
+                }, 300);
+            }
+        }
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '-50% 0px -50% 0px',
+            threshold: 0
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const stepIndex = parseInt(entry.target.getAttribute('data-step'));
+                    updateVisual(stepIndex);
+                }
+            });
+        }, observerOptions);
+
+        steps.forEach(step => {
+            observer.observe(step);
+        });
+
+        // Initialize with first visual
+        updateVisual(0);
+    </script>
