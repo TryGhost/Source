@@ -2,9 +2,9 @@
   "name": "nmsource",
   "description": "A custom theme for the Ghost publishing platform",
   "demo": "kenziepossee.com",
-  "version": "1.5.0",
+  "version": "2.0.0",
   "engines": {
-    "ghost": ">=5.0.0"
+    "ghost": ">=6.0.0"
   },
   "license": "MIT",
   "scripts": {
