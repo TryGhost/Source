@@ -1,10 +1,8 @@
 # Source
 
-The default theme for [Ghost](http://github.com/tryghost/ghost/). This is the latest development version of Source! If you're just looking to download the latest release, head over to the [releases](https://github.com/TryGhost/Source/releases) page.
+The [Ghost](http://github.com/tryghost/ghost/) theme for [kenziepossee.com](https://kenziepossee.com). This is a fork of [Source](https://github.com/TryGhost/Source/).
 
-&nbsp;
-
-# First time using a Ghost theme?
+## Layout
 
 Ghost uses a simple templating language called [Handlebars](http://handlebarsjs.com/) for its themes.
 
