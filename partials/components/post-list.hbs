@@ -57,13 +57,6 @@
 
                 {{!-- All posts --}}
                 {{#match feed "index"}}
-                    {{#match pagination.page 2}}
-                        {{#get "posts" include="authors" limit=@config.posts_per_page as |recent|}}
-                            {{#foreach recent}}
-                                {{> "post-card"}}
-                            {{/foreach}}
-                        {{/get}}
-                    {{/match}}
                     {{#foreach posts}}
                         {{> "post-card" lazyLoad=true}}
                     {{/foreach}}
