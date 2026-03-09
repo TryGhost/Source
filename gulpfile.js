@@ -124,7 +124,7 @@ exports.release = async () => {
             type: 'input',
             name: 'compatibleWithGhost',
             message: 'Which version of Ghost is it compatible with?',
-            default: '5.0.0'
+            default: '5.67.0'
         }]);
 
         const compatibleWithGhost = result.compatibleWithGhost;
