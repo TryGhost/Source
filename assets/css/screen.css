@@ -297,7 +297,8 @@ body[class*=" gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-hea
 .gh-form .gh-button {
     position: absolute;
     right: 6px;
-    padding-inline: 32px;
+    min-width: 132px;
+    padding-inline: 24px;
     height: 44px;
     font-size: inherit;
 }
@@ -320,7 +321,11 @@ body[class*=" gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-hea
     margin-top: 1px;
 }
 
-.gh-form:is(.loading, .success) .gh-button span {
+.gh-form .gh-button > span:last-child {
+    display: none;
+}
+
+.gh-form:is(.loading, .success) .gh-button > span:first-child {
     visibility: hidden;
 }
 
@@ -328,8 +333,12 @@ body[class*=" gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-hea
     display: block;
 }
 
-.gh-form.success .gh-button svg:last-of-type {
-    display: block;
+.gh-form.success .gh-button > span:first-child {
+    display: none;
+}
+
+.gh-form.success .gh-button > span:last-child {
+    display: inline;
 }
 
 .gh-form [data-members-error] {
@@ -347,19 +356,8 @@ body[class*=" gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-hea
     }
 
     .gh-form .gh-button {
+        min-width: 104px;
         padding-inline: 12px;
-    }
-
-    .gh-form .gh-button span span {
-        display: none;
-    }
-
-    .gh-form .gh-button span svg {
-        display: inline;
-        position: static;
-        margin-top: 2px;
-        width: 20px;
-        height: 20px;
     }
 }
 
