@@ -83,7 +83,7 @@ function zipper(done) {
             '!yarn.lock',
             '!gulpfile.js'
         ]),
-        zip(filename, {modifiedTime: new Date()}),
+        zip(filename),
         dest('dist/')
     ], handleError(done));
 }
