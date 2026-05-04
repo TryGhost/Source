@@ -13,9 +13,48 @@
 
 /* -----------------------------------------------------------------
    1. CARICAMENTO FONT
+   -----------------------------------------------------------------
+   Self-hosted (no Google Fonts dependency). Latin subset only —
+   covers English plus Italian basic accents (à è ì ò ù in U+00xx).
+
+   Fraunces is a variable font: a single .woff2 covers weights
+   100..900 via the wght axis. We declare the upright and italic
+   files as such so Ghost callers can pick any weight in range.
+
+   IBM Plex Mono is static; one file per weight.
    ----------------------------------------------------------------- */
 
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('../fonts/fraunces-roman.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('../fonts/fraunces-italic.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/plex-mono-400.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../fonts/plex-mono-500.woff2') format('woff2');
+}
 
 
 /* -----------------------------------------------------------------

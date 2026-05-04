@@ -10,7 +10,14 @@
     {{!-- Preload main styles and scripts for better performance --}}
     <link rel="preload" as="style" href="{{asset "built/screen.css"}}">
     <link rel="preload" as="script" href="{{asset "built/source.js"}}">
-    
+
+    {{!-- cyber/verso · self-hosted font preloads (latin subset). Only
+         the variants used above the fold (Fraunces roman + Plex Mono 400)
+         are preloaded; italic and weight 500 are defined in cyberverso.css
+         and loaded on first-use. --}}
+    <link rel="preload" as="font" type="font/woff2" href="{{asset "fonts/fraunces-roman.woff2"}}" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="{{asset "fonts/plex-mono-400.woff2"}}" crossorigin>
+
     {{!-- Fonts are preloaded and defined in the default template to avoid layout shift --}}
     {{> "typography/fonts"}}
 
