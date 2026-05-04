@@ -1,0 +1,61 @@
+{{!-- cyber/verso · hreflang alternates
+
+     Emits <link rel="alternate" hreflang="..."> tags inside <head>.
+     Loaded from default.hbs before {{ghost_head}} so Ghost's own
+     canonical / og tags still take effect.
+
+     POST PAGES
+       Use the same codename-paired lookup as cv-language-switcher to
+       link the post to its translated counterpart. The current page
+       gets its own hreflang too (per Google's recommendation that
+       each page should self-reference). x-default points at the EN
+       version when present, else the current page.
+
+     OFF POST PAGES
+       Cross-link the two collection roots with x-default = /.
+       Tag/author archives use the same pair (good enough; Google
+       expects either alternate links or none at all).
+--}}
+
+{{#is "post"}}
+    {{!-- This partial is included from default.hbs <head>, outside the
+         {{#post}} body block, so we need to enter post context to read
+         the current post's tags. --}}
+    {{#post}}
+
+        {{#has tag="#en"}}
+            <link rel="alternate" hreflang="en" href="{{url absolute="true"}}">
+            {{#foreach tags filter="visibility:internal"}}
+                {{#match slug "!=" "hash-en"}}{{#match slug "!=" "hash-it"}}
+                    {{#get "posts" filter="tag:{{slug}}+tag:hash-it" limit="1" as |paired|}}
+                        {{#foreach paired}}
+                            <link rel="alternate" hreflang="it" href="{{url absolute="true"}}">
+                        {{/foreach}}
+                    {{/get}}
+                {{/match}}{{/match}}
+            {{/foreach}}
+            <link rel="alternate" hreflang="x-default" href="{{url absolute="true"}}">
+        {{/has}}
+
+        {{#has tag="#it"}}
+            <link rel="alternate" hreflang="it" href="{{url absolute="true"}}">
+            {{#foreach tags filter="visibility:internal"}}
+                {{#match slug "!=" "hash-en"}}{{#match slug "!=" "hash-it"}}
+                    {{#get "posts" filter="tag:{{slug}}+tag:hash-en" limit="1" as |paired|}}
+                        {{#foreach paired}}
+                            <link rel="alternate" hreflang="en" href="{{url absolute="true"}}">
+                            <link rel="alternate" hreflang="x-default" href="{{url absolute="true"}}">
+                        {{/foreach}}
+                    {{/get}}
+                {{/match}}{{/match}}
+            {{/foreach}}
+        {{/has}}
+
+    {{/post}}
+{{else}}
+
+    <link rel="alternate" hreflang="en" href="{{@site.url}}/">
+    <link rel="alternate" hreflang="it" href="{{@site.url}}/it/">
+    <link rel="alternate" hreflang="x-default" href="{{@site.url}}/">
+
+{{/is}}

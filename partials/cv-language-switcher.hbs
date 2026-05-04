@@ -1,0 +1,91 @@
+{{!-- cyber/verso · language switcher
+
+     Replaces the static [en | it] placeholder originally inlined in
+     cv-header.hbs.
+
+     Behaviour:
+
+     ON A POST PAGE
+       - Read the post's language tag (hash-en or hash-it).
+       - Iterate the post's internal tags to find the codename slug
+         (anything other than hash-en/hash-it). Internal tags use the
+         "hash-" prefix in their slugs (e.g. #tx-eu-sov-001 → hash-tx-eu-sov-001).
+       - Query for a post with that codename in the OTHER language.
+       - If found: link the inactive language label to that post.
+       - If not found: link to the other-language home and tag the
+         label as cv-lang--untranslated for visual feedback.
+
+     OFF A POST PAGE
+       - Render a static switcher pointing at the two collection roots.
+         The active marker is added client-side by cyberverso.js based
+         on window.location.pathname (path-based language detection).
+
+     EDGE CASES
+       - Posts missing both hash-en and hash-it: nothing renders inside
+         the switcher, fallback empty. The cyberverso content model
+         requires every post to have one, so this is a data error.
+--}}
+
+<div class="cv-lang-switcher" aria-label="Language" data-cv-lang-switcher>
+
+{{#is "post"}}
+    {{!-- The partial is rendered from cv-header which lives outside the
+         {{#post}} body block in default.hbs, so `tags` and {{#has}} need
+         an explicit {{#post}} wrap to access the current post's data. --}}
+    {{#post}}
+
+        {{#has tag="#en"}}
+            {{!-- EN post: look up the IT pair via the codename tag --}}
+            {{#foreach tags filter="visibility:internal"}}
+                {{#match slug "!=" "hash-en"}}{{#match slug "!=" "hash-it"}}
+                    {{#get "posts" filter="tag:{{slug}}+tag:hash-it" limit="1" as |paired|}}
+                        {{#if paired}}
+                            {{#foreach paired}}
+                                <span class="cv-lang is-active" aria-current="true">en</span>
+                                <span class="cv-lang-sep" aria-hidden="true">|</span>
+                                <a class="cv-lang" href="{{url}}">it</a>
+                            {{/foreach}}
+                        {{else}}
+                            <span class="cv-lang is-active" aria-current="true">en</span>
+                            <span class="cv-lang-sep" aria-hidden="true">|</span>
+                            <a class="cv-lang cv-lang--untranslated" href="/it/" title="No Italian translation yet — go to homepage">it</a>
+                        {{/if}}
+                    {{/get}}
+                {{/match}}{{/match}}
+            {{/foreach}}
+        {{/has}}
+
+        {{#has tag="#it"}}
+            {{!-- IT post: look up the EN pair via the codename tag --}}
+            {{#foreach tags filter="visibility:internal"}}
+                {{#match slug "!=" "hash-en"}}{{#match slug "!=" "hash-it"}}
+                    {{#get "posts" filter="tag:{{slug}}+tag:hash-en" limit="1" as |paired|}}
+                        {{#if paired}}
+                            {{#foreach paired}}
+                                <a class="cv-lang" href="{{url}}">en</a>
+                                <span class="cv-lang-sep" aria-hidden="true">|</span>
+                                <span class="cv-lang is-active" aria-current="true">it</span>
+                            {{/foreach}}
+                        {{else}}
+                            <a class="cv-lang cv-lang--untranslated" href="/" title="No English translation yet — go to homepage">en</a>
+                            <span class="cv-lang-sep" aria-hidden="true">|</span>
+                            <span class="cv-lang is-active" aria-current="true">it</span>
+                        {{/if}}
+                    {{/get}}
+                {{/match}}{{/match}}
+            {{/foreach}}
+        {{/has}}
+
+    {{/post}}
+{{else}}
+
+    {{!-- Non-post pages: client-side active marker via [data-cv-lang]
+         on cyberverso.js. The CSS selector :root[data-cv-lang="en"]
+         .cv-lang[data-cv-lang="en"] applies .is-active visuals. --}}
+    <a class="cv-lang" href="/" data-cv-lang="en">en</a>
+    <span class="cv-lang-sep" aria-hidden="true">|</span>
+    <a class="cv-lang" href="/it/" data-cv-lang="it">it</a>
+
+{{/is}}
+
+</div>

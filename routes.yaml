@@ -1,0 +1,29 @@
+# cyber/verso · routes.yaml
+#
+# Bilingual site model:
+#   - /     → English collection, filter tag:hash-en, template home.hbs
+#   - /it/  → Italian collection, filter tag:hash-it, template index.hbs
+#
+# IMPORTANT: this file is NOT auto-applied by uploading the theme zip.
+# Upload it separately via Ghost Admin → Settings → Labs → Routes.
+#
+# The hash-en / hash-it filters reference the slugs of Ghost internal
+# tags #en and #it (Ghost converts the # prefix to "hash-" in slugs).
+# Posts must be tagged with one of these to appear in their collection.
+
+routes:
+
+collections:
+  /:
+    permalink: /{slug}/
+    template: home
+    filter: tag:hash-en
+
+  /it/:
+    permalink: /it/{slug}/
+    template: index
+    filter: tag:hash-it
+
+taxonomies:
+  tag: /tag/{slug}/
+  author: /author/{slug}/

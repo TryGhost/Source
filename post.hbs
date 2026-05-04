@@ -79,7 +79,7 @@
         {{#if tags}}
             <footer class="cv-article-footer">
                 <h2 class="cv-section-heading">
-                    <span class="cv-slash" aria-hidden="true">/</span> tagged
+                    <span class="cv-slash" aria-hidden="true">/</span> {{t "tagged"}}
                 </h2>
                 <ul class="cv-article-tags">
                     {{#foreach tags filter="visibility:public"}}
@@ -102,18 +102,43 @@
 {{/post}}
 
 {{#if @custom.show_related_articles}}
-    {{#get "posts" filter="id:-{{post.id}}" limit="2" as |next|}}
-        {{#if next}}
-            <section class="cv-section cv-read-next">
-                <h2 class="cv-section-heading">
-                    <span class="cv-slash" aria-hidden="true">/</span> read next
-                </h2>
-                <ul class="cv-recent-grid">
-                    {{#foreach next}}
-                        <li>{{> "cv-post-card"}}</li>
-                    {{/foreach}}
-                </ul>
-            </section>
-        {{/if}}
-    {{/get}}
+    {{!-- Read next stays within the current post's language collection.
+         Two parallel branches because Ghost has no way to interpolate a
+         resolved tag slug into a {{#get}} filter without first reading
+         it inside a {{#has}}/foreach block. --}}
+
+    {{#has tag="hash-en"}}
+        {{#get "posts" filter="tag:hash-en+id:-{{post.id}}" limit="2" as |next|}}
+            {{#if next}}
+                <section class="cv-section cv-read-next">
+                    <h2 class="cv-section-heading">
+                        <span class="cv-slash" aria-hidden="true">/</span> {{t "read next"}}
+                    </h2>
+                    <ul class="cv-recent-grid">
+                        {{#foreach next}}
+                            <li>{{> "cv-post-card"}}</li>
+                        {{/foreach}}
+                    </ul>
+                </section>
+            {{/if}}
+        {{/get}}
+    {{/has}}
+
+    {{#has tag="hash-it"}}
+        {{#get "posts" filter="tag:hash-it+id:-{{post.id}}" limit="2" as |next|}}
+            {{#if next}}
+                <section class="cv-section cv-read-next">
+                    <h2 class="cv-section-heading">
+                        <span class="cv-slash" aria-hidden="true">/</span> {{t "read next"}}
+                    </h2>
+                    <ul class="cv-recent-grid">
+                        {{#foreach next}}
+                            <li>{{> "cv-post-card"}}</li>
+                        {{/foreach}}
+                    </ul>
+                </section>
+            {{/if}}
+        {{/get}}
+    {{/has}}
+
 {{/if}}

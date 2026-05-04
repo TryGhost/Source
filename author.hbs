@@ -13,9 +13,9 @@
         <header class="cv-archive-header cv-author-archive-header">
 
             <p class="cv-archive-breadcrumb">
-                <a href="{{@site.url}}">home</a>
+                <a href="{{@site.url}}">{{t "home"}}</a>
                 <span class="cv-slash" aria-hidden="true">/</span>
-                <span>author</span>
+                <span>{{t "author"}}</span>
                 <span class="cv-slash" aria-hidden="true">/</span>
                 <span class="cv-archive-breadcrumb-current">{{slug}}</span>
             </p>
@@ -52,8 +52,11 @@
                         <p class="cv-author-bio-location">{{location}}</p>
                     {{/if}}
 
+                    {{!-- count.posts is not auto-included on the author taxonomy
+                         context; ../pagination.total walks up to the route context
+                         where Ghost has resolved the paginated posts collection. --}}
                     <p class="cv-archive-count">
-                        {{plural count.posts empty='no posts yet' singular='1 post' plural='% posts'}}
+                        {{plural ../pagination.total empty=(t "no posts yet") singular=(t "1 post") plural=(t "% posts")}}
                     </p>
 
                 </div>

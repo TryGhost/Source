@@ -1,6 +1,35 @@
 {{!< default}}
-{{!-- The tag above means: insert everything in this file into the body of the default.hbs template --}}
+{{!-- cyber/verso · paginated archive
 
-<main class="gh-main">
-    {{> "components/post-list" feed="index" postFeedStyle=@custom.post_feed_style showTitle=true showSidebar=@custom.show_publication_info_sidebar}}
+     Used by:
+       - /it/ (Italian collection root, per routes.yaml)
+       - /page/N/ and /it/page/N/ (subsequent pages of either collection)
+       - any other Ghost collection without a more specific template
+
+     Reuses the cv-archive shell + cv-recent-grid + cv-pagination.
+     Title and description fall back to @site values; a future iteration
+     may localise these via the translate helper.
+--}}
+
+<main class="cv-archive">
+
+    <header class="cv-archive-header">
+        <h1 class="cv-archive-title">{{t "Archive"}}</h1>
+        {{#if @site.description}}
+            <p class="cv-archive-description">{{@site.description}}</p>
+        {{/if}}
+    </header>
+
+    {{#if posts}}
+        <ul class="cv-recent-grid cv-archive-grid">
+            {{#foreach posts}}
+                <li>{{> "cv-post-card"}}</li>
+            {{/foreach}}
+        </ul>
+    {{else}}
+        <p class="cv-archive-empty">{{t "no posts yet"}}</p>
+    {{/if}}
+
 </main>
+
+{{> "cv-pagination"}}

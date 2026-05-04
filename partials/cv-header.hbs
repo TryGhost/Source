@@ -16,11 +16,11 @@
             {{!-- Sorted left-to-right by slug length descending; ties (identity/currency)
                  keep their original order for stability. --}}
             <ul>
-                <li><a href="/tag/infrastructures/">infrastructures</a></li>
-                <li><a href="/tag/identity/">identity</a></li>
-                <li><a href="/tag/currency/">currency</a></li>
-                <li><a href="/tag/policy/">policy</a></li>
-                <li><a href="/tag/ai/">ai</a></li>
+                <li><a href="/tag/infrastructures/">{{t "infrastructures"}}</a></li>
+                <li><a href="/tag/identity/">{{t "identity"}}</a></li>
+                <li><a href="/tag/currency/">{{t "currency"}}</a></li>
+                <li><a href="/tag/policy/">{{t "policy"}}</a></li>
+                <li><a href="/tag/ai/">{{t "ai"}}</a></li>
             </ul>
         </nav>
 
@@ -31,13 +31,7 @@
                 {{> "icons/search"}}
             </button>
 
-            {{!-- Step 4 replaces this with a partial that resolves the
-                 codename-paired counterpart for the current post. --}}
-            <div class="cv-lang-switcher" aria-label="Language">
-                <span class="cv-lang is-active" aria-current="true">en</span>
-                <span class="cv-lang-sep" aria-hidden="true">|</span>
-                <a class="cv-lang" href="/it/">it</a>
-            </div>
+            {{> "cv-language-switcher"}}
 
             <button class="cv-icon-btn cv-theme-btn" type="button" data-cv-toggle-theme aria-label="Switch theme">
                 <span data-cv-toggle-icon aria-hidden="true">◑</span>

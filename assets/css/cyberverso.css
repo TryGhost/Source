@@ -534,6 +534,27 @@ body.post-template .cv-site-header-inner {
   color: var(--cv-border-strong);
 }
 
+/* Static switcher (off post pages): active language is set by
+   cyberverso.js via the data-cv-lang attribute on <html>. */
+:root[data-cv-lang="en"] .cv-lang-switcher .cv-lang[data-cv-lang="en"],
+:root[data-cv-lang="it"] .cv-lang-switcher .cv-lang[data-cv-lang="it"] {
+  color: var(--cv-accent);
+  pointer-events: none;
+}
+
+/* Untranslated counterpart: dim with strike-through, still
+   clickable (links to the other-language home as a fallback). */
+.cv-lang--untranslated {
+  color: var(--cv-text-faint);
+  text-decoration: line-through;
+  text-decoration-color: var(--cv-text-faint);
+}
+
+.cv-lang--untranslated:hover,
+.cv-lang--untranslated:focus-visible {
+  color: var(--cv-text-dim);
+}
+
 /* Burger (hidden on desktop) */
 .cv-burger {
   display: none;

@@ -13,9 +13,9 @@
         <header class="cv-archive-header">
 
             <p class="cv-archive-breadcrumb">
-                <a href="{{@site.url}}">home</a>
+                <a href="{{@site.url}}">{{t "home"}}</a>
                 <span class="cv-slash" aria-hidden="true">/</span>
-                <span>tag</span>
+                <span>{{t "tag"}}</span>
                 <span class="cv-slash" aria-hidden="true">/</span>
                 <span class="cv-archive-breadcrumb-current">{{slug}}</span>
             </p>
@@ -26,12 +26,15 @@
                 <p class="cv-archive-description">{{description}}</p>
             {{/if}}
 
-            <p class="cv-archive-count">
-                {{plural count.posts empty='no posts yet' singular='1 post' plural='% posts'}}
-            </p>
-
         </header>
     {{/tag}}
+
+    {{!-- count.posts is not auto-included on the tag taxonomy context;
+         pagination.total (resolved on the outer route context) is what
+         we have available. --}}
+    <p class="cv-archive-count">
+        {{plural pagination.total empty=(t "no posts yet") singular=(t "1 post") plural=(t "% posts")}}
+    </p>
 
     {{#if posts}}
         <ul class="cv-recent-grid cv-archive-grid">
@@ -40,7 +43,7 @@
             {{/foreach}}
         </ul>
     {{else}}
-        <p class="cv-archive-empty">no posts yet under this tag.</p>
+        <p class="cv-archive-empty">{{t "no posts yet under this tag."}}</p>
     {{/if}}
 
 </main>

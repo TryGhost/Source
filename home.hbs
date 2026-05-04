@@ -39,12 +39,12 @@
 
                 <p class="cv-hero-byline">
                     {{#if primary_author}}
-                        <span>by {{primary_author.name}}</span>
+                        <span>{{t "by"}} {{primary_author.name}}</span>
                         <span class="cv-slash" aria-hidden="true">/</span>
                     {{/if}}
                     <span>{{reading_time minute="1 min" minutes="% min"}}</span>
                     <span class="cv-slash" aria-hidden="true">/</span>
-                    <span class="cv-hero-cta">read &rarr;</span>
+                    <span class="cv-hero-cta">{{t "read"}} &rarr;</span>
                 </p>
 
             </a>
@@ -54,7 +54,7 @@
     {{!-- 2. RECENT ----------------------------------------------------- --}}
     <section class="cv-section">
         <h2 class="cv-section-heading">
-            <span class="cv-slash" aria-hidden="true">/</span> recent
+            <span class="cv-slash" aria-hidden="true">/</span> {{t "recent"}}
         </h2>
         <ul class="cv-recent-grid">
             {{#foreach posts from="2" limit="6"}}
@@ -66,7 +66,7 @@
     {{!-- 3. TOPICS ----------------------------------------------------- --}}
     <section class="cv-section">
         <h2 class="cv-section-heading">
-            <span class="cv-slash" aria-hidden="true">/</span> topics
+            <span class="cv-slash" aria-hidden="true">/</span> {{t "topics"}}
         </h2>
         {{!-- Five separate {{#get}} calls instead of slug:[…] — NQL doesn't
              guarantee result order matches the input list, and we want the
@@ -74,35 +74,35 @@
         <div class="cv-topics">
             {{#get "tags" filter="slug:infrastructures" include="count.posts" limit="1"}}{{#foreach tags}}
                 <a class="cv-topic-chip" href="{{url}}">
-                    <span>{{slug}}</span>
+                    <span>{{t slug}}</span>
                     <span class="cv-topic-chip-sep" aria-hidden="true">&middot;</span>
                     <span class="cv-topic-chip-count">{{count.posts}}</span>
                 </a>
             {{/foreach}}{{/get}}
             {{#get "tags" filter="slug:identity" include="count.posts" limit="1"}}{{#foreach tags}}
                 <a class="cv-topic-chip" href="{{url}}">
-                    <span>{{slug}}</span>
+                    <span>{{t slug}}</span>
                     <span class="cv-topic-chip-sep" aria-hidden="true">&middot;</span>
                     <span class="cv-topic-chip-count">{{count.posts}}</span>
                 </a>
             {{/foreach}}{{/get}}
             {{#get "tags" filter="slug:currency" include="count.posts" limit="1"}}{{#foreach tags}}
                 <a class="cv-topic-chip" href="{{url}}">
-                    <span>{{slug}}</span>
+                    <span>{{t slug}}</span>
                     <span class="cv-topic-chip-sep" aria-hidden="true">&middot;</span>
                     <span class="cv-topic-chip-count">{{count.posts}}</span>
                 </a>
             {{/foreach}}{{/get}}
             {{#get "tags" filter="slug:policy" include="count.posts" limit="1"}}{{#foreach tags}}
                 <a class="cv-topic-chip" href="{{url}}">
-                    <span>{{slug}}</span>
+                    <span>{{t slug}}</span>
                     <span class="cv-topic-chip-sep" aria-hidden="true">&middot;</span>
                     <span class="cv-topic-chip-count">{{count.posts}}</span>
                 </a>
             {{/foreach}}{{/get}}
             {{#get "tags" filter="slug:ai" include="count.posts" limit="1"}}{{#foreach tags}}
                 <a class="cv-topic-chip" href="{{url}}">
-                    <span>{{slug}}</span>
+                    <span>{{t slug}}</span>
                     <span class="cv-topic-chip-sep" aria-hidden="true">&middot;</span>
                     <span class="cv-topic-chip-count">{{count.posts}}</span>
                 </a>
@@ -115,7 +115,7 @@
         {{#foreach authors}}
             <section class="cv-section cv-author-bio">
                 <h2 class="cv-section-heading">
-                    <span class="cv-slash" aria-hidden="true">/</span> about
+                    <span class="cv-slash" aria-hidden="true">/</span> {{t "about"}}
                 </h2>
                 <div class="cv-author-bio-inner">
                     {{#if profile_image}}

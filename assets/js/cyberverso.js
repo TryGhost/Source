@@ -123,8 +123,21 @@
     bindBurgerButtons();
   }
 
-  /* Inizializzazione: applica subito il tema salvato e poi attacca
-     i listener quando il DOM e' pronto. */
+  /**
+   * Marca la lingua attiva su <html data-cv-lang="..."> in base al
+   * pathname. Il language switcher fuori dalle pagine post (renderizzato
+   * staticamente in cv-language-switcher.hbs) si appoggia a questo
+   * attributo via CSS per evidenziare il link corretto.
+   */
+  function detectLanguage() {
+    var path = window.location.pathname || '/';
+    var isIt = path === '/it' || path === '/it/' || path.indexOf('/it/') === 0;
+    document.documentElement.setAttribute('data-cv-lang', isIt ? 'it' : 'en');
+  }
+
+  /* Inizializzazione: applica subito il tema salvato e marca la lingua,
+     poi attacca i listener quando il DOM e' pronto. */
+  detectLanguage();
   applyTheme(getStoredTheme());
 
   if (document.readyState === 'loading') {
