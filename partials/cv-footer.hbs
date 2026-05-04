@@ -1,0 +1,28 @@
+{{!-- cyber/verso · minimal site footer
+
+     Per CYBERVERSO_HANDOFF.md §4 mockup: "copyright + RSS · newsletter
+     · about". The newsletter link anchors to the cv-newsletter section
+     when present (home/post pages); on archives it routes back to the
+     home and scrolls to the anchor there.
+
+     Members signup form is intentionally NOT in the footer — it lives
+     in cv-newsletter as a dedicated CTA on home and post pages.
+--}}
+
+<footer class="cv-footer">
+    <div class="cv-footer-inner">
+
+        <p class="cv-footer-copyright">
+            &copy; {{date format="YYYY"}} {{@site.title}}
+        </p>
+
+        <nav class="cv-footer-nav" aria-label="Footer">
+            <a href="{{@site.url}}/rss/">{{t "rss"}}</a>
+            <span class="cv-footer-sep" aria-hidden="true">&middot;</span>
+            <a href="{{@site.url}}/#cv-newsletter">{{t "newsletter"}}</a>
+            <span class="cv-footer-sep" aria-hidden="true">&middot;</span>
+            <a href="{{@site.url}}/about/">{{t "about"}}</a>
+        </nav>
+
+    </div>
+</footer>

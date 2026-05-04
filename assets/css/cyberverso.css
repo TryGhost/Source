@@ -1370,7 +1370,204 @@ body.post-template .cv-site-header-inner {
 
 
 /* -----------------------------------------------------------------
-   13. ACCESSIBILITY
+   13. NEWSLETTER CTA + SITE FOOTER
+   -----------------------------------------------------------------
+   Newsletter is a card-like section placed at the bottom of home and
+   post pages (above the footer). It reuses Ghost's Portal data
+   attributes (data-members-form / data-members-email / data-members-error)
+   for the actual signup behaviour.
+
+   Footer is the minimal handoff §4 layout: copyright on the left,
+   rss · newsletter · about on the right.
+   ----------------------------------------------------------------- */
+
+.cv-newsletter {
+  border-top: var(--cv-border-w) solid var(--cv-border);
+  border-bottom: var(--cv-border-w) solid var(--cv-border);
+  padding: var(--cv-space-7) 0;
+}
+
+.cv-newsletter-inner {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 var(--cv-space-5);
+}
+
+.cv-newsletter-marker {
+  display: flex;
+  align-items: baseline;
+  gap: var(--cv-space-2);
+  font-family: var(--cv-font-mono);
+  font-size: var(--cv-fs-xs);
+  letter-spacing: var(--cv-ls-wide);
+  color: var(--cv-text-dim);
+  text-transform: lowercase;
+  margin: 0 0 var(--cv-space-4);
+}
+
+.cv-newsletter-heading {
+  font-family: var(--cv-font-serif);
+  font-size: var(--cv-fs-xl);
+  font-weight: var(--cv-fw-medium);
+  line-height: var(--cv-lh-tight);
+  letter-spacing: var(--cv-ls-tighter);
+  color: var(--cv-text-strong);
+  margin: 0 0 var(--cv-space-3);
+  max-width: 22ch;
+}
+
+.cv-newsletter-subhead {
+  font-family: var(--cv-font-mono);
+  font-size: var(--cv-fs-xs);
+  letter-spacing: var(--cv-ls-wide);
+  line-height: var(--cv-lh-normal);
+  color: var(--cv-text-dim);
+  text-transform: lowercase;
+  max-width: 60ch;
+  margin: 0 0 var(--cv-space-5);
+}
+
+.cv-newsletter-form {
+  display: flex;
+  align-items: stretch;
+  gap: var(--cv-space-3);
+  max-width: 480px;
+  border-bottom: 1px solid var(--cv-border-strong);
+  transition: border-color var(--cv-transition-fast);
+}
+
+.cv-newsletter-form:focus-within {
+  border-bottom-color: var(--cv-accent);
+}
+
+.cv-newsletter-input {
+  flex: 1 1 auto;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  padding: var(--cv-space-3) 0;
+  font-family: var(--cv-font-mono);
+  font-size: var(--cv-fs-sm);
+  color: var(--cv-text);
+}
+
+.cv-newsletter-input::placeholder {
+  color: var(--cv-text-dim);
+}
+
+.cv-newsletter-button {
+  background: transparent;
+  border: 0;
+  padding: var(--cv-space-3) 0;
+  cursor: pointer;
+  font-family: var(--cv-font-mono);
+  font-size: var(--cv-fs-xs);
+  letter-spacing: var(--cv-ls-wide);
+  color: var(--cv-accent);
+  text-transform: lowercase;
+  white-space: nowrap;
+  transition: color var(--cv-transition-fast);
+}
+
+.cv-newsletter-button:hover,
+.cv-newsletter-button:focus-visible {
+  color: var(--cv-accent-hover);
+}
+
+.cv-newsletter-button-success {
+  display: none;
+}
+
+/* Portal sets data-members-form="success" / "error" / "loading" on submit */
+.cv-newsletter-form[data-members-form="success"] .cv-newsletter-input,
+.cv-newsletter-form[data-members-form="success"] .cv-newsletter-button-label {
+  display: none;
+}
+
+.cv-newsletter-form[data-members-form="success"] .cv-newsletter-button-success {
+  display: inline;
+  color: var(--cv-text-strong);
+}
+
+.cv-newsletter-form[data-members-form="loading"] .cv-newsletter-button {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.cv-newsletter-error {
+  font-family: var(--cv-font-mono);
+  font-size: var(--cv-fs-xs);
+  letter-spacing: var(--cv-ls-wide);
+  text-transform: lowercase;
+  color: var(--cv-accent);
+  margin: var(--cv-space-2) 0 0;
+  min-height: 1em;
+}
+
+
+/* ----- Site footer (cv-footer partial) ----------------------------- */
+
+.cv-footer {
+  border-top: var(--cv-border-w) solid var(--cv-border);
+  padding: var(--cv-space-5) 0;
+}
+
+.cv-newsletter + .cv-footer,
+.cv-newsletter ~ .cv-footer {
+  border-top: 0;
+}
+
+.cv-footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--cv-space-4);
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 var(--cv-space-5);
+  font-family: var(--cv-font-mono);
+  font-size: var(--cv-fs-xs);
+  letter-spacing: var(--cv-ls-wide);
+  color: var(--cv-text-dim);
+  text-transform: lowercase;
+}
+
+.cv-footer-copyright {
+  margin: 0;
+}
+
+.cv-footer-nav {
+  display: flex;
+  align-items: baseline;
+  gap: var(--cv-space-3);
+}
+
+.cv-footer-nav a {
+  color: var(--cv-text-muted);
+  text-decoration: none;
+  transition: color var(--cv-transition-fast);
+}
+
+.cv-footer-nav a:hover,
+.cv-footer-nav a:focus-visible {
+  color: var(--cv-accent);
+}
+
+.cv-footer-sep {
+  color: var(--cv-text-faint);
+}
+
+@media (max-width: 599px) {
+  .cv-footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--cv-space-2);
+  }
+}
+
+
+/* -----------------------------------------------------------------
+   14. ACCESSIBILITY
    ----------------------------------------------------------------- */
 
 @media (prefers-reduced-motion: reduce) {

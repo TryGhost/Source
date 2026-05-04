@@ -90,14 +90,6 @@
                 "type": "color",
                 "default": "#ffffff"
             },
-            "header_and_footer_color": {
-                "type": "select",
-                "options": [
-                    "Background color",
-                    "Accent color"
-                ],
-                "default": "Background color"
-            },
             "title_font": {
                 "type": "select",
                 "options": [

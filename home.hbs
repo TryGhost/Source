@@ -111,6 +111,7 @@
     </section>
 
     {{!-- 4. AUTHOR BIO ------------------------------------------------- --}}
+    {{!-- followed by 5. NEWSLETTER CTA via the cv-newsletter partial below --}}
     {{#get "authors" limit="1" order="created_at asc"}}
         {{#foreach authors}}
             <section class="cv-section cv-author-bio">
@@ -140,3 +141,5 @@
     {{/get}}
 
 </main>
+
+{{> "cv-newsletter"}}

@@ -1,0 +1,59 @@
+{{!-- cyber/verso · newsletter CTA
+
+     Card-like section with mono marker, serif heading, mono subhead,
+     and an inline email form. Reuses Ghost's Portal hooks
+     (data-members-form / data-members-email / data-members-error)
+     so the existing Subscribe flow works unchanged.
+
+     Falls back to translated defaults when @custom.signup_heading /
+     @custom.signup_subheading are not set in Ghost Admin.
+
+     Hidden when:
+       - the site has Members disabled
+       - the visitor is already a member
+--}}
+
+{{#if @site.members_enabled}}
+    {{#unless @member}}
+        <section class="cv-newsletter" id="cv-newsletter">
+            <div class="cv-newsletter-inner">
+
+                <p class="cv-newsletter-marker">
+                    <span class="cv-slash" aria-hidden="true">/</span> {{t "newsletter"}}
+                </p>
+
+                <h2 class="cv-newsletter-heading">
+                    {{#if @custom.signup_heading}}
+                        {{@custom.signup_heading}}
+                    {{else}}
+                        {{t "Subscribe to cyber/verso"}}
+                    {{/if}}
+                </h2>
+
+                <p class="cv-newsletter-subhead">
+                    {{#if @custom.signup_subheading}}
+                        {{@custom.signup_subheading}}
+                    {{else}}
+                        {{t "New posts on sovereignty, identity, AI policy. No spam."}}
+                    {{/if}}
+                </p>
+
+                <form class="cv-newsletter-form" data-members-form>
+                    <input class="cv-newsletter-input"
+                           type="email"
+                           name="email"
+                           required
+                           data-members-email
+                           placeholder="{{t "your@email"}}"
+                           aria-label="{{t "Email"}}">
+                    <button class="cv-newsletter-button" type="submit">
+                        <span class="cv-newsletter-button-label">{{t "Subscribe"}} &rarr;</span>
+                        <span class="cv-newsletter-button-success">{{t "Email sent"}}</span>
+                    </button>
+                </form>
+                <p class="cv-newsletter-error" data-members-error></p>
+
+            </div>
+        </section>
+    {{/unless}}
+{{/if}}
