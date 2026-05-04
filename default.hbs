@@ -17,6 +17,9 @@
     {{!-- Theme assets - use the {{asset}} helper to reference styles & scripts, this will take care of caching and cache-busting automatically --}}
     <link rel="stylesheet" type="text/css" href="{{asset "built/screen.css"}}">
 
+    {{!-- cyber/verso · design tokens & Source overrides — must load AFTER screen.css --}}
+    <link rel="stylesheet" type="text/css" href="{{asset "built/cyberverso.css"}}">
+
     {{!-- Custom background color --}}
     <style>
         :root {
@@ -41,6 +44,25 @@
         var textColor = (yiq >= 128) ? 'dark' : 'light';
 
         document.documentElement.className = `has-${textColor}-text`;
+    </script>
+
+    {{!-- cyber/verso · anti-flash theme init. Must run AFTER the Source
+         textColor script above (which uses className=, not classList).
+         Mirrors logic in assets/js/cyberverso.js. --}}
+    <script>
+        (function () {
+            try {
+                var t = localStorage.getItem('cv-theme') || 'dark';
+                if (t === 'dark') {
+                    document.documentElement.classList.add('has-light-text');
+                } else {
+                    document.documentElement.classList.add('cv-light-mode');
+                    document.documentElement.classList.remove('has-light-text');
+                }
+            } catch (e) {
+                document.documentElement.classList.add('has-light-text');
+            }
+        })();
     </script>
 
     {{!-- This tag outputs all your advanced SEO meta, structured data, and other important settings, it should always be the last tag before the closing head tag --}}

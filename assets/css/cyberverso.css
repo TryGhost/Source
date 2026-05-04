@@ -1,0 +1,403 @@
+/* =============================================================
+   cyber/verso  ·  design tokens & Source overrides
+   -------------------------------------------------------------
+   File: assets/css/cyberverso.css
+
+   Si carica DOPO assets/css/screen.css (modifica in default.hbs).
+   Nessun !important: vince per ordine di cascade.
+
+   Source usa font-size: 62.5% su html (1.6rem = 16px).
+   Tutti i valori px convertiti in rem per coerenza.
+   ============================================================= */
+
+
+/* -----------------------------------------------------------------
+   1. CARICAMENTO FONT
+   ----------------------------------------------------------------- */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+
+/* -----------------------------------------------------------------
+   2. TOKEN CYBER/VERSO (namespace --cv-*)
+   ----------------------------------------------------------------- */
+
+:root {
+
+  /* ----- Surface (dark, default) -------------------------------- */
+  --cv-bg:              #0c0a08;   /* sfondo primario, near-black caldo */
+  --cv-bg-elev:         #14110d;   /* superfici elevate, code blocks */
+  --cv-bg-tag:          #1a1815;   /* chip e tag background */
+  --cv-border:          #1f1d18;   /* divisori, hairline, default border */
+  --cv-border-strong:   #2a2820;   /* hover ed emphasis borders */
+
+  /* ----- Text (dark mode) --------------------------------------- */
+  --cv-text:            #e8e4d9;   /* corpo del testo */
+  --cv-text-strong:     #f4f0e3;   /* heading, enfatizzato */
+  --cv-text-muted:      #b3afa3;   /* lead paragraph, secondary */
+  --cv-text-dim:        #8a857a;   /* metadata, mono labels */
+  --cv-text-faint:      #5a5650;   /* footer, UI molto attenuata */
+
+  /* ----- Accent (warm amber) ------------------------------------ */
+  --cv-accent:          #ff8c42;   /* primario, slash, active, CTA */
+  --cv-accent-soft:     #d97631;
+  --cv-accent-hover:    #ffb380;
+  --cv-accent-bg:       #2b1a0d;   /* highlight tint background */
+
+  /* ----- Font family stacks ------------------------------------- */
+  --cv-font-serif:      'Fraunces', 'EB Garamond', Georgia, Times, serif;
+  --cv-font-mono:       'IBM Plex Mono', 'JetBrains Mono', Menlo, Consolas, monospace;
+  --cv-font-sans:       Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  /* ----- Type scale (rem-based, Source uses 62.5%) -------------- */
+  --cv-fs-xxs:          1.0rem;    /* 10px */
+  --cv-fs-xs:           1.1rem;    /* 11px */
+  --cv-fs-sm:           1.3rem;    /* 13px */
+  --cv-fs-base:         1.6rem;    /* 16px */
+  --cv-fs-md:           1.8rem;
+  --cv-fs-lg:           2.2rem;
+  --cv-fs-xl:           2.8rem;
+  --cv-fs-2xl:          3.6rem;
+  --cv-fs-3xl:          4.8rem;
+
+  /* ----- Line heights ------------------------------------------- */
+  --cv-lh-tight:        1.15;
+  --cv-lh-snug:         1.3;
+  --cv-lh-normal:       1.55;
+  --cv-lh-relaxed:      1.7;
+
+  /* ----- Letter spacing ----------------------------------------- */
+  --cv-ls-tighter:      -0.02em;
+  --cv-ls-tight:        -0.01em;
+  --cv-ls-normal:       0;
+  --cv-ls-wide:         0.04em;
+  --cv-ls-wider:        0.08em;
+
+  /* ----- Font weights ------------------------------------------- */
+  --cv-fw-regular:      400;
+  --cv-fw-medium:       500;
+  --cv-fw-semi:         600;
+
+  /* ----- Spacing (rem-based) ------------------------------------ */
+  --cv-space-1:         0.4rem;
+  --cv-space-2:         0.8rem;
+  --cv-space-3:         1.2rem;
+  --cv-space-4:         1.6rem;
+  --cv-space-5:         2.2rem;
+  --cv-space-6:         3.2rem;
+  --cv-space-7:         4.8rem;
+  --cv-space-8:         6.4rem;
+  --cv-space-9:         9.6rem;
+
+  /* ----- Layout ------------------------------------------------- */
+  --cv-content-max:     65ch;     /* ~620px, regola tipografica */
+  --cv-header-h:        6.4rem;
+  --cv-header-h-sm:     5.6rem;
+
+  /* ----- Border & radius ---------------------------------------- */
+  --cv-radius-sm:       2px;
+  --cv-radius-md:       4px;
+  --cv-radius-lg:       8px;
+  --cv-border-w:        0.5px;
+
+  /* ----- Motion ------------------------------------------------- */
+  --cv-transition-fast: 120ms ease-out;
+  --cv-transition-base: 180ms ease-out;
+  --cv-transition-slow: 320ms ease-out;
+}
+
+
+/* -----------------------------------------------------------------
+   3. OVERRIDE VARIABILI SOURCE (nomi reali)
+   -----------------------------------------------------------------
+   Riassegnamo le variabili native di Source ai nostri token.
+   In questo modo TUTTI i selettori esistenti di Source ereditano
+   automaticamente l'identita' cyber/verso senza dover riscrivere
+   un solo selettore custom.
+
+   Forziamo il dark mode aggiungendo .has-light-text via JS (vedi
+   cyberverso.js). Qui definiamo anche cosa succede quando NON
+   c'e' .has-light-text (light mode).
+   ----------------------------------------------------------------- */
+
+:root {
+
+  /* Dark mode di default: definiamo i valori "light" */
+  /* (saranno overridati da .has-light-text quando attivo) */
+  --color-white:           var(--cv-bg);
+  --color-darker-gray:     var(--cv-text-strong);
+  --color-primary-text:    var(--cv-text);
+  --color-secondary-text:  var(--cv-text-muted);
+  --color-border:          var(--cv-border);
+  --color-dark-border:     var(--cv-border-strong);
+  --color-lighter-gray:    var(--cv-bg-elev);
+  --color-light-gray:      var(--cv-border);
+  --color-mid-gray:        var(--cv-text-dim);
+  --color-dark-gray:       var(--cv-text-muted);
+  --color-black:           var(--cv-text-strong);
+
+  /* Font stacks */
+  --font-sans:             var(--cv-font-sans);
+  --font-serif:            var(--cv-font-serif);
+  --font-serif-alt:        Georgia, Times, serif;
+  --font-mono:             var(--cv-font-mono);
+
+  /* Layout */
+  --container-width:       1180px;
+
+  /* Ghost admin accent: lasciamo prevalere se settato dall'admin,
+     altrimenti il nostro amber */
+  --ghost-accent-color:    var(--cv-accent);
+
+  color-scheme:            dark;
+}
+
+
+/* -----------------------------------------------------------------
+   4. LIGHT MODE OPT-IN
+   -----------------------------------------------------------------
+   Quando il toggle (in cyberverso.js) rimuove .has-light-text e
+   aggiunge .cv-light-mode, le variabili tornano a valori chiari.
+   Il default e' dark, light e' opt-in esplicito.
+   ----------------------------------------------------------------- */
+
+:root.cv-light-mode {
+  --cv-bg:               #faf7f0;   /* warm cream, no white sterile */
+  --cv-bg-elev:          #f4f0e3;
+  --cv-bg-tag:           #ece8da;
+  --cv-border:           #ddd6c3;
+  --cv-border-strong:    #c4bca4;
+
+  --cv-text:             #1a1612;
+  --cv-text-strong:      #0a0805;
+  --cv-text-muted:       #4a463f;
+  --cv-text-dim:         #6b6759;
+  --cv-text-faint:       #8a857a;
+
+  --cv-accent:           #c25e1e;   /* amber piu' scuro per contrasto su sfondo chiaro */
+  --cv-accent-hover:     #a04a14;
+  --cv-accent-bg:        #f5e6d6;
+
+  /* Source variables */
+  --color-white:           var(--cv-bg);
+  --color-darker-gray:     var(--cv-text-strong);
+  --color-primary-text:    var(--cv-text);
+  --color-secondary-text:  var(--cv-text-muted);
+  --color-border:          var(--cv-border);
+  --color-dark-border:     var(--cv-border-strong);
+  --color-lighter-gray:    var(--cv-bg-elev);
+
+  color-scheme:            light;
+}
+
+
+/* -----------------------------------------------------------------
+   5. BASE OVERRIDES
+   ----------------------------------------------------------------- */
+
+html {
+  background-color: var(--cv-bg);
+  color: var(--cv-text);
+  /* Source mantiene 62.5% (10px base), non overrideremo */
+}
+
+body {
+  background-color: var(--cv-bg);
+  color: var(--cv-text);
+  font-family: var(--cv-font-serif);
+  font-size: var(--cv-fs-base);
+  line-height: var(--cv-lh-relaxed);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--cv-font-serif);
+  font-weight: var(--cv-fw-medium);
+  color: var(--cv-text-strong);
+  letter-spacing: var(--cv-ls-tight);
+  line-height: var(--cv-lh-tight);
+}
+
+h1 { letter-spacing: var(--cv-ls-tighter); }
+
+a {
+  color: var(--cv-accent);
+  transition: color var(--cv-transition-fast);
+}
+
+a:hover, a:focus-visible {
+  color: var(--cv-accent-hover);
+}
+
+::selection {
+  background: var(--cv-accent);
+  color: var(--cv-bg);
+}
+
+:focus-visible {
+  outline: 2px solid var(--cv-accent);
+  outline-offset: 2px;
+}
+
+
+/* -----------------------------------------------------------------
+   6. UTILITY CLASSES (cv-*)
+   ----------------------------------------------------------------- */
+
+.cv-mono {
+  font-family: var(--cv-font-mono);
+  font-size: var(--cv-fs-xs);
+  letter-spacing: var(--cv-ls-wide);
+  color: var(--cv-text-dim);
+  font-weight: var(--cv-fw-regular);
+}
+
+.cv-mono--accent { color: var(--cv-accent); }
+.cv-mono--strong { color: var(--cv-text-strong); }
+
+.cv-slash {
+  color: var(--cv-accent);
+  font-family: var(--cv-font-mono);
+}
+
+.cv-slash--mute {
+  color: var(--cv-border-strong);
+}
+
+.cv-tag-chip {
+  display: inline-block;
+  font-family: var(--cv-font-mono);
+  font-size: var(--cv-fs-xs);
+  color: var(--cv-text-muted);
+  border: var(--cv-border-w) solid var(--cv-border-strong);
+  padding: 5px 10px;
+  background: transparent;
+  transition: border-color var(--cv-transition-fast),
+              color var(--cv-transition-fast);
+  text-decoration: none;
+}
+
+.cv-tag-chip:hover {
+  border-color: var(--cv-accent);
+  color: var(--cv-accent);
+}
+
+.cv-issue-meta {
+  font-family: var(--cv-font-mono);
+  font-size: var(--cv-fs-xs);
+  letter-spacing: var(--cv-ls-wide);
+  color: var(--cv-text-dim);
+  text-transform: lowercase;
+}
+
+.cv-content-narrow {
+  max-width: var(--cv-content-max);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* -----------------------------------------------------------------
+   7. POST CONTENT (.gh-content)
+   -----------------------------------------------------------------
+   Source usa .gh-content per il body dei post. Lo riscriviamo
+   per il long-form policy: serif solido, line-height 1.7,
+   max-width 65ch, link con underline ambra invece del grassetto.
+   ----------------------------------------------------------------- */
+
+.gh-content {
+  font-family: var(--cv-font-serif);
+  font-size: var(--cv-fs-base);
+  line-height: var(--cv-lh-relaxed);
+  color: var(--cv-text);
+}
+
+.gh-content > * {
+  max-width: var(--cv-content-max);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.gh-content h2 {
+  font-size: var(--cv-fs-lg);
+  margin-top: var(--cv-space-7);
+  margin-bottom: var(--cv-space-4);
+}
+
+.gh-content h3 {
+  font-size: var(--cv-fs-md);
+  margin-top: var(--cv-space-6);
+  margin-bottom: var(--cv-space-3);
+}
+
+.gh-content p {
+  margin-bottom: var(--cv-space-4);
+}
+
+.gh-content a {
+  color: var(--cv-text-strong);
+  border-bottom: 1px solid var(--cv-accent);
+  padding-bottom: 1px;
+  text-decoration: none;
+  transition: background var(--cv-transition-fast);
+}
+
+.gh-content a:hover {
+  background: var(--cv-accent-bg);
+  color: var(--cv-text-strong);
+}
+
+.gh-content blockquote {
+  border-left: 2px solid var(--cv-accent);
+  padding: var(--cv-space-2) 0 var(--cv-space-2) var(--cv-space-5);
+  font-style: italic;
+  color: var(--cv-text-strong);
+  font-size: var(--cv-fs-md);
+  line-height: var(--cv-lh-normal);
+}
+
+.gh-content code {
+  font-family: var(--cv-font-mono);
+  font-size: 0.9em;
+  background: var(--cv-bg-tag);
+  padding: 2px 6px;
+  border-radius: var(--cv-radius-md);
+  color: var(--cv-text-strong);
+}
+
+.gh-content pre {
+  font-family: var(--cv-font-mono);
+  background: var(--cv-bg-elev);
+  border: var(--cv-border-w) solid var(--cv-border);
+  border-radius: var(--cv-radius-lg);
+  padding: var(--cv-space-4) var(--cv-space-5);
+  font-size: var(--cv-fs-sm);
+  line-height: var(--cv-lh-normal);
+}
+
+
+/* -----------------------------------------------------------------
+   8. ACCESSIBILITY
+   ----------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
