@@ -1,0 +1,32 @@
+{{!-- cyber/verso · pagination
+
+     Renders only when there is more than one page. Disabled-state
+     anchors keep the layout stable on the first/last page.
+     Used by tag.hbs, author.hbs, index.hbs.
+--}}
+
+{{#match pagination.pages ">" 1}}
+    <nav class="cv-pagination" aria-label="Pagination">
+
+        {{#if pagination.prev}}
+            <a class="cv-pagination-link cv-pagination-prev" href="{{page_url pagination.prev}}">
+                &larr; newer
+            </a>
+        {{else}}
+            <span class="cv-pagination-link is-disabled" aria-disabled="true">&larr; newer</span>
+        {{/if}}
+
+        <span class="cv-pagination-progress">
+            page {{pagination.page}} / {{pagination.pages}}
+        </span>
+
+        {{#if pagination.next}}
+            <a class="cv-pagination-link cv-pagination-next" href="{{page_url pagination.next}}">
+                older &rarr;
+            </a>
+        {{else}}
+            <span class="cv-pagination-link is-disabled" aria-disabled="true">older &rarr;</span>
+        {{/if}}
+
+    </nav>
+{{/match}}

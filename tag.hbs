@@ -1,22 +1,48 @@
 {{!< default}}
-{{!-- The tag above means: insert everything in this file into the body of the default.hbs template --}}
+{{!-- cyber/verso · tag archive
 
-<main class="gh-main gh-outer">
+     Header: breadcrumb (mono) + tag name (serif) + optional
+     description + post count. Then a grid of cv-post-card and the
+     cv-pagination partial. The `posts` collection is auto-filtered
+     by Ghost to the current tag and paginated.
+--}}
+
+<main class="cv-archive">
 
     {{#tag}}
-        <section class="gh-archive{{#if feature_image}} has-image{{/if}}{{#if @custom.show_publication_info_sidebar}} has-sidebar{{/if}} gh-inner">
-            <div class="gh-archive-inner">
-                <header class="gh-archive-wrapper">
-                    <h1 class="gh-article-title is-title">{{name}}</h1>
-                    {{#if description}}
-                        <p class="gh-article-excerpt">{{description}}</p>
-                    {{/if}}
-                </header>
-                {{> "feature-image"}}
-            </div>
-        </section>
+        <header class="cv-archive-header">
+
+            <p class="cv-archive-breadcrumb">
+                <a href="{{@site.url}}">home</a>
+                <span class="cv-slash" aria-hidden="true">/</span>
+                <span>tag</span>
+                <span class="cv-slash" aria-hidden="true">/</span>
+                <span class="cv-archive-breadcrumb-current">{{slug}}</span>
+            </p>
+
+            <h1 class="cv-archive-title">{{name}}</h1>
+
+            {{#if description}}
+                <p class="cv-archive-description">{{description}}</p>
+            {{/if}}
+
+            <p class="cv-archive-count">
+                {{plural count.posts empty='no posts yet' singular='1 post' plural='% posts'}}
+            </p>
+
+        </header>
     {{/tag}}
 
-    {{> "components/post-list" feed="archive" postFeedStyle=@custom.post_feed_style showTitle=false showSidebar=@custom.show_publication_info_sidebar}}
+    {{#if posts}}
+        <ul class="cv-recent-grid cv-archive-grid">
+            {{#foreach posts}}
+                <li>{{> "cv-post-card"}}</li>
+            {{/foreach}}
+        </ul>
+    {{else}}
+        <p class="cv-archive-empty">no posts yet under this tag.</p>
+    {{/if}}
 
 </main>
+
+{{> "cv-pagination"}}

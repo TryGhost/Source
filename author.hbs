@@ -1,64 +1,75 @@
 {{!< default}}
-{{!-- The tag above means: insert everything in this file into the body of the default.hbs template --}}
+{{!-- cyber/verso · author archive
 
-<main class="gh-main gh-outer">
+     Header: breadcrumb + full bio block (avatar, name, blurb,
+     mono link row, location, post count). Then a grid of
+     cv-post-card and the cv-pagination partial. `posts` is
+     auto-filtered to the current author by Ghost.
+--}}
+
+<main class="cv-archive">
 
     {{#author}}
-        <section class="gh-archive{{#if @custom.show_publication_info_sidebar}} has-sidebar{{/if}} gh-inner">
-            <div class="gh-archive-inner">
-                <div class="gh-archive-wrapper">
-                    <h1 class="gh-article-title is-title">
-                        {{#if website}}
-                            <a class="gh-author-social-link" href="{{website}}" target="_blank" rel="noopener">{{name}}</a>
-                        {{else}}
-                            {{name}}
-                        {{/if}}
-                    </h1>
-                    {{#if bio}}
-                        <p class="gh-article-excerpt">{{bio}}</p>
-                    {{/if}}
-                    <footer class="gh-author-meta">
-                        <div class="gh-author-social">
-                            {{#if twitter}}
-                                <a class="gh-author-social-link" href="{{social_url type="twitter"}}" target="_blank" rel="noopener">{{> "icons/twitter"}}</a>
-                            {{/if}}
-                            {{#if facebook}}
-                                <a class="gh-author-social-link" href="{{social_url type="facebook"}}" target="_blank" rel="noopener">{{> "icons/facebook"}}</a>
-                            {{/if}}
-                            {{#if linkedin}}
-                                <a class="gh-author-social-link" href="{{social_url type="linkedin"}}" target="_blank" rel="noopener">{{> "icons/linkedin"}}</a>
-                            {{/if}}
-                            {{#if bluesky}}
-                                <a class="gh-author-social-link" href="{{social_url type="bluesky"}}" target="_blank" rel="noopener">{{> "icons/bluesky"}}</a>
-                            {{/if}}
-                            {{#if threads}}
-                                <a class="gh-author-social-link" href="{{social_url type="threads"}}" target="_blank" rel="noopener">{{> "icons/threads"}}</a>
-                            {{/if}}
-                            {{#if mastodon}}
-                                <a class="gh-author-social-link" href="{{social_url type="mastodon"}}" target="_blank" rel="noopener">{{> "icons/mastodon"}}</a>
-                            {{/if}}
-                            {{#if tiktok}}
-                                <a class="gh-author-social-link" href="{{social_url type="tiktok"}}" target="_blank" rel="noopener">{{> "icons/tiktok"}}</a>
-                            {{/if}}
-                            {{#if youtube}}
-                                <a class="gh-author-social-link" href="{{social_url type="youtube"}}" target="_blank" rel="noopener">{{> "icons/youtube"}}</a>
-                            {{/if}}
-                            {{#if instagram}}
-                                <a class="gh-author-social-link" href="{{social_url type="instagram"}}" target="_blank" rel="noopener">{{> "icons/instagram"}}</a>
-                            {{/if}}
-                        </div>
-                        {{#if location}}
-                            <div class="gh-author-location">{{location}}</div>
-                        {{/if}}
-                    </footer>
-                </div>
+        <header class="cv-archive-header cv-author-archive-header">
+
+            <p class="cv-archive-breadcrumb">
+                <a href="{{@site.url}}">home</a>
+                <span class="cv-slash" aria-hidden="true">/</span>
+                <span>author</span>
+                <span class="cv-slash" aria-hidden="true">/</span>
+                <span class="cv-archive-breadcrumb-current">{{slug}}</span>
+            </p>
+
+            <div class="cv-author-bio-inner">
+
                 {{#if profile_image}}
-                    <img class="gh-article-image" src="{{img_url profile_image size="s"}}" alt="{{name}}">
+                    <img class="cv-author-bio-avatar cv-author-bio-avatar--lg" src="{{img_url profile_image size="m"}}" alt="{{name}}">
                 {{/if}}
+
+                <div class="cv-author-bio-text">
+
+                    <h1 class="cv-archive-title">{{name}}</h1>
+
+                    {{#if bio}}
+                        <p class="cv-author-bio-blurb">{{bio}}</p>
+                    {{/if}}
+
+                    <p class="cv-author-bio-links">
+                        {{#if website}}<a href="{{website}}" rel="me">site</a>{{/if}}
+                        {{#if twitter}}<a href="{{social_url type="twitter"}}" rel="me">x</a>{{/if}}
+                        {{#if bluesky}}<a href="{{social_url type="bluesky"}}" rel="me">bluesky</a>{{/if}}
+                        {{#if mastodon}}<a href="{{social_url type="mastodon"}}" rel="me">mastodon</a>{{/if}}
+                        {{#if linkedin}}<a href="{{social_url type="linkedin"}}" rel="me">linkedin</a>{{/if}}
+                        {{#if threads}}<a href="{{social_url type="threads"}}" rel="me">threads</a>{{/if}}
+                        {{#if facebook}}<a href="{{social_url type="facebook"}}" rel="me">facebook</a>{{/if}}
+                        {{#if instagram}}<a href="{{social_url type="instagram"}}" rel="me">instagram</a>{{/if}}
+                        {{#if tiktok}}<a href="{{social_url type="tiktok"}}" rel="me">tiktok</a>{{/if}}
+                        {{#if youtube}}<a href="{{social_url type="youtube"}}" rel="me">youtube</a>{{/if}}
+                        <a href="{{@site.url}}/rss/">rss</a>
+                    </p>
+
+                    {{#if location}}
+                        <p class="cv-author-bio-location">{{location}}</p>
+                    {{/if}}
+
+                    <p class="cv-archive-count">
+                        {{plural count.posts empty='no posts yet' singular='1 post' plural='% posts'}}
+                    </p>
+
+                </div>
             </div>
-        </section>
+
+        </header>
     {{/author}}
-    
-    {{> "components/post-list" feed="archive" postFeedStyle=@custom.post_feed_style showTitle=false showSidebar=@custom.show_publication_info_sidebar}}
+
+    {{#if posts}}
+        <ul class="cv-recent-grid cv-archive-grid">
+            {{#foreach posts}}
+                <li>{{> "cv-post-card"}}</li>
+            {{/foreach}}
+        </ul>
+    {{/if}}
 
 </main>
+
+{{> "cv-pagination"}}

@@ -1120,7 +1120,166 @@ body.post-template .cv-site-header-inner {
 
 
 /* -----------------------------------------------------------------
-   11. ACCESSIBILITY
+   11. ARCHIVE (tag.hbs, author.hbs, index.hbs) + PAGINATION
+   -----------------------------------------------------------------
+   Shared shell for archive-style pages. Reuses .cv-recent-grid
+   from §9 for the post grid; adds breadcrumb, archive title,
+   description, count, empty-state, and pagination styles.
+   The author archive variant overrides bio avatar size only.
+   ----------------------------------------------------------------- */
+
+.cv-archive {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 var(--cv-space-5);
+}
+
+.cv-archive-header {
+  padding: var(--cv-space-7) 0 var(--cv-space-6);
+  border-bottom: var(--cv-border-w) solid var(--cv-border);
+  margin-bottom: var(--cv-space-7);
+}
+
+.cv-archive-breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--cv-space-2);
+  align-items: baseline;
+  font-family: var(--cv-font-mono);
+  font-size: var(--cv-fs-xs);
+  letter-spacing: var(--cv-ls-wide);
+  color: var(--cv-text-dim);
+  text-transform: lowercase;
+  margin: 0 0 var(--cv-space-4);
+}
+
+.cv-archive-breadcrumb a {
+  color: var(--cv-text-muted);
+  text-decoration: none;
+  transition: color var(--cv-transition-fast);
+}
+
+.cv-archive-breadcrumb a:hover,
+.cv-archive-breadcrumb a:focus-visible {
+  color: var(--cv-accent);
+}
+
+.cv-archive-breadcrumb-current {
+  color: var(--cv-text-strong);
+}
+
+.cv-archive-title {
+  font-family: var(--cv-font-serif);
+  font-size: var(--cv-fs-2xl);
+  font-weight: var(--cv-fw-medium);
+  line-height: var(--cv-lh-tight);
+  letter-spacing: var(--cv-ls-tighter);
+  color: var(--cv-text-strong);
+  margin: 0 0 var(--cv-space-3);
+}
+
+.cv-archive-description {
+  font-family: var(--cv-font-serif);
+  font-size: var(--cv-fs-md);
+  line-height: var(--cv-lh-snug);
+  color: var(--cv-text-muted);
+  max-width: var(--cv-content-max);
+  margin: 0 0 var(--cv-space-3);
+}
+
+.cv-archive-count {
+  font-family: var(--cv-font-mono);
+  font-size: var(--cv-fs-xs);
+  letter-spacing: var(--cv-ls-wide);
+  color: var(--cv-text-dim);
+  text-transform: lowercase;
+  margin: 0;
+}
+
+.cv-archive-grid {
+  /* Inherits everything from .cv-recent-grid; class kept for
+     future archive-only deviations. */
+}
+
+.cv-archive-empty {
+  font-family: var(--cv-font-serif);
+  font-style: italic;
+  font-size: var(--cv-fs-base);
+  color: var(--cv-text-muted);
+  text-align: center;
+  padding: var(--cv-space-8) 0;
+}
+
+/* ----- Author archive variant -------------------------------------- */
+
+.cv-author-archive-header {
+  padding-bottom: var(--cv-space-7);
+}
+
+.cv-author-archive-header .cv-author-bio-inner {
+  align-items: flex-start;
+}
+
+.cv-author-bio-avatar--lg {
+  width: 9.6rem;
+  height: 9.6rem;
+}
+
+.cv-author-bio-location {
+  font-family: var(--cv-font-mono);
+  font-size: var(--cv-fs-xs);
+  letter-spacing: var(--cv-ls-wide);
+  color: var(--cv-text-dim);
+  text-transform: lowercase;
+  margin: 0 0 var(--cv-space-3);
+}
+
+/* ----- Pagination (cv-pagination partial) -------------------------- */
+
+.cv-pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--cv-space-4);
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: var(--cv-space-7) var(--cv-space-5);
+  border-top: var(--cv-border-w) solid var(--cv-border);
+  font-family: var(--cv-font-mono);
+  font-size: var(--cv-fs-xs);
+  letter-spacing: var(--cv-ls-wide);
+  text-transform: lowercase;
+}
+
+.cv-pagination-link {
+  color: var(--cv-text-muted);
+  text-decoration: none;
+  transition: color var(--cv-transition-fast);
+}
+
+.cv-pagination-link:hover,
+.cv-pagination-link:focus-visible {
+  color: var(--cv-accent);
+}
+
+.cv-pagination-link.is-disabled {
+  color: var(--cv-text-faint);
+  cursor: not-allowed;
+}
+
+.cv-pagination-progress {
+  color: var(--cv-text-dim);
+}
+
+@media (max-width: 767px) {
+  .cv-archive-title {
+    font-size: var(--cv-fs-xl);
+  }
+}
+
+
+/* -----------------------------------------------------------------
+   12. ACCESSIBILITY
    ----------------------------------------------------------------- */
 
 @media (prefers-reduced-motion: reduce) {

@@ -68,16 +68,45 @@
         <h2 class="cv-section-heading">
             <span class="cv-slash" aria-hidden="true">/</span> topics
         </h2>
+        {{!-- Five separate {{#get}} calls instead of slug:[…] — NQL doesn't
+             guarantee result order matches the input list, and we want the
+             chips to mirror the nav order (length desc). --}}
         <div class="cv-topics">
-            {{#get "tags" filter="slug:[infrastructures,identity,digital-euro,ai,policy]" include="count.posts" limit="5"}}
-                {{#foreach tags}}
-                    <a class="cv-topic-chip" href="{{url}}">
-                        <span>{{slug}}</span>
-                        <span class="cv-topic-chip-sep" aria-hidden="true">&middot;</span>
-                        <span class="cv-topic-chip-count">{{count.posts}}</span>
-                    </a>
-                {{/foreach}}
-            {{/get}}
+            {{#get "tags" filter="slug:infrastructures" include="count.posts" limit="1"}}{{#foreach tags}}
+                <a class="cv-topic-chip" href="{{url}}">
+                    <span>{{slug}}</span>
+                    <span class="cv-topic-chip-sep" aria-hidden="true">&middot;</span>
+                    <span class="cv-topic-chip-count">{{count.posts}}</span>
+                </a>
+            {{/foreach}}{{/get}}
+            {{#get "tags" filter="slug:identity" include="count.posts" limit="1"}}{{#foreach tags}}
+                <a class="cv-topic-chip" href="{{url}}">
+                    <span>{{slug}}</span>
+                    <span class="cv-topic-chip-sep" aria-hidden="true">&middot;</span>
+                    <span class="cv-topic-chip-count">{{count.posts}}</span>
+                </a>
+            {{/foreach}}{{/get}}
+            {{#get "tags" filter="slug:currency" include="count.posts" limit="1"}}{{#foreach tags}}
+                <a class="cv-topic-chip" href="{{url}}">
+                    <span>{{slug}}</span>
+                    <span class="cv-topic-chip-sep" aria-hidden="true">&middot;</span>
+                    <span class="cv-topic-chip-count">{{count.posts}}</span>
+                </a>
+            {{/foreach}}{{/get}}
+            {{#get "tags" filter="slug:policy" include="count.posts" limit="1"}}{{#foreach tags}}
+                <a class="cv-topic-chip" href="{{url}}">
+                    <span>{{slug}}</span>
+                    <span class="cv-topic-chip-sep" aria-hidden="true">&middot;</span>
+                    <span class="cv-topic-chip-count">{{count.posts}}</span>
+                </a>
+            {{/foreach}}{{/get}}
+            {{#get "tags" filter="slug:ai" include="count.posts" limit="1"}}{{#foreach tags}}
+                <a class="cv-topic-chip" href="{{url}}">
+                    <span>{{slug}}</span>
+                    <span class="cv-topic-chip-sep" aria-hidden="true">&middot;</span>
+                    <span class="cv-topic-chip-count">{{count.posts}}</span>
+                </a>
+            {{/foreach}}{{/get}}
         </div>
     </section>
 
