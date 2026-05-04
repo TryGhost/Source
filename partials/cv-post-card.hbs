@@ -1,0 +1,49 @@
+{{!-- cyber/verso · post card
+
+     Used by home.hbs (recent grid). Will likely be reused by tag.hbs
+     and author.hbs in subsequent Step 3 slices.
+
+     Inherits the post context from the enclosing {{#foreach posts}}.
+--}}
+
+<article class="cv-post-card {{post_class}}">
+    <a class="cv-post-card-link" href="{{url}}">
+
+        {{#if feature_image}}
+            <figure class="cv-post-card-image">
+                <img
+                    srcset="{{img_url feature_image size="s" format="webp"}} 320w,
+                            {{img_url feature_image size="m" format="webp"}} 600w,
+                            {{img_url feature_image size="l" format="webp"}} 960w"
+                    sizes="{{#if imageSizes}}{{imageSizes}}{{else}}(max-width: 767px) 90vw, 480px{{/if}}"
+                    src="{{img_url feature_image size="m"}}"
+                    alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
+                    loading="lazy"
+                >
+            </figure>
+        {{/if}}
+
+        <div class="cv-post-card-body">
+
+            <p class="cv-post-card-meta">
+                <time datetime="{{date format="YYYY-MM-DD"}}">{{date format="DD MMM YYYY"}}</time>
+                {{#if primary_tag}}
+                    <span class="cv-slash" aria-hidden="true">/</span>
+                    <span class="cv-post-card-topic">{{primary_tag.slug}}</span>
+                {{/if}}
+            </p>
+
+            <h3 class="cv-post-card-title">{{title}}</h3>
+
+            {{#if custom_excerpt}}
+                <p class="cv-post-card-excerpt">{{custom_excerpt}}</p>
+            {{/if}}
+            {{#unless custom_excerpt}}
+                {{#if excerpt}}
+                    <p class="cv-post-card-excerpt">{{excerpt}}</p>
+                {{/if}}
+            {{/unless}}
+
+        </div>
+    </a>
+</article>

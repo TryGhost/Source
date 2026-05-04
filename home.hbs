@@ -1,12 +1,113 @@
 {{!< default}}
-{{!-- The tag above means: insert everything in this file into the body of the default.hbs template --}}
+{{!-- cyber/verso · homepage
 
-{{> "components/header" headerStyle=@custom.header_style}}
+     Sections (top to bottom):
+       1. Hero issue   - latest post styled as the current "issue"
+       2. Recent       - grid of the next 6 posts
+       3. Topics       - bracketed chips for the 5 hardcoded topics
+       4. Author bio   - first author from the staff list
 
-{{#match @custom.header_style "!=" "Highlight"}}
-    {{> "components/featured" showFeatured=@custom.show_featured_posts limit=4}}
-{{/match}}
+     Bilingual filtering (tag:hash-en / tag:hash-it) arrives in Step 4
+     via routes.yaml; for now `posts` returns everything.
+--}}
 
-{{> "components/cta"}}
+<main class="cv-home">
 
-{{> "components/post-list" feed="home" postFeedStyle=@custom.post_feed_style showTitle=true showSidebar=@custom.show_publication_info_sidebar}}
+    {{!-- 1. HERO ISSUE ------------------------------------------------ --}}
+    {{#foreach posts limit="1"}}
+        <section class="cv-hero">
+            <a class="cv-hero-link" href="{{url}}">
+
+                <p class="cv-hero-meta">
+                    <time datetime="{{date format="YYYY-MM-DD"}}">{{date format="DD MMM YYYY"}}</time>
+                    {{#if primary_tag}}
+                        <span class="cv-slash" aria-hidden="true">/</span>
+                        <span>{{primary_tag.slug}}</span>
+                    {{/if}}
+                </p>
+
+                <h1 class="cv-hero-title">{{title}}</h1>
+
+                {{#if custom_excerpt}}
+                    <p class="cv-hero-lead">{{custom_excerpt}}</p>
+                {{/if}}
+                {{#unless custom_excerpt}}
+                    {{#if excerpt}}
+                        <p class="cv-hero-lead">{{excerpt}}</p>
+                    {{/if}}
+                {{/unless}}
+
+                <p class="cv-hero-byline">
+                    {{#if primary_author}}
+                        <span>by {{primary_author.name}}</span>
+                        <span class="cv-slash" aria-hidden="true">/</span>
+                    {{/if}}
+                    <span>{{reading_time minute="1 min" minutes="% min"}}</span>
+                    <span class="cv-slash" aria-hidden="true">/</span>
+                    <span class="cv-hero-cta">read &rarr;</span>
+                </p>
+
+            </a>
+        </section>
+    {{/foreach}}
+
+    {{!-- 2. RECENT ----------------------------------------------------- --}}
+    <section class="cv-section">
+        <h2 class="cv-section-heading">
+            <span class="cv-slash" aria-hidden="true">/</span> recent
+        </h2>
+        <ul class="cv-recent-grid">
+            {{#foreach posts from="2" limit="6"}}
+                <li>{{> "cv-post-card"}}</li>
+            {{/foreach}}
+        </ul>
+    </section>
+
+    {{!-- 3. TOPICS ----------------------------------------------------- --}}
+    <section class="cv-section">
+        <h2 class="cv-section-heading">
+            <span class="cv-slash" aria-hidden="true">/</span> topics
+        </h2>
+        <div class="cv-topics">
+            {{#get "tags" filter="slug:[infrastructures,identity,digital-euro,ai,policy]" include="count.posts" limit="5"}}
+                {{#foreach tags}}
+                    <a class="cv-topic-chip" href="{{url}}">
+                        <span>{{slug}}</span>
+                        <span class="cv-topic-chip-sep" aria-hidden="true">&middot;</span>
+                        <span class="cv-topic-chip-count">{{count.posts}}</span>
+                    </a>
+                {{/foreach}}
+            {{/get}}
+        </div>
+    </section>
+
+    {{!-- 4. AUTHOR BIO ------------------------------------------------- --}}
+    {{#get "authors" limit="1" order="created_at asc"}}
+        {{#foreach authors}}
+            <section class="cv-section cv-author-bio">
+                <h2 class="cv-section-heading">
+                    <span class="cv-slash" aria-hidden="true">/</span> about
+                </h2>
+                <div class="cv-author-bio-inner">
+                    {{#if profile_image}}
+                        <img class="cv-author-bio-avatar" src="{{img_url profile_image size="m"}}" alt="{{name}}">
+                    {{/if}}
+                    <div class="cv-author-bio-text">
+                        <h3 class="cv-author-bio-name">{{name}}</h3>
+                        {{#if bio}}
+                            <p class="cv-author-bio-blurb">{{bio}}</p>
+                        {{/if}}
+                        <p class="cv-author-bio-links">
+                            <a href="{{url}}">archive</a>
+                            {{#if website}}
+                                <a href="{{website}}" rel="me">site</a>
+                            {{/if}}
+                            <a href="{{@site.url}}/rss/">rss</a>
+                        </p>
+                    </div>
+                </div>
+            </section>
+        {{/foreach}}
+    {{/get}}
+
+</main>
