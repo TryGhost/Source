@@ -1,0 +1,51 @@
+{{!-- cyber/verso · site header
+
+     Replaces Source's components/navigation.hbs entirely.
+     Topics are hardcoded for Step 2; localized labels and the
+     codename-aware language switcher arrive in Step 4.
+--}}
+
+<header class="cv-site-header" data-cv-header>
+    <div class="cv-site-header-inner">
+
+        <a class="cv-brand" href="{{@site.url}}" aria-label="{{@site.title}}">
+            <span class="cv-brand-text">cyber<span class="cv-slash" aria-hidden="true">/</span>verso</span>
+        </a>
+
+        <nav class="cv-topic-nav" id="cv-topic-nav" aria-label="Topics">
+            <ul>
+                <li><a href="/tag/infrastructures/">infrastructures</a></li>
+                <li><a href="/tag/identity/">identity</a></li>
+                <li><a href="/tag/digital-euro/">digital-euro</a></li>
+                <li><a href="/tag/ai/">ai</a></li>
+                <li><a href="/tag/policy/">policy</a></li>
+            </ul>
+        </nav>
+
+        <div class="cv-header-actions">
+
+            {{!-- Search uses Ghost's built-in modal via data-ghost-search --}}
+            <button class="cv-icon-btn" type="button" data-ghost-search aria-label="{{t "Search"}}">
+                {{> "icons/search"}}
+            </button>
+
+            {{!-- Step 4 replaces this with a partial that resolves the
+                 codename-paired counterpart for the current post. --}}
+            <div class="cv-lang-switcher" aria-label="Language">
+                <span class="cv-lang is-active" aria-current="true">en</span>
+                <span class="cv-lang-sep" aria-hidden="true">|</span>
+                <a class="cv-lang" href="/it/">it</a>
+            </div>
+
+            <button class="cv-icon-btn cv-theme-btn" type="button" data-cv-toggle-theme aria-label="Switch theme">
+                <span data-cv-toggle-icon aria-hidden="true">◑</span>
+            </button>
+
+            <button class="cv-burger" type="button" data-cv-burger aria-label="{{t "Menu"}}" aria-expanded="false" aria-controls="cv-topic-nav">
+                <span></span><span></span><span></span>
+            </button>
+
+        </div>
+
+    </div>
+</header>

@@ -100,14 +100,37 @@
     });
   }
 
+  /**
+   * Mobile menu toggle. Bound to [data-cv-burger]; toggles the
+   * `is-menu-open` class on the closest [data-cv-header] and
+   * keeps aria-expanded in sync for screen readers.
+   */
+  function bindBurgerButtons() {
+    var burgers = document.querySelectorAll('[data-cv-burger]');
+    burgers.forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        var header = btn.closest('[data-cv-header]');
+        if (!header) return;
+        var open = header.classList.toggle('is-menu-open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    });
+  }
+
+  function initBindings() {
+    bindToggleButtons();
+    bindBurgerButtons();
+  }
+
   /* Inizializzazione: applica subito il tema salvato e poi attacca
      i listener quando il DOM e' pronto. */
   applyTheme(getStoredTheme());
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', bindToggleButtons);
+    document.addEventListener('DOMContentLoaded', initBindings);
   } else {
-    bindToggleButtons();
+    initBindings();
   }
 
 })();

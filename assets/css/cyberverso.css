@@ -379,7 +379,242 @@ a:hover, a:focus-visible {
 
 
 /* -----------------------------------------------------------------
-   8. ACCESSIBILITY
+   8. SITE HEADER (cv-header partial)
+   -----------------------------------------------------------------
+   Replaces Source's gh-navigation entirely. Mobile breakpoint at
+   768px collapses topic nav into a drawer toggled by the burger
+   button (handler in cyberverso.js / [data-cv-burger]).
+   ----------------------------------------------------------------- */
+
+.cv-site-header {
+  position: relative;
+  background: var(--cv-bg);
+  border-bottom: var(--cv-border-w) solid var(--cv-border);
+}
+
+/* On post pages the header sticks to the top and uses the compressed
+   height to maximise reading area. The body.post-template class is
+   emitted by Ghost via the {{body_class}} helper. */
+body.post-template .cv-site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.cv-site-header-inner {
+  display: flex;
+  align-items: center;
+  gap: var(--cv-space-5);
+  height: var(--cv-header-h);
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 var(--cv-space-5);
+}
+
+body.post-template .cv-site-header-inner {
+  height: var(--cv-header-h-sm);
+}
+
+/* Brand */
+.cv-brand {
+  font-family: var(--cv-font-serif);
+  font-size: var(--cv-fs-md);
+  font-weight: var(--cv-fw-medium);
+  letter-spacing: var(--cv-ls-tight);
+  color: var(--cv-text-strong);
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.cv-brand:hover,
+.cv-brand:focus-visible {
+  color: var(--cv-text-strong);
+}
+
+.cv-brand .cv-slash {
+  display: inline-block;
+  margin: 0 0.05em;
+}
+
+/* Topic nav (desktop) */
+.cv-topic-nav {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.cv-topic-nav ul {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: var(--cv-space-5);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cv-topic-nav a {
+  display: inline-block;
+  font-family: var(--cv-font-mono);
+  font-size: var(--cv-fs-xs);
+  letter-spacing: var(--cv-ls-wide);
+  color: var(--cv-text-dim);
+  text-decoration: none;
+  text-transform: lowercase;
+  transition: color var(--cv-transition-fast);
+}
+
+.cv-topic-nav a:hover,
+.cv-topic-nav a:focus-visible {
+  color: var(--cv-accent);
+}
+
+/* Actions cluster */
+.cv-header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--cv-space-4);
+  flex-shrink: 0;
+}
+
+.cv-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.2rem;
+  height: 3.2rem;
+  padding: 0;
+  background: transparent;
+  border: none;
+  color: var(--cv-text-muted);
+  cursor: pointer;
+  transition: color var(--cv-transition-fast);
+}
+
+.cv-icon-btn:hover,
+.cv-icon-btn:focus-visible {
+  color: var(--cv-accent);
+}
+
+.cv-icon-btn svg {
+  width: 1.8rem;
+  height: 1.8rem;
+}
+
+.cv-theme-btn {
+  font-size: var(--cv-fs-md);
+  line-height: 1;
+}
+
+/* Language switcher */
+.cv-lang-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--cv-space-2);
+  font-family: var(--cv-font-mono);
+  font-size: var(--cv-fs-xs);
+  letter-spacing: var(--cv-ls-wide);
+}
+
+.cv-lang {
+  text-decoration: none;
+  color: var(--cv-text-dim);
+  text-transform: lowercase;
+  transition: color var(--cv-transition-fast);
+}
+
+.cv-lang.is-active {
+  color: var(--cv-accent);
+}
+
+.cv-lang:hover,
+.cv-lang:focus-visible {
+  color: var(--cv-accent);
+}
+
+.cv-lang-sep {
+  color: var(--cv-border-strong);
+}
+
+/* Burger (hidden on desktop) */
+.cv-burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  width: 3.2rem;
+  height: 3.2rem;
+  padding: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.cv-burger span {
+  display: block;
+  width: 1.8rem;
+  height: 1px;
+  background: var(--cv-text-muted);
+  transition: background var(--cv-transition-fast);
+}
+
+.cv-site-header.is-menu-open .cv-burger span {
+  background: var(--cv-accent);
+}
+
+/* Mobile breakpoint */
+@media (max-width: 767px) {
+  .cv-site-header-inner {
+    height: var(--cv-header-h-sm);
+    gap: var(--cv-space-3);
+  }
+
+  .cv-burger {
+    display: inline-flex;
+  }
+
+  /* Language switcher hidden on mobile for now; Step 4 will re-add
+     it inside the drawer with codename-aware logic. */
+  .cv-lang-switcher {
+    display: none;
+  }
+
+  .cv-topic-nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--cv-bg-elev);
+    border-bottom: var(--cv-border-w) solid var(--cv-border);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height var(--cv-transition-slow);
+    z-index: 10;
+  }
+
+  .cv-site-header.is-menu-open .cv-topic-nav {
+    max-height: 60vh;
+  }
+
+  .cv-topic-nav ul {
+    flex-direction: column;
+    gap: 0;
+    padding: var(--cv-space-3) var(--cv-space-5);
+  }
+
+  .cv-topic-nav li + li {
+    border-top: var(--cv-border-w) solid var(--cv-border);
+  }
+
+  .cv-topic-nav a {
+    display: block;
+    padding: var(--cv-space-3) 0;
+    font-size: var(--cv-fs-sm);
+  }
+}
+
+
+/* -----------------------------------------------------------------
+   9. ACCESSIBILITY
    ----------------------------------------------------------------- */
 
 @media (prefers-reduced-motion: reduce) {

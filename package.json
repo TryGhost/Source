@@ -86,15 +86,6 @@
         },
         "card_assets": true,
         "custom": {
-            "navigation_layout": {
-                "type": "select",
-                "options": [
-                    "Logo in the middle",
-                    "Logo on the left",
-                    "Stacked"
-                ],
-                "default": "Logo in the middle"
-            },
             "site_background_color": {
                 "type": "color",
                 "default": "#ffffff"
