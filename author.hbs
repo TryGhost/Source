@@ -7,18 +7,18 @@
      auto-filtered to the current author by Ghost.
 --}}
 
-<main class="cv-archive">
+<main class="cv-archive" id="cv-main">
 
     {{#author}}
         <header class="cv-archive-header cv-author-archive-header">
 
-            <p class="cv-archive-breadcrumb">
-                <a href="{{@site.url}}">{{t "home"}}</a>
-                <span class="cv-slash" aria-hidden="true">/</span>
-                <span>{{t "author"}}</span>
-                <span class="cv-slash" aria-hidden="true">/</span>
-                <span class="cv-archive-breadcrumb-current">{{slug}}</span>
-            </p>
+            <nav class="cv-archive-breadcrumb" aria-label="Breadcrumb">
+                <ol>
+                    <li><a href="{{@site.url}}">{{t "home"}}</a></li>
+                    <li><span class="cv-slash" aria-hidden="true">/</span> <span>{{t "author"}}</span></li>
+                    <li><span class="cv-slash" aria-hidden="true">/</span> <span class="cv-archive-breadcrumb-current" aria-current="page">{{slug}}</span></li>
+                </ol>
+            </nav>
 
             <div class="cv-author-bio-inner">
 

@@ -82,7 +82,9 @@
 <body class="{{body_class}} has-{{#match @custom.title_font "Elegant serif"}}serif{{else match @custom.title_font "Consistent mono"}}mono{{else}}sans{{/match}}-title has-{{#match @custom.body_font "Elegant serif"}}serif{{else}}sans{{/match}}-body">
 
 <div class="gh-viewport">
-    
+
+    <a class="cv-skip-link" href="#cv-main">{{t "Skip to content"}}</a>
+
     {{> "cv-header"}}
 
     {{{body}}}

@@ -176,7 +176,18 @@
   function detectLanguage() {
     var path = window.location.pathname || '/';
     var isIt = path === '/it' || path === '/it/' || path.indexOf('/it/') === 0;
-    document.documentElement.setAttribute('data-cv-lang', isIt ? 'it' : 'en');
+    var lang = isIt ? 'it' : 'en';
+    document.documentElement.setAttribute('data-cv-lang', lang);
+
+    /* Mark the active static-switcher link with aria-current so screen
+       readers announce the current language correctly. The CSS-only
+       pointer-events:none alone doesn't communicate state to AT. */
+    var activeLinks = document.querySelectorAll(
+      '.cv-lang-switcher .cv-lang[data-cv-lang="' + lang + '"]'
+    );
+    activeLinks.forEach(function (el) {
+      el.setAttribute('aria-current', 'page');
+    });
   }
 
   /* Inizializzazione: applica subito il tema salvato e marca la lingua,

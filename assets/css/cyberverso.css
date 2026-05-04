@@ -213,8 +213,8 @@
   --cv-text-dim:         #6b6759;
   --cv-text-faint:       #8a857a;
 
-  --cv-accent:           #c25e1e;   /* amber piu' scuro per contrasto su sfondo chiaro */
-  --cv-accent-hover:     #a04a14;
+  --cv-accent:           #a04a14;   /* WCAG AA: 5.5:1 on cream bg (4.5:1 required for body text) */
+  --cv-accent-hover:     #7a3810;   /* AAA hover state */
   --cv-accent-bg:        #f5e6d6;
 
   /* Source variables */
@@ -1180,6 +1180,59 @@ body.post-template .cv-site-header-inner {
 
 
 /* -----------------------------------------------------------------
+   10b. STATIC PAGE (page.hbs)
+   -----------------------------------------------------------------
+   Slim variant of the article layout. Header and body share the
+   same 65ch column so left/right edges align across the title and
+   the running text.
+   ----------------------------------------------------------------- */
+
+.cv-page {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 var(--cv-space-5);
+}
+
+.cv-page-header {
+  max-width: var(--cv-content-max);
+  margin: 0 auto;
+  padding: var(--cv-space-7) 0 var(--cv-space-5);
+}
+
+.cv-page-title {
+  font-family: var(--cv-font-serif);
+  font-size: var(--cv-fs-2xl);
+  font-weight: var(--cv-fw-medium);
+  line-height: var(--cv-lh-tight);
+  letter-spacing: var(--cv-ls-tighter);
+  color: var(--cv-text-strong);
+  margin: 0 0 var(--cv-space-4);
+}
+
+.cv-page-lead {
+  font-family: var(--cv-font-serif);
+  font-style: italic;
+  font-size: var(--cv-fs-lg);
+  line-height: var(--cv-lh-snug);
+  color: var(--cv-text-muted);
+  margin: 0;
+}
+
+.cv-page-content {
+  padding: var(--cv-space-5) 0 var(--cv-space-7);
+}
+
+@media (max-width: 767px) {
+  .cv-page-title {
+    font-size: var(--cv-fs-xl);
+  }
+  .cv-page-lead {
+    font-size: var(--cv-fs-md);
+  }
+}
+
+
+/* -----------------------------------------------------------------
    11. ARCHIVE (tag.hbs, author.hbs, index.hbs) + PAGINATION
    -----------------------------------------------------------------
    Shared shell for archive-style pages. Reuses .cv-recent-grid
@@ -1201,16 +1254,28 @@ body.post-template .cv-site-header-inner {
 }
 
 .cv-archive-breadcrumb {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--cv-space-2);
-  align-items: baseline;
   font-family: var(--cv-font-mono);
   font-size: var(--cv-fs-xs);
   letter-spacing: var(--cv-ls-wide);
   color: var(--cv-text-dim);
   text-transform: lowercase;
   margin: 0 0 var(--cv-space-4);
+}
+
+.cv-archive-breadcrumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--cv-space-2);
+  align-items: baseline;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cv-archive-breadcrumb li {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--cv-space-2);
 }
 
 .cv-archive-breadcrumb a {
@@ -1569,6 +1634,32 @@ body.post-template .cv-site-header-inner {
 /* -----------------------------------------------------------------
    14. ACCESSIBILITY
    ----------------------------------------------------------------- */
+
+/* Skip link: visually hidden until keyboard-focused. Lands the user
+   at the main content area, bypassing the header nav. */
+.cv-skip-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 200;
+  padding: var(--cv-space-3) var(--cv-space-4);
+  font-family: var(--cv-font-mono);
+  font-size: var(--cv-fs-xs);
+  letter-spacing: var(--cv-ls-wide);
+  text-transform: lowercase;
+  background: var(--cv-bg);
+  color: var(--cv-accent);
+  text-decoration: none;
+  border: var(--cv-border-w) solid var(--cv-accent);
+  transform: translateY(-150%);
+  transition: transform var(--cv-transition-fast);
+}
+
+.cv-skip-link:focus,
+.cv-skip-link:focus-visible {
+  transform: translateY(0);
+  outline: none;
+}
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

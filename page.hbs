@@ -1,22 +1,48 @@
 {{!< default}}
-{{!-- The tag above means: insert everything in this file into the body of the default.hbs template --}}
+{{!-- cyber/verso · static page
+
+     Slim long-form layout. No byline, tagged section, or read-next
+     (those belong to post.hbs). Title and body share the same 65ch
+     column so left and right edges align — the misalignment you'd see
+     with Source's full-width gh-article-header above a centered
+     gh-content body is what we're fixing here.
+
+     {{#match @page.show_title_and_feature_image}} respects Ghost's
+     page-level toggle; pages opting out get content-only rendering.
+--}}
 
 {{#post}}
 
-<main class="gh-main">
-    <article class="gh-article {{post_class}}">
+<main class="cv-page" id="cv-main">
+    <article class="cv-page-article">
 
         {{#match @page.show_title_and_feature_image}}
-            <header class="gh-article-header gh-canvas">
-                <h1 class="gh-article-title is-title">{{title}}</h1>
+            <header class="cv-page-header">
+                <h1 class="cv-page-title">{{title}}</h1>
                 {{#if custom_excerpt}}
-                    <p class="gh-article-excerpt is-body">{{custom_excerpt}}</p>
+                    <p class="cv-page-lead">{{custom_excerpt}}</p>
                 {{/if}}
-                {{> "feature-image"}}
             </header>
+
+            {{#if feature_image}}
+                <figure class="cv-article-image">
+                    <img
+                        srcset="{{img_url feature_image size="m"}} 600w,
+                                {{img_url feature_image size="l"}} 960w,
+                                {{img_url feature_image size="xl"}} 1200w,
+                                {{img_url feature_image size="xxl"}} 2000w"
+                        sizes="(max-width: 1200px) 100vw, 1120px"
+                        src="{{img_url feature_image size="xl"}}"
+                        alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
+                    >
+                    {{#if feature_image_caption}}
+                        <figcaption>{{{feature_image_caption}}}</figcaption>
+                    {{/if}}
+                </figure>
+            {{/if}}
         {{/match}}
 
-        <section class="gh-content gh-canvas is-body">
+        <section class="cv-page-content gh-content">
             {{content}}
         </section>
 
