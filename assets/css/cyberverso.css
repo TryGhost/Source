@@ -929,7 +929,198 @@ body.post-template .cv-site-header-inner {
 
 
 /* -----------------------------------------------------------------
-   10. ACCESSIBILITY
+   10. ARTICLE (post.hbs)
+   -----------------------------------------------------------------
+   Long-form layout. The compressed sticky header is in §8 (the
+   body.post-template selector). The body content rules live in
+   §7 (.gh-content). This section only covers the article shell:
+   header, byline, feature image, footer (tagged), and read-next.
+   ----------------------------------------------------------------- */
+
+.cv-article {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 var(--cv-space-5);
+}
+
+/* ----- Article header --------------------------------------------- */
+
+.cv-article-header {
+  padding: var(--cv-space-7) 0 var(--cv-space-5);
+}
+
+.cv-article-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--cv-space-2);
+  align-items: baseline;
+  font-family: var(--cv-font-mono);
+  font-size: var(--cv-fs-xs);
+  letter-spacing: var(--cv-ls-wide);
+  color: var(--cv-text-dim);
+  text-transform: lowercase;
+  margin: 0 0 var(--cv-space-4);
+}
+
+.cv-article-meta a {
+  color: var(--cv-text-muted);
+  text-decoration: none;
+  transition: color var(--cv-transition-fast);
+}
+
+.cv-article-meta a:hover,
+.cv-article-meta a:focus-visible {
+  color: var(--cv-accent);
+}
+
+.cv-article-title {
+  font-family: var(--cv-font-serif);
+  font-size: var(--cv-fs-2xl);
+  font-weight: var(--cv-fw-medium);
+  line-height: var(--cv-lh-tight);
+  letter-spacing: var(--cv-ls-tighter);
+  color: var(--cv-text-strong);
+  margin: 0 0 var(--cv-space-4);
+  max-width: 24ch;
+}
+
+.cv-article-lead {
+  font-family: var(--cv-font-serif);
+  font-style: italic;
+  font-size: var(--cv-fs-lg);
+  line-height: var(--cv-lh-snug);
+  color: var(--cv-text-muted);
+  max-width: var(--cv-content-max);
+  margin: 0 0 var(--cv-space-5);
+}
+
+/* ----- Byline ----------------------------------------------------- */
+
+.cv-article-byline {
+  display: flex;
+  align-items: center;
+  gap: var(--cv-space-3);
+  border-top: var(--cv-border-w) solid var(--cv-border);
+  border-bottom: var(--cv-border-w) solid var(--cv-border);
+  padding: var(--cv-space-3) 0;
+  margin-top: var(--cv-space-5);
+}
+
+.cv-article-byline-avatar-link {
+  flex-shrink: 0;
+  line-height: 0;
+}
+
+.cv-article-byline-avatar {
+  display: block;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.cv-article-byline-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-family: var(--cv-font-mono);
+  font-size: var(--cv-fs-xs);
+  letter-spacing: var(--cv-ls-wide);
+  color: var(--cv-text-dim);
+  text-transform: lowercase;
+}
+
+.cv-article-byline-name {
+  color: var(--cv-text-strong);
+}
+
+.cv-article-byline-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--cv-space-2);
+  align-items: baseline;
+}
+
+/* ----- Feature image ---------------------------------------------- */
+
+.cv-article-image {
+  margin: var(--cv-space-6) 0;
+  background: var(--cv-bg-elev);
+  overflow: hidden;
+}
+
+.cv-article-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.cv-article-image figcaption {
+  font-family: var(--cv-font-mono);
+  font-size: var(--cv-fs-xs);
+  letter-spacing: var(--cv-ls-wide);
+  color: var(--cv-text-dim);
+  text-align: center;
+  padding: var(--cv-space-3) var(--cv-space-4) 0;
+  text-transform: lowercase;
+}
+
+/* ----- Article body ----------------------------------------------- */
+
+.cv-article-content {
+  padding: var(--cv-space-5) 0 var(--cv-space-7);
+}
+
+/* ----- Tagged footer ---------------------------------------------- */
+
+.cv-article-footer {
+  border-top: var(--cv-border-w) solid var(--cv-border);
+  padding: var(--cv-space-6) 0 var(--cv-space-7);
+  max-width: var(--cv-content-max);
+  margin: 0 auto;
+}
+
+.cv-article-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--cv-space-2);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* ----- Read next (reuses .cv-section + .cv-recent-grid) ----------- */
+
+.cv-read-next {
+  border-top: var(--cv-border-w) solid var(--cv-border);
+}
+
+/* ----- Comments --------------------------------------------------- */
+
+.cv-comments {
+  max-width: var(--cv-content-max);
+  margin: 0 auto;
+  padding: var(--cv-space-6) var(--cv-space-5);
+}
+
+@media (max-width: 767px) {
+  .cv-article-title {
+    font-size: var(--cv-fs-xl);
+    max-width: none;
+  }
+
+  .cv-article-lead {
+    font-size: var(--cv-fs-md);
+  }
+
+  .cv-article-byline {
+    flex-wrap: wrap;
+  }
+}
+
+
+/* -----------------------------------------------------------------
+   11. ACCESSIBILITY
    ----------------------------------------------------------------- */
 
 @media (prefers-reduced-motion: reduce) {

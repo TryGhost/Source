@@ -1,66 +1,100 @@
 {{!< default}}
-{{!-- The tag above means: insert everything in this file into the body of the default.hbs template --}}
+{{!-- cyber/verso · single article
+
+     Long-form layout. The compressed sticky header is handled in
+     default.hbs via body.post-template (Step 2 / cyberverso.css §8).
+     Internal tags (#en, #it, #tx-*) are filtered out of the public
+     tag list via filter="visibility:public".
+
+     Reading progress bar (mockup §4) is deferred to Step 5.
+     Read-next is currently random-by-recency; codename-aware
+     selection arrives in Step 4.
+--}}
 
 {{#post}}
 
-<main class="gh-main">
+<main class="cv-post">
+    <article class="cv-article {{post_class}}">
 
-    <article class="gh-article {{post_class}}">
+        <header class="cv-article-header">
 
-        <header class="gh-article-header gh-canvas">
+            <p class="cv-article-meta">
+                <time datetime="{{date format="YYYY-MM-DD"}}">{{date format="DD MMM YYYY"}}</time>
+                {{#if primary_tag}}
+                    <span class="cv-slash" aria-hidden="true">/</span>
+                    <a href="{{primary_tag.url}}">{{primary_tag.slug}}</a>
+                {{/if}}
+            </p>
 
-            {{#if primary_tag}}
-                <a class="gh-article-tag" href="{{primary_tag.url}}">{{primary_tag.name}}</a>
-            {{/if}}
-            <h1 class="gh-article-title is-title">{{title}}</h1>
+            <h1 class="cv-article-title">{{title}}</h1>
+
             {{#if custom_excerpt}}
-                <p class="gh-article-excerpt is-body">{{custom_excerpt}}</p>
+                <p class="cv-article-lead">{{custom_excerpt}}</p>
             {{/if}}
 
             {{#if @custom.show_post_metadata}}
-                <div class="gh-meta-share">
-                    <div class="gh-article-meta">
-                        <div class="gh-article-author-image instapaper_ignore">
-                            {{#foreach authors}}
-                                {{#if profile_image}}
-                                    <a href="{{url}}">
-                                        <img class="author-profile-image" src="{{img_url profile_image size="xs"}}" alt="{{name}}">
-                                    </a>
-                                {{else}}
-                                    <a href="{{url}}">{{> "icons/avatar"}}</a>
-                                {{/if}}
-                            {{/foreach}}
-                        </div>
-                        <div class="gh-article-meta-wrapper">
-                            <h4 class="gh-article-author-name">{{authors}}</h4>
-                            <div class="gh-article-meta-content">
-                                <time class="gh-article-meta-date" datetime="{{date format="YYYY-MM-DD"}}">{{date format="DD MMM YYYY"}}</time>
-                                {{#if reading_time}}
-                                    <span class="gh-article-meta-length"><span class="bull">—</span> {{reading_time minute=(t "1 min read") minutes=(t "% min read")}}</span>
-                                {{/if}}
-                            </div>
-                        </div>
+                <div class="cv-article-byline">
+                    {{#foreach authors}}
+                        {{#if profile_image}}
+                            <a class="cv-article-byline-avatar-link" href="{{url}}" aria-label="{{name}}">
+                                <img class="cv-article-byline-avatar" src="{{img_url profile_image size="s"}}" alt="{{name}}">
+                            </a>
+                        {{/if}}
+                    {{/foreach}}
+                    <div class="cv-article-byline-meta">
+                        <span class="cv-article-byline-name">{{authors autolink="false" separator=", "}}</span>
+                        <span class="cv-article-byline-stats">
+                            <span>{{reading_time minute="1 min" minutes="% min"}}</span>
+                        </span>
                     </div>
-                    <a href="#/share" class="gh-button gh-button-share">
-                        {{t "Share"}}
-                    </a>
                 </div>
             {{/if}}
 
-            {{> "feature-image"}}
-
         </header>
 
-        <section class="gh-content gh-canvas is-body{{#if @custom.enable_drop_caps_on_posts}} drop-cap{{/if}}">
+        {{#if feature_image}}
+            <figure class="cv-article-image">
+                <img
+                    srcset="{{img_url feature_image size="m"}} 600w,
+                            {{img_url feature_image size="l"}} 960w,
+                            {{img_url feature_image size="xl"}} 1200w,
+                            {{img_url feature_image size="xxl"}} 2000w"
+                    sizes="(max-width: 1200px) 100vw, 1120px"
+                    src="{{img_url feature_image size="xl"}}"
+                    alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
+                >
+                {{#if feature_image_caption}}
+                    <figcaption>{{{feature_image_caption}}}</figcaption>
+                {{/if}}
+            </figure>
+        {{/if}}
+
+        <section class="cv-article-content gh-content {{#if @custom.enable_drop_caps_on_posts}}drop-cap{{/if}}">
             {{content}}
         </section>
+
+        {{!-- Public tags only — excludes internal #en/#it/#tx-* pairing tags.
+             cyberverso content model guarantees ≥1 public topic per post,
+             so the {{#if tags}} guard is sufficient. --}}
+        {{#if tags}}
+            <footer class="cv-article-footer">
+                <h2 class="cv-section-heading">
+                    <span class="cv-slash" aria-hidden="true">/</span> tagged
+                </h2>
+                <ul class="cv-article-tags">
+                    {{#foreach tags filter="visibility:public"}}
+                        <li><a class="cv-tag-chip" href="{{url}}">{{name}}</a></li>
+                    {{/foreach}}
+                </ul>
+            </footer>
+        {{/if}}
 
     </article>
 
     {{#if comments}}
-        <div class="gh-comments gh-canvas">
+        <section class="cv-comments">
             {{comments}}
-        </div>
+        </section>
     {{/if}}
 
 </main>
@@ -68,17 +102,17 @@
 {{/post}}
 
 {{#if @custom.show_related_articles}}
-    {{#get "posts" include="authors" filter="id:-{{post.id}}" limit="4" as |next|}}
+    {{#get "posts" filter="id:-{{post.id}}" limit="2" as |next|}}
         {{#if next}}
-            <section class="gh-container is-grid gh-outer">
-                <div class="gh-container-inner gh-inner">
-                    <h2 class="gh-container-title">{{t "Read more"}}</h2>
-                    <div class="gh-feed">
-                        {{#foreach next}}
-                            {{> "post-card" lazyLoad=true}}
-                        {{/foreach}}
-                    </div>
-                </div>
+            <section class="cv-section cv-read-next">
+                <h2 class="cv-section-heading">
+                    <span class="cv-slash" aria-hidden="true">/</span> read next
+                </h2>
+                <ul class="cv-recent-grid">
+                    {{#foreach next}}
+                        <li>{{> "cv-post-card"}}</li>
+                    {{/foreach}}
+                </ul>
             </section>
         {{/if}}
     {{/get}}
