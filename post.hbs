@@ -13,6 +13,12 @@
 
 {{#post}}
 
+{{!-- Reading progress bar — bound by cyberverso.js setupReadingProgress
+     to scroll position relative to .cv-article boundaries. --}}
+<div class="cv-reading-progress" aria-hidden="true">
+    <div class="cv-reading-progress-bar" data-cv-reading-progress></div>
+</div>
+
 <main class="cv-post">
     <article class="cv-article {{post_class}}">
 

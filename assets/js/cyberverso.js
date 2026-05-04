@@ -118,9 +118,53 @@
     });
   }
 
+  /**
+   * Reading progress bar. Tracks scroll position relative to .cv-article
+   * boundaries and updates the [data-cv-reading-progress] bar's scaleX
+   * (0..1). Uses requestAnimationFrame to coalesce scroll events and
+   * keeps the work GPU-side via transform.
+   *
+   * Articles shorter than the viewport snap to scaleX(1) immediately.
+   */
+  function setupReadingProgress() {
+    var bar = document.querySelector('[data-cv-reading-progress]');
+    if (!bar) return;
+    var article = document.querySelector('.cv-article');
+    if (!article) return;
+
+    var ticking = false;
+
+    function update() {
+      var rect = article.getBoundingClientRect();
+      var totalScrollable = rect.height - window.innerHeight;
+      var progress;
+      if (totalScrollable <= 0) {
+        progress = 1;
+      } else {
+        progress = (-rect.top) / totalScrollable;
+        if (progress < 0) progress = 0;
+        else if (progress > 1) progress = 1;
+      }
+      bar.style.transform = 'scaleX(' + progress + ')';
+      ticking = false;
+    }
+
+    function onScroll() {
+      if (!ticking) {
+        window.requestAnimationFrame(update);
+        ticking = true;
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onScroll, {passive: true});
+    update();
+  }
+
   function initBindings() {
     bindToggleButtons();
     bindBurgerButtons();
+    setupReadingProgress();
   }
 
   /**
