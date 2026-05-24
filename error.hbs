@@ -1,0 +1,66 @@
+{{!--
+    Generic error template — handles all non-404 errors (500, etc.).
+    Standalone (doesn't extend default.hbs) and kept lightweight on
+    purpose: minimal dependencies, no partials, no API calls.
+
+    The reasoning mirrors Casper's: 500 errors usually happen when
+    something on the server is struggling, so we don't want the error
+    page itself to compound the issue. Keep this template as
+    self-contained as possible.
+--}}
+
+<!DOCTYPE html>
+<html lang="{{@site.locale}}">
+<head>
+    <title>{{meta_title}}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{asset "built/screen.css"}}">
+    <style>
+        :root {
+            --background-color: {{@custom.site_background_color}}
+        }
+    </style>
+    {{ghost_head}}
+</head>
+<body class="{{body_class}}">
+
+    <main class="gh-main">
+
+        <article class="gh-article gh-canvas">
+
+            <header class="gh-article-header">
+                <h1 class="gh-article-title is-title">{{statusCode}}</h1>
+                <p class="gh-article-excerpt is-body">{{message}}</p>
+            </header>
+
+            <section class="gh-content is-body">
+                <p>
+                    <a href="{{@site.url}}" class="gh-button">{{t "Go to the front page →"}}</a>
+                </p>
+            </section>
+
+            {{#if errorDetails}}
+                <section class="gh-content is-body">
+                    <h3>{{t "Theme errors"}}</h3>
+                    <ul>
+                        {{#foreach errorDetails}}
+                            <li>
+                                <strong>{{rule}}</strong>
+                                {{#foreach failures}}
+                                    <p>{{ref}}: {{message}}</p>
+                                {{/foreach}}
+                            </li>
+                        {{/foreach}}
+                    </ul>
+                </section>
+            {{/if}}
+
+        </article>
+
+    </main>
+
+    {{ghost_foot}}
+
+</body>
+</html>
