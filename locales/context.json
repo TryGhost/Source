@@ -58,6 +58,7 @@
     "Next →": "solo/post.hbs",
     "Older Posts": "ghost-tpl/pagination.hbs",
     "Page {page} of {totalPages}": "alto/partials/pagination.hbs, ghost-tpl/pagination.hbs",
+    "Page not found": "Friendly message shown on 404 pages",
     "Paid": "solo/partials/loop.hbs",
     "Paid-members only": "casper/partials/post-card.hbs",
     "Please enter a valid email address": "ghost-private/private.hbs",
