@@ -3403,6 +3403,7 @@ body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-head
 
 .gh-button-share {
     display: inline-flex;
+    flex-shrink: 0;
     align-items: center;
     border: 1px solid rgba(0, 0, 0, 0.15);
     border-radius: 999px;
@@ -3410,6 +3411,7 @@ body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-head
     background: transparent;
     cursor: pointer;
     transition: all 0.4s ease;
+    white-space: nowrap;
 }
 
 .gh-button-share:hover {
