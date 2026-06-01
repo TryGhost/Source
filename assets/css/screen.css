@@ -2271,8 +2271,8 @@ unless a heading is the very first element in the post content */
    Scoped via :has() to only apply when the upgrade CTA is present, so
    regular posts are unaffected. */
 .gh-content:has(> .gh-post-upgrade-cta) > p:last-of-type {
-    -webkit-mask-image: linear-gradient(to bottom, var(--color-black) 1%, transparent 100%);
-    mask-image: linear-gradient(to bottom, var(--color-black) 1%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, var(--color-black) 60%, transparent 100%);
+    mask-image: linear-gradient(to bottom, var(--color-black) 60%, transparent 100%);
 }
 
 /* 16. Cards
