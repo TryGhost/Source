@@ -1,0 +1,121 @@
+{{!--
+    BWF Series Navigation ("Explore the Series")
+    Server-rendered replacement for the legacy Code Injection JS row.
+    - Always-on cards (1-4) are static markup.
+    - Arc cards (5-6) are gated: each renders only once its tag holds >= 3
+      published posts, so the homepage never links to a near-empty archive.
+    - Accent color is passed per-card via the inline --bwf-accent custom property,
+      which references the brand token system declared in Code Injection (v1.1).
+    - Links target channel routes (/{series}/) defined in routes.yaml. These are
+      additive pretty-URLs; existing post permalinks are unchanged.
+--}}
+
+<section class="bwf-series-nav gh-outer" aria-labelledby="bwf-series-nav-title">
+    <div class="bwf-series-nav-inner gh-inner">
+        <h2 id="bwf-series-nav-title" class="bwf-series-nav-title">Explore the Series</h2>
+        <div class="bwf-series-grid">
+
+            {{!-- 1. Operational Learning (amber) --}}
+            <a class="bwf-series-card" style="--bwf-accent: #D4943A;" href="/operational-learning/">
+                <span class="bwf-series-card-name">Operational Learning</span>
+                <span class="bwf-series-card-desc">Building systems that keep lessons learned under pressure.</span>
+            </a>
+
+            {{!-- 2. Data Done Right (steel) --}}
+            <a class="bwf-series-card" style="--bwf-accent: #7EB3CC;" href="/data-done-right/">
+                <span class="bwf-series-card-name">Data Done Right</span>
+                <span class="bwf-series-card-desc">Rebuilding trust in the numbers your organization runs on.</span>
+            </a>
+
+            {{!-- 3. Across the Divide (bronze) --}}
+            <a class="bwf-series-card" style="--bwf-accent: #A86A28;" href="/across-the-divide/">
+                <span class="bwf-series-card-name">Across the Divide</span>
+                <span class="bwf-series-card-desc">When IT becomes strategy instead of plumbing.</span>
+            </a>
+
+            {{!-- 4. Real Talk to Real Results (steel) --}}
+            <a class="bwf-series-card" style="--bwf-accent: #7EB3CC;" href="/real-talk-to-real-results/">
+                <span class="bwf-series-card-name">Real Talk to Real Results</span>
+                <span class="bwf-series-card-desc">Accountability, governance, and execution that sticks.</span>
+            </a>
+
+            {{!-- 5. Architecture That Persuades (steel) -- gated: >= 3 published --}}
+            {{#get "posts" filter="tag:architecture-that-persuades" limit="3" as |arc|}}
+                {{#if arc.[2]}}
+                <a class="bwf-series-card" style="--bwf-accent: #7EB3CC;" href="/architecture-that-persuades/">
+                    <span class="bwf-series-card-name">Architecture That Persuades</span>
+                    <span class="bwf-series-card-desc">When the structure makes the case the argument can&rsquo;t.</span>
+                </a>
+                {{/if}}
+            {{/get}}
+
+            {{!-- 6. Who Pays for Clarity (steel) -- gated: >= 3 published --}}
+            {{#get "posts" filter="tag:who-pays-for-clarity" limit="3" as |wpc|}}
+                {{#if wpc.[2]}}
+                <a class="bwf-series-card" style="--bwf-accent: #7EB3CC;" href="/who-pays-for-clarity/">
+                    <span class="bwf-series-card-name">Who Pays for Clarity</span>
+                    <span class="bwf-series-card-desc">The real cost of clarity, and who ends up carrying it.</span>
+                </a>
+                {{/if}}
+            {{/get}}
+
+        </div>
+    </div>
+</section>
+
+<style>
+    .bwf-series-nav {
+        margin-top: max(4vw, 40px);
+    }
+    .bwf-series-nav-title {
+        border-bottom: 1px solid var(--color-border, rgba(255,255,255,0.15));
+        font-size: 1.2rem;
+        font-weight: 550;
+        letter-spacing: 0.025em;
+        margin-bottom: 20px;
+        padding-bottom: 12px;
+        text-transform: uppercase;
+        font-family: var(--gh-font-heading, inherit);
+    }
+    .bwf-series-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+        gap: var(--grid-gap, 42px);
+    }
+    .bwf-series-card {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        padding: 24px 24px 24px 22px;
+        border-left: 4px solid var(--bwf-accent, var(--color-accent-primary, #7EB3CC));
+        background-color: var(--color-surface, #0D1220);
+        transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+    .bwf-series-card:hover {
+        opacity: 1;
+        background-color: var(--bwf-card-hover, #141A2E);
+        transform: translateY(-2px);
+    }
+    .bwf-series-card:focus-visible {
+        outline: 2px solid var(--color-accent-primary, #7EB3CC);
+        outline-offset: 2px;
+    }
+    .bwf-series-card-name {
+        font-family: var(--gh-font-heading, inherit);
+        font-size: 1.9rem;
+        font-weight: 700;
+        line-height: 1.25;
+        letter-spacing: -0.01em;
+        color: var(--bwf-accent, var(--color-text-primary, #E8E6E0));
+    }
+    .bwf-series-card-desc {
+        font-family: var(--gh-font-body, inherit);
+        font-size: 1.45rem;
+        line-height: 1.4;
+        color: var(--color-text-secondary, #B0ADA6);
+    }
+    @media (prefers-reduced-motion: reduce) {
+        .bwf-series-card { transition: none; }
+        .bwf-series-card:hover { transform: none; }
+    }
+</style>
