@@ -56,13 +56,13 @@
 
             <section class="gh-content is-body">
                 <p>
-                    <a href="{{@site.url}}" class="gh-button">Go to the front page →</a>
+                    <a href="{{@site.url}}" class="gh-button">{{t "Go to the front page →"}}</a>
                 </p>
             </section>
 
             {{#if errorDetails}}
                 <section class="gh-content is-body">
-                    <h3>Theme errors</h3>
+                    <h3>{{t "Theme errors"}}</h3>
                     <ul>
                         {{#foreach errorDetails}}
                             <li>
