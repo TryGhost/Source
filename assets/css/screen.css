@@ -365,9 +365,11 @@ body[class*=" gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-hea
 
 /* Stack the subscribe form vertically on narrow viewports so the email
    placeholder doesn't get clipped behind the button (an issue that's
-   especially visible in verbose languages like German or Finnish). */
+   especially visible in verbose languages like German or Finnish).
+   Scoped to form[data-members-form] so the search form (which reuses
+   .gh-form / .gh-form-input) keeps its single-row layout. */
 @media (max-width: 480px) {
-    .gh-form {
+    form[data-members-form].gh-form {
         flex-direction: column;
         align-items: stretch;
         height: auto;
@@ -376,11 +378,11 @@ body[class*=" gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-hea
         background-color: transparent;
     }
 
-    .gh-form:hover {
+    form[data-members-form].gh-form:hover {
         background-color: transparent;
     }
 
-    .gh-form-input {
+    form[data-members-form] .gh-form-input {
         position: static;
         inset: auto;
         width: 100%;
@@ -390,12 +392,18 @@ body[class*=" gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-hea
         background-color: var(--color-lighter-gray);
     }
 
-    .has-light-text .gh-form-input,
-    .gh-footer.has-accent-color .gh-form-input {
+    .has-light-text form[data-members-form] .gh-form-input,
+    .gh-footer.has-accent-color form[data-members-form] .gh-form-input {
         background-color: rgb(255 255 255 / 0.1);
     }
 
-    .gh-form .gh-button {
+    /* Preserve the high-contrast white pill over photography in the
+       classic header-with-image layout. */
+    .gh-header.is-classic.has-image form[data-members-form] .gh-form-input {
+        background-color: #fff;
+    }
+
+    form[data-members-form] .gh-button {
         position: static;
         right: auto;
         width: 100%;
@@ -404,12 +412,8 @@ body[class*=" gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-hea
         height: 52px;
     }
 
-    .gh-form > svg {
+    form[data-members-form] > svg {
         display: none;
-    }
-
-    button.gh-form-input {
-        padding-inline-start: 22px;
     }
 }
 
