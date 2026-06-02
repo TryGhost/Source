@@ -21,6 +21,26 @@
             --background-color: {{@custom.site_background_color}}
         }
     </style>
+
+    <script>
+        /* The script for calculating the color contrast has been taken from
+        https://gomakethings.com/dynamically-changing-the-text-color-based-on-background-color-contrast-with-vanilla-js/ */
+        var accentColor = getComputedStyle(document.documentElement).getPropertyValue('--background-color');
+        accentColor = accentColor.trim().slice(1);
+
+        if (accentColor.length === 3) {
+            accentColor = accentColor[0] + accentColor[0] + accentColor[1] + accentColor[1] + accentColor[2] + accentColor[2];
+        }
+
+        var r = parseInt(accentColor.substr(0, 2), 16);
+        var g = parseInt(accentColor.substr(2, 2), 16);
+        var b = parseInt(accentColor.substr(4, 2), 16);
+        var yiq = ((r * 299) + (g * 587) + (b * 114)) / 1000;
+        var textColor = (yiq >= 128) ? 'dark' : 'light';
+
+        document.documentElement.className = `has-${textColor}-text`;
+    </script>
+
     {{ghost_head}}
 </head>
 <body class="{{body_class}}">
@@ -36,13 +56,13 @@
 
             <section class="gh-content is-body">
                 <p>
-                    <a href="{{@site.url}}" class="gh-button">{{t "Go to the front page →"}}</a>
+                    <a href="{{@site.url}}" class="gh-button">Go to the front page →</a>
                 </p>
             </section>
 
             {{#if errorDetails}}
                 <section class="gh-content is-body">
-                    <h3>{{t "Theme errors"}}</h3>
+                    <h3>Theme errors</h3>
                     <ul>
                         {{#foreach errorDetails}}
                             <li>
