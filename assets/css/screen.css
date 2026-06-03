@@ -2266,6 +2266,15 @@ unless a heading is the very first element in the post content */
     font-family: var(--font-mono);
 }
 
+/* Fade out the last visible paragraph on access-restricted posts so it's
+   obvious to the reader that the article continues beyond the preview.
+   Scoped via :has() to only apply when the upgrade CTA is present, so
+   regular posts are unaffected. */
+.gh-content:has(> .gh-post-upgrade-cta) > p:last-of-type {
+    -webkit-mask-image: linear-gradient(to bottom, var(--color-black) 60%, transparent 100%);
+    mask-image: linear-gradient(to bottom, var(--color-black) 60%, transparent 100%);
+}
+
 /* 16. Cards
 /* ---------------------------------------------------------- */
 
