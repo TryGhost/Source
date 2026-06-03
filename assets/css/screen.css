@@ -246,6 +246,7 @@ a:hover {
     background-color: transparent;
     outline: none;
     transition: 0.3s ease-in-out;
+    text-overflow: ellipsis;
 }
 
 .gh-form-input::placeholder,
@@ -359,6 +360,60 @@ body[class*=" gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-hea
     .gh-form .gh-button {
         min-width: 104px;
         padding-inline: 12px;
+    }
+}
+
+/* Stack the subscribe form vertically on narrow viewports so the email
+   placeholder doesn't get clipped behind the button (an issue that's
+   especially visible in verbose languages like German or Finnish).
+   Scoped to form[data-members-form] so the search form (which reuses
+   .gh-form / .gh-form-input) keeps its single-row layout. */
+@media (max-width: 480px) {
+    form[data-members-form].gh-form {
+        flex-direction: column;
+        align-items: stretch;
+        height: auto;
+        padding: 6px;
+        border-radius: 28px;
+        background-color: transparent;
+    }
+
+    form[data-members-form].gh-form:hover {
+        background-color: transparent;
+    }
+
+    form[data-members-form] .gh-form-input {
+        position: static;
+        inset: auto;
+        width: 100%;
+        height: 52px;
+        padding-inline: 22px;
+        border-radius: 40px;
+        background-color: var(--color-lighter-gray);
+    }
+
+    .has-light-text form[data-members-form] .gh-form-input,
+    .gh-footer.has-accent-color form[data-members-form] .gh-form-input {
+        background-color: rgb(255 255 255 / 0.1);
+    }
+
+    /* Preserve the high-contrast white pill over photography in the
+       classic header-with-image layout. */
+    .gh-header.is-classic.has-image form[data-members-form] .gh-form-input {
+        background-color: #fff;
+    }
+
+    form[data-members-form] .gh-button {
+        position: static;
+        right: auto;
+        width: 100%;
+        min-width: 0;
+        margin-top: 10px;
+        height: 52px;
+    }
+
+    form[data-members-form] > svg {
+        display: none;
     }
 }
 
