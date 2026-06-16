@@ -6,13 +6,13 @@ This repository is the default Ghost theme. Keep changes focused on theme source
 
 ## Commands
 
-Use Yarn Classic for this repo.
+Use pnpm for this repo.
 
 ```bash
-yarn install --frozen-lockfile
-yarn dev
-yarn test:ci
-yarn zip
+pnpm install --frozen-lockfile
+pnpm dev
+pnpm test:ci
+pnpm zip
 ```
 
 Run the test command before opening a PR when theme files, generated assets, dependencies, or CI change.
