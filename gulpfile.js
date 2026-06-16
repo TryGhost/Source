@@ -81,6 +81,8 @@ function zipper(done) {
             '!dist', '!dist/**',
             '!yarn-error.log',
             '!yarn.lock',
+            '!AGENTS.md',
+            '!CLAUDE.md',
             '!gulpfile.js'
         ]),
         zip(filename),
