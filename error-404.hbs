@@ -1,0 +1,44 @@
+{{!< default}}
+
+{{!--
+    404 page. Inherits the default layout so visitors keep the theme's
+    navigation, footer, and overall look while they figure out where to go.
+--}}
+
+<main class="gh-main">
+
+    <article class="gh-article gh-canvas">
+
+        <header class="gh-article-header">
+            <h1 class="gh-article-title is-title">{{statusCode}}</h1>
+            <p class="gh-article-excerpt is-body">{{t "Page not found"}}</p>
+        </header>
+
+        <section class="gh-content is-body">
+            <p>
+                <a href="{{@site.url}}" class="gh-button">{{t "Go to the front page →"}}</a>
+            </p>
+        </section>
+
+    </article>
+
+</main>
+
+{{!-- Visitors landing here didn't find what they were looking for.
+     Suggest a few recent posts to help them re-engage. --}}
+{{#get "posts" include="authors" limit="3" as |suggested|}}
+    {{#if suggested}}
+        <section class="gh-container is-grid gh-outer">
+            <div class="gh-container-inner gh-inner">
+                <h2 class="gh-container-title">{{t "Recent posts"}}</h2>
+                <div class="gh-main">
+                    <div class="gh-feed">
+                        {{#foreach suggested}}
+                            {{> "post-card" lazyLoad=true}}
+                        {{/foreach}}
+                    </div>
+                </div>
+            </div>
+        </section>
+    {{/if}}
+{{/get}}
