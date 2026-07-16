@@ -1,0 +1,138 @@
+# TryGhost/Source (upstream) の更新を検知し、main へのマージを自動で試みるワークフロー。
+# マージがコンフリクトなく完了した場合のみ、テスト実行結果を添えて Pull Request を自動作成する。
+# コンフリクトが発生した場合は Issue を作成し、手動対応を促す。
+name: Sync upstream
+
+on:
+  schedule:
+    # 毎週月曜 9:00 UTC に実行
+    - cron: "0 9 * * 1"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  sync:
+    name: Sync upstream
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Configure git author
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Add upstream remote and fetch
+        run: |
+          git remote add upstream https://github.com/TryGhost/Source.git
+          git fetch upstream main
+
+      - name: Check for new upstream commits
+        id: check
+        run: |
+          if git merge-base --is-ancestor upstream/main HEAD; then
+            echo "has_changes=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_changes=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Check for an existing open sync PR
+        id: existing_pr
+        if: steps.check.outputs.has_changes == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          count=$(gh pr list --base main --state open --search "Sync upstream: TryGhost/Source in:title" --json number --jq 'length')
+          echo "count=$count" >> "$GITHUB_OUTPUT"
+
+      - name: Attempt merge into a sync branch
+        if: steps.check.outputs.has_changes == 'true' && steps.existing_pr.outputs.count == '0'
+        id: merge
+        run: |
+          branch="sync/upstream-$(date -u +%Y%m%d)-${{ github.run_number }}"
+          git checkout -b "$branch"
+          if git merge upstream/main --no-edit; then
+            echo "conflict=false" >> "$GITHUB_OUTPUT"
+          else
+            git merge --abort
+            echo "conflict=true" >> "$GITHUB_OUTPUT"
+          fi
+          echo "branch=$branch" >> "$GITHUB_OUTPUT"
+
+      - uses: pnpm/action-setup@0e279bb959325dab635dd2c09392533439d90093
+        if: steps.merge.outputs.conflict == 'false'
+
+      - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e
+        if: steps.merge.outputs.conflict == 'false'
+        with:
+          node-version: lts/*
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+
+      - name: Run tests against the merged result
+        if: steps.merge.outputs.conflict == 'false'
+        id: test
+        run: |
+          pnpm install --frozen-lockfile
+          if pnpm test:ci; then
+            echo "passed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "passed=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Push sync branch
+        if: steps.merge.outputs.conflict == 'false'
+        run: git push origin "${{ steps.merge.outputs.branch }}"
+
+      - name: Create pull request
+        if: steps.merge.outputs.conflict == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ "${{ steps.test.outputs.passed }}" = "true" ]; then
+            status_note="テスト (\`pnpm test:ci\`) は成功しています。"
+          else
+            status_note="⚠️ テスト (\`pnpm test:ci\`) が失敗しています。マージ前に内容を確認してください。"
+          fi
+          gh pr create \
+            --title "Sync upstream: TryGhost/Source" \
+            --base main \
+            --head "${{ steps.merge.outputs.branch }}" \
+            --body "TryGhost/Source の最新コミットを upstream/main から main へマージしました。${status_note}"
+
+      - name: Check for an existing open conflict issue
+        id: existing_issue
+        if: steps.merge.outputs.conflict == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          count=$(gh issue list --state open --search "upstream(TryGhost/Source)の自動マージに失敗しました in:title" --json number --jq 'length')
+          echo "count=$count" >> "$GITHUB_OUTPUT"
+
+      - name: Notify merge conflict
+        if: steps.merge.outputs.conflict == 'true' && steps.existing_issue.outputs.count == '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_BODY: |
+            TryGhost/Source の最新コミットを main に自動マージできませんでした。コンフリクトが発生しているため、手動で解決してください。
+
+            ```bash
+            git remote add upstream https://github.com/TryGhost/Source.git
+            git fetch upstream
+            git checkout -b sync/upstream-manual
+            git merge upstream/main
+            # コンフリクトを解消してコミット
+            git push -u origin sync/upstream-manual
+            ```
+        run: |
+          gh issue create \
+            --title "upstream(TryGhost/Source)の自動マージに失敗しました" \
+            --body "$ISSUE_BODY"
