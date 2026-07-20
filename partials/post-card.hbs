@@ -39,7 +39,7 @@
                     <span class="gh-card-author">{{{t "By {authors}" authors=(authors autolink="false" separator=", ") }}}</span>
                 {{/if}}
                 {{#if @custom.show_publish_date}}
-                    <time class="gh-card-date" datetime="{{date format="YYYY-MM-DD"}}">{{date format="DD MMM YYYY"}}</time>
+                    <time class="gh-card-date" datetime="{{date format="YYYY-MM-DD"}}">{{date}}</time>
                 {{/if}}<!--
          --></footer>
         </div>
