@@ -48,6 +48,24 @@ The `zip` Gulp task packages the theme files into `dist/<theme-name>.zip`, which
 pnpm zip
 ```
 
+# Publishing a release
+
+Releases are shipped in two steps. First bump the version — this updates `package.json` and creates the matching commit and `v<version>` git tag:
+
+```bash
+# pick one of: patch | minor | major (or an explicit version, e.g. 1.8.0)
+pnpm version minor
+```
+
+Then run `ship`, which checks the working tree is clean, pushes the commit and tag, and drafts the GitHub release from the changelog:
+
+```bash
+pnpm ship
+```
+
+> [!NOTE]
+> `pnpm version` must be run first — unlike the old `yarn version`, `pnpm version` is not interactive and `pnpm ship` no longer performs the bump itself.
+
 # PostCSS Features Used
 
 - Autoprefixer - Don't worry about writing browser prefixes of any kind, it's all done automatically with support for the latest 2 major versions of every browser.
