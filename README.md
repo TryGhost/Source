@@ -160,3 +160,6 @@ pnpm zip
 ```
 
 `pnpm test:ci` crea il pacchetto e lo controlla con GScan per la compatibilità Ghost. L’archivio generato in `dist/` è locale e non va versionato.
+
+
+<!-- Verify GitHub Actions push trigger -->
