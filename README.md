@@ -1,97 +1,92 @@
-# Source
+# Cosmonauta
 
-The default theme for [Ghost](http://github.com/tryghost/ghost/). This is the latest development version of Source! If you're just looking to download the latest release, head over to the [releases](https://github.com/TryGhost/Source/releases) page.
+Tema personalizzato di [Ghost](https://ghost.org/) per cosmonauta.dev. È un fork di [TryGhost/Source](https://github.com/TryGhost/Source), mantenuto per integrare in modo controllato le release ufficiali di Source.
 
-&nbsp;
+## Architettura Git
 
-# First time using a Ghost theme?
+Questo è un repository Git indipendente, anche se la directory `cosmonauta_theme/` si trova nel workspace del repository infrastrutturale. Il repository padre lo ignora e non deve mai aggiungerne file o commit.
 
-Ghost uses a simple templating language called [Handlebars](http://handlebarsjs.com/) for its themes.
+- `origin`: `git@github.com:arrubiu/cosmonauta_theme.git`, il fork di Cosmonauta.
+- `upstream`: `https://github.com/TryGhost/Source.git`, il tema ufficiale Ghost.
+- `main`: la sola branch distribuita in produzione.
 
-This theme has lots of code comments to help explain what's going on just by reading the code. Once you feel comfortable with how everything works, we also have full [theme API documentation](https://ghost.org/docs/themes/) which explains every possible Handlebars helper and template.
+Verificare la configurazione con:
 
-**The main files are:**
-
-- `default.hbs` - The parent template file, which includes your global header/footer
-- `home.hbs` - The homepage
-- `index.hbs` - The main template to generate a list of posts
-- `post.hbs` - The template used to render individual posts
-- `page.hbs` - Used for individual pages
-- `tag.hbs` - Used for tag archives, eg. "all posts tagged with `news`"
-- `author.hbs` - Used for author archives, eg. "all posts written by Jamie"
-
-One neat trick is that you can also create custom one-off templates by adding the slug of a page to a template file. For example:
-
-- `page-about.hbs` - Custom template for an `/about/` page
-- `tag-news.hbs` - Custom template for `/tag/news/` archive
-- `author-ali.hbs` - Custom template for `/author/ali/` archive
-
-
-# Development
-
-Source styles are compiled using Gulp/PostCSS to polyfill future CSS spec. You'll need [Node](https://nodejs.org/) and [pnpm](https://pnpm.io/). After that, from the theme's root directory:
-
-```bash
-# install dependencies
-pnpm install
-
-# run development server
-pnpm dev
+```sh
+git remote -v
 ```
 
-Now you can edit `/assets/css/` files, which will be compiled to `/assets/built/` automatically.
+## Prerequisiti
 
-The `zip` Gulp task packages the theme files into `dist/<theme-name>.zip`, which you can then upload to your site.
+Servono Node 22, Corepack/pnpm e accesso al repository GitHub.
 
-```bash
-# create .zip file
+```sh
+node --version
+corepack --version
+pnpm --version
+```
+
+Il file `package.json` richiede Node almeno `22.12.0` e definisce la versione di pnpm da usare. Se necessario, attivare Corepack:
+
+```sh
+corepack enable
+```
+
+## Sviluppo quotidiano
+
+Dalla root di questo repository:
+
+```sh
+pnpm install --frozen-lockfile
+git switch -c feature/nome-modifica
+# modificare template, CSS, JavaScript o asset
+pnpm test:ci
+git add -A
+git commit -m "feat: descrizione della modifica"
+git push -u origin feature/nome-modifica
+```
+
+Aprire una pull request verso `main` e fare il merge solo quando la CI è verde. Solo un push risultante dal merge in `main` esegue il deploy su Ghost produzione; branch e pull request non ricevono segreti né pubblicano modifiche.
+
+## Deploy iniziale e rollback
+
+1. In Ghost Admin creare una Custom Integration chiamata `GitHub Actions`.
+2. Nel repository GitHub, aggiungere i secret Actions `GHOST_ADMIN_API_URL` e `GHOST_ADMIN_API_KEY` con i valori dell’integrazione.
+3. Fare merge in `main` e verificare il workflow **Deploy Ghost theme** nella scheda Actions.
+4. Dopo il primo deploy, attivare `cosmonauta` una volta in Ghost Admin → Design.
+
+I deploy successivi aggiornano il tema già attivo. Per annullare una pubblicazione errata, fare il revert del merge su `main`; il nuovo push ridistribuisce la versione precedente.
+
+## Ricevere gli aggiornamenti ufficiali
+
+Su [TryGhost/Source](https://github.com/TryGhost/Source), selezionare **Watch → Custom → Releases**. Le notifiche segnalano nuove release stabili. Non usare il pulsante GitHub **Sync fork**, perché sincronizza il ramo di sviluppo anziché la release scelta.
+
+## Aggiornare da una release di Source
+
+Eseguire i comandi seguenti dalla root di questo repository. Sostituire `<tag-source>` con il tag ufficiale scelto, per esempio `v1.7.2`.
+
+```sh
+git switch main
+git pull --ff-only origin main
+git fetch upstream --tags
+git tag --sort=-version:refname | head -n 20
+git switch -c update/source-<tag-source>
+git merge --no-ff <tag-source>
+pnpm install --frozen-lockfile
+pnpm test:ci
+git status
+git add -A
+git commit -m "chore: merge Source <tag-source>"
+git push -u origin update/source-<tag-source>
+```
+
+Se Git segnala conflitti, risolverli prima di eseguire `git add -A` e il commit. In `package.json` preservare sempre `"name": "cosmonauta"`; accettare invece gli aggiornamenti ufficiali a dipendenze, versione e compatibilità Ghost quando appropriati. Aprire una pull request verso `main` indicando il tag importato, gli eventuali conflitti e l’esito di `pnpm test:ci`. Non fare push diretti a `main`.
+
+## Verifica locale
+
+```sh
+pnpm test:ci
 pnpm zip
 ```
 
-# Publishing a release
-
-Releases are shipped from an up-to-date, clean `main` branch in two steps. Before starting, configure `GST_TOKEN` with a GitHub token that can create releases in `TryGhost/Source`.
-
-First bump the version. This updates `package.json`, then creates a commit and annotated `v<version>` git tag:
-
-```bash
-# pick one of: patch | minor | major (or an explicit version, e.g. 1.8.0)
-pnpm version minor
-```
-
-Then run `ship`:
-
-```bash
-pnpm ship
-```
-
-`pnpm ship`:
-
-1. Builds the theme zip and runs GScan.
-2. Refuses to continue if the working tree is not clean after the build.
-3. Pushes the version commit and tag.
-4. Prompts for the minimum compatible Ghost version and creates a draft GitHub release with the generated changelog.
-
-Review and publish the draft GitHub release after the command completes. The pushed theme tag, rather than the GitHub release, is what the next Ghost release uses when updating its bundled Source theme.
-
-> [!NOTE]
-> `pnpm version` requires an explicit version or bump type. Run it before `pnpm ship`; the ship command does not perform the bump itself.
-
-# PostCSS Features Used
-
-- Autoprefixer - Don't worry about writing browser prefixes of any kind, it's all done automatically with support for the latest 2 major versions of every browser.
-
-
-# SVG Icons
-
-Source uses inline SVG icons, included via Handlebars partials. You can find all icons inside `/partials/icons`. To use an icon just include the name of the relevant file, eg. To include the SVG icon in `/partials/icons/rss.hbs` - use `{{> "icons/rss"}}`.
-
-You can add your own SVG icons in the same manner.
-
-# Translations
-
-Please see [@TryGhost/Themes/theme-translations/README.md](https://github.com/TryGhost/Themes/blob/main/packages/theme-translations/README.md) for how to build, edit, or contribute translations.
-
-# Copyright & License
-
-Copyright (c) 2013-2026 Ghost Foundation - Released under the [MIT license](LICENSE).
+`pnpm test:ci` crea il pacchetto e lo controlla con GScan per la compatibilità Ghost. L’archivio generato in `dist/` è locale e non va versionato.
