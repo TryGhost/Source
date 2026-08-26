@@ -48,6 +48,25 @@ git push -u origin feature/nome-modifica
 
 Aprire una pull request verso `main` e fare il merge solo quando la CI è verde. Solo un push risultante dal merge in `main` esegue il deploy su Ghost produzione; branch e pull request non ricevono segreti né pubblicano modifiche.
 
+## Anteprima locale senza ZIP
+
+Il repository infrastrutturale monta questa directory nel Ghost locale come
+`/var/lib/ghost/content/themes/cosmonauta`. Dalla root del repository
+infrastrutturale avviare Ghost, poi lasciare il watcher del tema attivo:
+
+```sh
+./local.sh up
+cd cosmonauta_theme
+pnpm install --frozen-lockfile
+pnpm dev
+```
+
+In Ghost Admin locale (`http://localhost:2368/ghost`) attivare `cosmonauta`
+da **Settings → Design**. Le modifiche a CSS e JavaScript sono ricompilate dal
+watcher; dopo modifiche a file `.hbs` o `package.json`, eseguire
+`./local.sh restart` dalla root del repository infrastrutturale. Questo mount
+esiste solo nell'ambiente locale e non carica nulla in produzione.
+
 ## Deploy iniziale e rollback
 
 1. In Ghost Admin creare una Custom Integration chiamata `GitHub Actions`.
