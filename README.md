@@ -26,7 +26,7 @@ corepack --version
 pnpm --version
 ```
 
-Il file `package.json` richiede Node almeno `22.12.0` e definisce la versione di pnpm da usare. Se necessario, attivare Corepack:
+Il file `package.json` richiede Node almeno `22.12.0`; la CI usa Node `22.13.0`, compatibile con pnpm 11.22. Se necessario, attivare Corepack:
 
 ```sh
 corepack enable
