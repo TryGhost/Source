@@ -89,15 +89,21 @@ repository eseguire:
 ./theme.sh update
 ```
 
-Lo script confronta il tag ufficiale più recente con quello già integrato,
-crea `update/source-<tag>`, esegue merge, installazione e `pnpm test:ci`, poi
-pubblica il branch e apre una pull request verso `main`. Non aggiorna né fa
-push diretto a `main`.
+Lo script richiede un worktree pulito e la branch locale `main`. Confronta il
+tag ufficiale più recente con quello già integrato, poi esegue il merge con
+`--no-commit`: non crea commit, non fa push e non apre pull request. Prosegue
+con build, riavvio di Ghost locale e `./local.sh sync --yes`.
 
-Se trova conflitti, errori di test o errori di push, interrompe l’operazione,
-conserva il branch di update e mostra i comandi per riprendere senza perdere
-il lavoro. Quando si risolve un conflitto, preservare sempre
-`"name": "cosmonauta"` in `package.json`.
+> [!WARNING]
+> Il sync sostituisce completamente database e upload di Ghost locale con la
+> produzione. Il codice del tema non viene sostituito, perché è montato dalla
+> directory `cosmonauta_theme/`.
+
+Dopo il sync, attivare `cosmonauta` in Ghost Admin locale e verificarlo su
+`http://localhost:2368`. Se l’aggiornamento è valido, creare un branch,
+committare il merge e seguire la normale PR verso `main`. Per annullare la
+prova locale, eseguire `git merge --abort`. Se trova conflitti, build o sync
+falliti, lo script non perde il merge locale e indica il rollback sicuro.
 
 ## Comando build locale
 

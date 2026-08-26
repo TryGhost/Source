@@ -10,8 +10,9 @@ Usage: ./theme.sh <command>
 
 Commands:
   build   Build theme assets and restart local Ghost when it is running.
-  update  Merge the latest official Source tag into a new branch, validate it,
-          push the branch, and open a GitHub pull request when gh is available.
+  update  Merge the latest official Source tag locally without committing it,
+          build it, restart local Ghost, and replace local Ghost data with
+          a production sync for manual verification.
 EOF
 }
 
@@ -47,6 +48,16 @@ build() {
     restart_local_ghost_if_running
 }
 
+sync_from_production() {
+    [[ -f "$stack_dir/.env.local" ]] || {
+        echo "Local Ghost is not configured; cannot synchronize production data." >&2
+        return 1
+    }
+
+    echo "Synchronizing local Ghost data from production..."
+    "$stack_dir/local.sh" sync --yes
+}
+
 latest_upstream_tag() {
     git ls-remote --tags --refs upstream |
         awk -F/ '{print $3}' |
@@ -59,7 +70,7 @@ latest_merged_tag() {
 }
 
 update() {
-    local current_branch latest_tag current_tag update_branch
+    local latest_tag current_tag
 
     require_command git
     require_command pnpm
@@ -69,12 +80,12 @@ update() {
         exit 1
     }
 
-    current_branch="$(git branch --show-current)"
-    [[ -n "$current_branch" ]] || {
-        echo "A named Git branch is required to update the theme." >&2
+    [[ "$(git branch --show-current)" == "main" ]] || {
+        echo "Run update from the local main branch." >&2
         exit 1
     }
 
+    git pull --ff-only origin main
     echo "Fetching official Source tags..."
     git fetch --prune --prune-tags upstream 'refs/tags/*:refs/tags/*'
     latest_tag="$(latest_upstream_tag)"
@@ -90,54 +101,30 @@ update() {
         return
     fi
 
-    update_branch="update/source-${latest_tag}"
-    if git show-ref --verify --quiet "refs/heads/$update_branch" || git ls-remote --exit-code --heads origin "$update_branch" >/dev/null 2>&1; then
-        echo "An update branch already exists: $update_branch" >&2
-        echo "Review or resume it instead of creating a second update." >&2
-        exit 1
-    fi
-
-    git switch main
-    git pull --ff-only origin main
-    git switch -c "$update_branch"
-
-    echo "Merging Source $latest_tag..."
-    if ! git merge --no-ff "$latest_tag" -m "chore: merge Source $latest_tag"; then
+    echo "Merging Source $latest_tag locally without a commit..."
+    if ! git merge --no-ff --no-commit "$latest_tag"; then
         git merge --abort || true
-        echo "Merge conflict: the update branch was kept for inspection." >&2
-        echo "Resolve manually with: git switch $update_branch && git merge $latest_tag" >&2
-        git switch "$current_branch"
+        echo "Merge conflict: the working tree was restored to main." >&2
+        echo "Resolve the update manually on a dedicated branch." >&2
         exit 1
     fi
 
-    if ! pnpm install --frozen-lockfile || ! pnpm test:ci; then
-        echo "Validation failed: $update_branch was kept without being pushed." >&2
-        echo "Inspect the failure, fix it, then run: git push -u origin $update_branch" >&2
-        git switch "$current_branch"
+    if ! build; then
+        echo "Build or local Ghost restart failed; the uncommitted merge was kept for inspection." >&2
+        echo "To discard it safely, run: git merge --abort" >&2
         exit 1
     fi
 
-    if ! git push -u origin "$update_branch"; then
-        echo "Push failed: the validated local branch was kept for retry." >&2
-        echo "Retry with: git push -u origin $update_branch" >&2
-        git switch "$current_branch"
+    if ! sync_from_production; then
+        echo "Production sync failed; the uncommitted merge was kept for inspection." >&2
+        echo "To discard it safely, run: git merge --abort" >&2
         exit 1
     fi
 
-    if command -v gh >/dev/null && gh auth status >/dev/null 2>&1; then
-        if ! gh pr create \
-            --base main \
-            --head "$update_branch" \
-            --title "chore: merge Source $latest_tag" \
-            --body "Updates Cosmonauta from Source $current_tag to $latest_tag. Validation: pnpm test:ci."; then
-            echo "Branch pushed, but GitHub PR creation needs manual completion." >&2
-        fi
-    else
-        echo "Branch pushed. Open a pull request from $update_branch to main."
-    fi
-
-    git switch "$current_branch"
-    echo "Source update is ready for review: $update_branch"
+    echo "Source $latest_tag is ready for local review and remains uncommitted."
+    echo "Activate cosmonauta in local Ghost Admin before reviewing it."
+    echo "Keep it later: create a branch, commit, push, and open a PR."
+    echo "Discard it: git merge --abort"
 }
 
 case "${1:-}" in
