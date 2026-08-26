@@ -91,7 +91,8 @@ repository eseguire:
 
 Lo script richiede un worktree pulito e la branch locale `main`. Confronta il
 tag ufficiale più recente con quello già integrato, poi esegue il merge con
-`--no-commit`: non crea commit, non fa push e non apre pull request. Prosegue
+`--no-commit` su un nuovo branch locale `update/source-<tag>`: non crea
+commit, non fa push e non apre pull request. `main` resta invariata. Prosegue
 con build, riavvio di Ghost locale e `./local.sh sync --yes`.
 
 > [!WARNING]
@@ -100,10 +101,11 @@ con build, riavvio di Ghost locale e `./local.sh sync --yes`.
 > directory `cosmonauta_theme/`.
 
 Dopo il sync, attivare `cosmonauta` in Ghost Admin locale e verificarlo su
-`http://localhost:2368`. Se l’aggiornamento è valido, creare un branch,
-committare il merge e seguire la normale PR verso `main`. Per annullare la
-prova locale, eseguire `git merge --abort`. Se trova conflitti, build o sync
-falliti, lo script non perde il merge locale e indica il rollback sicuro.
+`http://localhost:2368`. Se l’aggiornamento è valido, committare il merge sul
+branch `update/source-<tag>` e seguire la normale PR verso `main`. Per
+annullare la prova locale, eseguire `git merge --abort`. Se trova conflitti,
+build o sync falliti, lo script non perde il merge locale e indica il rollback
+sicuro.
 
 ## Comando build locale
 

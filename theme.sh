@@ -70,7 +70,7 @@ latest_merged_tag() {
 }
 
 update() {
-    local latest_tag current_tag
+    local latest_tag current_tag update_branch
 
     require_command git
     require_command pnpm
@@ -101,11 +101,19 @@ update() {
         return
     fi
 
-    echo "Merging Source $latest_tag locally without a commit..."
+    update_branch="update/source-${latest_tag}"
+    if git show-ref --verify --quiet "refs/heads/$update_branch"; then
+        echo "The local update branch already exists: $update_branch" >&2
+        echo "Review it or delete it before starting another update." >&2
+        exit 1
+    fi
+
+    git switch -c "$update_branch"
+    echo "Merging Source $latest_tag into $update_branch without a commit..."
     if ! git merge --no-ff --no-commit "$latest_tag"; then
         git merge --abort || true
-        echo "Merge conflict: the working tree was restored to main." >&2
-        echo "Resolve the update manually on a dedicated branch." >&2
+        echo "Merge conflict: $update_branch was kept for manual resolution." >&2
+        echo "Continue with: git merge $latest_tag" >&2
         exit 1
     fi
 
@@ -121,9 +129,9 @@ update() {
         exit 1
     fi
 
-    echo "Source $latest_tag is ready for local review and remains uncommitted."
+    echo "Source $latest_tag is ready on $update_branch and remains uncommitted."
     echo "Activate cosmonauta in local Ghost Admin before reviewing it."
-    echo "Keep it later: create a branch, commit, push, and open a PR."
+    echo "Keep it later: commit, push, and open a PR from this branch."
     echo "Discard it: git merge --abort"
 }
 
