@@ -82,24 +82,32 @@ Su [TryGhost/Source](https://github.com/TryGhost/Source), selezionare **Watch �
 
 ## Aggiornare da una release di Source
 
-Eseguire i comandi seguenti dalla root di questo repository. Sostituire `<tag-source>` con il tag ufficiale scelto, per esempio `v1.7.2`.
+Per ricevere e preparare un aggiornamento ufficiale, dalla root di questo
+repository eseguire:
 
 ```sh
-git switch main
-git pull --ff-only origin main
-git fetch upstream --tags
-git tag --sort=-version:refname | head -n 20
-git switch -c update/source-<tag-source>
-git merge --no-ff <tag-source>
-pnpm install --frozen-lockfile
-pnpm test:ci
-git status
-git add -A
-git commit -m "chore: merge Source <tag-source>"
-git push -u origin update/source-<tag-source>
+./theme.sh update
 ```
 
-Se Git segnala conflitti, risolverli prima di eseguire `git add -A` e il commit. In `package.json` preservare sempre `"name": "cosmonauta"`; accettare invece gli aggiornamenti ufficiali a dipendenze, versione e compatibilità Ghost quando appropriati. Aprire una pull request verso `main` indicando il tag importato, gli eventuali conflitti e l’esito di `pnpm test:ci`. Non fare push diretti a `main`.
+Lo script confronta il tag ufficiale più recente con quello già integrato,
+crea `update/source-<tag>`, esegue merge, installazione e `pnpm test:ci`, poi
+pubblica il branch e apre una pull request verso `main`. Non aggiorna né fa
+push diretto a `main`.
+
+Se trova conflitti, errori di test o errori di push, interrompe l’operazione,
+conserva il branch di update e mostra i comandi per riprendere senza perdere
+il lavoro. Quando si risolve un conflitto, preservare sempre
+`"name": "cosmonauta"` in `package.json`.
+
+## Comando build locale
+
+```sh
+./theme.sh build
+```
+
+Rigenera CSS, JavaScript e traduzioni con `pnpm build`. Se Ghost locale è in
+esecuzione, lo riavvia per ricaricare il tema; altrimenti completa il build
+senza errore.
 
 ## Verifica locale
 
