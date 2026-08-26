@@ -23,29 +23,21 @@ require_command() {
     }
 }
 
-restart_local_ghost_if_running() {
-    local compose
-
+restart_local_ghost() {
     if [[ ! -f "$stack_dir/.env.local" ]]; then
-        echo "Local Ghost is not configured; skipping restart."
+        echo "Local Ghost is not configured; skipping restart." >&2
         return
     fi
 
     require_command docker
-    compose=(docker compose --env-file "$stack_dir/.env.local" -f "$stack_dir/compose.yml" -f "$stack_dir/compose.local.yml")
-
-    if "${compose[@]}" ps -q cosmonauta_dev_ghost | grep -q .; then
-        echo "Restarting local Ghost so it reloads the theme..."
-        "$stack_dir/local.sh" restart
-    else
-        echo "Local Ghost is not running; build completed without a restart."
-    fi
+    echo "Starting or restarting local Ghost so it reloads the theme..."
+    "$stack_dir/local.sh" restart
 }
 
 build() {
     require_command pnpm
     pnpm build
-    restart_local_ghost_if_running
+    restart_local_ghost
 }
 
 sync_from_production() {

@@ -114,8 +114,7 @@ sicuro.
 ```
 
 Rigenera CSS, JavaScript e traduzioni con `pnpm build`. Se Ghost locale è in
-esecuzione, lo riavvia per ricaricare il tema; altrimenti completa il build
-senza errore.
+configurato, lo avvia o riavvia per ricaricare il tema.
 
 ## Verifica locale
 
