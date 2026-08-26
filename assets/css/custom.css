@@ -1,0 +1,133 @@
+/* Cosmonauta custom CSS
+/* ---------------------------------------------------------- */
+
+/*
+ * Keep all local CSS overrides in this file. Gulp appends it after screen.css
+ * and compiles both files into assets/built/screen.css.
+ */
+
+/* COSMONAUTA CUSTOM: inizio — colore di sfondo globale */
+:root {
+    --background-color: #fcf6e4 !important;
+}
+/* COSMONAUTA CUSTOM: fine — colore di sfondo globale */
+
+/* COSMONAUTA CUSTOM: inizio — inline post tags */
+.gh-article-tags {
+    margin-bottom: 12px;
+}
+
+.gh-article-tags--footer {
+    padding-block: 32px;
+}
+
+.gh-article-tags--footer .gh-article-tag {
+    font-size: 1.6rem;
+}
+/* COSMONAUTA CUSTOM: fine — inline post tags */
+
+/* COSMONAUTA CUSTOM: inizio — titolo pagina tag su una riga */
+@media (min-width: 992px) {
+    .tag-template .gh-article-title {
+        white-space: nowrap;
+    }
+}
+/* COSMONAUTA CUSTOM: fine — titolo pagina tag su una riga */
+
+/* COSMONAUTA CUSTOM: inizio — home e post hero */
+.home-template .gh-header.is-classic.has-image,
+.post-template .gh-article-header.has-feature-image {
+    min-height: clamp(460px, 72svh, 760px);
+}
+
+.home-template .gh-header.is-classic.has-image {
+    padding-block: 0;
+}
+
+.post-template .gh-article-header.has-feature-image {
+    position: relative;
+    align-content: center;
+    margin: 0;
+    color: var(--color-white);
+    isolation: isolate;
+}
+
+.post-template .gh-article-header.has-feature-image::before {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    content: "";
+    background-color: rgb(0 0 0 / 0.7);
+}
+
+.post-template .gh-article-header.has-feature-image .gh-article-image {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    grid-column: full;
+    margin: 0;
+}
+
+.post-template .gh-article-header.has-feature-image .gh-article-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.post-template .gh-article-header.has-feature-image :is(a, .gh-article-tag, .gh-article-meta-content) {
+    color: inherit;
+}
+
+.post-template .gh-article-header.has-feature-image .gh-article-author-image a {
+    border-color: rgb(255 255 255 / 0.8);
+}
+
+.post-template .gh-article-header.has-feature-image .gh-button-share {
+    color: inherit;
+    border-color: rgb(255 255 255 / 0.6);
+}
+
+.post-template .gh-article-header.has-feature-image + .gh-content {
+    padding-top: clamp(43px, 3.33vw, 64px);
+}
+
+body.home-template:has(.gh-header.is-classic.has-image) .gh-navigation,
+body.post-template:has(.gh-article-header.has-feature-image) .gh-navigation {
+    position: absolute;
+    z-index: 10;
+    width: 100%;
+    background-color: transparent;
+    color: var(--color-white);
+}
+
+body.home-template:has(.gh-header.is-classic.has-image) .gh-navigation-actions,
+body.post-template:has(.gh-article-header.has-feature-image) .gh-navigation-actions {
+    background-color: transparent;
+}
+
+body.home-template:has(.gh-header.is-classic.has-image) .gh-navigation :is(.gh-navigation-logo, a:not(.gh-button), .gh-icon-button),
+body.post-template:has(.gh-article-header.has-feature-image) .gh-navigation :is(.gh-navigation-logo, a:not(.gh-button), .gh-icon-button) {
+    color: inherit;
+}
+
+body.home-template:has(.gh-header.is-classic.has-image) .gh-navigation :is(.gh-navigation-menu a, .gh-search, .gh-navigation-members a:not(.gh-button), .gh-icon-button),
+body.post-template:has(.gh-article-header.has-feature-image) .gh-navigation :is(.gh-navigation-menu a, .gh-search, .gh-navigation-members a:not(.gh-button), .gh-icon-button),
+.post-template .gh-article-header.has-feature-image .gh-article-tag,
+.post-template .gh-article-header.has-feature-image .gh-article-author-name a,
+.post-template .gh-article-header.has-feature-image .gh-button-share {
+    color: #fcf6e4;
+}
+
+.post-template .gh-article-header.has-feature-image .gh-button-share {
+    color: var(--ghost-accent-color);
+    background-color: #fcf6e4;
+    border-color: #fcf6e4;
+}
+
+@media (max-width: 767px) {
+    .home-template .gh-header.is-classic.has-image,
+    .post-template .gh-article-header.has-feature-image {
+        min-height: clamp(420px, 78svh, 620px);
+    }
+}
+/* COSMONAUTA CUSTOM: fine — home e post hero */

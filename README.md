@@ -48,6 +48,42 @@ git push -u origin feature/nome-modifica
 
 Aprire una pull request verso `main` e fare il merge solo quando la CI è verde. Solo un push risultante dal merge in `main` esegue il deploy su Ghost produzione; branch e pull request non ricevono segreti né pubblicano modifiche.
 
+## Personalizzazioni Cosmonauta e compatibilità con Source
+
+Questo tema deve restare il più possibile compatibile con le future release di
+[TryGhost/Source](https://github.com/TryGhost/Source). Per ogni modifica
+specifica di Cosmonauta, applicare queste regole.
+
+- Mettere tutte le regole CSS locali in `assets/css/custom.css`. Il build Gulp
+  lo aggiunge dopo `assets/css/screen.css` e lo compila nel consueto
+  `assets/built/screen.css`.
+- Mettere tutti i comportamenti JavaScript locali in `assets/js/custom.js`.
+  Il build Gulp lo concatena per ultimo in `assets/built/source.js`, dopo gli
+  script di Source.
+- Non modificare CSS o JavaScript originali di Source per introdurre una
+  personalizzazione quando i file `custom.*` possono risolverla. Usare
+  selettori mirati e limitare `!important` ai casi in cui non esista
+  un'alternativa affidabile.
+- Se è indispensabile modificare un template o un partial `.hbs`, mantenere
+  l'intervento strettamente locale e racchiuderlo sempre in commenti
+  Handlebars che ne indicano chiaramente inizio e fine:
+
+  ```hbs
+  {{!-- COSMONAUTA CUSTOM: inizio — breve descrizione --}}
+  {{!-- codice locale --}}
+  {{!-- COSMONAUTA CUSTOM: fine — breve descrizione --}}
+  ```
+
+- Applicare la stessa delimitazione ai cambiamenti non-template che non
+  possono vivere nei file `custom.*`, scegliendo il commento appropriato al
+  linguaggio (`COSMONAUTA CUSTOM: inizio` / `fine`).
+- Dopo modifiche a CSS o JavaScript eseguire `pnpm build` (oppure mantenere
+  attivo `pnpm dev`) e verificare che `assets/built/` sia aggiornato. Prima di
+  una pull request eseguire sempre `pnpm test:ci`.
+
+I file `assets/built/` sono artefatti tracciati: non modificarli a mano. Le
+personalizzazioni devono essere apportate ai sorgenti e rigenerate dal build.
+
 ## Anteprima locale senza ZIP
 
 Il repository infrastrutturale monta questa directory nel Ghost locale come
