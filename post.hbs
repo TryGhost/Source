@@ -7,11 +7,17 @@
 
     <article class="gh-article {{post_class}}">
 
-        <header class="gh-article-header gh-canvas">
+        {{!-- COSMONAUTA CUSTOM: inizio — abilita il hero dalla feature image --}}
+        <header class="gh-article-header gh-canvas{{#if feature_image}} has-feature-image{{/if}}">
+        {{!-- COSMONAUTA CUSTOM: fine — abilita il hero dalla feature image --}}
 
-            {{#if primary_tag}}
-                <a class="gh-article-tag" href="{{primary_tag.url}}">{{primary_tag.name}}</a>
+            {{!-- COSMONAUTA CUSTOM: inizio — mostra tutti i tag del post nell'header --}}
+            {{#if tags}}
+                <div class="gh-article-tags">
+                    {{#foreach tags}}<a class="gh-article-tag" href="{{url}}">#{{name}}</a>{{#unless @last}} {{/unless}}{{/foreach}}
+                </div>
             {{/if}}
+            {{!-- COSMONAUTA CUSTOM: fine — mostra tutti i tag del post nell'header --}}
             <h1 class="gh-article-title is-title">{{title}}</h1>
             {{#if custom_excerpt}}
                 <p class="gh-article-excerpt is-body">{{custom_excerpt}}</p>
@@ -54,6 +60,16 @@
         <section class="gh-content gh-canvas is-body{{#if @custom.enable_drop_caps_on_posts}} drop-cap{{/if}}">
             {{content}}
         </section>
+
+        {{!-- COSMONAUTA CUSTOM: inizio — mostra tutti i tag alla fine del post --}}
+        {{#if tags}}
+            <div class="gh-canvas">
+                <div class="gh-article-tags gh-article-tags--footer">
+                    {{#foreach tags}}<a class="gh-article-tag" href="{{url}}">#{{name}}</a>{{#unless @last}} {{/unless}}{{/foreach}}
+                </div>
+            </div>
+        {{/if}}
+        {{!-- COSMONAUTA CUSTOM: fine — mostra tutti i tag alla fine del post --}}
 
     </article>
 

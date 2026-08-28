@@ -1,7 +1,6 @@
-name: Validate theme
+name: Deploy Ghost theme
 
 on:
-  pull_request:
   push:
     branches:
       - main
@@ -9,9 +8,12 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: ghost-production-theme
+  cancel-in-progress: true
+
 jobs:
-  test:
-    name: Validate
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -28,15 +30,12 @@ jobs:
           cache-dependency-path: pnpm-lock.yaml
 
       - run: pnpm install --frozen-lockfile
-
       - run: pnpm test:ci
 
-  required-checks-pass:
-    name: Required checks pass
-    if: always()
-    needs: [test]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Verify all required jobs succeeded
-        if: contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled')
-        run: exit 1
+      - name: Deploy cosmonauta to Ghost
+        uses: TryGhost/action-deploy-theme@v2
+        with:
+          api-url: ${{ secrets.GHOST_ADMIN_API_URL }}
+          api-key: ${{ secrets.GHOST_ADMIN_API_KEY }}
+          theme-name: cosmonauta
+          exclude: node_modules dist
