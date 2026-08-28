@@ -46,7 +46,9 @@ function hbs(done) {
 
 function css(done) {
     pump([
-        src('assets/css/screen.css', {sourcemaps: true}),
+        // Keep Cosmonauta additions after Source's stylesheet.
+        src(['assets/css/screen.css', 'assets/css/custom.css'], {sourcemaps: true}),
+        concat('screen.css'),
         postcss([
             easyimport,
             autoprefixer(),
@@ -62,7 +64,9 @@ function js(done) {
         src([
             // pull in lib files first so our own code can depend on it
             'assets/js/lib/*.js',
-            'assets/js/*.js'
+            'assets/js/!(custom).js',
+            // Keep Cosmonauta additions last, after Source's scripts.
+            'assets/js/custom.js'
         ], {sourcemaps: true}),
         concat('source.js'),
         uglify(),
