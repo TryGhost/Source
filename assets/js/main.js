@@ -15,10 +15,10 @@
     });
 })();
 
-/* Add lightbox to gallery images */
+/* Add lightbox to gallery and feature images */
 (function () {
     lightbox(
-        '.kg-image-card > .kg-image[width][height], .kg-gallery-image > img'
+        '.kg-image-card > .kg-image[width][height], .kg-gallery-image > img, .gh-feature-image'
     );
 })();
 

@@ -2323,7 +2323,8 @@ unless a heading is the very first element in the post content */
 /* Gallery */
 
 .kg-image[width][height],
-.kg-gallery-image {
+.kg-gallery-image,
+.gh-feature-image {
     cursor: pointer;
 }
 
