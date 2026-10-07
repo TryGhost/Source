@@ -248,6 +248,14 @@ a:hover {
     transition: 0.3s ease-in-out;
 }
 
+input.gh-form-input {
+    position: static;
+    flex: 1;
+    min-width: 0;
+    padding-inline-end: 16px;
+    text-overflow: ellipsis;
+}
+
 .gh-form-input::placeholder,
 button.gh-form-input {
     color: rgb(0 0 0 / 0.3);
@@ -298,8 +306,9 @@ body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-head
 }
 
 .gh-form .gh-button {
-    position: absolute;
-    right: 6px;
+    position: relative;
+    flex-shrink: 0;
+    margin-inline-end: 6px;
     min-width: 132px;
     padding-inline: 24px;
     height: 44px;
