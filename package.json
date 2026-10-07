@@ -2,7 +2,7 @@
     "name": "source",
     "description": "A default theme for the Ghost publishing platform",
     "demo": "https://source.ghost.io",
-    "version": "1.6.1",
+    "version": "1.7.6",
     "engines": {
         "ghost": ">=5.0.0",
         "node": ">=22.12.0"
@@ -11,13 +11,16 @@
     "scripts": {
         "dev": "gulp",
         "zip": "gulp zip",
+        "build": "gulp build",
         "test": "gscan .",
         "test:ci": "gscan --fatal --verbose .",
-        "pretest": "gulp build",
-        "preship": "yarn test",
-        "ship": "STATUS=$(git status --porcelain); echo $STATUS; if [ -z \"$STATUS\" ]; then yarn version && git push --follow-tags; else echo \"Uncomitted changes found.\" && exit 1; fi",
+        "pretest": "pnpm zip",
+        "pretest:ci": "pnpm zip",
+        "preship": "pnpm test",
+        "ship": "STATUS=$(git status --porcelain); echo $STATUS; if [ -z \"$STATUS\" ]; then git push --follow-tags; else echo \"Uncommitted changes found.\" && exit 1; fi",
         "postship": "git fetch && gulp release"
     },
+    "packageManager": "pnpm@12.9.1",
     "author": {
         "name": "Ghost Foundation",
         "email": "hello@ghost.org",
@@ -42,22 +45,22 @@
     "bugs": "https://github.com/TryGhost/Source/issues",
     "contributors": "https://github.com/TryGhost/Source/graphs/contributors",
     "devDependencies": {
-        "@tryghost/release-utils": "0.8.1",
-        "@tryghost/theme-translations": "~0.0.16",
-        "autoprefixer": "10.4.24",
+        "@tryghost/release-utils": "0.9.3",
+        "@tryghost/theme-translations": "0.0.22",
+        "autoprefixer": "10.6.1",
         "beeper": "2.1.0",
-        "cssnano": "7.1.2",
-        "gscan": "5.2.4",
+        "cssnano": "9.2.2",
+        "gscan": "6.6.1",
         "gulp": "5.0.1",
         "gulp-concat": "2.6.1",
         "gulp-livereload": "4.0.2",
         "gulp-postcss": "10.0.0",
         "gulp-uglify": "3.0.2",
         "gulp-zip": "6.1.0",
-        "inquirer": "13.2.2",
-        "postcss": "8.5.6",
+        "inquirer": "14.2.2",
+        "postcss": "8.5.28",
         "postcss-easy-import": "4.0.0",
-        "pump": "3.0.3"
+        "pump": "3.0.4"
     },
     "browserslist": [
         "defaults"
@@ -210,11 +213,5 @@
                 "group": "post"
             }
         }
-    },
-    "renovate": {
-        "extends": [
-            "@tryghost:theme",
-            "github>TryGhost/Themes:packages/theme-translations/renovate-config"
-        ]
     }
 }

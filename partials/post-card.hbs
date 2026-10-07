@@ -9,7 +9,7 @@
                             {{img_url feature_image size="l" format="webp"}} 960w,
                             {{img_url feature_image size="xl" format="webp"}} 1200w,
                             {{img_url feature_image size="xxl" format="webp"}} 2000w"
-                    sizes="{{#if imageSizes}}{{imageSizes}}{{else}}320px{{/if}}"
+                    sizes="{{#if imageSizes}}{{imageSizes}}{{else}}{{#if lazyLoad}}auto, (max-width: 1199px) 100vw, 980px{{else}}320px{{/if}}{{/if}}"
                     src="{{img_url feature_image size="m"}}"
                     alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
                     {{#if lazyLoad}}loading="lazy"{{/if}}
@@ -39,7 +39,7 @@
                     <span class="gh-card-author">{{{t "By {authors}" authors=(authors autolink="false" separator=", ") }}}</span>
                 {{/if}}
                 {{#if @custom.show_publish_date}}
-                    <time class="gh-card-date" datetime="{{date format="YYYY-MM-DD"}}">{{date format="DD MMM YYYY"}}</time>
+                    <time class="gh-card-date" datetime="{{date format="YYYY-MM-DD"}}">{{#match @site.locale "~^" "en"}}{{date format="DD MMM YYYY"}}{{else}}{{date}}{{/match}}</time>
                 {{/if}}<!--
          --></footer>
         </div>

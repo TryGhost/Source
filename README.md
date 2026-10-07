@@ -29,14 +29,14 @@ One neat trick is that you can also create custom one-off templates by adding th
 
 # Development
 
-Source styles are compiled using Gulp/PostCSS to polyfill future CSS spec. You'll need [Node](https://nodejs.org/), [Yarn](https://yarnpkg.com/) and [Gulp](https://gulpjs.com) installed globally. After that, from the theme's root directory:
+Source styles are compiled using Gulp/PostCSS to polyfill future CSS spec. You'll need [Node](https://nodejs.org/) and [pnpm](https://pnpm.io/). After that, from the theme's root directory:
 
 ```bash
 # install dependencies
-yarn install
+pnpm install
 
 # run development server
-yarn dev
+pnpm dev
 ```
 
 Now you can edit `/assets/css/` files, which will be compiled to `/assets/built/` automatically.
@@ -45,8 +45,37 @@ The `zip` Gulp task packages the theme files into `dist/<theme-name>.zip`, which
 
 ```bash
 # create .zip file
-yarn zip
+pnpm zip
 ```
+
+# Publishing a release
+
+Releases are shipped from an up-to-date, clean `main` branch in two steps. Before starting, configure `GST_TOKEN` with a GitHub token that can create releases in `TryGhost/Source`.
+
+First bump the version. This updates `package.json`, then creates a commit and annotated `v<version>` git tag:
+
+```bash
+# pick one of: patch | minor | major (or an explicit version, e.g. 1.8.0)
+pnpm version minor
+```
+
+Then run `ship`:
+
+```bash
+pnpm ship
+```
+
+`pnpm ship`:
+
+1. Builds the theme zip and runs GScan.
+2. Refuses to continue if the working tree is not clean after the build.
+3. Pushes the version commit and tag.
+4. Prompts for the minimum compatible Ghost version and creates a draft GitHub release with the generated changelog.
+
+Review and publish the draft GitHub release after the command completes. The pushed theme tag, rather than the GitHub release, is what the next Ghost release uses when updating its bundled Source theme.
+
+> [!NOTE]
+> `pnpm version` requires an explicit version or bump type. Run it before `pnpm ship`; the ship command does not perform the bump itself.
 
 # PostCSS Features Used
 
