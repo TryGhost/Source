@@ -3,7 +3,7 @@
 
 {{> "components/header" headerStyle=@custom.header_style}}
 
-{{#match @custom.header_style "!=" "Highlight"}}
+{{#match @custom.header_style "Magazine"}}
     {{> "components/featured" showFeatured=@custom.show_featured_posts limit=4}}
 {{/match}}
 
