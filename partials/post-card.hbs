@@ -1,5 +1,5 @@
 <article class="gh-card {{post_class}}{{#unless @custom.show_images_in_feed}} no-image{{/unless}}">
-    <a class="gh-card-link" href="{{url}}">
+    <div class="gh-card-link">
         {{#if feature_image}}
             <figure class="gh-card-image">
                 <img
@@ -20,7 +20,7 @@
             {{#if primary_tag}}
                 <p class="gh-card-tag">{{primary_tag.name}}</p>
             {{/if}}
-            <h3 class="gh-card-title is-title">{{title}}</h3>
+            <h3 class="gh-card-title is-title"><a class="gh-card-title-link" href="{{url}}">{{title}}</a></h3>
             {{#if custom_excerpt}}
                 <p class="gh-card-excerpt is-body">{{custom_excerpt}}</p>
             {{/if}}
@@ -43,5 +43,5 @@
                 {{/if}}<!--
          --></footer>
         </div>
-    </a>
+    </div>
 </article>

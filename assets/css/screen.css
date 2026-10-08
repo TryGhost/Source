@@ -946,10 +946,30 @@ html.gh-navigation-open {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    color: var(--color-darker-gray);
 }
 
-.gh-card-link:hover {
+.gh-card-title-link {
+    color: inherit;
+}
+
+.gh-card-title-link:hover {
     opacity: 1;
+}
+
+/* Stretch the title link over the whole card */
+.gh-card-title-link::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+}
+
+.gh-card-title-link:focus-visible {
+    outline: none;
+}
+
+.gh-card-title-link:focus-visible::after {
+    outline: auto;
 }
 
 .gh-card-image {
