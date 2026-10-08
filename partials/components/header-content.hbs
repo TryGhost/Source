@@ -5,7 +5,18 @@
         {{#match headerStyle "!=" "Magazine"}}
         {{#match headerStyle "!=" "Highlight"}}
             {{#if @site.cover_image}}
-                <img class="gh-header-image" fetchpriority="high" src="{{@site.cover_image}}" alt="{{@site.title}}">
+                <img
+                    class="gh-header-image"
+                    fetchpriority="high"
+                    srcset="{{img_url @site.cover_image size="s" format="webp"}} 320w,
+                            {{img_url @site.cover_image size="m" format="webp"}} 600w,
+                            {{img_url @site.cover_image size="l" format="webp"}} 960w,
+                            {{img_url @site.cover_image size="xl" format="webp"}} 1200w,
+                            {{img_url @site.cover_image size="xxl" format="webp"}} 2000w"
+                    sizes="100vw"
+                    src="{{img_url @site.cover_image size="xl"}}"
+                    alt="{{@site.title}}"
+                >
             {{/if}}
         {{/match}}
         {{/match}}
