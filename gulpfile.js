@@ -81,7 +81,8 @@ function zipper(done) {
             '!dist', '!dist/**',
             '!pnpm-debug.log',
             '!pnpm-lock.yaml',
-            '!pnpm-workspace.yaml',
+            // Keep pnpm-workspace.yaml so standalone installs inherit
+            // the supply-chain policy.
             '!AGENTS.md',
             '!CLAUDE.md',
             '!gulpfile.js'
