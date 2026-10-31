@@ -248,6 +248,14 @@ a:hover {
     transition: 0.3s ease-in-out;
 }
 
+input.gh-form-input {
+    position: static;
+    flex: 1;
+    min-width: 0;
+    padding-inline-end: 16px;
+    text-overflow: ellipsis;
+}
+
 .gh-form-input::placeholder,
 button.gh-form-input {
     color: rgb(0 0 0 / 0.3);
@@ -298,8 +306,9 @@ body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-head
 }
 
 .gh-form .gh-button {
-    position: absolute;
-    right: 6px;
+    position: relative;
+    flex-shrink: 0;
+    margin-inline-end: 6px;
     min-width: 132px;
     padding-inline: 24px;
     height: 44px;
@@ -476,6 +485,21 @@ body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-head
     list-style: none;
 }
 
+.nav a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35em;
+    vertical-align: middle;
+}
+
+.nav-icon {
+    display: block;
+    width: 1em;
+    height: 1em;
+    flex: 0 0 auto;
+    object-fit: contain;
+}
+
 .gh-navigation .gh-more-toggle {
     position: relative;
     margin: 0 -6px;
@@ -537,7 +561,9 @@ body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-head
     .gh-navigation-brand .gh-search {
         display: none;
     }
+}
 
+@media (min-width: 768px) and (scripting: enabled) {
     .gh-navigation:not(.is-dropdown-loaded) .gh-navigation-menu .nav > li {
         opacity: 0;
     }
@@ -633,7 +659,7 @@ Search                         LOGO                    Login Subscribe
     }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 768px) {
     .gh-navigation.is-stacked .gh-navigation-inner {
         padding: 0;
     }
@@ -733,6 +759,18 @@ Search                         LOGO                    Login Subscribe
 }
 
 /* 6.4. Mobile menu */
+
+html.gh-navigation-open {
+    overflow: hidden;
+}
+
+.gh-navigation-open body {
+    position: fixed;
+    top: var(--gh-navigation-scroll-top);
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+}
 
 .gh-burger {
     display: flex;
@@ -846,7 +884,8 @@ Search                         LOGO                    Login Subscribe
         inset: 0;
         z-index: 3999999;
         height: 100%;
-        overflow-y: scroll;
+        overflow-y: auto;
+        overscroll-behavior-y: contain;
         -webkit-overflow-scrolling: touch;
     }
 
@@ -907,10 +946,30 @@ Search                         LOGO                    Login Subscribe
     display: flex;
     flex-direction: column;
     gap: 20px;
+    color: var(--color-darker-gray);
 }
 
-.gh-card-link:hover {
+.gh-card-title-link {
+    color: inherit;
+}
+
+.gh-card-title-link:hover {
     opacity: 1;
+}
+
+/* Stretch the title link over the whole card */
+.gh-card-title-link::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+}
+
+.gh-card-title-link:focus-visible {
+    outline: none;
+}
+
+.gh-card-title-link:focus-visible::after {
+    outline: auto;
 }
 
 .gh-card-image {
@@ -2308,7 +2367,8 @@ unless a heading is the very first element in the post content */
 /* Gallery */
 
 .kg-image[width][height],
-.kg-gallery-image {
+.kg-gallery-image,
+.gh-feature-image {
     cursor: pointer;
 }
 
@@ -3374,6 +3434,7 @@ body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-head
 
 .gh-button-share {
     display: inline-flex;
+    flex-shrink: 0;
     align-items: center;
     border: 1px solid rgba(0, 0, 0, 0.15);
     border-radius: 999px;
@@ -3381,6 +3442,7 @@ body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-head
     background: transparent;
     cursor: pointer;
     transition: all 0.4s ease;
+    white-space: nowrap;
 }
 
 .gh-button-share:hover {
