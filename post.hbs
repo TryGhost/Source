@@ -70,7 +70,7 @@
 {{#if @custom.show_related_articles}}
     {{#get "posts" include="authors" filter="id:-{{post.id}}" limit="4" as |next|}}
         {{#if next}}
-            <section class="gh-container is-grid gh-outer">
+            <section class="gh-container is-grid gh-outer" data-nosnippet>
                 <div class="gh-container-inner gh-inner">
                     <h2 class="gh-container-title">{{t "Read more"}}</h2>
                     <div class="gh-feed">
