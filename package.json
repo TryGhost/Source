@@ -20,7 +20,7 @@
         "ship": "STATUS=$(git status --porcelain); echo $STATUS; if [ -z \"$STATUS\" ]; then git push --follow-tags; else echo \"Uncommitted changes found.\" && exit 1; fi",
         "postship": "git fetch && gulp release"
     },
-    "packageManager": "pnpm@12.20.0",
+    "packageManager": "pnpm@12.21.0",
     "author": {
         "name": "Ghost Foundation",
         "email": "hello@ghost.org",
@@ -47,7 +47,7 @@
     "devDependencies": {
         "@tryghost/release-utils": "0.10.1",
         "@tryghost/theme-translations": "0.0.22",
-        "autoprefixer": "10.6.2",
+        "autoprefixer": "10.7.0",
         "beeper": "2.1.0",
         "cssnano": "9.9.0",
         "gscan": "6.7.0",
@@ -57,7 +57,7 @@
         "gulp-postcss": "10.0.0",
         "gulp-uglify": "3.0.2",
         "gulp-zip": "6.1.0",
-        "inquirer": "14.3.0",
+        "inquirer": "14.3.1",
         "postcss": "8.5.33",
         "postcss-easy-import": "4.0.0",
         "pump": "3.0.4"
